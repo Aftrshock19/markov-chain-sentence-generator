@@ -1,0 +1,135 @@
+lemma,rank,pos,translation,sentence,source_method,template_id,score,canonical_lemma,target_morph,grammatical_ok,natural_ok,learner_clear_ok,starter_notes
+sé,63,v,yes,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+vez,66,n,time; instance,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+hacer,71,v,to do,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+gracias,77,n,thanks,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+tiempo,86,n,time,No tuve tiempo.,retrieved_corpus,retrieved,14.560089393263635,tiempo,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+verdad,97,n,truth,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+solo,99,adj,sole,¿puedes ir sola?,retrieved_corpus,retrieved,10.037430608768434,solo,Gender=Fem|Number=Sing,1,1,1,target_surface_not_base
+mejor,107,adj,better,Sabíamos que éramos mejores que eso.,retrieved_corpus,retrieved,11.246820922008496,mejor,Number=Plur,1,1,1,advanced_tense_in_beginner_band; multi_clause_for_beginner; target_surface_not_base; advanced_sentence_grammar
+vida,108,n,life,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+decir,109,v,to say; to tell,"Bueno, ¿qué quieres que diga?",retrieved_corpus,retrieved,8.658874009178549,decir,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,multi_clause_context; subjunctive_in_beginner_band; multi_clause_for_beginner; punctuation_complexity_for_beginner; not_general_publishable; advanced_morphology; advanced_sentence_grammar; bad_translation
+favor,114,n,favor/favour,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+señor,115,n,great big,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+hombre,116,n,man;,¿quiénes son esos hombres?,retrieved_corpus,retrieved,7.930610326987496,hombre,Gender=Masc|Number=Plur,1,0,1,not_general_publishable; target_surface_not_base; bad_translation
+ver,119,v,to see; to spot,¿has visto a mi padre?,retrieved_corpus,retrieved,12.276505975301369,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,advanced_morphology; advanced_sentence_grammar; bad_translation
+día,127,n,day,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mismo,134,adj,same,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+hecho,136,n,done; made; fact,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+noche,143,n,after dark; (late) at night; nocturnally,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+trabajo,144,n,work; job,No había trabajo.,retrieved_corpus,retrieved,11.568408941268636,trabajo,Gender=Masc|Number=Sing,1,1,1,advanced_tense_in_beginner_band; advanced_sentence_grammar; bad_translation
+mundo,155,n,world; earth,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+gente,156,n,people,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+parte,163,n,part,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+momento,165,n,moment; instant,Está contigo en este momento.,retrieved_corpus,retrieved,12.758171276006454,momento,Gender=Masc|Number=Sing,1,1,1,bad_translation
+lugar,172,n,place,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+nuevo,177,adj,new,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+claro,181,adj,clear; easily understood,"Vi algo ahí, pero poco claro.",retrieved_corpus,retrieved,7.741356735631916,claro,Gender=Masc|Number=Sing,1,0,0,multi_clause_context; punctuation_complexity_for_beginner; not_general_publishable; advanced_sentence_grammar; bad_translation
+mañana,184,n,tomorrow,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+tipo,186,n,dolled up; smartened up; dressed for a special occasion,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mujer,191,n,woman,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+cosa,194,n,thing,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,12.883787825873842,cosa,Gender=Fem|Number=Plur,1,1,1,target_surface_not_base
+haber,208,v,have,Lo he dicho todo.,retrieved_corpus,retrieved,12.059072831939837,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,advanced_sentence_grammar
+amigo,210,n,friend,Me gustan tus amigos.,retrieved_corpus,retrieved,11.322042477264825,amigo,Gender=Masc|Number=Plur,1,1,1,target_surface_not_base
+buena,212,adj,good (f.),Es una mujer de buenas maneras.,retrieved_corpus,retrieved,10.928756750991402,buena,Gender=Fem|Number=Plur,1,1,1,target_surface_not_base
+nombre,216,n,name,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mamá,219,n,mum; mom,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+papá,223,n,dad,"Mamá, ¿dónde está papá?",retrieved_corpus,retrieved,8.28442411807526,papá,Gender=Masc|Number=Sing,1,0,0,multi_clause_context; punctuation_complexity_for_beginner; not_general_publishable
+pasado,227,n,past,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+caso,231,n,case,No hice caso a nadie.,retrieved_corpus,retrieved,11.200177888405468,caso,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+cuenta,238,n,count; tally,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+hora,244,n,hour,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+problema,245,n,problem; issue; challenge,De seguro tendremos problemas.,retrieved_corpus,retrieved,12.989549485604728,problema,Gender=Masc|Number=Plur,1,1,1,target_surface_not_base; advanced_sentence_grammar; bad_translation
+año,247,n,year,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+cierto,250,adj,a certain; a specific,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+saber,251,v,to know; to understand,Sé que no lo harás.,retrieved_corpus,retrieved,12.697757317435583,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,advanced_sentence_grammar; bad_translation
+hacerlo,253,v,to do,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mierda,254,n,shit (solid excretory product evacuated from the bowels,El amor es una mierda.,retrieved_corpus,retrieved,11.684826561120117,mierda,Gender=Fem|Number=Sing,1,1,1,bad_translation; banned_content
+idea,256,n,idea,Ni tuve idea que estabas allí.,retrieved_corpus,retrieved,9.632122728340219,idea,Gender=Fem|Number=Sing,1,1,1,advanced_tense_in_beginner_band; multi_clause_for_beginner; advanced_sentence_grammar
+policía,268,n,Civility; polity; public order; police; fineness; neatness; urbanity,La policía está allí.,retrieved_corpus,retrieved,12.374020088226839,policía,Number=Sing,1,1,1,bad_translation
+serio,274,adj,serious; earnest; sober; solemn,Tenemos serios problemas.,retrieved_corpus,retrieved,12.311040480112922,serio,Gender=Masc|Number=Plur,1,1,1,target_surface_not_base; bad_translation
+ve,276,v,letter: v,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+lado,279,n,side,Estaremos lado a lado.,retrieved_corpus,retrieved,11.174202136247631,lado,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+cabeza,281,n,head,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+historia,283,n,history,Me gustan mucho estas historias.,retrieved_corpus,retrieved,11.869488944530353,historia,Gender=Fem|Number=Plur,1,1,1,target_surface_not_base
+salir,286,v,to go out; to leave; to depart; to head out,Parece que algo salió mal.,retrieved_corpus,retrieved,11.542459190721782,salir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,multi_clause_for_beginner; advanced_morphology; advanced_sentence_grammar; bad_translation
+ciudad,289,n,city,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+poder,292,n,to be able to; can,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mayor,296,adj,of age,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+país,302,n,country,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+agua,304,n,water,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+camino,308,n,way; route,¿sabes el camino?,retrieved_corpus,retrieved,9.825136659965583,camino,Gender=Masc|Number=Sing,1,1,1,bad_translation
+persona,309,n,person (an individual,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+realidad,311,n,reality,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+fin,312,n,end,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+importante,313,adj,important; that cares; that matters,Me han dicho que era importante.,retrieved_corpus,retrieved,11.776934316437215,importante,Number=Sing,1,1,1,advanced_tense_in_beginner_band; multi_clause_for_beginner; advanced_sentence_grammar; bad_translation
+primero,314,adj,first; first up,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+semana,317,n,week,He esperado más de una semana.,retrieved_corpus,retrieved,12.533854499493033,semana,Gender=Fem|Number=Sing,1,1,1,advanced_sentence_grammar
+muerte,322,n,death,Soy la muerte.,retrieved_corpus,retrieved,10.444006979611904,muerte,Gender=Fem|Number=Sing,1,1,1,banned_content
+punto,324,n,point,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+buenas,328,adj,hello; hi,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+supuesto,329,n,supposed; self-styled; alleged,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+mano,332,n,hand,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+volver,334,v,to return; to revert; to get back,Puede que vuelva.,retrieved_corpus,retrieved,13.532485415927152,volver,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,subjunctive_in_beginner_band; multi_clause_for_beginner; advanced_morphology; advanced_sentence_grammar; bad_translation
+señora,336,n,lady,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+cariño,337,n,affection; fondness,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+ayuda,338,n,help; aid,No necesitamos ayuda.,retrieved_corpus,retrieved,13.880757882372453,ayuda,Gender=Fem|Number=Sing,1,1,1,bad_translation
+pasar,341,v,to pass; to hand; to slip,¿qué ha pasado hoy?,retrieved_corpus,retrieved,13.681386015280705,pasar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,advanced_morphology; bad_translation
+general,342,adj,general; overall,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+gobierno,347,n,government,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+presidente,349,n,president,Estoy viendo al presidente.,retrieved_corpus,retrieved,11.273060044493358,presidente,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+muerto,350,adj,dead,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+guerra,353,n,war; warfare,¡no quiero una guerra!,retrieved_corpus,retrieved,14.665940203309205,guerra,Gender=Fem|Number=Sing,1,1,1,bad_translation; banned_content
+medio,356,n,half,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+genial,361,adj,genial; pleasant,Creo que se ve genial.,retrieved_corpus,retrieved,12.448785998504986,genial,Number=Sing,1,1,1,multi_clause_for_beginner; bad_translation
+rápido,364,adj,rapid; quick; fast,El señor es rápido.,seeded_template,seeded_adj_fallback,10.698183857793497,rápido,Gender=Masc|Number=Sing,1,1,1,seeded_adj_fallback; bad_translation
+equipo,365,n,team,Ellos eran un equipo.,retrieved_corpus,retrieved,10.882286618502178,equipo,Gender=Masc|Number=Sing,1,1,1,advanced_tense_in_beginner_band; advanced_sentence_grammar
+suerte,370,n,luck; fortune,Espero que tengas suerte.,retrieved_corpus,retrieved,14.047176522575722,suerte,Gender=Fem|Number=Sing,1,1,1,subjunctive_in_beginner_band; multi_clause_for_beginner; advanced_sentence_grammar; bad_translation
+cuerpo,373,n,body,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+llegar,374,v,to arrive; get,Ellos todavía no llegaron.,retrieved_corpus,retrieved,10.902303310213576,llegar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,advanced_morphology; advanced_sentence_grammar; bad_translation
+posible,376,adj,possible,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+tierra,380,n,land; ground,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+único,381,adj,only,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+hija,382,n,daughter,Hablé con mi hija.,retrieved_corpus,retrieved,11.037333992597356,hija,Gender=Fem|Number=Sing,1,1,1,advanced_sentence_grammar
+final,384,n,final,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+cara,385,n,face,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+niño,386,n,child; boy,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+número,391,n,number,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+ves,394,v,to see; to spot,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+tío,395,n,uncle,Tengo que estar con mis tíos.,retrieved_corpus,retrieved,11.193271787072536,tío,Gender=Masc|Number=Plur,1,1,1,target_surface_not_base
+buenos,399,adj,good,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+feliz,403,adj,happy; merry,Él tuvo una vida feliz.,retrieved_corpus,retrieved,13.803902710000285,feliz,Number=Sing,1,1,1,advanced_sentence_grammar; bad_translation
+igual,406,adj,equal; same,Quiero una igual.,retrieved_corpus,retrieved,13.411962254027268,igual,Number=Sing,1,1,1,bad_translation
+dar,410,v,to give; to give out,Dio la vida por su país.,retrieved_corpus,retrieved,10.096644238871027,dar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,advanced_morphology; advanced_sentence_grammar; bad_translation
+difícil,413,adj,difficult; hard; tough; challenging; rough; tricky; trying; arduous; testing,Fueron días muy difíciles.,retrieved_corpus,retrieved,10.03107812896523,difícil,Number=Plur,1,1,1,target_surface_not_base; advanced_sentence_grammar; bad_translation
+viejo,417,n,old,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+tomar,419,v,to take,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+sentido,425,n,deeply felt; heartfelt,No tiene sentido esperar.,retrieved_corpus,retrieved,12.714245720768618,sentido,Gender=Masc|Number=Sing,1,1,1,bad_translation
+esposa,426,n,wife,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+segundo,427,adj,second,Estará aquí en cualquier segundo.,retrieved_corpus,retrieved,10.246758864353765,segundo,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+grande,428,adj,big; large,Creo que es demasiado grande.,retrieved_corpus,retrieved,13.106612841303223,grande,Number=Sing,1,1,1,multi_clause_for_beginner; bad_translation
+pensar,435,v,to think; ponder,¡no es lo que piensas!,retrieved_corpus,retrieved,14.017129521953164,pensar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,multi_clause_for_beginner; bad_translation
+grupo,439,n,group,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+cuidado,440,n,answerable,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+suficiente,441,adj,sufficient; enough,No tengo suficiente dinero ahora.,retrieved_corpus,retrieved,14.4662658075936,suficiente,Number=Sing,1,1,1,bad_translation
+sangre,442,n,blood,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+último,447,adj,final,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+frente,448,n,forehead; brow,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+coche,458,n,car; automobile,¿quieres un coche?,retrieved_corpus,retrieved,11.442080248948443,coche,Gender=Masc|Number=Sing,1,1,1,bad_translation
+fuerte,462,adj,strong,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+seguridad,463,n,safety; security,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+déjame,468,v,rest,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+pueblo,469,n,town; village,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+joven,471,adj,young; youthful,¡qué joven eres!,retrieved_corpus,retrieved,9.134896488904417,joven,Number=Sing,1,1,1,bad_translation
+escuela,474,n,school,¿cómo llegaste a la escuela?,retrieved_corpus,retrieved,10.831509966790497,escuela,Gender=Fem|Number=Sing,1,1,1,advanced_sentence_grammar
+cambio,477,n,change; shift,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+luz,478,n,light,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+oportunidad,479,n,opportunity; chance; shot; break; occasion; time,Te daré otra oportunidad.,retrieved_corpus,retrieved,11.378649377402578,oportunidad,Gender=Fem|Number=Sing,1,1,1,advanced_sentence_grammar; bad_translation
+fui,480,v,to be,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+embargo,482,n,embargo,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+teléfono,483,n,telephone,Me gustan tus teléfonos.,retrieved_corpus,retrieved,12.240949455643191,teléfono,Gender=Masc|Number=Plur,1,1,1,target_surface_not_base
+alto,486,adj,tall,Pasé algo por alto.,retrieved_corpus,retrieved,9.9442210196365,alto,Gender=Masc|Number=Sing,1,1,1,advanced_sentence_grammar
+loco,489,n,crazy; insane; mad; nuts,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+paso,497,n,dried,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+falta,498,n,lack; shortage,,manual_review_needed,,0.0,,,0,0,0,no_sentence
+fácil,499,adj,easy; facile; simple,No parecía tan fácil.,retrieved_corpus,retrieved,11.561584029974574,fácil,Number=Sing,1,1,1,advanced_tense_in_beginner_band; advanced_sentence_grammar; bad_translation

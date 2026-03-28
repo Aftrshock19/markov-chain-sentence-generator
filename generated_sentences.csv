@@ -15,7 +15,7 @@ los,13,art,A1,the (masc. pl.),,,los,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 una,14,determiner,A1,a; an; one (fem.),,,una,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 se,15,pron,A1,oneself; himself; herself; itself; themselves,,,se,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 con,16,prep,A1,with,,,con,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-qué,17,pron,A1,what,¿qué queréis hacer?,,qué,qué,Number=Sing|PronType=Rel,1,76 71,73.5,76,retrieved,retrieved_corpus,,,10.214268517288495,0.0
+qué,17,pron,A1,what,¿qué queréis hacer?,,qué,qué,Number=Sing,1,76 71,73.5,76,retrieved,retrieved_corpus,,,10.214268517288495,0.0
 me,18,pron,A1,me; myself,,,me,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 para,19,prep,A1,for; to,,,para,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 las,20,pron,A1,the (fem. pl.),,,las,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -48,12 +48,12 @@ así,46,adv,A1,like this,No quiero que sea así.,,así,así,,4,4 76 2 9,22.75,76
 cuando,47,conj,A1,when,,,cuando,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hay,48,v,A1,there is; there are,,,hay,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 este,49,determiner,A1,this,,,este,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-algo,50,pron,A1,something; anything,Tienes algo que es mío.,,algo,algo,Number=Sing|PronType=Ind,1,59 2 9 27,24.25,59,retrieved,retrieved_corpus,,,9.90366882766971,0.0
-estoy,51,v,A1,to be,No sé dónde estoy.,,estoy,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,3,4 9 111,41.333333333333336,111,retrieved,retrieved_corpus,,,12.087139640684061,0.0
-vamos,52,v,A1,we go; let's go (ir),Nosotros vamos a la casa.,,vamos,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,,,8.540150082422905,0.0
+algo,50,pron,A1,something; anything,Tienes algo que es mío.,,algo,algo,Number=Sing,1,59 2 9 27,24.25,59,retrieved,retrieved_corpus,,,9.90366882766971,0.0
+estoy,51,v,A1,to be,No sé dónde estoy.,,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,4 9 111,41.333333333333336,111,retrieved,retrieved_corpus,,,12.087139640684061,0.0
+vamos,52,v,A1,we go; let's go (ir),Nosotros vamos a la casa.,,vamos,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,,,8.540150082422905,0.0
 él,53,pron,A1,he; him; masculine personal third person subject and disjunctive pronoun,,,él,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 ser,54,v,A1,to be,Ella es buena.,,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.817620616764355,0.0
-bueno,55,adj,A1,good,Creo que es muy bueno.,,bueno,bueno,,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,,,12.180317463846073,0.0
+bueno,55,adj,A1,good,Creo que es muy bueno.,,bueno,bueno,Gender=Masc|Number=Sing,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,,,12.180317463846073,0.0
 nos,56,pron,A1,us; ourselves,,,nos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 sus,57,determiner,A1,his; her; its; their; your (formal) (pl.),,,sus,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 fue,58,v,A1,was (ser/ir),Ella fue buena.,,fue,ser,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,10.125654750802413,0.0
@@ -65,7 +65,7 @@ sé,63,v,A1,yes,,,sé,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 tú,64,pron,A1,you,,,tú,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 cómo,65,adv,A1,how?,,,cómo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 vez,66,n,A1,time; instance,,,vez,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-estás,67,v,A1,you are (estar),Tú estás en la casa.,,estás,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,22 8 3 91,31,91,seeded_special_estar_place,seeded_template,,,8.284337740476804,0.0
+estás,67,v,A1,you are (estar),Tú estás en la casa.,,estás,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 8 3 91,31,91,seeded_special_estar_place,seeded_template,,,8.284337740476804,0.0
 sólo,68,adv,A1,sole,,,sólo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 ella,69,pron,A1,she; her,,,ella,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 son,70,v,A1,are (ser),,,son,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -90,10 +90,10 @@ entonces,88,adv,A1,then; next; thereupon; at that time; at that point,,,entonces
 creo,89,v,A1,I believe; I think (creer),Yo creo eso.,,creo,creer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 33,25.5,33,seeded_special_creer_object,seeded_template,,,10.234711924230655,0.0
 tienes,90,v,A1,you have (tener),Tú tienes una casa.,,tienes,tener,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 10 91,41,91,seeded_special_tener_obj,seeded_template,,,8.429859511264706,0.0
 casa,91,n,A1,house,¿ella está en casa?,,casa,casa,Gender=Fem|Number=Sing,4,11 26 8,15,26,retrieved,retrieved_corpus,,,15.50272063549803,0.0
-usted,92,pron,A1,second person formal,Usted sabe quién es ella.,,usted,usted,Case=Nom|Number=Sing|Person=2|Polite=Form|PronType=Prs,0,95 106 9 11,55.25,106,retrieved,retrieved_corpus,,,10.119141664307117,0.0
+usted,92,pron,A1,second person formal,Usted sabe quién es ella.,,usted,usted,Case=Nom|Number=Sing|Person=2,0,95 106 9 11,55.25,106,retrieved,retrieved_corpus,,,10.119141664307117,0.0
 esa,93,determiner,A1,that (fem.),,,esa,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-voy,94,v,A1,I go (ir),Yo voy a la casa.,,voy,ir,VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,,,10.462629045123132,0.0
-sabes,95,v,A1,you know?,¿sabes quién es él?,,sabes,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,106 9 11,42,106,retrieved,retrieved_corpus,,,12.026550230007507,0.0
+voy,94,v,A1,I go (ir),Yo voy a la casa.,,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,,,10.462629045123132,0.0
+sabes,95,v,A1,you know?,¿sabes quién es él?,,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,106 9 11,42,106,retrieved,retrieved_corpus,,,12.026550230007507,0.0
 eres,96,v,A1,to be,,,eres,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 verdad,97,n,A1,truth,,,verdad,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hasta,98,prep,A1,until,,,hasta,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -103,11 +103,11 @@ años,101,n,A2,years,,,años,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hace,102,v,A2,ago,,,hace,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 va,103,v,A2,goes (ir),Ella va a la casa.,,va,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 5 3 91,27.5,91,seeded_special_ir_place,seeded_template,,,10.811809900220933,0.0
 hola,104,interj,A2,hello; hi; hey,,,hola,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-mucho,105,determiner,A2,much; a lot of,Tengo mucho trabajo que hacer mañana.,,mucho,mucho,,1,59 144 2 71 184,92,184,retrieved,retrieved_corpus,,,10.258405927630047,0.0
-quién,106,pron,A2,who?; whom?,No saben quién soy.,,quién,quién,Number=Sing|PronType=Rel,2,4 95 9,36,95,retrieved,retrieved_corpus,,,11.610956045560878,0.0
-mejor,107,adj,A2,better,Sabíamos que éramos mejores que eso.,,mejores,mejor,Degree=Cmp|Number=Plur,3,95 2 9 2 33,28.2,95,retrieved,retrieved_corpus,,,11.246820922008496,0.0
+mucho,105,determiner,A2,much; a lot of,Tengo mucho trabajo que hacer mañana.,,mucho,mucho,Gender=Masc|Number=Sing,1,59 144 2 71 184,92,184,retrieved,retrieved_corpus,,,10.258405927630047,0.0
+quién,106,pron,A2,who?; whom?,No saben quién soy.,,quién,quién,Number=Sing,2,4 95 9,36,95,retrieved,retrieved_corpus,,,11.610956045560878,0.0
+mejor,107,adj,A2,better,Sabíamos que éramos mejores que eso.,,mejores,mejor,Number=Plur,3,95 2 9 2 33,28.2,95,retrieved,retrieved_corpus,,,11.246820922008496,0.0
 vida,108,n,A2,life,,,vida,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-decir,109,v,A2,to say; to tell,No sé qué debería decir.,,decir,decir,VerbForm=Inf,4,4 9 17 202,58,202,retrieved,retrieved_corpus,,,11.846329636819746,0.0
+decir,109,v,A2,to say; to tell,,,decir,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 mí,110,pron,A2,first-person singular pronoun in the nominative case,,,mí,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 dónde,111,adv,A2,where?,,,dónde,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 ni,112,conj,A2,neither... nor,,,ni,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -117,31 +117,31 @@ señor,115,n,A2,great big,,,señor,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hombre,116,n,A2,man;,,,hombre,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 oh,117,interj,A2,oh,,,oh,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 siempre,118,adv,A2,always,,,siempre,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-ver,119,v,A2,to see; to spot,¿la quieres ver ahora?,,ver,ver,VerbForm=Inf,3,3 76 45,41.333333333333336,76,retrieved,retrieved_corpus,,,13.216947595897114,0.0
+ver,119,v,A2,to see; to spot,¿has visto a mi padre?,,visto,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,,,12.276505975301369,0.0
 uno,120,num,A2,one,,,uno,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-quieres,121,v,A2,you want (querer),Tú quieres una casa.,,quieres,querer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,22 10 91,41,91,seeded_special_querer_obj,seeded_template,,,9.852064630307737,0.0
+quieres,121,v,A2,you want (querer),Tú quieres una casa.,,quieres,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 10 91,41,91,seeded_special_querer_obj,seeded_template,,,9.852064630307737,0.0
 siento,122,v,A2,I feel (sentir); I'm sorry,,,siento,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 había,123,v,A2,makes pluperfect to verbs as part of the auxiliary verb haber,,,había,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 dios,124,prop,A2,god,,,dios,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-has,125,v,A2,you have (haber),¿has visto a este hombre?,,has,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,119 5 44 116,71,119,retrieved,retrieved_corpus,,,10.964084508467941,0.0
+has,125,v,A2,you have (haber),¿has visto a este hombre?,,has,haber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,119 5 44 116,71,119,retrieved,retrieved_corpus,,,10.964084508467941,0.0
 antes,126,adv,A2,before (earlier than),Él ha hecho esto antes.,,antes,antes,,4,11 39 71 42,40.75,71,retrieved,retrieved_corpus,,,11.907807483460333,0.0
 día,127,n,A2,day,,,día,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 desde,128,prep,A2,since,,,desde,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 tenemos,129,v,A2,we have (tener),Nosotros tenemos una casa.,,tenemos,tener,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 91,39.666666666666664,91,seeded_special_tener_obj,seeded_template,,,9.370007416645102,0.0
 poco,130,adv,A2,little; not much,,,poco,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-cosas,131,n,A2,things,Tenemos otras cosas que hacer.,,cosas,cosa,,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,,,11.883787825873842,0.0
+cosas,131,n,A2,things,Tenemos otras cosas que hacer.,,cosas,cosa,Gender=Fem|Number=Plur,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,,,11.883787825873842,0.0
 ti,132,pron,A2,you (prepositional),,,ti,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-otra,133,determiner,A2,another; other (fem.),Él quiere vernos otra vez.,,otra,otro,,3,11 76 119 66,68,119,retrieved,retrieved_corpus,,,11.292597736503941,0.0
+otra,133,determiner,A2,another; other (fem.),Él quiere vernos otra vez.,,otra,otro,Gender=Fem|Number=Sing,3,11 76 119 66,68,119,retrieved,retrieved_corpus,,,11.292597736503941,0.0
 mismo,134,adj,A2,same,,,mismo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 han,135,v,A2,have (haber),,,han,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hecho,136,n,A2,done; made; fact,,,hecho,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-alguien,137,pron,A2,someone; somebody,Alguien debería decir algo.,,alguien,alguien,Number=Sing|PronType=Ind,0,202 109 50,120.33333333333333,202,retrieved,retrieved_corpus,,,11.566690026448935,0.0
-puedes,138,v,A2,you can (poder),Tú puedes ir a la casa.,,puedes,poder,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,22 52 5 3 91,34.6,91,seeded_special_poder_ir_place,seeded_template,,,9.330237397667466,0.0
+alguien,137,pron,A2,someone; somebody,,,alguien,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+puedes,138,v,A2,you can (poder),Tú puedes ir a la casa.,,puedes,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 52 5 3 91,34.6,91,seeded_special_poder_ir_place,seeded_template,,,9.330237397667466,0.0
 ahí,139,adv,A2,there,¿qué fue lo que hiciste ahí?,,ahí,ahí,,6,17 9 11 2 71,22,71,retrieved,retrieved_corpus,,,12.690728998737873,0.0
 dijo,140,v,A2,said (decir),,,dijo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 estar,141,v,A2,to be,Ella está en la casa.,,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,11.315059496626404,0.0
 entre,142,prep,A2,between,,,entre,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-noche,143,n,A2,after dark; (late) at night; nocturnally,¿puedo pasar aquí la noche?,,noche,noche,Gender=Fem|Number=Sing,5,75 178 36 3,73,178,retrieved,retrieved_corpus,,,11.223748943981217,0.0
+noche,143,n,A2,after dark; (late) at night; nocturnally,,,noche,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 trabajo,144,n,A2,work; job,No había trabajo.,,trabajo,trabajo,Gender=Masc|Number=Sing,2,4 39,21.5,39,retrieved,retrieved_corpus,,,11.568408941268636,0.0
 ir,145,v,A2,to go,Voy a hacer esto yo misma.,,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,0,5 71 42 18 134,54,134,retrieved,retrieved_corpus,,,11.688050363606203,0.0
 después,146,adv,A2,later; afterwards; afterward; post,Después te diré.,,después,después,,0,22 109,65.5,109,retrieved,retrieved_corpus,,,9.527681895743623,0.0
@@ -150,7 +150,7 @@ sea,148,v,A2,be (subjunctive of ser),,,sea,,,-1,,0.0,0,,manual_review_needed,,,0
 acuerdo,149,n,A2,agreement,No estoy de acuerdo con usted.,,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,4 26 1 16 92,27.8,92,retrieved,retrieved_corpus,,,14.602530877490816,0.0
 otro,150,determiner,A2,another; other,,,otro,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 parece,151,v,A2,seems (parecer),,,parece,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-donde,152,pron,A2,because,Voy donde tú me digas.,,donde,donde,PronType=Ind,1,52 22 18 109,50.25,109,retrieved,retrieved_corpus,,,10.250824106541124,0.0
+donde,152,pron,A2,because,,,donde,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 ellos,153,pron,A2,they (masc.),,,ellos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 estamos,154,v,A2,we are (estar),Nosotros estamos en la casa.,,estamos,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 8 3 91,30,91,seeded_special_estar_place,seeded_template,,,9.404713864879335,0.0
 mundo,155,n,A2,world; earth,,,mundo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -158,31 +158,31 @@ gente,156,n,A2,people,,,gente,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 nosotros,157,pron,A2,we,,,nosotros,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 padre,158,n,A2,Father,Ahora mis padres están en casa.,,padres,padre,Gender=Masc|Number=Plur,2,45 27 26 8 91,39.4,91,retrieved,retrieved_corpus,,,12.109379998793262,0.0
 estado,159,prop,A2,country; land,,,estado,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-nadie,160,pron,A2,no one,No hice caso a nadie.,,nadie,nadie,Number=Sing|PronType=Neg,4,4 71 231 5,77.75,231,retrieved,retrieved_corpus,,,10.200177888405468,0.0
-tal,161,pron,A2,such,¿qué tal está?,,tal,tal,Number=Sing|PronType=Dem,2,17 26,21.5,26,retrieved,retrieved_corpus,,,10.578922272963375,0.0
+nadie,160,pron,A2,no one,No hice caso a nadie.,,nadie,nadie,Number=Sing,4,4 71 231 5,77.75,231,retrieved,retrieved_corpus,,,10.200177888405468,0.0
+tal,161,pron,A2,such,,,tal,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 les,162,pron,A2,them; you (formal pl.),,,les,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-parte,163,n,A2,part,Hiciste tu parte.,,parte,parte,Gender=Fem|Number=Sing,2,71 37,54,71,retrieved,retrieved_corpus,,,8.59550665866847,0.0
+parte,163,n,A2,part,,,parte,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 sido,164,v,A2,been (ser),,,sido,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 momento,165,n,A2,moment; instant,Haz que espere un momento.,,momento,momento,Gender=Masc|Number=Sing,4,71 2 203 10,71.5,203,retrieved,retrieved_corpus,,,11.515211813087314,0.0
 podría,166,v,A2,could; might (poder),,,podría,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 menos,167,adv,A2,less; fewer,,,menos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-mira,168,v,A2,target,¡mira a esa chica!,,mira,mirar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,5 83 295,127.66666666666667,295,retrieved,retrieved_corpus,,,9.994655037327583,0.0
+mira,168,v,A2,target,¡mira a esa chica!,,mira,mirar,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,5 83 295,127.66666666666667,295,retrieved,retrieved_corpus,,,9.994655037327583,0.0
 quiere,169,v,A2,wants (querer),Ella quiere una casa.,,quiere,querer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_querer_obj,seeded_template,,,11.02964163219668,0.0
 fuera,170,adv,A2,outside,Dígales que esperen fuera.,,fuera,fuera,,3,109 2 203,104.66666666666667,203,retrieved,retrieved_corpus,,,8.734757220780388,0.0
 gran,171,adj,A2,big; large,,,gran,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-lugar,172,n,A2,place,No sabes cómo es ese lugar.,,lugar,lugar,,5,4 95 65 9 83,51.2,95,retrieved,retrieved_corpus,,,12.708005491192731,0.0
+lugar,172,n,A2,place,,,lugar,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hablar,173,v,A2,to talk,Quiero hablar sobre ello.,,hablar,hablar,VerbForm=Inf,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,,,13.622421660766516,0.0
 tener,174,v,A2,to have,Ella tiene una casa.,,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,11.388334094639582,0.0
 tenía,175,v,A2,had (tener),Ella tenía una casa.,,tenía,tener,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,10.410156886442316,0.0
-tres,176,num,A2,three,Él está aquí hace tres días.,,tres,tres,NumType=Card|Number=Plur,4,11 26 36 71 127,54.2,127,retrieved,retrieved_corpus,,,13.17673317123423,0.0
+tres,176,num,A2,three,Él está aquí hace tres días.,,tres,tres,,4,11 26 36 71 127,54.2,127,retrieved,retrieved_corpus,,,13.17673317123423,0.0
 nuevo,177,adj,A2,new,,,nuevo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 pasa,178,v,A2,raisin,¿cómo lo pasa usted?,,pasa,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,3,65 11 92,56,92,retrieved,retrieved_corpus,,,11.741315185344986,0.0
-vas,179,v,A2,you go (ir),Tú vas a la casa.,,vas,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,22 5 3 91,30.25,91,seeded_special_ir_place,seeded_template,,,9.681808287642317,0.0
+vas,179,v,A2,you go (ir),Tú vas a la casa.,,vas,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 5 3 91,30.25,91,seeded_special_ir_place,seeded_template,,,9.681808287642317,0.0
 cada,180,determiner,A2,each,,,cada,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 claro,181,adj,A2,clear; easily understood,,,claro,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 dinero,182,n,A2,money,Lo hicieron por dinero.,,dinero,dinero,Gender=Masc|Number=Sing,3,11 71 12,31.333333333333332,71,retrieved,retrieved_corpus,,,13.502498033359846,0.0
 madre,183,n,A2,mother,¿es usted su madre?,,madre,madre,Gender=Fem|Number=Sing,4,9 92 23,41.333333333333336,92,retrieved,retrieved_corpus,,,13.17251276583402,0.0
-mañana,184,n,A2,tomorrow,¿dónde estás esta mañana?,,mañana,mañana,,4,111 26 44,60.333333333333336,111,retrieved,retrieved_corpus,,,9.916005299984517,0.0
+mañana,184,n,A2,tomorrow,,,mañana,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 sr.,185,none,A2,abbreviation of Señor,,,sr.,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 tipo,186,n,A2,dolled up; smartened up; dressed for a special occasion,,,tipo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hoy,187,adv,A2,today,Hoy vi uno.,,hoy,hoy,,0,119 10,64.5,119,retrieved,retrieved_corpus,,,10.132276269075618,0.0
@@ -217,7 +217,7 @@ estos,215,determiner,A2,these,,,estos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.
 nombre,216,n,A2,name,,,nombre,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 tienen,217,v,A2,to have,Ellos tienen una casa.,,tienen,tener,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,9.932520736126646,0.0
 veces,218,n,A2,by; times,,,veces,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-mamá,219,n,A2,mum; mom,¿está mamá aquí?,,mamá,mamá,Gender=Fem|Number=Sing,2,26 36,31,36,retrieved,retrieved_corpus,,,12.574792912197296,0.0
+mamá,219,n,A2,mum; mom,,,mamá,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 mal,220,adv,A2,bad; evil,Todos lo pasamos mal.,,mal,mal,,3,38 11 178,75.66666666666667,178,retrieved,retrieved_corpus,,,10.920542026507004,0.0
 buen,221,adj,A2,good,,,buen,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 durante,222,prep,A2,during; in; over,,,durante,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -233,18 +233,18 @@ caso,231,n,A2,case,No hice caso a nadie.,,caso,caso,Gender=Masc|Number=Sing,2,4 
 contra,232,prep,A2,against; versus,,,contra,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 tarde,233,adv,A2,late,Aún no es tarde.,,tarde,tarde,,3,213 4 9,75.33333333333333,213,retrieved,retrieved_corpus,,,13.841426307052174,0.0
 necesito,234,v,A2,to need,No necesito ser más claro.,,necesito,necesitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,4 9 32 181,56.5,181,retrieved,retrieved_corpus,,,11.498804466610144,0.0
-oye,235,v,A2,hey! listen!,Oye mucho y habla poco.,,oye,oír,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,0,43 7 173 130,88.25,173,retrieved,retrieved_corpus,,,11.510030842912027,0.0
+oye,235,v,A2,hey! listen!,Oye mucho y habla poco.,,oye,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,0,43 7 173 130,88.25,173,retrieved,retrieved_corpus,,,11.510030842912027,0.0
 alguna,236,determiner,A2,some; any,,,alguna,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hemos,237,v,A2,we have (haber),,,hemos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 cuenta,238,n,A2,count; tally,,,cuenta,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-visto,239,v,A2,seen,¿has visto a mi padre?,,visto,ver,Gender=Masc|Number=Sing|VerbForm=Part,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,,,13.276505975301369,0.0
+visto,239,v,A2,seen,¿has visto a mi padre?,,visto,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,,,13.276505975301369,0.0
 conmigo,240,adv,A2,with me,,,conmigo,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 mientras,241,conj,A2,while; whilst; as,,,mientras,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 otros,242,determiner,A2,others,,,otros,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 realmente,243,adv,A2,really; actually; genuinely,¿estás realmente seguro de eso?,,realmente,realmente,,2,26 200 1 33,65,200,retrieved,retrieved_corpus,,,12.3144099466926,0.0
 hora,244,n,A2,hour,,,hora,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 problema,245,n,A2,problem; issue; challenge,No tendrás ese problema.,,problema,problema,Gender=Masc|Number=Sing,3,4 59 83,48.666666666666664,83,retrieved,retrieved_corpus,,,11.349705714871607,0.0
-crees,246,v,A2,to believe,¿crees que estamos haciéndolo bien?,,crees,creer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,2 26 71 31,32.5,71,retrieved,retrieved_corpus,,,11.572913214768938,0.0
+crees,246,v,A2,to believe,¿crees que estamos haciéndolo bien?,,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 26 71 31,32.5,71,retrieved,retrieved_corpus,,,11.572913214768938,0.0
 año,247,n,A2,year,,,año,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 razón,248,n,A2,reason,Las mujeres siempre tienen razón.,,razón,razón,Gender=Fem|Number=Sing,4,6 191 118 59,93.5,191,retrieved,retrieved_corpus,,,11.148903672505007,0.0
 primera,249,adj,A2,first gear,,,primera,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
@@ -292,15 +292,10 @@ ustedes,290,pron,A2,you,,,ustedes,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 muchas,291,determiner,A2,much; a lot of,,,muchas,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 poder,292,n,A2,to be able to; can,,,poder,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 algunos,293,determiner,A2,some; any,,,algunos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-amigos,294,n,A2,friend,Me gustan tus amigos.,,amigos,amigo,,3,18 229 37,94.66666666666667,229,retrieved,retrieved_corpus,,,12.322042477264825,0.0
+amigos,294,n,A2,friend,Me gustan tus amigos.,,amigos,amigo,Gender=Masc|Number=Plur,3,18 229 37,94.66666666666667,229,retrieved,retrieved_corpus,,,12.322042477264825,0.0
 chica,295,n,A2,female equivalent of chico: girl,Es realmente una buena chica.,,chica,chico,Gender=Fem|Number=Sing,4,9 243 10 55,79.25,243,retrieved,retrieved_corpus,,,11.663110705229085,0.0
 mayor,296,adj,A2,of age,,,mayor,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 sabía,297,v,A2,to know; to understand,Ella sabía la verdad.,,sabía,saber,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 3 97,37,97,seeded_special_saber_truth,seeded_template,,,10.052944596819632,0.0
 chicos,298,n,A2,chic,,,chicos,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 hermano,299,n,A2,brother,No sabía que tuvieras un hermano.,,hermano,hermano,Gender=Masc|Number=Sing,5,4 95 2 59 10,34,95,retrieved,retrieved_corpus,,,13.435158837399124,0.0
 esas,300,determiner,A2,those (fem.),,,esas,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-primer,301,adj,A2,first; first up,,,primer,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-país,302,n,A2,country,,,país,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-vaya,303,v,A2,joke,Esperemos que mañana todo vaya mejor.,,vaya,ir,Mood=Imp|Number=Sing|Person=3|VerbForm=Fin,4,203 2 184 38 107,106.8,203,retrieved,retrieved_corpus,,,9.80116801540414,0.0
-agua,304,n,A2,water,,,agua,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-misma,305,adj,A2,same,,,misma,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0

@@ -77,6 +77,20 @@ SUBJECT_FEATURES = {
     "ustedes": {"person_code": "3pl", "gender": None, "number": "pl"},
     "ellos": {"person_code": "3pl", "gender": "m", "number": "pl"},
 }
+PRONOUN_PERSON_NUMBER = {
+    "yo": ("1", "Sing"),
+    "tú": ("2", "Sing"),
+    "él": ("3", "Sing"),
+    "ella": ("3", "Sing"),
+    "usted": ("3", "Sing"),
+    "nosotros": ("1", "Plur"),
+    "nosotras": ("1", "Plur"),
+    "vosotros": ("2", "Plur"),
+    "vosotras": ("2", "Plur"),
+    "ustedes": ("3", "Plur"),
+    "ellos": ("3", "Plur"),
+    "ellas": ("3", "Plur"),
+}
 PUNCT_ATTACH_LEFT = {".", ",", ";", ":", "!", "?", "%", "…"}
 PUNCT_ATTACH_RIGHT = {"¿", "¡", "(", "[", "{"}
 SPECIAL_VERB_LEMMAS = {"ser", "estar", "haber", "ir", "poder", "saber", "creer", "querer", "hacer", "tener"}
@@ -216,6 +230,21 @@ BANDS = [
 ]
 
 
+STARTER_ELIGIBLE_POS = {"n", "v", "adj"}
+
+STARTER_MAX_BAND = {"A1", "A2"}
+STARTER_BANNED_LEMMAS = {"mierda", "puta", "muerte", "guerra"}
+STARTER_BANNED_TEMPLATE_IDS = {"n_b1_1", "n_b1_2"}
+STARTER_BAD_TRANSLATION_FRAGMENTS = {
+    "title of respect",
+    "civility",
+    "public order",
+    "doggy",
+    "doggish",
+    "solid excretory",
+}
+
+
 IRREGULAR_PRESENT = {
     "ser": {"1sg": "soy", "2sg": "eres", "3sg": "es", "1pl": "somos", "3pl": "son"},
     "estar": {"1sg": "estoy", "2sg": "estás", "3sg": "está", "1pl": "estamos", "3pl": "están"},
@@ -262,6 +291,12 @@ def normalize_token(token: str) -> str:
     return token
 
 
+def _truthy(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() == "true"
+
+
 class SentenceGenerator:
     def __init__(self, lexicon_path: str, models_dir: str, seed: int = 42):
         self.random = random.Random(seed)
@@ -277,7 +312,14 @@ class SentenceGenerator:
         self.pos_buckets = self._build_pos_buckets()
         self.candidate_pool_cache: Dict[str, List[Candidate]] = {}
         self.last_candidate_export_stats: Optional[Dict[str, float]] = None
+        self.last_starter_stats: Optional[Dict[str, int]] = None
         self.reranker = load_reranker_model(os.path.join(models_dir, "reranker.pkl"))
+        self.overrides: Dict[str, Dict[str, str]] = {}
+
+    def _active_lemma(self, lemma: Optional[str]) -> bool:
+        if not lemma:
+            return False
+        return lemma in self.lexicon or lemma in self.generation_lexicon
 
     def _load_pickle(self, models_dir: str, name: str):
         path = os.path.join(models_dir, name)
@@ -313,6 +355,69 @@ class SentenceGenerator:
                     canonical_lemma=canonical,
                 )
         return lexicon
+
+    def load_and_apply_overrides(self, path: str) -> None:
+        overrides: Dict[str, Dict[str, str]] = {}
+        if path.endswith(".json"):
+            import json as _json
+            with open(path, encoding="utf-8") as f:
+                raw = _json.load(f)
+            for entry in raw:
+                lemma = entry.get("lemma", "").strip().lower()
+                if lemma:
+                    overrides[lemma] = entry
+        else:
+            with open(path, encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    lemma = (row.get("lemma") or "").strip().lower()
+                    if lemma:
+                        overrides[lemma] = {k: v.strip() for k, v in row.items() if v and v.strip()}
+        self.overrides = overrides
+        for lemma, ov in overrides.items():
+            if _truthy(ov.get("exclude_from_generation")):
+                self.lexicon.pop(lemma, None)
+                continue
+            lex = self.lexicon.get(lemma)
+            if not lex:
+                continue
+            if ov.get("force_translation"):
+                lex.translation = ov["force_translation"]
+            if ov.get("force_pos"):
+                lex.pos = ov["force_pos"].strip().lower()
+            if ov.get("force_canonical_lemma"):
+                lex.canonical_lemma = ov["force_canonical_lemma"].strip().lower()
+        self.generation_lexicon = self._build_generation_lexicon()
+        self.pos_buckets = self._build_pos_buckets()
+        self.candidate_pool_cache.clear()
+        self.last_candidate_export_stats = None
+        self.last_starter_stats = None
+
+    def is_starter_target_eligible(self, lex: Lexeme) -> bool:
+        if lex.pos not in STARTER_ELIGIBLE_POS:
+            return False
+        if get_profile(lex.rank).band not in STARTER_MAX_BAND:
+            return False
+        ov = self.overrides.get(lex.lemma, {})
+        if _truthy(ov.get("exclude_from_starter_dataset")):
+            return False
+        if not lex.translation:
+            return False
+        return True
+
+    def _parse_morph_str(self, morph_str: str) -> Dict[str, str]:
+        out: Dict[str, str] = {}
+        if not morph_str:
+            return out
+        for part in morph_str.split("|"):
+            if "=" not in part:
+                continue
+            key, value = part.split("=", 1)
+            key = key.strip()
+            value = value.strip()
+            if key and value:
+                out[key] = value
+        return out
 
     def _build_generation_lexicon(self) -> Dict[str, Lexeme]:
         generation: Dict[str, Lexeme] = {}
@@ -375,7 +480,10 @@ class SentenceGenerator:
             if lemma in seen:
                 continue
             seen.add(lemma)
-            unique.append(lemma)
+            if self._active_lemma(lemma):
+                unique.append(lemma)
+        if not unique:
+            return None
         return min(unique, key=lambda l: self.get_known_lexeme(l).rank if self.get_known_lexeme(l) else 99999)
 
     def lookup_rank(self, surface: str) -> int:
@@ -535,7 +643,8 @@ class SentenceGenerator:
             if not key or key in seen:
                 continue
             seen.add(key)
-            unique.append(lemma)
+            if self._active_lemma(lemma):
+                unique.append(lemma)
         return unique
 
     def surface_has_multiple_candidate_lemmas(self, surface: str) -> bool:
@@ -546,19 +655,23 @@ class SentenceGenerator:
         if not lemma or not normalized_surface:
             return []
         out: List[Dict[str, str]] = []
-        seen = set()
-        keys = [lemma]
+        seen_keys: set = set()
+        canonical = None
         if lemma in self.lexicon:
             canonical = self.canonical_lemma_for(self.lexicon[lemma])
-            if canonical not in keys:
-                keys.append(canonical)
+        keys = []
+        if canonical and canonical != lemma:
+            keys.append(canonical)
+        keys.append(lemma)
         for key in keys:
-            if key in seen:
+            if key in seen_keys:
                 continue
-            seen.add(key)
+            seen_keys.add(key)
             for entry in self.lemma_forms.get(key, []):
                 if normalize_token(entry.get("form", "")) == normalized_surface:
                     out.append(entry.get("morph") or {})
+            if out and key == canonical:
+                return out
         return out
 
     def morph_matches_pos(self, morph: Dict[str, str], pos: str) -> bool:
@@ -596,17 +709,161 @@ class SentenceGenerator:
             return mapped == "pron"
         return mapped == requested_pos
 
-    def target_morph_for_request(self, target: Lexeme, surface: str) -> str:
+    def verb_morph_is_complete(self, morph: Dict[str, str]) -> bool:
+        if morph.get("VerbForm") == "Inf":
+            return True
+        if morph.get("VerbForm") == "Ger":
+            return True
+        if morph.get("VerbForm") == "Part":
+            return bool(morph.get("Gender") or morph.get("Number"))
+        return bool(morph.get("Person") and morph.get("Number"))
+
+    def _subject_pronoun_before_verb(self, tokens: List[str], verb_idx: int) -> Optional[Tuple[str, str]]:
+        for i in range(verb_idx - 1, -1, -1):
+            if not is_word_token(tokens[i]):
+                continue
+            pn = PRONOUN_PERSON_NUMBER.get(normalize_token(tokens[i]))
+            if pn:
+                return pn
+            return None
+        return None
+
+    def resolve_verb_morph_ambiguity(
+        self, morphs: List[Dict[str, str]], tokens: List[str], verb_idx: int
+    ) -> Optional[Dict[str, str]]:
+        if not morphs or verb_idx < 0:
+            return None
+        unique: List[Dict[str, str]] = []
+        seen_sigs: set = set()
+        for m in morphs:
+            sig = self.morph_signature(m)
+            if sig not in seen_sigs:
+                seen_sigs.add(sig)
+                unique.append(m)
+        if len(unique) == 1:
+            return unique[0]
+
+        moods = set(m.get("Mood", "") for m in unique)
+        subject_pn = self._subject_pronoun_before_verb(tokens, verb_idx)
+
+        has_excl = any(t in ("¡", "!") for t in tokens)
+        first_word_idx = next((i for i, t in enumerate(tokens) if is_word_token(t)), -1)
+        verb_is_first_word = first_word_idx == verb_idx
+
+        preceding_words = set()
+        for i in range(max(0, verb_idx - 4), verb_idx):
+            if is_word_token(tokens[i]):
+                preceding_words.add(normalize_token(tokens[i]))
+        has_subj_trigger = bool(preceding_words & SUBJUNCTIVE_TRIGGER_TOKENS)
+
+        remaining = list(unique)
+
+        if len(moods) > 1:
+            if "Imp" in moods and "Ind" in moods:
+                if subject_pn:
+                    remaining = [m for m in remaining if m.get("Mood") != "Imp"]
+                elif has_excl and verb_is_first_word:
+                    remaining = [m for m in remaining if m.get("Mood") == "Imp"]
+                else:
+                    return None
+            if "Sub" in moods:
+                if has_subj_trigger:
+                    sub_only = [m for m in remaining if m.get("Mood") == "Sub"]
+                    if sub_only:
+                        remaining = sub_only
+                elif subject_pn:
+                    non_sub = [m for m in remaining if m.get("Mood") != "Sub"]
+                    if non_sub:
+                        remaining = non_sub
+                    else:
+                        return None
+                else:
+                    return None
+
+        unique_sigs = set(self.morph_signature(m) for m in remaining)
+        if len(unique_sigs) == 1:
+            return remaining[0]
+
+        person_number_pairs = set((m.get("Person", ""), m.get("Number", "")) for m in remaining)
+        if len(person_number_pairs) > 1:
+            if subject_pn:
+                resolved = [m for m in remaining if (m.get("Person"), m.get("Number")) == subject_pn]
+                if len(set(self.morph_signature(m) for m in resolved)) == 1:
+                    return resolved[0]
+            return None
+
+        unique_sigs = set(self.morph_signature(m) for m in remaining)
+        if len(unique_sigs) == 1:
+            return remaining[0]
+        return None
+
+    SAFE_MORPH_KEYS: Dict[str, set] = {
+        "n": {"Gender", "Number"},
+        "adj": {"Gender", "Number"},
+        "determiner": {"Gender", "Number"},
+        "pron": {"Gender", "Number", "Person", "Case"},
+        "pronoun": {"Gender", "Number", "Person", "Case"},
+        "adv": set(),
+    }
+
+    def safe_nonverb_morph(self, morph: Dict[str, str], pos: str) -> Dict[str, str]:
+        allowed = self.SAFE_MORPH_KEYS.get(pos)
+        if allowed is None:
+            return morph
+        return {k: v for k, v in morph.items() if k in allowed}
+
+    def _parse_morph_str(self, morph_str: str) -> Dict[str, str]:
+        if not morph_str:
+            return {}
+        out: Dict[str, str] = {}
+        for pair in morph_str.split("|"):
+            if "=" in pair:
+                k, v = pair.split("=", 1)
+                out[k] = v
+        return out
+
+    def target_morph_for_request(
+        self,
+        target: Lexeme,
+        surface: str,
+        sentence_tokens: Optional[List[str]] = None,
+        target_idx: int = -1,
+    ) -> str:
         normalized_surface = normalize_token(surface)
         if not normalized_surface:
             return ""
+        matching: List[Dict[str, str]] = []
         for morph in self.form_entries_for_surface(target.lemma, surface):
+            if not morph:
+                continue
             if self.morph_matches_pos(morph, target.pos):
-                return self.morph_signature(morph)
-        if normalized_surface == normalize_token(target.lemma):
+                if target.pos == "v" and not self.verb_morph_is_complete(morph):
+                    continue
+                matching.append(morph)
+        if not matching and normalized_surface == normalize_token(target.lemma):
             morph = self.target_form_metadata(target)
             if morph and self.morph_matches_pos(morph, target.pos):
-                return self.morph_signature(morph)
+                if target.pos == "v" and not self.verb_morph_is_complete(morph):
+                    return ""
+                matching.append(morph)
+        if not matching:
+            return ""
+        if target.pos == "v":
+            unique_sigs = set(self.morph_signature(m) for m in matching)
+            if len(unique_sigs) == 1:
+                return self.morph_signature(matching[0])
+            if sentence_tokens is not None and target_idx >= 0:
+                resolved = self.resolve_verb_morph_ambiguity(matching, sentence_tokens, target_idx)
+                if resolved:
+                    return self.morph_signature(resolved)
+            return ""
+        safe = [self.safe_nonverb_morph(m, target.pos) for m in matching]
+        safe = [m for m in safe if m]
+        if not safe:
+            return ""
+        safe_sigs = set(self.morph_signature(m) for m in safe)
+        if len(safe_sigs) == 1:
+            return self.morph_signature(safe[0])
         return ""
 
     def surface_matches_requested_target(self, target: Lexeme, surface: str) -> bool:
@@ -809,22 +1066,32 @@ class SentenceGenerator:
             }
         return None
 
-    def first_finite_verb_index(self, words: List[str]) -> int:
+    def first_finite_verb_index(
+        self, words: List[str], target_word_idx: int = -1, target_morph_override: Optional[Dict[str, str]] = None
+    ) -> int:
         for idx, token in enumerate(words):
             if self.lookup_pos(token) != "v":
                 continue
-            morph = self.surface_morph(token)
+            if idx == target_word_idx and target_morph_override is not None:
+                morph = target_morph_override
+            else:
+                morph = self.surface_morph(token)
             if morph.get("VerbForm") == "Fin":
                 return idx
         return -1
 
-    def subject_verb_agreement_ok(self, words: List[str], verb_index: int) -> bool:
+    def subject_verb_agreement_ok(
+        self, words: List[str], verb_index: int, target_word_idx: int = -1, target_morph_override: Optional[Dict[str, str]] = None
+    ) -> bool:
         if verb_index < 0:
             return False
         subject = self.subject_features(words, verb_index)
         if not subject:
             return True
-        verb_morph = self.surface_morph(words[verb_index])
+        if verb_index == target_word_idx and target_morph_override is not None:
+            verb_morph = target_morph_override
+        else:
+            verb_morph = self.surface_morph(words[verb_index])
         if verb_morph.get("VerbForm") != "Fin":
             return False
         expected_person = subject.get("person_code")
@@ -876,10 +1143,15 @@ class SentenceGenerator:
             return f"unsupported target verb mood: {morph.get('Mood', 'unknown')}"
         return ""
 
-    def standalone_subjunctive_without_trigger(self, words: List[str], verb_index: int) -> bool:
+    def standalone_subjunctive_without_trigger(
+        self, words: List[str], verb_index: int, target_word_idx: int = -1, target_morph_override: Optional[Dict[str, str]] = None
+    ) -> bool:
         if verb_index < 0:
             return False
-        morph = self.surface_morph(words[verb_index])
+        if verb_index == target_word_idx and target_morph_override is not None:
+            morph = target_morph_override
+        else:
+            morph = self.surface_morph(words[verb_index])
         if morph.get("Mood") != "Sub":
             return False
         prefix = set(words[:verb_index])
@@ -974,6 +1246,54 @@ class SentenceGenerator:
             }
             & set(reasons)
         ), penalties, reasons
+
+    def retrieved_is_level_appropriate(
+        self, candidate: Candidate, words: List[str], verb_index: int
+    ) -> Tuple[bool, List[str]]:
+        reasons: List[str] = []
+        profile = get_profile(candidate.rank)
+        band = profile.band
+
+        if band in ("A1", "A2"):
+            for idx, token in enumerate(words):
+                if self.lookup_pos(token) != "v":
+                    continue
+                morph = self.surface_morph(token)
+                mood = morph.get("Mood", "")
+                if mood == "Sub":
+                    reasons.append("subjunctive_in_beginner_band")
+                    break
+                tense = morph.get("Tense", "")
+                if mood == "Cnd" or tense == "Imp":
+                    reasons.append("advanced_tense_in_beginner_band")
+                    break
+
+        if band == "A1" and len(words) > 6:
+            reasons.append("too_long_for_A1")
+        if band == "A2" and len(words) > 8:
+            reasons.append("too_long_for_A2")
+
+        if band in ("A1", "A2"):
+            finite_count = 0
+            for token in words:
+                if self.lookup_pos(token) != "v":
+                    continue
+                morph = self.surface_morph(token)
+                if morph.get("VerbForm") == "Fin":
+                    finite_count += 1
+            if finite_count > 1:
+                reasons.append("multi_clause_for_beginner")
+
+        if band in ("A1", "A2") and ("," in candidate.sentence or ";" in candidate.sentence):
+            reasons.append("punctuation_complexity_for_beginner")
+
+        if candidate.support_ranks:
+            max_support = max(candidate.support_ranks)
+            support_ceiling = profile.filler_ceil * 2
+            if max_support > support_ceiling:
+                reasons.append("support_vocab_too_advanced")
+
+        return len(reasons) == 0, reasons
 
     def retrieved_is_preferred(self, candidate: Candidate) -> bool:
         if candidate.source_method != "retrieved_corpus" or not candidate.sentence:
@@ -1416,6 +1736,32 @@ class SentenceGenerator:
                 total -= 10.0
         return total / max(1, len(words) - 1)
 
+    def _adjust_index_for_contractions(self, original_tokens: List[str], contracted: List[str], old_index: int) -> int:
+        if old_index < 0 or old_index >= len(original_tokens):
+            return old_index
+        target_surface = normalize_token(original_tokens[old_index])
+        if not target_surface:
+            return -1
+        i = 0
+        j = 0
+        while i < len(original_tokens) and j < len(contracted):
+            if i == old_index:
+                if normalize_token(contracted[j]) == target_surface:
+                    return j
+                return -1
+            cont_norm = normalize_token(contracted[j])
+            orig_norm = normalize_token(original_tokens[i])
+            if orig_norm == cont_norm:
+                i += 1
+                j += 1
+            elif cont_norm in ("al", "del") and i + 1 < len(original_tokens):
+                i += 2
+                j += 1
+            else:
+                i += 1
+                j += 1
+        return -1
+
     def build_candidate(
         self,
         target: Lexeme,
@@ -1426,8 +1772,25 @@ class SentenceGenerator:
         target_pos_hint: str = "",
         target_form_hint: str = "",
     ) -> Optional[Candidate]:
-        clean_tokens = [t for t in tokens if t]
-        clean_tokens = self.apply_contractions(clean_tokens)
+        nonempty_tokens = [t for t in tokens if t]
+        if target_index is not None:
+            filtered_index = 0
+            orig_idx = 0
+            remap = -1
+            for i, t in enumerate(tokens):
+                if not t:
+                    continue
+                if i == target_index:
+                    remap = filtered_index
+                    break
+                filtered_index += 1
+            if remap >= 0:
+                target_index = remap
+            else:
+                target_index = -1
+        clean_tokens = self.apply_contractions(nonempty_tokens)
+        if target_index is not None and target_index >= 0:
+            target_index = self._adjust_index_for_contractions(nonempty_tokens, clean_tokens, target_index)
         word_tokens = [t for t in clean_tokens if is_word_token(t)]
         if not word_tokens:
             return None
@@ -1463,10 +1826,12 @@ class SentenceGenerator:
             template_id=template_id,
             source_method=source_method,
             canonical_lemma=canonical_target,
-            target_morph=self.target_morph_for_request(target, target_form),
+            target_morph=self.target_morph_for_request(target, target_form, sentence_tokens=clean_tokens, target_idx=target_index),
         )
         setattr(candidate, "_target_pos_hint", target_pos_hint or "")
         setattr(candidate, "_target_form_hint", target_form_hint or target_form)
+        if target.pos in {"v", "n", "adj", "determiner", "pron", "pronoun"} and not candidate.target_morph:
+            return None
         if not self.candidate_target_matches_request(candidate, tokens=clean_tokens):
             return None
         candidate.target_form = clean_tokens[candidate.target_index]
@@ -1527,10 +1892,22 @@ class SentenceGenerator:
         for a, b in zip(words, words[1:]):
             if a == b:
                 return False, penalties
-        finite_verb_index = self.first_finite_verb_index(words)
+        target_morph_override = self._parse_morph_str(candidate.target_morph) if candidate.target_morph else None
+        target_word_idx = -1
+        if candidate.pos == "v" and target_morph_override and candidate.target_index >= 0:
+            sentence_tokens = self.sentence_tokens(candidate.sentence)
+            wi = 0
+            for si, st in enumerate(sentence_tokens):
+                if not is_word_token(st):
+                    continue
+                if si == candidate.target_index:
+                    target_word_idx = wi
+                    break
+                wi += 1
+        finite_verb_index = self.first_finite_verb_index(words, target_word_idx, target_morph_override)
         if finite_verb_index < 0:
             return False, penalties
-        if not self.subject_verb_agreement_ok(words, finite_verb_index):
+        if not self.subject_verb_agreement_ok(words, finite_verb_index, target_word_idx, target_morph_override):
             return False, penalties
         if not self.copula_predicate_agreement_ok(words, finite_verb_index):
             return False, penalties
@@ -1582,7 +1959,7 @@ class SentenceGenerator:
             return False, penalties
         if candidate.pos == "adj" and candidate.source_method != "retrieved_corpus" and not self.adjective_target_is_template_friendly(target or self.lexicon.get(candidate.lemma)):
             return False, penalties
-        if self.standalone_subjunctive_without_trigger(words, finite_verb_index):
+        if self.standalone_subjunctive_without_trigger(words, finite_verb_index, target_word_idx, target_morph_override):
             return False, penalties
         if self.low_value_here_fallback(words, finite_verb_index):
             return False, penalties
@@ -1737,7 +2114,7 @@ class SentenceGenerator:
                 return self.build_candidate(target, tokens, "seeded_adj_fallback", "seeded_template", 3)
         return None
 
-    def pure_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
+    def pure_template_candidate(self, target: Lexeme, starter_mode: bool = False) -> Optional[Candidate]:
         profile = get_profile(target.rank)
         allowed = allowed_support_rank(target.rank, profile)
         canonical = self.canonical_lemma_for(target)
@@ -1745,7 +2122,10 @@ class SentenceGenerator:
         if target.pos == "n":
             if not self.noun_is_template_friendly(target):
                 return None
-            choices = ["n_a1_1", "n_a1_2", "n_a1_3"] if profile.band in {"A1", "A2"} else ["n_b1_1", "n_b1_2"]
+            if starter_mode:
+                choices = ["n_a1_1", "n_a1_2", "n_a1_3"]
+            else:
+                choices = ["n_a1_1", "n_a1_2", "n_a1_3"] if profile.band in {"A1", "A2"} else ["n_b1_1", "n_b1_2"]
             template = self.random.choice(choices)
             if template == "n_a1_1":
                 if not self.noun_supports_ser_adjective_template(target):
@@ -1867,8 +2247,55 @@ class SentenceGenerator:
         candidates = self.collect_candidates_for_lemma(lemma)
         if candidates:
             chosen = self.select_best_candidate(candidates)
-            if self.candidate_is_publishable(chosen):
+            if self.candidate_is_general_publishable(chosen):
                 return chosen
+        return self.manual_review_candidate(target)
+
+    def collect_starter_candidates_for_lemma(self, lemma: str, max_candidates_per_lemma: Optional[int] = None) -> List[Candidate]:
+        lemma = lemma.strip().lower()
+        if lemma not in self.lexicon:
+            raise KeyError(f"Lemma not in lexicon: {lemma}")
+        target = self.lexicon[lemma]
+        candidates: List[Candidate] = []
+        candidates.extend(self.retrieve_candidates(target))
+
+        if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
+            for _ in range(12):
+                cand = self.seeded_template_candidate(target)
+                if not cand:
+                    continue
+                ok, penalties = self.validate(cand)
+                if not ok:
+                    continue
+                self.score(cand, penalties)
+                candidates.append(cand)
+
+            for _ in range(20):
+                cand = self.pure_template_candidate(target, starter_mode=True)
+                if not cand:
+                    continue
+                ok, penalties = self.validate(cand)
+                if not ok:
+                    continue
+                self.score(cand, penalties)
+                candidates.append(cand)
+
+        pool = self.dedupe_candidates(candidates)
+        if max_candidates_per_lemma is not None:
+            return pool[:max(0, max_candidates_per_lemma)]
+        return pool
+
+    def generate_starter_for_lemma(self, lemma: str) -> Candidate:
+        lemma = lemma.strip().lower()
+        if lemma not in self.lexicon:
+            raise KeyError(f"Lemma not in lexicon: {lemma}")
+        target = self.lexicon[lemma]
+        pool = self.collect_starter_candidates_for_lemma(lemma)
+        starter_pool = [c for c in pool if self.candidate_is_starter_publishable(c)]
+        if starter_pool:
+            return self.select_best_candidate(starter_pool)
+        if pool:
+            return self.select_best_candidate(pool)
         return self.manual_review_candidate(target)
 
     def select_best_candidate(self, candidates: List[Candidate]) -> Candidate:
@@ -1885,11 +2312,211 @@ class SentenceGenerator:
             return max(preferred_retrieved, key=lambda c: c.score)
         return max(candidates, key=lambda c: c.score)
 
-    def candidate_is_publishable(self, candidate: Candidate) -> bool:
+    def candidate_is_general_publishable(self, candidate: Candidate) -> bool:
         if not candidate.sentence:
             return False
         grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(candidate)
         return grammatical_ok == "1" and natural_ok == "1" and learner_clear_ok == "1"
+
+    def candidate_is_publishable(self, candidate: Candidate) -> bool:
+        return self.candidate_is_general_publishable(candidate)
+
+    def is_clean_starter_target(self, lex: Lexeme) -> bool:
+        if not self.is_starter_target_eligible(lex):
+            return False
+        canonical = normalize_token(self.canonical_lemma_for(lex))
+        surface = normalize_token(lex.lemma)
+        morph = self.target_form_metadata(lex)
+
+        if lex.pos == "n":
+            if surface != canonical:
+                return False
+            if morph.get("Number") == "Plur":
+                return False
+            return True
+
+        if lex.pos == "adj":
+            if surface != canonical:
+                return False
+            if morph.get("Number") == "Plur":
+                return False
+            if surface in APOCOPATED_ADJECTIVE_FEATURES:
+                return False
+            return True
+
+        if lex.pos == "v":
+            return surface == canonical
+
+        return False
+
+    def starter_morph_ok(self, candidate: Candidate) -> bool:
+        morph = self._parse_morph_str(candidate.target_morph)
+        if candidate.pos != "v":
+            return True
+        if not morph:
+            return False
+
+        verb_form = morph.get("VerbForm")
+        mood = morph.get("Mood")
+        tense = morph.get("Tense")
+
+        if verb_form in {"Part", "Ger"}:
+            return False
+        if mood == "Sub":
+            return False
+        if tense in {"Past", "Imp", "Fut"}:
+            return False
+        if verb_form == "Inf":
+            return True
+        return mood == "Ind" and tense == "Pres"
+
+    def starter_target_surface_ok(self, candidate: Candidate) -> bool:
+        target = self.lexicon.get(candidate.lemma)
+        if not target:
+            return False
+        target_form = normalize_token(candidate.target_form)
+        lemma = normalize_token(candidate.lemma)
+        morph = self._parse_morph_str(candidate.target_morph)
+
+        if candidate.pos == "n":
+            if target_form != lemma:
+                return False
+            return morph.get("Number") != "Plur"
+
+        if candidate.pos == "adj":
+            if target_form != lemma:
+                return False
+            if target_form in APOCOPATED_ADJECTIVE_FEATURES:
+                return False
+            if morph.get("Number") == "Plur":
+                return False
+            if morph.get("Gender") == "Fem":
+                return False
+            return True
+
+        if candidate.pos == "v":
+            return True
+
+        return False
+
+    def starter_sentence_grammar_ok(self, candidate: Candidate) -> bool:
+        words = self.word_tokens(candidate.sentence)
+        for token in words:
+            if self.lookup_pos(token) != "v":
+                continue
+            morph = self.surface_morph(token)
+            if not morph:
+                continue
+            verb_form = morph.get("VerbForm")
+            mood = morph.get("Mood")
+            tense = morph.get("Tense")
+            if verb_form in {"Part", "Ger"}:
+                return False
+            if verb_form == "Inf":
+                continue
+            if mood == "Sub":
+                return False
+            if tense in {"Past", "Imp", "Fut"}:
+                return False
+            if verb_form == "Fin" and mood == "Ind" and tense == "Pres":
+                continue
+            return False
+        return True
+
+    def starter_translation_ok(self, candidate: Candidate) -> bool:
+        t = (candidate.translation or "").strip().lower()
+        if not t:
+            return False
+        if ";" in t:
+            return False
+        if len(t) > 40:
+            return False
+        return not any(fragment in t for fragment in STARTER_BAD_TRANSLATION_FRAGMENTS)
+
+    def starter_rejection_reasons(self, candidate: Candidate) -> List[str]:
+        reasons: List[str] = []
+        target = self.lexicon.get(candidate.lemma)
+
+        if not self.candidate_is_general_publishable(candidate):
+            reasons.append("not_general_publishable")
+        if not target or not self.is_clean_starter_target(target):
+            reasons.append("unclean_target")
+        if get_profile(candidate.rank).band not in STARTER_MAX_BAND:
+            reasons.append("band_too_high")
+        if not self.starter_target_surface_ok(candidate):
+            reasons.append("target_surface_not_base")
+        if not self.starter_morph_ok(candidate):
+            reasons.append("advanced_morphology")
+        if not self.starter_sentence_grammar_ok(candidate):
+            reasons.append("advanced_sentence_grammar")
+        if not self.starter_translation_ok(candidate):
+            reasons.append("bad_translation")
+        if candidate.template_id in STARTER_BANNED_TEMPLATE_IDS:
+            reasons.append("banned_template")
+        words = self.word_tokens(candidate.sentence)
+        if len(words) > 6:
+            reasons.append("sentence_too_long")
+        sentence_lemmas = {
+            normalize_token(self.lookup_lemma(word) or word)
+            for word in words
+        }
+        if sentence_lemmas & STARTER_BANNED_LEMMAS or normalize_token(candidate.lemma) in STARTER_BANNED_LEMMAS:
+            reasons.append("banned_content")
+        return reasons
+
+    def candidate_is_starter_publishable(self, candidate: Candidate) -> bool:
+        if not candidate.sentence:
+            return False
+        if candidate.source_method == "manual_review_needed":
+            return False
+        if not self.candidate_is_general_publishable(candidate):
+            return False
+        target = self.lexicon.get(candidate.lemma)
+        if not target or not self.is_clean_starter_target(target):
+            return False
+        if get_profile(candidate.rank).band not in STARTER_MAX_BAND:
+            return False
+        if not self.starter_target_surface_ok(candidate):
+            return False
+        if not self.starter_morph_ok(candidate):
+            return False
+        if not self.starter_sentence_grammar_ok(candidate):
+            return False
+        if not self.starter_translation_ok(candidate):
+            return False
+        if candidate.template_id in STARTER_BANNED_TEMPLATE_IDS:
+            return False
+        if candidate.score < 8.0:
+            return False
+        words = self.word_tokens(candidate.sentence)
+        if len(words) > 6:
+            return False
+        sentence_lemmas = {
+            normalize_token(self.lookup_lemma(word) or word)
+            for word in words
+        }
+        if sentence_lemmas & STARTER_BANNED_LEMMAS:
+            return False
+        if normalize_token(candidate.lemma) in STARTER_BANNED_LEMMAS:
+            return False
+        return not self.starter_rejection_reasons(candidate)
+
+    def starter_review_notes(self, candidate: Candidate) -> str:
+        if not candidate.sentence:
+            return "no_sentence"
+        notes: List[str] = []
+        _, _, _, base_notes = self.review_flags(candidate)
+        if base_notes:
+            notes.append(base_notes)
+        words = self.word_tokens(candidate.sentence)
+        verb_index = self.first_finite_verb_index(words)
+        _, level_reasons = self.retrieved_is_level_appropriate(candidate, words, verb_index)
+        notes.extend(level_reasons)
+        ov = self.overrides.get(candidate.lemma, {})
+        if _truthy(ov.get("exclude_from_starter_dataset")):
+            notes.append("excluded_by_override")
+        notes.extend(self.starter_rejection_reasons(candidate))
+        return "; ".join(notes) if notes else ""
 
     def generate_batch(
         self,
@@ -1971,18 +2598,96 @@ class SentenceGenerator:
         candidates_out: Optional[str] = None,
         max_candidates_per_lemma: int = 10,
     ) -> List[Candidate]:
-        rows = self.generate_batch(
-            limit=limit,
-            out_csv=out_csv,
-            pos_filter=pos_filter,
-            lemma_filter=lemma_filter,
-            mvp_only=True if not mvp_only else mvp_only,
-            candidates_out=candidates_out,
-            max_candidates_per_lemma=max_candidates_per_lemma,
-        )
+        stats: Dict[str, int] = {
+            "total_lexicon": 0,
+            "eligible": 0,
+            "excluded_pos": 0,
+            "excluded_band": 0,
+            "excluded_override": 0,
+            "excluded_no_translation": 0,
+            "publishable": 0,
+            "manual_review": 0,
+            "rejected_level": 0,
+            "rejected_quality": 0,
+        }
+
+        if lemma_filter:
+            all_rows: List[Lexeme] = []
+            seen: set = set()
+            for lemma in lemma_filter:
+                key = lemma.strip().lower()
+                if not key or key in seen or key not in self.lexicon:
+                    continue
+                seen.add(key)
+                all_rows.append(self.lexicon[key])
+        else:
+            all_rows = list(self.lexicon.values())
+            all_rows.sort(key=lambda x: x.rank)
+        if pos_filter:
+            all_rows = [x for x in all_rows if x.pos == pos_filter]
+        stats["total_lexicon"] = len(all_rows)
+
+        eligible: List[Lexeme] = []
+        for lex in all_rows:
+            if lex.pos not in STARTER_ELIGIBLE_POS:
+                stats["excluded_pos"] += 1
+                continue
+            if get_profile(lex.rank).band not in STARTER_MAX_BAND:
+                stats["excluded_band"] += 1
+                continue
+            ov = self.overrides.get(lex.lemma, {})
+            if _truthy(ov.get("exclude_from_starter_dataset")):
+                stats["excluded_override"] += 1
+                continue
+            if not lex.translation:
+                stats["excluded_no_translation"] += 1
+                continue
+            if not self.is_clean_starter_target(lex):
+                stats["excluded_pos"] += 1
+                continue
+            eligible.append(lex)
+        eligible = eligible[:limit]
+        stats["eligible"] = len(eligible)
+
+        publishable: List[Candidate] = []
+        review_rows: List[Candidate] = []
+        candidate_rows: List[Candidate] = []
+
+        for lex in eligible:
+            try:
+                best = self.generate_starter_for_lemma(lex.lemma)
+                if candidates_out:
+                    pool = self.collect_starter_candidates_for_lemma(lex.lemma, max_candidates_per_lemma=max_candidates_per_lemma)
+                    if pool:
+                        candidate_rows.extend(pool)
+            except Exception as exc:
+                print(f"[warn] starter: failed for {lex.lemma}: {exc}", file=sys.stderr)
+                best = self.manual_review_candidate(lex)
+
+            if best.source_method == "manual_review_needed":
+                stats["manual_review"] += 1
+                review_rows.append(best)
+                continue
+
+            if self.candidate_is_starter_publishable(best):
+                stats["publishable"] += 1
+                publishable.append(best)
+            else:
+                reasons = set(self.starter_rejection_reasons(best))
+                if "band_too_high" in reasons or "advanced_morphology" in reasons:
+                    stats["rejected_level"] += 1
+                else:
+                    stats["rejected_quality"] += 1
+                review_rows.append(best)
+
+        self.write_csv(publishable, out_csv)
         if review_out:
-            self.write_review_csv(rows, review_out)
-        return rows
+            self.write_starter_review_csv(review_rows, review_out)
+        if candidates_out:
+            self.write_candidates_csv(candidate_rows, candidates_out)
+
+        self.last_starter_stats = stats
+        return publishable + review_rows
 
     def write_csv(self, rows: List[Candidate], out_csv: str) -> None:
         fieldnames = [
@@ -2051,6 +2756,48 @@ class SentenceGenerator:
                         "natural_ok": natural_ok,
                         "learner_clear_ok": learner_clear_ok,
                         "notes": notes,
+                    }
+                )
+
+    def write_starter_review_csv(self, rows: List[Candidate], out_csv: str) -> None:
+        fieldnames = [
+            "lemma",
+            "rank",
+            "pos",
+            "translation",
+            "sentence",
+            "source_method",
+            "template_id",
+            "score",
+            "canonical_lemma",
+            "target_morph",
+            "grammatical_ok",
+            "natural_ok",
+            "learner_clear_ok",
+            "starter_notes",
+        ]
+        with open(out_csv, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in rows:
+                grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(row)
+                starter_notes = self.starter_review_notes(row)
+                writer.writerow(
+                    {
+                        "lemma": row.lemma,
+                        "rank": row.rank,
+                        "pos": row.pos,
+                        "translation": row.translation,
+                        "sentence": row.sentence,
+                        "source_method": row.source_method,
+                        "template_id": row.template_id,
+                        "score": row.score,
+                        "canonical_lemma": row.canonical_lemma,
+                        "target_morph": row.target_morph,
+                        "grammatical_ok": grammatical_ok,
+                        "natural_ok": natural_ok,
+                        "learner_clear_ok": learner_clear_ok,
+                        "starter_notes": starter_notes,
                     }
                 )
 
@@ -2125,9 +2872,13 @@ def main() -> None:
     parser.add_argument("--starter-dataset", action="store_true", help="Generate a starter app-seeding dataset and matching review CSV.")
     parser.add_argument("--candidates-out", default=None, help="Optional multi-candidate CSV export path.")
     parser.add_argument("--max-candidates-per-lemma", type=int, default=10, help="Maximum candidate rows to keep per lemma in the candidate export.")
+    parser.add_argument("--lexicon-overrides", default=None, help="Path to lexicon overrides CSV or JSON file.")
     args = parser.parse_args()
 
     gen = SentenceGenerator(args.lexicon, args.models_dir, seed=args.seed)
+    if args.lexicon_overrides:
+        gen.load_and_apply_overrides(args.lexicon_overrides)
+        print(f"Loaded {len(gen.overrides)} lexicon overrides from {args.lexicon_overrides}")
     lemma_filter = list(args.lemma or [])
     if args.gold_set:
         lemma_filter.extend(gen.load_gold_set(args.gold_set))
@@ -2163,31 +2914,55 @@ def main() -> None:
         if review_out:
             gen.write_review_csv(rows, review_out)
 
-    reviewed = sum(1 for r in rows if r.source_method == "manual_review_needed")
-    retrieved = sum(1 for r in rows if r.source_method == "retrieved_corpus")
-    seeded = sum(1 for r in rows if r.source_method == "seeded_template")
-    templated = sum(1 for r in rows if r.source_method == "template_generated")
-
-    print(f"Generated: {len(rows):,}")
-    print(f"  retrieved_corpus:     {retrieved:,}")
-    print(f"  seeded_template:      {seeded:,}")
-    print(f"  template_generated:   {templated:,}")
-    print(f"  manual_review_needed: {reviewed:,}")
-    print(f"Saved: {args.out}")
-    if review_out:
-        print(f"Review: {review_out}")
-    if args.candidates_out and gen.last_candidate_export_stats:
-        stats = gen.last_candidate_export_stats
-        print(f"Candidates: {args.candidates_out}")
-        print(f"  lemmas_processed: {int(stats['lemmas_processed']):,}")
-        print(f"  candidate_rows_written: {int(stats['candidate_rows_written']):,}")
-        print(f"  avg_candidates_per_lemma_with_candidates: {stats['avg_candidates_per_lemma_with_candidates']:.2f}")
-
-    preview = [r for r in rows if r.sentence][:5]
-    if preview:
-        print("\nPreview:")
-        for row in preview:
-            print(f"  {row.lemma:<15} [{row.source_method:<18}] {row.sentence}")
+    if args.starter_dataset and hasattr(gen, "last_starter_stats") and gen.last_starter_stats:
+        s = gen.last_starter_stats
+        print("\n=== Starter Dataset Report ===")
+        print(f"  Lexicon entries scanned:   {s['total_lexicon']:,}")
+        print(f"  Excluded by POS:           {s['excluded_pos']:,}")
+        print(f"  Excluded by band:          {s['excluded_band']:,}")
+        print(f"  Excluded by override:      {s['excluded_override']:,}")
+        print(f"  Excluded (no translation): {s['excluded_no_translation']:,}")
+        print(f"  Eligible targets:          {s['eligible']:,}")
+        print(f"  ---")
+        print(f"  Publishable starter rows:  {s['publishable']:,}")
+        print(f"  Manual review needed:      {s['manual_review']:,}")
+        print(f"  Rejected (learner level):  {s['rejected_level']:,}")
+        print(f"  Rejected (quality):        {s['rejected_quality']:,}")
+        pub_rate = s["publishable"] / s["eligible"] * 100 if s["eligible"] else 0
+        print(f"  Publish rate:              {pub_rate:.1f}%")
+        print(f"  Saved publishable: {args.out}")
+        if review_out:
+            print(f"  Saved review:      {review_out}")
+        publishable_rows = [r for r in rows if gen.candidate_is_starter_publishable(r)]
+        preview = publishable_rows[:5]
+        if preview:
+            print("\n  Starter preview:")
+            for row in preview:
+                print(f"    {row.lemma:<15} [{row.source_method:<18}] {row.sentence}")
+    else:
+        reviewed = sum(1 for r in rows if r.source_method == "manual_review_needed")
+        retrieved = sum(1 for r in rows if r.source_method == "retrieved_corpus")
+        seeded = sum(1 for r in rows if r.source_method == "seeded_template")
+        templated = sum(1 for r in rows if r.source_method == "template_generated")
+        print(f"Generated: {len(rows):,}")
+        print(f"  retrieved_corpus:     {retrieved:,}")
+        print(f"  seeded_template:      {seeded:,}")
+        print(f"  template_generated:   {templated:,}")
+        print(f"  manual_review_needed: {reviewed:,}")
+        print(f"Saved: {args.out}")
+        if review_out:
+            print(f"Review: {review_out}")
+        if args.candidates_out and gen.last_candidate_export_stats:
+            stats = gen.last_candidate_export_stats
+            print(f"Candidates: {args.candidates_out}")
+            print(f"  lemmas_processed: {int(stats['lemmas_processed']):,}")
+            print(f"  candidate_rows_written: {int(stats['candidate_rows_written']):,}")
+            print(f"  avg_candidates_per_lemma_with_candidates: {stats['avg_candidates_per_lemma_with_candidates']:.2f}")
+        preview = [r for r in rows if r.sentence][:5]
+        if preview:
+            print("\nPreview:")
+            for row in preview:
+                print(f"  {row.lemma:<15} [{row.source_method:<18}] {row.sentence}")
 
 
 if __name__ == "__main__":

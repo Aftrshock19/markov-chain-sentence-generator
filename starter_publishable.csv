@@ -1,0 +1,43 @@
+lemma,rank,pos,band,translation,sentence,english_sentence,target_form,canonical_lemma,target_morph,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,english_source_method,parallel_pair_id,score,english_score
+ser,54,v,A1,to be,Ella es buena.,,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.817620616764355,0.0
+bueno,55,adj,A1,good,Creo que es muy bueno.,,bueno,bueno,Gender=Masc|Number=Sing,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,,,12.180317463846073,0.0
+casa,91,n,A1,house,¿ella está en casa?,,casa,casa,Gender=Fem|Number=Sing,4,11 26 8,15,26,retrieved,retrieved_corpus,,,15.50272063549803,0.0
+estar,141,v,A2,to be,Ella está en la casa.,,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,11.315059496626404,0.0
+ir,145,v,A2,to go,Voy a hacer esto yo misma.,,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,0,5 71 42 18 134,54,134,retrieved,retrieved_corpus,,,11.688050363606203,0.0
+acuerdo,149,n,A2,agreement,No estoy de acuerdo con usted.,,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,4 26 1 16 92,27.8,92,retrieved,retrieved_corpus,,,14.602530877490816,0.0
+padre,158,n,A2,Father,Tu padre te quiere a ti.,,padre,padre,Gender=Masc|Number=Sing,1,37 22 76 5 22,32.4,76,retrieved,retrieved_corpus,,,12.049184136310148,0.0
+hablar,173,v,A2,to talk,Quiero hablar sobre ello.,,hablar,hablar,VerbForm=Inf,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,,,13.622421660766516,0.0
+tener,174,v,A2,to have,Ella tiene una casa.,,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,11.388334094639582,0.0
+dinero,182,n,A2,money,¿por qué necesita este dinero?,,dinero,dinero,Gender=Masc|Number=Sing,5,12 17 234 44,76.75,234,retrieved,retrieved_corpus,,,11.57290437940049,0.0
+madre,183,n,A2,mother,¿es usted su madre?,,madre,madre,Gender=Fem|Number=Sing,4,9 92 23,41.333333333333336,92,retrieved,retrieved_corpus,,,13.17251276583402,0.0
+hijo,198,n,A2,son,Quiero tener un hijo contigo.,,hijo,hijo,Gender=Masc|Number=Sing,3,76 59 10 22,41.75,76,retrieved,retrieved_corpus,,,11.175545060108243,0.0
+seguro,200,adj,A2,secure,Ya no estoy seguro de nada.,,seguro,seguro,Gender=Masc|Number=Sing,3,40 4 26 1 61,26.4,61,retrieved,retrieved_corpus,,,14.167833532568075,0.0
+forma,228,n,A2,shape,Estás en mejor forma que yo.,,forma,forma,Gender=Fem|Number=Sing,3,26 8 107 2 18,32.2,107,retrieved,retrieved_corpus,,,11.66760535873953,0.0
+razón,248,n,A2,reason,Las mujeres siempre tienen razón.,,razón,razón,Gender=Fem|Number=Sing,4,6 191 118 59,93.5,191,retrieved,retrieved_corpus,,,11.148903672505007,0.0
+familia,260,n,A2,family,Mi familia es grande.,,familia,familia,Gender=Fem|Number=Sing,1,27 9 171,69,171,retrieved,retrieved_corpus,,,11.799484091816442,0.0
+amor,262,n,A2,love,¿qué sabes del amor?,,amor,amor,Gender=Masc|Number=Sing,4,17 95 21,44.333333333333336,95,retrieved,retrieved_corpus,,,10.569249689077598,0.0
+manera,280,n,A2,way,Lo hago de esa manera.,,manera,manera,Gender=Fem|Number=Sing,4,11 71 1 83,41.5,83,retrieved,retrieved_corpus,,,11.343332880127369,0.0
+chica,295,n,A2,girl,Es realmente una buena chica.,,chica,chica,Gender=Fem|Number=Sing,4,9 243 10 55,79.25,243,retrieved,retrieved_corpus,,,11.663110705229085,0.0
+hermano,299,n,A2,brother,Tengo un hermano y dos hermanas.,,hermano,hermano,Gender=Masc|Number=Sing,2,59 10 7 79 299,90.8,299,retrieved,retrieved_corpus,,,10.500835723852138,0.0
+puerta,318,n,A2,door,La puerta es buena.,,puerta,puerta,Gender=Fem|Number=Sing,1,3 9 55,22.333333333333332,55,n_a1_1,template_generated,,,10.035089972801245,0.0
+chico,352,n,A2,boy,Cualquier chico puede hacerlo.,,chico,chico,Gender=Masc|Number=Sing,1,271 75 71,139,271,retrieved,retrieved_corpus,,,9.828757946629535,0.0
+adiós,359,n,A2,farewell,Quiero decir adiós.,,adiós,adiós,Gender=Masc|Number=Sing,2,76 109,92.5,109,retrieved,retrieved_corpus,,,10.215709443467683,0.0
+dejar,366,v,A2,to leave,No te voy a dejar solo.,,dejar,dejar,VerbForm=Inf,4,4 22 52 5 68,30.2,68,retrieved,retrieved_corpus,,,14.38823659238234,0.0
+jefe,368,n,A2,chief,Hablas como si fueras nuestro jefe.,,jefe,jefe,Gender=Masc|Number=Sing,5,173 30 25 9 192,85.8,192,retrieved,retrieved_corpus,,,9.939873948547758,0.0
+corazón,397,n,A2,heart,Te quiero con todo mi corazón.,,corazón,corazón,Gender=Masc|Number=Sing,5,22 76 16 38 27,35.8,76,retrieved,retrieved_corpus,,,12.387377309408235,0.0
+miedo,398,n,A2,fear,No te tengo miedo.,,miedo,miedo,Gender=Masc|Number=Sing,3,4 22 59,28.333333333333332,59,retrieved,retrieved_corpus,,,12.783397987811021,0.0
+venir,415,v,A2,to come,¿es que no te vienes?,,vienes,venir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,5,9 2 4 22,9.25,22,retrieved,retrieved_corpus,,,12.762480690417489,0.0
+encontrar,422,v,A2,to meet,No encuentran nada por hacer.,,encuentran,encontrar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,4 61 12 71,37,71,retrieved,retrieved_corpus,,,12.646551915075081,0.0
+justo,424,adj,A2,just,No parece justo.,,justo,justo,Gender=Masc|Number=Sing,2,4 151,77.5,151,retrieved,retrieved_corpus,,,11.271194149639664,0.0
+clase,430,n,A2,lecture,Tengo clase esta noche.,,clase,clase,Gender=Fem|Number=Sing,1,59 44 143,82,143,retrieved,retrieved_corpus,,,13.026362171695578,0.0
+juego,433,n,A2,play,No es un juego.,,juego,juego,Gender=Masc|Number=Sing,3,4 9 10,7.666666666666667,10,retrieved,retrieved_corpus,,,13.949188784826188,0.0
+doctor,438,n,A2,doctor,Voy al doctor.,,doctor,doctor,Gender=Masc|Number=Sing,2,52 28,40,52,retrieved,retrieved_corpus,,,10.531025770665732,0.0
+pequeño,443,adj,A2,small,Es bueno y es pequeño.,,pequeño,pequeño,Gender=Masc|Number=Sing,4,9 55 7 9,20,55,retrieved,retrieved_corpus,,,11.259716017120681,0.0
+vuelta,457,n,A2,turn,¿me lo pasan de vuelta ahora?,,vuelta,vuelta,Gender=Fem|Number=Sing,5,18 11 178 1 45,50.6,178,retrieved,retrieved_corpus,,,12.537714749108586,0.0
+trabajar,460,v,A2,to work,Ustedes trabajan de noche.,,trabajan,trabajar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,22 1 143,55.333333333333336,143,retrieved,retrieved_corpus,,,12.691699240744422,0.0
+entrar,465,v,A2,to enter,No puedo dejarte entrar ahí solo.,,entrar,entrar,VerbForm=Inf,3,4 75 366 139 68,130.4,366,retrieved,retrieved_corpus,,,13.186467282718105,0.0
+vivir,466,v,A2,to live,Hace muchos años que vivo aquí.,,vivo,vivir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,4,71 43 101 2 36,50.6,101,retrieved,retrieved_corpus,,,12.428563542621102,0.0
+sistema,481,n,A2,system,Es un buen sistema.,,sistema,sistema,Gender=Masc|Number=Sing,3,9 10 55,24.666666666666668,55,retrieved,retrieved_corpus,,,12.951475294712544,0.0
+fiesta,488,n,A2,party,Quiero ir a tu fiesta.,,fiesta,fiesta,Gender=Fem|Number=Sing,4,76 52 5 37,42.5,76,retrieved,retrieved_corpus,,,12.448440416662155,0.0
+pregunta,492,n,A2,question,¿de quién es la pregunta?,,pregunta,pregunta,Gender=Fem|Number=Sing,5,1 106 9 3,29.75,106,retrieved,retrieved_corpus,,,12.65442603224905,0.0
+seguir,494,v,A2,to follow,No los sigo.,,sigo,seguir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,2,4 6,5,6,retrieved,retrieved_corpus,,,11.369767101517173,0.0
