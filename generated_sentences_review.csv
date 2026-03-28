@@ -1,0 +1,201 @@
+lemma,rank,pos,sentence,source_method,template_id,score,grammatical_ok,natural_ok,learner_clear_ok,notes
+es,9,v,Ella es buena.,seeded_template,seeded_special_ser_adj,8.317620616764355,1,1,1,seeded_special_ser_adj
+está,26,v,Ella está en la casa.,seeded_template,seeded_special_estar_place,8.615059496626404,1,1,1,seeded_special_estar_place
+ha,39,v,Ella ha tenido una casa.,seeded_template,seeded_special_haber_perfect,7.676212789063317,1,0,1,seeded_special_haber_perfect
+hay,48,v,Hay una casa.,seeded_template,seeded_special_haber_existential,7.815982552155925,1,0,1,seeded_special_haber_existential
+estoy,51,v,No sé dónde estoy.,retrieved_corpus,retrieved,12.087139640684061,1,1,1,
+vamos,52,v,""" ¡vamos! "", nos dijo él.",retrieved_corpus,retrieved,9.890720652966827,1,1,1,
+ser,54,v,Ella es buena.,seeded_template,seeded_special_ser_adj,9.817620616764355,1,1,1,seeded_special_ser_adj
+bueno,55,adj,Creo que es muy bueno.,retrieved_corpus,retrieved,12.180317463846073,1,1,1,
+fue,58,v,Ella fue buena.,seeded_template,seeded_special_ser_adj,10.125654750802413,1,1,1,seeded_special_ser_adj
+tengo,59,v,Yo tengo una casa.,seeded_template,seeded_special_tener_obj,9.608761320758578,1,1,1,seeded_special_tener_obj
+era,60,v,Ella era buena.,seeded_template,seeded_special_ser_adj,9.762093495045313,1,1,1,seeded_special_ser_adj
+tiene,62,v,Ella tiene una casa.,seeded_template,seeded_special_tener_obj,10.388334094639582,1,1,1,seeded_special_tener_obj
+sé,63,v,,manual_review_needed,,0.0,0,0,0,manual review needed
+vez,66,n,La vez está aquí.,seeded_template,seeded_noun_here,11.045573920353661,1,1,1,seeded_noun_here
+estás,67,v,Tú estás en la casa.,seeded_template,seeded_special_estar_place,8.284337740476804,1,1,1,seeded_special_estar_place
+son,70,v,Ellos son buenos.,seeded_template,seeded_special_ser_adj,6.752511345294751,1,0,0,seeded_special_ser_adj
+hacer,71,v,Ella hace un trabajo.,seeded_template,seeded_special_hacer_obj,6.266785975197605,1,0,0,seeded_special_hacer_obj
+he,72,v,Lo he dicho todo.,retrieved_corpus,retrieved,11.059072831939837,1,1,1,
+puedo,75,v,Yo puedo ver un hombre.,seeded_template,seeded_special_poder_inf_obj,7.00259354573163,1,0,1,seeded_special_poder_inf_obj
+quiero,76,v,Yo quiero una casa.,seeded_template,seeded_special_querer_obj,8.829369192665265,1,1,1,seeded_special_querer_obj
+gracias,77,n,Todo es gracias a ti.,retrieved_corpus,retrieved,13.017522064690091,1,1,1,
+puede,78,v,Ella puede ver un hombre.,seeded_template,seeded_special_poder_inf_obj,8.021761230949238,1,1,1,seeded_special_poder_inf_obj
+soy,81,v,No sé quién soy.,retrieved_corpus,retrieved,12.051329994394264,1,1,1,
+estaba,84,v,Ella estaba en la casa.,seeded_template,seeded_special_estar_place,9.605026768153094,1,1,1,seeded_special_estar_place
+tiempo,86,n,No tuve tiempo.,retrieved_corpus,retrieved,14.560089393263635,1,1,1,
+creo,89,v,Yo creo eso.,seeded_template,seeded_special_creer_object,10.234711924230655,1,1,1,seeded_special_creer_object
+tienes,90,v,Tú tienes una casa.,seeded_template,seeded_special_tener_obj,8.429859511264706,1,1,1,seeded_special_tener_obj
+casa,91,n,¿ella está en casa?,retrieved_corpus,retrieved,15.50272063549803,1,1,1,
+voy,94,v,"Si hace buen tiempo, voy.",retrieved_corpus,retrieved,9.495667048681021,1,1,1,
+sabes,95,v,¿sabes quién es él?,retrieved_corpus,retrieved,12.026550230007507,1,1,1,
+eres,96,v,¿por qué eres como eres?,retrieved_corpus,retrieved,10.845055899889676,1,1,1,
+verdad,97,n,Dígales la verdad.,retrieved_corpus,retrieved,10.141087047866959,1,1,1,
+solo,99,adj,¿puedes ir sola?,retrieved_corpus,retrieved,10.037430608768434,1,1,1,
+años,101,n,Los años está aquí.,seeded_template,seeded_noun_here,10.184265003272863,1,1,1,seeded_noun_here
+hace,102,v,Lo vi hace tres horas.,retrieved_corpus,retrieved,9.232891456093693,1,1,1,
+va,103,v,Esta va por la casa.,retrieved_corpus,retrieved,12.923690412366597,1,1,1,
+mejor,107,adj,Sabíamos que éramos mejores que eso.,retrieved_corpus,retrieved,11.246820922008496,1,1,1,
+vida,108,n,La vida está aquí.,seeded_template,seeded_noun_here,10.566347495917663,1,1,1,seeded_noun_here
+decir,109,v,No sé qué debería decir.,retrieved_corpus,retrieved,11.846329636819746,1,1,1,
+están,113,v,Ellos están en la casa.,seeded_template,seeded_special_estar_place,10.453529498770774,1,1,1,seeded_special_estar_place
+favor,114,n,Él tiene un favor.,template_generated,n_a1_3,10.755742780884146,1,1,1,n_a1_3
+señor,115,n,El señor está aquí.,seeded_template,seeded_noun_here,10.80430950800593,1,1,1,seeded_noun_here
+hombre,116,n,Tú y yo somos hombres.,retrieved_corpus,retrieved,11.793515000216487,1,1,1,
+ver,119,v,¿la quieres ver ahora?,retrieved_corpus,retrieved,13.216947595897114,1,1,1,
+quieres,121,v,No sé qué quieres que diga.,retrieved_corpus,retrieved,12.5717679301984,1,1,1,
+siento,122,v,Yo siento una casa.,template_generated,v_a1_1,9.524633554564318,1,1,1,v_a1_1
+había,123,v,Ella había estado un favor.,seeded_template,seeded_special_haber_perfect,9.455307871865303,1,1,1,seeded_special_haber_perfect
+has,125,v,¿has visto a este hombre?,retrieved_corpus,retrieved,10.964084508467941,1,1,1,
+día,127,n,El día está aquí.,seeded_template,seeded_noun_here,11.141119263250987,1,1,1,seeded_noun_here
+tenemos,129,v,Nosotros tenemos una casa.,seeded_template,seeded_special_tener_obj,9.370007416645102,1,1,1,seeded_special_tener_obj
+cosas,131,n,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,11.883787825873842,1,1,1,
+mismo,134,adj,Lo hicieron por sí mismos.,retrieved_corpus,retrieved,11.387117227857635,1,1,1,
+han,135,v,Ellos han dicho un lugar.,seeded_template,seeded_special_haber_perfect,9.081863865282847,1,1,1,seeded_special_haber_perfect
+hecho,136,n,El hecho está aquí.,seeded_template,seeded_noun_here,10.730137592219794,1,1,1,seeded_noun_here
+puedes,138,v,Tú puedes ir a la casa.,seeded_template,seeded_special_poder_ir_place,9.330237397667466,1,1,1,seeded_special_poder_ir_place
+dijo,140,v,Ella dijo mucho.,seeded_template,seeded_verb_adv,7.18490962463291,1,0,1,seeded_verb_adv
+estar,141,v,Ella está en la casa.,seeded_template,seeded_special_estar_place,11.315059496626404,1,1,1,seeded_special_estar_place
+noche,143,n,¿puedo pasar aquí la noche?,retrieved_corpus,retrieved,11.223748943981217,1,1,1,
+trabajo,144,n,No había trabajo.,retrieved_corpus,retrieved,11.568408941268636,1,1,1,
+ir,145,v,Voy a hacer esto yo misma.,retrieved_corpus,retrieved,11.688050363606203,1,1,1,
+mis,147,n,El mis está aquí.,seeded_template,seeded_noun_here,5.67451466037369,1,0,0,seeded_noun_here
+sea,148,v,Ella sea buena.,seeded_template,seeded_special_ser_adj,9.608817376823712,1,1,1,seeded_special_ser_adj
+acuerdo,149,n,No estoy de acuerdo con usted.,retrieved_corpus,retrieved,14.602530877490816,1,1,1,
+parece,151,v,Esto parece ser cierto.,retrieved_corpus,retrieved,10.069328299174252,1,1,1,
+estamos,154,v,Nosotros estamos en la casa.,seeded_template,seeded_special_estar_place,9.404713864879335,1,1,1,seeded_special_estar_place
+mundo,155,n,El mundo está aquí.,seeded_template,seeded_noun_here,10.688799355571048,1,1,1,seeded_noun_here
+gente,156,n,La gente está aquí.,seeded_template,seeded_noun_here,11.552894448525688,1,1,1,seeded_noun_here
+padre,158,n,Ahora mis padres están en casa.,retrieved_corpus,retrieved,12.109379998793262,1,1,1,
+parte,163,n,Hiciste tu parte.,retrieved_corpus,retrieved,8.59550665866847,1,1,1,
+sido,164,v,Ella sido buena.,seeded_template,seeded_special_ser_adj,6.121006447178354,1,0,0,seeded_special_ser_adj
+momento,165,n,Está contigo en este momento.,retrieved_corpus,retrieved,12.758171276006454,1,1,1,
+podría,166,v,Eso no podría ser mejor.,retrieved_corpus,retrieved,11.405447799171293,1,1,1,
+mira,168,v,Mira lo que pasó.,retrieved_corpus,retrieved,12.994333928368667,1,1,1,
+quiere,169,v,Ella quiere una casa.,seeded_template,seeded_special_querer_obj,11.02964163219668,1,1,1,seeded_special_querer_obj
+gran,171,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+lugar,172,n,Voy a verle en tu lugar.,retrieved_corpus,retrieved,12.79965484833464,1,1,1,
+hablar,173,v,Quiero hablar sobre ello.,retrieved_corpus,retrieved,13.622421660766516,1,1,1,
+tener,174,v,Ella tiene una casa.,seeded_template,seeded_special_tener_obj,11.388334094639582,1,1,1,seeded_special_tener_obj
+tenía,175,v,Él le dijo que tenía razón.,retrieved_corpus,retrieved,11.148747300588385,1,1,1,
+nuevo,177,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+pasa,178,v,¿cómo lo pasa usted?,retrieved_corpus,retrieved,11.741315185344986,1,1,1,
+vas,179,v,¿vas a algún lugar esta noche?,retrieved_corpus,retrieved,10.994177921988383,1,1,1,
+claro,181,adj,"Vi algo ahí, pero poco claro.",retrieved_corpus,retrieved,8.541356735631917,1,1,1,
+dinero,182,n,Le di el dinero.,retrieved_corpus,retrieved,13.947734586640987,1,1,1,
+madre,183,n,¿es usted su madre?,retrieved_corpus,retrieved,13.17251276583402,1,1,1,
+mañana,184,n,¿dónde estás esta mañana?,retrieved_corpus,retrieved,9.916005299984517,1,1,1,
+tipo,186,n,El tipo está aquí.,seeded_template,seeded_noun_here,10.431352587157342,1,1,1,seeded_noun_here
+días,188,n,Los días está aquí.,seeded_template,seeded_noun_here,8.20027354480757,1,1,1,seeded_noun_here
+mujer,191,n,El hombre es una mujer.,retrieved_corpus,retrieved,13.20259604891188,1,1,1,
+cosa,194,n,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,12.883787825873842,1,1,1,
+sabe,195,v,Ella sabe que tú sabes.,retrieved_corpus,retrieved,11.711790840463044,1,1,1,
+haciendo,197,v,Ella haciendo un trabajo.,seeded_template,seeded_special_hacer_obj,5.219508219584759,1,0,0,seeded_special_hacer_obj
+hijo,198,n,No tengo nada para mis hijos.,retrieved_corpus,retrieved,11.951404234826978,1,1,1,
+dice,199,v,Ella dice un día.,template_generated,v_a1_1,9.863085875412052,1,1,1,v_a1_1
+seguro,200,adj,Ya no estoy seguro de nada.,retrieved_corpus,retrieved,14.167833532568075,1,1,1,
+podemos,201,v,Nosotros podemos ir al mundo.,seeded_template,seeded_special_poder_ir_place,10.109144701755922,1,1,1,seeded_special_poder_ir_place
+debe,202,v,¿qué debe hacer?,retrieved_corpus,retrieved,12.184202633238472,1,1,1,
+espera,203,v,Ella espera un tiempo.,template_generated,v_a1_1,9.048487587861745,1,1,1,v_a1_1
+vale,204,v,"Vale, no pasa nada.",retrieved_corpus,retrieved,13.52188791978423,1,1,1,
+será,205,v,Ella será buena.,seeded_template,seeded_special_ser_adj,6.467580037458328,1,0,0,seeded_special_ser_adj
+haber,208,v,Lo he dicho todo.,retrieved_corpus,retrieved,12.059072831939837,1,1,1,
+amigo,210,n,Me gustan tus amigos.,retrieved_corpus,retrieved,11.322042477264825,1,1,1,
+buena,212,adj,El hombre es buena.,seeded_template,seeded_adj_fallback,11.72602626803318,1,1,1,seeded_adj_fallback
+nombre,216,n,El nombre está aquí.,seeded_template,seeded_noun_here,10.848374043000446,1,1,1,seeded_noun_here
+tienen,217,v,¡aquí tienen de todo!,retrieved_corpus,retrieved,10.419609751699017,1,1,1,
+veces,218,n,,manual_review_needed,,0.0,0,0,0,manual review needed
+mamá,219,n,¿está mamá aquí?,retrieved_corpus,retrieved,12.574792912197296,1,1,1,
+buen,221,adj,La vez es buen.,seeded_template,seeded_adj_fallback,8.690405117569231,1,1,1,seeded_adj_fallback
+papá,223,n,"Mamá, ¿dónde está papá?",retrieved_corpus,retrieved,9.08442411807526,1,1,1,
+quería,224,v,Ella no quería estar en casa.,retrieved_corpus,retrieved,13.826128934854472,1,1,1,
+dije,225,v,Yo dije un amigo.,template_generated,v_a1_1,9.241470060797282,1,1,1,v_a1_1
+pasado,227,n,El pasado está aquí.,seeded_template,seeded_noun_here,10.512445608778975,1,1,1,seeded_noun_here
+forma,228,n,Estás en mejor forma que yo.,retrieved_corpus,retrieved,11.66760535873953,1,1,1,
+gusta,229,v,Ella gusta un día.,template_generated,v_a1_1,9.32147583519161,1,1,1,v_a1_1
+hizo,230,v,Ella hizo un trabajo.,seeded_template,seeded_special_hacer_obj,7.824674280527013,1,0,1,seeded_special_hacer_obj
+caso,231,n,No hice caso a nadie.,retrieved_corpus,retrieved,11.200177888405468,1,1,1,
+necesito,234,v,No necesito ser más claro.,retrieved_corpus,retrieved,11.498804466610144,1,1,1,
+oye,235,v,Oye mucho y habla poco.,retrieved_corpus,retrieved,11.510030842912027,1,1,1,
+hemos,237,v,Nosotros hemos esperado un acuerdo.,seeded_template,seeded_special_haber_perfect,9.022870430355654,1,1,1,seeded_special_haber_perfect
+cuenta,238,n,La cuenta está aquí.,seeded_template,seeded_noun_here,10.263169319268032,1,1,1,seeded_noun_here
+visto,239,v,¿has visto a mi padre?,retrieved_corpus,retrieved,13.276505975301369,1,1,1,
+hora,244,n,Esta hora está aquí.,seeded_template,seeded_noun_here,10.495129527253415,1,1,1,seeded_noun_here
+problema,245,n,De seguro tendremos problemas.,retrieved_corpus,retrieved,12.989549485604728,1,1,1,
+crees,246,v,¿cómo crees que me siento?,retrieved_corpus,retrieved,12.559005591249402,1,1,1,
+año,247,n,El año está aquí.,seeded_template,seeded_noun_here,10.755050136748146,1,1,1,seeded_noun_here
+razón,248,n,Su madre tenía razón.,retrieved_corpus,retrieved,11.322987873313716,1,1,1,
+primera,249,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+cierto,250,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+saber,251,v,Sé que no lo harás.,retrieved_corpus,retrieved,12.697757317435583,1,1,1,
+dicho,252,v,Ya está todo dicho.,retrieved_corpus,retrieved,13.449434114993583,1,1,1,
+hacerlo,253,v,,manual_review_needed,,0.0,0,0,0,manual review needed
+mierda,254,n,Esto es una mierda.,retrieved_corpus,retrieved,12.686383118971111,1,1,1,
+idea,256,n,Ni tuve idea que estabas allí.,retrieved_corpus,retrieved,9.632122728340219,1,1,1,
+familia,260,n,Mi familia es grande.,retrieved_corpus,retrieved,11.799484091816442,1,1,1,
+amor,262,n,¿qué sabes del amor?,retrieved_corpus,retrieved,10.569249689077598,1,1,1,
+pueden,264,v,Ellos pueden ver un amigo.,seeded_template,seeded_special_poder_inf_obj,10.155976657886615,1,1,1,seeded_special_poder_inf_obj
+importa,265,v,No me importa lo que decís.,retrieved_corpus,retrieved,13.115479902657286,1,1,1,
+personas,267,n,Las personas está aquí.,seeded_template,seeded_noun_here,8.322126011355872,1,1,1,seeded_noun_here
+policía,268,n,La policía está allí.,retrieved_corpus,retrieved,12.374020088226839,1,1,1,
+ven,273,v,¡ven a casa!,retrieved_corpus,retrieved,13.320629002356805,1,1,1,
+serio,274,adj,¡no hablas en serio!,retrieved_corpus,retrieved,13.472326609448888,1,1,1,
+ve,276,v,Ve por ahí.,retrieved_corpus,retrieved,12.15673601384384,1,1,1,
+nueva,277,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+lado,279,n,Estaremos lado a lado.,retrieved_corpus,retrieved,11.174202136247631,1,1,1,
+manera,280,n,Lo hago de esa manera.,retrieved_corpus,retrieved,11.343332880127369,1,1,1,
+cabeza,281,n,La cabeza está aquí.,seeded_template,seeded_noun_here,10.344262340889664,1,1,1,seeded_noun_here
+hombres,282,n,Tú y yo somos hombres.,retrieved_corpus,retrieved,11.793515000216487,1,1,1,
+historia,283,n,Me gustan mucho estas historias.,retrieved_corpus,retrieved,11.869488944530353,1,1,1,
+sería,285,v,Ella sería buena.,seeded_template,seeded_special_ser_adj,9.140866832598313,1,1,1,seeded_special_ser_adj
+salir,286,v,Parece que algo salió mal.,retrieved_corpus,retrieved,11.542459190721782,1,1,1,
+debería,287,v,Ella siempre debería.,template_generated,v_a1_2,6.324052536021459,1,0,0,v_a1_2
+van,288,v,Ellos van a la casa.,seeded_template,seeded_special_ir_place,10.113306761156688,1,1,1,seeded_special_ir_place
+ciudad,289,n,La ciudad está aquí.,seeded_template,seeded_noun_here,11.183702730422027,1,1,1,seeded_noun_here
+poder,292,n,Eso no podría ser mejor.,retrieved_corpus,retrieved,11.405447799171293,1,1,1,
+amigos,294,n,"Amigos, me debo ir.",retrieved_corpus,retrieved,12.722459726700464,1,1,1,
+chica,295,n,Es realmente una buena chica.,retrieved_corpus,retrieved,11.663110705229085,1,1,1,
+mayor,296,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+sabía,297,v,Ella sabía la verdad.,seeded_template,seeded_special_saber_truth,10.052944596819632,1,1,1,seeded_special_saber_truth
+chicos,298,n,"Chicos, no puedo hacerlo sin vosotros.",retrieved_corpus,retrieved,12.479302932070281,1,1,1,
+hermano,299,n,Este es mi hermano.,retrieved_corpus,retrieved,15.3200237442838,1,1,1,
+primer,301,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+país,302,n,El país está aquí.,seeded_template,seeded_noun_here,10.965868591488123,1,1,1,seeded_noun_here
+vaya,303,v,¡vaya día de mierda!,retrieved_corpus,retrieved,9.80205166810463,1,1,1,
+agua,304,n,La agua está aquí.,seeded_template,seeded_noun_here,10.482891777001655,1,1,1,seeded_noun_here
+misma,305,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+veo,306,v,Yo veo un padre.,template_generated,v_a1_1,9.266692910318076,1,1,1,v_a1_1
+haces,307,v,Tú haces un trabajo.,seeded_template,seeded_special_hacer_obj,6.813936759757768,1,0,0,seeded_special_hacer_obj
+camino,308,n,¿sabes el camino?,retrieved_corpus,retrieved,9.825136659965583,1,1,1,
+persona,309,n,La persona está aquí.,seeded_template,seeded_noun_here,10.608613508886128,1,1,1,seeded_noun_here
+iba,310,v,Ella iba al mundo.,seeded_template,seeded_special_ir_place,10.167603775187532,1,1,1,seeded_special_ir_place
+realidad,311,n,La realidad está aquí.,seeded_template,seeded_noun_here,10.567654626356926,1,1,1,seeded_noun_here
+fin,312,n,El fin está aquí.,seeded_template,seeded_noun_here,10.503141605651997,1,1,1,seeded_noun_here
+importante,313,adj,Me han dicho que era importante.,retrieved_corpus,retrieved,11.776934316437215,1,1,1,
+primero,314,adj,,manual_review_needed,,0.0,0,0,0,manual review needed
+digo,315,v,Yo digo un día.,template_generated,v_a1_1,7.062575723901378,1,0,1,v_a1_1
+horas,316,n,,manual_review_needed,,0.0,0,0,0,manual review needed
+semana,317,n,He esperado más de una semana.,retrieved_corpus,retrieved,12.533854499493033,1,1,1,
+puerta,318,n,¿quién estaba a la puerta?,retrieved_corpus,retrieved,10.95525242011119,1,1,1,
+somos,319,v,Nosotros somos buenos.,seeded_template,seeded_special_ser_adj,6.635693356865373,1,0,0,seeded_special_ser_adj
+pensé,320,v,Yo pensé mucho.,seeded_template,seeded_verb_adv,6.78758460046496,1,0,0,seeded_verb_adv
+muerte,322,n,Soy la muerte.,retrieved_corpus,retrieved,10.444006979611904,1,1,1,
+problemas,323,n,De seguro tendremos problemas.,retrieved_corpus,retrieved,12.989549485604728,1,1,1,
+punto,324,n,El punto está aquí.,seeded_template,seeded_noun_here,10.4831249139406,1,1,1,seeded_noun_here
+pasó,326,v,Ella pasó un tiempo.,template_generated,v_a1_1,9.582626470773434,1,1,1,v_a1_1
+buenas,328,adj,El problema es buenas.,seeded_template,seeded_adj_fallback,6.355252623700873,1,0,0,seeded_adj_fallback
+supuesto,329,n,Por supuesto que esperaré.,retrieved_corpus,retrieved,11.95962868000927,1,1,1,
+da,331,v,Ella da una casa.,template_generated,v_a1_1,9.831215870543549,1,1,1,v_a1_1
+mano,332,n,Solo tengo dos manos.,retrieved_corpus,retrieved,13.468284622642821,1,1,1,
+niños,333,n,Los niños está aquí.,seeded_template,seeded_noun_here,10.953821150612821,1,1,1,seeded_noun_here
+volver,334,v,Puede que vuelva.,retrieved_corpus,retrieved,13.532485415927152,1,1,1,
+señora,336,n,El señora está aquí.,seeded_template,seeded_noun_here,7.99640224286051,1,0,1,seeded_noun_here
+cariño,337,n,El cariño está aquí.,seeded_template,seeded_noun_here,7.894237118107313,1,0,1,seeded_noun_here
+ayuda,338,n,No necesitamos ayuda.,retrieved_corpus,retrieved,13.880757882372453,1,1,1,
+ojos,339,n,Los ojos está aquí.,seeded_template,seeded_noun_here,8.215095139238315,1,1,1,seeded_noun_here
+pasar,341,v,¿qué ha pasado hoy?,retrieved_corpus,retrieved,13.681386015280705,1,1,1,
+general,342,adj,"En general, las cosas van bien.",retrieved_corpus,retrieved,12.452135390023287,1,1,1,
+debo,344,v,Yo debo una verdad.,template_generated,v_a1_1,9.117250029952032,1,1,1,v_a1_1
+minutos,345,n,Unos minutos está aquí.,seeded_template,seeded_noun_here,6.698631999926953,1,0,0,seeded_noun_here
+gobierno,347,n,El gobierno está aquí.,seeded_template,seeded_noun_here,11.019521388807059,1,1,1,seeded_noun_here
+manos,348,n,Solo tengo dos manos.,retrieved_corpus,retrieved,13.468284622642821,1,1,1,

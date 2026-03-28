@@ -1,101 +1,201 @@
 lemma,rank,pos,band,translation,sentence,english_sentence,target_form,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,english_source_method,parallel_pair_id,score,english_score
-de,1,prep,A1,of; from,,,de,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-que,2,pron,A1,that,,,que,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-la,3,pron,A1,the (fem.),,,la,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-no,4,,A1,no; not,,,no,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-a,5,none,A1,to; at,,,a,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-el,6,art,A1,the (masc.),,,el,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-y,7,conj,A1,and,,,y,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-en,8,prep,A1,in; at; on,,,en,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-es,9,v,A1,is (ser),Ella es mejor.,,es,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,5.282604075890287,0.0
-un,10,num,A1,a; an; one,,,un,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-lo,11,pron,A1,it; the (neuter),,,lo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-por,12,prep,A1,by,,,por,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-los,13,art,A1,the (masc. pl.),,,los,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-una,14,determiner,A1,a; an; one (fem.),,,una,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-se,15,pron,A1,oneself; himself; herself; itself; themselves,,,se,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-con,16,prep,A1,with,,,con,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-qué,17,pron,A1,what,¿qué puedes hacer por mi?,,qué,1,138 71 12 27,62,138,retrieved,retrieved_corpus,,,4.997550962500541,0.0
-me,18,pron,A1,me; myself,,,me,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-para,19,prep,A1,for; to,,,para,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-las,20,pron,A1,the (fem. pl.),,,las,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-del,21,contraction,A1,of the; from the,,,del,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-te,22,pron,A1,you; yourself,,,te,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-su,23,determiner,A1,his; her; its; their; your (formal),,,su,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-pero,24,conj,A1,but,,,pero,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-si,25,conj,A1,if; whether,,,si,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-está,26,v,A1,is (estar),Ella está en la casa.,,está,1,69 8 3 91,42.75,91,seeded_special_estar_place,seeded_template,,,8.615059496626404,0.0
-mi,27,determiner,A1,my,,,mi,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-al,28,contraction,A1,to the,,,al,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-sí,29,pron,A1,yes; oneself,Creo que sí que está.,,sí,2,89 2 2 26,29.75,89,retrieved,retrieved_corpus,,,6.643365572047735,0.0
-como,30,conj,A1,as,,,como,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-bien,31,adv,A1,well-to-do,,,bien,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-más,32,adv,A1,more; most,,,más,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-eso,33,pron,A1,that (neuter),,,eso,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-yo,34,pron,A1,I,,,yo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-le,35,pron,A1,him; her; you (formal),,,le,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-aquí,36,adv,A1,here,¿quién estaba aquí?,,aquí,3,106 84,95,106,retrieved,retrieved_corpus,,,6.300851380270774,0.0
-tu,37,determiner,A1,your,,,tu,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-todo,38,determiner,A1,all; every; everything,,,todo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-ha,39,v,A1,has (haber),Ella ha hecho un acuerdo.,,ha,1,69 136 10 149,91,149,seeded_special_haber_perfect,seeded_template,,,7.388728880738297,0.0
-ya,40,adv,A1,already; now,,,ya,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-o,41,conj,A1,or,,,o,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-esto,42,pron,A1,this (neuter),¿sólo hay esto?,,esto,3,68 48,58,68,retrieved,retrieved_corpus,,,4.492599564454689,0.0
-muy,43,adv,A1,very,,,muy,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-esta,44,determiner,A1,this (fem.),Esta es su casa.,,esta,0,9 23 91,41,91,retrieved,retrieved_corpus,,,10.772254664935465,0.0
-ahora,45,adv,A1,now...now; whether...or,,,ahora,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-así,46,adv,A1,like this,No quiero que sea así.,,así,4,4 76 2 148,57.5,148,retrieved,retrieved_corpus,,,8.899992016429618,0.0
-cuando,47,conj,A1,when,,,cuando,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-hay,48,v,A1,there is; there are,Hay un tiempo.,,hay,0,10 86,48,86,seeded_special_haber_existential,seeded_template,,,7.666503623900184,0.0
-este,49,determiner,A1,this,Esta es su casa.,,esta,0,9 23 91,41,91,retrieved,retrieved_corpus,,,10.772254664935465,0.0
-algo,50,pron,A1,something; anything,,,algo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-estoy,51,v,A1,to be,Yo estoy en la casa.,,estoy,1,34 8 3 91,34,91,seeded_special_estar_place,seeded_template,,,9.198312328651951,0.0
-vamos,52,v,A1,we go; let's go (ir),""" ¡vamos! "", nos dijo él.",,vamos,2,56 140 53,83,140,retrieved,retrieved_corpus,,,5.390720652966827,0.0
-él,53,pron,A1,he; him; masculine personal third person subject and disjunctive pronoun,,,él,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-ser,54,v,A1,to be,Ella es mejor.,,es,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,5.282604075890287,0.0
-bueno,55,adj,A1,good,La casa es buena.,,buena,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,,,10.303648170036166,0.0
-nos,56,pron,A1,us; ourselves,,,nos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-sus,57,determiner,A1,his; her; its; their; your (formal) (pl.),,,sus,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-fue,58,v,A1,was (ser/ir),Ella fue mejor.,,fue,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,4.9909056256192414,0.0
-tengo,59,v,A1,I have (tener),Yo tengo el tiempo.,,tengo,1,34 6 86,42,86,seeded_verb_obj,seeded_template,,,8.731109883873675,0.0
-era,60,v,A1,was (ser); era,Ella era mejor.,,era,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,4.4874404228782865,0.0
-nada,61,pron,A1,nothing; zero; zilch; not...anything,,,nada,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-tiene,62,v,A1,has (tener),Ella tiene una casa.,,tiene,1,69 14 91,58,91,v_a1_1,template_generated,,,9.388334094639582,0.0
+es,9,v,A1,is (ser),Ella es buena.,,es,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,8.317620616764355,0.0
+está,26,v,A1,is (estar),Ella está en la casa.,,está,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,8.615059496626404,0.0
+ha,39,v,A1,has (haber),Ella ha tenido una casa.,,ha,1,11 59 10 91,42.75,91,seeded_special_haber_perfect,seeded_template,,,7.676212789063317,0.0
+hay,48,v,A1,there is; there are,Hay una casa.,,hay,0,10 91,50.5,91,seeded_special_haber_existential,seeded_template,,,7.815982552155925,0.0
+estoy,51,v,A1,to be,No sé dónde estoy.,,estoy,3,4 9 111,41.333333333333336,111,retrieved,retrieved_corpus,,,12.087139640684061,0.0
+vamos,52,v,A1,we go; let's go (ir),""" ¡vamos! "", nos dijo él.",,vamos,2,18 109 11,46,109,retrieved,retrieved_corpus,,,9.890720652966827,0.0
+ser,54,v,A1,to be,Ella es buena.,,es,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.817620616764355,0.0
+bueno,55,adj,A1,good,Creo que es muy bueno.,,bueno,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,,,12.180317463846073,0.0
+fue,58,v,A1,was (ser/ir),Ella fue buena.,,fue,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,10.125654750802413,0.0
+tengo,59,v,A1,I have (tener),Yo tengo una casa.,,tengo,1,18 10 91,39.666666666666664,91,seeded_special_tener_obj,seeded_template,,,9.608761320758578,0.0
+era,60,v,A1,was (ser); era,Ella era buena.,,era,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.762093495045313,0.0
+tiene,62,v,A1,has (tener),Ella tiene una casa.,,tiene,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,10.388334094639582,0.0
 sé,63,v,A1,yes,,,sé,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-tú,64,pron,A1,you,,,tú,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-cómo,65,adv,A1,how?,,,cómo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
 vez,66,n,A1,time; instance,La vez está aquí.,,vez,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,11.045573920353661,0.0
-estás,67,v,A1,you are (estar),Tú estás en la casa.,,estás,1,64 8 3 91,41.5,91,seeded_special_estar_place,seeded_template,,,8.284337740476804,0.0
-sólo,68,adv,A1,sole,,,sólo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-ella,69,pron,A1,she; her,,,ella,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-son,70,v,A1,are (ser),,,son,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-hacer,71,v,A1,to do,Ella hace una casa.,,hace,1,69 14 91,58,91,v_a1_1,template_generated,,,8.582172717971552,0.0
-he,72,v,A1,I have (haber),Yo he hecho una casa.,,he,1,34 136 14 91,68.75,136,template_special_haber_perfect,template_generated,,,8.030601797228002,0.0
-porque,73,conj,A1,because,,,porque,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-todos,74,determiner,A1,all; everyone,,,todos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-puedo,75,v,A1,I can (poder),Yo puedo hacer.,,puedo,1,34 71,52.5,71,seeded_special_poder_inf,seeded_template,,,9.87576831963484,0.0
-quiero,76,v,A1,I want (querer),Yo quiero una noche.,,quiero,1,34 14 143,63.666666666666664,143,v_a1_1,template_generated,,,8.47153792329945,0.0
-gracias,77,n,A1,thanks,Todo es gracias a ti.,,gracias,2,38 9 5 132,46,132,retrieved,retrieved_corpus,,,9.017522064690091,0.0
-puede,78,v,A1,can; may (poder),Ella puede hacer.,,puede,1,69 71,70,71,seeded_special_poder_inf,seeded_template,,,9.578166796300629,0.0
-dos,79,num,A1,dung; excrement,,,dos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-sin,80,prep,A1,without,,,sin,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-soy,81,v,A1,I am (ser),No sé quién soy.,,soy,3,4 63 106,57.666666666666664,106,retrieved,retrieved_corpus,,,9.051329994394264,0.0
-sobre,82,prep,A1,over; above; on; upon; atop,,,sobre,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-ese,83,determiner,A1,that,¿de quién es eso otro?,,eso,4,1 106 9 150,66.5,150,retrieved,retrieved_corpus,,,7.643973504912445,0.0
-estaba,84,v,A1,was (estar),Ella estaba en la casa.,,estaba,1,69 8 3 91,42.75,91,seeded_special_estar_place,seeded_template,,,9.605026768153094,0.0
-también,85,adv,A1,also; too; as well,Yo también estoy bien.,,también,1,34 51 31,38.666666666666664,51,retrieved,retrieved_corpus,,,11.379233654816398,0.0
-tiempo,86,n,A1,time,El tiempo está aquí.,,tiempo,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,11.27377810673304,0.0
-tan,87,adv,A1,so; as,,,tan,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-entonces,88,adv,A1,then; next; thereupon; at that time; at that point,,,entonces,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-creo,89,v,A1,I believe; I think (creer),Yo creo eso.,,creo,1,34 33,33.5,34,seeded_special_creer_object,seeded_template,,,10.234711924230655,0.0
-tienes,90,v,A1,you have (tener),Tú tienes el tiempo.,,tienes,1,64 6 86,52,86,seeded_verb_obj,seeded_template,,,10.828544143523551,0.0
-casa,91,n,A1,house,¿ella está en casa?,,casa,4,69 26 8,34.333333333333336,69,retrieved,retrieved_corpus,,,12.50272063549803,0.0
-usted,92,pron,A1,second person formal,,,usted,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-esa,93,determiner,A1,that (fem.),¿de quién es eso otro?,,eso,4,1 106 9 150,66.5,150,retrieved,retrieved_corpus,,,7.643973504912445,0.0
-voy,94,v,A1,I go (ir),Yo voy a la casa.,,voy,1,34 5 3 91,33.25,91,seeded_special_ir_place,seeded_template,,,10.462629045123132,0.0
-sabes,95,v,A1,you know?,¿sabes quién es él?,,sabes,1,106 9 53,56,106,retrieved,retrieved_corpus,,,9.026550230007507,0.0
-eres,96,v,A1,to be,¿de quién eres?,,eres,3,1 106,53.5,106,retrieved,retrieved_corpus,,,7.126813688700665,0.0
-verdad,97,n,A1,truth,La verdad está aquí.,,verdad,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.816642674919757,0.0
-hasta,98,prep,A1,until,,,hasta,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
-solo,99,adj,A1,sole,El tiempo es solo.,,solo,3,6 86 9,33.666666666666664,86,seeded_adj_fallback,seeded_template,,,11.75089514022954,0.0
-nunca,100,adv,A1,never,,,nunca,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+estás,67,v,A1,you are (estar),Tú estás en la casa.,,estás,1,22 8 3 91,31,91,seeded_special_estar_place,seeded_template,,,8.284337740476804,0.0
+son,70,v,A1,are (ser),Ellos son buenos.,,son,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,6.752511345294751,0.0
+hacer,71,v,A1,to do,Ella hace un trabajo.,,hace,1,11 10 144,55,144,seeded_special_hacer_obj,seeded_template,,,6.266785975197605,0.0
+he,72,v,A1,I have (haber),Lo he dicho todo.,,he,1,11 109 38,52.666666666666664,109,retrieved,retrieved_corpus,,,11.059072831939837,0.0
+puedo,75,v,A1,I can (poder),Yo puedo ver un hombre.,,puedo,1,18 119 10 116,65.75,119,seeded_special_poder_inf_obj,seeded_template,,,7.00259354573163,0.0
+quiero,76,v,A1,I want (querer),Yo quiero una casa.,,quiero,1,18 10 91,39.666666666666664,91,seeded_special_querer_obj,seeded_template,,,8.829369192665265,0.0
+gracias,77,n,A1,thanks,Todo es gracias a ti.,,gracias,2,38 9 5 22,18.5,38,retrieved,retrieved_corpus,,,13.017522064690091,0.0
+puede,78,v,A1,can; may (poder),Ella puede ver un hombre.,,puede,1,11 119 10 116,64,119,seeded_special_poder_inf_obj,seeded_template,,,8.021761230949238,0.0
+soy,81,v,A1,I am (ser),No sé quién soy.,,soy,3,4 9 106,39.666666666666664,106,retrieved,retrieved_corpus,,,12.051329994394264,0.0
+estaba,84,v,A1,was (estar),Ella estaba en la casa.,,estaba,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,9.605026768153094,0.0
+tiempo,86,n,A1,time,No tuve tiempo.,,tiempo,2,4 59,31.5,59,retrieved,retrieved_corpus,,,14.560089393263635,0.0
+creo,89,v,A1,I believe; I think (creer),Yo creo eso.,,creo,1,18 33,25.5,33,seeded_special_creer_object,seeded_template,,,10.234711924230655,0.0
+tienes,90,v,A1,you have (tener),Tú tienes una casa.,,tienes,1,22 10 91,41,91,seeded_special_tener_obj,seeded_template,,,8.429859511264706,0.0
+casa,91,n,A1,house,¿ella está en casa?,,casa,4,11 26 8,15,26,retrieved,retrieved_corpus,,,15.50272063549803,0.0
+voy,94,v,A1,I go (ir),"Si hace buen tiempo, voy.",,voy,5,25 71 55 86,59.25,86,retrieved,retrieved_corpus,,,9.495667048681021,0.0
+sabes,95,v,A1,you know?,¿sabes quién es él?,,sabes,1,106 9 11,42,106,retrieved,retrieved_corpus,,,12.026550230007507,0.0
+eres,96,v,A1,to be,¿por qué eres como eres?,,eres,5,12 17 9 30,17,30,retrieved,retrieved_corpus,,,10.845055899889676,0.0
+verdad,97,n,A1,truth,Dígales la verdad.,,verdad,2,109 3,56,109,retrieved,retrieved_corpus,,,10.141087047866959,0.0
+solo,99,adj,A1,sole,¿puedes ir sola?,,sola,3,75 52,63.5,75,retrieved,retrieved_corpus,,,10.037430608768434,0.0
+años,101,n,A2,years,Los años está aquí.,,años,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.184265003272863,0.0
+hace,102,v,A2,ago,Lo vi hace tres horas.,,hace,2,11 119 176 244,137.5,244,retrieved,retrieved_corpus,,,9.232891456093693,0.0
+va,103,v,A2,goes (ir),Esta va por la casa.,,va,1,44 12 3 91,37.5,91,retrieved,retrieved_corpus,,,12.923690412366597,0.0
+mejor,107,adj,A2,better,Sabíamos que éramos mejores que eso.,,mejores,3,95 2 9 2 33,28.2,95,retrieved,retrieved_corpus,,,11.246820922008496,0.0
+vida,108,n,A2,life,La vida está aquí.,,vida,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.566347495917663,0.0
+decir,109,v,A2,to say; to tell,No sé qué debería decir.,,decir,4,4 9 17 202,58,202,retrieved,retrieved_corpus,,,11.846329636819746,0.0
+están,113,v,A2,are (estar),Ellos están en la casa.,,están,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,10.453529498770774,0.0
+favor,114,n,A2,favor/favour,Él tiene un favor.,,favor,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,10.755742780884146,0.0
+señor,115,n,A2,great big,El señor está aquí.,,señor,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.80430950800593,0.0
+hombre,116,n,A2,man;,Tú y yo somos hombres.,,hombres,4,22 7 18 9,14,22,retrieved,retrieved_corpus,,,11.793515000216487,0.0
+ver,119,v,A2,to see; to spot,¿la quieres ver ahora?,,ver,3,3 76 45,41.333333333333336,76,retrieved,retrieved_corpus,,,13.216947595897114,0.0
+quieres,121,v,A2,you want (querer),No sé qué quieres que diga.,,quieres,3,4 9 17 2 109,28.2,109,retrieved,retrieved_corpus,,,12.5717679301984,0.0
+siento,122,v,A2,I feel (sentir); I'm sorry,Yo siento una casa.,,siento,1,18 10 91,39.666666666666664,91,v_a1_1,template_generated,,,9.524633554564318,0.0
+había,123,v,A2,makes pluperfect to verbs as part of the auxiliary verb haber,Ella había estado un favor.,,había,1,11 26 10 114,40.25,114,seeded_special_haber_perfect,seeded_template,,,9.455307871865303,0.0
+has,125,v,A2,you have (haber),¿has visto a este hombre?,,has,1,119 5 44 116,71,119,retrieved,retrieved_corpus,,,10.964084508467941,0.0
+día,127,n,A2,day,El día está aquí.,,día,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,11.141119263250987,0.0
+tenemos,129,v,A2,we have (tener),Nosotros tenemos una casa.,,tenemos,1,18 10 91,39.666666666666664,91,seeded_special_tener_obj,seeded_template,,,9.370007416645102,0.0
+cosas,131,n,A2,things,Tenemos otras cosas que hacer.,,cosas,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,,,11.883787825873842,0.0
+mismo,134,adj,A2,same,Lo hicieron por sí mismos.,,mismos,4,11 71 12 29,30.75,71,retrieved,retrieved_corpus,,,11.387117227857635,0.0
+han,135,v,A2,have (haber),Ellos han dicho un lugar.,,han,1,11 109 10 172,75.5,172,seeded_special_haber_perfect,seeded_template,,,9.081863865282847,0.0
+hecho,136,n,A2,done; made; fact,El hecho está aquí.,,hecho,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.730137592219794,0.0
+puedes,138,v,A2,you can (poder),Tú puedes ir a la casa.,,puedes,1,22 52 5 3 91,34.6,91,seeded_special_poder_ir_place,seeded_template,,,9.330237397667466,0.0
+dijo,140,v,A2,said (decir),Ella dijo mucho.,,dijo,1,11 43,27,43,seeded_verb_adv,seeded_template,,,7.18490962463291,0.0
+estar,141,v,A2,to be,Ella está en la casa.,,está,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,11.315059496626404,0.0
+noche,143,n,A2,after dark; (late) at night; nocturnally,¿puedo pasar aquí la noche?,,noche,5,75 178 36 3,73,178,retrieved,retrieved_corpus,,,11.223748943981217,0.0
+trabajo,144,n,A2,work; job,No había trabajo.,,trabajo,2,4 39,21.5,39,retrieved,retrieved_corpus,,,11.568408941268636,0.0
+ir,145,v,A2,to go,Voy a hacer esto yo misma.,,voy,0,5 71 42 18 134,54,134,retrieved,retrieved_corpus,,,11.688050363606203,0.0
+mis,147,n,A2,my (pl.),El mis está aquí.,,mis,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,5.67451466037369,0.0
+sea,148,v,A2,be (subjunctive of ser),Ella sea buena.,,sea,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.608817376823712,0.0
+acuerdo,149,n,A2,agreement,No estoy de acuerdo con usted.,,acuerdo,3,4 26 1 16 92,27.8,92,retrieved,retrieved_corpus,,,14.602530877490816,0.0
+parece,151,v,A2,seems (parecer),Esto parece ser cierto.,,parece,1,42 9 250,100.33333333333333,250,retrieved,retrieved_corpus,,,10.069328299174252,0.0
+estamos,154,v,A2,we are (estar),Nosotros estamos en la casa.,,estamos,1,18 8 3 91,30,91,seeded_special_estar_place,seeded_template,,,9.404713864879335,0.0
+mundo,155,n,A2,world; earth,El mundo está aquí.,,mundo,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.688799355571048,0.0
+gente,156,n,A2,people,La gente está aquí.,,gente,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,11.552894448525688,0.0
+padre,158,n,A2,Father,Ahora mis padres están en casa.,,padres,2,45 27 26 8 91,39.4,91,retrieved,retrieved_corpus,,,12.109379998793262,0.0
+parte,163,n,A2,part,Hiciste tu parte.,,parte,2,71 37,54,71,retrieved,retrieved_corpus,,,8.59550665866847,0.0
+sido,164,v,A2,been (ser),Ella sido buena.,,sido,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,6.121006447178354,0.0
+momento,165,n,A2,moment; instant,Está contigo en este momento.,,momento,4,26 22 8 44,25,44,retrieved,retrieved_corpus,,,12.758171276006454,0.0
+podría,166,v,A2,could; might (poder),Eso no podría ser mejor.,,podría,2,33 4 9 107,38.25,107,retrieved,retrieved_corpus,,,11.405447799171293,0.0
+mira,168,v,A2,target,Mira lo que pasó.,,mira,0,11 2 178,63.666666666666664,178,retrieved,retrieved_corpus,,,12.994333928368667,0.0
+quiere,169,v,A2,wants (querer),Ella quiere una casa.,,quiere,1,11 10 91,37.333333333333336,91,seeded_special_querer_obj,seeded_template,,,11.02964163219668,0.0
+gran,171,adj,A2,big; large,,,gran,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+lugar,172,n,A2,place,Voy a verle en tu lugar.,,lugar,5,52 5 119 8 37,44.2,119,retrieved,retrieved_corpus,,,12.79965484833464,0.0
+hablar,173,v,A2,to talk,Quiero hablar sobre ello.,,hablar,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,,,13.622421660766516,0.0
+tener,174,v,A2,to have,Ella tiene una casa.,,tiene,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,11.388334094639582,0.0
+tenía,175,v,A2,had (tener),Él le dijo que tenía razón.,,tenía,4,11 11 109 2 248,76.2,248,retrieved,retrieved_corpus,,,11.148747300588385,0.0
+nuevo,177,adj,A2,new,,,nuevo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+pasa,178,v,A2,raisin,¿cómo lo pasa usted?,,pasa,3,65 11 92,56,92,retrieved,retrieved_corpus,,,11.741315185344986,0.0
+vas,179,v,A2,you go (ir),¿vas a algún lugar esta noche?,,vas,1,5 236 172 44 143,120,236,retrieved,retrieved_corpus,,,10.994177921988383,0.0
+claro,181,adj,A2,clear; easily understood,"Vi algo ahí, pero poco claro.",,claro,6,119 50 139 24 130,92.4,139,retrieved,retrieved_corpus,,,8.541356735631917,0.0
+dinero,182,n,A2,money,Le di el dinero.,,dinero,3,11 109 6,42,109,retrieved,retrieved_corpus,,,13.947734586640987,0.0
+madre,183,n,A2,mother,¿es usted su madre?,,madre,4,9 92 23,41.333333333333336,92,retrieved,retrieved_corpus,,,13.17251276583402,0.0
+mañana,184,n,A2,tomorrow,¿dónde estás esta mañana?,,mañana,4,111 26 44,60.333333333333336,111,retrieved,retrieved_corpus,,,9.916005299984517,0.0
+tipo,186,n,A2,dolled up; smartened up; dressed for a special occasion,El tipo está aquí.,,tipo,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.431352587157342,0.0
+días,188,n,A2,days,Los días está aquí.,,días,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,8.20027354480757,0.0
+mujer,191,n,A2,woman,El hombre es una mujer.,,mujer,4,6 116 9 10,35.25,116,retrieved,retrieved_corpus,,,13.20259604891188,0.0
+cosa,194,n,A2,thing,Tenemos otras cosas que hacer.,,cosas,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,,,12.883787825873842,0.0
+sabe,195,v,A2,knows (saber),Ella sabe que tú sabes.,,sabes,4,11 95 2 22,32.5,95,retrieved,retrieved_corpus,,,11.711790840463044,0.0
+haciendo,197,v,A2,to do,Ella haciendo un trabajo.,,haciendo,1,11 10 144,55,144,seeded_special_hacer_obj,seeded_template,,,5.219508219584759,0.0
+hijo,198,n,A2,son,No tengo nada para mis hijos.,,hijos,5,4 59 61 19 27,34,61,retrieved,retrieved_corpus,,,11.951404234826978,0.0
+dice,199,v,A2,says (decir),Ella dice un día.,,dice,1,11 10 127,49.333333333333336,127,v_a1_1,template_generated,,,9.863085875412052,0.0
+seguro,200,adj,A2,secure,Ya no estoy seguro de nada.,,seguro,3,40 4 26 1 61,26.4,61,retrieved,retrieved_corpus,,,14.167833532568075,0.0
+podemos,201,v,A2,a Spanish left wing political party,Nosotros podemos ir al mundo.,,podemos,1,18 52 28 155,63.25,155,seeded_special_poder_ir_place,seeded_template,,,10.109144701755922,0.0
+debe,202,v,A2,to owe,¿qué debe hacer?,,debe,2,17 71,44,71,retrieved,retrieved_corpus,,,12.184202633238472,0.0
+espera,203,v,A2,wait,Ella espera un tiempo.,,espera,1,11 10 86,35.666666666666664,86,v_a1_1,template_generated,,,9.048487587861745,0.0
+vale,204,v,A2,a voucher,"Vale, no pasa nada.",,vale,0,4 178 61,81,178,retrieved,retrieved_corpus,,,13.52188791978423,0.0
+será,205,v,A2,to be,Ella será buena.,,será,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,6.467580037458328,0.0
+haber,208,v,A2,have,Lo he dicho todo.,,he,1,11 109 38,52.666666666666664,109,retrieved,retrieved_corpus,,,12.059072831939837,0.0
+amigo,210,n,A2,friend,Me gustan tus amigos.,,amigos,3,18 229 37,94.66666666666667,229,retrieved,retrieved_corpus,,,11.322042477264825,0.0
+buena,212,adj,A2,inheritance,El hombre es buena.,,buena,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,11.72602626803318,0.0
+nombre,216,n,A2,name,El nombre está aquí.,,nombre,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.848374043000446,0.0
+tienen,217,v,A2,to have,¡aquí tienen de todo!,,tienen,2,36 1 38,25,38,retrieved,retrieved_corpus,,,10.419609751699017,0.0
+veces,218,n,A2,by; times,,,veces,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+mamá,219,n,A2,mum; mom,¿está mamá aquí?,,mamá,2,26 36,31,36,retrieved,retrieved_corpus,,,12.574792912197296,0.0
+buen,221,adj,A2,good,La vez es buen.,,buen,3,3 66 9,26,66,seeded_adj_fallback,seeded_template,,,8.690405117569231,0.0
+papá,223,n,A2,dad,"Mamá, ¿dónde está papá?",,papá,5,219 111 26,118.66666666666667,219,retrieved,retrieved_corpus,,,9.08442411807526,0.0
+quería,224,v,A2,to desire; to want; to want to,Ella no quería estar en casa.,,quería,2,11 4 26 8 91,28,91,retrieved,retrieved_corpus,,,13.826128934854472,0.0
+dije,225,v,A2,pleasant; nice; likable,Yo dije un amigo.,,dije,1,18 10 210,79.33333333333333,210,v_a1_1,template_generated,,,9.241470060797282,0.0
+pasado,227,n,A2,past,El pasado está aquí.,,pasado,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.512445608778975,0.0
+forma,228,n,A2,shape,Estás en mejor forma que yo.,,forma,3,26 8 107 2 18,32.2,107,retrieved,retrieved_corpus,,,11.66760535873953,0.0
+gusta,229,v,A2,taste,Ella gusta un día.,,gusta,1,11 10 127,49.333333333333336,127,v_a1_1,template_generated,,,9.32147583519161,0.0
+hizo,230,v,A2,to do,Ella hizo un trabajo.,,hizo,1,11 10 144,55,144,seeded_special_hacer_obj,seeded_template,,,7.824674280527013,0.0
+caso,231,n,A2,case,No hice caso a nadie.,,caso,2,4 71 5 160,60,160,retrieved,retrieved_corpus,,,11.200177888405468,0.0
+necesito,234,v,A2,to need,No necesito ser más claro.,,necesito,1,4 9 32 181,56.5,181,retrieved,retrieved_corpus,,,11.498804466610144,0.0
+oye,235,v,A2,hey! listen!,Oye mucho y habla poco.,,oye,0,43 7 173 130,88.25,173,retrieved,retrieved_corpus,,,11.510030842912027,0.0
+hemos,237,v,A2,we have (haber),Nosotros hemos esperado un acuerdo.,,hemos,1,18 203 10 149,95,203,seeded_special_haber_perfect,seeded_template,,,9.022870430355654,0.0
+cuenta,238,n,A2,count; tally,La cuenta está aquí.,,cuenta,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.263169319268032,0.0
+visto,239,v,A2,seen,¿has visto a mi padre?,,visto,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,,,13.276505975301369,0.0
+hora,244,n,A2,hour,Esta hora está aquí.,,hora,1,44 26 36,35.333333333333336,44,seeded_noun_here,seeded_template,,,10.495129527253415,0.0
+problema,245,n,A2,problem; issue; challenge,De seguro tendremos problemas.,,problemas,3,1 200 59,86.66666666666667,200,retrieved,retrieved_corpus,,,12.989549485604728,0.0
+crees,246,v,A2,to believe,¿cómo crees que me siento?,,crees,2,65 2 18 122,51.75,122,retrieved,retrieved_corpus,,,12.559005591249402,0.0
+año,247,n,A2,year,El año está aquí.,,año,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.755050136748146,0.0
+razón,248,n,A2,reason,Su madre tenía razón.,,razón,3,23 158 59,80,158,retrieved,retrieved_corpus,,,11.322987873313716,0.0
+primera,249,adj,A2,first gear,,,primera,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+cierto,250,adj,A2,a certain; a specific,,,cierto,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+saber,251,v,A2,to know; to understand,Sé que no lo harás.,,sé,0,2 4 11 71,22,71,retrieved,retrieved_corpus,,,12.697757317435583,0.0
+dicho,252,v,A2,said,Ya está todo dicho.,,dicho,3,40 26 38,34.666666666666664,40,retrieved,retrieved_corpus,,,13.449434114993583,0.0
+hacerlo,253,v,A2,to do,,,hacerlo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+mierda,254,n,A2,shit (solid excretory product evacuated from the bowels,Esto es una mierda.,,mierda,3,42 9 10,20.333333333333332,42,retrieved,retrieved_corpus,,,12.686383118971111,0.0
+idea,256,n,A2,idea,Ni tuve idea que estabas allí.,,idea,2,112 59 2 26 190,77.8,190,retrieved,retrieved_corpus,,,9.632122728340219,0.0
+familia,260,n,A2,family,Mi familia es grande.,,familia,1,27 9 171,69,171,retrieved,retrieved_corpus,,,11.799484091816442,0.0
+amor,262,n,A2,love,¿qué sabes del amor?,,amor,4,17 95 21,44.333333333333336,95,retrieved,retrieved_corpus,,,10.569249689077598,0.0
+pueden,264,v,A2,to be able to; can,Ellos pueden ver un amigo.,,pueden,1,11 119 10 210,87.5,210,seeded_special_poder_inf_obj,seeded_template,,,10.155976657886615,0.0
+importa,265,v,A2,to matter; to be important [+a (someone)],No me importa lo que decís.,,importa,2,4 18 11 2 109,28.8,109,retrieved,retrieved_corpus,,,13.115479902657286,0.0
+personas,267,n,A2,person (an individual,Las personas está aquí.,,personas,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,8.322126011355872,0.0
+policía,268,n,A2,Civility; polity; public order; police; fineness; neatness; urbanity,La policía está allí.,,policía,1,3 26 190,73,190,retrieved,retrieved_corpus,,,12.374020088226839,0.0
+ven,273,v,A2,to see; to spot,¡ven a casa!,,ven,1,5 91,48,91,retrieved,retrieved_corpus,,,13.320629002356805,0.0
+serio,274,adj,A2,serious; earnest; sober; solemn,¡no hablas en serio!,,serio,4,4 173 8,61.666666666666664,173,retrieved,retrieved_corpus,,,13.472326609448888,0.0
+ve,276,v,A2,letter: v,Ve por ahí.,,ve,0,12 139,75.5,139,retrieved,retrieved_corpus,,,12.15673601384384,0.0
+nueva,277,adj,A2,news; novelty,,,nueva,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+lado,279,n,A2,side,Estaremos lado a lado.,,lado,1,26 5 279,103.33333333333333,279,retrieved,retrieved_corpus,,,11.174202136247631,0.0
+manera,280,n,A2,way,Lo hago de esa manera.,,manera,4,11 71 1 83,41.5,83,retrieved,retrieved_corpus,,,11.343332880127369,0.0
+cabeza,281,n,A2,head,La cabeza está aquí.,,cabeza,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.344262340889664,0.0
+hombres,282,n,A2,man;,Tú y yo somos hombres.,,hombres,4,22 7 18 9,14,22,retrieved,retrieved_corpus,,,11.793515000216487,0.0
+historia,283,n,A2,history,Me gustan mucho estas historias.,,historias,4,18 229 43 44,83.5,229,retrieved,retrieved_corpus,,,11.869488944530353,0.0
+sería,285,v,A2,to be,Ella sería buena.,,sería,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.140866832598313,0.0
+salir,286,v,A2,to go out; to leave; to depart; to head out,Parece que algo salió mal.,,salió,3,151 2 50 220,105.75,220,retrieved,retrieved_corpus,,,11.542459190721782,0.0
+debería,287,v,A2,to owe,Ella siempre debería.,,debería,2,11 118,64.5,118,v_a1_2,template_generated,,,6.324052536021459,0.0
+van,288,v,A2,they go (ir),Ellos van a la casa.,,van,1,11 5 3 91,27.5,91,seeded_special_ir_place,seeded_template,,,10.113306761156688,0.0
+ciudad,289,n,A2,city,La ciudad está aquí.,,ciudad,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,11.183702730422027,0.0
+poder,292,n,A2,to be able to; can,Eso no podría ser mejor.,,podría,2,33 4 9 107,38.25,107,retrieved,retrieved_corpus,,,11.405447799171293,0.0
+amigos,294,n,A2,friend,"Amigos, me debo ir.",,amigos,0,18 202 52,90.66666666666667,202,retrieved,retrieved_corpus,,,12.722459726700464,0.0
+chica,295,n,A2,female equivalent of chico: girl,Es realmente una buena chica.,,chica,4,9 243 10 55,79.25,243,retrieved,retrieved_corpus,,,11.663110705229085,0.0
+mayor,296,adj,A2,of age,,,mayor,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+sabía,297,v,A2,to know; to understand,Ella sabía la verdad.,,sabía,1,11 3 97,37,97,seeded_special_saber_truth,seeded_template,,,10.052944596819632,0.0
+chicos,298,n,A2,chic,"Chicos, no puedo hacerlo sin vosotros.",,chicos,0,4 75 71 80 22,50.4,80,retrieved,retrieved_corpus,,,12.479302932070281,0.0
+hermano,299,n,A2,brother,Este es mi hermano.,,hermano,3,44 9 27,26.666666666666668,44,retrieved,retrieved_corpus,,,15.3200237442838,0.0
+primer,301,adj,A2,first; first up,,,primer,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+país,302,n,A2,country,El país está aquí.,,país,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.965868591488123,0.0
+vaya,303,v,A2,joke,¡vaya día de mierda!,,vaya,1,127 1 254,127.33333333333333,254,retrieved,retrieved_corpus,,,9.80205166810463,0.0
+agua,304,n,A2,water,La agua está aquí.,,agua,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.482891777001655,0.0
+misma,305,adj,A2,same,,,misma,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+veo,306,v,A2,to see; to spot,Yo veo un padre.,,veo,1,18 10 158,62,158,v_a1_1,template_generated,,,9.266692910318076,0.0
+haces,307,v,A2,to do,Tú haces un trabajo.,,haces,1,22 10 144,58.666666666666664,144,seeded_special_hacer_obj,seeded_template,,,6.813936759757768,0.0
+camino,308,n,A2,way; route,¿sabes el camino?,,camino,3,95 6,50.5,95,retrieved,retrieved_corpus,,,9.825136659965583,0.0
+persona,309,n,A2,person (an individual,La persona está aquí.,,persona,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.608613508886128,0.0
+iba,310,v,A2,was going (ir),Ella iba al mundo.,,iba,1,11 28 155,64.66666666666667,155,seeded_special_ir_place,seeded_template,,,10.167603775187532,0.0
+realidad,311,n,A2,reality,La realidad está aquí.,,realidad,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.567654626356926,0.0
+fin,312,n,A2,end,El fin está aquí.,,fin,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.503141605651997,0.0
+importante,313,adj,A2,important; that cares; that matters,Me han dicho que era importante.,,importante,5,18 39 109 2 9,35.4,109,retrieved,retrieved_corpus,,,11.776934316437215,0.0
+primero,314,adj,A2,first; first up,,,primero,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+digo,315,v,A2,I say (decir),Yo digo un día.,,digo,1,18 10 127,51.666666666666664,127,v_a1_1,template_generated,,,7.062575723901378,0.0
+horas,316,n,A2,hour,,,horas,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+semana,317,n,A2,week,He esperado más de una semana.,,semana,5,39 203 32 1 10,57,203,retrieved,retrieved_corpus,,,12.533854499493033,0.0
+puerta,318,n,A2,door,¿quién estaba a la puerta?,,puerta,5,106 26 5 3,35,106,retrieved,retrieved_corpus,,,10.95525242011119,0.0
+somos,319,v,A2,we are (ser),Nosotros somos buenos.,,somos,1,18 55,36.5,55,seeded_special_ser_adj,seeded_template,,,6.635693356865373,0.0
+pensé,320,v,A2,to think; ponder,Yo pensé mucho.,,pensé,1,18 43,30.5,43,seeded_verb_adv,seeded_template,,,6.78758460046496,0.0
+muerte,322,n,A2,death,Soy la muerte.,,muerte,2,9 3,6,9,retrieved,retrieved_corpus,,,10.444006979611904,0.0
+problemas,323,n,A2,problem; issue; challenge,De seguro tendremos problemas.,,problemas,3,1 200 59,86.66666666666667,200,retrieved,retrieved_corpus,,,12.989549485604728,0.0
+punto,324,n,A2,point,El punto está aquí.,,punto,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.4831249139406,0.0
+pasó,326,v,A2,dried,Ella pasó un tiempo.,,pasó,1,11 10 86,35.666666666666664,86,v_a1_1,template_generated,,,9.582626470773434,0.0
+buenas,328,adj,A2,hello; hi,El problema es buenas.,,buenas,3,6 245 9,86.66666666666667,245,seeded_adj_fallback,seeded_template,,,6.355252623700873,0.0
+supuesto,329,n,A2,supposed; self-styled; alleged,Por supuesto que esperaré.,,supuesto,1,12 2 203,72.33333333333333,203,retrieved,retrieved_corpus,,,11.95962868000927,0.0
+da,331,v,A2,to give; to give out,Ella da una casa.,,da,1,11 10 91,37.333333333333336,91,v_a1_1,template_generated,,,9.831215870543549,0.0
+mano,332,n,A2,hand,Solo tengo dos manos.,,manos,3,68 59 79,68.66666666666667,79,retrieved,retrieved_corpus,,,13.468284622642821,0.0
+niños,333,n,A2,child; boy,Los niños está aquí.,,niños,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,10.953821150612821,0.0
+volver,334,v,A2,to return; to revert; to get back,Puede que vuelva.,,vuelva,2,75 2,38.5,75,retrieved,retrieved_corpus,,,13.532485415927152,0.0
+señora,336,n,A2,lady,El señora está aquí.,,señora,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,7.99640224286051,0.0
+cariño,337,n,A2,affection; fondness,El cariño está aquí.,,cariño,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,7.894237118107313,0.0
+ayuda,338,n,A2,help; aid,No necesitamos ayuda.,,ayuda,2,4 234,119,234,retrieved,retrieved_corpus,,,13.880757882372453,0.0
+ojos,339,n,A2,eye,Los ojos está aquí.,,ojos,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,8.215095139238315,0.0
+pasar,341,v,A2,to pass; to hand; to slip,¿qué ha pasado hoy?,,pasado,3,17 39 187,81,187,retrieved,retrieved_corpus,,,13.681386015280705,0.0
+general,342,adj,A2,general; overall,"En general, las cosas van bien.",,general,1,8 6 131 52 31,45.6,131,retrieved,retrieved_corpus,,,12.452135390023287,0.0
+debo,344,v,A2,to owe,Yo debo una verdad.,,debo,1,18 10 97,41.666666666666664,97,v_a1_1,template_generated,,,9.117250029952032,0.0
+minutos,345,n,A2,minute,Unos minutos está aquí.,,minutos,1,10 26 36,24,36,seeded_noun_here,seeded_template,,,6.698631999926953,0.0
+gobierno,347,n,A2,government,El gobierno está aquí.,,gobierno,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,11.019521388807059,0.0
+manos,348,n,A2,man; guy; dude,Solo tengo dos manos.,,manos,3,68 59 79,68.66666666666667,79,retrieved,retrieved_corpus,,,13.468284622642821,0.0
