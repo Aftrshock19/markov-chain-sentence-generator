@@ -1,0 +1,364 @@
+lemma,rank,pos,band,translation,sentence,target_form,canonical_lemma,target_morph,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,score,grammatical_ok,natural_ok,learner_clear_ok,notes
+es,9,v,A1,is (ser),Ella es buena.,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,8.317620616764355,1,1,1,seeded_special_ser_adj
+qué,17,pron,A1,what,¿qué queréis hacer?,qué,qué,Number=Sing|PronType=Rel,1,76 71,73.5,76,retrieved,retrieved_corpus,10.214268517288495,1,1,1,
+qué,17,pron,A1,what,¿qué puedes hacer por mi?,qué,qué,Number=Sing|PronType=Rel,1,75 71 12 27,46.25,75,retrieved,retrieved_corpus,7.997550962500543,1,0,1,
+está,26,v,A1,is (estar),Ella está en la casa.,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,8.615059496626404,1,1,1,seeded_special_estar_place
+está,26,v,A1,is (estar),Ella está en el trabajo.,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 6 144,42.25,144,seeded_special_estar_place,seeded_template,6.72023985393391,1,0,0,seeded_special_estar_place
+sí,29,pron,A1,yes; oneself,Te dije que sí.,sí,sí,,3,22 109 2,44.333333333333336,109,retrieved,retrieved_corpus,9.770806671109485,1,1,1,
+sí,29,pron,A1,yes; oneself,Creo que sí que está.,sí,sí,,2,89 2 2 26,29.75,89,retrieved,retrieved_corpus,9.643365572047735,1,1,1,
+aquí,36,adv,A1,here,¿no sientes nada aquí?,aquí,aquí,,4,4 122 61,62.333333333333336,122,retrieved,retrieved_corpus,11.155584755823721,1,1,1,
+aquí,36,adv,A1,here,¿qué hacemos aquí?,aquí,aquí,,3,17 71,44,71,retrieved,retrieved_corpus,9.883829557292916,1,1,1,
+aquí,36,adv,A1,here,¿quién estaba aquí?,aquí,aquí,,3,106 26,66,106,retrieved,retrieved_corpus,9.300851380270775,1,1,1,
+aquí,36,adv,A1,here,Ven aquí ahora mismo.,aquí,aquí,,1,119 45 134,99.33333333333333,134,retrieved,retrieved_corpus,8.269308049494926,1,0,1,
+o,41,conj,A1,or,¿quieres que vaya o no?,o,o,,4,76 2 52 4,33.5,76,retrieved,retrieved_corpus,10.684268622771043,1,1,1,
+esto,42,pron,A1,this (neuter),¿sólo hay esto?,esto,esto,,3,68 39,53.5,68,retrieved,retrieved_corpus,7.492599564454689,1,0,0,
+esto,42,pron,A1,this (neuter),¿cómo va esto?,esto,esto,,3,65 52,58.5,65,retrieved,retrieved_corpus,7.033616892569391,1,0,0,
+ahora,45,adv,A1,now...now; whether...or,Ahora quiero ir y hacerlo.,ahora,ahora,,0,76 52 7 71,51.5,76,retrieved,retrieved_corpus,7.90118221329277,1,0,1,
+así,46,adv,A1,like this,No quiero que sea así.,así,así,,4,4 76 2 9,22.75,76,retrieved,retrieved_corpus,13.399992016429618,1,1,1,
+hay,48,v,A1,there is; there are,Hay una casa.,hay,haber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,10 91,50.5,91,seeded_special_haber_existential,seeded_template,7.815982552155925,1,0,1,seeded_special_haber_existential
+hay,48,v,A1,there is; there are,Hay un hombre.,hay,haber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,10 116,63,116,seeded_special_haber_existential,seeded_template,5.246117056679816,1,0,0,seeded_special_haber_existential
+este,49,determiner,A1,this,¿qué estás haciendo con esto?,esto,este,,5,17 26 71 16,32.5,71,retrieved,retrieved_corpus,10.29816040910644,1,1,1,
+algo,50,pron,A1,something; anything,Tienes algo que es mío.,algo,algo,Number=Sing|PronType=Ind,1,59 2 9 27,24.25,59,retrieved,retrieved_corpus,9.90366882766971,1,1,1,
+algo,50,pron,A1,something; anything,Tienes algo mío.,algo,algo,Number=Sing|PronType=Ind,1,59 27,43,59,retrieved,retrieved_corpus,8.881214774595382,1,1,1,
+estoy,51,v,A1,to be,No sé dónde estoy.,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,4 9 111,41.333333333333336,111,retrieved,retrieved_corpus,12.087139640684061,1,1,1,
+estoy,51,v,A1,to be,Yo estoy en la casa.,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 8 3 91,30,91,seeded_special_estar_place,seeded_template,9.198312328651951,1,1,1,seeded_special_estar_place
+estoy,51,v,A1,to be,¿en dónde estoy?,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,8 111,59.5,111,retrieved,retrieved_corpus,8.559946083875959,1,1,1,
+estoy,51,v,A1,to be,¿puedes decirme dónde estoy?,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,4,75 109 111,98.33333333333333,111,retrieved,retrieved_corpus,8.095028967101673,1,0,1,
+estoy,51,v,A1,to be,¿ahora dónde estoy?,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,45 111,78,111,retrieved,retrieved_corpus,7.355352835514031,1,0,0,
+estoy,51,v,A1,to be,Yo estoy en el trabajo.,estoy,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 8 6 144,44,144,seeded_special_estar_place,seeded_template,7.30435898880506,1,0,0,seeded_special_estar_place
+vamos,52,v,A1,we go; let's go (ir),Nosotros vamos a la casa.,vamos,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,8.540150082422905,1,1,1,seeded_special_ir_place
+vamos,52,v,A1,we go; let's go (ir),¡vamos! ¡tú puedes!,vamos,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,22 75,48.5,75,retrieved,retrieved_corpus,6.474869882784647,1,0,0,
+vamos,52,v,A1,we go; let's go (ir),Nosotros vamos al trabajo.,vamos,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 28 144,63.333333333333336,144,seeded_special_ir_place,seeded_template,4.218388109040806,1,0,0,seeded_special_ir_place
+ser,54,v,A1,to be,Ella es buena.,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,9.817620616764355,1,1,1,seeded_special_ser_adj
+bueno,55,adj,A1,good,Creo que es muy bueno.,bueno,bueno,,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,12.180317463846073,1,1,1,
+bueno,55,adj,A1,good,Has sido tan bueno conmigo.,bueno,bueno,,3,39 9 87 18,38.25,87,retrieved,retrieved_corpus,10.851616308633709,1,1,1,
+bueno,55,adj,A1,good,La casa es buena.,buena,bueno,,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,10.303648170036166,1,1,1,seeded_adj_fallback
+bueno,55,adj,A1,good,Ella es buena.,buena,bueno,,2,11 9,10,11,adj_a1_3,template_generated,9.817620616764355,1,1,1,adj_a1_3
+bueno,55,adj,A1,good,El señor es bueno.,bueno,bueno,,3,6 115 9,43.333333333333336,115,seeded_adj_fallback,seeded_template,8.146035449602053,1,1,1,seeded_adj_fallback
+bueno,55,adj,A1,good,El hecho es bueno.,bueno,bueno,,3,6 71 9,28.666666666666668,71,seeded_adj_fallback,seeded_template,7.800238836985275,1,0,1,seeded_adj_fallback
+bueno,55,adj,A1,good,El hombre es bueno.,bueno,bueno,,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,7.7376977835113205,1,0,1,seeded_adj_fallback
+bueno,55,adj,A1,good,"Bueno, ¿qué quieres que diga?",bueno,bueno,,0,17 76 2 109,51,109,retrieved,retrieved_corpus,7.45887400917855,1,0,0,multi_clause_context
+bueno,55,adj,A1,good,Él es bueno.,bueno,bueno,,2,11 9,10,11,adj_a1_3,template_generated,7.416376119994968,1,0,0,adj_a1_3
+bueno,55,adj,A1,good,El acuerdo es bueno.,bueno,bueno,,3,6 149 9,54.666666666666664,149,seeded_adj_fallback,seeded_template,7.248870763930947,1,0,0,seeded_adj_fallback
+fue,58,v,A1,was (ser/ir),Ella fue buena.,fue,ser,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,10.125654750802413,1,1,1,seeded_special_ser_adj
+tengo,59,v,A1,I have (tener),Yo tengo una casa.,tengo,tener,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 91,39.666666666666664,91,seeded_special_tener_obj,seeded_template,9.608761320758578,1,1,1,seeded_special_tener_obj
+tengo,59,v,A1,I have (tener),Yo tengo un trabajo.,tengo,tener,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 144,57.333333333333336,144,seeded_special_tener_obj,seeded_template,7.2362556127353255,1,0,0,seeded_special_tener_obj
+era,60,v,A1,was (ser); era,Ella era buena.,era,ser,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,9.762093495045313,1,1,1,seeded_special_ser_adj
+tiene,62,v,A1,has (tener),Ella tiene una casa.,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,10.388334094639582,1,1,1,seeded_special_tener_obj
+tiene,62,v,A1,has (tener),Ella tiene un trabajo.,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 144,55,144,seeded_special_tener_obj,seeded_template,7.883670875059008,1,0,1,seeded_special_tener_obj
+cómo,65,adv,A1,how?,¿cómo vamos a hacerlo?,cómo,cómo,PronType=Ind,1,52 5 71,42.666666666666664,71,retrieved,retrieved_corpus,9.772262312958988,1,1,1,
+estás,67,v,A1,you are (estar),Tú estás en la casa.,estás,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 8 3 91,31,91,seeded_special_estar_place,seeded_template,8.284337740476804,1,1,1,seeded_special_estar_place
+estás,67,v,A1,you are (estar),Tú estás en el trabajo.,estás,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 8 6 144,45,144,template_special_estar_place,template_generated,5.480650614368703,1,0,0,template_special_estar_place
+son,70,v,A1,are (ser),Ellos son buenos.,son,ser,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,6.752511345294751,1,0,0,seeded_special_ser_adj
+he,72,v,A1,I have (haber),Lo he dicho todo.,he,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,11 109 38,52.666666666666664,109,retrieved,retrieved_corpus,11.059072831939837,1,1,1,
+puedo,75,v,A1,I can (poder),Yo puedo ir al trabajo.,puedo,poder,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 52 28 144,60.5,144,seeded_special_poder_ir_place,seeded_template,7.013720748424909,1,0,0,seeded_special_poder_ir_place
+quiero,76,v,A1,I want (querer),Yo quiero una casa.,quiero,querer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 91,39.666666666666664,91,seeded_special_querer_obj,seeded_template,8.829369192665265,1,1,1,seeded_special_querer_obj
+puede,78,v,A1,can; may (poder),Ella puede ir al trabajo.,puede,poder,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 52 28 144,58.75,144,seeded_special_poder_ir_place,seeded_template,6.950474768904823,1,0,0,seeded_special_poder_ir_place
+soy,81,v,A1,I am (ser),No sé quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,4 9 106,39.666666666666664,106,retrieved,retrieved_corpus,12.051329994394264,1,1,1,
+soy,81,v,A1,I am (ser),No sabe quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,4 95 106,68.33333333333333,106,retrieved,retrieved_corpus,11.396666507036748,1,1,1,
+soy,81,v,A1,I am (ser),No saben quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,4 95 106,68.33333333333333,106,retrieved,retrieved_corpus,10.610956045560878,1,1,1,
+soy,81,v,A1,I am (ser),Tú no sabes quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,4,22 4 95 106,56.75,106,retrieved,retrieved_corpus,10.417188531782404,1,1,1,
+soy,81,v,A1,I am (ser),Ellas saben quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,3,11 95 106,70.66666666666667,106,retrieved,retrieved_corpus,9.648458461103687,1,1,1,
+soy,81,v,A1,I am (ser),Sé quién soy.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,2,9 106,57.5,106,retrieved,retrieved_corpus,9.265351486775412,1,1,1,
+soy,81,v,A1,I am (ser),Yo soy bueno.,soy,ser,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 55,36.5,55,seeded_special_ser_adj,seeded_template,7.204286586488225,1,0,0,seeded_special_ser_adj
+ese,83,determiner,A1,that,¿de quién es eso otro?,eso,ese,,4,1 106 9 133,62.25,133,retrieved,retrieved_corpus,10.643973504912445,1,1,1,
+estaba,84,v,A1,was (estar),Ella estaba en la casa.,estaba,estar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,9.605026768153094,1,1,1,seeded_special_estar_place
+estaba,84,v,A1,was (estar),Ella estaba en el trabajo.,estaba,estar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 8 6 144,42.25,144,seeded_special_estar_place,seeded_template,7.7393141701048185,1,0,1,seeded_special_estar_place
+también,85,adv,A1,also; too; as well,Yo también estoy bien.,también,también,,1,18 26 31,25,31,retrieved,retrieved_corpus,14.379233654816398,1,1,1,
+tiempo,86,n,A1,time,No tuve tiempo.,tiempo,tiempo,Gender=Masc|Number=Sing,2,4 59,31.5,59,retrieved,retrieved_corpus,14.560089393263635,1,1,1,
+tan,87,adv,A1,so; as,Tan solo tenemos que hacerlo.,tan,tan,,0,68 59 2 71,50,71,retrieved,retrieved_corpus,10.481906606461859,1,1,1,
+creo,89,v,A1,I believe; I think (creer),Yo creo eso.,creo,creer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 33,25.5,33,seeded_special_creer_object,seeded_template,10.234711924230655,1,1,1,seeded_special_creer_object
+tienes,90,v,A1,you have (tener),Tú tienes una casa.,tienes,tener,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 10 91,41,91,seeded_special_tener_obj,seeded_template,8.429859511264706,1,1,1,seeded_special_tener_obj
+tienes,90,v,A1,you have (tener),Tú tienes un trabajo.,tienes,tener,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 10 144,58.666666666666664,144,seeded_special_tener_obj,seeded_template,6.071507617419095,1,0,0,seeded_special_tener_obj
+casa,91,n,A1,house,¿ella está en casa?,casa,casa,Gender=Fem|Number=Sing,4,11 26 8,15,26,retrieved,retrieved_corpus,15.50272063549803,1,1,1,
+casa,91,n,A1,house,Esa casa es suya.,casa,casa,Gender=Fem|Number=Sing,1,83 9 23,38.333333333333336,83,retrieved,retrieved_corpus,11.225701210653188,1,1,1,
+casa,91,n,A1,house,La casa está aquí.,casa,casa,Gender=Fem|Number=Sing,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,10.652599476228351,1,0,0,seeded_noun_here
+casa,91,n,A1,house,Él tiene una casa.,casa,casa,Gender=Fem|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,10.517142026293074,1,1,1,n_a1_3
+casa,91,n,A1,house,Ella tiene una casa.,casa,casa,Gender=Fem|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,10.388334094639582,1,1,1,n_a1_3
+casa,91,n,A1,house,Yo tengo una casa.,casa,casa,Gender=Fem|Number=Sing,3,18 59 10,29,59,n_a1_3,template_generated,9.608761320758578,1,1,1,n_a1_3
+usted,92,pron,A1,second person formal,Usted sabe quién es ella.,usted,usted,Case=Nom|Number=Sing|Person=2|Polite=Form|PronType=Prs,0,95 106 9 11,55.25,106,retrieved,retrieved_corpus,10.119141664307117,1,1,1,
+voy,94,v,A1,I go (ir),Yo voy a la casa.,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 5 3 91,29.25,91,seeded_special_ir_place,seeded_template,10.462629045123132,1,1,1,seeded_special_ir_place
+voy,94,v,A1,I go (ir),Yo voy al trabajo.,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,18 28 144,63.333333333333336,144,seeded_special_ir_place,seeded_template,6.63513720424127,1,0,0,seeded_special_ir_place
+sabes,95,v,A1,you know?,¿sabes quién es él?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,106 9 11,42,106,retrieved,retrieved_corpus,12.026550230007507,1,1,1,
+sabes,95,v,A1,you know?,¿sabes quién era él?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,106 9 11,42,106,retrieved,retrieved_corpus,11.485831059856942,1,1,1,
+sabes,95,v,A1,you know?,¿sabes qué es esto?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,17 9 42,22.666666666666668,42,retrieved,retrieved_corpus,11.084606800837875,1,1,1,
+sabes,95,v,A1,you know?,Ella sabe que tú sabes.,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,4,11 95 2 22,32.5,95,retrieved,retrieved_corpus,10.511790840463044,1,1,1,
+sabes,95,v,A1,you know?,¿sabes hacer de todo?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,71 1 38,36.666666666666664,71,retrieved,retrieved_corpus,10.171217006204296,1,1,1,
+sabes,95,v,A1,you know?,¿sabes de quién es esto?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1 106 9 42,39.5,106,retrieved,retrieved_corpus,9.954595721039293,1,1,1,
+sabes,95,v,A1,you know?,¿sabes quién es?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,106 9,57.5,106,retrieved,retrieved_corpus,8.723770382938541,1,1,1,
+sabes,95,v,A1,you know?,¿sabes dónde es?,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,111 9,60,111,retrieved,retrieved_corpus,8.37719679265857,1,0,1,
+sabes,95,v,A1,you know?,Tú sabes la verdad.,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 3 97,40.666666666666664,97,seeded_special_saber_truth,seeded_template,8.191350689564242,1,1,1,seeded_special_saber_truth
+eres,96,v,A1,to be,¿por qué eres como eres?,eres,ser,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,5,12 17 9 30,17,30,retrieved,retrieved_corpus,10.845055899889676,1,1,1,
+eres,96,v,A1,to be,Él sabe quién eres.,eres,ser,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,3,11 95 106,70.66666666666667,106,retrieved,retrieved_corpus,10.79327105705914,1,1,1,
+eres,96,v,A1,to be,¿de quién eres?,eres,ser,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,3,1 106,53.5,106,retrieved,retrieved_corpus,10.126813688700665,1,1,1,
+eres,96,v,A1,to be,Sé muy bien quién eres.,eres,ser,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,4,9 43 31 106,47.25,106,retrieved,retrieved_corpus,9.847792939639465,1,1,1,
+eres,96,v,A1,to be,Tú eres bueno.,eres,ser,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 55,38.5,55,seeded_special_ser_adj,seeded_template,6.646831756230821,1,0,0,seeded_special_ser_adj
+solo,99,adj,A1,sole,¿puedes ir sola?,sola,solo,Gender=Fem|Number=Sing,3,75 52,63.5,75,retrieved,retrieved_corpus,10.037430608768434,1,1,1,
+va,103,v,A2,goes (ir),Ella va a la casa.,va,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 5 3 91,27.5,91,seeded_special_ir_place,seeded_template,10.811809900220933,1,1,1,seeded_special_ir_place
+va,103,v,A2,goes (ir),Ella va al trabajo.,va,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 28 144,61,144,seeded_special_ir_place,seeded_template,7.140542256782377,1,0,0,seeded_special_ir_place
+hola,104,interj,A2,hello; hi; hey,No me dijo ni hola.,hola,hola,,4,4 18 109 112,60.75,112,retrieved,retrieved_corpus,11.475692364535389,1,1,1,
+hola,104,interj,A2,hello; hi; hey,"Hola, soy yo.",hola,hola,,0,9 18,13.5,18,retrieved,retrieved_corpus,9.25650143495584,1,0,0,multi_clause_context
+hola,104,interj,A2,hello; hi; hey,¡hola! ¿qué tal estás?,hola,hola,,1,17 161 26,68,161,retrieved,retrieved_corpus,7.805523402742644,1,0,1,
+hola,104,interj,A2,hello; hi; hey,"Hola, ¿cómo está?",hola,hola,,0,65 26,45.5,65,retrieved,retrieved_corpus,6.514830248549451,1,0,0,multi_clause_context
+mucho,105,determiner,A2,much; a lot of,Él me debe mucho dinero.,mucho,mucho,,3,11 18 202 182,103.25,202,retrieved,retrieved_corpus,12.703722537848837,1,1,1,
+mucho,105,determiner,A2,much; a lot of,Tengo mucho trabajo que hacer mañana.,mucho,mucho,,1,59 144 2 71 184,92,184,retrieved,retrieved_corpus,10.258405927630047,1,1,1,
+quién,106,pron,A2,who?; whom?,No saben quién soy.,quién,quién,Number=Sing|PronType=Rel,2,4 95 9,36,95,retrieved,retrieved_corpus,11.610956045560878,1,1,1,
+quién,106,pron,A2,who?; whom?,¿quién no está de acuerdo?,quién,quién,Number=Sing|PronType=Rel,1,4 26 1 149,45,149,retrieved,retrieved_corpus,11.208680325484046,1,1,1,
+quién,106,pron,A2,who?; whom?,¿de quién es eso otro?,quién,quién,Number=Sing|PronType=Rel,2,1 9 33 133,44,133,retrieved,retrieved_corpus,10.843973504912444,1,1,1,
+mejor,107,adj,A2,better,Sabíamos que éramos mejores que eso.,mejores,mejor,Degree=Cmp|Number=Plur,3,95 2 9 2 33,28.2,95,retrieved,retrieved_corpus,11.246820922008496,1,1,1,
+decir,109,v,A2,to say; to tell,No sé qué debería decir.,decir,decir,VerbForm=Inf,4,4 9 17 202,58,202,retrieved,retrieved_corpus,11.846329636819746,1,1,1,
+decir,109,v,A2,to say; to tell,"Bueno, ¿qué quieres que diga?",diga,decir,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,6,55 17 76 2,37.5,76,retrieved,retrieved_corpus,8.658874009178549,1,0,0,multi_clause_context
+dónde,111,adv,A2,where?,¿de dónde soy?,dónde,dónde,PronType=Ind,2,1 9,5,9,retrieved,retrieved_corpus,10.839248969318096,1,1,1,
+ni,112,conj,A2,neither... nor,No tiene ni idea de nada.,ni,ni,,2,4 59 256 1 61,76.2,256,retrieved,retrieved_corpus,12.998456726167404,1,1,1,
+ni,112,conj,A2,neither... nor,Ni me dijo ni le dije.,ni,ni,,0,18 109 112 11 109,71.8,112,retrieved,retrieved_corpus,8.968033479363573,1,1,1,
+están,113,v,A2,are (estar),Ellos están en la casa.,están,estar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,10.453529498770774,1,1,1,seeded_special_estar_place
+están,113,v,A2,are (estar),Ellos están en el trabajo.,están,estar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 6 144,42.25,144,seeded_special_estar_place,seeded_template,7.592060074213882,1,0,1,seeded_special_estar_place
+hombre,116,n,A2,man;,¿quiénes son esos hombres?,hombres,hombre,Gender=Masc|Number=Plur,4,106 9 83,66,106,retrieved,retrieved_corpus,7.930610326987496,1,0,1,
+ver,119,v,A2,to see; to spot,¿la quieres ver ahora?,ver,ver,VerbForm=Inf,3,3 76 45,41.333333333333336,76,retrieved,retrieved_corpus,13.216947595897114,1,1,1,
+ver,119,v,A2,to see; to spot,De aquí no se ve nada.,ve,ver,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,4,1 36 4 15 61,23.4,61,retrieved,retrieved_corpus,12.93147967591968,1,1,1,
+ver,119,v,A2,to see; to spot,¿has visto a mi padre?,visto,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,12.276505975301369,1,1,1,
+ver,119,v,A2,to see; to spot,Ve allí conmigo.,ve,ver,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,0,190 18,104,190,retrieved,retrieved_corpus,10.882082941676812,1,1,1,
+quieres,121,v,A2,you want (querer),No sé qué quieres que diga.,quieres,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,3,4 9 17 2 109,28.2,109,retrieved,retrieved_corpus,12.5717679301984,1,1,1,
+quieres,121,v,A2,you want (querer),¿quieres que vaya ahora?,quieres,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 52 45,33,52,retrieved,retrieved_corpus,12.44002932570362,1,1,1,
+quieres,121,v,A2,you want (querer),¿quieres que vaya con ellos?,quieres,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 52 16 11,20.25,52,retrieved,retrieved_corpus,10.400704004215727,1,1,1,
+quieres,121,v,A2,you want (querer),Tú quieres una casa.,quieres,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 10 91,41,91,seeded_special_querer_obj,seeded_template,9.852064630307737,1,1,1,seeded_special_querer_obj
+dios,124,prop,A2,god,"¡oh, dios! ¿qué estás haciendo?",dios,dios,,3,117 17 26 71,57.75,117,retrieved,retrieved_corpus,8.556375992189151,1,0,0,multi_clause_context
+has,125,v,A2,you have (haber),¿has visto a este hombre?,has,haber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,119 5 44 116,71,119,retrieved,retrieved_corpus,10.964084508467941,1,1,1,
+antes,126,adv,A2,before (earlier than),Él ha hecho esto antes.,antes,antes,,4,11 39 71 42,40.75,71,retrieved,retrieved_corpus,11.907807483460333,1,1,1,
+antes,126,adv,A2,before (earlier than),Estoy seguro de haberlo visto antes.,antes,antes,,5,26 200 1 39 119,77,200,retrieved,retrieved_corpus,10.689929808630914,1,1,1,
+desde,128,prep,A2,since,No me ha hablado desde entonces.,desde,desde,,4,4 18 39 173 88,64.4,173,retrieved,retrieved_corpus,10.993597050431378,1,1,1,
+tenemos,129,v,A2,we have (tener),Nosotros tenemos una casa.,tenemos,tener,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 91,39.666666666666664,91,seeded_special_tener_obj,seeded_template,9.370007416645102,1,1,1,seeded_special_tener_obj
+tenemos,129,v,A2,we have (tener),Nosotros tenemos un trabajo.,tenemos,tener,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 10 144,57.333333333333336,144,seeded_special_tener_obj,seeded_template,5.967026812536649,1,0,0,seeded_special_tener_obj
+poco,130,adv,A2,little; not much,¿quieres un poco?,poco,poco,,3,76 10,43,76,retrieved,retrieved_corpus,11.919465875169553,1,1,1,
+cosas,131,n,A2,things,Tenemos otras cosas que hacer.,cosas,cosa,Gender=Fem|Number=Plur,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,11.883787825873842,1,1,1,
+cosas,131,n,A2,things,Cosas así pasan todo el tiempo.,cosas,cosa,Gender=Fem|Number=Plur,0,46 178 38 6 86,70.8,178,retrieved,retrieved_corpus,10.530336270438353,1,1,1,
+cosas,131,n,A2,things,¿qué tal van las cosas?,cosas,cosa,Gender=Fem|Number=Plur,5,17 161 52 6,59,161,retrieved,retrieved_corpus,10.000099290273582,1,1,1,
+otra,133,determiner,A2,another; other (fem.),¡el amor es otra cosa!,otra,otro,Gender=Fem|Number=Sing|PronType=Ind,4,6 262 9 131,102,262,retrieved,retrieved_corpus,11.38481684911299,1,1,1,
+otra,133,determiner,A2,another; other (fem.),Él quiere vernos otra vez.,otra,otro,Gender=Fem|Number=Sing|PronType=Ind,3,11 76 119 66,68,119,retrieved,retrieved_corpus,11.292597736503941,1,1,1,
+mismo,134,adj,A2,same,Lo hicieron por sí mismos.,mismos,mismo,Gender=Masc|Number=Plur|PronType=Dem,4,11 71 12 29,30.75,71,retrieved,retrieved_corpus,11.387117227857635,1,1,1,
+alguien,137,pron,A2,someone; somebody,Alguien debería decir algo.,alguien,alguien,Number=Sing|PronType=Ind,0,202 109 50,120.33333333333333,202,retrieved,retrieved_corpus,11.566690026448935,1,1,1,
+puedes,138,v,A2,you can (poder),Tú puedes ir a la casa.,puedes,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 52 5 3 91,34.6,91,seeded_special_poder_ir_place,seeded_template,9.330237397667466,1,1,1,seeded_special_poder_ir_place
+puedes,138,v,A2,you can (poder),Tú puedes ir al trabajo.,puedes,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 52 28 144,61.5,144,seeded_special_poder_ir_place,seeded_template,6.010920110798861,1,0,0,seeded_special_poder_ir_place
+ahí,139,adv,A2,there,Hay alguien ahí.,ahí,ahí,,2,39 137,88,137,retrieved,retrieved_corpus,13.653475961909466,1,1,1,
+ahí,139,adv,A2,there,¿qué fue lo que hiciste ahí?,ahí,ahí,,6,17 9 11 2 71,22,71,retrieved,retrieved_corpus,12.690728998737873,1,1,1,
+ahí,139,adv,A2,there,¿cómo van las cosas por ahí?,ahí,ahí,,6,65 52 6 131 12,53.2,131,retrieved,retrieved_corpus,11.997732871033508,1,1,1,
+ahí,139,adv,A2,there,No queremos ser los primeros ahí.,ahí,ahí,,5,4 76 9 6 249,68.8,249,retrieved,retrieved_corpus,11.50248229881599,1,1,1,
+ahí,139,adv,A2,there,He estado ahí dos veces.,ahí,ahí,,2,39 26 79 66,52.5,79,retrieved,retrieved_corpus,11.257028221594998,1,1,1,
+estar,141,v,A2,to be,Ella está en la casa.,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,11.315059496626404,1,1,1,seeded_special_estar_place
+estar,141,v,A2,to be,Ella está en el trabajo.,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 6 144,42.25,144,seeded_special_estar_place,seeded_template,8.420239853933909,1,1,1,seeded_special_estar_place
+noche,143,n,A2,after dark; (late) at night; nocturnally,¿puedo pasar aquí la noche?,noche,noche,Gender=Fem|Number=Sing,5,75 178 36 3,73,178,retrieved,retrieved_corpus,11.223748943981217,1,1,1,
+trabajo,144,n,A2,work; job,No había trabajo.,trabajo,trabajo,Gender=Masc|Number=Sing,2,4 39,21.5,39,retrieved,retrieved_corpus,11.568408941268636,1,1,1,
+ir,145,v,A2,to go,Voy a hacer esto yo misma.,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,0,5 71 42 18 134,54,134,retrieved,retrieved_corpus,11.688050363606203,1,1,1,
+ir,145,v,A2,to go,Ella va a la casa.,va,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 5 3 91,27.5,91,seeded_special_ir_place,seeded_template,10.811809900220933,1,1,1,seeded_special_ir_place
+ir,145,v,A2,to go,Ella va al trabajo.,va,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 28 144,61,144,seeded_special_ir_place,seeded_template,8.140542256782377,1,1,1,seeded_special_ir_place
+después,146,adv,A2,later; afterwards; afterward; post,Después te diré.,después,después,,0,22 109,65.5,109,retrieved,retrieved_corpus,9.527681895743623,1,1,1,
+acuerdo,149,n,A2,agreement,No estoy de acuerdo con usted.,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,4 26 1 16 92,27.8,92,retrieved,retrieved_corpus,14.602530877490816,1,1,1,
+acuerdo,149,n,A2,agreement,Estoy de acuerdo con eso.,acuerdo,acuerdo,Gender=Masc|Number=Sing,2,26 1 16 33,19,33,retrieved,retrieved_corpus,14.602267333417213,1,1,1,
+acuerdo,149,n,A2,agreement,Yo estoy de acuerdo.,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,18 26 1,15,26,retrieved,retrieved_corpus,14.56425562433867,1,1,1,
+acuerdo,149,n,A2,agreement,¿qué es el acuerdo?,acuerdo,acuerdo,Gender=Masc|Number=Sing,4,17 9 6,10.666666666666666,17,retrieved,retrieved_corpus,13.985860133245422,1,1,1,
+acuerdo,149,n,A2,agreement,¿estás de acuerdo con eso?,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,26 1 16 33,19,33,retrieved,retrieved_corpus,13.521687802447525,1,1,1,
+acuerdo,149,n,A2,agreement,¿estás de acuerdo?,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,26 1,13.5,26,retrieved,retrieved_corpus,12.881805692417764,1,1,1,
+acuerdo,149,n,A2,agreement,Estoy de acuerdo contigo.,acuerdo,acuerdo,Gender=Masc|Number=Sing,2,26 1 22,16.333333333333332,26,retrieved,retrieved_corpus,12.810331855905298,1,1,1,
+acuerdo,149,n,A2,agreement,Yo estoy de acuerdo contigo.,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,18 26 1 22,16.75,26,retrieved,retrieved_corpus,12.510372907621779,1,1,1,
+acuerdo,149,n,A2,agreement,¿estáis de acuerdo?,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,26 1,13.5,26,retrieved,retrieved_corpus,12.029924063239314,1,1,1,
+otro,150,determiner,A2,another; other,Él quiere vernos otra vez.,otra,otro,Gender=Fem|Number=Sing|PronType=Ind,3,11 76 119 66,68,119,retrieved,retrieved_corpus,11.292597736503941,1,1,1,
+donde,152,pron,A2,because,Voy donde tú me digas.,donde,donde,PronType=Ind,1,52 22 18 109,50.25,109,retrieved,retrieved_corpus,10.250824106541124,1,1,1,
+estamos,154,v,A2,we are (estar),Nosotros estamos en la casa.,estamos,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 8 3 91,30,91,seeded_special_estar_place,seeded_template,9.404713864879335,1,1,1,seeded_special_estar_place
+estamos,154,v,A2,we are (estar),Nosotros estamos en el trabajo.,estamos,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 8 6 144,44,144,seeded_special_estar_place,seeded_template,7.547492611356165,1,0,1,seeded_special_estar_place
+padre,158,n,A2,Father,Ahora mis padres están en casa.,padres,padre,Gender=Masc|Number=Plur,2,45 27 26 8 91,39.4,91,retrieved,retrieved_corpus,12.109379998793262,1,1,1,
+padre,158,n,A2,Father,Tu padre te quiere a ti.,padre,padre,Gender=Masc|Number=Sing,1,37 22 76 5 22,32.4,76,retrieved,retrieved_corpus,12.049184136310148,1,1,1,
+nadie,160,pron,A2,no one,Nadie dice nada.,nadie,nadie,Number=Sing|PronType=Neg,0,109 61,85,109,retrieved,retrieved_corpus,12.965190365060439,1,1,1,
+nadie,160,pron,A2,no one,No hice caso a nadie.,nadie,nadie,Number=Sing|PronType=Neg,4,4 71 231 5,77.75,231,retrieved,retrieved_corpus,10.200177888405468,1,1,1,
+tal,161,pron,A2,such,Te quiero tal como eres.,tal,tal,Number=Sing|PronType=Dem,2,22 76 30 9,34.25,76,retrieved,retrieved_corpus,10.975459680416328,1,1,1,
+tal,161,pron,A2,such,¿qué tal está?,tal,tal,Number=Sing|PronType=Dem,2,17 26,21.5,26,retrieved,retrieved_corpus,10.578922272963375,1,1,1,
+parte,163,n,A2,part,Hiciste tu parte.,parte,parte,Gender=Fem|Number=Sing,2,71 37,54,71,retrieved,retrieved_corpus,8.59550665866847,1,1,1,
+momento,165,n,A2,moment; instant,Está contigo en este momento.,momento,momento,Gender=Masc|Number=Sing,4,26 22 8 44,25,44,retrieved,retrieved_corpus,12.758171276006454,1,1,1,
+momento,165,n,A2,moment; instant,Haz que espere un momento.,momento,momento,Gender=Masc|Number=Sing,4,71 2 203 10,71.5,203,retrieved,retrieved_corpus,11.515211813087314,1,1,1,
+mira,168,v,A2,target,Mira lo que pasó.,mira,mirar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,11 2 178,63.666666666666664,178,retrieved,retrieved_corpus,12.994333928368667,1,1,1,
+mira,168,v,A2,target,¡mira a esa chica!,mira,mirar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,5 83 295,127.66666666666667,295,retrieved,retrieved_corpus,9.994655037327583,1,1,1,
+quiere,169,v,A2,wants (querer),Ella quiere una casa.,quiere,querer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_querer_obj,seeded_template,11.02964163219668,1,1,1,seeded_special_querer_obj
+fuera,170,adv,A2,outside,Dígales que esperen fuera.,fuera,fuera,Mood=Sub|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,3,109 2 203,104.66666666666667,203,retrieved,retrieved_corpus,8.734757220780388,1,1,1,
+lugar,172,n,A2,place,Voy a verle en tu lugar.,lugar,lugar,,5,52 5 119 8 37,44.2,119,retrieved,retrieved_corpus,12.79965484833464,1,1,1,
+lugar,172,n,A2,place,No sabes cómo es ese lugar.,lugar,lugar,,5,4 95 65 9 83,51.2,95,retrieved,retrieved_corpus,12.708005491192731,1,1,1,
+hablar,173,v,A2,to talk,Quiero hablar sobre ello.,hablar,hablar,VerbForm=Inf,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,13.622421660766516,1,1,1,
+hablar,173,v,A2,to talk,Sólo quieren hablar con él.,hablar,hablar,VerbForm=Inf,2,68 76 16 11,42.75,76,retrieved,retrieved_corpus,13.013192172855662,1,1,1,
+hablar,173,v,A2,to talk,Hemos hablado de ellos.,hablado,hablar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,39 1 11,17,39,retrieved,retrieved_corpus,10.778015926994277,1,1,1,
+hablar,173,v,A2,to talk,Hablaron durante horas.,hablaron,hablar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,0,222 244,233,244,retrieved,retrieved_corpus,6.006337922683787,1,0,0,
+tener,174,v,A2,to have,Ella tiene una casa.,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,11.388334094639582,1,1,1,seeded_special_tener_obj
+tener,174,v,A2,to have,Ella tiene un trabajo.,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 144,55,144,seeded_special_tener_obj,seeded_template,8.883670875059007,1,1,1,seeded_special_tener_obj
+tenía,175,v,A2,had (tener),Ella tenía una casa.,tenía,tener,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,10.410156886442316,1,1,1,seeded_special_tener_obj
+tenía,175,v,A2,had (tener),Ella tenía un trabajo.,tenía,tener,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 10 144,55,144,seeded_special_tener_obj,seeded_template,7.935841293546116,1,0,1,seeded_special_tener_obj
+tres,176,num,A2,three,Él está aquí hace tres días.,tres,tres,NumType=Card|Number=Plur,4,11 26 36 71 127,54.2,127,retrieved,retrieved_corpus,13.17673317123423,1,1,1,
+pasa,178,v,A2,raisin,¿cómo lo pasa usted?,pasa,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,3,65 11 92,56,92,retrieved,retrieved_corpus,11.741315185344986,1,1,1,
+vas,179,v,A2,you go (ir),Tú vas a la casa.,vas,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 5 3 91,30.25,91,seeded_special_ir_place,seeded_template,9.681808287642317,1,1,1,seeded_special_ir_place
+vas,179,v,A2,you go (ir),Tú vas al trabajo.,vas,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 28 144,64.66666666666667,144,seeded_special_ir_place,seeded_template,6.675307323645779,1,0,0,seeded_special_ir_place
+claro,181,adj,A2,clear; easily understood,"Vi algo ahí, pero poco claro.",claro,claro,,6,119 50 139 24 130,92.4,139,retrieved,retrieved_corpus,7.741356735631916,1,0,0,multi_clause_context
+dinero,182,n,A2,money,Lo hicieron por dinero.,dinero,dinero,Gender=Masc|Number=Sing,3,11 71 12,31.333333333333332,71,retrieved,retrieved_corpus,13.502498033359846,1,1,1,
+dinero,182,n,A2,money,¿por qué necesita este dinero?,dinero,dinero,Gender=Masc|Number=Sing,5,12 17 234 44,76.75,234,retrieved,retrieved_corpus,11.57290437940049,1,1,1,
+dinero,182,n,A2,money,Necesito este dinero.,dinero,dinero,Gender=Masc|Number=Sing,2,234 44,139,234,retrieved,retrieved_corpus,11.550081890693168,1,1,1,
+madre,183,n,A2,mother,¿es usted su madre?,madre,madre,,4,9 92 23,41.333333333333336,92,retrieved,retrieved_corpus,13.17251276583402,1,1,1,
+madre,183,n,A2,mother,¿lo sabe tu madre?,madre,madre,,4,11 95 37,47.666666666666664,95,retrieved,retrieved_corpus,12.744150665449116,1,1,1,
+mañana,184,n,A2,tomorrow,¿dónde estás esta mañana?,mañana,mañana,,4,111 26 44,60.333333333333336,111,retrieved,retrieved_corpus,9.916005299984517,1,1,1,
+hoy,187,adv,A2,today,Hoy vi uno.,hoy,hoy,,0,119 10,64.5,119,retrieved,retrieved_corpus,10.132276269075618,1,1,1,
+luego,189,adv,A2,therefore,¿van a ir con ustedes luego?,luego,luego,,6,52 5 52 16 22,29.4,52,retrieved,retrieved_corpus,10.926703680421232,1,1,1,
+luego,189,adv,A2,therefore,Luego lo haré.,luego,luego,,0,11 71,41,71,retrieved,retrieved_corpus,9.047578851463287,1,1,1,
+allí,190,adv,A2,there (over there),Ahora mismo no puedo ir allí.,allí,allí,,5,45 134 4 75 52,62,134,retrieved,retrieved_corpus,11.524640507972505,1,1,1,
+allí,190,adv,A2,there (over there),Ellos están allí.,allí,allí,,2,11 26,18.5,26,retrieved,retrieved_corpus,10.777532209933996,1,1,1,
+allí,190,adv,A2,there (over there),¿puedes ver algo allí?,allí,allí,,4,75 119 50,81.33333333333333,119,retrieved,retrieved_corpus,10.595028967101673,1,1,1,
+allí,190,adv,A2,there (over there),Alguien está allí.,allí,allí,,2,137 26,81.5,137,retrieved,retrieved_corpus,10.076319813819495,1,1,1,
+nuestro,192,determiner,A2,ours,Nuestros hijos necesitan algo que hacer.,nuestros,nuestro,Gender=Masc|Number=Plur|Number[psor]=Plur|Person=1|Poss=Yes|PronType=Prs,0,198 234 50 2 71,111,234,retrieved,retrieved_corpus,10.565788859380001,1,1,1,
+cosa,194,n,A2,thing,Tenemos otras cosas que hacer.,cosas,cosa,Gender=Fem|Number=Plur,2,59 133 2 71,66.25,133,retrieved,retrieved_corpus,12.883787825873842,1,1,1,
+cosa,194,n,A2,thing,¿qué tal van las cosas?,cosas,cosa,Gender=Fem|Number=Plur,5,17 161 52 6,59,161,retrieved,retrieved_corpus,11.000099290273582,1,1,1,
+sabe,195,v,A2,knows (saber),Ella sabe que tú sabes.,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,4,11 95 2 22,32.5,95,retrieved,retrieved_corpus,11.711790840463044,1,1,1,
+sabe,195,v,A2,knows (saber),Ella sabe la verdad.,sabe,saber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 3 97,37,97,seeded_special_saber_truth,seeded_template,10.211983883802455,1,1,1,seeded_special_saber_truth
+hijo,198,n,A2,son,No tengo nada para mis hijos.,hijos,hijo,Gender=Masc|Number=Plur,5,4 59 61 19 27,34,61,retrieved,retrieved_corpus,11.951404234826978,1,1,1,
+hijo,198,n,A2,son,¿él tiene hijos?,hijos,hijo,Gender=Masc|Number=Plur,3,11 59,35,59,retrieved,retrieved_corpus,11.690222208174148,1,1,1,
+hijo,198,n,A2,son,Quiero tener un hijo contigo.,hijo,hijo,Gender=Masc|Number=Sing,3,76 59 10 22,41.75,76,retrieved,retrieved_corpus,11.175545060108243,1,1,1,
+hijo,198,n,A2,son,¿tú tienes un hijo?,hijo,hijo,Gender=Masc|Number=Sing,4,22 59 10,30.333333333333332,59,retrieved,retrieved_corpus,11.173672742172293,1,1,1,
+hijo,198,n,A2,son,Son nuestros hijos.,hijos,hijo,Gender=Masc|Number=Plur,2,9 192,100.5,192,retrieved,retrieved_corpus,9.559105131816349,1,1,1,
+hijo,198,n,A2,son,¿dónde está nuestro hijo?,hijo,hijo,Gender=Masc|Number=Sing,4,111 26 192,109.66666666666667,192,retrieved,retrieved_corpus,9.4939626599152,1,1,1,
+seguro,200,adj,A2,secure,Ya no estoy seguro de nada.,seguro,seguro,Gender=Masc|Number=Sing,3,40 4 26 1 61,26.4,61,retrieved,retrieved_corpus,14.167833532568075,1,1,1,
+seguro,200,adj,A2,secure,Puedes estar seguro de ello.,seguro,seguro,Gender=Masc|Number=Sing,2,75 26 1 11,28.25,75,retrieved,retrieved_corpus,12.922655176495704,1,1,1,
+seguro,200,adj,A2,secure,Me han dicho que estaban seguros.,seguros,seguro,Gender=Masc|Number=Plur,5,18 39 109 2 26,38.8,109,retrieved,retrieved_corpus,11.677913290642937,1,1,1,
+seguro,200,adj,A2,secure,¿estás segura de que quieres ese?,segura,seguro,Gender=Fem|Number=Sing,2,26 1 2 76 83,37.6,83,retrieved,retrieved_corpus,11.38346057495475,1,1,1,
+seguro,200,adj,A2,secure,Seguro que no sabes hacerlo.,seguro,seguro,Gender=Masc|Number=Sing,0,2 4 95 71,43,95,retrieved,retrieved_corpus,11.313989432296038,1,1,1,
+seguro,200,adj,A2,secure,Aún no estoy tan seguro.,seguro,seguro,Gender=Masc|Number=Sing,4,213 4 26 87,82.5,213,retrieved,retrieved_corpus,10.772860107180309,1,1,1,
+seguro,200,adj,A2,secure,No estoy realmente seguro de esto.,seguro,seguro,Gender=Masc|Number=Sing,3,4 26 243 1 42,63.2,243,retrieved,retrieved_corpus,10.201011420698242,1,1,1,
+podemos,201,v,A2,a Spanish left wing political party,Nosotros podemos ir a la casa.,podemos,poder,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 52 5 3 91,33.8,91,seeded_special_poder_ir_place,seeded_template,9.474410698011944,1,1,1,seeded_special_poder_ir_place
+podemos,201,v,A2,a Spanish left wing political party,Nosotros podemos ir al trabajo.,podemos,poder,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,18 52 28 144,60.5,144,seeded_special_poder_ir_place,seeded_template,8.140188305764783,1,1,1,seeded_special_poder_ir_place
+debe,202,v,A2,to owe,¿qué debe hacer?,debe,deber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,2,17 71,44,71,retrieved,retrieved_corpus,12.184202633238472,1,1,1,
+vale,204,v,A2,a voucher,"Vale, no pasa nada.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,4 178 61,81,178,retrieved,retrieved_corpus,12.72188791978423,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,No vale más que tú.,vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,4 32 2 22,15,32,retrieved,retrieved_corpus,12.123198114864694,1,1,1,
+vale,204,v,A2,a voucher,Más vale que nos vayamos.,vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,32 2 18 52,26,52,retrieved,retrieved_corpus,11.05995952893968,1,1,1,
+vale,204,v,A2,a voucher,"Vale, haré lo que dices.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,71 11 2 109,48.25,109,retrieved,retrieved_corpus,10.545598993676732,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,"Vale, haz lo que quieras.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,71 11 2 76,40,76,retrieved,retrieved_corpus,9.03612878284806,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,"Vale, ya vamos.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,40 52,46,52,retrieved,retrieved_corpus,8.663886169478914,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,"Vale, nos vemos mañana.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,18 119 184,107,184,retrieved,retrieved_corpus,8.106498553734594,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,"Ven conmigo, ¿vale?",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,4,119 18,68.5,119,retrieved,retrieved_corpus,5.958376621071925,1,0,0,multi_clause_context
+vale,204,v,A2,a voucher,"Vale, tienes razón.",vale,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,59 248,153.5,248,retrieved,retrieved_corpus,5.353307594903295,1,0,0,multi_clause_context
+será,205,v,A2,to be,Ella será buena.,será,ser,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,6.467580037458328,1,0,0,seeded_special_ser_adj
+haber,208,v,A2,have,Lo he dicho todo.,he,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,11 109 38,52.666666666666664,109,retrieved,retrieved_corpus,12.059072831939837,1,1,1,
+amigo,210,n,A2,friend,Me gustan tus amigos.,amigos,amigo,Gender=Masc|Number=Plur,3,18 229 37,94.66666666666667,229,retrieved,retrieved_corpus,11.322042477264825,1,1,1,
+amigo,210,n,A2,friend,¿quieres que seamos amigos?,amigos,amigo,Gender=Masc|Number=Plur,4,76 2 9,29,76,retrieved,retrieved_corpus,9.918015367155219,1,1,1,
+buena,212,adj,A2,inheritance,Es una mujer de buenas maneras.,buenas,buena,,4,9 10 191 1 280,98.2,280,retrieved,retrieved_corpus,10.928756750991402,1,1,1,
+buena,212,adj,A2,inheritance,Tenía buenas razones para hacerlo.,buenas,buena,,1,59 248 19 71,99.25,248,retrieved,retrieved_corpus,9.248532656509171,1,1,1,
+aún,213,adv,A2,still; yet,Aún no veo nada.,aún,aún,,0,4 119 61,61.333333333333336,119,retrieved,retrieved_corpus,13.98981377599805,1,1,1,
+aún,213,adv,A2,still; yet,Aún hay tiempo.,aún,aún,,0,39 86,62.5,86,retrieved,retrieved_corpus,12.817139569301098,1,1,1,
+quien,214,pron,A2,who,Hay quienes no saben de esto.,quienes,quien,Number=Plur|PronType=Rel,1,39 4 95 1 42,36.2,95,retrieved,retrieved_corpus,10.251447435037356,1,1,1,
+tienen,217,v,A2,to have,Ellos tienen una casa.,tienen,tener,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,9.932520736126646,1,1,1,seeded_special_tener_obj
+tienen,217,v,A2,to have,Ellos tienen un trabajo.,tienen,tener,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 144,55,144,seeded_special_tener_obj,seeded_template,8.34436850299911,1,1,1,seeded_special_tener_obj
+mamá,219,n,A2,mum; mom,¿está mamá aquí?,mamá,mamá,Gender=Fem|Number=Sing,2,26 36,31,36,retrieved,retrieved_corpus,12.574792912197296,1,1,1,
+mamá,219,n,A2,mum; mom,Mamá tuvo mucho que hacer.,mamá,mamá,Gender=Fem|Number=Sing,0,59 43 2 71,43.75,71,retrieved,retrieved_corpus,12.141359235705055,1,1,1,
+mamá,219,n,A2,mum; mom,¿cómo están mamá y papá?,mamá,mamá,Gender=Fem|Number=Sing,3,65 26 7 223,80.25,223,retrieved,retrieved_corpus,9.13462888473118,1,1,1,
+mal,220,adv,A2,bad; evil,Ella se siente mal hoy.,mal,mal,,3,11 15 122 187,83.75,187,retrieved,retrieved_corpus,13.660333940843046,1,1,1,
+mal,220,adv,A2,bad; evil,Todos lo pasamos mal.,mal,mal,,3,38 11 178,75.66666666666667,178,retrieved,retrieved_corpus,10.920542026507004,1,1,1,
+papá,223,n,A2,dad,"Mamá, ¿dónde está papá?",papá,papá,Gender=Masc|Number=Sing,5,219 111 26,118.66666666666667,219,retrieved,retrieved_corpus,8.28442411807526,1,0,0,multi_clause_context
+quería,224,v,A2,to desire; to want; to want to,Ella no quería estar en casa.,quería,querer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,2,11 4 26 8 91,28,91,retrieved,retrieved_corpus,13.826128934854472,1,1,1,
+quería,224,v,A2,to desire; to want; to want to,Ella quería una casa.,quería,querer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_querer_obj,seeded_template,11.128977855472646,1,1,1,seeded_special_querer_obj
+forma,228,n,A2,shape,Estás en mejor forma que yo.,forma,forma,Gender=Fem|Number=Sing,3,26 8 107 2 18,32.2,107,retrieved,retrieved_corpus,11.66760535873953,1,1,1,
+caso,231,n,A2,case,No hice caso a nadie.,caso,caso,Gender=Masc|Number=Sing,2,4 71 5 160,60,160,retrieved,retrieved_corpus,11.200177888405468,1,1,1,
+contra,232,prep,A2,against; versus,Hay gente en contra.,contra,contra,,3,39 156 8,67.66666666666667,156,retrieved,retrieved_corpus,11.371041862411868,1,1,1,
+contra,232,prep,A2,against; versus,¿estás en contra de ellos?,contra,contra,,3,26 8 1 11,11.5,26,retrieved,retrieved_corpus,11.227254697431642,1,1,1,
+tarde,233,adv,A2,late,Aún no es tarde.,tarde,tarde,,3,213 4 9,75.33333333333333,213,retrieved,retrieved_corpus,13.841426307052174,1,1,1,
+necesito,234,v,A2,to need,No necesito ser más claro.,necesito,necesitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,4 9 32 181,56.5,181,retrieved,retrieved_corpus,11.498804466610144,1,1,1,
+oye,235,v,A2,hey! listen!,Oye mucho y habla poco.,oye,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,0,43 7 173 130,88.25,173,retrieved,retrieved_corpus,11.510030842912027,1,1,1,
+oye,235,v,A2,hey! listen!,Oye lo que tengo que decir.,oye,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,0,11 2 59 2 109,36.6,109,retrieved,retrieved_corpus,10.809723279758513,1,1,1,
+oye,235,v,A2,hey! listen!,¡oye tú! ¿qué estás haciendo?,oye,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,22 17 26 71,34,71,retrieved,retrieved_corpus,10.79620212647973,1,1,1,
+visto,239,v,A2,seen,¿has visto a mi padre?,visto,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,2,39 5 27 158,57.25,158,retrieved,retrieved_corpus,13.276505975301369,1,1,1,
+visto,239,v,A2,seen,Fue visto y no visto.,visto,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,4,9 119 7 4,34.75,119,retrieved,retrieved_corpus,10.224222514774018,1,1,1,
+realmente,243,adv,A2,really; actually; genuinely,¿estás realmente seguro de eso?,realmente,realmente,,2,26 200 1 33,65,200,retrieved,retrieved_corpus,12.3144099466926,1,1,1,
+problema,245,n,A2,problem; issue; challenge,De seguro tendremos problemas.,problemas,problema,Gender=Masc|Number=Plur,3,1 200 59,86.66666666666667,200,retrieved,retrieved_corpus,12.989549485604728,1,1,1,
+problema,245,n,A2,problem; issue; challenge,No tendrás ese problema.,problema,problema,Gender=Masc|Number=Sing,3,4 59 83,48.666666666666664,83,retrieved,retrieved_corpus,11.349705714871607,1,1,1,
+crees,246,v,A2,to believe,¿cómo crees que me siento?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,2,65 2 18 122,51.75,122,retrieved,retrieved_corpus,12.559005591249402,1,1,1,
+crees,246,v,A2,to believe,¿crees que estamos haciéndolo bien?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 26 71 31,32.5,71,retrieved,retrieved_corpus,11.572913214768938,1,1,1,
+crees,246,v,A2,to believe,¿qué crees que debería decir?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,2,17 2 202 109,82.5,202,retrieved,retrieved_corpus,11.38845091800427,1,1,1,
+crees,246,v,A2,to believe,¿qué crees que haces?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,2,17 2 71,30,71,retrieved,retrieved_corpus,11.384531061384685,1,1,1,
+crees,246,v,A2,to believe,¿crees que no va a pasar?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 4 52 5 178,48.2,178,retrieved,retrieved_corpus,11.204316372072718,1,1,1,
+crees,246,v,A2,to believe,¿crees que debería ir sola?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 202 52 68,81,202,retrieved,retrieved_corpus,10.272450644324975,1,1,1,
+crees,246,v,A2,to believe,¿crees que lo hice?,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,2 11 71,28,71,retrieved,retrieved_corpus,10.241496583571873,1,1,1,
+crees,246,v,A2,to believe,Tú crees eso.,crees,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,22 33,27.5,33,seeded_special_creer_object,seeded_template,8.859038101541078,1,1,1,seeded_special_creer_object
+razón,248,n,A2,reason,Su madre tenía razón.,razón,razón,Gender=Fem|Number=Sing,3,23 158 59,80,158,retrieved,retrieved_corpus,11.322987873313716,1,1,1,
+razón,248,n,A2,reason,Las mujeres siempre tienen razón.,razón,razón,Gender=Fem|Number=Sing,4,6 191 118 59,93.5,191,retrieved,retrieved_corpus,11.148903672505007,1,1,1,
+razón,248,n,A2,reason,Claro que tiene razón.,razón,razón,Gender=Fem|Number=Sing,3,181 2 59,80.66666666666667,181,retrieved,retrieved_corpus,10.768854019788018,1,1,1,
+razón,248,n,A2,reason,Tenía razón después de todo.,razón,razón,Gender=Fem|Number=Sing,1,59 146 1 38,61,146,retrieved,retrieved_corpus,10.762756728549785,1,1,1,
+razón,248,n,A2,reason,Siempre tenemos la razón.,razón,razón,Gender=Fem|Number=Sing,3,118 59 3,60,118,retrieved,retrieved_corpus,10.626207231962681,1,1,1,
+razón,248,n,A2,reason,Tenías razón antes.,razón,razón,Gender=Fem|Number=Sing,1,59 126,92.5,126,retrieved,retrieved_corpus,8.905100216429288,1,1,1,
+saber,251,v,A2,to know; to understand,Sé que no lo harás.,sé,saber,,0,2 4 11 71,22,71,retrieved,retrieved_corpus,12.697757317435583,1,1,1,
+saber,251,v,A2,to know; to understand,Ella sabe que tú sabes.,sabes,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,4,11 95 2 22,32.5,95,retrieved,retrieved_corpus,11.711790840463044,1,1,1,
+saber,251,v,A2,to know; to understand,Habla como si supiera de todo.,supiera,saber,Mood=Sub|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,3,173 30 25 1 38,53.4,173,retrieved,retrieved_corpus,10.33180416445227,1,1,1,
+saber,251,v,A2,to know; to understand,Ella sabe la verdad.,sabe,saber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 3 97,37,97,seeded_special_saber_truth,seeded_template,10.211983883802455,1,1,1,seeded_special_saber_truth
+dicho,252,v,A2,said,Ya está todo dicho.,dicho,decir,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,3,40 26 38,34.666666666666664,40,retrieved,retrieved_corpus,13.449434114993583,1,1,1,
+dicho,252,v,A2,said,Está todo dicho.,dicho,decir,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,2,26 38,32,38,retrieved,retrieved_corpus,12.789155470160102,1,1,1,
+mierda,254,n,A2,shit (solid excretory product evacuated from the bowels,El amor es una mierda.,mierda,mierda,Gender=Fem|Number=Sing,4,6 262 9 10,71.75,262,retrieved,retrieved_corpus,11.684826561120117,1,1,1,
+mierda,254,n,A2,shit (solid excretory product evacuated from the bowels,Me importa una mierda.,mierda,mierda,Gender=Fem|Number=Sing,3,18 265 10,97.66666666666667,265,retrieved,retrieved_corpus,10.952909530451974,1,1,1,
+mierda,254,n,A2,shit (solid excretory product evacuated from the bowels,Ese día fue una mierda.,mierda,mierda,Gender=Fem|Number=Sing,4,83 127 9 10,57.25,127,retrieved,retrieved_corpus,10.648766913059678,1,1,1,
+pues,255,conj,A2,so; then,Pues creía que había ido bien ...,pues,pues,,0,89 2 39 52 31,42.6,89,retrieved,retrieved_corpus,11.28482386139001,1,1,1,
+pues,255,conj,A2,so; then,"Pues, ¿qué haremos?",pues,pues,,0,17 71,44,71,retrieved,retrieved_corpus,8.864412636027872,1,0,0,multi_clause_context
+idea,256,n,A2,idea,Ni tuve idea que estabas allí.,idea,idea,Gender=Fem|Number=Sing,2,112 59 2 26 190,77.8,190,retrieved,retrieved_corpus,9.632122728340219,1,1,1,
+mío,257,determiner,A2,mine,No son míos.,míos,mío,Case=Nom|Number=Sing|Person=1|PronType=Prs,2,4 9,6.5,9,retrieved,retrieved_corpus,11.549979547294495,1,1,1,
+mío,257,determiner,A2,mine,Muchos de éstos son míos.,míos,mío,Case=Nom|Number=Sing|Person=1|PronType=Prs,4,43 1 44 9,24.25,44,retrieved,retrieved_corpus,11.078561071477617,1,1,1,
+mío,257,determiner,A2,mine,Era idea mía.,mía,mío,Gender=Fem|Number=Sing|Number[psor]=Sing|Person=1|Poss=Yes|PronType=Ind,2,9 256,132.5,256,retrieved,retrieved_corpus,9.518506554031015,1,1,1,
+e,258,conj,A2,and,Son padre e hijo.,e,e,,2,9 158 198,121.66666666666667,198,retrieved,retrieved_corpus,10.309470148696343,1,1,1,
+aunque,259,conj,A2,though; although; even though; albeit,No puedo aunque quiero.,aunque,aunque,,2,4 75 76,51.666666666666664,76,retrieved,retrieved_corpus,12.318906218496027,1,1,1,
+familia,260,n,A2,family,Mi familia es grande.,familia,familia,Gender=Fem|Number=Sing,1,27 9 171,69,171,retrieved,retrieved_corpus,11.799484091816442,1,1,1,
+familia,260,n,A2,family,Mi amigo tiene una gran familia.,familia,familia,Gender=Fem|Number=Sing,5,27 210 59 10 171,95.4,210,retrieved,retrieved_corpus,11.430462022970353,1,1,1,
+familia,260,n,A2,family,No somos familia.,familia,familia,Gender=Fem|Number=Sing,2,4 9,6.5,9,retrieved,retrieved_corpus,11.388695056951098,1,1,1,
+hacia,261,prep,A2,toward; towards,¿hacia dónde va mi vida?,hacia,hacia,,1,111 52 27 108,74.5,111,retrieved,retrieved_corpus,9.939258200395955,1,1,1,
+amor,262,n,A2,love,¿qué sabes del amor?,amor,amor,Gender=Masc|Number=Sing,4,17 95 21,44.333333333333336,95,retrieved,retrieved_corpus,10.569249689077598,1,1,1,
+pueden,264,v,A2,to be able to; can,Ellos pueden ir a la casa.,pueden,poder,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 52 5 3 91,32.4,91,seeded_special_poder_ir_place,seeded_template,9.341264488909056,1,1,1,seeded_special_poder_ir_place
+pueden,264,v,A2,to be able to; can,Ellos pueden ir al trabajo.,pueden,poder,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 52 28 144,58.75,144,seeded_special_poder_ir_place,seeded_template,8.144102969315986,1,1,1,seeded_special_poder_ir_place
+importa,265,v,A2,to matter; to be important [+a (someone)],No me importa lo que decís.,importa,importar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,2,4 18 11 2 109,28.8,109,retrieved,retrieved_corpus,13.115479902657286,1,1,1,
+importa,265,v,A2,to matter; to be important [+a (someone)],"La verdad, no me importa.",importa,importar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,5,3 97 4 18,30.5,97,retrieved,retrieved_corpus,11.748432146706472,1,0,0,multi_clause_context
+importa,265,v,A2,to matter; to be important [+a (someone)],Lo que dicen no nos importa.,importa,importar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,5,11 2 109 4 18,28.8,109,retrieved,retrieved_corpus,11.398330342668338,1,1,1,
+importa,265,v,A2,to matter; to be important [+a (someone)],Le han dicho: ¡no nos importa!,importa,importar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,7,11 39 109 4 18,36.2,109,retrieved,retrieved_corpus,11.01915007383072,1,0,0,multi_clause_context
+todavía,266,adv,A2,still; yet,Sé que todavía me queréis.,todavía,todavía,,2,9 2 18 76,26.25,76,retrieved,retrieved_corpus,11.514832508999783,1,1,1,
+todavía,266,adv,A2,still; yet,¿por qué estamos aquí todavía?,todavía,todavía,,5,12 17 26 36,22.75,36,retrieved,retrieved_corpus,11.04323438813431,1,1,1,
+policía,268,n,A2,Civility; polity; public order; police; fineness; neatness; urbanity,La policía está allí.,policía,policía,Number=Sing,1,3 26 190,73,190,retrieved,retrieved_corpus,12.374020088226839,1,1,1,
+contigo,270,adv,A2,with you,No estoy nada de acuerdo contigo.,contigo,contigo,Case=Com|Number=Sing|Person=2|PrepCase=Pre|PronType=Prs,5,4 26 61 1 149,48.2,149,retrieved,retrieved_corpus,11.916339476816919,1,1,1,
+contigo,270,adv,A2,with you,Contigo me siento seguro.,contigo,contigo,Case=Com|Number=Sing|Person=2|PrepCase=Pre|PronType=Prs,0,18 122 200,113.33333333333333,200,retrieved,retrieved_corpus,9.89915323126097,1,1,1,
+demasiado,272,adv,A2,too much; too many; excessive,¿no será demasiado poco?,demasiado,demasiado,,3,4 9 130,47.666666666666664,130,retrieved,retrieved_corpus,13.713121170314077,1,1,1,
+demasiado,272,adv,A2,too much; too many; excessive,Tengo demasiadas cosas en la cabeza.,demasiadas,demasiado,Gender=Fem|NumType=Card|Number=Plur|PronType=Ind,1,59 131 8 3 281,96.4,281,retrieved,retrieved_corpus,10.145852387699376,1,1,1,
+ven,273,v,A2,to see; to spot,¡ven a casa!,ven,ver,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,5 91,48,91,retrieved,retrieved_corpus,13.320629002356805,1,1,1,
+ven,273,v,A2,to see; to spot,Ven a mi casa esta noche.,ven,ver,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,0,5 27 91 44 143,62,143,retrieved,retrieved_corpus,13.018765609097736,1,1,1,
+ven,273,v,A2,to see; to spot,Ven mañana por la mañana.,ven,ver,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,0,184 12 3 184,95.75,184,retrieved,retrieved_corpus,11.428971434113008,1,1,1,
+ven,273,v,A2,to see; to spot,Ven si puedes.,ven,ver,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,0,25 75,50,75,retrieved,retrieved_corpus,9.359742898098965,1,1,1,
+ven,273,v,A2,to see; to spot,"¡ven, mira eso!",ven,ver,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,168 33,100.5,168,retrieved,retrieved_corpus,8.586083027013421,1,0,0,multi_clause_context
+serio,274,adj,A2,serious; earnest; sober; solemn,¡no hablas en serio!,serio,serio,,4,4 173 8,61.666666666666664,173,retrieved,retrieved_corpus,13.472326609448888,1,1,1,
+serio,274,adj,A2,serious; earnest; sober; solemn,Tenemos serios problemas.,serios,serio,Gender=Masc|Number=Plur,1,59 245,152,245,retrieved,retrieved_corpus,12.311040480112922,1,1,1,
+serio,274,adj,A2,serious; earnest; sober; solemn,Tengo cosas serias que hablar.,serias,serio,Gender=Fem|Number=Plur,2,59 131 2 173,91.25,173,retrieved,retrieved_corpus,12.274914883613988,1,1,1,
+serio,274,adj,A2,serious; earnest; sober; solemn,En serio quiero saber.,serio,serio,,1,8 76 95,59.666666666666664,95,retrieved,retrieved_corpus,11.065759472358714,1,1,1,
+ve,276,v,A2,letter: v,Ve por ahí.,ve,ve,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,0,12 139,75.5,139,retrieved,retrieved_corpus,12.15673601384384,1,1,1,
+ve,276,v,A2,letter: v,Ve con quien quieras.,ve,ve,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,0,16 214 76,102,214,retrieved,retrieved_corpus,10.425678519117964,1,1,1,
+eh,278,,A2,hey!,¡eh! ¿qué hay de nuevo?,eh,eh,,1,17 39 1 177,58.5,177,retrieved,retrieved_corpus,10.810974963901645,1,1,1,
+eh,278,,A2,hey!,¡eh! ¿qué ha pasado?,eh,eh,,1,17 39 227,94.33333333333333,227,retrieved,retrieved_corpus,10.73182071800278,1,1,1,
+eh,278,,A2,hey!,"¿qué haces, eh?",eh,eh,,4,17 71,44,71,retrieved,retrieved_corpus,6.632000643250291,1,0,0,multi_clause_context
+eh,278,,A2,hey!,"¿estás aquí, eh?",eh,eh,,4,26 36,31,36,retrieved,retrieved_corpus,5.914378515636348,1,0,0,multi_clause_context
+lado,279,n,A2,side,Estaremos lado a lado.,lado,lado,Gender=Masc|Number=Sing,1,26 5 279,103.33333333333333,279,retrieved,retrieved_corpus,11.174202136247631,1,1,1,
+manera,280,n,A2,way,Lo hago de esa manera.,manera,manera,Gender=Fem|Number=Sing,4,11 71 1 83,41.5,83,retrieved,retrieved_corpus,11.343332880127369,1,1,1,
+manera,280,n,A2,way,Van a ver la manera.,manera,manera,Gender=Fem|Number=Sing,4,52 5 119 3,44.75,119,retrieved,retrieved_corpus,11.220568383856987,1,1,1,
+hombres,282,n,A2,man;,¿quiénes son esos hombres?,hombres,hombre,Gender=Masc|Number=Plur,4,106 9 83,66,106,retrieved,retrieved_corpus,7.930610326987496,1,0,1,
+historia,283,n,A2,history,Me gustan mucho estas historias.,historias,historia,Gender=Fem|Number=Plur,4,18 229 43 44,83.5,229,retrieved,retrieved_corpus,11.869488944530353,1,1,1,
+dentro,284,adv,A2,inside,No hay nadie dentro.,dentro,dentro,,3,4 39 160,67.66666666666667,160,retrieved,retrieved_corpus,13.098237139968015,1,1,1,
+dentro,284,adv,A2,inside,Hay un dios dentro de nosotros.,dentro,dentro,,3,39 10 124 1 18,38.4,124,retrieved,retrieved_corpus,12.457867403602284,1,1,1,
+dentro,284,adv,A2,inside,¿puedo ir ahí dentro ahora?,dentro,dentro,,4,75 52 139 45,77.75,139,retrieved,retrieved_corpus,12.33927347407454,1,1,1,
+dentro,284,adv,A2,inside,Te veré dentro de tres horas.,dentro,dentro,,2,22 119 1 176 244,112.4,244,retrieved,retrieved_corpus,10.86231336605673,1,1,1,
+dentro,284,adv,A2,inside,Te espero dentro.,dentro,dentro,,2,22 203,112.5,203,retrieved,retrieved_corpus,10.312890175208956,1,1,1,
+dentro,284,adv,A2,inside,Quería ver qué había dentro.,dentro,dentro,,4,76 119 17 39,62.75,119,retrieved,retrieved_corpus,10.269425111873717,1,1,1,
+dentro,284,adv,A2,inside,¿están ahí dentro?,dentro,dentro,,3,26 139,82.5,139,retrieved,retrieved_corpus,9.691091430132452,1,1,1,
+salir,286,v,A2,to go out; to leave; to depart; to head out,Parece que algo salió mal.,salió,salir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,3,151 2 50 220,105.75,220,retrieved,retrieved_corpus,11.542459190721782,1,1,1,
+salir,286,v,A2,to go out; to leave; to depart; to head out,Hoy no debes salir.,salir,salir,VerbForm=Inf,3,187 4 202,131,202,retrieved,retrieved_corpus,11.4841402323985,1,1,1,
+salir,286,v,A2,to go out; to leave; to depart; to head out,Ella sale de la casa.,sale,salir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 1 3 91,26.5,91,v_a1_4,template_generated,9.083084064391407,1,1,1,v_a1_4
+salir,286,v,A2,to go out; to leave; to depart; to head out,Ella sale del trabajo.,sale,salir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 21 144,58.666666666666664,144,v_a1_4,template_generated,7.223111299863534,1,0,0,v_a1_4
+van,288,v,A2,they go (ir),Ellos van a la casa.,van,ir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 5 3 91,27.5,91,seeded_special_ir_place,seeded_template,10.113306761156688,1,1,1,seeded_special_ir_place
+van,288,v,A2,they go (ir),Ellos van al trabajo.,van,ir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,11 28 144,61,144,seeded_special_ir_place,seeded_template,7.9201456553830285,1,0,1,seeded_special_ir_place
+ustedes,290,pron,A2,you,Ustedes son mis amigos.,ustedes,ustedes,Case=Nom|Number=Plur|Person=2|Polite=Form|PronType=Prs,0,9 27 210,82,210,retrieved,retrieved_corpus,11.373433120044592,1,1,1,
+ustedes,290,pron,A2,you,"Ustedes ya saben qué hacer, ¿verdad?",ustedes,ustedes,Case=Nom|Number=Plur|Person=2|Polite=Form|PronType=Prs,0,40 95 17 71 97,64,97,retrieved,retrieved_corpus,10.85413841783184,1,0,0,multi_clause_context
+amigos,294,n,A2,friend,Me gustan tus amigos.,amigos,amigo,Gender=Masc|Number=Plur,3,18 229 37,94.66666666666667,229,retrieved,retrieved_corpus,12.322042477264825,1,1,1,
+amigos,294,n,A2,friend,¿quieres que seamos amigos?,amigos,amigo,Gender=Masc|Number=Plur,4,76 2 9,29,76,retrieved,retrieved_corpus,9.918015367155219,1,1,1,
+chica,295,n,A2,female equivalent of chico: girl,Es realmente una buena chica.,chica,chico,Gender=Fem|Number=Sing,4,9 243 10 55,79.25,243,retrieved,retrieved_corpus,11.663110705229085,1,1,1,
+sabía,297,v,A2,to know; to understand,Ella sabía la verdad.,sabía,saber,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,11 3 97,37,97,seeded_special_saber_truth,seeded_template,10.052944596819632,1,1,1,seeded_special_saber_truth
+chicos,298,n,A2,chic,"Chicos, ¿están bien?",chicos,chico,Gender=Masc|Number=Plur,0,26 31,28.5,31,retrieved,retrieved_corpus,11.570568521864955,1,0,0,multi_clause_context
+chicos,298,n,A2,chic,"Con eso vale, chicos.",chicos,chico,Gender=Masc|Number=Plur,4,16 33 204,84.33333333333333,204,retrieved,retrieved_corpus,7.6836259658546,1,0,0,multi_clause_context
+hermano,299,n,A2,brother,No sabía que tuvieras un hermano.,hermano,hermano,Gender=Masc|Number=Sing,5,4 95 2 59 10,34,95,retrieved,retrieved_corpus,13.435158837399124,1,1,1,
+hermano,299,n,A2,brother,No tengo muchos hermanos.,hermanos,hermano,Gender=Masc|Number=Plur,3,4 59 43,35.333333333333336,59,retrieved,retrieved_corpus,12.308163297880714,1,1,1,
+hermano,299,n,A2,brother,Tengo un hermano y dos hermanas.,hermano,hermano,Gender=Masc|Number=Sing,2,59 10 7 79 299,90.8,299,retrieved,retrieved_corpus,10.500835723852138,1,1,1,

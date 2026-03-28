@@ -11,13 +11,18 @@ import sys
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Tuple, Iterable
 
+from reranker import load_reranker_model, predict_candidate_scores
+
 
 WORD_RE = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]")
 STRIP_RE = re.compile(r'^[¿¡"“”\'\(\[\{]+|[.,;:!?"”\'\)\]\}]+$')
+TOKEN_RE = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+|[¿¡.,;:!?\"“”'()\[\]{}]")
 ARTICLE_SET = {"el", "la", "los", "las", "un", "una", "unos", "unas", "este", "esta", "estos", "estas"}
 DEMONSTRATIVE_SET = {"este", "esta", "estos", "estas", "ese", "esa", "esos", "esas"}
 PRONOUNS = ["yo", "tú", "él", "ella", "nosotros", "ellos"]
 COMMON_ADVERBS = ["bien", "mucho", "siempre", "ahora", "aquí"]
+CONTEXT_DEPENDENT_OPENERS = {"si", "que", "cuando", "aunque", "porque", "como", "pero", "y", "o"}
+DEICTIC_SUBJECTS = {"este", "esta", "estos", "estas", "ese", "esa", "esos", "esas", "esto", "eso"}
 VERB_OBJECT_PREFS = {
     "comer": ["food"],
     "beber": ["drink", "food"],
@@ -96,6 +101,9 @@ ARTICLE_FEATURES = {
 }
 GOOD_EXISTENTIAL_CLASSES = {"object", "place", "person", "animal", "food", "clothing", "vehicle", "text"}
 BAD_EXISTENTIAL_CLASSES = {"time", "abstract", "activity"}
+LOCATABLE_NOUN_CLASSES = {"object", "place", "person", "animal", "food", "clothing", "vehicle", "text"}
+SAFE_POSSESSIBLE_NOUN_CLASSES = {"object", "place", "animal", "food", "clothing", "text"}
+SER_ADJ_TEMPLATE_NOUN_CLASSES = {"animal", "food", "drink", "object", "clothing"}
 WEAK_COPULA_ADJECTIVES = {"solo", "sola", "solos", "solas"}
 SAFE_SER_ADJECTIVES = {"bueno", "malo", "grande", "pequeño", "bonito", "rápido", "feliz", "listo", "cansado", "delicioso"}
 SAFE_OBJECT_CLASSES_BY_VERB = {
@@ -115,6 +123,34 @@ SAFE_OBJECT_LEMMAS_BY_VERB = {
     "querer": ["casa", "libro", "perro", "comida", "ayuda"],
 }
 EASY_INFINITIVE_LEMMAS = ["leer", "comer", "beber", "ver", "comprar", "visitar", "buscar", "abrir", "cerrar", "llevar", "ir"]
+SUPPORTED_TEMPLATE_MOODS = {"Ind"}
+SUBJUNCTIVE_TRIGGER_TOKENS = {"que", "ojalá", "quizá", "quizás"}
+LOW_VALUE_TEMPLATE_IDS = {"seeded_noun_here", "n_a1_2", "seeded_verb_adv", "v_a1_2"}
+LOW_VALUE_NOUN_TEMPLATE_LEMMAS = {"vez", "verdad", "tiempo", "pasado", "gracias"}
+SAFE_HABER_PERFECT_VERBS = {"tener", "hacer", "leer", "comprar", "buscar"}
+EL_ARTICLE_FEMININE_NOUNS = {"agua", "alma", "arma", "águila", "aula", "hada", "hambre"}
+HERE_TEMPLATE_SAFE_LEMMAS = {"casa", "puerta"}
+SAFE_LOCATION_LEMMAS = {"casa", "escuela", "trabajo", "puerta"}
+SAFE_MOVEMENT_DESTINATION_LEMMAS = {"casa", "escuela", "trabajo", "puerta", "tienda", "parque"}
+SAFE_POSSESSIBLE_TEMPLATE_LEMMAS = {"casa", "libro", "perro", "comida", "trabajo", "teléfono"}
+SAFE_TEMPLATE_OBJECT_LEMMAS_BY_VERB = {
+    "tener": {"casa", "libro", "perro", "comida", "trabajo", "teléfono"},
+    "querer": {"casa", "libro", "perro", "comida", "ayuda"},
+    "hacer": {"pregunta", "plan"},
+}
+LOW_VALUE_RETRIEVED_PATTERNS = {
+    "persona es ella",
+    "es gracias a",
+    "están en nada",
+    "por supuesto que",
+}
+APOCOPATED_ADJECTIVE_FEATURES = {
+    "buen": ("m", "sg"),
+    "mal": ("m", "sg"),
+    "gran": (None, "sg"),
+    "primer": ("m", "sg"),
+    "tercer": ("m", "sg"),
+}
 
 
 @dataclass
@@ -161,6 +197,8 @@ class Candidate:
     max_support_rank: int
     template_id: str
     source_method: str
+    canonical_lemma: str = ""
+    target_morph: str = ""
     score: float = 0.0
     english_sentence: str = ""
     english_source_method: str = ""
@@ -237,6 +275,9 @@ class SentenceGenerator:
         self.form_to_lemmas = self._build_form_index()
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
+        self.candidate_pool_cache: Dict[str, List[Candidate]] = {}
+        self.last_candidate_export_stats: Optional[Dict[str, float]] = None
+        self.reranker = load_reranker_model(os.path.join(models_dir, "reranker.pkl"))
 
     def _load_pickle(self, models_dir: str, name: str):
         path = os.path.join(models_dir, name)
@@ -430,6 +471,17 @@ class SentenceGenerator:
                 return entry.get("morph") or {}
         return {}
 
+    def surface_morph(self, surface: str) -> Dict[str, str]:
+        lemma = self.lookup_lemma(surface)
+        lex = self.get_known_lexeme(lemma)
+        if not lex:
+            return {}
+        canonical = self.canonical_lemma_for(lex)
+        for entry in self.lemma_forms.get(canonical, []):
+            if normalize_token(entry.get("form", "")) == normalize_token(surface):
+                return entry.get("morph") or {}
+        return {}
+
     def get_known_lexeme(self, lemma: Optional[str]) -> Optional[Lexeme]:
         if not lemma:
             return None
@@ -438,16 +490,14 @@ class SentenceGenerator:
     def word_tokens(self, sentence: str) -> List[str]:
         return [normalize_token(t) for t in sentence.split() if is_word_token(t) and normalize_token(t)]
 
+    def sentence_tokens(self, sentence: str) -> List[str]:
+        return TOKEN_RE.findall(sentence or "")
+
     def surface_analysis(self, surface: str) -> Dict[str, Optional[str]]:
         lemma = self.lookup_lemma(surface)
         lex = self.get_known_lexeme(lemma)
         canonical = self.canonical_lemma_for(lex) if lex else lemma
-        morph: Dict[str, str] = {}
-        if lex:
-            for entry in self.lemma_forms.get(canonical, []):
-                if normalize_token(entry.get("form", "")) == normalize_token(surface):
-                    morph = entry.get("morph") or {}
-                    break
+        morph = self.surface_morph(surface)
         gender = lex.gender if lex else None
         if morph.get("Gender") == "Fem":
             gender = "f"
@@ -463,7 +513,483 @@ class SentenceGenerator:
             "gender": gender,
             "number": number,
             "semantic_class": lex.semantic_class if lex else None,
+            "morph": morph,
         }
+
+    def surface_candidate_lemmas(self, surface: str) -> List[str]:
+        normalized = normalize_token(surface)
+        if not normalized:
+            return []
+        candidates: List[str] = []
+        if normalized in self.lexicon:
+            candidates.append(normalized)
+            direct = self.lexicon[normalized]
+            canonical = direct.canonical_lemma or normalized
+            if canonical != normalized:
+                candidates.append(canonical)
+        candidates.extend(self.form_to_lemmas.get(normalized, []))
+        unique: List[str] = []
+        seen = set()
+        for lemma in candidates:
+            key = normalize_token(lemma)
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            unique.append(lemma)
+        return unique
+
+    def surface_has_multiple_candidate_lemmas(self, surface: str) -> bool:
+        return len(self.surface_candidate_lemmas(surface)) > 1
+
+    def form_entries_for_surface(self, lemma: str, surface: str) -> List[Dict[str, str]]:
+        normalized_surface = normalize_token(surface)
+        if not lemma or not normalized_surface:
+            return []
+        out: List[Dict[str, str]] = []
+        seen = set()
+        keys = [lemma]
+        if lemma in self.lexicon:
+            canonical = self.canonical_lemma_for(self.lexicon[lemma])
+            if canonical not in keys:
+                keys.append(canonical)
+        for key in keys:
+            if key in seen:
+                continue
+            seen.add(key)
+            for entry in self.lemma_forms.get(key, []):
+                if normalize_token(entry.get("form", "")) == normalized_surface:
+                    out.append(entry.get("morph") or {})
+        return out
+
+    def morph_matches_pos(self, morph: Dict[str, str], pos: str) -> bool:
+        verbish = bool(morph.get("VerbForm") or morph.get("Mood") or morph.get("Tense") or morph.get("Person"))
+        pronish = bool(morph.get("PronType"))
+        if pos == "v":
+            return verbish
+        if pos in {"n", "adj"}:
+            return not verbish and not pronish
+        if pos == "determiner":
+            return pronish or not morph
+        if pos in {"pron", "pronoun"}:
+            return pronish or not morph
+        if pos == "adv":
+            return not morph
+        return True
+
+    def requested_lemma_allows_inflected_target(self, target: Lexeme) -> bool:
+        return normalize_token(target.lemma) == normalize_token(self.canonical_lemma_for(target)) and target.pos in {"v", "n", "adj"}
+
+    def target_pos_hint_matches_request(self, requested_pos: str, target_pos_hint: str) -> bool:
+        if not target_pos_hint:
+            return True
+        mapped = {
+            "VERB": "v",
+            "AUX": "v",
+            "NOUN": "n",
+            "PROPN": "n",
+            "ADJ": "adj",
+            "ADV": "adv",
+            "DET": "determiner",
+            "PRON": "pron",
+        }.get(target_pos_hint.upper(), target_pos_hint.lower())
+        if requested_pos in {"pron", "pronoun"}:
+            return mapped == "pron"
+        return mapped == requested_pos
+
+    def target_morph_for_request(self, target: Lexeme, surface: str) -> str:
+        normalized_surface = normalize_token(surface)
+        if not normalized_surface:
+            return ""
+        for morph in self.form_entries_for_surface(target.lemma, surface):
+            if self.morph_matches_pos(morph, target.pos):
+                return self.morph_signature(morph)
+        if normalized_surface == normalize_token(target.lemma):
+            morph = self.target_form_metadata(target)
+            if morph and self.morph_matches_pos(morph, target.pos):
+                return self.morph_signature(morph)
+        return ""
+
+    def surface_matches_requested_target(self, target: Lexeme, surface: str) -> bool:
+        normalized_surface = normalize_token(surface)
+        requested = normalize_token(target.lemma)
+        if not normalized_surface:
+            return False
+        if not self.requested_lemma_allows_inflected_target(target):
+            if normalized_surface != requested:
+                return False
+            direct = self.lexicon.get(normalized_surface)
+            if direct and direct.pos == target.pos:
+                return True
+            morphs = self.form_entries_for_surface(target.lemma, surface)
+            return any(self.morph_matches_pos(morph, target.pos) for morph in morphs) or target.pos == "adv"
+        morphs = self.form_entries_for_surface(target.lemma, surface)
+        return any(self.morph_matches_pos(morph, target.pos) for morph in morphs)
+
+    def candidate_target_matches_request(self, candidate: Candidate, tokens: Optional[List[str]] = None) -> bool:
+        target = self.lexicon.get(candidate.lemma)
+        if not target:
+            return False
+        token_sequence = list(tokens) if tokens is not None else self.sentence_tokens(candidate.sentence)
+        if candidate.target_index < 0 or candidate.target_index >= len(token_sequence):
+            return False
+        anchored_token = token_sequence[candidate.target_index]
+        if not is_word_token(anchored_token):
+            return False
+        if normalize_token(anchored_token) != normalize_token(candidate.target_form):
+            return False
+        target_form_hint = normalize_token(getattr(candidate, "_target_form_hint", ""))
+        if target_form_hint and normalize_token(anchored_token) != target_form_hint:
+            return False
+        target_pos_hint = getattr(candidate, "_target_pos_hint", "")
+        if candidate.source_method == "retrieved_corpus" and not self.target_pos_hint_matches_request(target.pos, target_pos_hint):
+            return False
+        if not self.surface_matches_requested_target(target, anchored_token):
+            return False
+        if self.surface_has_multiple_candidate_lemmas(anchored_token):
+            if candidate.source_method == "retrieved_corpus":
+                if not target_pos_hint or not self.target_pos_hint_matches_request(target.pos, target_pos_hint):
+                    return False
+            elif not self.requested_lemma_allows_inflected_target(target):
+                direct = self.lexicon.get(normalize_token(anchored_token))
+                if not (direct and direct.lemma == target.lemma and direct.pos == target.pos):
+                    return False
+        return True
+
+    def morph_signature(self, morph: Dict[str, str]) -> str:
+        if not morph:
+            return ""
+        return "|".join(f"{key}={morph[key]}" for key in sorted(morph))
+
+    def infer_adjective_features(self, adj_surface: str) -> Tuple[Optional[str], Optional[str]]:
+        info = self.surface_analysis(adj_surface)
+        surface = normalize_token(adj_surface)
+        gender = info["gender"]
+        number = info["number"]
+        if surface in APOCOPATED_ADJECTIVE_FEATURES:
+            inferred_gender, inferred_number = APOCOPATED_ADJECTIVE_FEATURES[surface]
+            gender = gender or inferred_gender
+            number = inferred_number
+        if surface.endswith("os"):
+            gender = gender or "m"
+            number = "pl"
+        elif surface.endswith("as"):
+            gender = gender or "f"
+            number = "pl"
+        elif surface.endswith("o"):
+            gender = gender or "m"
+            number = number or "sg"
+        elif surface.endswith("a"):
+            gender = gender or "f"
+            number = number or "sg"
+        elif surface.endswith("es") or (surface.endswith("s") and len(surface) > 2):
+            number = "pl"
+        return gender, number
+
+    def noun_is_locatable(self, noun: Optional[Lexeme]) -> bool:
+        return bool(noun and noun.pos == "n" and noun.semantic_class in LOCATABLE_NOUN_CLASSES)
+
+    def noun_is_template_friendly(self, noun: Optional[Lexeme]) -> bool:
+        if not noun or noun.pos != "n":
+            return False
+        if normalize_token(noun.lemma) in LOW_VALUE_NOUN_TEMPLATE_LEMMAS:
+            return False
+        if noun.semantic_class in {"time", "abstract", "activity"}:
+            return False
+        return True
+
+    def noun_supports_here_template(self, noun: Optional[Lexeme]) -> bool:
+        return bool(noun and self.noun_is_template_friendly(noun) and normalize_token(noun.lemma) in HERE_TEMPLATE_SAFE_LEMMAS)
+
+    def noun_supports_ser_adjective_template(self, noun: Optional[Lexeme]) -> bool:
+        return bool(
+            noun
+            and self.noun_is_template_friendly(noun)
+            and noun.semantic_class in SER_ADJ_TEMPLATE_NOUN_CLASSES
+        )
+
+    def noun_supports_possession_template(self, noun: Optional[Lexeme]) -> bool:
+        return bool(
+            noun
+            and self.noun_is_template_friendly(noun)
+            and noun.semantic_class in SAFE_POSSESSIBLE_NOUN_CLASSES
+            and normalize_token(noun.lemma) in SAFE_POSSESSIBLE_TEMPLATE_LEMMAS
+        )
+
+    def pick_template_friendly_noun(
+        self,
+        rank_ceiling: int,
+        semantic_classes: Optional[List[str]] = None,
+        exclude: Optional[Iterable[str]] = None,
+    ) -> Optional[Lexeme]:
+        exclude_set = {normalize_token(x) for x in (exclude or []) if x}
+        nouns = [
+            x
+            for x in self.pos_buckets.get("n", [])
+            if x.rank <= rank_ceiling
+            and self.noun_is_template_friendly(x)
+            and normalize_token(x.lemma) not in exclude_set
+            and normalize_token(self.canonical_lemma_for(x)) not in exclude_set
+        ]
+        if semantic_classes:
+            preferred = [x for x in nouns if x.semantic_class in semantic_classes]
+            picked = self.pick_from_candidates(preferred)
+            if picked:
+                return picked
+        return self.pick_from_candidates(nouns)
+
+    def pick_preferred_lemmas(
+        self,
+        lemmas: Iterable[str],
+        rank_ceiling: int,
+        exclude: Optional[Iterable[str]] = None,
+    ) -> Optional[Lexeme]:
+        exclude_set = {normalize_token(x) for x in (exclude or []) if x}
+        candidates = [
+            self.generation_lexicon[lemma]
+            for lemma in lemmas
+            if lemma in self.generation_lexicon
+            and self.generation_lexicon[lemma].rank <= rank_ceiling
+            and normalize_token(lemma) not in exclude_set
+        ]
+        return self.pick_from_candidates(candidates)
+
+    def pick_safe_location_noun(self, rank_ceiling: int, exclude: Optional[Iterable[str]] = None) -> Optional[Lexeme]:
+        return self.pick_preferred_lemmas(SAFE_LOCATION_LEMMAS, rank_ceiling, exclude=exclude)
+
+    def pick_safe_destination_noun(self, rank_ceiling: int, exclude: Optional[Iterable[str]] = None) -> Optional[Lexeme]:
+        return self.pick_preferred_lemmas(SAFE_MOVEMENT_DESTINATION_LEMMAS, rank_ceiling, exclude=exclude)
+
+    def pick_safe_object_noun_for_verb(
+        self,
+        canonical: str,
+        rank_ceiling: int,
+        exclude: Optional[Iterable[str]] = None,
+    ) -> Optional[Lexeme]:
+        safe_lemmas = SAFE_TEMPLATE_OBJECT_LEMMAS_BY_VERB.get(canonical)
+        if not safe_lemmas:
+            return None
+        return self.pick_preferred_lemmas(safe_lemmas, rank_ceiling, exclude=exclude)
+
+    def adjective_target_is_template_friendly(self, target: Lexeme) -> bool:
+        if target.pos != "adj":
+            return True
+        surface = normalize_token(target.lemma)
+        canonical = normalize_token(target.canonical_lemma or target.lemma)
+        if surface in APOCOPATED_ADJECTIVE_FEATURES:
+            return False
+        if canonical != surface:
+            return False
+        morph = self.target_form_metadata(target)
+        if morph.get("Number") == "Plur":
+            return False
+        return True
+
+    def subject_features(self, words: List[str], verb_index: int) -> Optional[Dict[str, Optional[str]]]:
+        if verb_index <= 0 or not words:
+            return None
+        first = words[0]
+        if first in SUBJECT_FEATURES:
+            features = dict(SUBJECT_FEATURES[first])
+            features["source"] = "pronoun"
+            return features
+        if first in ARTICLE_FEATURES or first in DEMONSTRATIVE_SET:
+            search_space = words[1:verb_index]
+        else:
+            search_space = words[:verb_index]
+        for token in search_space:
+            info = self.surface_analysis(token)
+            if info["pos"] != "n":
+                continue
+            return {
+                "person_code": "3pl" if info["number"] == "pl" else "3sg",
+                "gender": info["gender"],
+                "number": info["number"],
+                "source": "noun",
+                "surface": token,
+            }
+        return None
+
+    def first_finite_verb_index(self, words: List[str]) -> int:
+        for idx, token in enumerate(words):
+            if self.lookup_pos(token) != "v":
+                continue
+            morph = self.surface_morph(token)
+            if morph.get("VerbForm") == "Fin":
+                return idx
+        return -1
+
+    def subject_verb_agreement_ok(self, words: List[str], verb_index: int) -> bool:
+        if verb_index < 0:
+            return False
+        subject = self.subject_features(words, verb_index)
+        if not subject:
+            return True
+        verb_morph = self.surface_morph(words[verb_index])
+        if verb_morph.get("VerbForm") != "Fin":
+            return False
+        expected_person = subject.get("person_code")
+        actual_person = self.person_code_from_morph(verb_morph)
+        if expected_person and actual_person and expected_person != actual_person:
+            return False
+        expected_number = subject.get("number")
+        actual_number = "pl" if verb_morph.get("Number") == "Plur" else "sg"
+        if expected_number and actual_number != expected_number:
+            return False
+        return True
+
+    def copula_predicate_agreement_ok(self, words: List[str], verb_index: int) -> bool:
+        if verb_index < 0:
+            return True
+        if self.surface_analysis(words[verb_index])["lemma"] not in {"ser", "estar"}:
+            return True
+        subject = self.subject_features(words, verb_index)
+        if not subject:
+            return True
+        predicate_adj = next((token for token in words[verb_index + 1 :] if self.lookup_pos(token) == "adj"), None)
+        if not predicate_adj:
+            return True
+        if normalize_token(predicate_adj) in APOCOPATED_ADJECTIVE_FEATURES:
+            return False
+        adj_gender, adj_number = self.infer_adjective_features(predicate_adj)
+        if subject.get("number") and adj_number and adj_number != subject["number"]:
+            return False
+        if subject.get("gender") and adj_gender and adj_gender != subject["gender"]:
+            return False
+        return True
+
+    def template_support_reason(self, target: Lexeme) -> str:
+        if target.pos != "v":
+            return ""
+        canonical = self.canonical_lemma_for(target)
+        morph = self.target_form_metadata(target)
+        if normalize_token(target.lemma) == normalize_token(canonical):
+            if morph.get("VerbForm") and morph.get("VerbForm") != "Inf":
+                return "canonical target has unsupported surface verb form"
+            if canonical in IRREGULAR_PRESENT or canonical.endswith(("ar", "er", "ir")):
+                return ""
+            return "unsupported canonical verb target"
+        if not morph:
+            return "missing morphology for surface verb target"
+        if morph.get("VerbForm") != "Fin":
+            return f"unsupported target verb form: {morph.get('VerbForm', 'unknown')}"
+        if morph.get("Mood") not in SUPPORTED_TEMPLATE_MOODS:
+            return f"unsupported target verb mood: {morph.get('Mood', 'unknown')}"
+        return ""
+
+    def standalone_subjunctive_without_trigger(self, words: List[str], verb_index: int) -> bool:
+        if verb_index < 0:
+            return False
+        morph = self.surface_morph(words[verb_index])
+        if morph.get("Mood") != "Sub":
+            return False
+        prefix = set(words[:verb_index])
+        if prefix & SUBJUNCTIVE_TRIGGER_TOKENS:
+            return False
+        if "tal" in prefix and "vez" in prefix:
+            return False
+        return True
+
+    def low_value_here_fallback(self, words: List[str], verb_index: int) -> bool:
+        if verb_index < 0 or "aquí" not in words:
+            return False
+        if self.surface_analysis(words[verb_index])["lemma"] != "estar":
+            return False
+        subject = self.subject_features(words, verb_index)
+        if not subject or subject.get("source") != "noun":
+            return False
+        noun_surface = subject.get("surface")
+        noun = self.get_known_lexeme(self.lookup_lemma(noun_surface or ""))
+        return not self.noun_supports_here_template(noun)
+
+    def contradictory_identity_statement(self, words: List[str], verb_index: int) -> bool:
+        if verb_index < 0 or self.surface_analysis(words[verb_index])["lemma"] != "ser":
+            return False
+        subject = self.subject_features(words, verb_index)
+        if not subject or subject.get("source") != "noun":
+            return False
+        subject_info = self.surface_analysis(subject.get("surface", ""))
+        if subject_info["semantic_class"] != "person":
+            return False
+        for idx in range(verb_index + 1, len(words) - 1):
+            if words[idx] not in ARTICLE_FEATURES:
+                continue
+            pred_info = self.surface_analysis(words[idx + 1])
+            if pred_info["pos"] != "n" or pred_info["semantic_class"] != "person":
+                continue
+            if (
+                subject_info["lemma"]
+                and pred_info["lemma"]
+                and subject_info["lemma"] != pred_info["lemma"]
+                and subject_info["gender"]
+                and pred_info["gender"]
+                and subject_info["gender"] != pred_info["gender"]
+            ):
+                return True
+        return False
+
+    def retrieved_quality(self, candidate: Candidate, words: List[str], verb_index: int) -> Tuple[bool, List[float], List[str]]:
+        if candidate.source_method != "retrieved_corpus":
+            return False, [], []
+        reasons: List[str] = []
+        penalties: List[float] = []
+        sentence = candidate.sentence
+        normalized_sentence = " ".join(words)
+        if any(ch in sentence for ch in {'"', "“", "”"}):
+            reasons.append("quoted_fragment")
+        if words and words[0] in CONTEXT_DEPENDENT_OPENERS:
+            reasons.append("context_dependent_opener")
+        if words and words[0] in DEICTIC_SUBJECTS and self.subject_features(words, verb_index) is None:
+            reasons.append("deictic_subject_without_anchor")
+        if any(pattern in normalized_sentence for pattern in LOW_VALUE_RETRIEVED_PATTERNS):
+            reasons.append("low_value_retrieved_pattern")
+        if self.standalone_subjunctive_without_trigger(words, verb_index):
+            reasons.append("standalone_subjunctive")
+        if self.contradictory_identity_statement(words, verb_index):
+            reasons.append("contradictory_identity")
+        target = self.lexicon.get(candidate.lemma)
+        canonical = self.canonical_lemma_for(target) if target else normalize_token(candidate.canonical_lemma or candidate.lemma)
+        noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
+        if canonical == "tener" and not noun_surface:
+            reasons.append("weak_retrieved_verb_object")
+        if canonical in SAFE_TEMPLATE_OBJECT_LEMMAS_BY_VERB and noun_surface and not self.verb_object_is_semantically_safe(canonical, noun_surface):
+            reasons.append("weak_retrieved_verb_object")
+        if canonical in {"ir", "poder"} and noun_surface and not self.destination_is_safe(noun_surface):
+            reasons.append("weak_retrieved_destination")
+        if canonical == "estar" and noun_surface and not self.location_is_safe(noun_surface):
+            reasons.append("weak_retrieved_location")
+        if "," in sentence or ";" in sentence or ":" in sentence:
+            penalties.append(0.8)
+            reasons.append("multi_clause_context")
+        return bool(
+            {
+                "quoted_fragment",
+                "context_dependent_opener",
+                "deictic_subject_without_anchor",
+                "standalone_subjunctive",
+                "contradictory_identity",
+                "low_value_retrieved_pattern",
+                "weak_retrieved_verb_object",
+                "weak_retrieved_destination",
+                "weak_retrieved_location",
+            }
+            & set(reasons)
+        ), penalties, reasons
+
+    def retrieved_is_preferred(self, candidate: Candidate) -> bool:
+        if candidate.source_method != "retrieved_corpus" or not candidate.sentence:
+            return False
+        words = self.word_tokens(candidate.sentence)
+        profile = get_profile(candidate.rank)
+        verb_index = self.first_finite_verb_index(words)
+        rejected, penalties, _ = self.retrieved_quality(candidate, words, verb_index)
+        if rejected:
+            return False
+        if penalties:
+            return False
+        if len(words) > profile.ideal_length + 2:
+            return False
+        grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(candidate)
+        return grammatical_ok == "1" and natural_ok == "1" and learner_clear_ok == "1" and candidate.score >= 7.5
 
     def pick_from_candidates(self, candidates: List[Lexeme]) -> Optional[Lexeme]:
         if not candidates:
@@ -574,15 +1100,9 @@ class SentenceGenerator:
         return self.conjugate_present(canonical, person_code)
 
     def can_template_target(self, target: Lexeme) -> bool:
-        if target.pos != "v":
-            return True
-        canonical = self.canonical_lemma_for(target)
-        if normalize_token(canonical) != normalize_token(target.lemma):
-            return True
-        morph = self.target_form_metadata(target)
-        if morph.get("VerbForm") == "Inf":
-            return True
-        return canonical in IRREGULAR_PRESENT or canonical.endswith(("ar", "er", "ir"))
+        if not self.adjective_target_is_template_friendly(target):
+            return False
+        return not self.template_support_reason(target)
 
     def detokenize(self, tokens: List[str]) -> str:
         parts: List[str] = []
@@ -609,6 +1129,8 @@ class SentenceGenerator:
         article_gender, article_number = features
         noun_gender = noun["gender"] or article_gender
         noun_number = noun["number"] or article_number
+        if noun["lemma"] in EL_ARTICLE_FEMININE_NOUNS and noun_number == "sg":
+            return normalize_token(article) in {"el", "un", "este", "ese"}
         return article_gender == noun_gender and article_number == noun_number
 
     def adjective_matches_noun(self, adj_surface: str, noun_surface: str) -> bool:
@@ -619,9 +1141,10 @@ class SentenceGenerator:
         adj_lemma = adj["lemma"] or normalize_token(adj_surface)
         noun_gender = noun["gender"]
         noun_number = noun["number"]
-        if noun_gender and adj["gender"] and adj["gender"] != noun_gender:
+        adj_gender, adj_number = self.infer_adjective_features(adj_surface)
+        if noun_gender and adj_gender and adj_gender != noun_gender:
             return False
-        if noun_number and adj["number"] and adj["number"] != noun_number:
+        if noun_number and adj_number and adj_number != noun_number:
             return False
         allowed_classes = ADJ_SUBJECT_PREFS.get(adj_lemma)
         if allowed_classes and noun["semantic_class"] and noun["semantic_class"] not in allowed_classes:
@@ -675,23 +1198,71 @@ class SentenceGenerator:
             return True
         noun = self.surface_analysis(noun_surface)
         noun_class = noun["semantic_class"]
+        noun_lemma = normalize_token(noun["lemma"] or noun_surface)
         if noun_class in REJECT_OBJECT_CLASSES_BY_VERB.get(canonical, set()):
+            return False
+        explicit_safe_lemmas = SAFE_TEMPLATE_OBJECT_LEMMAS_BY_VERB.get(canonical)
+        if explicit_safe_lemmas is not None and noun_lemma not in explicit_safe_lemmas:
             return False
         allowed_classes = SAFE_OBJECT_CLASSES_BY_VERB.get(canonical)
         if allowed_classes and noun_class and noun_class not in allowed_classes:
             return False
         return True
 
+    def noun_surface_in_lemma_set(self, noun_surface: Optional[str], safe_lemmas: Iterable[str]) -> bool:
+        if not noun_surface:
+            return False
+        noun = self.surface_analysis(noun_surface)
+        noun_lemma = normalize_token(noun["lemma"] or noun_surface)
+        return noun_lemma in {normalize_token(x) for x in safe_lemmas}
+
+    def destination_is_safe(self, noun_surface: Optional[str]) -> bool:
+        return self.noun_surface_in_lemma_set(noun_surface, SAFE_MOVEMENT_DESTINATION_LEMMAS)
+
+    def location_is_safe(self, noun_surface: Optional[str]) -> bool:
+        return self.noun_surface_in_lemma_set(noun_surface, SAFE_LOCATION_LEMMAS)
+
     def review_flags(self, candidate: Candidate) -> Tuple[str, str, str, str]:
         if not candidate.sentence:
             return "0", "0", "0", "manual review needed"
+        words = self.word_tokens(candidate.sentence)
+        verb_index = self.first_finite_verb_index(words)
+        valid, _ = self.validate(candidate)
+        if not valid:
+            notes = candidate.template_id or "failed_validation"
+            return "0", "0", "0", notes
         grammatical = "1"
-        natural = "1" if candidate.source_method == "retrieved_corpus" or candidate.score >= 8.0 else "0"
-        learner_clear = "1" if candidate.source_method == "retrieved_corpus" or candidate.score >= 7.0 else "0"
-        notes = ""
-        if candidate.source_method != "retrieved_corpus":
-            notes = candidate.template_id
-        return grammatical, natural, learner_clear, notes
+        natural = "1"
+        learner_clear = "1"
+        notes: List[str] = []
+        rejected_retrieval, retrieval_penalties, retrieval_reasons = self.retrieved_quality(candidate, words, verb_index)
+        if candidate.source_method != "retrieved_corpus" and candidate.template_id:
+            notes.append(candidate.template_id)
+        if retrieval_reasons:
+            notes.extend(retrieval_reasons)
+        if rejected_retrieval or retrieval_penalties:
+            natural = "0"
+            learner_clear = "0"
+        if self.low_value_here_fallback(words, verb_index):
+            natural = "0"
+            learner_clear = "0"
+            notes.append("low_value_here_fallback")
+        if candidate.template_id in LOW_VALUE_TEMPLATE_IDS:
+            natural = "0"
+            if candidate.template_id in {"seeded_noun_here", "n_a1_2", "seeded_verb_adv"}:
+                learner_clear = "0"
+        if candidate.template_id.endswith("_haber_perfect"):
+            natural = "0"
+            learner_clear = "0"
+        if candidate.source_method != "retrieved_corpus" and candidate.score < 8.0:
+            natural = "0"
+        if candidate.score < 7.5:
+            learner_clear = "0"
+        if candidate.source_method == "retrieved_corpus" and candidate.score < 8.5:
+            natural = "0"
+        if candidate.source_method == "retrieved_corpus" and candidate.score < 7.5:
+            learner_clear = "0"
+        return grammatical, natural, learner_clear, "; ".join(dict.fromkeys(x for x in notes if x))
 
     def contexts_for_target(self, target: Lexeme) -> List[Dict]:
         seen = set()
@@ -739,20 +1310,7 @@ class SentenceGenerator:
                     return None
                 article = self.choose_article(noun.gender, definite=False)
                 return self.build_candidate(target, [verb, article, noun.lemma], f"{template_id}_haber_existential", source_method, 0)
-            aux_target = self.pick_candidate("v", allowed, exclude={target.lemma, canonical, "ser", "haber"})
-            if not aux_target:
-                return None
-            participle = self.participle_form(aux_target.lemma)
-            if not participle:
-                return None
-            obj_classes = VERB_OBJECT_PREFS.get(aux_target.lemma)
-            obj = self.pick_candidate("n", allowed, semantic_classes=obj_classes, exclude={target.lemma, canonical, aux_target.lemma})
-            if obj:
-                article = self.choose_article(obj.gender, definite=False)
-                tokens = [subject, verb, participle, article, obj.lemma]
-            else:
-                tokens = [subject, verb, participle, "aquí"]
-            return self.build_candidate(target, tokens, f"{template_id}_haber_perfect", source_method, 1)
+            return None
 
         if canonical == "ser":
             adj = self.pick_compatible_adjective(allowed, "person", exclude={target.lemma, canonical})
@@ -764,83 +1322,45 @@ class SentenceGenerator:
                     source_method,
                     1,
                 )
-            noun = self.pick_semantic_noun(allowed, preferred_classes=["person", "object"], exclude={target.lemma, canonical})
-            if noun:
-                article = self.choose_article(noun.gender, definite=False)
-                return self.build_candidate(target, [subject, verb, article, noun.lemma], f"{template_id}_ser_noun", source_method, 1)
             return None
 
         if canonical == "estar":
-            place = self.pick_candidate("n", allowed, semantic_classes=["place"], exclude={target.lemma, canonical})
+            place = self.pick_safe_location_noun(allowed, exclude={target.lemma, canonical})
             if place:
                 article = self.choose_article(place.gender, definite=True)
                 return self.build_candidate(target, [subject, verb, "en", article, place.lemma], f"{template_id}_estar_place", source_method, 1)
-            return self.build_candidate(target, [subject, verb, "aquí"], f"{template_id}_estar_here", source_method, 1)
+            return None
 
         if canonical == "ir":
-            place = self.pick_candidate("n", allowed, semantic_classes=["place"], exclude={target.lemma, canonical})
+            place = self.pick_safe_destination_noun(allowed, exclude={target.lemma, canonical})
             if not place:
                 return None
             article = self.choose_article(place.gender, definite=True)
             return self.build_candidate(target, [subject, verb, "a", article, place.lemma], f"{template_id}_ir_place", source_method, 1)
 
         if canonical == "poder":
-            infinitive = self.pick_easy_infinitive(allowed, exclude={target.lemma, canonical, "ser", "estar", "haber"})
-            if not infinitive:
+            place = self.pick_safe_destination_noun(allowed, exclude={target.lemma, canonical, "ir"})
+            if not place:
                 return None
-            obj_classes = VERB_OBJECT_PREFS.get(infinitive.lemma)
-            if obj_classes:
-                obj = self.pick_candidate("n", allowed, semantic_classes=obj_classes, exclude={target.lemma, canonical, infinitive.lemma})
-                if obj:
-                    article = self.choose_article(obj.gender, definite=False)
-                    return self.build_candidate(target, [subject, verb, infinitive.lemma, article, obj.lemma], f"{template_id}_poder_inf_obj", source_method, 1)
-            if infinitive.lemma == "ir":
-                place = self.pick_semantic_noun(allowed, preferred_classes=["place"], exclude={target.lemma, canonical, infinitive.lemma})
-                if place:
-                    article = self.choose_article(place.gender, definite=True)
-                    return self.build_candidate(target, [subject, verb, infinitive.lemma, "a", article, place.lemma], f"{template_id}_poder_ir_place", source_method, 1)
-            return self.build_candidate(target, [subject, verb, infinitive.lemma], f"{template_id}_poder_inf", source_method, 1)
+            article = self.choose_article(place.gender, definite=True)
+            return self.build_candidate(target, [subject, verb, "ir", "a", article, place.lemma], f"{template_id}_poder_ir_place", source_method, 1)
 
         if canonical == "querer":
-            infinitive = self.pick_easy_infinitive(allowed, exclude={target.lemma, canonical, "ser", "estar", "haber"})
-            if infinitive and infinitive.lemma in VERB_OBJECT_PREFS:
-                obj = self.pick_candidate("n", allowed, semantic_classes=VERB_OBJECT_PREFS[infinitive.lemma], exclude={target.lemma, canonical, infinitive.lemma})
-                if obj:
-                    article = self.choose_article(obj.gender, definite=False)
-                    return self.build_candidate(target, [subject, verb, infinitive.lemma, article, obj.lemma], f"{template_id}_querer_inf_obj", source_method, 1)
-            noun = self.pick_semantic_noun(
-                allowed,
-                preferred_classes=SAFE_OBJECT_CLASSES_BY_VERB["querer"],
-                banned_classes=REJECT_OBJECT_CLASSES_BY_VERB["querer"],
-                preferred_lemmas=SAFE_OBJECT_LEMMAS_BY_VERB["querer"],
-                exclude={target.lemma, canonical},
-            )
+            noun = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
             if noun:
                 article = self.choose_article(noun.gender, definite=False)
                 return self.build_candidate(target, [subject, verb, article, noun.lemma], f"{template_id}_querer_obj", source_method, 1)
             return None
 
         if canonical == "hacer":
-            noun = self.pick_semantic_noun(
-                allowed,
-                preferred_classes=SAFE_OBJECT_CLASSES_BY_VERB["hacer"],
-                banned_classes=REJECT_OBJECT_CLASSES_BY_VERB["hacer"],
-                preferred_lemmas=SAFE_OBJECT_LEMMAS_BY_VERB["hacer"],
-                exclude={target.lemma, canonical},
-            )
+            noun = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
             if noun:
                 article = self.choose_article(noun.gender, definite=False)
                 return self.build_candidate(target, [subject, verb, article, noun.lemma], f"{template_id}_hacer_obj", source_method, 1)
             return None
 
         if canonical == "tener":
-            noun = self.pick_semantic_noun(
-                allowed,
-                preferred_classes=SAFE_OBJECT_CLASSES_BY_VERB["tener"],
-                banned_classes=REJECT_OBJECT_CLASSES_BY_VERB["tener"],
-                preferred_lemmas=SAFE_OBJECT_LEMMAS_BY_VERB["tener"],
-                exclude={target.lemma, canonical},
-            )
+            noun = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
             if noun:
                 article = self.choose_article(noun.gender, definite=False)
                 return self.build_candidate(target, [subject, verb, article, noun.lemma], f"{template_id}_tener_obj", source_method, 1)
@@ -903,6 +1423,8 @@ class SentenceGenerator:
         template_id: str,
         source_method: str,
         target_index: Optional[int] = None,
+        target_pos_hint: str = "",
+        target_form_hint: str = "",
     ) -> Optional[Candidate]:
         clean_tokens = [t for t in tokens if t]
         clean_tokens = self.apply_contractions(clean_tokens)
@@ -925,7 +1447,8 @@ class SentenceGenerator:
         sentence = sentence[0].upper() + sentence[1:] if sentence else sentence
         if sentence and sentence[-1] not in ".!?":
             sentence += "."
-        return Candidate(
+        canonical_target = self.canonical_lemma_for(target)
+        candidate = Candidate(
             lemma=target.lemma,
             rank=target.rank,
             pos=target.pos,
@@ -939,12 +1462,53 @@ class SentenceGenerator:
             max_support_rank=max_support,
             template_id=template_id,
             source_method=source_method,
+            canonical_lemma=canonical_target,
+            target_morph=self.target_morph_for_request(target, target_form),
         )
+        setattr(candidate, "_target_pos_hint", target_pos_hint or "")
+        setattr(candidate, "_target_form_hint", target_form_hint or target_form)
+        if not self.candidate_target_matches_request(candidate, tokens=clean_tokens):
+            return None
+        candidate.target_form = clean_tokens[candidate.target_index]
+        return candidate
+
+    def manual_review_candidate(self, target: Lexeme) -> Candidate:
+        return Candidate(
+            lemma=target.lemma,
+            rank=target.rank,
+            pos=target.pos,
+            band=get_profile(target.rank).band,
+            translation=target.translation,
+            sentence="",
+            target_form=target.lemma,
+            target_index=-1,
+            support_ranks=[],
+            avg_support_rank=0.0,
+            max_support_rank=0,
+            template_id="",
+            source_method="manual_review_needed",
+        )
+
+    def candidate_sentence_key(self, candidate: Candidate) -> str:
+        return " ".join(self.word_tokens(candidate.sentence))
+
+    def dedupe_candidates(self, candidates: List[Candidate]) -> List[Candidate]:
+        best_by_sentence: Dict[str, Candidate] = {}
+        for candidate in candidates:
+            key = self.candidate_sentence_key(candidate)
+            if not key:
+                continue
+            existing = best_by_sentence.get(key)
+            if existing is None or candidate.score > existing.score:
+                best_by_sentence[key] = candidate
+        return sorted(best_by_sentence.values(), key=lambda c: c.score, reverse=True)
 
     def validate(self, candidate: Candidate) -> Tuple[bool, List[float]]:
         profile = get_profile(candidate.rank)
         allowed = allowed_support_rank(candidate.rank, profile)
         penalties: List[float] = []
+        if not self.candidate_target_matches_request(candidate):
+            return False, penalties
         words = self.word_tokens(candidate.sentence)
         if not (profile.min_len <= len(words) <= profile.max_len):
             return False, penalties
@@ -963,7 +1527,12 @@ class SentenceGenerator:
         for a, b in zip(words, words[1:]):
             if a == b:
                 return False, penalties
-        if not any(self.lookup_pos(w) == "v" or w in COPULA_FORMS for w in words):
+        finite_verb_index = self.first_finite_verb_index(words)
+        if finite_verb_index < 0:
+            return False, penalties
+        if not self.subject_verb_agreement_ok(words, finite_verb_index):
+            return False, penalties
+        if not self.copula_predicate_agreement_ok(words, finite_verb_index):
             return False, penalties
         for i, word in enumerate(words[:-1]):
             if word in ARTICLE_FEATURES:
@@ -981,6 +1550,8 @@ class SentenceGenerator:
                 return False, penalties
         if candidate.pos == "v" and candidate.source_method != "retrieved_corpus":
             if target:
+                if self.template_support_reason(target):
+                    return False, penalties
                 person_code = self.person_code_from_morph(self.target_form_metadata(target))
                 if person_code and words:
                     subject = words[0]
@@ -993,9 +1564,32 @@ class SentenceGenerator:
                     noun = self.surface_analysis(noun_surface or "")
                     if noun["semantic_class"] in BAD_EXISTENTIAL_CLASSES:
                         return False, penalties
+                if canonical == "haber" and words and words[0] != "hay":
+                    return False, penalties
                 noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
                 if not self.verb_object_is_semantically_safe(canonical, noun_surface):
                     return False, penalties
+                if canonical in {"ir", "poder"} and not self.destination_is_safe(noun_surface):
+                    return False, penalties
+                if canonical == "estar" and noun_surface and not self.location_is_safe(noun_surface):
+                    return False, penalties
+        if candidate.pos == "n" and candidate.source_method != "retrieved_corpus":
+            if target and " aquí" in candidate.sentence.lower() and not self.noun_supports_here_template(target):
+                return False, penalties
+            if target and self.lookup_lemma(words[1] if len(words) > 1 else "") == target.lemma and " es " in candidate.sentence.lower() and not self.noun_supports_ser_adjective_template(target):
+                return False, penalties
+        if candidate.pos == "adj" and candidate.source_method != "retrieved_corpus" and normalize_token(candidate.lemma) in APOCOPATED_ADJECTIVE_FEATURES:
+            return False, penalties
+        if candidate.pos == "adj" and candidate.source_method != "retrieved_corpus" and not self.adjective_target_is_template_friendly(target or self.lexicon.get(candidate.lemma)):
+            return False, penalties
+        if self.standalone_subjunctive_without_trigger(words, finite_verb_index):
+            return False, penalties
+        if self.low_value_here_fallback(words, finite_verb_index):
+            return False, penalties
+        rejected_retrieval, retrieval_penalties, _ = self.retrieved_quality(candidate, words, finite_verb_index)
+        if rejected_retrieval:
+            return False, penalties
+        penalties.extend(retrieval_penalties)
         if self.bad_copula_output(words):
             return False, penalties
         if len(words) == profile.min_len:
@@ -1029,8 +1623,18 @@ class SentenceGenerator:
             idx = ctx.get("index", -1)
             if not tokens or idx < 0 or idx >= len(tokens):
                 continue
-            cand = self.build_candidate(target, tokens, template_id="retrieved", source_method="retrieved_corpus", target_index=idx)
+            cand = self.build_candidate(
+                target,
+                tokens,
+                template_id="retrieved",
+                source_method="retrieved_corpus",
+                target_index=idx,
+                target_pos_hint=ctx.get("target_pos", ""),
+                target_form_hint=ctx.get("target_form", ""),
+            )
             if not cand:
+                continue
+            if not self.candidate_target_matches_request(cand, tokens=tokens):
                 continue
             ok, penalties = self.validate(cand)
             if ok:
@@ -1040,9 +1644,44 @@ class SentenceGenerator:
         return out[:10]
 
     def strong_retrieved_candidate(self, candidate: Candidate) -> bool:
-        profile = get_profile(candidate.rank)
-        words = self.word_tokens(candidate.sentence)
-        return candidate.source_method == "retrieved_corpus" and len(words) <= profile.ideal_length + 1 and candidate.score >= 6.5
+        return self.retrieved_is_preferred(candidate)
+
+    def collect_candidates_for_lemma(self, lemma: str, max_candidates_per_lemma: Optional[int] = None) -> List[Candidate]:
+        lemma = lemma.strip().lower()
+        if lemma not in self.lexicon:
+            raise KeyError(f"Lemma not in lexicon: {lemma}")
+        if lemma not in self.candidate_pool_cache:
+            target = self.lexicon[lemma]
+            candidates: List[Candidate] = []
+            candidates.extend(self.retrieve_candidates(target))
+
+            if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
+                for _ in range(12):
+                    cand = self.seeded_template_candidate(target)
+                    if not cand:
+                        continue
+                    ok, penalties = self.validate(cand)
+                    if not ok:
+                        continue
+                    self.score(cand, penalties)
+                    candidates.append(cand)
+
+                for _ in range(20):
+                    cand = self.pure_template_candidate(target)
+                    if not cand:
+                        continue
+                    ok, penalties = self.validate(cand)
+                    if not ok:
+                        continue
+                    self.score(cand, penalties)
+                    candidates.append(cand)
+
+            self.candidate_pool_cache[lemma] = self.dedupe_candidates(candidates)
+
+        pool = list(self.candidate_pool_cache[lemma])
+        if max_candidates_per_lemma is not None:
+            return pool[:max(0, max_candidates_per_lemma)]
+        return pool
 
     def seeded_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
         contexts = self.contexts_for_target(target)
@@ -1055,13 +1694,17 @@ class SentenceGenerator:
         canonical = self.canonical_lemma_for(target)
 
         if target.pos == "n":
+            if not self.noun_is_template_friendly(target):
+                return None
             article = left if left in ARTICLE_SET else self.choose_article(target.gender, definite=True)
             right_lemma = self.lookup_lemma(right)
             right_lex = self.get_known_lexeme(right_lemma)
-            if right_lex and right_lex.pos == "adj" and right_lex.rank <= allowed:
+            if self.noun_supports_ser_adjective_template(target) and right_lex and right_lex.pos == "adj" and right_lex.rank <= allowed:
                 adj = self.inflect_adj(right_lex.lemma, target.gender)
                 tokens = [article, target.lemma, "es", adj]
                 return self.build_candidate(target, tokens, "seeded_noun_adj", "seeded_template", 1)
+            if not self.noun_supports_here_template(target):
+                return None
             tokens = [article, target.lemma, "está", "aquí"]
             return self.build_candidate(target, tokens, "seeded_noun_here", "seeded_template", 1)
 
@@ -1072,25 +1715,22 @@ class SentenceGenerator:
                     return special
             subject, person = self.subject_for_target(target, fallback=left if left in SUBJECT_FEATURES else "ella")
             verb = self.target_verb_form(target, person)
-            right_lemma = self.lookup_lemma(right)
-            right_lex = self.get_known_lexeme(right_lemma)
-            if right_lex and right_lex.pos == "n" and right_lex.rank <= allowed:
-                obj = right_lex
+            obj = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
+            if obj:
                 article = self.choose_article(obj.gender, definite=True)
                 tokens = [subject, verb, article, obj.lemma]
                 return self.build_candidate(target, tokens, "seeded_verb_obj", "seeded_template", 1)
-            tokens = [subject, verb, "mucho"]
-            return self.build_candidate(target, tokens, "seeded_verb_adv", "seeded_template", 1)
+            return None
 
         if target.pos == "adj":
             left_lemma = self.lookup_lemma(left)
             left_lex = self.get_known_lexeme(left_lemma)
-            if left_lex and left_lex.pos == "n" and left_lex.rank <= allowed:
+            if left_lex and left_lex.pos == "n" and left_lex.rank <= allowed and self.noun_is_template_friendly(left_lex):
                 noun = left_lex
                 article = self.choose_article(noun.gender, definite=True)
                 tokens = [article, noun.lemma, "es", self.inflect_adj(target.lemma, noun.gender)]
                 return self.build_candidate(target, tokens, "seeded_adj_noun", "seeded_template", 3)
-            noun = self.pick_candidate("n", allowed, exclude={target.lemma})
+            noun = self.pick_template_friendly_noun(allowed, exclude={target.lemma})
             if noun:
                 article = self.choose_article(noun.gender, definite=True)
                 tokens = [article, noun.lemma, "es", self.inflect_adj(target.lemma, noun.gender)]
@@ -1103,23 +1743,28 @@ class SentenceGenerator:
         canonical = self.canonical_lemma_for(target)
 
         if target.pos == "n":
+            if not self.noun_is_template_friendly(target):
+                return None
             choices = ["n_a1_1", "n_a1_2", "n_a1_3"] if profile.band in {"A1", "A2"} else ["n_b1_1", "n_b1_2"]
             template = self.random.choice(choices)
             if template == "n_a1_1":
-                adj_classes = None
-                if target.semantic_class:
-                    adj_classes = ADJ_SUBJECT_PREFS.get(target.lemma)
-                adj = self.pick_candidate("adj", allowed, semantic_classes=adj_classes, exclude={target.lemma})
+                if not self.noun_supports_ser_adjective_template(target):
+                    return None
+                adj = self.pick_compatible_adjective(allowed, target.semantic_class, exclude={target.lemma})
                 if not adj:
                     return None
                 article = self.choose_article(target.gender, definite=True)
                 tokens = [article, target.lemma, "es", self.inflect_adj(adj.lemma, target.gender)]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "n_a1_2":
+                if not self.noun_supports_here_template(target):
+                    return None
                 article = self.choose_article(target.gender, definite=True)
                 tokens = [article, target.lemma, "está", "aquí"]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "n_a1_3":
+                if not self.noun_supports_possession_template(target):
+                    return None
                 subject = self.random.choice(["yo", "él", "ella"])
                 verb = self.conjugate_present("tener", "1sg" if subject == "yo" else "3sg")
                 article = self.choose_article(target.gender, definite=False)
@@ -1127,7 +1772,7 @@ class SentenceGenerator:
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "n_b1_1":
                 verb = self.pick_candidate("v", allowed, exclude={target.lemma, "ser", "estar", "tener"})
-                place = self.pick_candidate("n", allowed, semantic_classes=["place"], exclude={target.lemma})
+                place = self.pick_safe_location_noun(allowed, exclude={target.lemma})
                 if not verb or not place:
                     return None
                 article = self.choose_article(target.gender, definite=True)
@@ -1135,7 +1780,9 @@ class SentenceGenerator:
                 tokens = ["ella", self.conjugate_present(verb.lemma, "3sg"), article, target.lemma, "en", place_article, place.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "n_b1_2":
-                adj = self.pick_candidate("adj", allowed, exclude={target.lemma})
+                if not self.noun_supports_ser_adjective_template(target):
+                    return None
+                adj = self.pick_compatible_adjective(allowed, target.semantic_class, exclude={target.lemma})
                 verb = self.pick_candidate("v", allowed, exclude={target.lemma, "ser", "estar", "tener"})
                 if not adj or not verb:
                     return None
@@ -1153,32 +1800,29 @@ class SentenceGenerator:
             subject, person = self.subject_for_target(target)
             verb = self.target_verb_form(target, person)
             if template == "v_a1_1":
-                obj_classes = VERB_OBJECT_PREFS.get(canonical)
-                obj = self.pick_candidate("n", allowed, semantic_classes=obj_classes, exclude={target.lemma})
+                obj = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
                 if not obj:
                     return None
                 article = self.choose_article(obj.gender, definite=False)
                 tokens = [subject, verb, article, obj.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "v_a1_2":
-                tokens = [subject, self.random.choice(["siempre", "ahora"]), verb]
-                return self.build_candidate(target, tokens, template, "template_generated", 2)
+                return None
             if template == "v_a1_4":
                 if canonical not in PLACE_PREP_VERBS:
                     return None
                 prep = target.required_prep
                 if not prep:
                     return None
-                place = self.pick_candidate("n", allowed, semantic_classes=["place"], exclude={target.lemma})
+                place = self.pick_safe_destination_noun(allowed, exclude={target.lemma, canonical})
                 if not place:
                     return None
                 article = self.choose_article(place.gender, definite=True)
                 tokens = [subject, verb, prep, article, place.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "v_b1_1":
-                obj_classes = VERB_OBJECT_PREFS.get(canonical)
-                obj = self.pick_candidate("n", allowed, semantic_classes=obj_classes, exclude={target.lemma})
-                extra = self.pick_candidate("n", allowed, semantic_classes=["person", "place"], exclude={target.lemma, obj.lemma if obj else ""})
+                obj = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
+                extra = self.pick_safe_location_noun(allowed, exclude={target.lemma, obj.lemma if obj else ""})
                 if not obj or not extra:
                     return None
                 art1 = self.choose_article(obj.gender, definite=True)
@@ -1192,9 +1836,9 @@ class SentenceGenerator:
             template = self.random.choice(choices)
             if template == "adj_a1_1":
                 pref_classes = ADJ_SUBJECT_PREFS.get(target.lemma)
-                noun = self.pick_candidate("n", allowed, semantic_classes=pref_classes, exclude={target.lemma})
+                noun = self.pick_template_friendly_noun(allowed, semantic_classes=pref_classes, exclude={target.lemma})
                 if not noun:
-                    noun = self.pick_candidate("n", allowed, exclude={target.lemma})
+                    noun = self.pick_template_friendly_noun(allowed, exclude={target.lemma})
                 if not noun:
                     return None
                 article = self.choose_article(noun.gender, definite=True)
@@ -1202,11 +1846,11 @@ class SentenceGenerator:
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "adj_a1_3":
                 subject = self.random.choice(["ella", "él"])
-                tokens = [subject, "es", target.lemma]
+                tokens = [subject, "es", self.inflect_adj_for_subject(target.lemma, subject)]
                 return self.build_candidate(target, tokens, template, "template_generated", 2)
             if template == "adj_b1_1":
-                noun = self.pick_candidate("n", allowed, exclude={target.lemma})
-                extra = self.pick_candidate("n", allowed, semantic_classes=["place"], exclude={target.lemma, noun.lemma if noun else ""})
+                noun = self.pick_template_friendly_noun(allowed, exclude={target.lemma})
+                extra = self.pick_template_friendly_noun(allowed, semantic_classes=["place"], exclude={target.lemma, noun.lemma if noun else ""})
                 if not noun or not extra:
                     return None
                 article1 = self.choose_article(noun.gender, definite=True)
@@ -1220,47 +1864,32 @@ class SentenceGenerator:
         if lemma not in self.lexicon:
             raise KeyError(f"Lemma not in lexicon: {lemma}")
         target = self.lexicon[lemma]
-        candidates: List[Candidate] = []
-        retrieved = self.retrieve_candidates(target)
-        if retrieved and self.strong_retrieved_candidate(retrieved[0]):
-            return retrieved[0]
-        candidates.extend(retrieved)
-
-        if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
-            for _ in range(12):
-                cand = self.seeded_template_candidate(target)
-                if cand:
-                    ok, penalties = self.validate(cand)
-                    if ok:
-                        self.score(cand, penalties)
-                        candidates.append(cand)
-
-            for _ in range(20):
-                cand = self.pure_template_candidate(target)
-                if cand:
-                    ok, penalties = self.validate(cand)
-                    if ok:
-                        self.score(cand, penalties)
-                        candidates.append(cand)
-
+        candidates = self.collect_candidates_for_lemma(lemma)
         if candidates:
-            return max(candidates, key=lambda c: c.score)
+            chosen = self.select_best_candidate(candidates)
+            if self.candidate_is_publishable(chosen):
+                return chosen
+        return self.manual_review_candidate(target)
 
-        return Candidate(
-            lemma=target.lemma,
-            rank=target.rank,
-            pos=target.pos,
-            band=get_profile(target.rank).band,
-            translation=target.translation,
-            sentence="",
-            target_form=target.lemma,
-            target_index=-1,
-            support_ranks=[],
-            avg_support_rank=0.0,
-            max_support_rank=0,
-            template_id="",
-            source_method="manual_review_needed",
-        )
+    def select_best_candidate(self, candidates: List[Candidate]) -> Candidate:
+        if self.reranker:
+            try:
+                predictions = predict_candidate_scores(self.reranker, candidates)
+            except Exception:
+                predictions = []
+            if len(predictions) == len(candidates):
+                ranked = zip(candidates, predictions)
+                return max(ranked, key=lambda item: (item[1], item[0].score))[0]
+        preferred_retrieved = [c for c in candidates if self.retrieved_is_preferred(c)]
+        if preferred_retrieved:
+            return max(preferred_retrieved, key=lambda c: c.score)
+        return max(candidates, key=lambda c: c.score)
+
+    def candidate_is_publishable(self, candidate: Candidate) -> bool:
+        if not candidate.sentence:
+            return False
+        grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(candidate)
+        return grammatical_ok == "1" and natural_ok == "1" and learner_clear_ok == "1"
 
     def generate_batch(
         self,
@@ -1271,43 +1900,89 @@ class SentenceGenerator:
         pos_filter: Optional[str] = None,
         lemma_filter: Optional[List[str]] = None,
         mvp_only: bool = False,
+        candidates_out: Optional[str] = None,
+        max_candidates_per_lemma: int = 10,
     ) -> List[Candidate]:
-        rows = list(self.lexicon.values())
+        self.last_candidate_export_stats = None
+        if lemma_filter:
+            rows = []
+            seen = set()
+            for lemma in lemma_filter:
+                key = lemma.strip().lower()
+                if not key or key in seen or key not in self.lexicon:
+                    continue
+                seen.add(key)
+                rows.append(self.lexicon[key])
+        else:
+            rows = list(self.lexicon.values())
+            rows.sort(key=lambda x: x.rank)
         rows = [x for x in rows if min_rank <= x.rank <= max_rank]
         if mvp_only:
             rows = [x for x in rows if x.pos in {"n", "v", "adj"} and get_profile(x.rank).band in {"A1", "A2", "B1"}]
         if pos_filter:
             rows = [x for x in rows if x.pos == pos_filter]
-        if lemma_filter:
-            wanted = {x.lower() for x in lemma_filter}
-            rows = [x for x in rows if x.lemma in wanted]
-        rows.sort(key=lambda x: x.rank)
         rows = rows[:limit]
         generated: List[Candidate] = []
+        candidate_rows: List[Candidate] = []
+        lemmas_with_candidates = 0
         for lex in rows:
             try:
                 generated.append(self.generate_for_lemma(lex.lemma))
+                if candidates_out:
+                    pool = self.collect_candidates_for_lemma(lex.lemma, max_candidates_per_lemma=max_candidates_per_lemma)
+                    if pool:
+                        lemmas_with_candidates += 1
+                        candidate_rows.extend(pool)
             except Exception as exc:
                 print(f"[warn] failed to generate for {lex.lemma}: {exc}", file=sys.stderr)
-                generated.append(
-                    Candidate(
-                        lemma=lex.lemma,
-                        rank=lex.rank,
-                        pos=lex.pos,
-                        band=get_profile(lex.rank).band,
-                        translation=lex.translation,
-                        sentence="",
-                        target_form=lex.lemma,
-                        target_index=-1,
-                        support_ranks=[],
-                        avg_support_rank=0.0,
-                        max_support_rank=0,
-                        template_id="",
-                        source_method="manual_review_needed",
-                    )
-                )
+                generated.append(self.manual_review_candidate(lex))
         self.write_csv(generated, out_csv)
+        if candidates_out:
+            self.write_candidates_csv(candidate_rows, candidates_out)
+            avg_candidates = float(len(candidate_rows)) / lemmas_with_candidates if lemmas_with_candidates else 0.0
+            self.last_candidate_export_stats = {
+                "lemmas_processed": float(len(rows)),
+                "candidate_rows_written": float(len(candidate_rows)),
+                "lemmas_with_candidates": float(lemmas_with_candidates),
+                "avg_candidates_per_lemma_with_candidates": avg_candidates,
+            }
         return generated
+
+    def load_gold_set(self, path: str) -> List[str]:
+        lemmas: List[str] = []
+        seen = set()
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                lemma = line.strip().lower()
+                if not lemma or lemma.startswith("#") or lemma in seen:
+                    continue
+                seen.add(lemma)
+                lemmas.append(lemma)
+        return lemmas
+
+    def generate_starter_dataset(
+        self,
+        limit: int,
+        out_csv: str,
+        review_out: Optional[str] = None,
+        pos_filter: Optional[str] = None,
+        lemma_filter: Optional[List[str]] = None,
+        mvp_only: bool = False,
+        candidates_out: Optional[str] = None,
+        max_candidates_per_lemma: int = 10,
+    ) -> List[Candidate]:
+        rows = self.generate_batch(
+            limit=limit,
+            out_csv=out_csv,
+            pos_filter=pos_filter,
+            lemma_filter=lemma_filter,
+            mvp_only=True if not mvp_only else mvp_only,
+            candidates_out=candidates_out,
+            max_candidates_per_lemma=max_candidates_per_lemma,
+        )
+        if review_out:
+            self.write_review_csv(rows, review_out)
+        return rows
 
     def write_csv(self, rows: List[Candidate], out_csv: str) -> None:
         fieldnames = [
@@ -1319,6 +1994,8 @@ class SentenceGenerator:
             "sentence",
             "english_sentence",
             "target_form",
+            "canonical_lemma",
+            "target_morph",
             "target_index",
             "support_ranks",
             "avg_support_rank",
@@ -1347,6 +2024,8 @@ class SentenceGenerator:
             "source_method",
             "template_id",
             "score",
+            "canonical_lemma",
+            "target_morph",
             "grammatical_ok",
             "natural_ok",
             "learner_clear_ok",
@@ -1366,6 +2045,61 @@ class SentenceGenerator:
                         "source_method": row.source_method,
                         "template_id": row.template_id,
                         "score": row.score,
+                        "canonical_lemma": row.canonical_lemma,
+                        "target_morph": row.target_morph,
+                        "grammatical_ok": grammatical_ok,
+                        "natural_ok": natural_ok,
+                        "learner_clear_ok": learner_clear_ok,
+                        "notes": notes,
+                    }
+                )
+
+    def write_candidates_csv(self, rows: List[Candidate], out_csv: str) -> None:
+        fieldnames = [
+            "lemma",
+            "rank",
+            "pos",
+            "band",
+            "translation",
+            "sentence",
+            "target_form",
+            "canonical_lemma",
+            "target_morph",
+            "target_index",
+            "support_ranks",
+            "avg_support_rank",
+            "max_support_rank",
+            "template_id",
+            "source_method",
+            "score",
+            "grammatical_ok",
+            "natural_ok",
+            "learner_clear_ok",
+            "notes",
+        ]
+        with open(out_csv, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in rows:
+                grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(row)
+                writer.writerow(
+                    {
+                        "lemma": row.lemma,
+                        "rank": row.rank,
+                        "pos": row.pos,
+                        "band": row.band,
+                        "translation": row.translation,
+                        "sentence": row.sentence,
+                        "target_form": row.target_form,
+                        "canonical_lemma": row.canonical_lemma,
+                        "target_morph": row.target_morph,
+                        "target_index": row.target_index,
+                        "support_ranks": " ".join(str(x) for x in row.support_ranks),
+                        "avg_support_rank": row.avg_support_rank,
+                        "max_support_rank": row.max_support_rank,
+                        "template_id": row.template_id,
+                        "source_method": row.source_method,
+                        "score": row.score,
                         "grammatical_ok": grammatical_ok,
                         "natural_ok": natural_ok,
                         "learner_clear_ok": learner_clear_ok,
@@ -1384,23 +2118,50 @@ def main() -> None:
     parser.add_argument("--max-rank", type=int, default=10**9, help="Maximum rank to include")
     parser.add_argument("--pos", default=None, help="Optional POS filter: n, v, adj")
     parser.add_argument("--lemma", action="append", help="Generate only these lemma(s). Can be repeated.")
+    parser.add_argument("--gold-set", default=None, help="Path to a newline-delimited lemma list for repeatable evaluation.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     parser.add_argument("--mvp-only", action="store_true", help="Limit generation to A1-B1 nouns, verbs, and adjectives.")
     parser.add_argument("--review-out", default=None, help="Optional review CSV export path.")
+    parser.add_argument("--starter-dataset", action="store_true", help="Generate a starter app-seeding dataset and matching review CSV.")
+    parser.add_argument("--candidates-out", default=None, help="Optional multi-candidate CSV export path.")
+    parser.add_argument("--max-candidates-per-lemma", type=int, default=10, help="Maximum candidate rows to keep per lemma in the candidate export.")
     args = parser.parse_args()
 
     gen = SentenceGenerator(args.lexicon, args.models_dir, seed=args.seed)
-    rows = gen.generate_batch(
-        limit=args.limit,
-        out_csv=args.out,
-        min_rank=args.min_rank,
-        max_rank=args.max_rank,
-        pos_filter=args.pos,
-        lemma_filter=args.lemma,
-        mvp_only=args.mvp_only,
-    )
-    if args.review_out:
-        gen.write_review_csv(rows, args.review_out)
+    lemma_filter = list(args.lemma or [])
+    if args.gold_set:
+        lemma_filter.extend(gen.load_gold_set(args.gold_set))
+    if not lemma_filter:
+        lemma_filter = None
+    review_out = args.review_out
+    if args.starter_dataset and not review_out:
+        stem, ext = os.path.splitext(args.out)
+        review_out = f"{stem}_review{ext or '.csv'}"
+    if args.starter_dataset:
+        rows = gen.generate_starter_dataset(
+            limit=args.limit,
+            out_csv=args.out,
+            review_out=review_out,
+            pos_filter=args.pos,
+            lemma_filter=lemma_filter,
+            mvp_only=args.mvp_only,
+            candidates_out=args.candidates_out,
+            max_candidates_per_lemma=args.max_candidates_per_lemma,
+        )
+    else:
+        rows = gen.generate_batch(
+            limit=args.limit,
+            out_csv=args.out,
+            min_rank=args.min_rank,
+            max_rank=args.max_rank,
+            pos_filter=args.pos,
+            lemma_filter=lemma_filter,
+            mvp_only=args.mvp_only,
+            candidates_out=args.candidates_out,
+            max_candidates_per_lemma=args.max_candidates_per_lemma,
+        )
+        if review_out:
+            gen.write_review_csv(rows, review_out)
 
     reviewed = sum(1 for r in rows if r.source_method == "manual_review_needed")
     retrieved = sum(1 for r in rows if r.source_method == "retrieved_corpus")
@@ -1413,8 +2174,14 @@ def main() -> None:
     print(f"  template_generated:   {templated:,}")
     print(f"  manual_review_needed: {reviewed:,}")
     print(f"Saved: {args.out}")
-    if args.review_out:
-        print(f"Review: {args.review_out}")
+    if review_out:
+        print(f"Review: {review_out}")
+    if args.candidates_out and gen.last_candidate_export_stats:
+        stats = gen.last_candidate_export_stats
+        print(f"Candidates: {args.candidates_out}")
+        print(f"  lemmas_processed: {int(stats['lemmas_processed']):,}")
+        print(f"  candidate_rows_written: {int(stats['candidate_rows_written']):,}")
+        print(f"  avg_candidates_per_lemma_with_candidates: {stats['avg_candidates_per_lemma_with_candidates']:.2f}")
 
     preview = [r for r in rows if r.sentence][:5]
     if preview:
