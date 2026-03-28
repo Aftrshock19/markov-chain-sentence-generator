@@ -1,0 +1,80 @@
+============================================
+Job ID:        2021636
+Node:          x3004c0s3b2n0
+Started:       Sat 28 Mar 2026 02:03:23 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Tatoeba: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/spa_sentences.tsv (436385 lines)
+Lexicon: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Output:  /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+============================================================
+PHASE 1: Cleaning corpus
+============================================================
+
+  Kept:       418,194 sentences
+  Duplicates: 43 removed
+  Skipped:    15,643 (too_short)
+  Skipped:    2,494 (too_long)
+  Skipped:    11 (bad_content)
+  Saved:      /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models/corpus.txt
+
+============================================================
+PHASE 2: spaCy processing + artifact building
+============================================================
+  Loading spaCy model (es_core_news_lg, NER disabled)...
+  Model loaded.
+
+  Lexicon: 39,761 lemmas loaded.
+
+  Processing sentences through spaCy...
+
+============================================================
+PHASE 3: Building enriched lexicon
+============================================================
+
+============================================================
+PHASE 4: Building indexes and saving artifacts
+============================================================
+  Building bigram index...
+  Building trigram index...
+  Building POS transition index...
+  lemma_forms.pkl               53,709 entries        6.3 MB
+  lemma_contexts.pkl            19,780 entries       49.8 MB
+  bigrams.pkl                  662,877 entries       17.7 MB
+  trigrams.pkl               1,609,690 entries       59.2 MB
+  pos_transitions.pkl              270 entries        0.0 MB
+  enriched_lexicon.pkl          39,761 entries        3.5 MB
+
+============================================================
+DONE - Summary
+============================================================
+
+  Corpus sentences:       418,194
+  Unique bigrams:         662,877
+  Unique trigrams:        1,609,690
+  POS transitions:        270
+  Lemmas with forms:      53,709
+  Lemmas with contexts:   19,780 / 39,761
+
+  Noun gender coverage:   8,735 / 14,175
+    from corpus:          7,677
+    from rules:           1,058
+    unknown:              5,440
+
+  Verb type coverage:     2,952 / 13,730
+  Verbs flagged reflexive:185
+
+  All artifacts saved to: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models/
+  Upload these .pkl files back to Claude to continue.
+
+============================================
+Finished: Sat 28 Mar 2026 02:08:20 PM UTC
+total 154M
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg  18M Mar 28 14:08 bigrams.pkl
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg  17M Mar 28 14:03 corpus.txt
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 3.5M Mar 28 14:08 enriched_lexicon.pkl
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg  50M Mar 28 14:08 lemma_contexts.pkl
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 6.3M Mar 28 14:08 lemma_forms.pkl
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 4.0K Mar 28 14:08 pos_transitions.pkl
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg  60M Mar 28 14:08 trigrams.pkl
+============================================

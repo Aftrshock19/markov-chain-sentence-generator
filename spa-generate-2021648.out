@@ -1,0 +1,27 @@
+============================================
+Job ID:        2021648
+Node:          x3004c0s3b2n0
+Started:       Sat 28 Mar 2026 02:54:56 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Script:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/generate.py
+Lexicon:  /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/generated_sentences.csv
+Generated: 100
+  retrieved_corpus:     4
+  seeded_template:      5
+  template_generated:   18
+  manual_review_needed: 73
+Saved: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/generated_sentences.csv
+
+Preview:
+  es              [template_generated] Ella es un día.
+  ha              [template_generated] Ella ha un día.
+  hay             [template_generated] Ella hay en la casa.
+  estoy           [retrieved_corpus  ] No sé dónde estoy .
+  vamos           [template_generated] Ella vamos en la casa.
+============================================
+Finished: Sat 28 Mar 2026 02:55:01 PM UTC
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 9.3K Mar 28 14:55 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/generated_sentences.csv
+============================================

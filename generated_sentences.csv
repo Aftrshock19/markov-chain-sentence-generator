@@ -1,0 +1,101 @@
+lemma,rank,pos,band,translation,sentence,english_sentence,target_form,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,english_source_method,parallel_pair_id,score,english_score
+de,1,prep,A1,of; from,,,de,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+que,2,pron,A1,that,,,que,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+la,3,pron,A1,the (fem.),,,la,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+no,4,,A1,no; not,,,no,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+a,5,none,A1,to; at,,,a,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+el,6,art,A1,the (masc.),,,el,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+y,7,conj,A1,and,,,y,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+en,8,prep,A1,in; at; on,,,en,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+es,9,v,A1,is (ser),Ella es mejor.,,es,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,5.282604075890287,0.0
+un,10,num,A1,a; an; one,,,un,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+lo,11,pron,A1,it; the (neuter),,,lo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+por,12,prep,A1,by,,,por,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+los,13,art,A1,the (masc. pl.),,,los,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+una,14,determiner,A1,a; an; one (fem.),,,una,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+se,15,pron,A1,oneself; himself; herself; itself; themselves,,,se,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+con,16,prep,A1,with,,,con,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+qué,17,pron,A1,what,¿qué puedes hacer por mi?,,qué,1,138 71 12 27,62,138,retrieved,retrieved_corpus,,,4.997550962500541,0.0
+me,18,pron,A1,me; myself,,,me,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+para,19,prep,A1,for; to,,,para,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+las,20,pron,A1,the (fem. pl.),,,las,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+del,21,contraction,A1,of the; from the,,,del,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+te,22,pron,A1,you; yourself,,,te,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+su,23,determiner,A1,his; her; its; their; your (formal),,,su,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+pero,24,conj,A1,but,,,pero,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+si,25,conj,A1,if; whether,,,si,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+está,26,v,A1,is (estar),Ella está en la casa.,,está,1,69 8 3 91,42.75,91,seeded_special_estar_place,seeded_template,,,8.615059496626404,0.0
+mi,27,determiner,A1,my,,,mi,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+al,28,contraction,A1,to the,,,al,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+sí,29,pron,A1,yes; oneself,Creo que sí que está.,,sí,2,89 2 2 26,29.75,89,retrieved,retrieved_corpus,,,6.643365572047735,0.0
+como,30,conj,A1,as,,,como,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+bien,31,adv,A1,well-to-do,,,bien,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+más,32,adv,A1,more; most,,,más,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+eso,33,pron,A1,that (neuter),,,eso,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+yo,34,pron,A1,I,,,yo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+le,35,pron,A1,him; her; you (formal),,,le,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+aquí,36,adv,A1,here,¿quién estaba aquí?,,aquí,3,106 84,95,106,retrieved,retrieved_corpus,,,6.300851380270774,0.0
+tu,37,determiner,A1,your,,,tu,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+todo,38,determiner,A1,all; every; everything,,,todo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+ha,39,v,A1,has (haber),Ella ha hecho un acuerdo.,,ha,1,69 136 10 149,91,149,seeded_special_haber_perfect,seeded_template,,,7.388728880738297,0.0
+ya,40,adv,A1,already; now,,,ya,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+o,41,conj,A1,or,,,o,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+esto,42,pron,A1,this (neuter),¿sólo hay esto?,,esto,3,68 48,58,68,retrieved,retrieved_corpus,,,4.492599564454689,0.0
+muy,43,adv,A1,very,,,muy,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+esta,44,determiner,A1,this (fem.),Esta es su casa.,,esta,0,9 23 91,41,91,retrieved,retrieved_corpus,,,10.772254664935465,0.0
+ahora,45,adv,A1,now...now; whether...or,,,ahora,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+así,46,adv,A1,like this,No quiero que sea así.,,así,4,4 76 2 148,57.5,148,retrieved,retrieved_corpus,,,8.899992016429618,0.0
+cuando,47,conj,A1,when,,,cuando,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+hay,48,v,A1,there is; there are,Hay un tiempo.,,hay,0,10 86,48,86,seeded_special_haber_existential,seeded_template,,,7.666503623900184,0.0
+este,49,determiner,A1,this,Esta es su casa.,,esta,0,9 23 91,41,91,retrieved,retrieved_corpus,,,10.772254664935465,0.0
+algo,50,pron,A1,something; anything,,,algo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+estoy,51,v,A1,to be,Yo estoy en la casa.,,estoy,1,34 8 3 91,34,91,seeded_special_estar_place,seeded_template,,,9.198312328651951,0.0
+vamos,52,v,A1,we go; let's go (ir),""" ¡vamos! "", nos dijo él.",,vamos,2,56 140 53,83,140,retrieved,retrieved_corpus,,,5.390720652966827,0.0
+él,53,pron,A1,he; him; masculine personal third person subject and disjunctive pronoun,,,él,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+ser,54,v,A1,to be,Ella es mejor.,,es,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,5.282604075890287,0.0
+bueno,55,adj,A1,good,La casa es buena.,,buena,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,,,10.303648170036166,0.0
+nos,56,pron,A1,us; ourselves,,,nos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+sus,57,determiner,A1,his; her; its; their; your (formal) (pl.),,,sus,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+fue,58,v,A1,was (ser/ir),Ella fue mejor.,,fue,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,4.9909056256192414,0.0
+tengo,59,v,A1,I have (tener),Yo tengo el tiempo.,,tengo,1,34 6 86,42,86,seeded_verb_obj,seeded_template,,,8.731109883873675,0.0
+era,60,v,A1,was (ser); era,Ella era mejor.,,era,1,69 107,88,107,seeded_special_ser_adj,seeded_template,,,4.4874404228782865,0.0
+nada,61,pron,A1,nothing; zero; zilch; not...anything,,,nada,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+tiene,62,v,A1,has (tener),Ella tiene una casa.,,tiene,1,69 14 91,58,91,v_a1_1,template_generated,,,9.388334094639582,0.0
+sé,63,v,A1,yes,,,sé,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+tú,64,pron,A1,you,,,tú,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+cómo,65,adv,A1,how?,,,cómo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+vez,66,n,A1,time; instance,La vez está aquí.,,vez,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,11.045573920353661,0.0
+estás,67,v,A1,you are (estar),Tú estás en la casa.,,estás,1,64 8 3 91,41.5,91,seeded_special_estar_place,seeded_template,,,8.284337740476804,0.0
+sólo,68,adv,A1,sole,,,sólo,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+ella,69,pron,A1,she; her,,,ella,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+son,70,v,A1,are (ser),,,son,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+hacer,71,v,A1,to do,Ella hace una casa.,,hace,1,69 14 91,58,91,v_a1_1,template_generated,,,8.582172717971552,0.0
+he,72,v,A1,I have (haber),Yo he hecho una casa.,,he,1,34 136 14 91,68.75,136,template_special_haber_perfect,template_generated,,,8.030601797228002,0.0
+porque,73,conj,A1,because,,,porque,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+todos,74,determiner,A1,all; everyone,,,todos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+puedo,75,v,A1,I can (poder),Yo puedo hacer.,,puedo,1,34 71,52.5,71,seeded_special_poder_inf,seeded_template,,,9.87576831963484,0.0
+quiero,76,v,A1,I want (querer),Yo quiero una noche.,,quiero,1,34 14 143,63.666666666666664,143,v_a1_1,template_generated,,,8.47153792329945,0.0
+gracias,77,n,A1,thanks,Todo es gracias a ti.,,gracias,2,38 9 5 132,46,132,retrieved,retrieved_corpus,,,9.017522064690091,0.0
+puede,78,v,A1,can; may (poder),Ella puede hacer.,,puede,1,69 71,70,71,seeded_special_poder_inf,seeded_template,,,9.578166796300629,0.0
+dos,79,num,A1,dung; excrement,,,dos,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+sin,80,prep,A1,without,,,sin,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+soy,81,v,A1,I am (ser),No sé quién soy.,,soy,3,4 63 106,57.666666666666664,106,retrieved,retrieved_corpus,,,9.051329994394264,0.0
+sobre,82,prep,A1,over; above; on; upon; atop,,,sobre,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+ese,83,determiner,A1,that,¿de quién es eso otro?,,eso,4,1 106 9 150,66.5,150,retrieved,retrieved_corpus,,,7.643973504912445,0.0
+estaba,84,v,A1,was (estar),Ella estaba en la casa.,,estaba,1,69 8 3 91,42.75,91,seeded_special_estar_place,seeded_template,,,9.605026768153094,0.0
+también,85,adv,A1,also; too; as well,Yo también estoy bien.,,también,1,34 51 31,38.666666666666664,51,retrieved,retrieved_corpus,,,11.379233654816398,0.0
+tiempo,86,n,A1,time,El tiempo está aquí.,,tiempo,1,6 26 36,22.666666666666668,36,seeded_noun_here,seeded_template,,,11.27377810673304,0.0
+tan,87,adv,A1,so; as,,,tan,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+entonces,88,adv,A1,then; next; thereupon; at that time; at that point,,,entonces,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+creo,89,v,A1,I believe; I think (creer),Yo creo eso.,,creo,1,34 33,33.5,34,seeded_special_creer_object,seeded_template,,,10.234711924230655,0.0
+tienes,90,v,A1,you have (tener),Tú tienes el tiempo.,,tienes,1,64 6 86,52,86,seeded_verb_obj,seeded_template,,,10.828544143523551,0.0
+casa,91,n,A1,house,¿ella está en casa?,,casa,4,69 26 8,34.333333333333336,69,retrieved,retrieved_corpus,,,12.50272063549803,0.0
+usted,92,pron,A1,second person formal,,,usted,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+esa,93,determiner,A1,that (fem.),¿de quién es eso otro?,,eso,4,1 106 9 150,66.5,150,retrieved,retrieved_corpus,,,7.643973504912445,0.0
+voy,94,v,A1,I go (ir),Yo voy a la casa.,,voy,1,34 5 3 91,33.25,91,seeded_special_ir_place,seeded_template,,,10.462629045123132,0.0
+sabes,95,v,A1,you know?,¿sabes quién es él?,,sabes,1,106 9 53,56,106,retrieved,retrieved_corpus,,,9.026550230007507,0.0
+eres,96,v,A1,to be,¿de quién eres?,,eres,3,1 106,53.5,106,retrieved,retrieved_corpus,,,7.126813688700665,0.0
+verdad,97,n,A1,truth,La verdad está aquí.,,verdad,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.816642674919757,0.0
+hasta,98,prep,A1,until,,,hasta,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+solo,99,adj,A1,sole,El tiempo es solo.,,solo,3,6 86 9,33.666666666666664,86,seeded_adj_fallback,seeded_template,,,11.75089514022954,0.0
+nunca,100,adv,A1,never,,,nunca,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
