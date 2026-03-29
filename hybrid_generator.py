@@ -16,9 +16,11 @@ from complete_generate import (
     COORDINATING_CONJUNCTIONS,
     CONTEXT_DEPENDENT_OPENERS,
     DifficultyProfile,
+    FUNCTION_WORD_FAMILIES,
     SPECIAL_VERB_LEMMAS,
     STARTER_ADJ_ALLOWED_NOUN_CLASSES,
     SUBJECT_FEATURES,
+    SIMPLE_PREPOSITIONS,
     Candidate,
     Lexeme,
     SentenceGenerator,
@@ -31,6 +33,28 @@ from reranker import predict_candidate_scores
 
 _BANNED_CONTINUATIONS = CONTEXT_DEPENDENT_OPENERS | {
     "pues", "sino", "ni", "oh", "ay", "eh", "bueno",
+}
+_SAFE_TEMPLATE_SOURCES = {
+    "seeded_template",
+    "template_generated",
+    "emergency_template",
+    "emergency_starter",
+}
+_FRAGILE_STOCHASTIC_SCORE_FLOORS = {
+    "adv": 8.9,
+    "prep": 9.4,
+    "contraction": 9.4,
+    "pron": 9.5,
+    "determiner": 9.6,
+    "art": 9.6,
+    "conj": 9.6,
+    "interj": 9.0,
+    "num": 9.1,
+    "letter": 9.8,
+    "prefix": 9.8,
+    "phrase": 9.8,
+    "particle": 9.8,
+    "residual": 9.8,
 }
 
 HYBRID_BANDS = [
@@ -356,14 +380,245 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         ok, _ = self.validate(candidate)
         return ok
 
-    def _should_early_exit(self, candidate: Optional[Candidate]) -> bool:
+    def _candidate_family(self, candidate: Candidate) -> str:
+        return self.normalized_pos_family(self.lexicon.get(candidate.lemma))
+
+    def _family_is_fragile(self, family: str) -> bool:
+        return family in FUNCTION_WORD_FAMILIES
+
+    def _is_safe_template_source(self, candidate: Candidate) -> bool:
+        return candidate.source_method in _SAFE_TEMPLATE_SOURCES
+
+    def _stochastic_fragile_reasons(self, candidate: Candidate, family: str) -> List[str]:
+        words = self.word_tokens(candidate.sentence)
+        lowered = [normalize_token(word) for word in words]
+        target_form = normalize_token(candidate.target_form or candidate.lemma)
+        finite_count = self.finite_verb_count(words)
+        verb_count = self.verb_token_count(words)
+        reasons: List[str] = []
+
+        if family in {"letter", "prefix", "phrase", "particle", "residual"}:
+            reasons.append("fragile_stochastic_unsupported_family")
+            return reasons
+
+        if candidate.score < _FRAGILE_STOCHASTIC_SCORE_FLOORS.get(family, 9.5):
+            reasons.append("fragile_stochastic_low_score")
+
+        if family == "adv":
+            if len(words) > 5:
+                reasons.append("fragile_stochastic_long_adv")
+            if verb_count > 2:
+                reasons.append("fragile_stochastic_adv_chain")
+        elif family in {"prep", "contraction"}:
+            prepish_count = sum(1 for token in lowered if token in SIMPLE_PREPOSITIONS | {"a", "al", "del"})
+            if len(words) > 5:
+                reasons.append("fragile_stochastic_long_prep")
+            if prepish_count > 1:
+                reasons.append("fragile_stochastic_nested_prep")
+            if finite_count != 1:
+                reasons.append("fragile_stochastic_prep_clause")
+        elif family == "pron":
+            if target_form in {"que", "qué", "quien", "quién", "como", "cómo"} and finite_count < 2:
+                reasons.append("fragile_stochastic_orphan_pron")
+            if target_form in {"me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les"} and len(words) > 4:
+                reasons.append("fragile_stochastic_clitic_chain")
+            if target_form in SUBJECT_FEATURES and verb_count > 1:
+                reasons.append("fragile_stochastic_subject_chain")
+        elif family in {"determiner", "art"}:
+            if len(words) > 5:
+                reasons.append("fragile_stochastic_long_np")
+            if verb_count > 1:
+                reasons.append("fragile_stochastic_np_chain")
+            if candidate.target_index >= 0 and candidate.target_index < len(words) - 1:
+                if self.lookup_pos(words[candidate.target_index + 1]) != "n":
+                    reasons.append("fragile_stochastic_det_frame")
+        elif family == "conj":
+            if len(words) > 6:
+                reasons.append("fragile_stochastic_long_conj")
+            if finite_count < 2:
+                reasons.append("fragile_stochastic_thin_conjunction")
+            if verb_count > 2:
+                reasons.append("fragile_stochastic_verb_chain")
+        elif family == "interj":
+            if len(words) > 4:
+                reasons.append("fragile_stochastic_interjection_tail")
+        elif family == "num":
+            if len(words) > 4:
+                reasons.append("fragile_stochastic_long_number")
+            if candidate.target_index < len(words) - 1 and self.lookup_pos(words[candidate.target_index + 1]) != "n":
+                reasons.append("fragile_stochastic_number_frame")
+
+        return list(dict.fromkeys(reasons))
+
+    def _hybrid_policy_reasons(self, candidate: Optional[Candidate]) -> List[str]:
+        if not candidate or not candidate.sentence:
+            return ["manual_review_needed"]
+        family = self._candidate_family(candidate)
+        words = self.word_tokens(candidate.sentence)
+        lowered = [normalize_token(word) for word in words]
+        target_form = normalize_token(candidate.target_form or candidate.lemma)
+        reasons: List[str] = []
+        if not self._family_is_fragile(family):
+            return reasons
+        if family == "adv" and target_form == "no" and lowered and lowered[-1] == "no":
+            reasons.append("terminal_negation")
+        if candidate.source_method == "stochastic_decoder":
+            reasons.extend(self._stochastic_fragile_reasons(candidate, family))
+        return list(dict.fromkeys(reason for reason in reasons if reason))
+
+    def _safe_template_publishable_override(self, candidate: Candidate) -> bool:
+        family = self._candidate_family(candidate)
+        if not self._family_is_fragile(family):
+            return False
+        if not self._is_safe_template_source(candidate):
+            return False
+        if not self._candidate_is_valid(candidate):
+            return False
+        if self._hybrid_policy_reasons(candidate):
+            return False
+
+        grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(candidate)
+        if grammatical_ok != "1":
+            return False
+        if natural_ok == "1" and learner_clear_ok == "1":
+            return True
+
+        words = self.word_tokens(candidate.sentence)
+        lowered = [normalize_token(word) for word in words]
+        target_form = normalize_token(candidate.target_form or candidate.lemma)
+        override_score_floors = {
+            "prep": 4.0,
+            "contraction": 4.0,
+            "adv": 6.6,
+            "art": 6.8,
+            "determiner": 6.8,
+            "num": 6.5,
+            "pron": 7.0,
+        }
+        if candidate.score < override_score_floors.get(family, 7.2) or len(words) > 5:
+            return False
+        if family in {"conj", "interj", "letter", "prefix", "phrase", "particle", "residual"}:
+            return False
+        if family in {"prep", "contraction"}:
+            prepish_count = sum(1 for token in lowered if token in SIMPLE_PREPOSITIONS | {"a", "al", "del"})
+            return prepish_count == 1 and self.verb_token_count(words) <= 1
+        if family in {"adv", "art", "determiner", "num"}:
+            return self.verb_token_count(words) <= 1
+        if family == "pron":
+            if target_form in SUBJECT_FEATURES:
+                return self.verb_token_count(words) <= 1
+            if target_form in {"me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les"}:
+                return len(words) <= 3
+            if target_form in {"esto", "eso", "aquello", "algo", "nada", "nadie", "alguien"}:
+                return self.verb_token_count(words) <= 1
+            return False
+        return False
+
+    def candidate_is_hybrid_publishable(self, candidate: Optional[Candidate]) -> bool:
+        if not candidate or not candidate.sentence:
+            return False
+        if self.candidate_is_general_publishable(candidate):
+            return not self._hybrid_policy_reasons(candidate)
+        return self._safe_template_publishable_override(candidate)
+
+    def _candidate_is_hybrid_strong(self, candidate: Optional[Candidate]) -> bool:
         if not candidate:
             return False
-        if not self.candidate_is_general_publishable(candidate):
+        if not self.candidate_is_hybrid_publishable(candidate):
             return False
+        family = self._candidate_family(candidate)
+        fragile = self._family_is_fragile(family)
         if candidate.source_method == "retrieved_corpus":
-            return candidate.score >= 8.5
-        return candidate.score >= 8.0
+            return candidate.score >= (9.0 if fragile else 8.8)
+        if self._is_safe_template_source(candidate):
+            return candidate.score >= (9.7 if fragile else 9.1)
+        if candidate.source_method == "stochastic_decoder":
+            if fragile:
+                return candidate.score >= 11.5 and len(self.word_tokens(candidate.sentence)) <= 4
+            return candidate.score >= 9.5
+        return False
+
+    def _should_early_exit(self, candidate: Optional[Candidate]) -> bool:
+        if not self._candidate_is_hybrid_strong(candidate):
+            return False
+        if not candidate:
+            return False
+        family = self._candidate_family(candidate)
+        if self._family_is_fragile(family) and candidate.source_method == "stochastic_decoder":
+            return False
+        return True
+
+    def _source_priority(self, candidate: Candidate, family: str) -> int:
+        if self._family_is_fragile(family):
+            order = {
+                "retrieved_corpus": 0,
+                "seeded_template": 1,
+                "template_generated": 2,
+                "emergency_template": 3,
+                "emergency_starter": 4,
+                "stochastic_decoder": 5,
+                "manual_review_needed": 6,
+                "no_candidate_found": 7,
+            }
+        else:
+            order = {
+                "retrieved_corpus": 0,
+                "stochastic_decoder": 1,
+                "seeded_template": 2,
+                "template_generated": 3,
+                "emergency_template": 4,
+                "emergency_starter": 5,
+                "manual_review_needed": 6,
+                "no_candidate_found": 7,
+            }
+        return order.get(candidate.source_method, 8)
+
+    def _candidate_bucket(self, candidate: Candidate, family: str) -> Tuple[int, int]:
+        publishable = self.candidate_is_hybrid_publishable(candidate)
+        valid = self._candidate_is_valid(candidate)
+        if publishable:
+            trust = 0
+        elif valid:
+            trust = 1
+        elif candidate.sentence:
+            trust = 2
+        else:
+            trust = 3
+        return trust, self._source_priority(candidate, family)
+
+    def _choose_best_in_bucket(self, candidates: List[Candidate]) -> Candidate:
+        if len(candidates) == 1:
+            return candidates[0]
+        if self.reranker:
+            try:
+                predictions = predict_candidate_scores(self.reranker, candidates)
+            except Exception:
+                predictions = []
+            if len(predictions) == len(candidates):
+                return max(zip(candidates, predictions), key=lambda item: (item[1], item[0].score))[0]
+        return max(candidates, key=lambda candidate: candidate.score)
+
+    def _hybrid_failure_reasons(self, candidate: Candidate) -> List[str]:
+        reasons: List[str] = []
+        grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
+        if grammatical_ok != "1":
+            reasons.append("not_grammatical")
+        if natural_ok != "1":
+            reasons.append("not_natural")
+        if learner_clear_ok != "1":
+            reasons.append("not_learner_clear")
+        if notes and notes != "manual review needed":
+            reasons.extend([part.strip() for part in notes.split(";") if part.strip()])
+        reasons.extend(self._hybrid_policy_reasons(candidate))
+        return list(dict.fromkeys(reason for reason in reasons if reason))
+
+    def _has_preferred_publishable_candidate(self, candidates: List[Candidate], family: str) -> bool:
+        for candidate in candidates:
+            if candidate.source_method == "stochastic_decoder":
+                continue
+            if self._family_is_fragile(family) and self.candidate_is_hybrid_publishable(candidate):
+                return True
+        return False
 
     def _absorb_prescored_candidate(
         self,
@@ -424,11 +679,11 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         search_attempts_used: int,
         candidates_found: int,
     ) -> Dict[str, Any]:
-        publishable = self.candidate_is_general_publishable(candidate)
+        publishable = self.candidate_is_hybrid_publishable(candidate)
         valid = self._candidate_is_valid(candidate)
         if candidate.source_method == "no_candidate_found":
             quality_tier = "no_candidate_found"
-        elif publishable and candidate.score >= 8.0:
+        elif self._candidate_is_hybrid_strong(candidate):
             quality_tier = "strong"
         elif publishable:
             quality_tier = "acceptable"
@@ -442,17 +697,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         bad_candidate = quality_tier in {"bad", "no_candidate_found"}
         failure_reason = ""
         if not publishable:
-            grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
-            reasons: List[str] = []
-            if grammatical_ok != "1":
-                reasons.append("not_grammatical")
-            if natural_ok != "1":
-                reasons.append("not_natural")
-            if learner_clear_ok != "1":
-                reasons.append("not_learner_clear")
-            if notes and notes != "manual review needed":
-                reasons.append(notes)
-            failure_reason = "; ".join(dict.fromkeys(r for r in reasons if r))
+            failure_reason = "; ".join(self._hybrid_failure_reasons(candidate))
 
         return {
             "publishable": publishable,
@@ -473,16 +718,15 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     ) -> Candidate:
         trimmed = self.dedupe_candidates(pool)[: self.max_candidates_to_keep]
         winner: Optional[Candidate] = None
+        family = self.normalized_pos_family(target)
         if trimmed:
-            if self.reranker:
-                try:
-                    predictions = predict_candidate_scores(self.reranker, trimmed)
-                except Exception:
-                    predictions = []
-                if len(predictions) == len(trimmed):
-                    winner = max(zip(trimmed, predictions), key=lambda item: (item[1], item[0].score))[0]
-            if winner is None:
-                winner = self.select_best_candidate(trimmed)
+            ranked = sorted(trimmed, key=lambda candidate: self._candidate_bucket(candidate, family))
+            top_bucket = self._candidate_bucket(ranked[0], family)
+            bucket_candidates = [
+                candidate for candidate in ranked
+                if self._candidate_bucket(candidate, family) == top_bucket
+            ]
+            winner = self._choose_best_in_bucket(bucket_candidates)
 
         if winner is not None and self._candidate_is_valid(winner):
             return winner
@@ -504,6 +748,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         if lemma not in self._hybrid_pool_cache:
             target = self.lexicon[lemma]
             family = self.normalized_pos_family(target)
+            fragile_family = self._family_is_fragile(family)
             attempts_used = 0
             raw_pool: List[Candidate] = []
             best_valid: Optional[Candidate] = None
@@ -530,22 +775,23 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                     "valid_count": valid_candidates_found,
                 }
             else:
-                stochastic_budget = min(
-                    self.max_total_attempts - attempts_used,
-                    max(80, int(self.max_total_attempts * 0.65)),
-                )
-                if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
-                    stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
-                    attempts_used += 1
-                    for cand in stochastic_candidates:
-                        raw_pool.append(cand)
-                        _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
-                            cand, best_valid, best_any
-                        )
-                        valid_candidates_found += valid_inc
-
                 use_content_templates = family in {"n", "v", "adj"} and self.can_template_target(target)
                 use_pos_templates = family not in {"n", "v", "adj"}
+
+                if not fragile_family:
+                    stochastic_budget = min(
+                        self.max_total_attempts - attempts_used,
+                        max(80, int(self.max_total_attempts * 0.65)),
+                    )
+                    if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
+                        stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
+                        attempts_used += 1
+                        for cand in stochastic_candidates:
+                            raw_pool.append(cand)
+                            _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                                cand, best_valid, best_any
+                            )
+                            valid_candidates_found += valid_inc
 
                 if not self._should_early_exit(best_valid) and use_content_templates:
                     template_attempts = 0
@@ -580,7 +826,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                         if ranked:
                             raw_pool.append(ranked)
                         valid_candidates_found += valid_inc
-                        if template_attempts % 25 == 0 and self._should_early_exit(best_valid):
+                        if template_attempts % (40 if fragile_family else 25) == 0 and self._should_early_exit(best_valid):
                             break
 
                 if best_valid is None and attempts_used < self.max_total_attempts:
@@ -608,6 +854,21 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                     if ranked:
                         raw_pool.append(ranked)
                     valid_candidates_found += valid_inc
+
+                if fragile_family and attempts_used < self.max_total_attempts and not self._has_preferred_publishable_candidate(raw_pool, family):
+                    stochastic_budget = min(
+                        self.max_total_attempts - attempts_used,
+                        max(40, int(self.max_total_attempts * 0.25)),
+                    )
+                    if stochastic_budget > 0:
+                        stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
+                        attempts_used += 1
+                        for cand in stochastic_candidates:
+                            raw_pool.append(cand)
+                            _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                                cand, best_valid, best_any
+                            )
+                            valid_candidates_found += valid_inc
 
                 deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
                 selected = self._choose_from_pool(deduped, best_valid, best_any, target)
