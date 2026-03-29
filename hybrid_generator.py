@@ -7,15 +7,18 @@ on top of the complete_generate SentenceGenerator shell.
 import argparse
 import csv
 import json
-import os
 import sys
-from dataclasses import asdict
 from typing import Any, Dict, List, Optional, Tuple
 
+import complete_generate as cg
 from complete_generate import (
+    ADV_TIME_LEMMAS,
+    COORDINATING_CONJUNCTIONS,
     CONTEXT_DEPENDENT_OPENERS,
+    DifficultyProfile,
     SPECIAL_VERB_LEMMAS,
     STARTER_ADJ_ALLOWED_NOUN_CLASSES,
+    SUBJECT_FEATURES,
     Candidate,
     Lexeme,
     SentenceGenerator,
@@ -29,6 +32,32 @@ from reranker import predict_candidate_scores
 _BANNED_CONTINUATIONS = CONTEXT_DEPENDENT_OPENERS | {
     "pues", "sino", "ni", "oh", "ay", "eh", "bueno",
 }
+
+HYBRID_BANDS = [
+    (1, 800, DifficultyProfile("A1", 3, 7, 400, 250, (0, 1), 1)),
+    (801, 1500, DifficultyProfile("A2", 3, 8, 700, 400, (0, 2), 2)),
+    (1501, 2500, DifficultyProfile("B1", 4, 9, 1500, 900, (1, 3), 3)),
+    (2501, 4000, DifficultyProfile("B2", 5, 10, 3000, 1800, (1, 4), 4)),
+    (4001, 6000, DifficultyProfile("C1", 5, 11, 5500, 3000, (2, 5), 5)),
+    (6001, 10**9, DifficultyProfile("C2", 6, 12, 9000, 5000, (2, 6), 6)),
+]
+
+
+def hybrid_get_profile(rank: int) -> DifficultyProfile:
+    for lo, hi, profile in HYBRID_BANDS:
+        if lo <= rank <= hi:
+            return profile
+    return HYBRID_BANDS[-1][2]
+
+
+def hybrid_allowed_support_rank(target_rank: int, profile: DifficultyProfile) -> int:
+    return min(profile.filler_ceil, max(300, int(target_rank * 0.8)))
+
+
+get_profile = hybrid_get_profile
+allowed_support_rank = hybrid_allowed_support_rank
+cg.get_profile = hybrid_get_profile
+cg.allowed_support_rank = hybrid_allowed_support_rank
 
 
 class StochasticSentenceGenerator(SentenceGenerator):
@@ -44,8 +73,11 @@ class StochasticSentenceGenerator(SentenceGenerator):
     def initial_seeds_for_target(self, target: Lexeme) -> List[Tuple[List[str], int]]:
         seeds: List[Tuple[List[str], int]] = []
         canonical = self.canonical_lemma_for(target)
+        family = self.normalized_pos_family(target)
+        surface = target.lemma
+        normalized = normalize_token(surface)
 
-        if target.pos == "n":
+        if family == "n":
             if not self.noun_is_template_friendly(target):
                 return seeds
             gender = self.safe_noun_gender(target.lemma, target.gender)
@@ -54,7 +86,7 @@ class StochasticSentenceGenerator(SentenceGenerator):
                 seeds.append(([art, target.lemma], 1))
             return seeds
 
-        if target.pos == "v":
+        if family == "v":
             if canonical in SPECIAL_VERB_LEMMAS:
                 special = self._verb_special_seeds(target, canonical)
                 if special:
@@ -69,7 +101,7 @@ class StochasticSentenceGenerator(SentenceGenerator):
                 seeds.append(([subj, verb_form], 1))
             return seeds
 
-        if target.pos == "adj":
+        if family == "adj":
             profile = get_profile(target.rank)
             allowed = allowed_support_rank(target.rank, profile)
             allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(target.lemma))
@@ -92,6 +124,58 @@ class StochasticSentenceGenerator(SentenceGenerator):
                     break
             return seeds
 
+        if family == "prep":
+            seeds.append((["ella", "está", surface], 2))
+            seeds.append((["ella", "va", surface], 2))
+            return seeds
+
+        if family == "conj":
+            if normalized in COORDINATING_CONJUNCTIONS:
+                seeds.append((["ella", "va", surface], 2))
+            else:
+                seeds.append((["ella", "sale", surface], 2))
+            return seeds
+
+        if family == "pron":
+            if normalized in SUBJECT_FEATURES:
+                seeds.append(([surface], 0))
+            elif normalized in {"lo", "la", "los", "las", "le", "les", "me", "te", "se", "nos"}:
+                seeds.append((["ella", surface], 1))
+            elif normalized in {"eso", "esto", "nada", "algo", "aquello"}:
+                seeds.append(([surface, "es"], 0))
+            elif normalized in {"qué", "quién", "cómo"}:
+                seeds.append(([surface], 0))
+            else:
+                seeds.append(([surface, "es"], 0))
+            return seeds
+
+        if family in {"determiner", "art"}:
+            seeds.append(([surface], 0))
+            return seeds
+
+        if family == "adv":
+            seeds.append(([surface, "ella"], 0))
+            seeds.append((["ella", surface], 1))
+            non_manner_adverbs = ADV_TIME_LEMMAS | {
+                "no", "aquí", "ahi", "ahí", "allí", "alli", "allá", "alla",
+                "ya", "también", "tambien", "nunca",
+            }
+            if normalized not in non_manner_adverbs:
+                seeds.append((["ella", "habla", surface], 2))
+            return seeds
+
+        if family == "contraction":
+            if normalized == "al":
+                seeds.append((["ella", "va", surface], 2))
+            elif normalized == "del":
+                seeds.append((["ella", "habla", surface], 2))
+            return seeds
+
+        if family in {"interj", "num"}:
+            seeds.append(([surface], 0))
+            return seeds
+
+        seeds.append(([surface, "es"], 0))
         return seeds
 
     def _verb_special_seeds(self, target: Lexeme, canonical: str) -> List[Tuple[List[str], int]]:
@@ -269,8 +353,6 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     def _candidate_is_valid(self, candidate: Optional[Candidate]) -> bool:
         if not candidate or not candidate.sentence:
             return False
-        if candidate.source_method == "hardcoded_fallback":
-            return False
         ok, _ = self.validate(candidate)
         return ok
 
@@ -283,104 +365,58 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             return candidate.score >= 8.5
         return candidate.score >= 8.0
 
-    def _rank_candidate(
+    def _absorb_prescored_candidate(
         self,
         candidate: Optional[Candidate],
         best_valid: Optional[Candidate],
         best_any: Optional[Candidate],
-    ) -> Tuple[Optional[Candidate], Optional[Candidate], Optional[Candidate]]:
+    ) -> Tuple[Optional[Candidate], Optional[Candidate], Optional[Candidate], int]:
         if not candidate or not candidate.sentence:
-            return None, best_valid, best_any
-        if candidate.source_method != "hardcoded_fallback":
-            ok, penalties = self.validate(candidate)
-            if ok:
-                self.score(candidate, penalties)
-                if best_valid is None or candidate.score > best_valid.score:
-                    best_valid = candidate
-                if best_any is None or candidate.score > best_any.score:
-                    best_any = candidate
-                return candidate, best_valid, best_any
-            self.score(candidate, penalties)
-            if best_any is None or candidate.score > best_any.score:
-                best_any = candidate
-            return candidate, best_valid, best_any
+            return None, best_valid, best_any, 0
+        if best_valid is None or candidate.score > best_valid.score:
+            best_valid = candidate
         if best_any is None or candidate.score > best_any.score:
             best_any = candidate
-        return candidate, best_valid, best_any
+        return candidate, best_valid, best_any, 1
 
-    def _manual_candidate(self, target: Lexeme, sentence: str, source_method: str, template_id: str) -> Candidate:
-        tokens = self.sentence_tokens(sentence)
-        target_index = next((i for i, tok in enumerate(tokens) if normalize_token(tok) == normalize_token(target.lemma)), -1)
-        target_form = tokens[target_index] if 0 <= target_index < len(tokens) else target.lemma
-        support_ranks = [
-            self.lookup_rank(tok)
-            for i, tok in enumerate(tokens)
-            if is_word_token(tok) and i != target_index
-        ]
-        avg_support_rank = (sum(support_ranks) / len(support_ranks)) if support_ranks else 0.0
-        max_support_rank = max(support_ranks) if support_ranks else 0
+    def _evaluate_raw_candidate(
+        self,
+        candidate: Optional[Candidate],
+        best_valid: Optional[Candidate],
+        best_any: Optional[Candidate],
+    ) -> Tuple[Optional[Candidate], Optional[Candidate], Optional[Candidate], int]:
+        if not candidate or not candidate.sentence:
+            return None, best_valid, best_any, 0
+        ok, penalties = self.validate(candidate)
+        self.score(candidate, penalties)
+        if ok:
+            if best_valid is None or candidate.score > best_valid.score:
+                best_valid = candidate
+            if best_any is None or candidate.score > best_any.score:
+                best_any = candidate
+            return candidate, best_valid, best_any, 1
+        if best_any is None or candidate.score > best_any.score:
+            best_any = candidate
+        return candidate, best_valid, best_any, 0
+
+    def _no_candidate_result(self, target: Lexeme) -> Candidate:
         return Candidate(
             lemma=target.lemma,
             rank=target.rank,
             pos=target.pos,
             band=get_profile(target.rank).band,
             translation=target.translation,
-            sentence=sentence,
-            target_form=target_form,
-            target_index=target_index,
-            support_ranks=support_ranks,
-            avg_support_rank=avg_support_rank,
-            max_support_rank=max_support_rank,
-            template_id=template_id,
-            source_method=source_method,
+            sentence="",
+            target_form="",
+            target_index=-1,
+            support_ranks=[],
+            avg_support_rank=0.0,
+            max_support_rank=0,
+            template_id="no_candidate_found",
+            source_method="no_candidate_found",
             canonical_lemma=self.canonical_lemma_for(target),
-            target_morph=self.target_morph_for_request(target, target_form, sentence_tokens=tokens, target_idx=target_index) if target_index >= 0 else "",
+            target_morph="",
         )
-
-    def hardcoded_fallback_candidate(self, target: Lexeme) -> Candidate:
-        canonical = self.canonical_lemma_for(target)
-        if target.pos == "n":
-            article = self.choose_article(self.safe_noun_gender(target.lemma, target.gender), definite=True)
-            tokens = [article, target.lemma, "está", "aquí"]
-            candidate = self.build_candidate(target, tokens, "hardcoded_fallback", "hardcoded_fallback", 1)
-        elif target.pos == "v":
-            morph = self.target_form_metadata(target)
-            if normalize_token(target.lemma) == normalize_token(canonical) and morph.get("VerbForm", "Inf") == "Inf":
-                tokens = ["ella", "quiere", target.lemma]
-                candidate = self.build_candidate(target, tokens, "hardcoded_fallback", "hardcoded_fallback", 2)
-            else:
-                verb_form = self.conjugate_present(canonical, "3sg")
-                tokens = ["ella", verb_form]
-                candidate = self.build_candidate(target, tokens, "hardcoded_fallback", "hardcoded_fallback", 1)
-        elif target.pos == "adj":
-            tokens = ["es", target.lemma]
-            candidate = self.build_candidate(target, tokens, "hardcoded_fallback", "hardcoded_fallback", 1)
-        else:
-            tokens = [target.lemma.capitalize(), "es", "una", "palabra"]
-            candidate = self.build_candidate(target, tokens, "hardcoded_fallback", "hardcoded_fallback", 0)
-
-        if candidate:
-            candidate.source_method = "hardcoded_fallback"
-            candidate.template_id = "hardcoded_fallback"
-            return candidate
-
-        sentence = ""
-        if target.pos == "n":
-            article = self.choose_article(self.safe_noun_gender(target.lemma, target.gender), definite=True)
-            sentence = f"{article.capitalize()} {target.lemma} está aquí."
-        elif target.pos == "v":
-            morph = self.target_form_metadata(target)
-            if normalize_token(target.lemma) == normalize_token(canonical) and morph.get("VerbForm", "Inf") == "Inf":
-                sentence = f"Ella quiere {target.lemma}."
-            else:
-                sentence = f"Ella {self.conjugate_present(canonical, '3sg')}."
-        elif target.pos == "adj":
-            sentence = f"Es {target.lemma}."
-        else:
-            sentence = f"{target.lemma.capitalize()} es una palabra."
-        candidate = self._manual_candidate(target, sentence, "hardcoded_fallback", "hardcoded_fallback")
-        candidate.score = -1.0
-        return candidate
 
     def hybrid_output_metadata(
         self,
@@ -390,20 +426,20 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     ) -> Dict[str, Any]:
         publishable = self.candidate_is_general_publishable(candidate)
         valid = self._candidate_is_valid(candidate)
-        if candidate.source_method == "hardcoded_fallback":
-            quality_tier = "hardcoded_fallback"
-        elif candidate.source_method in {"emergency_template", "emergency_starter"}:
-            quality_tier = "emergency"
+        if candidate.source_method == "no_candidate_found":
+            quality_tier = "no_candidate_found"
         elif publishable and candidate.score >= 8.0:
             quality_tier = "strong"
         elif publishable:
             quality_tier = "acceptable"
         elif candidate.sentence and valid:
             quality_tier = "weak"
+        elif candidate.sentence:
+            quality_tier = "bad"
         else:
-            quality_tier = "weak"
+            quality_tier = "no_candidate_found"
 
-        bad_candidate = quality_tier in {"emergency", "hardcoded_fallback"}
+        bad_candidate = quality_tier in {"bad", "no_candidate_found"}
         failure_reason = ""
         if not publishable:
             grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
@@ -433,7 +469,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         pool: List[Candidate],
         best_valid: Optional[Candidate],
         best_any: Optional[Candidate],
-        fallback: Candidate,
+        target: Lexeme,
     ) -> Candidate:
         trimmed = self.dedupe_candidates(pool)[: self.max_candidates_to_keep]
         winner: Optional[Candidate] = None
@@ -448,13 +484,13 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             if winner is None:
                 winner = self.select_best_candidate(trimmed)
 
-        if winner is not None and (winner.source_method == "hardcoded_fallback" or self._candidate_is_valid(winner)):
+        if winner is not None and self._candidate_is_valid(winner):
             return winner
         if best_valid is not None:
             return best_valid
         if best_any is not None and best_any.sentence:
             return best_any
-        return fallback
+        return self._no_candidate_result(target)
 
     def collect_candidates_for_lemma(
         self,
@@ -467,42 +503,51 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
 
         if lemma not in self._hybrid_pool_cache:
             target = self.lexicon[lemma]
+            family = self.normalized_pos_family(target)
             attempts_used = 0
             raw_pool: List[Candidate] = []
             best_valid: Optional[Candidate] = None
             best_any: Optional[Candidate] = None
+            valid_candidates_found = 0
 
             retrieved = self.retrieve_candidates(target)
             attempts_used += 1
             for cand in retrieved:
                 raw_pool.append(cand)
-                _, best_valid, best_any = self._rank_candidate(cand, best_valid, best_any)
+                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                    cand, best_valid, best_any
+                )
+                valid_candidates_found += valid_inc
             if self._should_early_exit(best_valid):
                 deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
-                fallback = self.hardcoded_fallback_candidate(target)
-                selected = self._choose_from_pool(deduped, best_valid, best_any, fallback)
-                valid_count = sum(1 for cand in deduped if self._candidate_is_valid(cand))
+                selected = self._choose_from_pool(deduped, best_valid, best_any, target)
                 self._hybrid_pool_cache[lemma] = deduped
                 self._hybrid_search_cache[lemma] = {
                     "attempts_used": attempts_used,
                     "best_valid": best_valid,
                     "best_any": best_any,
                     "selected": selected,
-                    "valid_count": valid_count,
+                    "valid_count": valid_candidates_found,
                 }
             else:
                 stochastic_budget = min(
                     self.max_total_attempts - attempts_used,
-                    max(50, int(self.max_total_attempts * 0.4)),
+                    max(80, int(self.max_total_attempts * 0.65)),
                 )
                 if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
                     stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
                     attempts_used += 1
                     for cand in stochastic_candidates:
                         raw_pool.append(cand)
-                        _, best_valid, best_any = self._rank_candidate(cand, best_valid, best_any)
+                        _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                            cand, best_valid, best_any
+                        )
+                        valid_candidates_found += valid_inc
 
-                if not self._should_early_exit(best_valid) and self.can_template_target(target):
+                use_content_templates = family in {"n", "v", "adj"} and self.can_template_target(target)
+                use_pos_templates = family not in {"n", "v", "adj"}
+
+                if not self._should_early_exit(best_valid) and use_content_templates:
                     template_attempts = 0
                     use_seeded = True
                     while attempts_used < self.max_total_attempts:
@@ -511,50 +556,68 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                         attempts_used += 1
                         template_attempts += 1
                         cand = builder(target)
-                        ranked, best_valid, best_any = self._rank_candidate(cand, best_valid, best_any)
+                        ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                            cand, best_valid, best_any
+                        )
                         if ranked:
                             raw_pool.append(ranked)
+                        valid_candidates_found += valid_inc
+                        if template_attempts % 25 == 0 and self._should_early_exit(best_valid):
+                            break
+
+                if not self._should_early_exit(best_valid) and use_pos_templates:
+                    template_attempts = 0
+                    use_seeded = True
+                    while attempts_used < self.max_total_attempts:
+                        builder = self.seeded_pos_template_candidate if use_seeded else self.pure_pos_template_candidate
+                        use_seeded = not use_seeded
+                        attempts_used += 1
+                        template_attempts += 1
+                        cand = builder(target)
+                        ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                            cand, best_valid, best_any
+                        )
+                        if ranked:
+                            raw_pool.append(ranked)
+                        valid_candidates_found += valid_inc
                         if template_attempts % 25 == 0 and self._should_early_exit(best_valid):
                             break
 
                 if best_valid is None and attempts_used < self.max_total_attempts:
                     attempts_used += 1
                     cand = self.emergency_pos_template_candidate(target)
-                    ranked, best_valid, best_any = self._rank_candidate(cand, best_valid, best_any)
+                    if cand:
+                        cand.source_method = "emergency_template"
+                        cand.template_id = cand.template_id or "emergency"
+                    ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                        cand, best_valid, best_any
+                    )
                     if ranked:
-                        ranked.source_method = "emergency_template"
                         raw_pool.append(ranked)
-                        if best_valid is ranked:
-                            best_valid.source_method = "emergency_template"
-                        if best_any is ranked:
-                            best_any.source_method = "emergency_template"
+                    valid_candidates_found += valid_inc
 
                 if best_valid is None and attempts_used < self.max_total_attempts:
                     attempts_used += 1
                     cand = self.emergency_starter_candidate(target)
-                    ranked, best_valid, best_any = self._rank_candidate(cand, best_valid, best_any)
+                    if cand:
+                        cand.source_method = "emergency_starter"
+                        cand.template_id = cand.template_id or "emergency"
+                    ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                        cand, best_valid, best_any
+                    )
                     if ranked:
-                        ranked.source_method = "emergency_starter"
                         raw_pool.append(ranked)
-                        if best_valid is ranked:
-                            best_valid.source_method = "emergency_starter"
-                        if best_any is ranked:
-                            best_any.source_method = "emergency_starter"
-
-                fallback = self.hardcoded_fallback_candidate(target)
-                if best_valid is None and (best_any is None or not best_any.sentence):
-                    best_any = fallback
+                    valid_candidates_found += valid_inc
 
                 deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
-                selected = self._choose_from_pool(deduped, best_valid, best_any, fallback)
-                valid_count = sum(1 for cand in deduped if self._candidate_is_valid(cand))
+                selected = self._choose_from_pool(deduped, best_valid, best_any, target)
                 self._hybrid_pool_cache[lemma] = deduped
                 self._hybrid_search_cache[lemma] = {
                     "attempts_used": attempts_used,
                     "best_valid": best_valid,
                     "best_any": best_any,
                     "selected": selected,
-                    "valid_count": valid_count,
+                    "valid_count": valid_candidates_found,
                 }
 
         pool = list(self._hybrid_pool_cache[lemma])
@@ -568,7 +631,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             raise KeyError(f"Lemma not in lexicon: {lemma}")
         self.collect_candidates_for_lemma(lemma)
         selected = self._hybrid_search_cache.get(lemma, {}).get("selected")
-        if selected and selected.sentence:
+        if selected is not None:
             meta = self.hybrid_output_metadata(
                 selected,
                 self._hybrid_search_cache[lemma].get("attempts_used", 0),
@@ -576,9 +639,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             )
             setattr(selected, "_hybrid_meta", meta)
             return selected
-        fallback = self.hardcoded_fallback_candidate(self.lexicon[lemma])
-        setattr(fallback, "_hybrid_meta", self.hybrid_output_metadata(fallback, 0, 0))
-        return fallback
+        candidate = self._no_candidate_result(self.lexicon[lemma])
+        setattr(candidate, "_hybrid_meta", self.hybrid_output_metadata(candidate, 0, 0))
+        return candidate
 
     def generate_sentence_for_target(self, target_lemma: str, target_rank: int) -> Dict[str, Any]:
         lemma = (target_lemma or "").strip().lower()
@@ -596,7 +659,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 "template_id": "",
                 "score": 0.0,
                 "publishable": False,
-                "quality_tier": "hardcoded_fallback",
+                "quality_tier": "no_candidate_found",
                 "bad_candidate": True,
                 "failure_reason": "missing_target_lemma",
                 "search_attempts_used": 0,
@@ -616,7 +679,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 "template_id": "",
                 "score": 0.0,
                 "publishable": False,
-                "quality_tier": "hardcoded_fallback",
+                "quality_tier": "no_candidate_found",
                 "bad_candidate": True,
                 "failure_reason": "lemma_not_in_lexicon",
                 "search_attempts_used": 0,
@@ -687,7 +750,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 row = self.generate_for_lemma(lex.lemma)
             except Exception as exc:
                 print(f"[warn] hybrid failed for {lex.lemma}: {exc}", file=sys.stderr)
-                row = self.hardcoded_fallback_candidate(lex)
+                row = self._no_candidate_result(lex)
                 setattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
             generated.append(row)
             if candidates_out:

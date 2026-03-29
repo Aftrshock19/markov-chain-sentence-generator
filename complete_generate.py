@@ -383,9 +383,9 @@ class Candidate:
 
 
 BANDS = [
-    (1, 800, DifficultyProfile("A1", 3, 5, 200, 120, (0, 1), 1)),
-    (801, 1500, DifficultyProfile("A2", 3, 6, 500, 250, (0, 2), 2)),
-    (1501, 2500, DifficultyProfile("B1", 4, 7, 1200, 700, (1, 3), 3)),
+    (1, 800, DifficultyProfile("A1", 3, 6, 300, 180, (0, 1), 1)),
+    (801, 1500, DifficultyProfile("A2", 3, 7, 600, 350, (0, 2), 2)),
+    (1501, 2500, DifficultyProfile("B1", 4, 8, 1400, 800, (1, 3), 3)),
     (2501, 4000, DifficultyProfile("B2", 5, 8, 2500, 1400, (1, 4), 4)),
     (4001, 6000, DifficultyProfile("C1", 5, 9, 5000, 2500, (2, 5), 5)),
     (6001, 10**9, DifficultyProfile("C2", 6, 10, 8000, 4000, (2, 6), 6)),
