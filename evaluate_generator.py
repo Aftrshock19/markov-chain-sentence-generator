@@ -2,10 +2,9 @@
 import argparse
 import csv
 import json
-import math
-import os
 import random
 import re
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -31,6 +30,8 @@ SEMANTIC_NONSENSE_PATTERNS = [
     re.compile(r"\bva a ser nada\b", re.IGNORECASE),
     re.compile(r"\bvoy a ser nada\b", re.IGNORECASE),
     re.compile(r"\bes un poco de\b", re.IGNORECASE),
+    re.compile(r"\bestá haciendo tarde\b", re.IGNORECASE),
+    re.compile(r"\bserá una cosa así\b", re.IGNORECASE),
 ]
 
 
@@ -55,6 +56,14 @@ def load_csv(path: Path) -> List[Dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def write_csv(path: Path, rows: List[Dict[str, object]], fieldnames: List[str]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
 def shipped_sentence(row: Dict[str, str]) -> bool:
     return bool((row.get("sentence") or "").strip())
 
@@ -73,7 +82,45 @@ def row_is_bad_shipped(row: Dict[str, str]) -> bool:
     return shipped_sentence(row) and not row_is_good(row)
 
 
-def failure_cluster(row: Dict[str, str]) -> str:
+def row_pos_family(row: Dict[str, str]) -> str:
+    raw = (row.get("pos") or "").strip().lower()
+    mapping = {
+        "n": "n",
+        "prop": "prop",
+        "v": "v",
+        "aux": "v",
+        "adj": "adj",
+        "adv": "adv",
+        "determiner": "determiner",
+        "det": "determiner",
+        "art": "art",
+        "pron": "pron",
+        "pronoun": "pron",
+        "prep": "prep",
+        "adp": "prep",
+        "conj": "conj",
+        "cconj": "conj",
+        "sconj": "conj",
+        "interj": "interj",
+        "num": "num",
+        "contraction": "contraction",
+        "letter": "letter",
+        "prefix": "prefix",
+        "phrase": "phrase",
+        "particle": "particle",
+        "none": "residual",
+        "": "residual",
+    }
+    lemma = (row.get("lemma") or "").strip().lower()
+    if raw in {"", "none"}:
+        if lemma in {"de", "a", "en", "con", "por", "para", "sin", "sobre", "hasta", "entre", "durante", "según", "tras", "ante", "del", "al"}:
+            return "prep" if lemma not in {"del", "al"} else "contraction"
+        if lemma == "no":
+            return "adv"
+    return mapping.get(raw, raw or "residual")
+
+
+def suspicious_reason(row: Dict[str, str]) -> str:
     sentence = (row.get("sentence") or "").strip()
     source_method = (row.get("source_method") or "").strip()
     template_id = (row.get("template_id") or "").strip()
@@ -120,9 +167,13 @@ def sample_rows(rows: List[Dict[str, str]], count: int, seed: int) -> List[Dict[
     return rng.sample(rows, count)
 
 
-def metrics_summary(rows: List[Dict[str, str]]) -> Dict[str, object]:
+def scoped_rows(rows: List[Dict[str, str]]) -> List[Dict[str, str]]:
     lo, hi = LOCKED_SUCCESS_METRICS["rank_window"]
-    scoped = [row for row in rows if lo <= _to_int(row.get("rank"), 0) <= hi]
+    return [row for row in rows if lo <= _to_int(row.get("rank"), 0) <= hi]
+
+
+def metrics_summary(rows: List[Dict[str, str]]) -> Dict[str, object]:
+    scoped = scoped_rows(rows)
     total = len(scoped)
     shipped = [row for row in scoped if shipped_sentence(row)]
     good = [row for row in scoped if row_is_good(row)]
@@ -134,7 +185,7 @@ def metrics_summary(rows: List[Dict[str, str]]) -> Dict[str, object]:
     good_rate = (len(good) / total) if total else 0.0
 
     return {
-        "rank_window": [lo, hi],
+        "rank_window": list(LOCKED_SUCCESS_METRICS["rank_window"]),
         "rows_in_scope": total,
         "nonempty_rows": len(shipped),
         "good_rows": len(good),
@@ -148,12 +199,69 @@ def metrics_summary(rows: List[Dict[str, str]]) -> Dict[str, object]:
     }
 
 
-def write_csv(path: Path, rows: List[Dict[str, object]], fieldnames: List[str]) -> None:
-    with path.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
+def aggregate_by_family(rows: List[Dict[str, str]]) -> List[Dict[str, object]]:
+    stats = defaultdict(lambda: {"total": 0, "nonempty": 0, "good": 0, "bad_shipped": 0, "missing": 0})
+    for row in scoped_rows(rows):
+        fam = row_pos_family(row)
+        stats[fam]["total"] += 1
+        if shipped_sentence(row):
+            stats[fam]["nonempty"] += 1
+        else:
+            stats[fam]["missing"] += 1
+        if row_is_good(row):
+            stats[fam]["good"] += 1
+        if row_is_bad_shipped(row):
+            stats[fam]["bad_shipped"] += 1
+    out = []
+    for fam, s in sorted(stats.items()):
+        total = s["total"] or 1
+        shipped = s["nonempty"] or 1
+        out.append({
+            "family": fam,
+            **s,
+            "nonempty_rate": round(s["nonempty"] / total, 4),
+            "good_rate": round(s["good"] / total, 4),
+            "bad_shipped_rate": round(s["bad_shipped"] / shipped, 4) if s["nonempty"] else 0.0,
+        })
+    return out
+
+
+def aggregate_source_method(rows: List[Dict[str, str]], only_good: bool = False, only_bad_shipped: bool = False) -> List[Dict[str, object]]:
+    ctr = Counter()
+    for row in scoped_rows(rows):
+        if only_good and not row_is_good(row):
+            continue
+        if only_bad_shipped and not row_is_bad_shipped(row):
+            continue
+        if not shipped_sentence(row) and (only_good or only_bad_shipped):
+            continue
+        ctr[(row.get("source_method") or "", row.get("template_id") or "")] += 1
+    return [
+        {"source_method": sm, "template_id": tid, "count": count}
+        for (sm, tid), count in sorted(ctr.items(), key=lambda item: (-item[1], item[0][0], item[0][1]))
+    ]
+
+
+def top_missing_lemmas_by_family(rows: List[Dict[str, str]], limit: int = 15) -> List[Dict[str, object]]:
+    grouped = defaultdict(list)
+    for row in scoped_rows(rows):
+        if not shipped_sentence(row):
+            grouped[row_pos_family(row)].append(row)
+    out = []
+    for fam, items in sorted(grouped.items()):
+        for row in items[:limit]:
+            out.append({"family": fam, "lemma": row.get("lemma", ""), "rank": row.get("rank", ""), "pos": row.get("pos", "")})
+    return out
+
+
+def compare_summaries(base: Dict[str, object], new: Dict[str, object]) -> Dict[str, object]:
+    keys = ["rows_in_scope", "nonempty_rows", "good_rows", "bad_shipped_rows", "no_candidate_rows", "nonempty_rate", "good_rate", "bad_shipped_rate"]
+    out = {}
+    for k in keys:
+        bv = base.get(k, 0)
+        nv = new.get(k, 0)
+        out[k] = {"before": bv, "after": nv, "delta": round(nv - bv, 6) if isinstance(bv, float) or isinstance(nv, float) else nv - bv}
+    return out
 
 
 def main() -> None:
@@ -162,6 +270,7 @@ def main() -> None:
     parser.add_argument("--out-dir", default="eval_report", help="Directory for metrics and cluster exports.")
     parser.add_argument("--sample-size", type=int, default=50, help="How many accepted and failed rows to sample.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for sampling.")
+    parser.add_argument("--compare-to", default=None, help="Optional previous CSV output to compare against.")
     args = parser.parse_args()
 
     generated_path = Path(args.generated)
@@ -170,15 +279,19 @@ def main() -> None:
 
     rows = load_csv(generated_path)
     summary = metrics_summary(rows)
+    scoped = scoped_rows(rows)
+    failed_rows = [row for row in scoped if row_is_bad_shipped(row) or not shipped_sentence(row)]
+    bad_shipped = [row for row in scoped if row_is_bad_shipped(row)]
+    accepted_rows = [row for row in scoped if row_is_good(row)]
 
-    failed_rows = [row for row in rows if row_is_bad_shipped(row) or not shipped_sentence(row)]
     cluster_counts: Dict[str, int] = {}
     cluster_rows: List[Dict[str, object]] = []
     for row in failed_rows:
-        cluster = failure_cluster(row)
+        cluster = suspicious_reason(row)
         cluster_counts[cluster] = cluster_counts.get(cluster, 0) + 1
         cluster_rows.append({
             "cluster": cluster,
+            "family": row_pos_family(row),
             "lemma": row.get("lemma", ""),
             "rank": row.get("rank", ""),
             "pos": row.get("pos", ""),
@@ -193,17 +306,37 @@ def main() -> None:
         for cluster, count in sorted(cluster_counts.items(), key=lambda item: (-item[1], item[0]))
     ]
 
-    accepted_rows = [row for row in rows if row_is_good(row)]
+    family_table = aggregate_by_family(rows)
+    accepted_by_source = aggregate_source_method(rows, only_good=True)
+    suspicious_by_source = aggregate_source_method(rows, only_bad_shipped=True)
+    missing_by_family = top_missing_lemmas_by_family(rows)
     accepted_samples = sample_rows(accepted_rows, args.sample_size, args.seed)
     failed_samples = sample_rows(failed_rows, args.sample_size, args.seed)
 
-    metrics_path = out_dir / "metrics.json"
-    metrics_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    report = {
+        "summary": summary,
+        "family_breakdown": family_table,
+        "accepted_by_source_method": accepted_by_source,
+        "suspicious_by_source_method": suspicious_by_source,
+        "top_missing_lemmas_by_family": missing_by_family,
+        "top_failure_clusters": cluster_table,
+    }
 
+    if args.compare_to:
+        prev_rows = load_csv(Path(args.compare_to))
+        report["comparison"] = compare_summaries(metrics_summary(prev_rows), summary)
+
+    (out_dir / "metrics.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_csv(out_dir / "family_breakdown.csv", family_table, ["family", "total", "nonempty", "good", "bad_shipped", "missing", "nonempty_rate", "good_rate", "bad_shipped_rate"])
+    write_csv(out_dir / "accepted_by_source_method.csv", accepted_by_source, ["source_method", "template_id", "count"])
+    write_csv(out_dir / "suspicious_by_source_method.csv", suspicious_by_source, ["source_method", "template_id", "count"])
+    write_csv(out_dir / "top_missing_lemmas_by_family.csv", missing_by_family, ["family", "lemma", "rank", "pos"])
     write_csv(out_dir / "failure_clusters.csv", cluster_table, ["cluster", "count"])
+    write_csv(out_dir / "failure_rows_full.csv", cluster_rows, ["cluster", "family", "lemma", "rank", "pos", "source_method", "template_id", "sentence", "notes"])
     write_csv(out_dir / "failure_samples.csv", [
         {
-            "cluster": failure_cluster(row),
+            "cluster": suspicious_reason(row),
+            "family": row_pos_family(row),
             "lemma": row.get("lemma", ""),
             "rank": row.get("rank", ""),
             "pos": row.get("pos", ""),
@@ -213,9 +346,10 @@ def main() -> None:
             "notes": row.get("notes", row.get("failure_reason", "")),
         }
         for row in failed_samples
-    ], ["cluster", "lemma", "rank", "pos", "source_method", "template_id", "sentence", "notes"])
+    ], ["cluster", "family", "lemma", "rank", "pos", "source_method", "template_id", "sentence", "notes"])
     write_csv(out_dir / "accepted_samples.csv", [
         {
+            "family": row_pos_family(row),
             "lemma": row.get("lemma", ""),
             "rank": row.get("rank", ""),
             "pos": row.get("pos", ""),
@@ -224,32 +358,27 @@ def main() -> None:
             "sentence": row.get("sentence", ""),
         }
         for row in accepted_samples
-    ], ["lemma", "rank", "pos", "source_method", "template_id", "sentence"])
-    write_csv(out_dir / "failure_rows_full.csv", cluster_rows, ["cluster", "lemma", "rank", "pos", "source_method", "template_id", "sentence", "notes"])
+    ], ["family", "lemma", "rank", "pos", "source_method", "template_id", "sentence"])
 
-    summary_txt = out_dir / "summary.txt"
-    summary_txt.write_text(
-        "\n".join([
-            f"rows_in_scope: {summary['rows_in_scope']}",
-            f"nonempty_rows: {summary['nonempty_rows']}",
-            f"good_rows: {summary['good_rows']}",
-            f"bad_shipped_rows: {summary['bad_shipped_rows']}",
-            f"no_candidate_rows: {summary['no_candidate_rows']}",
-            f"nonempty_rate: {summary['nonempty_rate']:.4f}",
-            f"good_rate: {summary['good_rate']:.4f}",
-            f"bad_shipped_rate: {summary['bad_shipped_rate']:.4f}",
-            f"passes_locked_nonempty_rate: {summary['passes_locked_nonempty_rate']}",
-            f"passes_locked_bad_shipped_rate: {summary['passes_locked_bad_shipped_rate']}",
-        ]),
-        encoding="utf-8",
-    )
+    summary_lines = [
+        f"rows_in_scope: {summary['rows_in_scope']}",
+        f"nonempty_rows: {summary['nonempty_rows']}",
+        f"good_rows: {summary['good_rows']}",
+        f"bad_shipped_rows: {summary['bad_shipped_rows']}",
+        f"no_candidate_rows: {summary['no_candidate_rows']}",
+        f"nonempty_rate: {summary['nonempty_rate']:.4f}",
+        f"good_rate: {summary['good_rate']:.4f}",
+        f"bad_shipped_rate: {summary['bad_shipped_rate']:.4f}",
+        f"passes_locked_nonempty_rate: {summary['passes_locked_nonempty_rate']}",
+        f"passes_locked_bad_shipped_rate: {summary['passes_locked_bad_shipped_rate']}",
+    ]
+    if args.compare_to and "comparison" in report:
+        summary_lines.append("comparison:")
+        for key, vals in report["comparison"].items():
+            summary_lines.append(f"  {key}: before={vals['before']} after={vals['after']} delta={vals['delta']}")
+    (out_dir / "summary.txt").write_text("\n".join(summary_lines), encoding="utf-8")
 
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
-    if cluster_table:
-        print("Top failure clusters:")
-        for row in cluster_table[:10]:
-            print(f"  {row['cluster']}: {row['count']}")
-    print(f"Saved report to {out_dir}")
+    print(json.dumps(report, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

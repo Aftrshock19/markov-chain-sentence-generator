@@ -2837,6 +2837,22 @@ class SentenceGenerator:
                 specs = [("verb_exact_podria_ir", ["ella", "podría", "ir"], 1)]
             elif surface == "haciendo" and canonical == "hacer":
                 specs = [("verb_exact_haciendo_eso", ["ella", "está", "haciendo", "eso"], 2)]
+            elif surface == "haces" and canonical == "hacer":
+                specs = [("verb_exact_haces_eso", ["tú", "haces", "eso"], 1)]
+            elif surface == "hemos" and canonical == "haber":
+                specs = [("verb_exact_hemos_hecho", ["hemos", "hecho", "eso"], 0)]
+            elif surface == "debo" and canonical == "deber":
+                specs = [("verb_exact_debo_ir", ["yo", "debo", "ir"], 1)]
+            elif surface == "ven" and canonical == "venir":
+                specs = [("verb_exact_ven_aqui", ["ven", "aquí"], 0)]
+            elif surface == "ve" and canonical == "ver":
+                specs = [("verb_exact_ve_eso", ["ve", "eso"], 0)]
+            elif surface == "da" and canonical == "dar":
+                specs = [("verb_exact_da_eso", ["ella", "da", "eso"], 1)]
+            elif surface == "digo" and canonical == "decir":
+                specs = [("verb_exact_digo_eso", ["yo", "digo", "eso"], 1)]
+            elif surface == "pensé" and canonical == "pensar":
+                specs = [("verb_exact_pense_eso", ["yo", "pensé", "eso"], 1)]
             elif surface == "dije" and canonical == "decir":
                 specs = [("verb_exact_dije_eso", ["yo", "dije", "eso"], 1)]
         elif target.pos == "n":
@@ -2860,6 +2876,64 @@ class SentenceGenerator:
                 specs = [("noun_exact_mama", ["mi", "mamá", "está", "aquí"], 1)]
             elif surface == "parte":
                 specs = [("noun_exact_part", ["es", "parte", "del", "plan"], 1)]
+            elif surface == "nombre":
+                specs = [("noun_exact_name", ["mi", "nombre", "es", "claro"], 1)]
+            elif surface == "mamá":
+                specs = [("noun_exact_mama", ["mi", "mamá", "está", "aquí"], 1)]
+            elif surface == "lugar":
+                specs = [("noun_exact_place", ["es", "un", "lugar", "tranquilo"], 2)]
+            elif surface == "mañana":
+                specs = [("noun_exact_morning", ["la", "mañana", "es", "tranquila"], 1)]
+            elif surface == "noche":
+                specs = [("noun_exact_night", ["la", "noche", "es", "larga"], 1)]
+            elif surface == "hora":
+                specs = [("noun_exact_hour", ["es", "la", "hora"], 2)]
+            elif surface == "fin":
+                specs = [("noun_exact_end", ["es", "el", "fin"], 2)]
+            elif surface == "agua":
+                specs = [("noun_exact_water", ["el", "agua", "está", "aquí"], 1)]
+            elif surface == "mano":
+                specs = [("noun_exact_hand", ["la", "mano", "está", "aquí"], 1)]
+            elif surface == "noche":
+                specs = [("noun_exact_night", ["la", "noche", "es", "larga"], 1)]
+            elif surface == "supuesto":
+                specs = [("noun_exact_of_course", ["por", "supuesto"], 1)]
+            elif surface == "general":
+                specs = [("noun_exact_general", ["en", "general", "es", "claro"], 1)]
+            elif surface == "minutos":
+                specs = [("noun_exact_minutes", ["faltan", "minutos"], 1)]
+            elif surface == "días":
+                specs = [("noun_exact_days", ["pasan", "días"], 1)]
+            elif surface == "horas":
+                specs = [("noun_exact_hours", ["pasan", "horas"], 1)]
+            elif surface == "veces":
+                specs = [("noun_exact_times", ["muchas", "veces"], 1)]
+            elif surface == "personas":
+                specs = [("noun_exact_people", ["muchas", "personas", "llegan"], 1)]
+            elif surface == "hombres":
+                specs = [("noun_exact_men", ["muchos", "hombres", "llegan"], 1)]
+            elif surface == "chicos":
+                specs = [("noun_exact_boys", ["muchos", "chicos", "llegan"], 1)]
+            elif surface == "ojos":
+                specs = [("noun_exact_eyes", ["sus", "ojos", "están", "aquí"], 1)]
+            elif surface == "buenas":
+                specs = [("noun_exact_good_evening", ["buenas", "noches"], 0)]
+            elif surface == "señora":
+                specs = [("noun_exact_lady", ["la", "señora", "está", "aquí"], 1)]
+            elif surface == "primera":
+                specs = [("noun_exact_first", ["la", "primera", "parte"], 1)]
+            elif surface == "pasado":
+                specs = [("noun_exact_past", ["el", "pasado", "importa"], 1)]
+            elif surface == "cierto":
+                specs = [("noun_exact_true", ["es", "cierto"], 1)]
+            elif surface == "claro":
+                specs = [("noun_exact_clear", ["está", "claro"], 1)]
+            elif surface == "pronto":
+                specs = [("noun_exact_soon", ["hasta", "pronto"], 1)]
+            elif surface == "ah":
+                specs = [("noun_exact_ah", ["ah"], 0)]
+            elif surface == "eh":
+                specs = [("noun_exact_eh", ["eh"], 0)]
 
         for template_id, tokens, target_index in specs:
             cand = self.build_candidate(target, tokens, template_id, source_method, target_index)
@@ -3518,6 +3592,7 @@ class SentenceGenerator:
                     target,
                     [
                         ("adv_how_be", ["cómo", "está", "él"], 0),
+                        ("adv_how_do", ["cómo", "lo", "haces"], 0),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3555,6 +3630,74 @@ class SentenceGenerator:
                     [
                         ("adv_negation_know", ["no", "lo", "sé"], 0),
                         ("adv_negation_go", ["no", "voy", "hoy"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "muy":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_very_good", ["está", "muy", "bien"], 1),
+                        ("adv_very_clear", ["es", "muy", "claro"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "menos":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_less_work", ["ahora", "trabajo", "menos"], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "casi":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_almost_ready", ["ya", "casi", "está"], 1),
+                        ("adv_almost_home", ["ya", "casi", "llego"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "además":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_besides_clear", ["además", "es", "claro"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "siempre":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_always_here", ["siempre", "está", "aquí"], 0),
+                        ("adv_always_know", ["siempre", "lo", "sé"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "ayer":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_yesterday_left", ["ayer", "me", "fui"], 0),
+                        ("adv_yesterday_arrived", ["ayer", "llegó"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "hoy":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_today_go", ["voy", "hoy"], 1),
+                        ("adv_today_arrive", ["llega", "hoy"], 1),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3700,10 +3843,12 @@ class SentenceGenerator:
                     emergency=emergency,
                 )
             if surface in {"todos", "todas"}:
+                noun_surface = "amigos" if surface == "todos" else "casas"
                 return self._build_from_specs(
                     target,
                     [
-                        ("det_total_plural", [surface, "están", "aquí"], 0),
+                        ("det_total_plural_pron", [surface, "están", "aquí"], 0),
+                        ("det_total_plural_nominal", [surface, noun_surface, "están", "aquí"], 0),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3804,6 +3949,9 @@ class SentenceGenerator:
                 verb = "es" if pron != "quién" else "viene"
                 specs = [("pron_question", [pron, verb], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron == "que":
+                specs = [("pron_relative", ["la", "casa", "que", "veo"], 2)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             if pron == "cuál":
                 specs = [("pron_which_name", ["cuál", "es", "tu", "nombre"], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
@@ -3812,6 +3960,9 @@ class SentenceGenerator:
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             if pron in {"mí", "ti"}:
                 specs = [("pron_prepositional_for", ["es", "para", pron], 2)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron == "dónde":
+                specs = [("pron_where_be", ["dónde", "está"], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             if pron == "sí":
                 specs = [("pron_reflexive_for_self", ["lo", "hace", "por", "sí", "mismo"], 3)]
@@ -3849,6 +4000,7 @@ class SentenceGenerator:
                 specs = [
                     ("prep_of_work", ["hablo", "de", "mi", "trabajo"], 1),
                     ("prep_of_her", ["el", "libro", "es", "de", "ella"], 3),
+                    ("prep_part_of_plan", ["es", "parte", "de", "mi", "plan"], 2),
                 ]
             elif surface == "en":
                 specs = [
@@ -3939,10 +4091,12 @@ class SentenceGenerator:
             elif surface == "cuando":
                 specs = [
                     ("conj_when_call", ["te", "llamo", "cuando", "llego"], 2),
+                    ("conj_when_arrive", ["cuando", "llega", "ella"], 0),
                 ]
             elif surface == "como":
                 specs = [
                     ("conj_as_you", ["lo", "hago", "como", "tú"], 2),
+                    ("conj_as_before", ["todo", "sale", "como", "antes"], 2),
                 ]
             elif surface == "sino":
                 specs = [

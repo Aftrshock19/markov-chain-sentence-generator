@@ -1,0 +1,51 @@
+family,lemma,rank,pos,source_method,template_id,sentence
+adj,segundo,427,adj,retrieved_corpus,retrieved,Estará aquí en cualquier segundo.
+adv,cómo,65,adv,template_generated,adv_how_be,Cómo está él.
+pron,se,15,pron,template_generated,pron_clitic_call,Ella se llama.
+n,momento,165,n,retrieved_corpus,retrieved,Está contigo en este momento.
+n,acuerdo,149,n,retrieved_corpus,retrieved,No estoy de acuerdo con usted.
+v,han,135,v,seeded_template,verb_exact_han_done_that,Han hecho eso.
+prep,sin,80,prep,template_generated,prep_without_him,Voy sin él.
+v,ido,500,v,stochastic_decoder,stochastic,Ella ha ido a ver la casa.
+v,era,60,v,seeded_template,seeded_special_ser_adj,Ella era buena.
+v,necesita,454,v,retrieved_corpus,retrieved,¿por qué necesita este dinero?
+n,medio,356,n,template_generated,n_a1_1,El medio es nuevo.
+v,vamos,52,v,seeded_template,seeded_special_ir_place,Nosotros vamos a casa.
+v,entiendo,390,v,retrieved_corpus,retrieved,Yo no entiendo esto.
+v,importa,265,v,retrieved_corpus,retrieved,No me importa lo que decís.
+prep,para,19,prep,retrieved_corpus,retrieved,No quiero a nadie para este trabajo.
+pron,me,18,pron,template_generated,pron_clitic_call,Ella me llama.
+adj,bueno,55,adj,retrieved_corpus,retrieved,Creo que es muy bueno.
+n,cosas,131,n,retrieved_corpus,retrieved,Tenemos otras cosas que hacer.
+v,dijo,140,v,stochastic_decoder,stochastic,Ella dijo eso antes de la casa.
+v,somos,319,v,stochastic_decoder,stochastic,Nosotros somos el uno al otro lado.
+n,miedo,398,n,retrieved_corpus,retrieved,No te tengo miedo.
+prep,con,16,prep,retrieved_corpus,retrieved,Ella quiere salir con él.
+v,dejar,366,v,retrieved_corpus,retrieved,No te voy a dejar solo.
+n,hombre,116,n,template_generated,n_a1_1,El hombre es nuevo.
+adj,alto,486,adj,retrieved_corpus,retrieved,Es más alto que yo.
+n,juego,433,n,retrieved_corpus,retrieved,No es un juego.
+v,cree,476,v,seeded_template,seeded_special_creer_object,Ella cree eso.
+determiner,esos,263,determiner,template_generated,det_anchor_clear,Esos amigos están bien.
+pron,ti,132,pron,template_generated,pron_prepositional_for,Es para ti.
+adv,dentro,284,adv,retrieved_corpus,retrieved,Hay un dios dentro de nosotros.
+determiner,algunas,389,determiner,retrieved_corpus,retrieved,Algunas personas no hicieron nada.
+v,mira,168,v,template_generated,v_a1_1,Ella mira una casa.
+art,el,6,art,template_generated,det_anchor_clear,El amigo está bien.
+n,casa,91,n,retrieved_corpus,retrieved,¿ella está en casa?
+adj,joven,471,adj,retrieved_corpus,retrieved,¡qué joven eres!
+n,amigo,210,n,retrieved_corpus,retrieved,Me gustan tus amigos.
+v,creo,89,v,seeded_template,seeded_special_creer_object,Yo creo eso.
+v,tenemos,129,v,seeded_template,seeded_special_tener_obj,Nosotros tenemos una casa.
+v,haber,208,v,retrieved_corpus,retrieved,Lo he dicho todo.
+determiner,alguna,236,determiner,template_generated,det_anchor_clear,Alguna casa está bien.
+determiner,sus,57,determiner,template_generated,det_anchor_clear,Sus amigos están bien.
+v,quería,224,v,retrieved_corpus,retrieved,Ella no quería estar en casa.
+adj,buena,212,adj,retrieved_corpus,retrieved,Es una mujer de buenas maneras.
+v,hubiera,402,v,stochastic_decoder,stochastic,No creo que hubiera hecho eso solo.
+prop,estado,159,prop,stochastic_decoder,stochastic,Estado es el día de la casa.
+determiner,mi,27,determiner,template_generated,det_anchor_clear,Mi amigo está bien.
+v,quieren,495,v,seeded_template,seeded_special_querer_obj,Ellos quieren una casa.
+pron,ustedes,290,pron,template_generated,pron_subject_home,Ustedes van a casa.
+n,presidente,349,n,retrieved_corpus,retrieved,Estoy viendo al presidente.
+v,he,72,v,retrieved_corpus,retrieved,Lo he dicho todo.
