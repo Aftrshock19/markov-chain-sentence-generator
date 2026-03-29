@@ -383,9 +383,9 @@ class Candidate:
 
 
 BANDS = [
-    (1, 800, DifficultyProfile("A1", 3, 5, 200, 120, (0, 1), 1)),
-    (801, 1500, DifficultyProfile("A2", 3, 6, 500, 250, (0, 2), 2)),
-    (1501, 2500, DifficultyProfile("B1", 4, 7, 1200, 700, (1, 3), 3)),
+    (1, 800, DifficultyProfile("A1", 3, 6, 300, 180, (0, 1), 1)),
+    (801, 1500, DifficultyProfile("A2", 3, 7, 600, 350, (0, 2), 2)),
+    (1501, 2500, DifficultyProfile("B1", 4, 8, 1400, 800, (1, 3), 3)),
     (2501, 4000, DifficultyProfile("B2", 5, 8, 2500, 1400, (1, 4), 4)),
     (4001, 6000, DifficultyProfile("C1", 5, 9, 5000, 2500, (2, 5), 5)),
     (6001, 10**9, DifficultyProfile("C2", 6, 10, 8000, 4000, (2, 6), 6)),
@@ -2007,6 +2007,90 @@ class SentenceGenerator:
                 return token
         return None
 
+    def finite_verb_indices(self, words: List[str]) -> List[int]:
+        indices: List[int] = []
+        for idx, token in enumerate(words):
+            if self.lookup_pos(token) != "v":
+                continue
+            morph = self.surface_morph(token)
+            if morph.get("VerbForm") == "Fin" or (morph.get("Mood") and morph.get("Tense")):
+                indices.append(idx)
+        return indices
+
+    def finite_verb_count(self, words: List[str]) -> int:
+        return len(self.finite_verb_indices(words))
+
+    def verb_token_count(self, words: List[str]) -> int:
+        return sum(1 for token in words if self.lookup_pos(token) == "v")
+
+    def has_unlinked_finite_verbs(self, words: List[str]) -> bool:
+        finite_indices = self.finite_verb_indices(words)
+        if len(finite_indices) < 2:
+            return False
+        lowered = [normalize_token(word) for word in words]
+        bridges = COORDINATING_CONJUNCTIONS | SUBORDINATING_CONJUNCTIONS | {"que"}
+        soft_tokens = {
+            "no", "ya", "también", "tambien",
+            "me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les",
+            "un", "una", "unos", "unas",
+            "el", "la", "los", "las",
+            "mi", "mis", "tu", "tus", "su", "sus",
+            "este", "esta", "estos", "estas", "ese", "esa", "esos", "esas",
+            "a", "de", "en", "con", "para", "por", "sin", "sobre", "hasta", "al", "del",
+        }
+        for left_idx, right_idx in zip(finite_indices, finite_indices[1:]):
+            bridge_tokens = lowered[left_idx + 1 : right_idx]
+            if not bridge_tokens:
+                return True
+            if any(token in bridges for token in bridge_tokens):
+                continue
+            hard_gap = [
+                token for token in bridge_tokens
+                if token not in soft_tokens
+            ]
+            if len(hard_gap) <= 1:
+                return True
+        return False
+
+    def universal_coherence_reasons(self, words: List[str]) -> List[str]:
+        reasons: List[str] = []
+        if not words:
+            return reasons
+
+        lowered = [normalize_token(word) for word in words]
+        det_like = set(ARTICLE_FEATURES) | DETERMINER_POSSESSIVES | DETERMINER_DEMONSTRATIVES
+        trailing_bad = SIMPLE_PREPOSITIONS | {"a", "al", "del"} | COORDINATING_CONJUNCTIONS | SUBORDINATING_CONJUNCTIONS
+        clitic_like = {"me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les"}
+        leading_subordinators = {"que", "porque", "si", "cuando", "como"}
+
+        if lowered[-1] in det_like | trailing_bad | clitic_like:
+            reasons.append("dangling_function_word")
+        if lowered[-1] == "no" and len(words) > 1:
+            reasons.append("terminal_negation")
+
+        for idx, token in enumerate(lowered[:-1]):
+            if token in det_like and self.lookup_pos(words[idx + 1]) == "adj":
+                if idx + 2 >= len(words) or self.lookup_pos(words[idx + 2]) != "n":
+                    reasons.append("truncated_noun_phrase")
+                    break
+
+        if lowered[0] in leading_subordinators and self.finite_verb_count(words) < 2:
+            reasons.append("orphaned_subordinate_clause")
+
+        if self.has_unlinked_finite_verbs(words):
+            reasons.append("unlinked_finite_verbs")
+
+        for idx in range(1, len(lowered) - 2):
+            if lowered[idx] != "de" or lowered[idx + 1] != "lo":
+                continue
+            if lowered[idx - 1] not in {"más", "menos", "mucho", "poco", "tan"}:
+                continue
+            if self.lookup_pos(words[idx + 2]) in {"adj", "adv"}:
+                reasons.append("bad_degree_phrase")
+                break
+
+        return list(dict.fromkeys(reasons))
+
     def bad_copula_output(self, words: List[str]) -> bool:
         copula_idx = next((i for i, w in enumerate(words) if w in COPULA_FORMS), -1)
         if copula_idx < 0 or copula_idx + 1 >= len(words):
@@ -2063,8 +2147,10 @@ class SentenceGenerator:
         verb_index = self.first_finite_verb_index(words)
         valid, _ = self.validate(candidate)
         if not valid:
-            notes = candidate.template_id or "failed_validation"
-            return "0", "0", "0", notes
+            notes = self.universal_coherence_reasons(words)
+            if not notes:
+                notes = [candidate.template_id or "failed_validation"]
+            return "0", "0", "0", "; ".join(dict.fromkeys(x for x in notes if x))
         grammatical = "1"
         natural = "1"
         learner_clear = "1"
@@ -2498,6 +2584,9 @@ class SentenceGenerator:
             return False, penalties
         if self.bad_copula_output(words):
             return False, penalties
+        coherence_reasons = self.universal_coherence_reasons(words)
+        if coherence_reasons:
+            return False, penalties
         if len(words) == profile.min_len:
             penalties.append(0.2)
         if len(words) == profile.max_len:
@@ -2640,6 +2729,9 @@ class SentenceGenerator:
             return False, penalties
         penalties.extend(retrieval_penalties)
         if self.bad_copula_output(words):
+            return False, penalties
+        coherence_reasons = self.universal_coherence_reasons(words)
+        if coherence_reasons:
             return False, penalties
         if len(words) == profile.min_len:
             penalties.append(0.2)
@@ -2939,6 +3031,51 @@ class SentenceGenerator:
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
         return None
 
+    def _build_from_specs(
+        self,
+        target: Lexeme,
+        specs: List[Tuple[str, List[str], int]],
+        seeded: bool = False,
+        emergency: bool = False,
+    ) -> Optional[Candidate]:
+        ordered = list(specs)
+        if emergency:
+            ordered = ordered[:2]
+        elif not seeded and len(ordered) > 1:
+            ordered = self.random.sample(ordered, len(ordered))
+        for template_id, tokens, target_index in ordered:
+            cand = self.build_candidate(target, tokens, template_id, "template_generated", target_index)
+            if cand:
+                return cand
+        return None
+
+    def _safe_nominal_support(
+        self,
+        surface: str,
+        allowed: int,
+        exclude: Optional[Iterable[str]] = None,
+    ) -> Optional[Tuple[str, str]]:
+        exclude = exclude or []
+        feminine = {
+            "la", "una", "esta", "esa", "mi", "tu", "su",
+            "nuestra", "nuestras", "esta", "estas", "esa", "esas",
+        }
+        plural = {
+            "los", "las", "unos", "unas", "estos", "estas", "esos", "esas",
+            "mis", "tus", "sus", "nuestros", "nuestras",
+        }
+        preferred = ["casa", "idea", "mesa"] if surface in feminine else ["libro", "trabajo", "amigo", "hotel"]
+        noun = self.pick_preferred_lemmas(preferred, allowed, exclude=exclude)
+        if not noun:
+            noun = self.pick_safe_subject_noun(allowed, exclude=exclude)
+        if not noun:
+            noun = self.pick_template_friendly_noun(allowed, exclude=exclude)
+        if not noun:
+            return None
+        noun_surface = self.pluralize_noun(noun.lemma) if surface in plural else noun.lemma
+        verb = "están" if surface in plural else "está"
+        return noun_surface, verb
+
     def seeded_pos_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
         return self.pos_specific_template_candidate(target, seeded=True, emergency=False)
 
@@ -2954,153 +3091,349 @@ class SentenceGenerator:
         family = self.normalized_pos_family(target)
         surface = target.lemma
         exclude = {target.lemma, self.canonical_lemma_for(target)}
+
         if family == "adv":
-            subject = self.random.choice(self.preferred_subject_pronouns(profile))
-            adv = surface
             if surface == "no":
-                verb = self.conjugate_present("hablar", SUBJECT_FEATURES[subject]["person_code"])
-                return self.build_candidate(target, [subject, adv, verb], "adv_negation_clause", "template_generated", 1)
-            if surface in ADV_TIME_LEMMAS:
-                verb = self.conjugate_present("llegar", SUBJECT_FEATURES[subject]["person_code"])
-                return self.build_candidate(target, [subject, adv, verb], "adv_time_clause", "template_generated", 1)
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_negation_know", ["no", "lo", "sé"], 0),
+                        ("adv_negation_go", ["no", "voy", "hoy"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "ahora":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_now_home", ["ahora", "me", "voy", "a", "casa"], 0),
+                        ("adv_now_talk", ["ahora", "hablo", "con", "ella"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if surface in ADV_PLACE_LEMMAS:
-                return self.build_candidate(target, ["ella", "está", adv], "adv_place_clause", "template_generated", 2)
-            verb = self.conjugate_present("hablar", SUBJECT_FEATURES[subject]["person_code"])
-            tokens = [subject, verb, adv] if profile.band in {"A1", "A2"} else [subject, adv, verb, "con", "calma"]
-            return self.build_candidate(target, tokens, "adv_general_clause", "template_generated", 2 if len(tokens) > 2 and tokens[2] == adv else len(tokens) - 1)
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_place_be", ["ella", "está", surface], 2),
+                        ("adv_place_live", ["yo", "vivo", surface], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "así":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_manner_speak", ["ella", "habla", "así"], 2),
+                        ("adv_manner_be", ["todo", "es", "así"], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "bien":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_well_be", ["ella", "está", "bien"], 2),
+                        ("adv_well_speak", ["ella", "habla", "bien"], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "ya":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_already_know", ["ya", "lo", "sé"], 0),
+                        ("adv_already_here", ["ya", "está", "aquí"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in ADV_TIME_LEMMAS:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_time_arrive", ["ella", "llega", surface], 2),
+                        ("adv_time_home", ["voy", "a", "casa", surface], 3),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            return self._build_from_specs(
+                target,
+                [
+                    ("adv_general_speak", ["ella", "habla", surface], 2),
+                    ("adv_general_live", ["yo", "vivo", surface], 2),
+                ],
+                seeded=seeded,
+                emergency=emergency,
+            )
 
         if family in {"determiner", "art"}:
-            if family == "art":
-                noun = self.pick_preferred_lemmas(["trabajo", "libro", "plan", "papel", "hotel"], allowed, exclude=exclude)
-                if not noun:
-                    noun = self.pick_safe_subject_noun(allowed, exclude=exclude) or self.pick_template_friendly_noun(allowed, exclude=exclude)
-                if not noun:
-                    return None
-                if surface in {"los", "las"}:
-                    noun_surface = self.pluralize_noun(noun.lemma)
-                    adj_surface = self.inflect_adj("bueno", "m", "pl")
-                    tokens = [surface, noun_surface, "son", adj_surface]
-                else:
-                    tokens = [surface, noun.lemma, "es", "bueno"]
-                return self.build_candidate(target, tokens, "art_anchor_np", "template_generated", 0)
-            noun = self.pick_safe_subject_noun(allowed, exclude=exclude)
-            if not noun:
-                noun = self.pick_template_friendly_noun(allowed, exclude=exclude)
-            if not noun:
+            support = self._safe_nominal_support(surface, allowed, exclude=exclude)
+            if not support:
                 return None
-            gender = self.safe_noun_gender(noun.lemma, noun.gender)
-            if family == "art":
-                article = surface
-            elif surface in DETERMINER_POSSESSIVES or surface in DETERMINER_DEMONSTRATIVES:
-                article = surface
-            else:
-                article = surface
-            if surface in DETERMINER_POSSESSIVES:
-                tokens = [article, noun.lemma, "está", "aquí"]
-            else:
-                adj = self.pick_compatible_adjective(allowed, noun.semantic_class, exclude=exclude)
-                if not adj:
-                    adj = self.pick_candidate("adj", allowed, exclude=exclude)
-                if not adj:
-                    return None
-                adj_surface = self.inflect_adj(adj.lemma, gender)
-                tokens = [article, noun.lemma, "es", adj_surface]
-            return self.build_candidate(target, tokens, "det_anchor_np", "template_generated", 0)
+            noun_surface, verb = support
+            return self._build_from_specs(
+                target,
+                [
+                    ("det_anchor_here", [surface, noun_surface, verb, "aquí"], 0),
+                    ("det_anchor_clear", [surface, noun_surface, verb, "bien"], 0),
+                ],
+                seeded=seeded,
+                emergency=emergency,
+            )
 
         if family == "pron":
             pron = surface
             if pron in SUBJECT_FEATURES:
-                if profile.band in {"A1", "A2"}:
-                    tokens = [pron, self.conjugate_present("estar", SUBJECT_FEATURES[pron]["person_code"]), "aquí"]
-                else:
-                    tokens = [pron, self.conjugate_present("tener", SUBJECT_FEATURES[pron]["person_code"]), "una", "idea"]
-                return self.build_candidate(target, tokens, "pron_subject_clause", "template_generated", 0)
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("pron_subject_here", [pron, self.conjugate_present("estar", SUBJECT_FEATURES[pron]["person_code"]), "aquí"], 0),
+                        ("pron_subject_home", [pron, self.conjugate_present("ir", SUBJECT_FEATURES[pron]["person_code"]), "a", "casa"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if pron in {"lo", "la", "los", "las"}:
                 subject = "yo" if pron in {"lo", "la"} else "nosotros"
                 person = SUBJECT_FEATURES[subject]["person_code"]
-                tokens = [subject, pron, self.conjugate_present("ver", person)]
-                return self.build_candidate(target, tokens, "pron_object_clause", "template_generated", 1)
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("pron_object_see", [subject, pron, self.conjugate_present("ver", person)], 1),
+                        ("pron_object_know", [subject, pron, self.conjugate_present("conocer", person)], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if pron in {"le", "les"}:
                 subject = "yo" if pron == "le" else "nosotros"
                 person = SUBJECT_FEATURES[subject]["person_code"]
-                tokens = [subject, pron, self.conjugate_present("hablar", person)]
-                return self.build_candidate(target, tokens, "pron_indirect_object_clause", "template_generated", 1)
-            if pron in {"me", "te", "se", "nos"}:
-                subject = "ella" if pron != "nos" else "nosotros"
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("pron_io_speak", [subject, pron, self.conjugate_present("hablar", person)], 1),
+                        ("pron_io_write", [subject, pron, self.conjugate_present("escribir", person)], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if pron in {"me", "te", "se", "nos", "os"}:
+                subject = "ella" if pron not in {"nos", "os"} else "ellos"
                 person = SUBJECT_FEATURES[subject]["person_code"]
-                tokens = [subject, pron, self.conjugate_present("llamar", person)] if profile.band in {"A1", "A2"} else [subject, pron, self.conjugate_present("llevar", person), "a", "casa"]
-                return self.build_candidate(target, tokens, "pron_clitic_clause", "template_generated", 1)
-            if pron in {"qué", "que"}:
-                return self.build_candidate(target, ["yo", "sé", pron, "va"], "pron_interrogative_clause", "template_generated", 2)
-            return self.build_candidate(target, [pron, "es", "importante"], "pron_fallback_clause", "template_generated", 0)
+                specs = [
+                    ("pron_clitic_call", [subject, pron, self.conjugate_present("llamar", person)], 1),
+                ]
+                if pron == "se":
+                    specs.insert(0, ("pron_clitic_leave", ["ella", "se", "va"], 1))
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron in {"esto", "eso", "aquello"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("pron_neuter_for_you", [pron, "es", "para", "ti"], 0),
+                        ("pron_neuter_like", ["me", "gusta", pron], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if pron in {"algo", "nada", "nadie", "alguien"}:
+                if pron == "algo":
+                    specs = [("pron_indef_something", ["quiero", "algo", "más"], 1)]
+                elif pron == "nada":
+                    specs = [("pron_indef_nothing", ["no", "quiero", "nada"], 2)]
+                elif pron == "nadie":
+                    specs = [("pron_indef_nobody", ["nadie", "está", "aquí"], 0)]
+                else:
+                    specs = [("pron_indef_someone", ["alguien", "está", "aquí"], 0)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron in {"que", "qué", "quien", "quién", "como", "cómo"}:
+                if pron == "que":
+                    specs = [("pron_clause_que", ["hay", "que", "ir"], 1)]
+                elif pron == "qué":
+                    specs = [("pron_clause_que", ["qué", "es", "esto"], 0)]
+                elif pron in {"quien", "quién"}:
+                    specs = [("pron_clause_quien", ["no", "sé", pron, "viene"], 2)]
+                else:
+                    specs = [("pron_clause_como", ["no", "sé", pron, "vive"], 2)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            return self._build_from_specs(
+                target,
+                [
+                    ("pron_fallback_here", [pron, "está", "aquí"], 0),
+                    ("pron_fallback_clear", [pron, "es", "para", "mí"], 0),
+                ],
+                seeded=seeded,
+                emergency=emergency,
+            )
 
         if family in {"prep", "contraction"}:
-            prep = surface
-            noun = self.pick_safe_location_noun(allowed, exclude=exclude) or self.pick_safe_subject_noun(allowed, exclude=exclude)
-            if not noun:
-                return None
-            if prep in {"al", "del"}:
-                if prep == "al":
-                    return self.build_candidate(target, ["ella", "va", prep, "trabajo"], "prep_contraction_clause", "template_generated", 2)
-                return self.build_candidate(target, ["ella", "habla", prep, "trabajo"], "prep_contraction_clause", "template_generated", 2)
-            if prep == "a":
-                tokens = ["ella", "va", prep, noun.lemma] if noun.lemma in ARTICLELESS_LOCATION_NOUNS else ["ella", "va", prep, self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=True), noun.lemma]
-            elif prep == "de":
-                tokens = ["ella", "habla", prep, noun.lemma]
+            if surface == "con":
+                specs = [
+                    ("prep_with_her", ["hablo", "con", "ella"], 1),
+                    ("prep_with_him", ["voy", "con", "él"], 1),
+                ]
+            elif surface == "para":
+                specs = [
+                    ("prep_for_you", ["es", "para", "ti"], 1),
+                    ("prep_work_for_him", ["trabajo", "para", "él"], 1),
+                ]
+            elif surface == "del":
+                specs = [
+                    ("prep_del_book", ["hablo", "del", "libro"], 1),
+                    ("prep_del_work", ["salgo", "del", "trabajo"], 1),
+                ]
+            elif surface == "al":
+                specs = [
+                    ("prep_al_work", ["voy", "al", "trabajo"], 1),
+                    ("prep_al_hotel", ["llego", "al", "hotel"], 1),
+                ]
+            elif surface == "a":
+                specs = [
+                    ("prep_to_home", ["voy", "a", "casa"], 1),
+                    ("prep_call_friend", ["llamo", "a", "mi", "amigo"], 1),
+                ]
+            elif surface == "de":
+                specs = [
+                    ("prep_of_work", ["hablo", "de", "mi", "trabajo"], 1),
+                    ("prep_of_her", ["el", "libro", "es", "de", "ella"], 3),
+                ]
+            elif surface == "en":
+                specs = [
+                    ("prep_in_home", ["ella", "está", "en", "casa"], 2),
+                    ("prep_in_house", ["vivo", "en", "esta", "casa"], 1),
+                ]
+            elif surface == "por":
+                specs = [
+                    ("prep_because_of_that", ["es", "por", "eso"], 1),
+                    ("prep_for_you_reason", ["lo", "hago", "por", "ti"], 2),
+                ]
+            elif surface == "sin":
+                specs = [
+                    ("prep_without_money", ["estoy", "sin", "dinero"], 1),
+                    ("prep_without_him", ["voy", "sin", "él"], 1),
+                ]
+            elif surface == "sobre":
+                specs = [
+                    ("prep_on_table", ["el", "libro", "está", "sobre", "la", "mesa"], 3),
+                ]
+            elif surface == "hasta":
+                specs = [
+                    ("prep_until_today", ["trabajo", "hasta", "hoy"], 1),
+                    ("prep_until_tomorrow", ["espero", "hasta", "mañana"], 1),
+                ]
             else:
-                tokens = ["ella", "está", prep, noun.lemma] if profile.band in {"A1", "A2"} else ["ella", "habla", prep, noun.lemma, "con", "calma"]
-            prep_index = next((i for i, tok in enumerate(tokens) if normalize_token(tok) == normalize_token(prep)), -1)
-            return self.build_candidate(target, tokens, "prep_governed_clause", "template_generated", prep_index)
+                specs = [
+                    ("prep_generic_with_target", ["hablo", surface, "ella"], 1),
+                ]
+            return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         if family == "conj":
-            conj = surface
-            if conj in COORDINATING_CONJUNCTIONS:
-                if profile.band in {"A1", "A2"}:
-                    tokens = ["ella", "va", conj, "él", "va"]
-                else:
-                    tokens = ["ella", "va", conj, "él", "vuelve", "a", "casa"]
+            if surface == "y":
+                specs = [
+                    ("conj_and_clauses", ["ella", "va", "y", "él", "va"], 2),
+                    ("conj_and_return", ["voy", "y", "vuelvo"], 1),
+                ]
+            elif surface == "o":
+                specs = [
+                    ("conj_or_choice", ["vienes", "o", "te", "quedas"], 1),
+                    ("conj_or_time", ["voy", "hoy", "o", "mañana"], 2),
+                ]
+            elif surface == "pero":
+                specs = [
+                    ("conj_but_cant", ["quiero", "ir", "pero", "no", "puedo"], 2),
+                    ("conj_but_stay", ["ella", "viene", "pero", "yo", "me", "quedo"], 2),
+                ]
+            elif surface == "porque":
+                specs = [
+                    ("conj_because_tired", ["no", "voy", "porque", "estoy", "cansado"], 2),
+                    ("conj_because_home", ["me", "voy", "porque", "es", "tarde"], 2),
+                ]
+            elif surface == "si":
+                specs = [
+                    ("conj_if_know", ["no", "sé", "si", "viene"], 2),
+                ]
+            elif surface == "cuando":
+                specs = [
+                    ("conj_when_call", ["te", "llamo", "cuando", "llego"], 2),
+                ]
+            elif surface == "como":
+                specs = [
+                    ("conj_as_you", ["lo", "hago", "como", "tú"], 2),
+                ]
             else:
-                if profile.band in {"A1", "A2"} and conj not in BEGINNER_SUBORDINATORS:
-                    return None
-                tokens = [conj, "ella", "llega", ",", "yo", "salgo"] if profile.band in {"C1", "C2"} else ["ella", "sale", conj, "llueve"]
-            conj_index = next((i for i, tok in enumerate(tokens) if normalize_token(tok) == normalize_token(conj)), -1)
-            return self.build_candidate(target, tokens, "conj_linked_clause", "template_generated", conj_index)
+                specs = [
+                    ("conj_generic_link", ["ella", "viene", surface, "yo", "salgo"], 2),
+                ]
+            return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         if family == "interj":
             punct = INTERJECTION_PUNCT.get(surface, "!")
-            tokens = [surface, ",", "ella", "llega"] if profile.band not in {"A1", "A2"} else [surface, ",", "ella", "está", "aquí"]
-            candidate = self.build_candidate(target, tokens, "interj_discourse_clause", "template_generated", 0)
+            candidate = self._build_from_specs(
+                target,
+                [
+                    ("interj_here", [surface, ",", "ella", "está", "aquí"], 0),
+                    ("interj_arrive", [surface, ",", "ella", "llega"], 0),
+                ],
+                seeded=seeded,
+                emergency=emergency,
+            )
             if candidate and punct and candidate.sentence and candidate.sentence[-1] == ".":
                 candidate.sentence = candidate.sentence[:-1] + punct
             return candidate
 
         if family == "num":
-            tokens = [surface, "es", surface] if profile.band in {"A1", "A2"} else [surface, "es", surface, "también"]
-            return self.build_candidate(target, tokens, "num_quantity_clause", "template_generated", 0)
+            if surface in {"un", "una"}:
+                noun = "casa" if surface == "una" else "libro"
+                specs = [("num_indefinite_object", ["tengo", surface, noun], 1)]
+            elif surface == "uno":
+                specs = [("num_one_subject", ["uno", "viene", "hoy"], 0)]
+            else:
+                noun = "libros"
+                specs = [
+                    ("num_count_object", ["tengo", surface, noun], 1),
+                    ("num_count_subject", [surface, noun, "llegan"], 0),
+                ]
+            return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         if family == "prop":
             if profile.band in {"A1", "A2"}:
-                tokens = [surface, "está", "aquí"]
+                specs = [("prop_here", [surface, "está", "aquí"], 0)]
             elif profile.band in {"B1", "B2"}:
-                tokens = [surface, "visita", "la", "ciudad"]
+                specs = [("prop_visit", [surface, "visita", "la", "ciudad"], 0)]
             else:
-                tokens = [surface, "dice", "que", "todo", "cambia"]
-            return self.build_candidate(target, tokens, "prop_named_clause", "template_generated", 0)
+                specs = [("prop_say", [surface, "dice", "que", "todo", "cambia"], 0)]
+            return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         if family == "letter":
-            return self.build_candidate(target, ["la", "letra", surface, "es", "común"], "letter_metalinguistic_clause", "template_generated", 2)
+            return self._build_from_specs(target, [("letter_metalinguistic_clause", ["la", "letra", surface, "es", "común"], 2)], seeded=seeded, emergency=emergency)
 
         if family == "prefix":
-            return self.build_candidate(target, ["el", "prefijo", surface, "es", "útil"], "prefix_metalinguistic_clause", "template_generated", 2)
+            return self._build_from_specs(target, [("prefix_metalinguistic_clause", ["el", "prefijo", surface, "es", "útil"], 2)], seeded=seeded, emergency=emergency)
 
         if family == "phrase":
-            return self.build_candidate(target, ["la", "expresión", surface, "es", "clara"], "phrase_metalinguistic_clause", "template_generated", 2)
+            return self._build_from_specs(target, [("phrase_metalinguistic_clause", ["la", "expresión", surface, "es", "clara"], 2)], seeded=seeded, emergency=emergency)
 
         if family == "particle":
-            return self.build_candidate(target, ["la", "partícula", surface, "aparece", "aquí"], "particle_metalinguistic_clause", "template_generated", 2)
+            return self._build_from_specs(target, [("particle_metalinguistic_clause", ["la", "partícula", surface, "aparece", "aquí"], 2)], seeded=seeded, emergency=emergency)
 
         if family == "residual":
-            return self.build_candidate(target, [surface, "va", "aquí"], "residual_metalinguistic_clause", "template_generated", 0)
+            if surface == "no":
+                specs = [
+                    ("residual_negation_know", ["no", "lo", "sé"], 0),
+                    ("residual_negation_go", ["no", "voy", "hoy"], 0),
+                ]
+            elif surface == "sí":
+                specs = [("residual_yes_want", ["sí", "lo", "quiero"], 0)]
+            else:
+                specs = [("residual_metalinguistic_clause", ["la", "forma", surface, "es", "clara"], 2)]
+            return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         return None
 
