@@ -1,0 +1,10 @@
+lemma,rank,pos,translation,sentence,source_method,template_id,score,rejection_reasons,semantic_reasons
+igual,406,adj,same,Quiero una igual.,retrieved_corpus,retrieved,13.411962254027268,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+suficiente,441,adj,enough,No tengo suficiente dinero ahora.,retrieved_corpus,retrieved,14.266265807593602,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+libre,596,adj,free,Mañana va a ser libre.,retrieved_corpus,retrieved,13.145526024581441,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+peor,598,adj,bad,Peor es nada.,retrieved_corpus,retrieved,11.069166529754014,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+siguiente,621,adj,following,La siguiente es tuya.,retrieved_corpus,retrieved,11.314049159053454,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+vivo,635,adj,alive,Yo vivo mi vida.,retrieved_corpus,retrieved,11.340032105271703,retrieved_sentence_too_marked,
+jugar,680,v,to play,Ella puede jugar.,template_generated,v_a1_inf,6.4927238154515114,,
+duro,690,adj,hard,Sé que puede ser duro.,retrieved_corpus,retrieved,11.204003125067576,retrieved_sentence_too_marked; context_shaped_retrieval,context_shaped_retrieval
+normal,849,adj,normal,Me gusta más de lo normal.,retrieved_corpus,retrieved,12.492897563921696,retrieved_sentence_too_marked,

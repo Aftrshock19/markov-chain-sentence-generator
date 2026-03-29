@@ -24,7 +24,7 @@ te,22,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 su,23,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 pero,24,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 si,25,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-está,26,v,Ella está en la casa.,seeded_template,seeded_special_estar_place,8.615059496626404,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+está,26,v,Ella está en casa.,seeded_template,seeded_special_estar_place,9.00272063549803,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
 mi,27,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 al,28,contraction,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sí,29,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -49,8 +49,8 @@ cuando,47,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hay,48,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 este,49,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 algo,50,pron,Tienes algo que es mío.,retrieved_corpus,retrieved,9.90366882766971,algo,Number=Sing,1,1,1,
-estoy,51,v,No sé dónde estoy.,retrieved_corpus,retrieved,12.087139640684061,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
-vamos,52,v,Nosotros vamos a la casa.,seeded_template,seeded_special_ir_place,8.540150082422905,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+estoy,51,v,Yo estoy en casa.,seeded_template,seeded_special_estar_place,9.564135540276222,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+vamos,52,v,Nosotros vamos a casa.,seeded_template,seeded_special_ir_place,8.61695630924364,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
 él,53,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ser,54,v,Ella es buena.,seeded_template,seeded_special_ser_adj,9.817620616764355,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ser_adj
 bueno,55,adj,Creo que es muy bueno.,retrieved_corpus,retrieved,12.180317463846073,bueno,Gender=Masc|Number=Sing,1,1,1,
@@ -65,7 +65,7 @@ sé,63,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 tú,64,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 cómo,65,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 vez,66,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-estás,67,v,Tú estás en la casa.,seeded_template,seeded_special_estar_place,8.284337740476804,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+estás,67,v,Tú estás en casa.,seeded_template,seeded_special_estar_place,8.577479224949148,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
 sólo,68,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ella,69,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 son,70,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -73,16 +73,16 @@ hacer,71,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 he,72,v,Lo he dicho todo.,retrieved_corpus,retrieved,11.059072831939837,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
 porque,73,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 todos,74,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-puedo,75,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+puedo,75,v,Yo puedo ir a casa.,seeded_template,seeded_special_poder_ir_place,9.179415507021211,poder,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
 quiero,76,v,Yo quiero una casa.,seeded_template,seeded_special_querer_obj,8.829369192665265,querer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
 gracias,77,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-puede,78,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+puede,78,v,Ella puede ir a casa.,seeded_template,seeded_special_poder_ir_place,9.288652273214792,poder,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
 dos,79,num,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sin,80,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 soy,81,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sobre,82,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ese,83,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-estaba,84,v,Ella estaba en la casa.,seeded_template,seeded_special_estar_place,9.605026768153094,estar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_estar_place
+estaba,84,v,Ella estaba en casa.,seeded_template,seeded_special_estar_place,9.944050958439844,estar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_estar_place
 también,85,adv,Yo también estoy bien.,retrieved_corpus,retrieved,14.379233654816398,también,,1,1,1,
 tiempo,86,n,No tuve tiempo.,retrieved_corpus,retrieved,14.560089393263635,tiempo,Gender=Masc|Number=Sing,1,1,1,
 tan,87,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -92,92 +92,92 @@ tienes,90,v,Tú tienes una casa.,seeded_template,seeded_special_tener_obj,8.4298
 casa,91,n,¿ella está en casa?,retrieved_corpus,retrieved,15.50272063549803,casa,Gender=Fem|Number=Sing,1,1,1,
 usted,92,pron,Usted sabe quién es ella.,retrieved_corpus,retrieved,10.119141664307117,usted,Case=Nom|Number=Sing|Person=2,1,1,1,
 esa,93,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-voy,94,v,Yo voy a la casa.,seeded_template,seeded_special_ir_place,10.462629045123132,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+voy,94,v,Yo voy a casa.,seeded_template,seeded_special_ir_place,10.675285002507723,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
 sabes,95,v,¿sabes quién es él?,retrieved_corpus,retrieved,12.026550230007507,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
 eres,96,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-verdad,97,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+verdad,97,n,Nadie sabe la verdad.,retrieved_corpus,retrieved,13.041208699434332,verdad,Gender=Fem|Number=Sing,1,1,1,
 hasta,98,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 solo,99,adj,¿puedes ir sola?,retrieved_corpus,retrieved,10.037430608768434,solo,Gender=Fem|Number=Sing,1,1,1,
 nunca,100,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 años,101,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hace,102,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-va,103,v,Ella va a la casa.,seeded_template,seeded_special_ir_place,10.811809900220933,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+va,103,v,Ella va a casa.,seeded_template,seeded_special_ir_place,10.591384558524343,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
 hola,104,interj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-mucho,105,determiner,Tengo mucho trabajo que hacer mañana.,retrieved_corpus,retrieved,10.258405927630047,mucho,Gender=Masc|Number=Sing,1,1,1,
+mucho,105,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 quién,106,pron,No saben quién soy.,retrieved_corpus,retrieved,11.610956045560878,quién,Number=Sing,1,1,1,
-mejor,107,adj,Sabíamos que éramos mejores que eso.,retrieved_corpus,retrieved,11.246820922008496,mejor,Number=Plur,1,1,1,
+mejor,107,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 vida,108,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 decir,109,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 mí,110,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 dónde,111,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ni,112,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-están,113,v,Ellos están en la casa.,seeded_template,seeded_special_estar_place,10.453529498770774,estar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+están,113,v,Ellos están en casa.,seeded_template,seeded_special_estar_place,10.483059505988605,estar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
 favor,114,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-señor,115,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-hombre,116,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+señor,115,n,El señor es nuevo.,template_generated,n_a1_1,8.812687696347764,señor,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+hombre,116,n,El hombre es nuevo.,template_generated,n_a1_1,9.47041011273725,hombre,Gender=Masc|Number=Sing,1,1,1,n_a1_1
 oh,117,interj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 siempre,118,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-ver,119,v,¿has visto a mi padre?,retrieved_corpus,retrieved,12.276505975301369,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+ver,119,v,¿la quieres ver ahora?,retrieved_corpus,retrieved,13.216947595897114,ver,VerbForm=Inf,1,1,1,
 uno,120,num,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 quieres,121,v,Tú quieres una casa.,seeded_template,seeded_special_querer_obj,9.852064630307737,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
 siento,122,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 había,123,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 dios,124,prop,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-has,125,v,¿has visto a este hombre?,retrieved_corpus,retrieved,10.964084508467941,haber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
-antes,126,adv,Él ha hecho esto antes.,retrieved_corpus,retrieved,11.907807483460333,antes,,1,1,1,
+has,125,v,¿has visto a este hombre?,retrieved_corpus,retrieved,10.764084508467942,haber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+antes,126,adv,Él ha hecho esto antes.,retrieved_corpus,retrieved,11.707807483460334,antes,,1,1,1,
 día,127,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 desde,128,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 tenemos,129,v,Nosotros tenemos una casa.,seeded_template,seeded_special_tener_obj,9.370007416645102,tener,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
 poco,130,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-cosas,131,n,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,11.883787825873842,cosa,Gender=Fem|Number=Plur,1,1,1,
+cosas,131,n,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,11.683787825873843,cosa,Gender=Fem|Number=Plur,1,1,1,
 ti,132,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-otra,133,determiner,Él quiere vernos otra vez.,retrieved_corpus,retrieved,11.292597736503941,otro,Gender=Fem|Number=Sing,1,1,1,
+otra,133,determiner,Él quiere vernos otra vez.,retrieved_corpus,retrieved,11.092597736503942,otro,Gender=Fem|Number=Sing,1,1,1,
 mismo,134,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 han,135,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-hecho,136,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hecho,136,n,El hecho es nuevo.,template_generated,n_a1_1,8.466891083730987,hecho,Gender=Masc|Number=Sing,1,1,1,n_a1_1
 alguien,137,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-puedes,138,v,Tú puedes ir a la casa.,seeded_template,seeded_special_poder_ir_place,9.330237397667466,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
-ahí,139,adv,¿qué fue lo que hiciste ahí?,retrieved_corpus,retrieved,12.690728998737873,ahí,,1,1,1,
+puedes,138,v,Tú puedes ir a casa.,seeded_template,seeded_special_poder_ir_place,9.235980435714376,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+ahí,139,adv,He estado ahí dos veces.,retrieved_corpus,retrieved,11.057028221594999,ahí,,1,1,1,
 dijo,140,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-estar,141,v,Ella está en la casa.,seeded_template,seeded_special_estar_place,11.315059496626404,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+estar,141,v,Ella está en casa.,seeded_template,seeded_special_estar_place,11.50272063549803,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
 entre,142,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 noche,143,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 trabajo,144,n,No había trabajo.,retrieved_corpus,retrieved,11.568408941268636,trabajo,Gender=Masc|Number=Sing,1,1,1,
-ir,145,v,Voy a hacer esto yo misma.,retrieved_corpus,retrieved,11.688050363606203,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+ir,145,v,Ella va a casa.,seeded_template,seeded_special_ir_place,10.591384558524343,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
 después,146,adv,Después te diré.,retrieved_corpus,retrieved,9.527681895743623,después,,1,1,1,
 mis,147,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sea,148,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-acuerdo,149,n,No estoy de acuerdo con usted.,retrieved_corpus,retrieved,14.602530877490816,acuerdo,Gender=Masc|Number=Sing,1,1,1,
+acuerdo,149,n,Yo estoy de acuerdo.,retrieved_corpus,retrieved,14.56425562433867,acuerdo,Gender=Masc|Number=Sing,1,1,1,
 otro,150,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 parece,151,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 donde,152,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ellos,153,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-estamos,154,v,Nosotros estamos en la casa.,seeded_template,seeded_special_estar_place,9.404713864879335,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
-mundo,155,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-gente,156,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+estamos,154,v,Nosotros estamos en casa.,seeded_template,seeded_special_estar_place,9.157833024508049,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+mundo,155,n,El mundo es nuevo.,template_generated,n_a1_1,9.218465548851164,mundo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+gente,156,n,La gente es buena.,template_generated,n_a1_1,9.656733844034749,gente,Gender=Fem|Number=Sing,1,1,1,n_a1_1
 nosotros,157,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-padre,158,n,Ahora mis padres están en casa.,retrieved_corpus,retrieved,12.109379998793262,padre,Gender=Masc|Number=Plur,1,1,1,
+padre,158,n,El padre es nuevo.,template_generated,n_a1_1,8.107805244107583,padre,Gender=Masc|Number=Sing,1,1,1,n_a1_1
 estado,159,prop,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-nadie,160,pron,No hice caso a nadie.,retrieved_corpus,retrieved,10.200177888405468,nadie,Number=Sing,1,1,1,
+nadie,160,pron,Nadie dice nada.,retrieved_corpus,retrieved,12.965190365060439,nadie,Number=Sing,1,1,1,
 tal,161,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 les,162,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 parte,163,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sido,164,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-momento,165,n,Haz que espere un momento.,retrieved_corpus,retrieved,11.515211813087314,momento,Gender=Masc|Number=Sing,1,1,1,
+momento,165,n,Está contigo en este momento.,retrieved_corpus,retrieved,12.558171276006455,momento,Gender=Masc|Number=Sing,1,1,1,
 podría,166,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 menos,167,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-mira,168,v,¡mira a esa chica!,retrieved_corpus,retrieved,9.994655037327583,mirar,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,1,1,
+mira,168,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 quiere,169,v,Ella quiere una casa.,seeded_template,seeded_special_querer_obj,11.02964163219668,querer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
-fuera,170,adv,Dígales que esperen fuera.,retrieved_corpus,retrieved,8.734757220780388,fuera,,1,1,1,
+fuera,170,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 gran,171,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 lugar,172,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hablar,173,v,Quiero hablar sobre ello.,retrieved_corpus,retrieved,13.622421660766516,hablar,VerbForm=Inf,1,1,1,
 tener,174,v,Ella tiene una casa.,seeded_template,seeded_special_tener_obj,11.388334094639582,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
 tenía,175,v,Ella tenía una casa.,seeded_template,seeded_special_tener_obj,10.410156886442316,tener,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_tener_obj
-tres,176,num,Él está aquí hace tres días.,retrieved_corpus,retrieved,13.17673317123423,tres,,1,1,1,
-nuevo,177,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+tres,176,num,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+nuevo,177,adj,El hecho es nuevo.,template_generated,adj_a1_1,9.466891083730987,nuevo,Gender=Masc|Number=Sing,1,1,1,adj_a1_1
 pasa,178,v,¿cómo lo pasa usted?,retrieved_corpus,retrieved,11.741315185344986,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
-vas,179,v,Tú vas a la casa.,seeded_template,seeded_special_ir_place,9.681808287642317,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+vas,179,v,Tú vas a casa.,seeded_template,seeded_special_ir_place,9.567721192115261,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
 cada,180,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 claro,181,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 dinero,182,n,Lo hicieron por dinero.,retrieved_corpus,retrieved,13.502498033359846,dinero,Gender=Masc|Number=Sing,1,1,1,
@@ -188,29 +188,29 @@ tipo,186,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hoy,187,adv,Hoy vi uno.,retrieved_corpus,retrieved,10.132276269075618,hoy,,1,1,1,
 días,188,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 luego,189,adv,Luego lo haré.,retrieved_corpus,retrieved,9.047578851463287,luego,,1,1,1,
-allí,190,adv,Ahora mismo no puedo ir allí.,retrieved_corpus,retrieved,11.524640507972505,allí,,1,1,1,
-mujer,191,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+allí,190,adv,¿puedes ver algo allí?,retrieved_corpus,retrieved,10.595028967101673,allí,,1,1,1,
+mujer,191,n,La mujer es buena.,template_generated,n_a1_1,9.454737266225436,mujer,Gender=Fem|Number=Sing,1,1,1,n_a1_1
 nuestro,192,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 tanto,193,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-cosa,194,n,¿qué tal van las cosas?,retrieved_corpus,retrieved,11.000099290273582,cosa,Gender=Fem|Number=Plur,1,1,1,
+cosa,194,n,¿qué tal van las cosas?,retrieved_corpus,retrieved,10.800099290273582,cosa,Gender=Fem|Number=Plur,1,1,1,
 sabe,195,v,Ella sabe la verdad.,seeded_template,seeded_special_saber_truth,10.211983883802455,saber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_saber_truth
 todas,196,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 haciendo,197,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-hijo,198,n,No tengo nada para mis hijos.,retrieved_corpus,retrieved,11.951404234826978,hijo,Gender=Masc|Number=Plur,1,1,1,
+hijo,198,n,¿él tiene hijos?,retrieved_corpus,retrieved,11.690222208174148,hijo,Gender=Masc|Number=Plur,1,1,1,
 dice,199,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-seguro,200,adj,Ya no estoy seguro de nada.,retrieved_corpus,retrieved,14.167833532568075,seguro,Gender=Masc|Number=Sing,1,1,1,
-podemos,201,v,Nosotros podemos ir a la casa.,seeded_template,seeded_special_poder_ir_place,9.474410698011944,poder,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+seguro,200,adj,Seguro que no sabes hacerlo.,retrieved_corpus,retrieved,11.113989432296039,seguro,Gender=Masc|Number=Sing,1,1,1,
+podemos,201,v,Nosotros podemos ir a casa.,seeded_template,seeded_special_poder_ir_place,9.404182619449601,poder,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
 debe,202,v,¿qué debe hacer?,retrieved_corpus,retrieved,12.184202633238472,deber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
 espera,203,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-vale,204,v,Más vale que nos vayamos.,retrieved_corpus,retrieved,11.05995952893968,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+vale,204,v,No vale más que tú.,retrieved_corpus,retrieved,11.923198114864695,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
 será,205,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 estas,206,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 toda,207,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 haber,208,v,Lo he dicho todo.,retrieved_corpus,retrieved,12.059072831939837,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
 tus,209,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-amigo,210,n,Me gustan tus amigos.,retrieved_corpus,retrieved,11.322042477264825,amigo,Gender=Masc|Number=Plur,1,1,1,
+amigo,210,n,Él tiene un amigo.,template_generated,n_a1_3,10.211765849134304,amigo,Gender=Masc|Number=Sing,1,1,1,n_a1_3
 nuestra,211,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-buena,212,adj,Es una mujer de buenas maneras.,retrieved_corpus,retrieved,10.928756750991402,buena,Gender=Fem|Number=Plur,1,1,1,
+buena,212,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 aún,213,adv,Aún no veo nada.,retrieved_corpus,retrieved,13.98981377599805,aún,,1,1,1,
 quien,214,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 estos,215,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -221,40 +221,40 @@ mamá,219,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 mal,220,adv,Todos lo pasamos mal.,retrieved_corpus,retrieved,10.920542026507004,mal,,1,1,1,
 buen,221,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 durante,222,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-papá,223,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+papá,223,n,El papá es nuevo.,template_generated,n_a1_1,9.28203930342632,papá,Gender=Masc|Number=Sing,1,1,1,n_a1_1
 quería,224,v,Ella quería una casa.,seeded_template,seeded_special_querer_obj,11.128977855472646,querer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_querer_obj
 dije,225,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 unos,226,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 pasado,227,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-forma,228,n,Estás en mejor forma que yo.,retrieved_corpus,retrieved,11.66760535873953,forma,Gender=Fem|Number=Sing,1,1,1,
+forma,228,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 gusta,229,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hizo,230,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-caso,231,n,No hice caso a nadie.,retrieved_corpus,retrieved,11.200177888405468,caso,Gender=Masc|Number=Sing,1,1,1,
+caso,231,n,No hice caso a nadie.,retrieved_corpus,retrieved,11.000177888405469,caso,Gender=Masc|Number=Sing,1,1,1,
 contra,232,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-tarde,233,adv,Aún no es tarde.,retrieved_corpus,retrieved,13.841426307052174,tarde,,1,1,1,
-necesito,234,v,No necesito ser más claro.,retrieved_corpus,retrieved,11.498804466610144,necesitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
-oye,235,v,Oye mucho y habla poco.,retrieved_corpus,retrieved,11.510030842912027,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,1,1,
+tarde,233,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+necesito,234,v,No necesito ser más claro.,retrieved_corpus,retrieved,11.298804466610145,necesitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+oye,235,v,Oye mucho y habla poco.,retrieved_corpus,retrieved,11.310030842912028,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,1,1,
 alguna,236,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hemos,237,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-cuenta,238,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-visto,239,v,¿has visto a mi padre?,retrieved_corpus,retrieved,13.276505975301369,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+cuenta,238,n,La cuenta es buena.,template_generated,n_a1_1,9.54622569886666,cuenta,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+visto,239,v,¿has visto a mi padre?,retrieved_corpus,retrieved,13.07650597530137,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
 conmigo,240,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 mientras,241,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 otros,242,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-realmente,243,adv,¿estás realmente seguro de eso?,retrieved_corpus,retrieved,12.3144099466926,realmente,,1,1,1,
+realmente,243,adv,¿estás realmente seguro de eso?,retrieved_corpus,retrieved,12.1144099466926,realmente,,1,1,1,
 hora,244,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 problema,245,n,No tendrás ese problema.,retrieved_corpus,retrieved,11.349705714871607,problema,Gender=Masc|Number=Sing,1,1,1,
-crees,246,v,¿crees que estamos haciéndolo bien?,retrieved_corpus,retrieved,11.572913214768938,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+crees,246,v,¿cómo crees que me siento?,retrieved_corpus,retrieved,12.359005591249403,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
 año,247,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-razón,248,n,Las mujeres siempre tienen razón.,retrieved_corpus,retrieved,11.148903672505007,razón,Gender=Fem|Number=Sing,1,1,1,
+razón,248,n,Las mujeres siempre tienen razón.,retrieved_corpus,retrieved,10.948903672505008,razón,Gender=Fem|Number=Sing,1,1,1,
 primera,249,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 cierto,250,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-saber,251,v,Ella sabe que tú sabes.,retrieved_corpus,retrieved,11.711790840463044,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+saber,251,v,Sé que no lo harás.,retrieved_corpus,retrieved,12.497757317435584,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
 dicho,252,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 hacerlo,253,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-mierda,254,n,El amor es una mierda.,retrieved_corpus,retrieved,11.684826561120117,mierda,Gender=Fem|Number=Sing,1,1,1,
+mierda,254,n,Ese día fue una mierda.,retrieved_corpus,retrieved,10.448766913059679,mierda,Gender=Fem|Number=Sing,1,1,1,
 pues,255,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-idea,256,n,Ni tuve idea que estabas allí.,retrieved_corpus,retrieved,9.632122728340219,idea,Gender=Fem|Number=Sing,1,1,1,
+idea,256,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 mío,257,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 e,258,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 aunque,259,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -262,9 +262,9 @@ familia,260,n,Mi familia es grande.,retrieved_corpus,retrieved,11.79948409181644
 hacia,261,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 amor,262,n,¿qué sabes del amor?,retrieved_corpus,retrieved,10.569249689077598,amor,Gender=Masc|Number=Sing,1,1,1,
 esos,263,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-pueden,264,v,Ellos pueden ir a la casa.,seeded_template,seeded_special_poder_ir_place,9.341264488909056,poder,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+pueden,264,v,Ellos pueden ir a casa.,seeded_template,seeded_special_poder_ir_place,9.248845375496233,poder,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
 importa,265,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-todavía,266,adv,Sé que todavía me queréis.,retrieved_corpus,retrieved,11.514832508999783,todavía,,1,1,1,
+todavía,266,adv,Sé que todavía me queréis.,retrieved_corpus,retrieved,11.314832508999784,todavía,,1,1,1,
 personas,267,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 policía,268,n,La policía está allí.,retrieved_corpus,retrieved,12.374020088226839,policía,Number=Sing,1,1,1,
 casi,269,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
@@ -272,30 +272,230 @@ contigo,270,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 cualquier,271,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 demasiado,272,adv,¿no será demasiado poco?,retrieved_corpus,retrieved,13.713121170314077,demasiado,,1,1,1,
 ven,273,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-serio,274,adj,Tengo cosas serias que hablar.,retrieved_corpus,retrieved,12.274914883613988,serio,Gender=Fem|Number=Plur,1,1,1,
+serio,274,adj,No es nada serio.,retrieved_corpus,retrieved,15.219849216810658,serio,Gender=Masc|Number=Sing,1,1,1,
 algún,275,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 ve,276,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 nueva,277,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 eh,278,,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-lado,279,n,Estaremos lado a lado.,retrieved_corpus,retrieved,11.174202136247631,lado,Gender=Masc|Number=Sing,1,1,1,
-manera,280,n,Lo hago de esa manera.,retrieved_corpus,retrieved,11.343332880127369,manera,Gender=Fem|Number=Sing,1,1,1,
-cabeza,281,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+lado,279,n,El lado es nuevo.,template_generated,n_a1_1,8.888816732151753,lado,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+manera,280,n,Lo hago de esa manera.,retrieved_corpus,retrieved,11.14333288012737,manera,Gender=Fem|Number=Sing,1,1,1,
+cabeza,281,n,La cabeza es buena.,template_generated,n_a1_1,9.33099781230345,cabeza,Gender=Fem|Number=Sing,1,1,1,n_a1_1
 hombres,282,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-historia,283,n,Me gustan mucho estas historias.,retrieved_corpus,retrieved,11.869488944530353,historia,Gender=Fem|Number=Plur,1,1,1,
-dentro,284,adv,Hay un dios dentro de nosotros.,retrieved_corpus,retrieved,12.457867403602284,dentro,,1,1,1,
+historia,283,n,La historia es buena.,template_generated,n_a1_1,10.164984396212702,historia,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+dentro,284,adv,¿puedo ir ahí dentro ahora?,retrieved_corpus,retrieved,12.13927347407454,dentro,,1,1,1,
 sería,285,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-salir,286,v,Parece que algo salió mal.,retrieved_corpus,retrieved,11.542459190721782,salir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+salir,286,v,Ella sale a casa.,template_generated,v_a1_4,9.53396472812356,salir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,v_a1_4
 debería,287,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-van,288,v,Ellos van a la casa.,seeded_template,seeded_special_ir_place,10.113306761156688,ir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
-ciudad,289,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+van,288,v,Ellos van a casa.,seeded_template,seeded_special_ir_place,10.029005965975504,ir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+ciudad,289,n,La ciudad es buena.,template_generated,n_a1_1,10.135113494699949,ciudad,Gender=Fem|Number=Sing,1,1,1,n_a1_1
 ustedes,290,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 muchas,291,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 poder,292,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 algunos,293,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-amigos,294,n,Me gustan tus amigos.,retrieved_corpus,retrieved,12.322042477264825,amigo,Gender=Masc|Number=Plur,1,1,1,
-chica,295,n,Es realmente una buena chica.,retrieved_corpus,retrieved,11.663110705229085,chico,Gender=Fem|Number=Sing,1,1,1,
+amigos,294,n,¿quieres que seamos amigos?,retrieved_corpus,retrieved,9.918015367155219,amigo,Gender=Masc|Number=Plur,1,1,1,
+chica,295,n,La chica es buena.,template_generated,n_a1_1,9.158703429618537,chico,Gender=Fem|Number=Sing,1,1,1,n_a1_1
 mayor,296,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
 sabía,297,v,Ella sabía la verdad.,seeded_template,seeded_special_saber_truth,10.052944596819632,saber,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_saber_truth
 chicos,298,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
-hermano,299,n,No sabía que tuvieras un hermano.,retrieved_corpus,retrieved,13.435158837399124,hermano,Gender=Masc|Number=Sing,1,1,1,
+hermano,299,n,No tengo muchos hermanos.,retrieved_corpus,retrieved,12.308163297880714,hermano,Gender=Masc|Number=Plur,1,1,1,
 esas,300,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+primer,301,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+país,302,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+vaya,303,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+agua,304,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+misma,305,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+veo,306,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+haces,307,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+camino,308,n,¿sabes el camino?,retrieved_corpus,retrieved,9.825136659965583,camino,Gender=Masc|Number=Sing,1,1,1,
+persona,309,n,La persona es buena.,template_generated,n_a1_1,9.50609155977423,persona,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+iba,310,v,Ella iba a casa.,seeded_template,seeded_special_ir_place,9.723763078376534,ir,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_ir_place
+realidad,311,n,La realidad es buena.,template_generated,n_a1_1,8.879784796831618,realidad,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+fin,312,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+importante,313,adj,No está pasando nada importante.,retrieved_corpus,retrieved,11.458056374114717,importante,Number=Sing,1,1,1,
+primero,314,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+digo,315,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+horas,316,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+semana,317,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+puerta,318,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+somos,319,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pensé,320,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+bajo,321,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+muerte,322,n,Soy la muerte.,retrieved_corpus,retrieved,10.444006979611904,muerte,Gender=Fem|Number=Sing,1,1,1,
+problemas,323,n,De seguro tendremos problemas.,retrieved_corpus,retrieved,12.989549485604728,problema,Gender=Masc|Number=Plur,1,1,1,
+punto,324,n,El punto es nuevo.,template_generated,n_a1_1,9.27178064454881,punto,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+ah,325,,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pasó,326,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+quizá,327,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+buenas,328,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+supuesto,329,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cuatro,330,num,Estaré aquí hasta las cuatro.,retrieved_corpus,retrieved,10.608715819204992,cuatro,,1,1,1,
+da,331,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+mano,332,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+niños,333,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+volver,334,v,Puede que vuelva.,retrieved_corpus,retrieved,13.532485415927152,volver,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+además,335,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+señora,336,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cariño,337,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+ayuda,338,n,Ven aquí y ayuda.,retrieved_corpus,retrieved,13.03365921749139,ayuda,Gender=Fem|Number=Sing,1,1,1,
+ojos,339,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cinco,340,num,Cinco menos tres son dos.,retrieved_corpus,retrieved,9.469273331679055,cinco,,1,1,1,
+pasar,341,v,¿cómo lo pasa usted?,retrieved_corpus,retrieved,11.741315185344986,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+general,342,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pronto,343,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+debo,344,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+minutos,345,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+sino,346,conj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+gobierno,347,n,El gobierno es nuevo.,template_generated,n_a1_1,9.638717547337828,gobierno,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+manos,348,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+presidente,349,n,Estoy viendo al presidente.,retrieved_corpus,retrieved,11.273060044493358,presidente,Gender=Masc|Number=Sing,1,1,1,
+muerto,350,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+muchos,351,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+chico,352,n,El chico es bueno.,template_generated,n_a1_1,8.217314092425205,chico,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+guerra,353,n,¡no quiero una guerra!,retrieved_corpus,retrieved,14.665940203309205,guerra,Gender=Fem|Number=Sing,1,1,1,
+hice,354,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+incluso,355,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+medio,356,n,El medio es nuevo.,template_generated,n_a1_1,8.888816732151753,medio,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+cuál,357,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hablando,358,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+adiós,359,n,Sólo pasé a decir adiós.,retrieved_corpus,retrieved,9.927488858285098,adiós,Gender=Masc|Number=Sing,1,1,1,
+siquiera,360,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+genial,361,adj,Creo que se ve genial.,retrieved_corpus,retrieved,12.248785998504987,genial,Number=Sing,1,1,1,
+fueron,362,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+ello,363,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+rápido,364,adj,El hombre es rápido.,seeded_template,seeded_adj_fallback,11.355906274182983,rápido,Gender=Masc|Number=Sing,1,1,1,seeded_adj_fallback
+equipo,365,n,Ellos eran un equipo.,retrieved_corpus,retrieved,10.882286618502178,equipo,Gender=Masc|Number=Sing,1,1,1,
+dejar,366,v,¿os lo ha dejado?,retrieved_corpus,retrieved,10.877297404813076,dejar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+significa,367,v,¿qué significa eso?,retrieved_corpus,retrieved,13.354220506778775,significar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+jefe,368,n,El jefe es nuevo.,template_generated,n_a1_1,9.256472629124342,jefe,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+millones,369,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+suerte,370,n,La suerte es buena.,template_generated,n_a1_1,9.509761387507869,suerte,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+otras,371,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+ayer,372,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cuerpo,373,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+llegar,374,v,Ella llega a casa.,template_generated,v_a1_4,8.307874770040566,llegar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,v_a1_4
+mujeres,375,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+posible,376,adj,¿crees que es posible?,retrieved_corpus,retrieved,10.72557020930196,posible,Number=Sing,1,1,1,
+según,377,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+nuestros,378,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+quizás,379,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+tierra,380,n,La tierra es buena.,template_generated,n_a1_1,10.404151474129979,tierra,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+único,381,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hija,382,n,Hablé con mi hija.,retrieved_corpus,retrieved,11.037333992597356,hija,Gender=Fem|Number=Sing,1,1,1,
+ninguna,383,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+final,384,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cara,385,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+niño,386,n,El niño es nuevo.,template_generated,n_a1_1,9.997628882107652,niño,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+supongo,387,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+juntos,388,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+algunas,389,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+entiendo,390,v,Yo no entiendo esto.,retrieved_corpus,retrieved,12.229032392038757,entender,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+número,391,n,El número es nuevo.,template_generated,n_a1_1,9.466891083730987,número,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+ningún,392,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+deja,393,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+ves,394,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+tío,395,n,El tío es nuevo.,template_generated,n_a1_1,9.108539189885375,tío,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+cerca,396,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+corazón,397,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+miedo,398,n,No te tengo miedo.,retrieved_corpus,retrieved,12.783397987811021,miedo,Gender=Masc|Number=Sing,1,1,1,
+buenos,399,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+eran,400,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+haya,401,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hubiera,402,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+feliz,403,adj,La mujer es feliz.,seeded_template,seeded_adj_fallback,11.187449595451366,feliz,Number=Sing,1,1,1,seeded_adj_fallback
+unas,404,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+espero,405,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+igual,406,adj,Quiero una igual.,retrieved_corpus,retrieved,13.411962254027268,igual,Number=Sing,1,1,1,
+viene,407,v,Ella viene a casa.,template_generated,v_a1_4,8.554303506299092,venir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,v_a1_4
+meses,408,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+sigue,409,v,¡la noche sigue!,retrieved_corpus,retrieved,11.175992388839104,seguir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+dar,410,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+podía,411,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+última,412,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+difícil,413,adj,El dinero es difícil.,template_generated,adj_a1_1,10.501598836737609,difícil,Number=Sing,1,1,1,adj_a1_1
+os,414,interj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+venir,415,v,¿queréis venir con nosotras?,retrieved_corpus,retrieved,10.139947792126158,venir,VerbForm=Inf,1,1,1,
+vi,416,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+viejo,417,n,El viejo es nuevo.,template_generated,n_a1_1,9.242349115681552,viejo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+bastante,418,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+tomar,419,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+gustaría,420,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cuánto,421,determiner,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+encontrar,422,v,Creo que lo encontramos.,retrieved_corpus,retrieved,12.586489039267672,encontrar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+adelante,423,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+justo,424,adj,No parece justo.,retrieved_corpus,retrieved,11.271194149639664,justo,Gender=Masc|Number=Sing,1,1,1,
+sentido,425,n,¿tiene eso sentido para ti?,retrieved_corpus,retrieved,11.877547380342603,sentido,Gender=Masc|Number=Sing,1,1,1,
+esposa,426,n,La esposa es buena.,template_generated,n_a1_1,9.275357146604003,esposa,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+segundo,427,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+grande,428,adj,La casa es grande.,seeded_template,seeded_adj_fallback,8.65626930396199,grande,Number=Sing,1,1,1,seeded_adj_fallback
+allá,429,adv,Tú ve allá sin mí.,retrieved_corpus,retrieved,9.993374314392456,allá,,1,1,1,
+clase,430,n,La clase es buena.,template_generated,n_a1_1,9.634267310177068,clase,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+cual,431,pron,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+ante,432,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+juego,433,n,No es un juego.,retrieved_corpus,retrieved,13.949188784826188,juego,Gender=Masc|Number=Sing,1,1,1,
+tenido,434,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pensar,435,v,¡no es lo que piensas!,retrieved_corpus,retrieved,13.817129521953165,pensar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+pueda,436,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hey,437,,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+doctor,438,n,Soy tu doctor.,retrieved_corpus,retrieved,10.35559696955101,doctor,Gender=Masc|Number=Sing,1,1,1,
+grupo,439,n,El grupo es nuevo.,template_generated,n_a1_1,9.13524546841028,grupo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+cuidado,440,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+suficiente,441,adj,No tuve suficiente tiempo.,retrieved_corpus,retrieved,14.026844353896845,suficiente,Number=Sing,1,1,1,
+sangre,442,n,La sangre es buena.,template_generated,n_a1_1,9.729483845241491,sangre,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+pequeño,443,adj,Es bueno y es pequeño.,retrieved_corpus,retrieved,11.059716017120682,pequeño,Gender=Masc|Number=Sing,1,1,1,
+dijiste,444,v,¿seguro que lo dijiste?,retrieved_corpus,retrieved,11.050422192210382,decir,Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin,1,1,1,
+trata,445,v,De eso se trata.,retrieved_corpus,retrieved,11.20573202791847,tratar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+haré,446,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+último,447,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+frente,448,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+grandes,449,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+venga,450,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+llama,451,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+noches,452,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+toma,453,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+necesita,454,v,Nadie necesita pasar por esto.,retrieved_corpus,retrieved,10.157411788061268,necesitar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+debes,455,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+arriba,456,adv,¿está su madre ahí arriba?,retrieved_corpus,retrieved,10.553845799884979,arriba,,1,1,1,
+vuelta,457,n,La vuelta es buena.,template_generated,n_a1_1,8.846924186573364,vuelta,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+coche,458,n,Él tiene un coche.,template_generated,n_a1_3,10.319565149280841,coche,Gender=Masc|Number=Sing,1,1,1,n_a1_3
+tampoco,459,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+trabajar,460,v,Ustedes trabajan de noche.,retrieved_corpus,retrieved,12.691699240744422,trabajar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+cuándo,461,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+fuerte,462,adj,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+seguridad,463,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+mas,464,,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+entrar,465,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+vivir,466,v,¿dónde vive ahora?,retrieved_corpus,retrieved,12.396233454104316,vivir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+escucha,467,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+déjame,468,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pueblo,469,n,El pueblo es nuevo.,template_generated,n_a1_1,9.449488808333061,pueblo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+hijos,470,n,¿él tiene hijos?,retrieved_corpus,retrieved,11.690222208174148,hijo,Gender=Masc|Number=Plur,1,1,1,
+joven,471,adj,El hombre es joven.,seeded_template,seeded_adj_noun,8.87632721962331,joven,Number=Sing,1,1,1,seeded_adj_noun
+cuanto,472,adv,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+hago,473,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+escuela,474,n,La escuela es buena.,template_generated,n_a1_1,9.073434890992592,escuela,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+tras,475,prep,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+cree,476,v,Ella cree eso.,seeded_template,seeded_special_creer_object,9.543226310706839,creer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_creer_object
+cambio,477,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+luz,478,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+oportunidad,479,n,Quiero otra oportunidad.,retrieved_corpus,retrieved,10.22790698451004,oportunidad,Gender=Fem|Number=Sing,1,1,1,
+fui,480,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+sistema,481,n,Es un buen sistema.,retrieved_corpus,retrieved,12.951475294712544,sistema,Gender=Masc|Number=Sing,1,1,1,
+embargo,482,n,El embargo es nuevo.,template_generated,n_a1_1,8.969909753773386,embargo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+teléfono,483,n,Un teléfono es nuevo.,seeded_template,seeded_noun_adj,9.341675326099185,teléfono,Gender=Masc|Number=Sing,1,1,1,seeded_noun_adj
+dices,484,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+seis,485,num,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+alto,486,adj,Pasé algo por alto.,retrieved_corpus,retrieved,9.9442210196365,alto,Gender=Masc|Number=Sing,1,1,1,
+habla,487,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+fiesta,488,n,Quiero ir a tu fiesta.,retrieved_corpus,retrieved,12.248440416662156,fiesta,Gender=Fem|Number=Sing,1,1,1,
+loco,489,n,El loco es nuevo.,template_generated,n_a1_1,9.098781157051489,loco,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+atrás,490,adv,No es para atrás.,retrieved_corpus,retrieved,15.016803080864847,atrás,,1,1,1,
+debemos,491,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+pregunta,492,n,La pregunta es buena.,template_generated,n_a1_1,9.70364149894549,pregunta,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+hacen,493,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+seguir,494,v,¡la noche sigue!,retrieved_corpus,retrieved,11.175992388839104,seguir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+quieren,495,v,Ellos quieren una casa.,seeded_template,seeded_special_querer_obj,10.516911898412943,querer,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
+dio,496,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+paso,497,n,El paso es nuevo.,template_generated,n_a1_1,8.939079617807934,paso,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+falta,498,n,,manual_review_needed,,0.0,,,0,0,0,manual review needed
+fácil,499,adj,Haces que parezca fácil.,retrieved_corpus,retrieved,9.656148703158467,fácil,Number=Sing,1,1,1,
+ido,500,v,,manual_review_needed,,0.0,,,0,0,0,manual review needed

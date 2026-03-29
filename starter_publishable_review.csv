@@ -1,42 +1,25 @@
 lemma,rank,pos,translation,sentence,source_method,template_id,score,canonical_lemma,target_morph,grammatical_ok,natural_ok,learner_clear_ok,starter_notes
 ser,54,v,to be,Ella es buena.,seeded_template,seeded_special_ser_adj,9.817620616764355,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ser_adj; exact_surface_not_matched
-sé,63,v,yes,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 hacer,71,v,to do,Ella hace un trabajo.,seeded_template,seeded_special_hacer_obj,6.266785975197605,hacer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,seeded_special_hacer_obj; exact_surface_not_matched
 solo,99,adj,sole,¿puedes ir sola?,retrieved_corpus,retrieved,10.037430608768434,solo,Gender=Fem|Number=Sing,1,1,1,exact_surface_not_matched; target_surface_not_base; question_form; retrieved_sentence_too_marked
-mejor,107,adj,better,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 decir,109,v,to say,"Bueno, ¿qué quieres que diga?",retrieved_corpus,retrieved,8.45887400917855,decir,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,multi_clause_context; subjunctive_in_beginner_band; multi_clause_for_beginner; punctuation_complexity_for_beginner; exact_surface_not_matched; advanced_morphology; question_form; banned_discourse_pattern; punctuation_complexity; subjunctive; multiple_finite_verbs; retrieved_sentence_too_marked
 ver,119,v,to see,¿la quieres ver ahora?,retrieved_corpus,retrieved,13.216947595897114,ver,VerbForm=Inf,1,1,1,question_form; retrieved_sentence_too_marked; context_shaped_retrieval
-mismo,134,adj,same,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 estar,141,v,to be,Ella está en casa.,seeded_template,seeded_special_estar_place,11.50272063549803,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place; exact_surface_not_matched
 nuevo,177,adj,new,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 claro,181,adj,clear,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 madre,183,n,mother,¿es usted su madre?,retrieved_corpus,retrieved,13.17251276583402,madre,Gender=Fem|Number=Sing,1,1,1,question_form; banned_discourse_pattern; retrieved_sentence_too_marked
 haber,208,v,have,Lo he dicho todo.,retrieved_corpus,retrieved,12.059072831939837,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched; participle_or_gerund; non_present_tense; retrieved_sentence_too_marked
-buena,212,adj,good,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 nombre,216,n,name,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-cierto,250,adj,certain,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 saber,251,v,to know,Sé que no lo harás.,retrieved_corpus,retrieved,12.497757317435584,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched; non_present_tense; retrieved_sentence_too_marked
-hacerlo,253,v,to do it,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-ve,276,v,go,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-mayor,296,adj,older,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 pasar,341,v,to happen,¿qué ha pasado hoy?,retrieved_corpus,retrieved,13.681386015280705,pasar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,exact_surface_not_matched; advanced_morphology; question_form; retrieved_sentence_too_marked
-muerto,350,adj,dead,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 genial,361,adj,great,Lo hiciste genial.,retrieved_corpus,retrieved,10.32519900872978,genial,Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked
 posible,376,adj,possible,¿crees que es posible?,retrieved_corpus,retrieved,10.72557020930196,posible,Number=Sing,1,1,1,multi_clause_for_beginner; question_form; banned_discourse_pattern; multiple_finite_verbs; retrieved_sentence_too_marked
-único,381,adj,only,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 hija,382,n,daughter,Hablé con mi hija.,retrieved_corpus,retrieved,11.037333992597356,hija,Gender=Fem|Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked
-buenos,399,adj,good,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-dar,410,v,to give,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 difícil,413,adj,difficult,Fueron días muy difíciles.,retrieved_corpus,retrieved,10.03107812896523,difícil,Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; non_present_tense; retrieved_sentence_too_marked
 venir,415,v,to come,¿es que no te vienes?,retrieved_corpus,retrieved,12.56248069041749,venir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,multi_clause_for_beginner; exact_surface_not_matched; question_form; banned_discourse_pattern; multiple_finite_verbs; retrieved_sentence_too_marked
-tomar,419,v,to take,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-segundo,427,adj,second,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 pensar,435,v,to think,¡no es lo que piensas!,retrieved_corpus,retrieved,13.817129521953165,pensar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,multi_clause_for_beginner; exact_surface_not_matched; exclamation_form; multiple_finite_verbs; retrieved_sentence_too_marked
 pequeño,443,adj,small,Es bueno y es pequeño.,retrieved_corpus,retrieved,11.059716017120682,pequeño,Gender=Masc|Number=Sing,1,1,1,multi_clause_for_beginner; multiple_finite_verbs; retrieved_sentence_too_marked
-último,447,adj,final,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 fuerte,462,adj,strong,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-déjame,468,v,rest,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-fui,480,v,to be,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 seguir,494,v,to follow,No los sigo.,retrieved_corpus,retrieved,11.369767101517173,seguir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched
 fácil,499,adj,easy,No parecía tan fácil.,retrieved_corpus,retrieved,11.561584029974574,fácil,Number=Sing,1,1,1,advanced_tense_in_beginner_band; non_present_tense; retrieved_sentence_too_marked
 hermana,513,n,sister,Yo no tengo hermanas.,retrieved_corpus,retrieved,12.639857138777867,hermana,Gender=Fem|Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base
@@ -44,14 +27,10 @@ real,520,adj,real,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 deberías,523,v,should,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 nacional,530,adj,national,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 morir,542,v,to die,¿es verdad que él murió?,retrieved_corpus,retrieved,13.718156442551969,morir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,multi_clause_for_beginner; exact_surface_not_matched; advanced_morphology; question_form; non_present_tense; multiple_finite_verbs; retrieved_sentence_too_marked
-ok,559,adj,OK,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 creer,560,v,to believe,Ella cree eso.,seeded_template,seeded_special_creer_object,9.543226310706839,creer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_creer_object; exact_surface_not_matched
 largo,574,adj,long,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-propio,592,adj,own,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 poner,600,v,to put,Usted no puso nada.,retrieved_corpus,retrieved,13.283757781483555,poner,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,exact_surface_not_matched; advanced_morphology; banned_discourse_pattern; non_present_tense; retrieved_sentence_too_marked; context_shaped_retrieval
-oído,605,v,hearing,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 llevar,606,v,to take,Ellas te los llevaron.,retrieved_corpus,retrieved,10.533385632122975,llevar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,exact_surface_not_matched; advanced_morphology; non_present_tense; retrieved_sentence_too_marked
-llamado,615,adj,called,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 matar,622,v,to kill,¿sabéis quién lo mató?,retrieved_corpus,retrieved,9.734757220780388,matar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,multi_clause_for_beginner; exact_surface_not_matched; advanced_morphology; question_form; non_present_tense; multiple_finite_verbs; retrieved_sentence_too_marked
 correcto,649,adj,correct,¿hicimos lo correcto?,retrieved_corpus,retrieved,11.949938329571811,correcto,Gender=Masc|Number=Sing,1,1,1,question_form; non_present_tense; retrieved_sentence_too_marked
 llamar,650,v,to call,¿ya le has llamado?,retrieved_corpus,retrieved,11.163196178788027,llamar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,exact_surface_not_matched; advanced_morphology; question_form; retrieved_sentence_too_marked
@@ -64,66 +43,43 @@ empezar,699,v,to start,Aquí es donde todo empezó.,retrieved_corpus,retrieved,1
 oficial,709,adj,official,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 negro,711,adj,black,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 necesario,718,adj,necessary,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-cambiar,731,v,to change,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 usar,761,v,to use,Él te usa.,retrieved_corpus,retrieved,10.906193422892244,usar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched; retrieved_sentence_too_marked
 blanco,765,adj,white,Hicieron blanco tres veces.,retrieved_corpus,retrieved,9.632592096027189,blanco,Gender=Masc|Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked
 raro,767,adj,rare,¿no se te hace raro?,retrieved_corpus,retrieved,12.25844608259789,raro,Gender=Masc|Number=Sing,1,1,1,question_form; retrieved_sentence_too_marked
-carta,783,n,letter,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 partir,801,v,to leave,Tienes que partir.,retrieved_corpus,retrieved,13.58067840704978,partir,VerbForm=Inf,1,1,1,banned_discourse_pattern; retrieved_sentence_too_marked
-darle,810,v,to give,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-estábamos,861,v,to be,Justo ahora estábamos hablando de eso.,retrieved_corpus,retrieved,11.568851137538472,estábamos,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,advanced_morphology; participle_or_gerund; retrieved_sentence_too_marked; support_vocab_too_hard
-cállate,862,v,shut up!,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-capaz,863,adj,capable,Tampoco fue capaz de hacer esto.,retrieved_corpus,retrieved,10.600002446818706,capaz,Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked; support_vocab_too_hard
-pesar,864,v,to weigh,¿cuál pesa más?,retrieved_corpus,retrieved,8.248933068388498,pesar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,1,exact_surface_not_matched; question_form; retrieved_sentence_too_marked; support_vocab_too_hard
+estábamos,861,v,to be,Justo ahora estábamos hablando de eso.,retrieved_corpus,retrieved,11.568851137538472,estábamos,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,advanced_morphology; participle_or_gerund; retrieved_sentence_too_marked
+capaz,863,adj,capable,Tampoco fue capaz de hacer esto.,retrieved_corpus,retrieved,10.600002446818706,capaz,Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked
+pesar,864,v,to weigh,¿cuál pesa más?,retrieved_corpus,retrieved,8.248933068388498,pesar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,1,exact_surface_not_matched; question_form; retrieved_sentence_too_marked
 sentir,873,v,to feel,A veces lo sienten.,retrieved_corpus,retrieved,11.922114224544949,sentir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched
 salvo,874,adj,unless,Los niños están salvos.,retrieved_corpus,retrieved,12.408704614640051,salvo,Gender=Masc|Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-próximo,896,adj,near,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-total,897,adj,total,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 sal,898,n,salt,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-debido,925,adj,due,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-fuiste,932,v,to be,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 tranquilo,936,adj,calm,Ella es tranquila.,retrieved_corpus,retrieved,11.6093172807503,tranquilo,Gender=Fem|Number=Sing,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-conocido,960,adj,known,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-entendido,980,adj,understood,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 escuchar,987,v,to listen,Te escucho bien.,retrieved_corpus,retrieved,13.003425188220678,escuchar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched
 terminar,988,v,to finish,Todavía no ha terminado.,retrieved_corpus,retrieved,12.510618074890548,terminar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,exact_surface_not_matched; advanced_morphology; participle_or_gerund; non_present_tense; retrieved_sentence_too_marked
 evitar,996,v,to avoid,Evito hablar con ella.,retrieved_corpus,retrieved,10.021774125838252,evitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched; retrieved_sentence_too_marked
-eras,999,v,to be,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 verdadero,1002,adj,true,Ella tiene pocos verdaderos amigos.,retrieved_corpus,retrieved,11.512367869489973,verdadero,Gender=Masc|Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-estúpido,1012,adj,stupid,¿me estás llamando estúpido?,retrieved_corpus,retrieved,11.691611856881668,estúpido,Gender=Masc|Number=Sing,1,1,1,question_form; participle_or_gerund; retrieved_sentence_too_marked; support_vocab_too_hard
-tonto,1013,adj,stupid,Tengo una pregunta tonta.,retrieved_corpus,retrieved,12.32526416840658,tonto,Gender=Fem|Number=Sing,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked; support_vocab_too_hard
+estúpido,1012,adj,stupid,¿me estás llamando estúpido?,retrieved_corpus,retrieved,11.691611856881668,estúpido,Gender=Masc|Number=Sing,1,1,1,question_form; participle_or_gerund; retrieved_sentence_too_marked
+tonto,1013,adj,stupid,Tengo una pregunta tonta.,retrieved_corpus,retrieved,12.32526416840658,tonto,Gender=Fem|Number=Sing,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
 quédate,1030,v,curfew,Quédate aquí con nosotros.,retrieved_corpus,retrieved,12.768854019788018,quédate,Mood=Imp|Number=Sing|Person=3|VerbForm=Fin,1,1,1,advanced_morphology; imperative_form; retrieved_sentence_too_marked
 entender,1033,v,to understand,Ellas se entienden entre ellas.,retrieved_corpus,retrieved,12.642385885157763,entender,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched
-contrario,1035,adj,opposite,¡me dijo justo lo contrario!,retrieved_corpus,retrieved,11.464995008782415,contrario,Gender=Masc|Number=Sing,1,1,1,exclamation_form; non_present_tense; retrieved_sentence_too_marked; support_vocab_too_hard
+contrario,1035,adj,opposite,¡me dijo justo lo contrario!,retrieved_corpus,retrieved,11.464995008782415,contrario,Gender=Masc|Number=Sing,1,1,1,exclamation_form; non_present_tense; retrieved_sentence_too_marked
 central,1077,adj,central,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-presente,1096,adj,present,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-santa,1121,adj,saintess,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 militar,1124,adj,military,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-menor,1134,adj,minor,Ella no tuvo la menor oportunidad.,retrieved_corpus,retrieved,11.52024880962792,menor,Number=Sing,1,1,1,non_present_tense; retrieved_sentence_too_marked; support_vocab_too_hard
 internacional,1152,adj,international,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-siéntate,1155,v,to feel,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 político,1178,adj,political,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-doble,1187,adj,double,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 contar,1194,v,to count,Les contaré qué hice hoy.,retrieved_corpus,retrieved,11.734789848434868,contar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,multi_clause_for_beginner; exact_surface_not_matched; advanced_morphology; non_present_tense; multiple_finite_verbs; retrieved_sentence_too_marked
 tratar,1206,v,to treat,De eso se trata.,retrieved_corpus,retrieved,11.20573202791847,tratar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched
 oír,1207,v,to hear,No está claro que oyeran algo.,retrieved_corpus,retrieved,13.190468233077576,oír,Mood=Sub|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,subjunctive_in_beginner_band; multi_clause_for_beginner; exact_surface_not_matched; advanced_morphology; subjunctive; non_present_tense; multiple_finite_verbs; retrieved_sentence_too_marked; context_shaped_retrieval
-mundial,1208,adj,related to all the parts of the world,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-leer,1210,v,to read,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 pedir,1239,v,to ask for something,Él pedía mucho dinero.,retrieved_corpus,retrieved,13.068402870463867,pedir,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,advanced_tense_in_beginner_band; exact_surface_not_matched; advanced_morphology; non_present_tense; retrieved_sentence_too_marked
 azul,1252,adj,blue,Ella tiene los ojos azules.,retrieved_corpus,retrieved,12.467452126956132,azul,Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-hazlo,1260,v,bundle,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 salvar,1287,v,to save,Me has salvado.,retrieved_corpus,retrieved,11.106290362274143,salvar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,exact_surface_not_matched; advanced_morphology; participle_or_gerund; non_present_tense; retrieved_sentence_too_marked
 lindo,1309,adj,pretty,¡qué lindo es él!,retrieved_corpus,retrieved,12.548177585946032,lindo,Gender=Masc|Number=Sing,1,1,1,exclamation_form; retrieved_sentence_too_marked
 cenar,1347,v,to dine,¿vas a cenar en casa?,retrieved_corpus,retrieved,12.86578448879685,cenar,VerbForm=Inf,1,1,1,question_form; retrieved_sentence_too_marked
 obtener,1361,v,to obtain,Ella obtuvo el dinero de él.,retrieved_corpus,retrieved,12.275479699538158,obtener,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,exact_surface_not_matched; advanced_morphology; non_present_tense; retrieved_sentence_too_marked
 local,1376,adj,local,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 profesional,1385,adj,professional,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-fiscal,1401,adj,fiscal,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 caer,1421,v,to fall,Me cae bien.,retrieved_corpus,retrieved,14.01585495001654,caer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,exact_surface_not_matched; retrieved_sentence_too_marked
 ocupado,1438,adj,occupied,Los dos están ocupados.,retrieved_corpus,retrieved,11.896014354192733,ocupado,Gender=Masc|Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-verme,1440,v,worm,,manual_review_needed,,0.0,,,0,0,0,no_sentence
-civil,1450,adj,civil,¿habrá guerra civil?,retrieved_corpus,retrieved,8.915740120033986,civil,Number=Sing,1,1,1,question_form; non_present_tense; retrieved_sentence_too_marked; support_vocab_too_hard; banned_content
+civil,1450,adj,civil,¿habrá guerra civil?,retrieved_corpus,retrieved,8.915740120033986,civil,Number=Sing,1,1,1,question_form; non_present_tense; retrieved_sentence_too_marked; banned_content
 verde,1454,adj,green,Él tiene ojos verdes.,retrieved_corpus,retrieved,12.312694785138127,verde,Number=Plur,1,1,1,exact_surface_not_matched; target_surface_not_base; retrieved_sentence_too_marked
-absoluto,1475,adj,absolute,,manual_review_needed,,0.0,,,0,0,0,no_sentence
 bailar,1478,v,to dance,Ella bailó con él.,retrieved_corpus,retrieved,13.313508945433906,bailar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,exact_surface_not_matched; advanced_morphology; non_present_tense; retrieved_sentence_too_marked
-escúchame,1486,v,listening,,manual_review_needed,,0.0,,,0,0,0,no_sentence

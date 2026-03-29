@@ -1,43 +1,113 @@
 lemma,rank,pos,band,translation,sentence,english_sentence,target_form,canonical_lemma,target_morph,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,english_source_method,parallel_pair_id,score,english_score
-ser,54,v,A1,to be,Ella es buena.,,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,9.817620616764355,0.0
-bueno,55,adj,A1,good,Creo que es muy bueno.,,bueno,bueno,Gender=Masc|Number=Sing,4,89 2 9 43,35.75,89,retrieved,retrieved_corpus,,,12.180317463846073,0.0
-casa,91,n,A1,house,¿ella está en casa?,,casa,casa,Gender=Fem|Number=Sing,4,11 26 8,15,26,retrieved,retrieved_corpus,,,15.50272063549803,0.0
-estar,141,v,A2,to be,Ella está en la casa.,,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 3 91,28.25,91,seeded_special_estar_place,seeded_template,,,11.315059496626404,0.0
-ir,145,v,A2,to go,Voy a hacer esto yo misma.,,voy,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,0,5 71 42 18 134,54,134,retrieved,retrieved_corpus,,,11.688050363606203,0.0
-acuerdo,149,n,A2,agreement,No estoy de acuerdo con usted.,,acuerdo,acuerdo,Gender=Masc|Number=Sing,3,4 26 1 16 92,27.8,92,retrieved,retrieved_corpus,,,14.602530877490816,0.0
-padre,158,n,A2,Father,Tu padre te quiere a ti.,,padre,padre,Gender=Masc|Number=Sing,1,37 22 76 5 22,32.4,76,retrieved,retrieved_corpus,,,12.049184136310148,0.0
-hablar,173,v,A2,to talk,Quiero hablar sobre ello.,,hablar,hablar,VerbForm=Inf,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,,,13.622421660766516,0.0
-tener,174,v,A2,to have,Ella tiene una casa.,,tiene,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 10 91,37.333333333333336,91,seeded_special_tener_obj,seeded_template,,,11.388334094639582,0.0
-dinero,182,n,A2,money,¿por qué necesita este dinero?,,dinero,dinero,Gender=Masc|Number=Sing,5,12 17 234 44,76.75,234,retrieved,retrieved_corpus,,,11.57290437940049,0.0
-madre,183,n,A2,mother,¿es usted su madre?,,madre,madre,Gender=Fem|Number=Sing,4,9 92 23,41.333333333333336,92,retrieved,retrieved_corpus,,,13.17251276583402,0.0
-hijo,198,n,A2,son,Quiero tener un hijo contigo.,,hijo,hijo,Gender=Masc|Number=Sing,3,76 59 10 22,41.75,76,retrieved,retrieved_corpus,,,11.175545060108243,0.0
-seguro,200,adj,A2,secure,Ya no estoy seguro de nada.,,seguro,seguro,Gender=Masc|Number=Sing,3,40 4 26 1 61,26.4,61,retrieved,retrieved_corpus,,,14.167833532568075,0.0
-forma,228,n,A2,shape,Estás en mejor forma que yo.,,forma,forma,Gender=Fem|Number=Sing,3,26 8 107 2 18,32.2,107,retrieved,retrieved_corpus,,,11.66760535873953,0.0
-razón,248,n,A2,reason,Las mujeres siempre tienen razón.,,razón,razón,Gender=Fem|Number=Sing,4,6 191 118 59,93.5,191,retrieved,retrieved_corpus,,,11.148903672505007,0.0
-familia,260,n,A2,family,Mi familia es grande.,,familia,familia,Gender=Fem|Number=Sing,1,27 9 171,69,171,retrieved,retrieved_corpus,,,11.799484091816442,0.0
-amor,262,n,A2,love,¿qué sabes del amor?,,amor,amor,Gender=Masc|Number=Sing,4,17 95 21,44.333333333333336,95,retrieved,retrieved_corpus,,,10.569249689077598,0.0
-manera,280,n,A2,way,Lo hago de esa manera.,,manera,manera,Gender=Fem|Number=Sing,4,11 71 1 83,41.5,83,retrieved,retrieved_corpus,,,11.343332880127369,0.0
-chica,295,n,A2,girl,Es realmente una buena chica.,,chica,chica,Gender=Fem|Number=Sing,4,9 243 10 55,79.25,243,retrieved,retrieved_corpus,,,11.663110705229085,0.0
-hermano,299,n,A2,brother,Tengo un hermano y dos hermanas.,,hermano,hermano,Gender=Masc|Number=Sing,2,59 10 7 79 299,90.8,299,retrieved,retrieved_corpus,,,10.500835723852138,0.0
-puerta,318,n,A2,door,La puerta es buena.,,puerta,puerta,Gender=Fem|Number=Sing,1,3 9 55,22.333333333333332,55,n_a1_1,template_generated,,,10.035089972801245,0.0
-chico,352,n,A2,boy,Cualquier chico puede hacerlo.,,chico,chico,Gender=Masc|Number=Sing,1,271 75 71,139,271,retrieved,retrieved_corpus,,,9.828757946629535,0.0
-adiós,359,n,A2,farewell,Quiero decir adiós.,,adiós,adiós,Gender=Masc|Number=Sing,2,76 109,92.5,109,retrieved,retrieved_corpus,,,10.215709443467683,0.0
-dejar,366,v,A2,to leave,No te voy a dejar solo.,,dejar,dejar,VerbForm=Inf,4,4 22 52 5 68,30.2,68,retrieved,retrieved_corpus,,,14.38823659238234,0.0
-jefe,368,n,A2,chief,Hablas como si fueras nuestro jefe.,,jefe,jefe,Gender=Masc|Number=Sing,5,173 30 25 9 192,85.8,192,retrieved,retrieved_corpus,,,9.939873948547758,0.0
-corazón,397,n,A2,heart,Te quiero con todo mi corazón.,,corazón,corazón,Gender=Masc|Number=Sing,5,22 76 16 38 27,35.8,76,retrieved,retrieved_corpus,,,12.387377309408235,0.0
-miedo,398,n,A2,fear,No te tengo miedo.,,miedo,miedo,Gender=Masc|Number=Sing,3,4 22 59,28.333333333333332,59,retrieved,retrieved_corpus,,,12.783397987811021,0.0
-venir,415,v,A2,to come,¿es que no te vienes?,,vienes,venir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,5,9 2 4 22,9.25,22,retrieved,retrieved_corpus,,,12.762480690417489,0.0
-encontrar,422,v,A2,to meet,No encuentran nada por hacer.,,encuentran,encontrar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,4 61 12 71,37,71,retrieved,retrieved_corpus,,,12.646551915075081,0.0
-justo,424,adj,A2,just,No parece justo.,,justo,justo,Gender=Masc|Number=Sing,2,4 151,77.5,151,retrieved,retrieved_corpus,,,11.271194149639664,0.0
-clase,430,n,A2,lecture,Tengo clase esta noche.,,clase,clase,Gender=Fem|Number=Sing,1,59 44 143,82,143,retrieved,retrieved_corpus,,,13.026362171695578,0.0
-juego,433,n,A2,play,No es un juego.,,juego,juego,Gender=Masc|Number=Sing,3,4 9 10,7.666666666666667,10,retrieved,retrieved_corpus,,,13.949188784826188,0.0
-doctor,438,n,A2,doctor,Voy al doctor.,,doctor,doctor,Gender=Masc|Number=Sing,2,52 28,40,52,retrieved,retrieved_corpus,,,10.531025770665732,0.0
-pequeño,443,adj,A2,small,Es bueno y es pequeño.,,pequeño,pequeño,Gender=Masc|Number=Sing,4,9 55 7 9,20,55,retrieved,retrieved_corpus,,,11.259716017120681,0.0
-vuelta,457,n,A2,turn,¿me lo pasan de vuelta ahora?,,vuelta,vuelta,Gender=Fem|Number=Sing,5,18 11 178 1 45,50.6,178,retrieved,retrieved_corpus,,,12.537714749108586,0.0
-trabajar,460,v,A2,to work,Ustedes trabajan de noche.,,trabajan,trabajar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,22 1 143,55.333333333333336,143,retrieved,retrieved_corpus,,,12.691699240744422,0.0
-entrar,465,v,A2,to enter,No puedo dejarte entrar ahí solo.,,entrar,entrar,VerbForm=Inf,3,4 75 366 139 68,130.4,366,retrieved,retrieved_corpus,,,13.186467282718105,0.0
-vivir,466,v,A2,to live,Hace muchos años que vivo aquí.,,vivo,vivir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,4,71 43 101 2 36,50.6,101,retrieved,retrieved_corpus,,,12.428563542621102,0.0
-sistema,481,n,A2,system,Es un buen sistema.,,sistema,sistema,Gender=Masc|Number=Sing,3,9 10 55,24.666666666666668,55,retrieved,retrieved_corpus,,,12.951475294712544,0.0
-fiesta,488,n,A2,party,Quiero ir a tu fiesta.,,fiesta,fiesta,Gender=Fem|Number=Sing,4,76 52 5 37,42.5,76,retrieved,retrieved_corpus,,,12.448440416662155,0.0
-pregunta,492,n,A2,question,¿de quién es la pregunta?,,pregunta,pregunta,Gender=Fem|Number=Sing,5,1 106 9 3,29.75,106,retrieved,retrieved_corpus,,,12.65442603224905,0.0
-seguir,494,v,A2,to follow,No los sigo.,,sigo,seguir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,2,4 6,5,6,retrieved,retrieved_corpus,,,11.369767101517173,0.0
+bueno,55,adj,A1,good,El hombre es bueno.,,bueno,bueno,Gender=Masc|Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,7.7376977835113205,0.0
+casa,91,n,A1,house,La casa está aquí.,,casa,casa,Gender=Fem|Number=Sing,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,10.652599476228351,0.0
+hombre,116,n,A1,man,El hombre es bueno.,,hombre,hombre,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,7.7376977835113205,0.0
+ir,145,v,A1,to go,Él puede ir.,,ir,ir,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,9.562016104667563,0.0
+mundo,155,n,A1,world,El mundo es nuevo.,,mundo,mundo,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.218465548851164,0.0
+gente,156,n,A1,people,La gente es buena.,,gente,gente,Gender=Fem|Number=Sing,1,3 9 55,22.333333333333332,55,n_a1_1,template_generated,,,9.656733844034749,0.0
+padre,158,n,A1,Father,El padre es bueno.,,padre,padre,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,7.107805244107583,0.0
+hablar,173,v,A1,to talk,Quiero hablar sobre ello.,,hablar,hablar,VerbForm=Inf,1,76 82 11,56.333333333333336,82,retrieved,retrieved_corpus,,,13.622421660766516,0.0
+tener,174,v,A1,to have,Él quiere tener una casa.,,tener,tener,VerbForm=Inf,2,11 76 10 91,47,91,v_a1_inf,template_generated,,,8.919874888324014,0.0
+mujer,191,n,A1,woman,La mujer es buena.,,mujer,mujer,Gender=Fem|Number=Sing,1,3 9 55,22.333333333333332,55,n_a1_1,template_generated,,,9.454737266225436,0.0
+hijo,198,n,A1,son,El hijo es bueno.,,hijo,hijo,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,7.709387782529756,0.0
+amigo,210,n,A1,friend,Él tiene un amigo.,,amigo,amigo,Gender=Masc|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,10.211765849134304,0.0
+serio,274,adj,A1,serious,No es nada serio.,,serio,serio,Gender=Masc|Number=Sing,3,4 9 61,24.666666666666668,61,retrieved,retrieved_corpus,,,15.219849216810658,0.0
+historia,283,n,A1,history,La historia es nueva.,,historia,historia,Gender=Fem|Number=Sing,1,3 9 177,63,177,n_a1_1,template_generated,,,7.637172930289649,0.0
+salir,286,v,A1,to leave,Él quiere salir.,,salir,salir,VerbForm=Inf,2,11 76,43.5,76,v_a1_inf,template_generated,,,6.681859168987577,0.0
+ciudad,289,n,A1,city,La ciudad es nueva.,,ciudad,ciudad,Gender=Fem|Number=Sing,1,3 9 177,63,177,n_a1_1,template_generated,,,7.607302028776897,0.0
+hermano,299,n,A1,brother,Él tiene un hermano.,,hermano,hermano,Gender=Masc|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,10.373951892377569,0.0
+persona,309,n,A1,person,La persona es buena.,,persona,persona,Gender=Fem|Number=Sing,1,3 9 55,22.333333333333332,55,n_a1_1,template_generated,,,9.50609155977423,0.0
+importante,313,adj,A1,important,El hombre es importante.,,importante,importante,Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.680502701691356,0.0
+puerta,318,n,A1,door,La puerta está aquí.,,puerta,puerta,Gender=Fem|Number=Sing,1,3 26 36,21.666666666666668,36,seeded_noun_here,seeded_template,,,11.260232816490426,0.0
+volver,334,v,A1,to return,Él puede volver.,,volver,volver,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.614076237360551,0.0
+rápido,364,adj,A1,fast,El hombre es rápido.,,rápido,rápido,Gender=Masc|Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,11.355906274182983,0.0
+dejar,366,v,A1,to leave,Él quiere dejar la casa.,,dejar,dejar,VerbForm=Inf,2,11 76 3 91,45.25,91,v_a1_inf,template_generated,,,8.580925635008741,0.0
+jefe,368,n,A1,chief,El jefe es bueno.,,jefe,jefe,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,7.589820382378631,0.0
+llegar,374,v,A1,to arrive,Ella puede llegar.,,llegar,llegar,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.647483617553068,0.0
+feliz,403,adj,A1,happy,La mujer es feliz.,,feliz,feliz,Number=Sing,3,3 191 9,67.66666666666667,191,seeded_adj_fallback,seeded_template,,,11.187449595451366,0.0
+dar,410,v,A1,to give,Él puede dar ayuda.,,dar,dar,VerbForm=Inf,2,11 75 338,141.33333333333334,338,v_a1_inf,template_generated,,,7.149612883734052,0.0
+tomar,419,v,A1,to take,Ella quiere tomar agua.,,tomar,tomar,VerbForm=Inf,2,11 76 304,130.33333333333334,304,v_a1_inf,template_generated,,,6.852884325534722,0.0
+encontrar,422,v,A1,to meet,Él quiere encontrar una casa.,,encontrar,encontrar,VerbForm=Inf,2,11 76 10 91,47,91,v_a1_inf,template_generated,,,9.460308101230131,0.0
+justo,424,adj,A1,just,No parece justo.,,justo,justo,Gender=Masc|Number=Sing,2,4 151,77.5,151,retrieved,retrieved_corpus,,,11.271194149639664,0.0
+grande,428,adj,A1,big,La casa es grande.,,grande,grande,Number=Sing,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,,,8.65626930396199,0.0
+doctor,438,n,A1,doctor,Voy al doctor.,,doctor,doctor,Gender=Masc|Number=Sing,2,52 28,40,52,retrieved,retrieved_corpus,,,10.531025770665732,0.0
+coche,458,n,A1,car,Él tiene un coche.,,coche,coche,Gender=Masc|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,10.319565149280841,0.0
+trabajar,460,v,A1,to work,Ella puede trabajar.,,trabajar,trabajar,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,9.081892551436194,0.0
+entrar,465,v,A1,to enter,Él puede entrar.,,entrar,entrar,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.551247630290324,0.0
+vivir,466,v,A1,to live,Ella puede vivir.,,vivir,vivir,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.767376887618539,0.0
+pueblo,469,n,A1,town,El pueblo es nuevo.,,pueblo,pueblo,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.449488808333061,0.0
+joven,471,adj,A1,young,El hombre es joven.,,joven,joven,Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_noun,seeded_template,,,8.87632721962331,0.0
+escuela,474,n,A1,school,La escuela es grande.,,escuela,escuela,Gender=Fem|Number=Sing,1,3 9 171,61,171,n_a1_1,template_generated,,,7.7269680888001195,0.0
+teléfono,483,n,A1,telephone,Un teléfono es nuevo.,,teléfono,teléfono,Gender=Masc|Number=Sing,1,10 9 177,65.33333333333333,177,seeded_noun_adj,seeded_template,,,9.341675326099185,0.0
+alto,486,adj,A1,tall,Es más alto que yo.,,alto,alto,Gender=Masc|Number=Sing,2,9 32 2 18,15.25,32,retrieved,retrieved_corpus,,,14.393636125901065,0.0
+palabra,522,n,A1,word,La palabra es nueva.,,palabra,palabra,Gender=Fem|Number=Sing,1,3 9 177,63,177,n_a1_1,template_generated,,,6.884279368002031,0.0
+listo,531,adj,A1,ready,Estoy listo para hablar.,,listo,listo,Gender=Masc|Number=Sing,1,26 19 173,72.66666666666667,173,retrieved,retrieved_corpus,,,13.72180896308758,0.0
+comida,532,n,A1,food,No hay comida.,,comida,comida,Gender=Fem|Number=Sing,2,4 39,21.5,39,retrieved,retrieved_corpus,,,12.23703360800138,0.0
+libro,535,n,A1,book,Él tiene un libro.,,libro,libro,Gender=Masc|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,10.180935713168852,0.0
+comer,538,v,A1,to eat,Ella quiere comer.,,comer,comer,VerbForm=Inf,2,11 76,43.5,76,v_a1_inf,template_generated,,,9.436312720171333,0.0
+calle,545,n,A1,street,La calle es grande.,,calle,calle,Gender=Fem|Number=Sing,1,3 9 171,61,171,n_a1_1,template_generated,,,7.586256505484562,0.0
+especial,556,adj,A1,special,No soy especial.,,especial,especial,Number=Sing,2,4 9,6.5,9,retrieved,retrieved_corpus,,,11.83357811761572,0.0
+esperar,570,v,A1,to wait,Él puede esperar.,,esperar,esperar,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.7579172735864415,0.0
+cama,576,n,A1,bed,Él tiene una cama.,,cama,cama,Gender=Fem|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,8.248192954651671,0.0
+rey,579,n,A1,king,El rey es bueno.,,rey,rey,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,7.943574372579303,0.0
+conseguir,589,v,A1,to get,Él puede conseguir.,,conseguir,conseguir,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.599786633900564,0.0
+oficina,595,n,A1,office,Está en la oficina.,,oficina,oficina,Gender=Fem|Number=Sing,3,26 8 3,12.333333333333334,26,retrieved,retrieved_corpus,,,12.806816489341955,0.0
+dormir,618,v,A1,to sleep,Solo quiero ir a dormir.,,dormir,dormir,VerbForm=Inf,4,68 76 52 5,50.25,76,retrieved,retrieved_corpus,,,11.974894258180012,0.0
+campo,630,n,A1,field,El campo es nuevo.,,campo,campo,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.285999828885556,0.0
+hospital,632,n,A1,hospital,El hospital es nuevo.,,hospital,hospital,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,8.996616032298292,0.0
+ayudar,639,v,A1,to help,Siento no poder ayudar.,,ayudar,ayudar,VerbForm=Inf,3,122 4 75,67,122,retrieved,retrieved_corpus,,,12.94280816303587,0.0
+buscar,657,v,A1,to look for,Él quiere buscar una casa.,,buscar,buscar,VerbForm=Inf,2,11 76 10 91,47,91,v_a1_inf,template_generated,,,8.210606103354309,0.0
+perro,703,n,A1,dog,Él tiene un perro.,,perro,perro,Gender=Masc|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,8.211765849134304,0.0
+ropa,705,n,A1,clothes,La ropa es nueva.,,ropa,ropa,Gender=Fem|Number=Sing,1,3 9 177,63,177,n_a1_1,template_generated,,,7.015360738517451,0.0
+papel,707,n,A1,paper,El papel es nuevo.,,papel,papel,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.590698925412232,0.0
+extraño,710,adj,A1,strange,El hombre es extraño.,,extraño,extraño,Gender=Masc|Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.336844238222119,0.0
+increíble,720,adj,A1,incredible,Ese hombre es increíble.,,increíble,increíble,Number=Sing,3,83 116 9,69.33333333333333,116,retrieved,retrieved_corpus,,,11.575419197293877,0.0
+cambiar,731,v,A1,to change,Él puede cambiar.,,cambiar,cambiar,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.787363032500537,0.0
+mesa,733,n,A1,table,Él tiene una mesa.,,mesa,mesa,Gender=Fem|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,7.71567538924658,0.0
+mensaje,734,n,A1,message,Este mensaje es para ella.,,mensaje,mensaje,Gender=Masc|Number=Sing,1,44 9 19 11,20.75,44,retrieved,retrieved_corpus,,,10.720082526017542,0.0
+diferente,740,adj,A1,different,El hombre es diferente.,,diferente,diferente,Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.448767395809202,0.0
+perfecto,776,adj,A1,perfect,No soy perfecto.,,perfecto,perfecto,Gender=Masc|Number=Sing,2,4 9,6.5,9,retrieved,retrieved_corpus,,,11.934944394642763,0.0
+carta,783,n,A1,letter,La carta es nueva.,,carta,carta,Gender=Fem|Number=Sing,1,3 9 177,63,177,n_a1_1,template_generated,,,7.004290719500818,0.0
+ganar,788,v,A1,to gain,Él puede ganar dinero.,,ganar,ganar,VerbForm=Inf,2,11 75 182,89.33333333333333,182,v_a1_inf,template_generated,,,9.228221401355974,0.0
+hotel,796,n,A1,hotel,El hotel es nuevo.,,hotel,hotel,Gender=Masc|Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.349333750750564,0.0
+amiga,799,n,A1,friend,Ya no es mi amiga.,,amiga,amiga,Gender=Fem|Number=Sing,4,40 4 9 27,20,40,retrieved,retrieved_corpus,,,14.61489080801488,0.0
+pobre,800,adj,A1,poor,Ella no es pobre.,,pobre,pobre,Number=Sing,3,11 4 9,8,11,retrieved,retrieved_corpus,,,15.176328866687312,0.0
+imposible,821,adj,A2,impossible,No es imposible.,,imposible,imposible,Number=Sing,2,4 9,6.5,9,retrieved,retrieved_corpus,,,12.096077581611077,0.0
+pagar,822,v,A2,to pay,Nosotros podemos pagar.,,pagar,pagar,VerbForm=Inf,2,18 75,46.5,75,retrieved,retrieved_corpus,,,9.83724281003635,0.0
+mar,832,n,A2,sea,El mar es nuevo.,,mar,mar,Number=Sing,1,6 9 177,64,177,n_a1_1,template_generated,,,9.412504340634259,0.0
+foto,848,n,A2,photo,Me gusta su foto.,,foto,foto,Gender=Fem|Number=Sing,3,18 229 23,90,229,retrieved,retrieved_corpus,,,12.614235519631611,0.0
+conocer,856,v,A2,to know,Él quiere conocer el pueblo.,,conocer,conocer,VerbForm=Inf,2,11 76 6 469,140.5,469,v_a1_inf,template_generated,,,7.553800470151821,0.0
+mantener,870,v,A2,to keep,Tengo una familia que mantener.,,mantener,mantener,VerbForm=Inf,4,59 10 260 2,82.75,260,retrieved,retrieved_corpus,,,11.608153669740183,0.0
+caja,879,n,A2,box,Él tiene una caja.,,caja,caja,Gender=Fem|Number=Sing,3,11 59 10,26.666666666666668,59,n_a1_3,template_generated,,,7.773211803736936,0.0
+profesor,880,n,A2,professor,Nuestro profesor parece muy joven.,,profesor,profesor,Gender=Masc|Number=Sing,1,192 151 43 471,214.25,471,retrieved,retrieved_corpus,,,10.645445080273513,0.0
+comprar,909,v,A2,to buy,Él puede comprar una casa.,,comprar,comprar,VerbForm=Inf,2,11 75 10 91,46.75,91,v_a1_inf,template_generated,,,9.846112738800304,0.0
+tienda,956,n,A2,tent,Quiero ir a la tienda.,,tienda,tienda,Gender=Fem|Number=Sing,4,76 52 5 3,34,76,retrieved,retrieved_corpus,,,13.18801402191166,0.0
+carne,958,n,A2,meat,Ellos tienen carne.,,carne,carne,Gender=Fem|Number=Sing,2,11 59,35,59,retrieved,retrieved_corpus,,,10.583572485832732,0.0
+principal,964,adj,A2,main,Hay alguien en la puerta principal.,,principal,principal,Number=Sing,5,39 137 8 3 318,101,318,retrieved,retrieved_corpus,,,11.980306190123637,0.0
+interesante,966,adj,A2,interesting,La casa es interesante.,,interesante,interesante,Number=Sing,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,,,11.143946630792612,0.0
+bonito,976,adj,A2,pretty,Es muy bonito.,,bonito,bonito,Gender=Masc|Number=Sing,2,9 43,26,43,retrieved,retrieved_corpus,,,11.893459090182212,0.0
+humano,991,adj,A2,human,El hombre es humano.,,humano,humano,Gender=Masc|Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.18795614323262,0.0
+simple,998,adj,A2,simple,No es tan simple.,,simple,simple,Number=Sing,3,4 9 87,33.333333333333336,87,retrieved,retrieved_corpus,,,13.634191711586322,0.0
+canción,1006,n,A2,song,La canción es importante.,,canción,canción,Gender=Fem|Number=Sing,1,3 9 313,108.33333333333333,313,n_a1_1,template_generated,,,7.240845535698782,0.0
+terrible,1063,adj,A2,terrible,El hombre es terrible.,,terrible,terrible,Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.321251929928177,0.0
+caballo,1092,n,A2,horse,El caballo es rápido.,,caballo,caballo,Gender=Masc|Number=Sing,1,6 9 364,126.33333333333333,364,n_a1_1,template_generated,,,9.619888084566812,0.0
+reina,1101,n,A2,queen,Veo a la reina.,,reina,reina,Gender=Fem|Number=Sing,3,119 5 3,42.333333333333336,119,retrieved,retrieved_corpus,,,11.234531167575774,0.0
+español,1105,adj,A2,Spanish,Ellas hablan español.,,español,español,Gender=Masc|Number=Sing,2,11 173,92,173,retrieved,retrieved_corpus,,,9.767078967986691,0.0
+horrible,1112,adj,A2,horrible,El hombre es horrible.,,horrible,horrible,Number=Sing,3,6 116 9,43.666666666666664,116,seeded_adj_fallback,seeded_template,,,9.234679113468921,0.0
+vestido,1122,n,A2,dressed,El vestido es nuevo.,,vestido,vestido,Gender=Masc|Number=Sing,1,6 9 177,64,177,seeded_noun_adj,seeded_template,,,10.289883446056976,0.0
+mirar,1149,v,A2,to look at,Él puede mirar la casa.,,mirar,mirar,VerbForm=Inf,2,11 75 3 91,45,91,v_a1_inf,template_generated,,,9.49561407124246,0.0
+escribir,1167,v,A2,to write,No tengo nada para escribir.,,escribir,escribir,VerbForm=Inf,4,4 59 61 19,35.75,61,retrieved,retrieved_corpus,,,14.493304940631472,0.0
+natural,1203,adj,A2,natural,La casa es natural.,,natural,natural,Number=Sing,3,3 91 9,34.333333333333336,91,seeded_adj_fallback,seeded_template,,,8.785594736947,0.0
+leer,1210,v,A2,to read,Ella puede leer.,,leer,leer,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.671893234944046,0.0
+inteligente,1211,adj,A2,intelligent,Él es un chico inteligente.,,inteligente,inteligente,Number=Sing,4,11 9 10 295,81.25,295,retrieved,retrieved_corpus,,,15.019468715074044,0.0
+beber,1243,v,A2,to drink,Ni siquiera puedo beber agua.,,beber,beber,VerbForm=Inf,3,112 360 75 304,212.75,360,retrieved,retrieved_corpus,,,11.081544365809027,0.0
+lleno,1266,adj,A2,full,Estoy algo lleno.,,lleno,lleno,Gender=Masc|Number=Sing,2,26 50,38,50,retrieved,retrieved_corpus,,,10.294363182170525,0.0
+bolsa,1288,n,A2,bag,Aquí está tu bolsa.,,bolsa,bolsa,Gender=Fem|Number=Sing,3,36 26 37,33,37,retrieved,retrieved_corpus,,,11.417866264815105,0.0
+rojo,1299,adj,A2,red,Él quiere un coche rojo.,,rojo,rojo,Gender=Masc|Number=Sing,4,11 76 10 458,138.75,458,retrieved,retrieved_corpus,,,11.648045412537048,0.0
+popular,1349,adj,A2,popular,Soy muy popular.,,popular,popular,Number=Sing,2,9 43,26,43,retrieved,retrieved_corpus,,,10.521190850024308,0.0
+llave,1363,n,A2,key,Aquí está tu llave.,,llave,llave,Gender=Fem|Number=Sing,3,36 26 37,33,37,retrieved,retrieved_corpus,,,11.336773243193473,0.0
+ayudarte,1366,v,A2,to help,No puedo ayudarte con esto.,,ayudarte,ayudarte,VerbForm=Inf,2,4 75 16 42,34.25,75,retrieved,retrieved_corpus,,,12.398145942450371,0.0
+aprender,1372,v,A2,to learn,Él puede aprender.,,aprender,aprender,VerbForm=Inf,2,11 75,43,75,v_a1_inf,template_generated,,,6.7499800990077965,0.0
+noticia,1390,n,A2,notice,La noticia es importante.,,noticia,noticia,Gender=Fem|Number=Sing,1,3 9 313,108.33333333333333,313,n_a1_1,template_generated,,,6.755760387722608,0.0
+pan,1393,n,A2,bread,El pan es bueno.,,pan,pan,Gender=Masc|Number=Sing,1,6 9 55,23.333333333333332,55,n_a1_1,template_generated,,,6.9142368326106,0.0
+tocar,1436,v,A2,to touch,Él necesita tocar la puerta.,,tocar,tocar,VerbForm=Inf,2,11 234 3 318,141.5,318,v_a1_inf,template_generated,,,6.6286856892154855,0.0
