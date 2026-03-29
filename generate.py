@@ -216,40 +216,26 @@ FEMININE_O_ENDING_NOUNS = {"mano", "foto", "moto", "radio"}
 
 STARTER_INFINITIVE_COMPLEMENTS = {
     "beber": [("agua", None)],
-    "escribir": [("carta", "una")],
     "comprar": [("casa", "una"), ("libro", "un")],
     "buscar": [("casa", "una"), ("trabajo", "un")],
-    "abrir": [("puerta", "una"), ("libro", "un")],
-    "llevar": [("bolsa", "una")],
+    "abrir": [("puerta", "una")],
     "cerrar": [("puerta", "la")],
-    "dar": [("ayuda", None)],
+    "leer": [("libro", "un")],
     "ver": [("ciudad", "la")],
-    "hacer": [("comida", None), ("trabajo", None)],
+    "hacer": [("trabajo", "un")],
     "tomar": [("agua", None)],
-    "poner": [("mesa", "la")],
     "encontrar": [("casa", "una"), ("trabajo", "un")],
-    "perder": [("libro", "un"), ("llave", "una")],
     "ganar": [("dinero", None)],
-    "usar": [("coche", "un"), ("teléfono", "un")],
     "mirar": [("casa", "la"), ("ciudad", "la")],
     "conocer": [("ciudad", "la"), ("pueblo", "el")],
-    "mantener": [("casa", "la")],
     "tocar": [("puerta", "la")],
     "pagar": [("comida", "la")],
-    "dejar": [("libro", "un"), ("casa", "la")],
-    "sacar": [("libro", "un")],
+    "dejar": [("casa", "la")],
 }
 
 BARE_INFINITIVE_OK = {
-    "hablar", "comer", "dormir", "caminar", "trabajar", "estudiar", "cocinar",
-    "vivir", "correr", "cantar", "bailar", "nadar", "jugar", "salir", "volver",
-    "ir", "llegar", "empezar", "terminar", "escuchar", "leer",
-    "dar", "tomar", "cambiar", "poner", "encontrar", "perder",
-    "ganar", "abrir", "cerrar", "conocer", "ayudar", "usar",
-    "comprar", "escribir", "entrar", "pagar", "mirar", "esperar",
-    "parar", "aprender", "recordar", "intentar", "evitar", "conseguir",
-    "llamar", "mantener", "sacar", "contar", "regresar", "obtener",
-    "tocar", "caer", "quedar", "sentir",
+    "hablar", "caminar", "correr", "cantar", "bailar", "nadar", "jugar",
+    "estudiar", "cocinar",
 }
 
 STARTER_INFINITIVE_REJECT = {
@@ -266,7 +252,23 @@ STARTER_RETRIEVED_SKEPTICAL_WORDS = {
 STARTER_RETRIEVED_BANNED_BIGRAMS = {
     "mi vida", "tu vida", "su vida", "para nada", "más de", "más que",
     "hora de", "que eso", "lo puedo", "lo puede", "te puede", "te quiero",
-    "te puedo", "la vida",
+    "te puedo", "la vida", "sobre ello",
+}
+STARTER_RETRIEVED_CONTEXT_WORDS = {
+    "ello", "eso", "esto", "ya", "todavía", "siento",
+}
+STARTER_RETRIEVED_POSSESSIVES = {"mi", "mis", "tu", "tus", "su", "sus"}
+STARTER_RETRIEVED_PERSONAL_TOKENS = {
+    "yo", "tú", "él", "ella", "ellos", "ellas",
+    "me", "te", "se", "nos", "os", "le", "les", "lo", "la", "los", "las",
+    "este", "esta", "estos", "estas", "ese", "esa", "esos", "esas",
+    "nuestro", "nuestra", "nuestros", "nuestras",
+}
+STARTER_WEAK_COPULA_PREDICATES_BY_CLASS = {
+    "text": {"importante"},
+}
+STARTER_UNNATURAL_COPULA_PREDICATES_BY_CLASS = {
+    "place": {"natural"},
 }
 
 
@@ -382,7 +384,7 @@ STARTER_SAFE_ADJECTIVES_BY_CLASS = {
         "grande", "pequeño", "bonito", "importante", "nuevo", "viejo",
         "tranquilo", "peligroso", "público", "popular", "limpio",
         "diferente", "increíble", "terrible", "horrible", "interesante",
-        "especial", "natural", "real", "común", "seguro", "nacional",
+        "especial", "real", "común", "seguro", "nacional",
         "local", "central", "internacional", "oficial", "político",
         "profesional", "militar",
     },
@@ -400,7 +402,7 @@ STARTER_SAFE_ADJECTIVES_BY_CLASS = {
         "negro",
     },
     "text": {
-        "grande", "pequeño", "nuevo", "importante", "largo", "corto",
+        "grande", "pequeño", "nuevo", "largo", "corto",
         "simple", "diferente", "interesante", "perfecto", "terrible",
         "increíble", "claro", "personal", "especial", "real",
         "oficial", "profesional", "público", "local", "nacional",
@@ -2606,11 +2608,6 @@ class SentenceGenerator:
                         tokens.append(art)
                     tokens.append(noun_lemma)
                     return self.build_candidate(target, tokens, "v_a1_inf", "template_generated", 2)
-                obj = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
-                if obj:
-                    article = self.choose_article(self.safe_noun_gender(obj.lemma, obj.gender), definite=False)
-                    tokens = [carrier_subject, carrier_form, target.lemma, article, obj.lemma]
-                    return self.build_candidate(target, tokens, "v_a1_inf", "template_generated", 2)
                 if canonical in BARE_INFINITIVE_OK:
                     tokens = [carrier_subject, carrier_form, target.lemma]
                     return self.build_candidate(target, tokens, "v_a1_inf", "template_generated", 2)
@@ -2957,9 +2954,27 @@ class SentenceGenerator:
             return False
         if len(words) > 6:
             return False
+        if "no" in words:
+            return False
+        if "bien" in words:
+            return False
+        if any(word in STARTER_RETRIEVED_CONTEXT_WORDS for word in words):
+            return False
+        if any(word in STARTER_RETRIEVED_POSSESSIVES for word in words):
+            return False
+        if any(word in STARTER_RETRIEVED_PERSONAL_TOKENS for word in words):
+            return False
+        if candidate.pos == "n" and words and words[0] in COPULA_FORMS:
+            return False
+        if candidate.pos == "adj" and words and words[0] in COPULA_FORMS:
+            return False
         if self.starter_structure_reasons(candidate):
             return False
         verb_index = self.first_finite_verb_index(words)
+        if verb_index >= 0:
+            verb_morph = self.surface_morph(words[verb_index])
+            if verb_morph.get("Person") == "1":
+                return False
         rejected, penalties, _ = self.retrieved_quality(candidate, words, verb_index)
         if rejected or penalties:
             return False
@@ -2995,6 +3010,7 @@ class SentenceGenerator:
         target = self.lexicon.get(candidate.lemma)
         canonical = self.canonical_lemma_for(target) if target else normalize_token(candidate.lemma)
         verb_index = self.first_finite_verb_index(words)
+        lowered = " ".join(words)
 
         if candidate.pos == "v" and candidate.source_method != "retrieved_corpus":
             morph = self._parse_morph_str(candidate.target_morph)
@@ -3009,6 +3025,8 @@ class SentenceGenerator:
                     reasons.append("weak_bare_infinitive")
                 if canonical in STARTER_INFINITIVE_REJECT:
                     reasons.append("weak_bare_infinitive")
+                if canonical == "tener":
+                    reasons.append("weak_template_filler")
 
         if candidate.pos == "adj" or (candidate.source_method != "retrieved_corpus" and any(
             normalize_token(w) in COPULA_FORMS for w in words
@@ -3028,6 +3046,10 @@ class SentenceGenerator:
                     else:
                         if subj_class:
                             reasons.append("bad_adj_subject_semantics")
+                    if subj_class and adj_lemma in STARTER_WEAK_COPULA_PREDICATES_BY_CLASS.get(subj_class, set()):
+                        reasons.append("weak_copula_predicate")
+                    if subj_class and adj_lemma in STARTER_UNNATURAL_COPULA_PREDICATES_BY_CLASS.get(subj_class, set()):
+                        reasons.append("unnatural_starter_claim")
                     break
 
         if candidate.source_method != "retrieved_corpus":
@@ -3043,6 +3065,19 @@ class SentenceGenerator:
                 reasons.append("context_shaped_retrieval")
             if words and words[-1] in STARTER_RETRIEVED_SKEPTICAL_WORDS:
                 reasons.append("context_shaped_retrieval")
+            if "no" in words or "bien" in words or any(word in STARTER_RETRIEVED_CONTEXT_WORDS for word in words):
+                reasons.append("context_shaped_retrieval")
+            if any(word in STARTER_RETRIEVED_POSSESSIVES for word in words):
+                reasons.append("context_shaped_retrieval")
+            if any(word in STARTER_RETRIEVED_PERSONAL_TOKENS for word in words):
+                reasons.append("context_shaped_retrieval")
+            if verb_index >= 0:
+                verb_morph = self.surface_morph(words[verb_index])
+                if verb_morph.get("Person") == "1":
+                    reasons.append("context_shaped_retrieval")
+
+        if lowered in {"él puede cambiar", "ella puede cambiar", "él puede leer", "ella puede leer"}:
+            reasons.append("weak_template_filler")
 
         return list(dict.fromkeys(reasons))
 
