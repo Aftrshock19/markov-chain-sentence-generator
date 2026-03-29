@@ -146,7 +146,7 @@ SAFE_OBJECT_LEMMAS_BY_VERB = {
     "querer": ["casa", "libro", "perro", "comida", "ayuda"],
 }
 EASY_INFINITIVE_LEMMAS = ["leer", "comer", "beber", "ver", "comprar", "visitar", "buscar", "abrir", "cerrar", "llevar", "ir"]
-SUPPORTED_TEMPLATE_MOODS = {"Ind"}
+SUPPORTED_TEMPLATE_MOODS = {"Ind", "Sub", "Cnd"}
 SUBJUNCTIVE_TRIGGER_TOKENS = {"que", "ojalá", "quizá", "quizás"}
 LOW_VALUE_TEMPLATE_IDS = {"seeded_noun_here", "n_a1_2", "seeded_verb_adv", "v_a1_2"}
 LOW_VALUE_NOUN_TEMPLATE_LEMMAS = {"vez", "verdad", "tiempo", "pasado", "gracias"}
@@ -646,6 +646,11 @@ class SentenceGenerator:
                 lex.pos = ov["force_pos"].strip().lower()
             if ov.get("force_canonical_lemma"):
                 lex.canonical_lemma = ov["force_canonical_lemma"].strip().lower()
+            if _truthy(ov.get("force_template_friendly")):
+                if lex.semantic_class in ("time", "abstract", "activity", "body"):
+                    lex.semantic_class = "object"
+            if ov.get("seed_sentence"):
+                self._inject_seed_context(lemma, ov["seed_sentence"])
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
         self.pos_strategies = self._build_pos_strategies()
@@ -1513,11 +1518,17 @@ class SentenceGenerator:
             return "unsupported canonical verb target"
         if not morph:
             return "missing morphology for surface verb target"
-        if morph.get("VerbForm") != "Fin":
-            return f"unsupported target verb form: {morph.get('VerbForm', 'unknown')}"
-        if morph.get("Mood") not in SUPPORTED_TEMPLATE_MOODS:
-            return f"unsupported target verb mood: {morph.get('Mood', 'unknown')}"
-        return ""
+        verb_form = morph.get("VerbForm", "")
+        mood = morph.get("Mood", "")
+        # Allow gerunds and participles (handled by embedding templates)
+        if verb_form in ("Ger", "Part"):
+            return ""
+        # Allow subjunctive and conditional (handled by clause-embedding)
+        if verb_form == "Fin" and mood in SUPPORTED_TEMPLATE_MOODS:
+            return ""
+        if verb_form != "Fin":
+            return f"unsupported target verb form: {verb_form or 'unknown'}"
+        return f"unsupported target verb mood: {mood or 'unknown'}"
 
     def standalone_subjunctive_without_trigger(
         self, words: List[str], verb_index: int, target_word_idx: int = -1, target_morph_override: Optional[Dict[str, str]] = None
@@ -2199,6 +2210,38 @@ class SentenceGenerator:
         if candidate.source_method == "retrieved_corpus" and candidate.score < 7.5:
             learner_clear = "0"
         return grammatical, natural, learner_clear, "; ".join(dict.fromkeys(x for x in notes if x))
+
+    def _inject_seed_context(self, lemma: str, sentence: str) -> None:
+        """Inject a manually authored seed sentence into lemma_contexts."""
+        tokens = self.sentence_tokens(sentence)
+        if not tokens:
+            return
+        target_surface = lemma.strip().lower()
+        target_idx = -1
+        for i, tok in enumerate(tokens):
+            if normalize_token(tok) == target_surface:
+                target_idx = i
+                break
+        if target_idx < 0:
+            for i, tok in enumerate(tokens):
+                if not is_word_token(tok):
+                    continue
+                candidate_lemma = self.lookup_lemma(tok)
+                if candidate_lemma and normalize_token(candidate_lemma) == target_surface:
+                    target_idx = i
+                    break
+        if target_idx < 0:
+            return
+        ctx = {
+            "tokens": tokens,
+            "index": target_idx,
+            "target_form": tokens[target_idx],
+            "target_pos": "",
+            "left": normalize_token(tokens[target_idx - 1]) if target_idx > 0 else "",
+            "right": normalize_token(tokens[target_idx + 1]) if target_idx + 1 < len(tokens) else "",
+            "source": "seed_override",
+        }
+        self.lemma_contexts.setdefault(lemma, []).insert(0, ctx)
 
     def contexts_for_target(self, target: Lexeme) -> List[Dict]:
         seen = set()
@@ -3296,6 +3339,49 @@ class SentenceGenerator:
                     seeded=seeded,
                     emergency=emergency,
                 )
+            # Degree adverbs: "Es [muy/bastante/demasiado] bueno."
+            degree_adverbs = {
+                "muy", "bastante", "demasiado", "casi",
+                "realmente", "totalmente", "completamente",
+                "simplemente", "probablemente", "exactamente",
+            }
+            if surface in degree_adverbs:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_degree_good", ["es", surface, "bueno"], 1),
+                        ("adv_degree_important", ["es", surface, "importante"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+
+            # Accompaniment adverbs
+            accompaniment_adverbs = {"conmigo", "contigo", "además", "encima", "incluso"}
+            if surface in accompaniment_adverbs:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_accompaniment_come", ["ella", "viene", surface], 2),
+                        ("adv_accompaniment_be", ["ella", "está", surface], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+
+            # Quantity adverbs
+            quantity_adverbs = {"poco", "mucho", "menos", "más", "tanto", "cuanto"}
+            if surface in quantity_adverbs:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_quantity_work", ["ella", "trabaja", surface], 2),
+                        ("adv_quantity_eat", ["ella", "come", surface], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+
             return self._build_from_specs(
                 target,
                 [
@@ -3461,6 +3547,38 @@ class SentenceGenerator:
                     ("prep_until_today", ["trabajo", "hasta", "hoy"], 1),
                     ("prep_until_tomorrow", ["espero", "hasta", "mañana"], 1),
                 ]
+            elif surface == "entre":
+                specs = [
+                    ("prep_between", ["está", "entre", "la", "casa", "y", "la", "escuela"], 1),
+                ]
+            elif surface == "durante":
+                specs = [
+                    ("prep_during", ["trabajo", "durante", "el", "día"], 1),
+                ]
+            elif surface == "contra":
+                specs = [
+                    ("prep_against", ["no", "tengo", "nada", "contra", "él"], 3),
+                ]
+            elif surface == "bajo":
+                specs = [
+                    ("prep_under", ["el", "libro", "está", "bajo", "la", "mesa"], 3),
+                ]
+            elif surface == "según":
+                specs = [
+                    ("prep_according", ["según", "él", "es", "verdad"], 0),
+                ]
+            elif surface == "ante":
+                specs = [
+                    ("prep_before", ["está", "ante", "la", "puerta"], 1),
+                ]
+            elif surface == "tras":
+                specs = [
+                    ("prep_after", ["viene", "tras", "la", "comida"], 1),
+                ]
+            elif surface == "hacia":
+                specs = [
+                    ("prep_toward", ["voy", "hacia", "la", "casa"], 1),
+                ]
             else:
                 specs = [
                     ("prep_generic_with_target", ["hablo", surface, "ella"], 1),
@@ -3498,6 +3616,26 @@ class SentenceGenerator:
             elif surface == "como":
                 specs = [
                     ("conj_as_you", ["lo", "hago", "como", "tú"], 2),
+                ]
+            elif surface == "sino":
+                specs = [
+                    ("conj_sino_but", ["no", "es", "malo", "sino", "bueno"], 3),
+                ]
+            elif surface == "mientras":
+                specs = [
+                    ("conj_mientras_while", ["ella", "lee", "mientras", "yo", "cocino"], 2),
+                ]
+            elif surface == "pues":
+                specs = [
+                    ("conj_pues_then", ["no", "quiero", "ir", "pues", "me", "quedo"], 3),
+                ]
+            elif surface == "ni":
+                specs = [
+                    ("conj_ni_neither", ["no", "tengo", "ni", "idea"], 2),
+                ]
+            elif surface in {"aunque", "como"}:
+                specs = [
+                    ("conj_subord_clause", ["voy", surface, "no", "quiero"], 1),
                 ]
             else:
                 specs = [

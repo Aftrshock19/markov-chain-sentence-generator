@@ -1,0 +1,14 @@
+============================================
+Job ID:        2023304
+Node:          x3003c0s1b2n0
+Started:       Sun 29 Mar 2026 10:20:03 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics

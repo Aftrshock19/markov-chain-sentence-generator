@@ -1,0 +1,244 @@
+============================================
+Job ID:        2023293
+Node:          x3003c0s3b2n0
+Started:       Sun 29 Mar 2026 08:56:55 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics
+OK import sklearn
+Script:        /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/hybrid_generator.py
+Lexicon:       /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid
+Loaded 76 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_overrides.csv
+Loaded 109 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_exclusions.csv
+[progress] 100/10000 lemma=nunca source=retrieved_corpus tier=strong publishable=True
+[progress] 200/10000 lemma=seguro source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h1m0s out_rows=236/15000 (1.57%) review_rows=0 candidate_rows=0 eta=01:02:33
+[sstat] 2023293.bat+   1338496K   1338496K   1338752K   00:01:02 
+[progress] 300/10000 lemma=esas source=template_generated tier=strong publishable=True
+[progress] 400/10000 lemma=eran source=stochastic_decoder tier=weak publishable=False
+[progress] 500/10000 lemma=ido source=emergency_starter tier=bad publishable=False
+[heartbeat] elapsed=0h2m0s out_rows=510/15000 (3.40%) review_rows=0 candidate_rows=0 eta=00:56:49
+[sstat] 2023293.bat+   1339200K   1339200K   1339520K   00:02:02 
+[progress] 600/10000 lemma=poner source=retrieved_corpus tier=strong publishable=True
+[progress] 700/10000 lemma=mía source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h3m0s out_rows=749/15000 (4.99%) review_rows=0 candidate_rows=0 eta=00:57:04
+[sstat] 2023293.bat+   1340480K   1340480K   1340864K   00:03:02 
+[progress] 800/10000 lemma=pobre source=retrieved_corpus tier=strong publishable=True
+[progress] 900/10000 lemma=pase source=emergency_starter tier=bad publishable=False
+[progress] 1000/10000 lemma=objetivo source=template_generated tier=acceptable publishable=True
+[heartbeat] elapsed=0h4m0s out_rows=1014/15000 (6.76%) review_rows=0 candidate_rows=0 eta=00:55:10
+[sstat] 2023293.bat+   1341568K   1341568K   1342016K   00:04:02 
+[progress] 1100/10000 lemma=teniente source=retrieved_corpus tier=strong publishable=True
+[progress] 1200/10000 lemma=regresar source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h5m0s out_rows=1273/15000 (8.49%) review_rows=0 candidate_rows=0 eta=00:53:54
+[sstat] 2023293.bat+   1342528K   1342528K   1343040K   00:05:02 
+[progress] 1300/10000 lemma=enfermo source=retrieved_corpus tier=strong publishable=True
+[progress] 1400/10000 lemma=definitivamente source=retrieved_corpus tier=strong publishable=True
+[progress] 1500/10000 lemma=sentimientos source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h6m0s out_rows=1520/15000 (10.13%) review_rows=0 candidate_rows=0 eta=00:53:12
+[sstat] 2023293.bat+   1312.50M   1312.50M   1344576K   00:06:02 
+[progress] 1600/10000 lemma=alegra source=retrieved_corpus tier=strong publishable=True
+[progress] 1700/10000 lemma=puente source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h7m0s out_rows=1762/15000 (11.75%) review_rows=0 candidate_rows=0 eta=00:52:35
+[sstat] 2023293.bat+   1313.50M   1313.50M   1345664K   00:07:02 
+[progress] 1800/10000 lemma=inglaterra source=retrieved_corpus tier=strong publishable=True
+[progress] 1900/10000 lemma=región source=template_generated tier=strong publishable=True
+[heartbeat] elapsed=0h8m0s out_rows=1983/15000 (13.22%) review_rows=0 candidate_rows=0 eta=00:52:30
+[sstat] 2023293.bat+   1346176K   1346176K   1346816K   00:08:03 
+[progress] 2000/10000 lemma=fuertes source=emergency_starter tier=bad publishable=False
+[progress] 2100/10000 lemma=ejercicio source=retrieved_corpus tier=strong publishable=True
+[progress] 2200/10000 lemma=cadáver source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h9m0s out_rows=2219/15000 (14.79%) review_rows=0 candidate_rows=0 eta=00:51:50
+[sstat] 2023293.bat+   1347520K   1347520K   1348224K   00:09:03 
+[progress] 2300/10000 lemma=saca source=seeded_template tier=strong publishable=True
+[progress] 2400/10000 lemma=instante source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h10m0s out_rows=2402/15000 (16.01%) review_rows=0 candidate_rows=0 eta=00:52:26
+[sstat] 2023293.bat+   1348352K   1348352K   1317.50M   00:10:03 
+[progress] 2500/10000 lemma=fiestas source=template_generated tier=bad publishable=False
+[progress] 2600/10000 lemma=destruir source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h11m1s out_rows=2603/15000 (17.35%) review_rows=0 candidate_rows=0 eta=00:52:28
+[sstat] 2023293.bat+   1349376K   1349376K   1350208K   00:11:03 
+[progress] 2700/10000 lemma=opciones source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h12m1s out_rows=2786/15000 (18.57%) review_rows=0 candidate_rows=0 eta=00:52:40
+[sstat] 2023293.bat+   1350336K   1350336K   1319.50M   00:12:03 
+[progress] 2800/10000 lemma=difíciles source=retrieved_corpus tier=strong publishable=True
+[progress] 2900/10000 lemma=artistas source=template_generated tier=bad publishable=False
+[heartbeat] elapsed=0h13m1s out_rows=2985/15000 (19.90%) review_rows=0 candidate_rows=0 eta=00:52:23
+[sstat] 2023293.bat+   1351552K   1351552K   1352448K   00:13:03 
+[progress] 3000/10000 lemma=significado source=retrieved_corpus tier=strong publishable=True
+[progress] 3100/10000 lemma=sopa source=retrieved_corpus tier=strong publishable=True
+[progress] 3200/10000 lemma=salimos source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h14m1s out_rows=3286/15000 (21.91%) review_rows=0 candidate_rows=0 eta=00:49:58
+[sstat] 2023293.bat+   1352960K   1352960K   1353920K   00:14:03 
+[progress] 3300/10000 lemma=iniciativa source=retrieved_corpus tier=strong publishable=True
+[progress] 3400/10000 lemma=señala source=stochastic_decoder tier=weak publishable=False
+[progress] 3500/10000 lemma=seamos source=emergency_starter tier=bad publishable=False
+[heartbeat] elapsed=0h15m1s out_rows=3505/15000 (23.37%) review_rows=0 candidate_rows=0 eta=00:49:14
+[sstat] 2023293.bat+   1354176K   1354176K   1355200K   00:15:03 
+[progress] 3600/10000 lemma=volveremos source=stochastic_decoder tier=weak publishable=False
+[progress] 3700/10000 lemma=salgamos source=emergency_starter tier=bad publishable=False
+[heartbeat] elapsed=0h16m1s out_rows=3716/15000 (24.77%) review_rows=0 candidate_rows=0 eta=00:48:38
+[sstat] 2023293.bat+   1355072K   1355072K   1356160K   00:16:03 
+[progress] 3800/10000 lemma=ponerte source=retrieved_corpus tier=strong publishable=True
+[progress] 3900/10000 lemma=cuyos source=template_generated tier=bad publishable=False
+[heartbeat] elapsed=0h17m1s out_rows=3918/15000 (26.12%) review_rows=0 candidate_rows=0 eta=00:48:07
+[sstat] 2023293.bat+   1356224K   1356224K   1357376K   00:17:03 
+[progress] 4000/10000 lemma=incremento source=retrieved_corpus tier=strong publishable=True
+[progress] 4100/10000 lemma=cifra source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h18m1s out_rows=4166/15000 (27.77%) review_rows=0 candidate_rows=0 eta=00:46:51
+[sstat] 2023293.bat+   1357504K   1357504K   1358720K   00:18:03 
+[progress] 4200/10000 lemma=quinto source=stochastic_decoder tier=acceptable publishable=True
+[progress] 4300/10000 lemma=rango source=retrieved_corpus tier=strong publishable=True
+[progress] 4400/10000 lemma=confesión source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h19m1s out_rows=4463/15000 (29.75%) review_rows=0 candidate_rows=0 eta=00:44:53
+[sstat] 2023293.bat+   1358720K   1358720K   1360000K   00:19:04 
+[progress] 4500/10000 lemma=luce source=retrieved_corpus tier=strong publishable=True
+[progress] 4600/10000 lemma=béisbol source=retrieved_corpus tier=strong publishable=True
+[progress] 4700/10000 lemma=dibujos source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h20m1s out_rows=4736/15000 (31.57%) review_rows=0 candidate_rows=0 eta=00:43:22
+[sstat] 2023293.bat+   1360128K   1360128K   1361472K   00:20:04 
+[progress] 4800/10000 lemma=mago source=retrieved_corpus tier=strong publishable=True
+[progress] 4900/10000 lemma=recibiendo source=emergency_starter tier=bad publishable=False
+[heartbeat] elapsed=0h21m1s out_rows=4908/15000 (32.72%) review_rows=0 candidate_rows=0 eta=00:43:12
+[sstat] 2023293.bat+   1361216K   1361216K   1362624K   00:21:04 
+[progress] 5000/10000 lemma=gallina source=retrieved_corpus tier=strong publishable=True
+[progress] 5100/10000 lemma=primaria source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h22m1s out_rows=5119/15000 (34.13%) review_rows=0 candidate_rows=0 eta=00:42:29
+[sstat] 2023293.bat+   1362112K   1362112K   1363520K   00:22:04 
+[progress] 5200/10000 lemma=formado source=emergency_starter tier=bad publishable=False
+[progress] 5300/10000 lemma=entenderlo source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h23m1s out_rows=5317/15000 (35.45%) review_rows=0 candidate_rows=0 eta=00:41:54
+[sstat] 2023293.bat+   1363200K   1363200K   1364672K   00:23:04 
+[progress] 5400/10000 lemma=usamos source=template_generated tier=acceptable publishable=True
+[heartbeat] elapsed=0h24m1s out_rows=5487/15000 (36.58%) review_rows=0 candidate_rows=0 eta=00:41:38
+[sstat] 2023293.bat+   1364352K   1364352K   1365888K   00:24:04 
+[progress] 5500/10000 lemma=hernández source=stochastic_decoder tier=acceptable publishable=True
+[progress] 5600/10000 lemma=traducido source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h25m1s out_rows=5682/15000 (37.88%) review_rows=0 candidate_rows=0 eta=00:41:01
+[sstat] 2023293.bat+   1365376K   1365376K   1366912K   00:25:04 
+[progress] 5700/10000 lemma=británica source=retrieved_corpus tier=strong publishable=True
+[progress] 5800/10000 lemma=árabe source=retrieved_corpus tier=strong publishable=True
+[progress] 5900/10000 lemma=cualidades source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h26m1s out_rows=5908/15000 (39.39%) review_rows=0 candidate_rows=0 eta=00:40:02
+[sstat] 2023293.bat+   1334.50M   1334.50M   1368128K   00:26:04 
+[progress] 6000/10000 lemma=cómplice source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h27m1s out_rows=6092/15000 (40.61%) review_rows=0 candidate_rows=0 eta=00:39:30
+[sstat] 2023293.bat+   1367360K   1367360K   1369024K   00:27:04 
+[progress] 6100/10000 lemma=balance source=retrieved_corpus tier=strong publishable=True
+[progress] 6200/10000 lemma=notar source=retrieved_corpus tier=strong publishable=True
+[progress] 6300/10000 lemma=tomaba source=stochastic_decoder tier=weak publishable=False
+[heartbeat] elapsed=0h28m1s out_rows=6300/15000 (42.00%) review_rows=0 candidate_rows=0 eta=00:38:41
+[sstat] 2023293.bat+   1368512K   1368512K   1370240K   00:28:04 
+[progress] 6400/10000 lemma=terriblemente source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h29m1s out_rows=6472/15000 (43.15%) review_rows=0 candidate_rows=0 eta=00:38:14
+[sstat] 2023293.bat+   1369344K   1369344K      1339M   00:29:05 
+[progress] 6500/10000 lemma=elefante source=retrieved_corpus tier=strong publishable=True
+[progress] 6600/10000 lemma=tenerla source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h30m2s out_rows=6692/15000 (44.61%) review_rows=0 candidate_rows=0 eta=00:37:17
+[sstat] 2023293.bat+   1370368K   1370368K      1340M   00:30:05 
+[progress] 6700/10000 lemma=armonía source=retrieved_corpus tier=strong publishable=True
+[progress] 6800/10000 lemma=escuchan source=stochastic_decoder tier=weak publishable=False
+[heartbeat] elapsed=0h31m2s out_rows=6849/15000 (45.66%) review_rows=0 candidate_rows=0 eta=00:36:55
+[sstat] 2023293.bat+      1339M      1339M   1372992K   00:31:05 
+[progress] 6900/10000 lemma=terminan source=stochastic_decoder tier=weak publishable=False
+[progress] 7000/10000 lemma=inyección source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h32m2s out_rows=7041/15000 (46.94%) review_rows=0 candidate_rows=0 eta=00:36:12
+[sstat] 2023293.bat+   1372224K   1372224K   1374144K   00:32:05 
+[progress] 7100/10000 lemma=expuesto source=no_candidate_found tier=no_candidate_found publishable=False
+[progress] 7200/10000 lemma=robé source=stochastic_decoder tier=acceptable publishable=True
+[heartbeat] elapsed=0h33m2s out_rows=7214/15000 (48.09%) review_rows=0 candidate_rows=0 eta=00:35:39
+[sstat] 2023293.bat+   1373376K   1373376K   1375296K   00:33:05 
+[progress] 7300/10000 lemma=examinar source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h34m2s out_rows=7387/15000 (49.25%) review_rows=0 candidate_rows=0 eta=00:35:04
+[sstat] 2023293.bat+   1374272K   1374272K      1344M   00:34:05 
+[progress] 7400/10000 lemma=estrecho source=stochastic_decoder tier=acceptable publishable=True
+[progress] 7500/10000 lemma=inmigración source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h35m2s out_rows=7529/15000 (50.19%) review_rows=0 candidate_rows=0 eta=00:34:45
+[sstat] 2023293.bat+   1375040K   1375040K   1377088K   00:35:05 
+[progress] 7600/10000 lemma=educado source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h36m2s out_rows=7665/15000 (51.10%) review_rows=0 candidate_rows=0 eta=00:34:28
+[sstat] 2023293.bat+   1375808K   1375808K   1377856K   00:36:05 
+[progress] 7700/10000 lemma=oyendo source=no_candidate_found tier=no_candidate_found publishable=False
+[progress] 7800/10000 lemma=convincente source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h37m2s out_rows=7836/15000 (52.24%) review_rows=0 candidate_rows=0 eta=00:33:51
+[sstat] 2023293.bat+   1376640K   1376640K   1378752K   00:37:06 
+[progress] 7900/10000 lemma=específicos source=emergency_starter tier=bad publishable=False
+[progress] 8000/10000 lemma=ternura source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h38m2s out_rows=8028/15000 (53.52%) review_rows=0 candidate_rows=0 eta=00:33:01
+[sstat] 2023293.bat+   1345.50M   1345.50M   1379968K   00:38:06 
+[progress] 8100/10000 lemma=aragón source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h39m2s out_rows=8183/15000 (54.55%) review_rows=0 candidate_rows=0 eta=00:32:31
+[sstat] 2023293.bat+   1378560K   1378560K   1380736K   00:39:06 
+[progress] 8200/10000 lemma=pintado source=emergency_starter tier=bad publishable=False
+[progress] 8300/10000 lemma=mera source=retrieved_corpus tier=strong publishable=True
+[progress] 8400/10000 lemma=pino source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h40m2s out_rows=8407/15000 (56.05%) review_rows=0 candidate_rows=0 eta=00:31:23
+[sstat] 2023293.bat+   1379712K   1379712K   1381952K   00:40:06 
+[progress] 8500/10000 lemma=ocurría source=stochastic_decoder tier=weak publishable=False
+[heartbeat] elapsed=0h41m2s out_rows=8563/15000 (57.09%) review_rows=0 candidate_rows=0 eta=00:30:50
+[sstat] 2023293.bat+   1380608K   1380608K   1350.50M   00:41:06 
+[progress] 8600/10000 lemma=legítimo source=retrieved_corpus tier=strong publishable=True
+[progress] 8700/10000 lemma=aumentado source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h42m3s out_rows=8726/15000 (58.17%) review_rows=0 candidate_rows=0 eta=00:30:14
+[sstat] 2023293.bat+   1381440K   1381440K   1383808K   00:42:06 
+[progress] 8800/10000 lemma=botes source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h43m3s out_rows=8882/15000 (59.21%) review_rows=0 candidate_rows=0 eta=00:29:39
+[sstat] 2023293.bat+      1350M      1350M   1384768K   00:43:06 
+[progress] 8900/10000 lemma=furiosa source=retrieved_corpus tier=strong publishable=True
+[progress] 9000/10000 lemma=dibujar source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h44m3s out_rows=9060/15000 (60.40%) review_rows=0 candidate_rows=0 eta=00:28:52
+[sstat] 2023293.bat+   1383104K   1383104K   1385536K   00:44:07 
+[progress] 9100/10000 lemma=milla source=retrieved_corpus tier=strong publishable=True
+[progress] 9200/10000 lemma=grasas source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h45m3s out_rows=9254/15000 (61.69%) review_rows=0 candidate_rows=0 eta=00:27:58
+[sstat] 2023293.bat+   1384192K   1384192K   1386688K   00:45:07 
+[progress] 9300/10000 lemma=arrestaron source=retrieved_corpus tier=strong publishable=True
+[progress] 9400/10000 lemma=discriminación source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h46m3s out_rows=9406/15000 (62.71%) review_rows=0 candidate_rows=0 eta=00:27:23
+[sstat] 2023293.bat+   1385088K   1385088K   1387584K   00:46:07 
+[progress] 9500/10000 lemma=reflejos source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h47m3s out_rows=9547/15000 (63.65%) review_rows=0 candidate_rows=0 eta=00:26:52
+[sstat] 2023293.bat+   1385728K   1385728K   1388288K   00:47:07 
+[progress] 9600/10000 lemma=cerro source=retrieved_corpus tier=strong publishable=True
+[progress] 9700/10000 lemma=cobro source=stochastic_decoder tier=acceptable publishable=True
+[heartbeat] elapsed=0h48m3s out_rows=9707/15000 (64.71%) review_rows=0 candidate_rows=0 eta=00:26:12
+[sstat] 2023293.bat+   1386688K   1386688K   1389248K   00:48:07 
+[progress] 9800/10000 lemma=acercarme source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h49m3s out_rows=9855/15000 (65.70%) review_rows=0 candidate_rows=0 eta=00:25:36
+[sstat] 2023293.bat+   1387712K   1387712K   1390336K   00:49:07 
+[progress] 9900/10000 lemma=bendita source=emergency_starter tier=bad publishable=False
+[progress] 10000/10000 lemma=misil source=template_generated tier=weak publishable=False
+Generated: 10,000
+  emergency_starter    794
+  no_candidate_found   1,065
+  retrieved_corpus     5,636
+  seeded_template      80
+  stochastic_decoder   1,113
+  template_generated   1,312
+Saved: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023293.csv
+Review: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023293.csv
+Candidates: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023293.csv
+  candidate_rows_written: 61,056
+  avg_candidates_per_lemma: 6.83
+
+Preview:
+  de              [template_generated  ] acceptable         Hablo de mi trabajo.
+  que             [template_generated  ] strong             Hay que ir.
+  la              [template_generated  ] acceptable         Yo la veo.
+  no              [template_generated  ] acceptable         No voy hoy.
+  a               [template_generated  ] acceptable         Voy a casa.
+============================================
+Finished: Sun 29 Mar 2026 09:46:57 PM UTC
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 2.4M Mar 29 21:46 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023293.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg  13M Mar 29 21:46 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023293.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 1.4M Mar 29 21:46 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023293.csv
+============================================

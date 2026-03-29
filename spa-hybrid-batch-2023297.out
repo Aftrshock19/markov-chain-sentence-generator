@@ -1,0 +1,22 @@
+============================================
+Job ID:        2023297
+Node:          x3004c0s17b4n0
+Started:       Sun 29 Mar 2026 10:05:32 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics
+OK import sklearn
+Script:        /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/hybrid_generator.py
+Lexicon:       /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid
+Loaded 76 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_overrides.csv
+Loaded 109 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_exclusions.csv
+[progress] 100/1000 lemma=nunca source=retrieved_corpus tier=strong publishable=True

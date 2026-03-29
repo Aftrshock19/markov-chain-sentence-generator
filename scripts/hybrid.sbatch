@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=03:00:00
+#SBATCH --time=000:05:00
 #SBATCH --output=spa-hybrid-batch-%j.out
 #SBATCH --error=spa-hybrid-batch-%j.err
 
@@ -30,7 +30,7 @@ OUTFILE="$OUT_DIR/hybrid_batch_${SLURM_JOB_ID}.csv"
 REVIEW_OUT="$OUT_DIR/hybrid_batch_review_${SLURM_JOB_ID}.csv"
 CANDIDATES_OUT="$OUT_DIR/hybrid_batch_candidates_${SLURM_JOB_ID}.csv"
 
-OVERRIDE_1="$WORK_DIR/starter_overrides.csv"
+OVERRIDE_1="$WORK_DIR/lexicon_overrides_merged.csv"
 OVERRIDE_2="$WORK_DIR/starter_exclusions.csv"
 
 TARGET_LIMIT=15000
@@ -146,7 +146,7 @@ PY
         fi
 
         echo "[heartbeat] elapsed=${H}h${M}m${S}s out_rows=${OUT_ROWS}/${TARGET_LIMIT} (${PCT}%) review_rows=${REVIEW_ROWS} candidate_rows=${CAND_ROWS} eta=${ETA_STR}"
-
+        
         if command -v sstat >/dev/null 2>&1; then
             sstat -j "${SLURM_JOB_ID}.batch" --format=JobID,MaxRSS,AveRSS,MaxVMSize,AveCPU --noheader 2>/dev/null \
                 | sed 's/^/[sstat] /' || true
@@ -171,15 +171,14 @@ python -u "$SCRIPT" \
     --review-out "$REVIEW_OUT" \
     --candidates-out "$CANDIDATES_OUT" \
     --lexicon-overrides "$OVERRIDE_1" \
-    --lexicon-overrides "$OVERRIDE_2" \
     --min-rank 1 \
-    --max-rank 15000 \
-    --limit 15000 \
+    --max-rank 1000 \
+    --limit 1000 \
     --seed 42 \
     --max-total-attempts 350 \
     --max-candidates-to-keep 25 \
-    --max-candidates-per-lemma 20
-
+    --max-candidates-per-lemma 20 \
+    --progress-every 100
 cleanup
 
 echo "============================================"

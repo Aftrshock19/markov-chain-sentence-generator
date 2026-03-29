@@ -205,9 +205,43 @@ class StochasticSentenceGenerator(SentenceGenerator):
     def _verb_special_seeds(self, target: Lexeme, canonical: str) -> List[Tuple[List[str], int]]:
         subj, pc = self.subject_for_target(target)
         verb = self.target_verb_form(target, pc)
+        morph = self.target_form_metadata(target)
+        verb_form = morph.get("VerbForm", "")
+        mood = morph.get("Mood", "")
 
         if canonical == "haber" and normalize_token(verb) == "hay":
             return [([verb], 0)]
+
+        # Gerund forms: "Ella está [hablando]."
+        if verb_form == "Ger":
+            return [
+                (["ella", "está", target.lemma], 2),
+                (["él", "está", target.lemma], 2),
+            ]
+
+        # Past participle forms: "Ella ha [hecho] eso."
+        if verb_form == "Part":
+            if canonical == "haber":
+                return [([subj, verb], 1)]
+            return [
+                (["ella", "ha", target.lemma], 2),
+                (["él", "ha", target.lemma], 2),
+            ]
+
+        # Subjunctive forms: "Quiero que [sea] bueno."
+        if mood == "Sub":
+            return [
+                (["quiero", "que", target.lemma], 2),
+                (["espero", "que", target.lemma], 2),
+                (["no", "creo", "que", target.lemma], 3),
+            ]
+
+        # Conditional forms: "Ella [podría] ir."
+        if mood == "Cnd":
+            return [
+                ([subj, target.lemma], 1),
+                ([subj, target.lemma, "ir"], 1),
+            ]
 
         return [([subj, verb], 1)]
 
@@ -517,9 +551,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     def candidate_is_hybrid_publishable(self, candidate: Optional[Candidate]) -> bool:
         if not candidate or not candidate.sentence:
             return False
-        if self.candidate_is_general_publishable(candidate):
-            return not self._hybrid_policy_reasons(candidate)
-        return self._safe_template_publishable_override(candidate)
+        if not self.candidate_is_general_publishable(candidate):
+            return False
+        return not self._hybrid_policy_reasons(candidate)
 
     def _candidate_is_hybrid_strong(self, candidate: Optional[Candidate]) -> bool:
         if not candidate:
@@ -696,7 +730,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
 
         bad_candidate = quality_tier in {"bad", "no_candidate_found"}
         failure_reason = ""
-        if not publishable:
+        if candidate.source_method == "no_candidate_found":
+            failure_reason = "no_publishable_candidate"
+        elif not publishable:
             failure_reason = "; ".join(self._hybrid_failure_reasons(candidate))
 
         return {
@@ -717,23 +753,12 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         target: Lexeme,
     ) -> Candidate:
         trimmed = self.dedupe_candidates(pool)[: self.max_candidates_to_keep]
-        winner: Optional[Candidate] = None
-        family = self.normalized_pos_family(target)
-        if trimmed:
-            ranked = sorted(trimmed, key=lambda candidate: self._candidate_bucket(candidate, family))
-            top_bucket = self._candidate_bucket(ranked[0], family)
-            bucket_candidates = [
-                candidate for candidate in ranked
-                if self._candidate_bucket(candidate, family) == top_bucket
-            ]
-            winner = self._choose_best_in_bucket(bucket_candidates)
-
-        if winner is not None and self._candidate_is_valid(winner):
-            return winner
-        if best_valid is not None:
-            return best_valid
-        if best_any is not None and best_any.sentence:
-            return best_any
+        publishable_candidates = [
+            candidate for candidate in trimmed
+            if self.candidate_is_hybrid_publishable(candidate)
+        ]
+        if publishable_candidates:
+            return self._choose_best_in_bucket(publishable_candidates)
         return self._no_candidate_result(target)
 
     def collect_candidates_for_lemma(

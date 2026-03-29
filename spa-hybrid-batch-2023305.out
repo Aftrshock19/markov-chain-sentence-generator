@@ -1,0 +1,62 @@
+============================================
+Job ID:        2023305
+Node:          x3003c0s1b2n0
+Started:       Sun 29 Mar 2026 10:20:33 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics
+OK import sklearn
+Script:        /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/hybrid_generator.py
+Lexicon:       /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid
+Loaded 160 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/lexicon_overrides_merged.csv
+[progress] 100/975 lemma=nunca source=retrieved_corpus tier=strong publishable=True
+[progress] 200/975 lemma=podemos source=seeded_template tier=strong publishable=True
+[heartbeat] elapsed=0h1m0s out_rows=217/15000 (1.45%) review_rows=0 candidate_rows=0 eta=01:08:07
+[sstat] 2023305.bat+   1337792K   1337792K   1338048K   00:01:02 
+[progress] 300/975 lemma=país source=retrieved_corpus tier=strong publishable=True
+[progress] 400/975 lemma=hubiera source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h2m0s out_rows=491/15000 (3.27%) review_rows=0 candidate_rows=0 eta=00:59:05
+[sstat] 2023305.bat+   1307.50M   1307.50M   1339200K   00:02:02 
+[progress] 500/975 lemma=hiciste source=retrieved_corpus tier=strong publishable=True
+[progress] 600/975 lemma=oído source=no_candidate_found tier=no_candidate_found publishable=False
+[progress] 700/975 lemma=oficial source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h3m0s out_rows=719/15000 (4.79%) review_rows=0 candidate_rows=0 eta=00:59:35
+[sstat] 2023305.bat+   1340160K   1340160K   1340544K   00:03:02 
+[progress] 800/975 lemma=interior source=no_candidate_found tier=no_candidate_found publishable=False
+[progress] 900/975 lemma=lamento source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h4m0s out_rows=974/15000 (6.49%) review_rows=0 candidate_rows=0 eta=00:57:36
+[sstat] 2023305.bat+   1341120K   1341120K   1341504K   00:04:02 
+[progress] 975/975 lemma=objetivo source=template_generated tier=strong publishable=True
+Generated: 975
+  no_candidate_found   282
+  retrieved_corpus     461
+  seeded_template      55
+  stochastic_decoder   37
+  template_generated   140
+Saved: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023305.csv
+Review: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023305.csv
+Candidates: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023305.csv
+  candidate_rows_written: 5,477
+  avg_candidates_per_lemma: 6.09
+
+Preview:
+  que             [template_generated  ] strong             Hay que ir.
+  la              [template_generated  ] acceptable         Yo la veo.
+  no              [template_generated  ] acceptable         No voy hoy.
+  a               [template_generated  ] acceptable         Voy a casa.
+  el              [template_generated  ] strong             El amigo está bien.
+============================================
+Finished: Sun 29 Mar 2026 10:24:37 PM UTC
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 191K Mar 29 22:24 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023305.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 1.1M Mar 29 22:24 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023305.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 117K Mar 29 22:24 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023305.csv
+============================================

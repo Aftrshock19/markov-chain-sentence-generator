@@ -1,0 +1,34 @@
+============================================
+Job ID:        2023301
+Node:          x3003c0s1b2n0
+Started:       Sun 29 Mar 2026 10:08:02 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics
+OK import sklearn
+Script:        /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/hybrid_generator.py
+Lexicon:       /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid
+Loaded 76 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_overrides.csv
+Loaded 109 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_exclusions.csv
+[progress] 100/1000 lemma=nunca source=retrieved_corpus tier=strong publishable=True
+[progress] 200/1000 lemma=seguro source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h1m0s out_rows=218/15000 (1.45%) review_rows=0 candidate_rows=0 eta=01:07:48
+[sstat] 2023301.bat+   1338560K   1338560K   1338752K   00:01:02 
+[progress] 300/1000 lemma=esas source=template_generated tier=strong publishable=True
+[progress] 400/1000 lemma=eran source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h2m0s out_rows=494/15000 (3.29%) review_rows=0 candidate_rows=0 eta=00:58:43
+[sstat] 2023301.bat+   1339264K   1339264K   1339520K   00:02:02 
+[progress] 500/1000 lemma=ido source=no_candidate_found tier=no_candidate_found publishable=False
+[progress] 600/1000 lemma=poner source=retrieved_corpus tier=strong publishable=True
+[progress] 700/1000 lemma=mía source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h3m0s out_rows=723/15000 (4.82%) review_rows=0 candidate_rows=0 eta=00:59:14
+[sstat] 2023301.bat+   1340352K   1340352K   1340608K   00:03:02 

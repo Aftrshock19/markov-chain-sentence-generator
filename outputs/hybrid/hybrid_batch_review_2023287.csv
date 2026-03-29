@@ -1,0 +1,1002 @@
+lemma,rank,pos,sentence,source_method,template_id,score,canonical_lemma,target_morph,grammatical_ok,natural_ok,learner_clear_ok,notes
+oea,20000,prop,Oea es un buen trabajo en la habitación.,stochastic_decoder,stochastic,8.131129786410465,oea,,1,1,1,stochastic
+pronta,20001,adj,Él es pronta.,emergency_starter,starter_emergency_adj,2.8436155066553894,pronto,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+subirme,20002,v,Ella quiere subirme.,emergency_starter,starter_emergency_inf,2.096591949331417,subirme,VerbForm=Inf,0,0,0,starter_emergency_inf
+arrecife,20003,n,No es muy seguro navegar cerca de esta parte del arrecife.,retrieved_corpus,retrieved,11.689484989914797,arrecife,Gender=Masc|Number=Sing,1,1,1,
+convictos,20004,n,Los convictos iniciaron una falsa alarma.,retrieved_corpus,retrieved,10.034711338286442,convicto,Gender=Masc|Number=Plur,1,1,1,
+cremas,20005,n,Ella quiere la cremas en la casa.,template_generated,n_b1_1,6.37935460738064,crema,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+ecosistemas,20006,n,Ella va el ecosistemas en la casa.,template_generated,n_b1_1,6.367507697704233,ecosistema,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+golpearé,20007,v,Ella quiere golpearé.,emergency_starter,starter_emergency_inf,2.096591949331417,golpearé,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,0,0,0,starter_emergency_inf
+jaén,20008,prop,Iremos de córdoba a cuenca pasando por jaén.,retrieved_corpus,retrieved,12.01041969766436,jaén,,1,1,1,
+lamentas,20009,v,Tú lamentas no hacer nada en la playa.,stochastic_decoder,stochastic,6.504752324025109,lamentar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+olivier,20010,none,La forma olivier es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,olivier,,0,0,0,residual_metalinguistic_clause
+orientaciones,20011,n,,no_candidate_found,no_candidate_found,0.0,orientaciones,,0,0,0,manual review needed
+porto,20012,v,,no_candidate_found,no_candidate_found,0.0,portar,,0,0,0,manual review needed
+preguntábamos,20013,v,,no_candidate_found,no_candidate_found,0.0,preguntábamos,,0,0,0,manual review needed
+renunciando,20014,v,,no_candidate_found,no_candidate_found,0.0,renunciando,,0,0,0,manual review needed
+saldar,20015,v,Vendí el coche para saldar una deuda de juego.,retrieved_corpus,retrieved,10.592045585216372,saldar,VerbForm=Inf,1,1,1,
+sanas,20016,adj,Él es sanas.,emergency_starter,starter_emergency_adj,2.8436155066553894,sano,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+terrenal,20017,adj,Los tesoros terrenales no duran mucho tiempo.,retrieved_corpus,retrieved,11.79398436319165,terrenal,Number=Plur,1,1,1,
+versus,20018,prep,Hablo versus ella.,template_generated,prep_generic_with_target,-0.8437567966789326,versus,,0,0,0,prep_generic_with_target
+bultos,20019,n,¿cuántos bultos como este caben en el maletero?,retrieved_corpus,retrieved,8.838044669090642,bulto,Gender=Masc|Number=Plur,1,1,1,
+cerraré,20020,v,Yo cerraré la puerta de la escuela hoy.,stochastic_decoder,stochastic,7.173893263501118,cerrar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+conchita,20021,prop,Conchita lo pasó muy mal durante la ola de calor.,retrieved_corpus,retrieved,12.328507309368113,conchita,,1,1,1,
+contagiosa,20022,adj,,no_candidate_found,no_candidate_found,0.0,contagiosa,,0,0,0,manual review needed
+convenciste,20023,v,,no_candidate_found,no_candidate_found,0.0,convencer,,0,0,0,manual review needed
+estantería,20024,n,No hay muchos libros en estas estanterías.,retrieved_corpus,retrieved,12.074898477614651,estantería,Gender=Fem|Number=Plur,1,1,1,
+indefinido,20025,adj,Esa señal advierte de un peligro indefinido.,retrieved_corpus,retrieved,10.498957107883953,indefinido,Gender=Masc|Number=Sing,1,1,1,
+insolencia,20026,n,Debería estar avergonzada de todas las insolencias que cometió con ellos.,retrieved_corpus,retrieved,10.639912786166866,insolencia,Gender=Fem|Number=Plur,1,1,1,
+insurrección,20027,n,La insurrección no pudo encontrar la respuesta es.,stochastic_decoder,stochastic,6.595951838941892,insurrección,Gender=Fem|Number=Sing,1,0,0,stochastic
+marcela,20028,prop,Marcela escuchaba música de los años ochenta.,retrieved_corpus,retrieved,11.762982666617965,marcela,,1,1,1,
+opositor,20029,n,¿era ese hombre un opositor de la iglesia?,retrieved_corpus,retrieved,10.912348371742947,opositor,Gender=Masc|Number=Sing,1,1,1,
+partieron,20030,v,Partieron temprano para alcanzar el primer tren.,retrieved_corpus,retrieved,10.258078547665063,partir,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+valdivia,20031,prop,Valdivia es un buen trabajo en la casa.,stochastic_decoder,stochastic,8.0551328081567,valdivia,,1,1,1,stochastic
+almuerzos,20032,n,Ella dice el almuerzos en la casa.,template_generated,n_b1_1,6.376718662178128,almuerzo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+asustaba,20033,v,Ella asustaba a tom en boston con mary.,stochastic_decoder,stochastic,6.773920267484987,asustar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+caucho,20034,n,El caucho se obtiene de la escuela hoy.,stochastic_decoder,stochastic,7.896173654425042,caucho,Gender=Masc|Number=Sing,1,0,1,stochastic
+convenía,20035,v,Ella convenía por el dinero en el mundo.,stochastic_decoder,stochastic,7.15917394630305,convenir,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+costando,20036,v,Nos está costando decidir cuál comprar.,retrieved_corpus,retrieved,9.77009350610313,costar,VerbForm=Ger,1,1,1,
+desfiles,20037,n,Ella dice el desfiles en la casa.,template_generated,n_b1_1,6.376718662178128,desfile,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+discográfica,20038,adj,,no_candidate_found,no_candidate_found,0.0,discográfica,,0,0,0,manual review needed
+efectivas,20039,adj,Él es efectivas.,emergency_starter,starter_emergency_adj,2.8436155066553894,efectivo,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+exótica,20040,adj,Él es exótica.,emergency_starter,starter_emergency_adj,2.8436155066553894,exótico,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+faltaría,20041,v,Ella faltaría.,emergency_starter,starter_emergency_verb,-0.23408952413549056,faltar,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+fonseca,20042,prop,Fonseca es un poco de tiempo para eso.,stochastic_decoder,stochastic,8.240337434211195,fonseca,,1,1,1,stochastic
+lacayo,20043,n,El continente en su casi totalidad actuaba como lacayo de otro país.,retrieved_corpus,retrieved,10.160611084892762,lacayo,Gender=Masc|Number=Sing,1,1,1,
+minuciosamente,20044,adv,Habría que revisar minuciosamente todos los balances económicos presentados por este gobierno.,retrieved_corpus,retrieved,11.442619082590063,minuciosamente,,1,1,1,
+rescató,20045,v,Él rescató al niño del fuego.,retrieved_corpus,retrieved,10.20969251272542,rescatar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+ráfagas,20046,n,No debes dar ráfagas a otros conductores.,retrieved_corpus,retrieved,11.038766036161725,ráfaga,Gender=Fem|Number=Plur,1,1,1,
+agotados,20047,adj,,no_candidate_found,no_candidate_found,0.0,agotado,,0,0,0,manual review needed
+ajustada,20048,adj,,no_candidate_found,no_candidate_found,0.0,ajustado,,0,0,0,manual review needed
+apagadas,20049,adj,,no_candidate_found,no_candidate_found,0.0,apagado,,0,0,0,manual review needed
+asumen,20050,v,Ellos asumen el papel de la escuela ayer.,stochastic_decoder,stochastic,6.485928723134311,asumir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+atasco,20051,n,Estoy en un atasco desde hace más de una hora.,retrieved_corpus,retrieved,12.47431190084307,atasco,Gender=Masc|Number=Sing,1,1,1,
+bonaparte,20052,none,La forma bonaparte es clara.,template_generated,residual_metalinguistic_clause,3.816332338535888,bonaparte,,0,0,0,residual_metalinguistic_clause
+brigadas,20053,n,,no_candidate_found,no_candidate_found,0.0,brigadas,,0,0,0,manual review needed
+cocos,20054,n,Ella dice el cocos en la casa.,template_generated,n_b1_1,6.376718662178128,coco,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+difamación,20055,n,La difamación es un poco más de treinta.,stochastic_decoder,stochastic,8.709961472024562,difamación,Gender=Fem|Number=Sing,1,1,1,stochastic
+monterrey,20056,prop,Monterrey es el más alto de la noche.,stochastic_decoder,stochastic,8.109490035551518,monterrey,,1,1,1,stochastic
+senil,20057,adj,La gente es senil en la casa.,template_generated,adj_b1_1,6.725165185381235,senil,Number=Sing,0,0,0,adj_b1_1
+varas,20058,n,Te has metido en camisa de once varas.,retrieved_corpus,retrieved,11.325933000648885,vara,Gender=Fem|Number=Plur,1,1,1,
+veterinaria,20059,n,Tiene estudios de veterinaria pero nunca ha ejercido la profesión.,retrieved_corpus,retrieved,10.453191821436366,veterinaria,Gender=Fem|Number=Sing,1,1,1,
+amarla,20060,v,,no_candidate_found,no_candidate_found,0.0,amarla,,0,0,0,manual review needed
+asimilación,20061,n,,no_candidate_found,no_candidate_found,0.0,asimilación,,0,0,0,manual review needed
+calculadora,20062,n,A esta calculadora le pasa algo.,retrieved_corpus,retrieved,11.89121815633064,calculadora,Gender=Fem|Number=Sing,1,1,1,
+descalzo,20063,adj,Tom corría descalzo por la nieve.,retrieved_corpus,retrieved,10.380924197215483,descalzo,Gender=Masc|Number=Sing,1,1,1,
+dichoso,20064,adj,La dichosa rueda me hizo perder más de tres horas.,retrieved_corpus,retrieved,11.288719484574393,dichoso,Gender=Fem|Number=Sing,1,1,1,
+dineros,20065,n,Ella dice el dineros en la casa.,template_generated,n_b1_1,6.376718662178128,dinero,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+escaño,20066,n,El escaño estaba muy preocupado por el bien.,stochastic_decoder,stochastic,6.686069991863767,escaño,Gender=Masc|Number=Sing,1,0,0,stochastic
+jugoso,20067,adj,El pavo estaba tierno y jugoso.,retrieved_corpus,retrieved,10.085763966910505,jugoso,Gender=Masc|Number=Sing,1,1,1,
+negociado,20068,v,Ella puede negociado.,emergency_starter,starter_emergency_inf,1.931593206020656,negociado,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+novedoso,20069,adj,La gente joven muy a menudo tiene las ideas novedosas.,retrieved_corpus,retrieved,11.860389592167392,novedoso,Gender=Fem|Number=Plur,1,1,1,
+presupuestario,20070,adj,Se contemplan nuevos impuestos para lidiar con el déficit presupuestario del país.,retrieved_corpus,retrieved,9.986197828182124,presupuestario,Gender=Masc|Number=Sing,1,1,1,
+recibían,20071,v,Ellos recibían el salario mínimo en tu casa.,stochastic_decoder,stochastic,6.394472445825706,recibir,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+caricia,20072,n,¿por qué huyes de mis caricias?,retrieved_corpus,retrieved,9.973468960726963,caricia,Gender=Fem|Number=Plur,1,1,1,
+criando,20073,v,Ella criando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,criar,VerbForm=Ger,0,0,0,starter_emergency_verb
+dramáticos,20074,adj,La tortura tuvo dramáticos efectos sobre su personalidad.,retrieved_corpus,retrieved,10.707285248055255,dramático,Gender=Masc|Number=Plur,1,1,1,
+embriaguez,20075,n,La embriaguez de los niños les encanta eso.,stochastic_decoder,stochastic,8.010157708763934,embriaguez,Gender=Fem|Number=Sing,1,1,1,stochastic
+exponen,20076,v,,no_candidate_found,no_candidate_found,0.0,exponen,,0,0,0,manual review needed
+lanzaba,20077,v,Ella lanzaba objetos a la escuela de idiomas.,stochastic_decoder,stochastic,6.79616210106527,lanzar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+leemos,20078,v,Nosotros leemos el periódico en la casa.,template_generated,v_b1_1,8.504357630032292,leer,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,v_b1_1
+mahoma,20079,prop,Los musulmanes creen en jesús y mahoma.,retrieved_corpus,retrieved,12.697213517786473,mahoma,,1,1,1,
+miserias,20080,n,No quedaron para nuestro país sino lamentos y miserias.,retrieved_corpus,retrieved,11.194107458892429,miseria,Gender=Fem|Number=Plur,1,1,1,
+púas,20081,n,Ella quiere la púas en la casa.,template_generated,n_b1_1,6.37935460738064,púa,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+buscaría,20082,v,Ella buscaría.,emergency_starter,starter_emergency_verb,-0.23408952413549056,buscar,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+cata,20083,n,Me gustaría trabajar en la cata de pasteles y dulces.,retrieved_corpus,retrieved,11.60650882764735,cata,Gender=Fem|Number=Sing,1,1,1,
+cisterna,20084,n,La cisterna no tiene mucha agua ahora mismo.,retrieved_corpus,retrieved,11.259486725785921,cisterna,Gender=Fem|Number=Sing,1,1,1,
+configurar,20085,v,Tienes que configurar la resolución de la imagen.,retrieved_corpus,retrieved,11.217666170572288,configurar,VerbForm=Inf,1,1,1,
+currículo,20086,n,Tienen un muy buen currículo en esa universidad.,retrieved_corpus,retrieved,10.672205061992283,currículo,Gender=Masc|Number=Sing,1,1,1,
+entes,20087,n,,no_candidate_found,no_candidate_found,0.0,entes,,0,0,0,manual review needed
+goteo,20088,n,El goteo del agua está en una casa.,stochastic_decoder,stochastic,7.860171000739386,goteo,Gender=Masc|Number=Sing,1,0,1,stochastic
+medianas,20089,n,,no_candidate_found,no_candidate_found,0.0,medianas,,0,0,0,manual review needed
+prosperar,20090,v,Escuché que tu negocio está prosperando.,retrieved_corpus,retrieved,9.4221907388541,prosperar,VerbForm=Ger,1,1,1,
+psicóloga,20091,n,Ella quiere la psicóloga en la casa.,template_generated,n_b1_1,6.37935460738064,psicóloga,Gender=Fem|Number=Sing,0,0,0,n_b1_1
+superará,20092,v,Ella superará al fútbol después de su padre.,stochastic_decoder,stochastic,6.69914215286974,superar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+tenacidad,20093,n,Sonríe a la vida con tenacidad.,retrieved_corpus,retrieved,9.640742383701527,tenacidad,Gender=Fem|Number=Sing,1,1,1,
+unía,20094,v,,no_candidate_found,no_candidate_found,0.0,unir,,0,0,0,manual review needed
+utilizo,20095,v,Yo utilizo las cartas de su propia casa.,stochastic_decoder,stochastic,7.637132699833754,utilizar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,0,1,stochastic
+audiovisuales,20096,adj,,no_candidate_found,no_candidate_found,0.0,audiovisuales,,0,0,0,manual review needed
+cebada,20097,n,¿puedes distinguir la cebada del trigo?,retrieved_corpus,retrieved,9.694587127441487,cebada,Gender=Fem|Number=Sing,1,1,1,
+galardón,20098,n,La obra de carlos le ha merecido varios premios y galardones.,retrieved_corpus,retrieved,10.915848851554724,galardón,Gender=Masc|Number=Plur,1,1,1,
+holograma,20099,n,Ella quiere la holograma en la casa.,template_generated,n_b1_1,6.37935460738064,holograma,Gender=Masc|Number=Sing,0,0,0,n_b1_1
+identifican,20100,v,Ellos identifican los lotes con un viejo amigo.,stochastic_decoder,stochastic,6.090273315792267,identificar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+infracciones,20101,n,Ella dice la infracciones en la casa.,template_generated,n_b1_1,6.341439603717601,infracción,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+malasia,20102,prop,Tenemos que comprar agua de malasia.,retrieved_corpus,retrieved,12.231863441489477,malasia,,1,1,1,
+oírle,20103,v,,no_candidate_found,no_candidate_found,0.0,oírle,,0,0,0,manual review needed
+quimio,20104,n,,no_candidate_found,no_candidate_found,0.0,quimio,,0,0,0,manual review needed
+surrealismo,20105,n,Ella va el surrealismo en la casa.,template_generated,n_b1_1,7.704151095274225,surrealismo,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+tita,20106,n,,no_candidate_found,no_candidate_found,0.0,tita,,0,0,0,manual review needed
+climas,20107,n,El arroz crece en climas cálidos.,retrieved_corpus,retrieved,10.399653192244251,clima,Gender=Masc|Number=Plur,1,1,1,
+empujes,20108,n,Ella dice el empujes en la casa.,template_generated,n_b1_1,6.376718662178128,empuje,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+eslogan,20109,n,Ella va el eslogan en la casa.,template_generated,n_b1_1,7.704151095274225,eslogan,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+imitador,20110,n,,no_candidate_found,no_candidate_found,0.0,imitador,,0,0,0,manual review needed
+intrigas,20111,n,Ella quiere la intrigas en la casa.,template_generated,n_b1_1,6.37935460738064,intriga,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+pintoresco,20112,adj,Los padres de maría todavía viven en ese pintoresco pueblo.,retrieved_corpus,retrieved,11.474839991879092,pintoresco,Gender=Masc|Number=Sing,1,1,1,
+pontevedra,20113,prop,Pontevedra es el nombre de todos los días.,stochastic_decoder,stochastic,8.402801645551644,pontevedra,,1,1,1,stochastic
+pulpa,20114,n,La pulpa de la vida es demasiado difícil.,stochastic_decoder,stochastic,8.486890521232427,pulpa,Gender=Fem|Number=Sing,1,1,1,stochastic
+tírala,20115,v,,no_candidate_found,no_candidate_found,0.0,tírala,,0,0,0,manual review needed
+anula,20116,v,,no_candidate_found,no_candidate_found,0.0,anula,,0,0,0,manual review needed
+arkansas,20117,prop,Arkansas es un poco de dinero a tom.,stochastic_decoder,stochastic,8.19528575553251,arkansas,,1,1,1,stochastic
+bravos,20118,adj,Él es bravos.,emergency_starter,starter_emergency_adj,2.8436155066553894,bravo,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+carpetas,20119,n,¿me puedes dejar un par de carpetas de color diferente?,retrieved_corpus,retrieved,11.50464080657866,carpeta,Gender=Fem|Number=Plur,1,1,1,
+cónyuge,20120,n,La relación entre cónyuges ha de estar basada en el amor.,retrieved_corpus,retrieved,11.211950375218207,cónyuge,Number=Plur,1,1,1,
+ejercido,20121,v,Ella ejercido.,emergency_starter,starter_emergency_verb,-0.23408952413549056,ejercer,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+farrell,20122,none,La forma farrell es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,farrell,,0,0,0,residual_metalinguistic_clause
+marisol,20123,prop,Marisol es una buena idea hablar con él.,stochastic_decoder,stochastic,8.890560714216367,marisol,,1,1,1,stochastic
+mea,20124,v,Ella necesita mea.,emergency_starter,starter_emergency_inf,1.7889569914037526,mea,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,0,0,0,starter_emergency_inf
+ogro,20125,n,El ogro miró a la casa de tom.,stochastic_decoder,stochastic,8.631948979399114,ogro,Gender=Masc|Number=Sing,1,1,1,stochastic
+plomero,20126,n,El administrador no llamó a un plomero.,retrieved_corpus,retrieved,10.758005119135655,plomero,Gender=Masc|Number=Sing,1,1,1,
+rapto,20127,n,Tom estuvo involucrado en el rapto de mary.,retrieved_corpus,retrieved,12.879133280666252,rapto,Gender=Masc|Number=Sing,1,1,1,
+sendos,20128,determiner,Sendos amigo está bien.,template_generated,det_anchor_clear,5.48974292060389,sendos,Gender=Masc|Number=Plur,0,0,0,det_anchor_clear
+serna,20129,prop,Serna es un poco de tiempo para eso.,stochastic_decoder,stochastic,8.240337434211195,serna,,1,1,1,stochastic
+abstracta,20130,adj,Su noción no fue ni concreta ni abstracta.,retrieved_corpus,retrieved,10.616892652542134,abstracto,Gender=Fem|Number=Sing,1,1,1,
+arpía,20131,n,Ella quiere la arpía en la casa.,template_generated,n_b1_1,6.37935460738064,arpía,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+brutales,20132,adj,Él es brutales.,emergency_starter,starter_emergency_adj,2.8436155066553894,brutal,Number=Plur,0,0,0,starter_emergency_adj
+carey,20133,n,,no_candidate_found,no_candidate_found,0.0,carey,,0,0,0,manual review needed
+duradera,20134,adj,Él es duradera.,emergency_starter,starter_emergency_adj,5.618268578822417,duradero,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+erika,20135,none,La forma erika es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,erika,,0,0,0,residual_metalinguistic_clause
+expande,20136,v,Ella expande en profundo respeto por el momento.,stochastic_decoder,stochastic,6.091450316059713,expandir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+gabardina,20137,n,Tom siempre lleva una gabardina y gafas de sol.,retrieved_corpus,retrieved,12.03878642587783,gabardina,Gender=Fem|Number=Sing,1,1,1,
+gángster,20138,n,Aquel gángster fue acusado de un triple homicidio.,retrieved_corpus,retrieved,10.55983834796597,gángster,Gender=Masc|Number=Sing,1,1,1,
+implementación,20139,n,Ella quiere la implementación en la casa.,template_generated,n_b1_1,6.37935460738064,implementación,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+penn,20140,none,La forma penn es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,penn,,0,0,0,residual_metalinguistic_clause
+psicológicamente,20141,adv,Ella habla psicológicamente.,template_generated,adv_general_speak,3.78519567385702,psicológicamente,,0,0,0,adv_general_speak
+reírme,20142,v,,no_candidate_found,no_candidate_found,0.0,reírme,,0,0,0,manual review needed
+scouts,20143,n,Ella dice el scouts en la casa.,template_generated,n_b1_1,6.376718662178128,scout,Number=Plur,0,0,0,n_b1_1
+subastas,20144,n,Ella hace la subastas en la casa.,template_generated,n_b1_1,6.297242832935041,subasta,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+talismán,20145,n,Tiene un misterioso talismán con forma de ojo.,retrieved_corpus,retrieved,11.053323723819018,talismán,Gender=Masc|Number=Sing,1,1,1,
+democratización,20146,n,,no_candidate_found,no_candidate_found,0.0,democratización,,0,0,0,manual review needed
+dándoles,20147,v,,no_candidate_found,no_candidate_found,0.0,dándoles,,0,0,0,manual review needed
+foros,20148,n,Yo no tengo una cuenta en estos foros.,retrieved_corpus,retrieved,12.326092766251673,foro,Gender=Masc|Number=Plur,1,1,1,
+geográficas,20149,adj,Él es geográficas.,emergency_starter,starter_emergency_adj,2.8436155066553894,geográfico,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+liso,20150,adj,Su superficie era lisa como un espejo.,retrieved_corpus,retrieved,10.301629671518317,liso,Gender=Fem|Number=Sing,1,1,1,
+loma,20151,n,Los fuegos artificiales resultaban impresionantes desde lo alto de la loma.,retrieved_corpus,retrieved,11.298398482017765,loma,Gender=Fem|Number=Sing,1,1,1,
+sabiendas,20152,adv,Ella habla sabiendas.,template_generated,adv_general_speak,3.78519567385702,sabiendas,,0,0,0,adv_general_speak
+sufragio,20153,n,Ella pasa el sufragio en la casa.,template_generated,n_b1_1,7.660612758490698,sufragio,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+alineados,20154,adj,,no_candidate_found,no_candidate_found,0.0,alineado,,0,0,0,manual review needed
+cupido,20155,prop,Cupido es un buen trabajo para hacer eso.,stochastic_decoder,stochastic,7.5963337755397795,cupido,,1,0,1,stochastic
+dudé,20156,v,Nunca lo dudé ni por un momento.,retrieved_corpus,retrieved,12.51442661063978,dudar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+equivocaba,20157,v,Ella equivocaba sobre eso después de la casa.,stochastic_decoder,stochastic,6.803609313205984,equivocar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+halcones,20158,n,Los halcones no pueden ver en la oscuridad.,retrieved_corpus,retrieved,11.699551547689452,halcón,Gender=Masc|Number=Plur,1,1,1,
+mandarle,20159,v,,no_candidate_found,no_candidate_found,0.0,mandarle,,0,0,0,manual review needed
+resalta,20160,v,La cicatriz en su frente resalta.,retrieved_corpus,retrieved,10.18312256633878,resaltar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+sentís,20161,v,¿cómo os sentís acerca de lo que dijo?,retrieved_corpus,retrieved,11.728119761446571,sentís,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+soya,20162,n,,no_candidate_found,no_candidate_found,0.0,soya,,0,0,0,manual review needed
+aferrarse,20163,v,,no_candidate_found,no_candidate_found,0.0,aferrarse,,0,0,0,manual review needed
+ausencias,20164,n,Ella hace la ausencias en la casa.,template_generated,n_b1_1,6.297242832935041,ausencia,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+autónomos,20165,adj,Él es autónomos.,emergency_starter,starter_emergency_adj,2.8436155066553894,autónomo,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+dispersos,20166,adj,Él es dispersos.,emergency_starter,starter_emergency_adj,2.8436155066553894,disperso,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+falto,20167,adj,El hombre es falto en la casa.,template_generated,adj_b1_1,6.862411045124086,falto,Gender=Masc|Number=Sing,0,0,0,unlinked_finite_verbs
+imaginamos,20168,v,Nosotros imaginamos a los ojos del mismo tom.,stochastic_decoder,stochastic,7.436563303846024,imaginar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+liquidez,20169,n,,no_candidate_found,no_candidate_found,0.0,liquidez,,0,0,0,manual review needed
+negarme,20170,v,,no_candidate_found,no_candidate_found,0.0,negarme,,0,0,0,manual review needed
+nenas,20171,n,,no_candidate_found,no_candidate_found,0.0,nenas,,0,0,0,manual review needed
+sepultura,20172,n,Busca el saber de la cuna a la sepultura.,retrieved_corpus,retrieved,10.501681623784313,sepultura,Gender=Fem|Number=Sing,1,1,1,
+solitarias,20173,adj,Él es solitarias.,emergency_starter,starter_emergency_adj,2.8436155066553894,solitario,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+agradecerme,20174,v,,no_candidate_found,no_candidate_found,0.0,agradecerme,,0,0,0,manual review needed
+ampliado,20175,v,El ámbito de nuestra influencia se ha ampliado mucho desde entonces.,retrieved_corpus,retrieved,10.693608415834834,ampliar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+aprobaron,20176,v,Ellos aprobaron el examen de hoy en día.,stochastic_decoder,stochastic,6.882759647189357,aprobar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+atormentado,20177,v,Ella atormentado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,atormentar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+clérigo,20178,n,,no_candidate_found,no_candidate_found,0.0,clérigo,,0,0,0,manual review needed
+desempleado,20179,adj,Mi padre ha estado desempleado durante un año.,retrieved_corpus,retrieved,11.718134684710924,desempleado,Gender=Masc|Number=Sing,1,1,1,
+escapamos,20180,v,Nosotros escapamos de prisión por un largo tiempo.,stochastic_decoder,stochastic,6.042686708913833,escapar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+exhibir,20181,v,Ella exhibió su vestido a propósito.,retrieved_corpus,retrieved,9.92315423129448,exhibir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+lírico,20182,adj,El hombre es lírico en el mundo.,template_generated,adj_b1_1,8.247500730878603,lírico,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+malgastar,20183,v,Ya estaría bueno que pares de malgastar tu dinero.,retrieved_corpus,retrieved,11.996933804030906,malgastar,VerbForm=Inf,1,1,1,
+meca,20184,n,,no_candidate_found,no_candidate_found,0.0,meca,,0,0,0,manual review needed
+nuño,20185,prop,Nuño es un poco más de un amigo.,stochastic_decoder,stochastic,8.508937295466264,nuño,,1,1,1,stochastic
+plutonio,20186,n,El plutonio tiene gusto a todo el mundo.,stochastic_decoder,stochastic,8.14500761358747,plutonio,Gender=Masc|Number=Sing,1,1,1,stochastic
+potestad,20187,n,Una potestad al acusado se le da bien.,stochastic_decoder,stochastic,6.233836475657903,potestad,Gender=Fem|Number=Sing,1,0,0,stochastic
+rencores,20188,n,Ella pasa el rencores en la casa.,template_generated,n_b1_1,6.273286222407186,rencor,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+subordinados,20189,adj,Él es subordinados.,emergency_starter,starter_emergency_adj,2.8436155066553894,subordinado,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+wilde,20190,none,La forma wilde es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,wilde,,0,0,0,residual_metalinguistic_clause
+áspero,20191,adj,Este país tiene un clima áspero.,retrieved_corpus,retrieved,10.525120459656382,áspero,Gender=Masc|Number=Sing,1,1,1,
+afirmaron,20192,v,,no_candidate_found,no_candidate_found,0.0,afirmar,,0,0,0,manual review needed
+andrade,20193,prop,Andrade es un poco de dinero a mary.,stochastic_decoder,stochastic,8.252044158173174,andrade,,1,1,1,stochastic
+averiguamos,20194,v,,no_candidate_found,no_candidate_found,0.0,averiguamos,,0,0,0,manual review needed
+derramó,20195,v,Aquel día maría derramó muchas lágrimas de compasión.,retrieved_corpus,retrieved,10.478286217401504,derramar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+ducharme,20196,v,Ella quiere ducharme.,emergency_starter,starter_emergency_inf,2.096591949331417,ducharme,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,0,0,0,unlinked_finite_verbs
+farmacias,20197,n,Ella quiere la farmacias en la casa.,template_generated,n_b1_1,6.37935460738064,farmacia,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+producían,20198,v,Ellos producían un sonido extraño en el mundo.,stochastic_decoder,stochastic,6.348562762025475,producir,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+seguidamente,20199,adv,Ella habla seguidamente.,template_generated,adv_general_speak,3.78519567385702,seguidamente,,0,0,0,adv_general_speak
+cogía,20200,v,Ella cogía su martillo de mi hermana mayor.,stochastic_decoder,stochastic,6.481974318118833,coger,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+devaluación,20201,n,Ella quiere la devaluación en la casa.,template_generated,n_b1_1,6.37935460738064,devaluación,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+extraoficialmente,20202,adv,"Por favor cuéntame lo que ocurrió, extraoficialmente por supuesto.",retrieved_corpus,retrieved,11.915957294553316,extraoficialmente,,1,0,0,multi_clause_context
+ganadero,20203,adj,,no_candidate_found,no_candidate_found,0.0,ganadero,,0,0,0,manual review needed
+hundiendo,20204,v,Ella hundiendo.,emergency_starter,starter_emergency_verb,-0.23408952413549056,hundir,VerbForm=Ger,0,0,0,starter_emergency_verb
+inseparables,20205,adj,Él es inseparables.,emergency_starter,starter_emergency_adj,2.8436155066553894,inseparable,Number=Plur,0,0,0,starter_emergency_adj
+lucharé,20206,v,Yo lucharé en la casa en la habitación.,stochastic_decoder,stochastic,8.598729313866837,luchar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,stochastic
+ps,20207,n,,no_candidate_found,no_candidate_found,0.0,ps,,0,0,0,manual review needed
+ímpetu,20208,n,Ya no tengo el ímpetu de mi juventud.,retrieved_corpus,retrieved,11.861309019038483,ímpetu,Gender=Masc|Number=Sing,1,1,1,
+alegras,20209,v,Tú alegras de tener un poco de ayuda.,stochastic_decoder,stochastic,6.72985237828842,alegrar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+altercado,20210,n,Un altercado tras otro se fue a boston.,stochastic_decoder,stochastic,7.500154796064952,altercado,Gender=Masc|Number=Sing,1,0,1,stochastic
+calambres,20211,n,Ella va el calambres en la casa.,template_generated,n_b1_1,7.704151095274225,calambre,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+edema,20212,n,,no_candidate_found,no_candidate_found,0.0,edema,,0,0,0,manual review needed
+limpié,20213,v,Yo limpié la casa de su padre murió.,stochastic_decoder,stochastic,8.395878485571718,limpiar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+probarla,20214,v,,no_candidate_found,no_candidate_found,0.0,probarla,,0,0,0,manual review needed
+subsuelo,20215,n,El subsuelo de esta región ha cambiado nada.,stochastic_decoder,stochastic,7.448472310874904,subsuelo,Gender=Masc|Number=Sing,1,0,0,stochastic
+terminarán,20216,v,Ellos terminarán enamorados el uno al otro lado.,stochastic_decoder,stochastic,8.015996920245723,terminar,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,stochastic
+álbumes,20217,n,Ella va el álbumes en la casa.,template_generated,n_b1_1,6.367507697704233,álbum,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+bioquímica,20218,n,Ella gusta la bioquímica en la casa.,template_generated,n_b1_1,6.301179166321462,bioquímica,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+desleal,20219,adj,"Mi amigo fue desleal, al traicionarme.",retrieved_corpus,retrieved,8.106959107638538,desleal,Number=Sing,1,0,0,multi_clause_context
+especifica,20220,v,Ella especifica a un amigo en el campo.,stochastic_decoder,stochastic,7.013933671760992,especificar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+gremios,20221,n,,no_candidate_found,no_candidate_found,0.0,gremios,,0,0,0,manual review needed
+inevitables,20222,adj,Él es inevitables.,emergency_starter,starter_emergency_adj,2.8436155066553894,inevitable,Number=Plur,0,0,0,starter_emergency_adj
+osadía,20223,n,Tuvo la osadía de decir eso.,retrieved_corpus,retrieved,11.489194086853754,osadía,Gender=Fem|Number=Sing,1,1,1,
+osaka,20224,prop,Regresamos a osaka el 2 de abril.,retrieved_corpus,retrieved,11.731556019834048,osaka,,1,1,1,
+subterráneos,20225,adj,Él es subterráneos.,emergency_starter,starter_emergency_adj,2.8436155066553894,subterráneo,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+sujetas,20226,adj,,no_candidate_found,no_candidate_found,0.0,sujeto,,0,0,0,manual review needed
+asignados,20227,adj,,no_candidate_found,no_candidate_found,0.0,asignado,,0,0,0,manual review needed
+bucear,20228,v,Su deseo de bucear le costó la vida.,retrieved_corpus,retrieved,11.142587321926486,bucear,VerbForm=Inf,1,1,1,
+engañarte,20229,v,Deja de engañarte a ti mismo.,retrieved_corpus,retrieved,10.754748210439923,engañarte,VerbForm=Inf,1,1,1,
+lupa,20230,n,Estas letras pequeñas solo se pueden leer con una lupa.,retrieved_corpus,retrieved,10.645272133154771,lupa,Gender=Fem|Number=Sing,1,1,1,
+metería,20231,v,Ella metería.,emergency_starter,starter_emergency_verb,-0.23408952413549056,meter,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+montserrat,20232,prop,A montserrat no le gusta discutir pero a alberto sí.,retrieved_corpus,retrieved,12.937921273693732,montserrat,,1,1,1,
+simbolismo,20233,n,Ella dice el simbolismo en la casa.,template_generated,n_b1_1,6.376718662178128,simbolismo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+viga,20234,n,¿está la viga sólida o hueca?,retrieved_corpus,retrieved,9.461814720201959,viga,Gender=Fem|Number=Sing,1,1,1,
+caligrafía,20235,n,María está haciendo un curso para mejorar su caligrafía.,retrieved_corpus,retrieved,11.660264691112022,caligrafía,Gender=Fem|Number=Sing,1,1,1,
+chihuahua,20236,prop,Chihuahua es la capital de la escuela hoy.,stochastic_decoder,stochastic,8.169895408443075,chihuahua,Gender=Masc|Number=Sing,1,1,1,stochastic
+enterramos,20237,v,Pensé que era un error decirle a tom dónde enterramos el tesoro.,retrieved_corpus,retrieved,11.216414702118485,enterrar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+inverso,20238,adj,¿por qué las agujas del reloj no giran en sentido inverso?,retrieved_corpus,retrieved,10.891257255813636,inverso,Gender=Masc|Number=Sing,1,1,1,
+sansón,20239,prop,Sansón es un buen trabajo en una semana.,stochastic_decoder,stochastic,7.886287437178126,sansón,,1,0,1,stochastic
+selectiva,20240,adj,Él es selectiva.,emergency_starter,starter_emergency_adj,2.8436155066553894,selectivo,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+traumas,20241,n,,no_candidate_found,no_candidate_found,0.0,traumas,,0,0,0,manual review needed
+vector,20242,n,El vector de la vida es un poco.,stochastic_decoder,stochastic,7.624886244601828,vector,Gender=Masc|Number=Sing,1,0,1,stochastic
+bombardear,20243,v,Nuestra ciudad ha sido bombardeada dos veces esta semana.,retrieved_corpus,retrieved,11.886999874324834,bombardear,Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+checoslovaquia,20244,prop,Checoslovaquia es un poco más de tres años.,stochastic_decoder,stochastic,8.439463291252299,checoslovaquia,,1,1,1,stochastic
+picó,20245,v,Ella picó en el jardín de un amigo.,stochastic_decoder,stochastic,6.789468465089874,picar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+poseída,20246,adj,,no_candidate_found,no_candidate_found,0.0,poseído,,0,0,0,manual review needed
+privilegiados,20247,adj,Él es privilegiados.,emergency_starter,starter_emergency_adj,2.8436155066553894,privilegiado,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+radiador,20248,n,A nuestro radiador eléctrico le pasa algo.,retrieved_corpus,retrieved,11.935730948047011,radiador,Gender=Masc|Number=Sing,1,1,1,
+senior,20249,n,,no_candidate_found,no_candidate_found,0.0,senior,,0,0,0,manual review needed
+alcantarillas,20250,n,Ella quiere la alcantarillas en la casa.,template_generated,n_b1_1,6.37935460738064,alcantarilla,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+balboa,20251,prop,Balboa es el nombre de todos los días.,stochastic_decoder,stochastic,8.402801645551644,balboa,,1,1,1,stochastic
+beltrán,20252,prop,Beltrán ya es un veterano director de teatro.,retrieved_corpus,retrieved,11.912082121178798,beltrán,,1,1,1,
+desperdiciado,20253,v,Él ha desperdiciado todas las oportunidades que le he dado.,retrieved_corpus,retrieved,11.456176483565413,desperdiciar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+ferretería,20254,n,Hay una ferretería no muy lejos de acá.,retrieved_corpus,retrieved,11.673454752982924,ferretería,Gender=Fem|Number=Sing,1,1,1,
+pensaremos,20255,v,,no_candidate_found,no_candidate_found,0.0,pensaremos,,0,0,0,manual review needed
+recolectar,20256,v,Se recolecta la basura tres veces por semana.,retrieved_corpus,retrieved,12.280678277542256,recolectar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+sarampión,20257,n,,no_candidate_found,no_candidate_found,0.0,sarampión,,0,0,0,manual review needed
+señalada,20258,adj,,no_candidate_found,no_candidate_found,0.0,señalado,,0,0,0,manual review needed
+agarran,20259,v,Ellos agarran un libro a la cama ahora.,stochastic_decoder,stochastic,6.676901506127424,agarrar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+agarrando,20260,v,Ella agarrando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,agarrar,VerbForm=Ger,0,0,0,starter_emergency_verb
+cabales,20261,adj,Él es cabales.,emergency_starter,starter_emergency_adj,2.8436155066553894,cabal,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+cardiaca,20262,adj,,no_candidate_found,no_candidate_found,0.0,cardiaca,,0,0,0,manual review needed
+desafía,20263,v,Ella desafía a la puerta de la casa.,stochastic_decoder,stochastic,7.385205739040724,desafiar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+desatado,20264,v,Ella desatado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,desatar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+francisca,20265,prop,Francisca es un poco más grande del mundo.,stochastic_decoder,stochastic,9.314618162619324,francisca,,1,1,1,stochastic
+incendiar,20266,v,Soy yo quien se las ha incendiado.,retrieved_corpus,retrieved,11.210818217500268,incendiar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+joyero,20267,n,El joyero disparó al final de la casa.,stochastic_decoder,stochastic,8.26622036424523,joyero,Gender=Masc|Number=Sing,1,1,1,stochastic
+mezclados,20268,adj,,no_candidate_found,no_candidate_found,0.0,mezclado,,0,0,0,manual review needed
+pineda,20269,prop,Pineda es un hombre de la escuela hoy.,stochastic_decoder,stochastic,8.167736943020664,pineda,,1,1,1,stochastic
+tajante,20270,adj,El hombre es tajante en el mundo.,template_generated,adj_b1_1,6.910857333308609,tajante,Number=Sing,0,0,0,adj_b1_1
+visitaron,20271,v,Ellos visitaron a su hijo en la habitación.,stochastic_decoder,stochastic,8.218815359352124,visitar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+vivida,20272,adj,,no_candidate_found,no_candidate_found,0.0,vivido,,0,0,0,manual review needed
+viéndote,20273,v,"Espero que todavía puedas seguir viéndote al espejo, mi amigo.",retrieved_corpus,retrieved,10.747112491141888,viéndote,VerbForm=Ger,1,0,0,multi_clause_context
+acompañando,20274,v,Se presentó acompañando a su hermana.,retrieved_corpus,retrieved,11.904794341339713,acompañar,VerbForm=Ger,1,1,1,
+burgueses,20275,n,,no_candidate_found,no_candidate_found,0.0,burgueses,,0,0,0,manual review needed
+disfrutes,20276,n,,no_candidate_found,no_candidate_found,0.0,disfrutes,,0,0,0,manual review needed
+parlamentarias,20277,adj,Él es parlamentarias.,emergency_starter,starter_emergency_adj,2.8436155066553894,parlamentario,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+wyoming,20278,prop,Wyoming es el nombre de todos los días.,stochastic_decoder,stochastic,10.028487467243853,wyoming,,1,1,1,stochastic
+yerba,20279,n,Yo voy a cortar la yerba mañana si no llueve.,retrieved_corpus,retrieved,12.46966502040103,yerba,Gender=Fem|Number=Sing,1,1,1,
+acelerando,20280,v,La frecuencia de los sucesos está acelerando.,retrieved_corpus,retrieved,10.59995512500348,acelerar,VerbForm=Ger,1,1,1,
+enredo,20281,n,No hay solución fácil para este enredo.,retrieved_corpus,retrieved,11.365090394280662,enredo,Gender=Masc|Number=Sing,1,1,1,
+estudiantiles,20282,adj,Él es estudiantiles.,emergency_starter,starter_emergency_adj,2.8436155066553894,estudiantil,Number=Plur,0,0,0,starter_emergency_adj
+funcionaria,20283,n,Ella hace la funcionaria en la casa.,template_generated,n_b1_1,7.684569369018554,funcionaria,Gender=Fem|Number=Sing,0,0,0,n_b1_1
+hidrocarburos,20284,n,Ella dice el hidrocarburos en la casa.,template_generated,n_b1_1,6.376718662178128,hidrocarburo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+hipotéticamente,20285,adv,Ella habla hipotéticamente.,template_generated,adv_general_speak,3.78519567385702,hipotéticamente,,0,0,0,adv_general_speak
+lumbar,20286,adj,Tengo un dolor intenso en la zona lumbar.,retrieved_corpus,retrieved,11.881919636931983,lumbar,Gender=Fem|Number=Sing,1,1,1,
+pagina,20287,v,,no_candidate_found,no_candidate_found,0.0,pagina,,0,0,0,manual review needed
+pin,20288,n,,no_candidate_found,no_candidate_found,0.0,pin,,0,0,0,manual review needed
+serví,20289,v,Primero serví la carne y después el postre.,retrieved_corpus,retrieved,10.420214288209152,servir,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+volverían,20290,v,Ellos volverían.,emergency_starter,starter_emergency_verb,-0.7397667492584792,volver,Mood=Cnd|Number=Plur|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+alcanzarlo,20291,v,,no_candidate_found,no_candidate_found,0.0,alcanzarlo,,0,0,0,manual review needed
+asignar,20292,v,Se me asignó un nuevo dormitorio.,retrieved_corpus,retrieved,10.411653609376419,asignar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+burros,20293,n,Ella dice el burros en la casa.,template_generated,n_b1_1,7.764045198261641,burro,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+complementarios,20294,adj,Él es complementarios.,emergency_starter,starter_emergency_adj,2.8436155066553894,complementario,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+concluyente,20295,adj,No se establecieron las causas del incendio de forma concluyente.,retrieved_corpus,retrieved,11.611341592873577,concluyente,Number=Sing,1,1,1,
+congelando,20296,v,Ella congelando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,congelar,VerbForm=Ger,0,0,0,starter_emergency_verb
+denominan,20297,v,,no_candidate_found,no_candidate_found,0.0,denominar,,0,0,0,manual review needed
+descubriremos,20298,v,Poco a poco lo descubriremos todo.,retrieved_corpus,retrieved,9.840676610540084,descubrir,Mood=Ind|Number=Plur|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,
+detonación,20299,n,La detonación de la vida es muy difícil.,stochastic_decoder,stochastic,8.628331151878303,detonación,Gender=Fem|Number=Sing,1,1,1,stochastic
+entenderán,20300,v,,no_candidate_found,no_candidate_found,0.0,entender,,0,0,0,manual review needed
+escamas,20301,n,Ella dice el escamas en la casa.,template_generated,n_b1_1,6.376718662178128,escama,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+expresivo,20302,adj,El hombre es expresivo en el campo.,template_generated,adj_b1_1,6.897271295089796,expresivo,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+firmamento,20303,n,Las estrellas brillan en el firmamento.,retrieved_corpus,retrieved,10.502366218860193,firmamento,Gender=Masc|Number=Sing,1,1,1,
+regar,20304,v,Mary aún no ha regado las plantas.,retrieved_corpus,retrieved,11.225316401203232,regar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+utilizaban,20305,v,Ellos utilizaban algo parecido a un perro negro.,stochastic_decoder,stochastic,6.084684344850623,utilizar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+descendido,20306,v,Las ventas de este modelo de teléfono móvil han descendido.,retrieved_corpus,retrieved,11.437657910468573,descender,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+desperdiciando,20307,v,Estás desperdiciando mi dinero y mi tiempo.,retrieved_corpus,retrieved,11.414376179321646,desperdiciar,VerbForm=Ger,1,1,1,
+elabora,20308,v,Ella elabora en tres meses en el mundo.,stochastic_decoder,stochastic,6.84704911688656,elaborar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+inaugura,20309,v,Ella inaugura las fiestas de cumpleaños para tom.,stochastic_decoder,stochastic,6.26090929450128,inaugurar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+interrogante,20310,n,Ninguna religión ha podido resolver mis interrogantes.,retrieved_corpus,retrieved,9.758551660584,interrogante,Number=Plur,1,1,1,
+lugareños,20311,n,Ella para el lugareños en la casa.,template_generated,n_b1_1,6.57470214540697,lugareño,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+mayúscula,20312,n,Los nombres de variables en c distinguen mayúsculas.,retrieved_corpus,retrieved,11.299811164818088,mayúscula,Gender=Fem|Number=Plur,1,1,1,
+rodeaban,20313,v,Él tenía una gran influencia en las personas que le rodeaban.,retrieved_corpus,retrieved,11.802400656997285,rodear,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+sandwiches,20314,n,,no_candidate_found,no_candidate_found,0.0,sandwiches,,0,0,0,manual review needed
+suplementos,20315,n,Muchas personas dicen que los suplementos son una estafa.,retrieved_corpus,retrieved,11.414238272776988,suplemento,Gender=Masc|Number=Plur,1,1,1,
+trecho,20316,n,He recorrido mucho trecho para verlos.,retrieved_corpus,retrieved,9.580109280655076,trecho,Gender=Masc|Number=Sing,1,1,1,
+uniones,20317,n,Ella quiere la uniones en la casa.,template_generated,n_b1_1,6.37935460738064,unión,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+amaban,20318,v,Ellos amaban a tom para ver a tom.,stochastic_decoder,stochastic,7.735404857547178,amar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,1,stochastic
+contradictorias,20319,adj,Él es contradictorias.,emergency_starter,starter_emergency_adj,2.8436155066553894,contradictorio,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+cuenco,20320,n,El cuenco está lleno de leche.,retrieved_corpus,retrieved,10.66613480461158,cuenco,Gender=Masc|Number=Sing,1,1,1,
+despecho,20321,n,Me lo está haciendo por despecho.,retrieved_corpus,retrieved,10.652198707870284,despecho,Gender=Masc|Number=Sing,1,1,1,
+destrozados,20322,adj,,no_candidate_found,no_candidate_found,0.0,destrozado,,0,0,0,manual review needed
+genéticas,20323,adj,Cada vez se sabe más de un buen número de enfermedades genéticas.,retrieved_corpus,retrieved,10.869239223909068,genético,Gender=Fem|Number=Plur,1,1,1,
+glándula,20324,n,Ella quiere la glándula en la casa.,template_generated,n_b1_1,7.766681143464153,glándula,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+irma,20325,prop,El huracán irma pone rumbo a florida.,retrieved_corpus,retrieved,12.437370007130205,irma,,1,1,1,
+lograría,20326,v,Ella lograría.,emergency_starter,starter_emergency_verb,-0.23408952413549056,lograr,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+ocupaban,20327,v,Ellos ocupaban la parte de lo más interesante.,stochastic_decoder,stochastic,6.488208904881065,ocupar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+reclamando,20328,v,,no_candidate_found,no_candidate_found,0.0,reclamando,,0,0,0,manual review needed
+retribución,20329,n,La vida es rica en sacrificios y pobre en retribuciones.,retrieved_corpus,retrieved,11.847926733123634,retribución,Gender=Fem|Number=Plur,1,1,1,
+ruiseñor,20330,n,Un ruiseñor no va a cantar en una jaula.,retrieved_corpus,retrieved,11.794645441344043,ruiseñor,Gender=Masc|Number=Sing,1,1,1,
+sombría,20331,adj,Él es sombría.,emergency_starter,starter_emergency_adj,2.8436155066553894,sombrío,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+standard,20332,none,La forma standard es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,standard,,0,0,0,residual_metalinguistic_clause
+andina,20333,adj,,no_candidate_found,no_candidate_found,0.0,andina,,0,0,0,manual review needed
+clavada,20334,adj,,no_candidate_found,no_candidate_found,0.0,clavado,,0,0,0,manual review needed
+despiadada,20335,adj,,no_candidate_found,no_candidate_found,0.0,despiadado,,0,0,0,manual review needed
+esperarme,20336,v,,no_candidate_found,no_candidate_found,0.0,esperarme,,0,0,0,manual review needed
+expresaron,20337,v,Ellos expresaron a su casa en la casa.,stochastic_decoder,stochastic,8.204537962987597,expresar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+fascinantes,20338,adj,Él es fascinantes.,emergency_starter,starter_emergency_adj,2.8436155066553894,fascinante,Number=Plur,0,0,0,starter_emergency_adj
+incidencias,20339,n,Hoy ha habido más incidencias de lo normal.,retrieved_corpus,retrieved,11.068530104555922,incidencia,Gender=Fem|Number=Plur,1,1,1,
+persa,20340,adj,,no_candidate_found,no_candidate_found,0.0,persa,,0,0,0,manual review needed
+regresiva,20341,adj,Él es regresiva.,emergency_starter,starter_emergency_adj,2.8436155066553894,regresivo,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+tropezar,20342,v,El anciano se tropezó con sus propios pies.,retrieved_corpus,retrieved,11.711955024042956,tropezar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+benefactor,20343,n,,no_candidate_found,no_candidate_found,0.0,benefactor,,0,0,0,manual review needed
+codicioso,20344,adj,Tom no debería ser tan codicioso.,retrieved_corpus,retrieved,11.817557697308366,codicioso,Gender=Masc|Number=Sing,1,1,1,
+confines,20345,n,Ella dice el confines en la casa.,template_generated,n_b1_1,6.376718662178128,confín,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+conquistó,20346,v,Ella conquistó el corazón de todas las mañanas.,stochastic_decoder,stochastic,7.027417947668833,conquistar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+edificación,20347,n,La edificación está basada en los últimos años.,stochastic_decoder,stochastic,7.957549949072578,edificación,Gender=Fem|Number=Sing,1,0,1,stochastic
+genaro,20348,prop,Para nada parece que genaro tenga la edad que tiene.,retrieved_corpus,retrieved,12.571983669138795,genaro,,1,1,1,
+inquisidor,20349,n,El inquisidor se mantuvo durante todo el mundo.,stochastic_decoder,stochastic,8.011327059431515,inquisidor,Gender=Masc|Number=Sing,1,1,1,stochastic
+mestizo,20350,n,,no_candidate_found,no_candidate_found,0.0,mestizo,,0,0,0,manual review needed
+misioneros,20351,n,Los padres de tom eran misioneros en áfrica.,retrieved_corpus,retrieved,11.92063593446083,misionero,Gender=Masc|Number=Plur,1,1,1,
+permitimos,20352,v,Nosotros permitimos tomar la foto de su padre.,stochastic_decoder,stochastic,6.3693564142851695,permitir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+promociones,20353,n,El mercado tiene muchas promociones el día de hoy.,retrieved_corpus,retrieved,13.095611245712192,promoción,Gender=Fem|Number=Plur,1,1,1,
+radiodifusión,20354,n,,no_candidate_found,no_candidate_found,0.0,radiodifusión,,0,0,0,manual review needed
+veintena,20355,n,La sala contenía al menos una veintena de armaduras.,retrieved_corpus,retrieved,11.725035117602008,veintena,Gender=Fem|Number=Sing,1,1,1,
+albañil,20356,n,Los albañiles aún no vinieron a terminar la obra.,retrieved_corpus,retrieved,11.165595230230945,albañil,Number=Plur,1,1,1,
+albedrío,20357,n,No existe ni casualidad ni libre albedrío.,retrieved_corpus,retrieved,10.831487526586285,albedrío,Gender=Masc|Number=Sing,1,1,1,
+chalecos,20358,n,Ella parece el chalecos en la casa.,template_generated,n_b1_1,6.270121496409149,chaleco,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+cisneros,20359,prop,Cisneros es un buen trabajo en la casa.,stochastic_decoder,stochastic,8.0551328081567,cisneros,,1,1,1,stochastic
+colgaba,20360,v,Tom y maría se vieron al espejo que colgaba en la pared.,retrieved_corpus,retrieved,11.37464891046506,colgar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+estrato,20361,n,El estrato uno el más fuerte es siempre.,stochastic_decoder,stochastic,7.165635502918856,estrato,Gender=Masc|Number=Sing,1,0,0,stochastic
+eternos,20362,adj,Él es eternos.,emergency_starter,starter_emergency_adj,2.8436155066553894,eterno,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+neblina,20363,n,La neblina no dejaba que uno viera el camino.,retrieved_corpus,retrieved,11.209129587680556,neblina,Gender=Fem|Number=Sing,1,1,1,
+palomar,20364,prop,Palomar es un poco más de diez minutos.,stochastic_decoder,stochastic,8.378919579915134,palomar,Gender=Masc|Number=Sing,1,1,1,stochastic
+temblaba,20365,v,Él vio que ella temblaba y estaba a punto de llorar.,retrieved_corpus,retrieved,11.66448401194223,temblar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+tobías,20366,prop,Tobías salió del sótano y cerró la puerta.,retrieved_corpus,retrieved,12.273557371354972,tobías,,1,1,1,
+atraparme,20367,v,,no_candidate_found,no_candidate_found,0.0,atraparme,,0,0,0,manual review needed
+calculo,20368,v,,no_candidate_found,no_candidate_found,0.0,calculo,,0,0,0,manual review needed
+causal,20369,adj,El hombre es causal en el mundo.,template_generated,adj_b1_1,6.910857333308609,causal,Number=Sing,0,0,0,adj_b1_1
+cuneta,20370,n,Hay una cuneta a cada lado de la carretera.,retrieved_corpus,retrieved,12.203635841255597,cuneta,Gender=Fem|Number=Sing,1,1,1,
+evaluaciones,20371,n,,no_candidate_found,no_candidate_found,0.0,evaluaciones,,0,0,0,manual review needed
+figurar,20372,v,Él figura de la escuela está en casa.,stochastic_decoder,stochastic,7.312786070837988,figurar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+hallaban,20373,v,,no_candidate_found,no_candidate_found,0.0,hallar,,0,0,0,manual review needed
+incansable,20374,adj,Estamos viviendo en una sociedad del consumo incansable.,retrieved_corpus,retrieved,10.842842618065415,incansable,Number=Sing,1,1,1,
+intentabas,20375,v,Ella puede intentabas.,emergency_starter,starter_emergency_inf,1.931593206020656,intentabas,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,0,0,0,starter_emergency_inf
+magnifico,20376,v,,no_candidate_found,no_candidate_found,0.0,magnifico,,0,0,0,manual review needed
+masturbación,20377,n,La masturbación lleva a la locura.,retrieved_corpus,retrieved,10.371944829193396,masturbación,Gender=Fem|Number=Sing,1,1,1,
+pegajosa,20378,adj,,no_candidate_found,no_candidate_found,0.0,pegajosa,,0,0,0,manual review needed
+salvadoreños,20379,n,,no_candidate_found,no_candidate_found,0.0,salvadoreños,,0,0,0,manual review needed
+socialdemócrata,20380,adj,La gente es socialdemócrata en la casa.,template_generated,adj_b1_1,8.061808582951228,socialdemócrata,Number=Sing,0,0,0,adj_b1_1
+aplicadas,20381,adj,,no_candidate_found,no_candidate_found,0.0,aplicado,,0,0,0,manual review needed
+avisaron,20382,v,Ellos avisaron que tenían una casa en venta.,retrieved_corpus,retrieved,10.983369191347869,avisar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+coliseo,20383,prop,En la roma antigua el coliseo era una gran sala de espectáculos.,retrieved_corpus,retrieved,12.29103597964242,coliseo,,1,1,1,
+contemplado,20384,v,¿has contemplado la torre de tokio alguna vez?,retrieved_corpus,retrieved,10.680952630741162,contemplar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+cretinos,20385,n,Ella dice el cretinos en la casa.,template_generated,n_b1_1,6.376718662178128,cretino,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+cruzaba,20386,v,Ella cruzaba la calle sin haber hecho eso.,stochastic_decoder,stochastic,6.420246716555138,cruzar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+encargas,20387,v,Tú te encargas de la cocina.,retrieved_corpus,retrieved,10.418183394752422,encargar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+ilícito,20388,adj,La justicia los envió a prisión por asociación ilícita.,retrieved_corpus,retrieved,11.624685312319563,ilícito,Gender=Fem|Number=Sing,1,1,1,
+minucioso,20389,adj,El mundo es minucioso en el campo.,template_generated,adj_b1_1,6.739805942660993,minucioso,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+moño,20390,n,No me gustas nada con moño.,retrieved_corpus,retrieved,11.253205100353718,moño,Gender=Masc|Number=Sing,1,1,1,
+multiplicar,20391,v,Los edificios de apartamentos se multiplican rápidamente.,retrieved_corpus,retrieved,10.709203843189439,multiplicar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+ramon,20392,none,La forma ramon es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,ramon,,0,0,0,residual_metalinguistic_clause
+represalia,20393,n,Él siempre tiene algo para tomar represalias contra los otros.,retrieved_corpus,retrieved,11.533001143580824,represalia,Gender=Fem|Number=Plur,1,1,1,
+sabueso,20394,n,,no_candidate_found,no_candidate_found,0.0,sabueso,,0,0,0,manual review needed
+trompa,20395,n,,no_candidate_found,no_candidate_found,0.0,trompa,,0,0,0,manual review needed
+vulcano,20396,prop,Vulcano es de un hombre en el mundo.,stochastic_decoder,stochastic,7.755674663494634,vulcano,,1,0,1,stochastic
+camboya,20397,prop,Camboya dice que todo cambia.,template_generated,prop_say,2.6678703466835785,camboya,,0,0,0,prop_say
+chiles,20398,n,,no_candidate_found,no_candidate_found,0.0,chiles,,0,0,0,manual review needed
+cubriré,20399,v,,no_candidate_found,no_candidate_found,0.0,cubriré,,0,0,0,manual review needed
+educadores,20400,n,Ella dice el educadores en la casa.,template_generated,n_b1_1,6.376718662178128,educador,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+esclarecer,20401,v,Están esperando el momento en que se esclarezcan las cosas.,retrieved_corpus,retrieved,11.412875130578207,esclarecer,Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+fátima,20402,prop,Fátima es una buena idea hablar con él.,stochastic_decoder,stochastic,9.42087980227913,fátima,,1,1,1,stochastic
+numeroso,20403,adj,Tom trató de llamar a mary numerosas veces.,retrieved_corpus,retrieved,11.937861086587919,numeroso,Gender=Fem|Number=Plur,1,1,1,
+perforar,20404,v,Un túnel ha sido perforado en la montaña.,retrieved_corpus,retrieved,10.78998154125514,perforar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+representativa,20405,adj,La democracia representativa es una forma de gobierno.,retrieved_corpus,retrieved,11.813379230812062,representativo,Gender=Fem|Number=Sing,1,1,1,
+saludando,20406,v,Ella saludando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,saludar,VerbForm=Ger,0,0,0,starter_emergency_verb
+valoro,20407,v,Valoro la verdad más que mi propia vida.,retrieved_corpus,retrieved,10.116275490954672,valorar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+cerrarse,20408,v,,no_candidate_found,no_candidate_found,0.0,cerrarse,,0,0,0,manual review needed
+dañados,20409,adj,,no_candidate_found,no_candidate_found,0.0,dañado,,0,0,0,manual review needed
+denuncian,20410,v,,no_candidate_found,no_candidate_found,0.0,denuncian,,0,0,0,manual review needed
+dibujante,20411,n,Ella dice el dibujante en la casa.,template_generated,n_b1_1,6.376718662178128,dibujante,Number=Sing,1,0,0,n_b1_1
+disfunción,20412,n,Ella quiere la disfunción en la casa.,template_generated,n_b1_1,7.802641402520626,disfunción,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+facilitó,20413,v,Ella facilitó el reconocimiento de su padre murió.,stochastic_decoder,stochastic,6.522993223885847,facilitar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+percepciones,20414,n,,no_candidate_found,no_candidate_found,0.0,percepciones,,0,0,0,manual review needed
+psicópatas,20415,n,Unos pocos psicópatas pueden arruinar un país.,retrieved_corpus,retrieved,9.822742245675895,psicópata,Number=Plur,1,1,1,
+reformista,20416,adj,El hombre es reformista en la casa.,template_generated,adj_b1_1,6.862411045124086,reformista,Number=Sing,0,0,0,adj_b1_1
+terrazas,20417,n,Ella quiere la terrazas en la casa.,template_generated,n_b1_1,6.37935460738064,terraza,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+vendaje,20418,n,Las enfermeras me están cambiando el vendaje.,retrieved_corpus,retrieved,10.320463534330969,vendaje,Gender=Masc|Number=Sing,1,1,1,
+acogido,20419,v,Ella puede acogido.,emergency_starter,starter_emergency_inf,1.931593206020656,acogido,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+consistió,20420,v,Ella consistió en haber perdido el tren estaba.,stochastic_decoder,stochastic,5.101814643025573,consistir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+costarricense,20421,adj,El hombre es costarricense en la casa.,template_generated,adj_b1_1,8.285697840264072,costarricense,Number=Sing,0,0,0,adj_b1_1
+levantaste,20422,v,¿por qué te levantaste tan temprano?,retrieved_corpus,retrieved,11.968549499634989,levantar,Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin,1,1,1,
+péndulo,20423,n,El péndulo no sirve de nada a tom.,stochastic_decoder,stochastic,6.787312971858876,péndulo,Gender=Masc|Number=Sing,1,0,0,stochastic
+póster,20424,n,Las paredes de su cuarto estaban cubiertas con pósters.,retrieved_corpus,retrieved,11.749216048715123,póster,Gender=Masc|Number=Plur,1,1,1,
+universos,20425,n,Ella va el universos en la casa.,template_generated,n_b1_1,6.367507697704233,universo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+chipre,20426,prop,Gran bretaña tiene dos bases militares en chipre.,retrieved_corpus,retrieved,13.031427451418104,chipre,,1,1,1,
+comprobaré,20427,v,Yo comprobaré de nuevo en la cama ahora.,stochastic_decoder,stochastic,6.695117828097163,comprobar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+correspondió,20428,v,Ella correspondió a los niños a la casa.,stochastic_decoder,stochastic,7.21672860907112,corresponder,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+cotidianas,20429,adj,Él es cotidianas.,emergency_starter,starter_emergency_adj,2.8436155066553894,cotidiano,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+cupón,20430,n,Tengo unos cupones que conseguí la semana pasada.,retrieved_corpus,retrieved,11.262442192477437,cupón,Gender=Masc|Number=Plur,1,1,1,
+nominal,20431,adj,,no_candidate_found,no_candidate_found,0.0,nominal,,0,0,0,manual review needed
+palomino,20432,prop,Palomino es el más grande de la noche.,stochastic_decoder,stochastic,8.11421888159805,palomino,Gender=Masc|Number=Sing,1,1,1,stochastic
+proyectado,20433,v,,no_candidate_found,no_candidate_found,0.0,proyectado,,0,0,0,manual review needed
+transportado,20434,v,Ella transportado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,transportar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+albania,20435,prop,Albania quiere ingresar en la unión europea.,retrieved_corpus,retrieved,11.688931965273163,albania,,1,1,1,
+beneficiar,20436,v,Alguien más se beneficia de la situación.,retrieved_corpus,retrieved,10.562907928977586,beneficiar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+bosco,20437,none,La forma bosco es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,bosco,,0,0,0,residual_metalinguistic_clause
+eiffel,20438,none,La forma eiffel es clara.,template_generated,residual_metalinguistic_clause,3.999434386647239,eiffel,,0,0,0,residual_metalinguistic_clause
+escalofrío,20439,n,La terrible escena le dio escalofríos en la espalda a tom.,retrieved_corpus,retrieved,12.082016929324137,escalofrío,Gender=Masc|Number=Plur,1,1,1,
+eventuales,20440,adj,Él es eventuales.,emergency_starter,starter_emergency_adj,2.8436155066553894,eventual,Number=Plur,0,0,0,starter_emergency_adj
+idaho,20441,prop,Idaho es un buen trabajo de mi padre.,stochastic_decoder,stochastic,7.790586481905148,idaho,,1,0,1,stochastic
+inaugurar,20442,v,Se ha inaugurado una nueva tienda en mi barrio.,retrieved_corpus,retrieved,11.679303410785367,inaugurar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+manipulando,20443,v,¿cómo sé si tom me está manipulando?,retrieved_corpus,retrieved,10.49542179659169,manipular,VerbForm=Ger,1,1,1,
+olvidaría,20444,v,Ella olvidaría.,emergency_starter,starter_emergency_verb,-0.23408952413549056,olvidar,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,0,0,0,starter_emergency_verb
+raimundo,20445,prop,Raimundo es un hombre de las dos manos.,stochastic_decoder,stochastic,9.000740092222259,raimundo,,1,1,1,stochastic
+regalito,20446,n,Tom le compró un regalito a mary.,retrieved_corpus,retrieved,13.263810170145,regalito,Gender=Masc|Number=Sing,1,1,1,
+salvamento,20447,n,,no_candidate_found,no_candidate_found,0.0,salvamento,,0,0,0,manual review needed
+voltaire,20448,none,La forma voltaire es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,voltaire,,0,0,0,residual_metalinguistic_clause
+anticipada,20449,adj,,no_candidate_found,no_candidate_found,0.0,anticipada,,0,0,0,manual review needed
+cloaca,20450,n,Ella quiere la cloaca en la casa.,template_generated,n_b1_1,7.715998004950633,cloaca,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+comerán,20451,v,Ellos comerán ustedes esta tarde voy a hacer.,stochastic_decoder,stochastic,6.195082389981267,comer,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+cálidos,20452,adj,Los días se vuelven más y más cálidos.,retrieved_corpus,retrieved,11.642374974119104,cálido,Gender=Masc|Number=Plur,1,1,1,
+escrutinio,20453,n,No hay modo de escapar de su severo escrutinio.,retrieved_corpus,retrieved,12.3879392781487,escrutinio,Gender=Masc|Number=Sing,1,1,1,
+llamame,20454,v,Ella necesita llamame.,emergency_starter,starter_emergency_inf,1.7889569914037526,llamame,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,0,0,0,starter_emergency_inf
+propiciar,20455,v,Ella propicia para la gente en la habitación.,stochastic_decoder,stochastic,7.1230696820202395,propiciar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+sumido,20456,v,Ella puede sumido.,emergency_starter,starter_emergency_inf,1.931593206020656,sumido,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+violadores,20457,n,Ella dice el violadores en la casa.,template_generated,n_b1_1,7.713362059748121,violador,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+árbitros,20458,n,Ella dice el árbitros en la casa.,template_generated,n_b1_1,6.376718662178128,árbitro,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+é,20459,conj,Ella viene é yo salgo.,template_generated,conj_generic_link,4.861488739750237,é,,0,0,0,conj_generic_link
+beijing,20460,prop,Beijing es un tipo de persona es tom.,stochastic_decoder,stochastic,7.815588682115767,beijing,,1,0,1,stochastic
+comisaria,20461,n,Ella quiere la comisaria en la casa.,template_generated,n_b1_1,7.766681143464153,comisaria,Gender=Fem|Number=Sing,0,0,0,n_b1_1
+gritarme,20462,v,,no_candidate_found,no_candidate_found,0.0,gritarme,,0,0,0,manual review needed
+liberando,20463,v,,no_candidate_found,no_candidate_found,0.0,liberando,,0,0,0,manual review needed
+mangos,20464,n,Le llevo una bolsa de mangos a mi mamá.,retrieved_corpus,retrieved,11.372202900716797,mango,Gender=Masc|Number=Plur,1,1,1,
+normandía,20465,prop,Normandía es un poco de tiempo para hacer.,stochastic_decoder,stochastic,8.148635328248035,normandía,,1,1,1,stochastic
+seudónimo,20466,n,No acepto amigos que se presenten bajo seudónimos.,retrieved_corpus,retrieved,11.177774817887773,seudónimo,Gender=Masc|Number=Plur,1,1,1,
+visité,20467,v,Visité la ciudad natal de mi padre el verano pasado.,retrieved_corpus,retrieved,12.00712917868366,visitar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+cesárea,20468,n,Hace seis meses tuve una cesárea.,retrieved_corpus,retrieved,9.838379822436151,cesárea,Gender=Fem|Number=Sing,1,1,1,
+eureka,20469,interj,"Eureka, ella está aquí!",template_generated,interj_here,3.836400027258681,eureka,,0,0,0,interj_here
+experimentan,20470,v,,no_candidate_found,no_candidate_found,0.0,experimentar,,0,0,0,manual review needed
+martina,20471,prop,Martina tiene tantas mascotas que su casa parece una tienda de animales.,retrieved_corpus,retrieved,11.486447402543867,martina,,1,1,1,
+navales,20472,adj,Él es navales.,emergency_starter,starter_emergency_adj,2.8436155066553894,naval,Number=Plur,0,0,0,starter_emergency_adj
+sorprenderme,20473,v,El mal nunca dejará de sorprenderme.,retrieved_corpus,retrieved,10.395117663913597,sorprenderme,VerbForm=Inf,1,1,1,
+tuerto,20474,n,"En tierra de ciegos, el tuerto es rey.",retrieved_corpus,retrieved,8.809455039128798,tuerto,Gender=Masc|Number=Sing,1,0,0,multi_clause_context
+í,20475,letter,La letra í es común.,template_generated,letter_metalinguistic_clause,2.0132806179502287,í,,0,0,0,letter_metalinguistic_clause
+amarrado,20476,v,Resulta que se los han amarrado.,retrieved_corpus,retrieved,11.89770838674367,amarrar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+apache,20477,n,,no_candidate_found,no_candidate_found,0.0,apache,,0,0,0,manual review needed
+campesinas,20478,adj,,no_candidate_found,no_candidate_found,0.0,campesinas,,0,0,0,manual review needed
+clones,20479,n,,no_candidate_found,no_candidate_found,0.0,clones,,0,0,0,manual review needed
+distrae,20480,v,Ella distrae mucho todo esto es una lengua.,stochastic_decoder,stochastic,6.822162571727324,distraer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+ilustrado,20481,adj,,no_candidate_found,no_candidate_found,0.0,ilustrado,,0,0,0,manual review needed
+manejó,20482,v,Ella manejó el carro delante de la casa.,stochastic_decoder,stochastic,6.843838845714163,manejar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+medía,20483,v,Nuestra toalla medía sesenta centímetros de ancho por un metro de largo.,retrieved_corpus,retrieved,9.842851414790825,medir,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+osado,20484,adj,La positiva reacción a nuestras propuestas superó nuestras más osadas expectativas.,retrieved_corpus,retrieved,10.453750731181428,osado,Gender=Fem|Number=Plur,1,1,1,
+pastelitos,20485,n,Me gustan mucho los pastelitos de arroz y coco.,retrieved_corpus,retrieved,12.116540196309977,pastelito,Gender=Masc|Number=Plur,1,1,1,
+principiantes,20486,n,¿tiene usted un curso para principiantes?,retrieved_corpus,retrieved,10.131209541065834,principiante,Number=Plur,1,1,1,
+sabotear,20487,v,,no_candidate_found,no_candidate_found,0.0,sabotear,,0,0,0,manual review needed
+sorprenderá,20488,v,,no_candidate_found,no_candidate_found,0.0,sorprender,,0,0,0,manual review needed
+tímidos,20489,adj,Él es tímidos.,emergency_starter,starter_emergency_adj,2.8436155066553894,tímido,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+vuelco,20490,n,El corazón me da un vuelco en el pecho.,retrieved_corpus,retrieved,11.982958652621521,vuelco,Gender=Masc|Number=Sing,1,1,1,
+óperas,20491,n,A tom le gusta cantar arias de óperas italianas.,retrieved_corpus,retrieved,12.714361240980569,ópera,Gender=Fem|Number=Plur,1,1,1,
+adversidad,20492,n,Habría que apoyar las actividades incluso en condiciones de adversidad.,retrieved_corpus,retrieved,10.507017420453185,adversidad,Gender=Fem|Number=Sing,1,1,1,
+angular,20493,adj,¿seguirán usando una piedra angular en la construcción de los edificios?,retrieved_corpus,retrieved,10.350870315349624,angular,Number=Sing,1,1,1,
+docencia,20494,n,La docencia es la capital de la casa.,stochastic_decoder,stochastic,8.818240414706148,docencia,Gender=Fem|Number=Sing,1,1,1,stochastic
+inhibición,20495,n,Ella vive la inhibición en la casa.,template_generated,n_b1_1,7.57080463492267,inhibición,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+insultante,20496,adj,El mundo es insultante en el campo.,template_generated,adj_b1_1,8.076449340230987,insultante,Number=Sing,0,0,0,adj_b1_1
+marbella,20497,prop,Marbella es un poco más de diez años.,stochastic_decoder,stochastic,8.319960885352671,marbella,,1,1,1,stochastic
+penicilina,20498,n,Ella quiere la penicilina en la casa.,template_generated,n_b1_1,7.802641402520626,penicilina,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+soltando,20499,v,"Tom iba a mentir, pero acabó soltando la lengua.",retrieved_corpus,retrieved,10.678566157694004,soltar,VerbForm=Ger,1,0,0,multi_clause_context
+turbio,20500,adj,Todos tenían sus manos sucias por asuntos turbios.,retrieved_corpus,retrieved,10.656132292564303,turbio,Gender=Masc|Number=Plur,1,1,1,
+coacción,20501,n,Ella quiere la coacción en la casa.,template_generated,n_b1_1,7.715998004950633,coacción,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+fluidez,20502,n,No sabía que tom podía hablar francés con tanta fluidez.,retrieved_corpus,retrieved,12.473431405407316,fluidez,Gender=Fem|Number=Sing,1,1,1,
+loto,20503,n,,no_candidate_found,no_candidate_found,0.0,loto,,0,0,0,manual review needed
+reorganización,20504,n,,no_candidate_found,no_candidate_found,0.0,reorganización,,0,0,0,manual review needed
+bailado,20505,v,Tom jamás ha bailado con mary.,retrieved_corpus,retrieved,12.39490236761167,bailar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+calentador,20506,n,Necesitamos cambiar nuestro calentador de agua.,retrieved_corpus,retrieved,9.539217581919143,calentador,Gender=Masc|Number=Sing,1,1,1,
+heredar,20507,v,La tierra se heredó del padre al hijo.,retrieved_corpus,retrieved,11.60508510536386,heredar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+liberarme,20508,v,,no_candidate_found,no_candidate_found,0.0,liberarme,,0,0,0,manual review needed
+lujos,20509,n,Él llevó una vida de lujos.,retrieved_corpus,retrieved,10.641413881564185,lujo,Gender=Masc|Number=Plur,1,1,1,
+lúcido,20510,adj,,no_candidate_found,no_candidate_found,0.0,lúcido,,0,0,0,manual review needed
+páramo,20511,n,Ella va el páramo en la casa.,template_generated,n_b1_1,7.754834233787747,páramo,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+recordarán,20512,v,,no_candidate_found,no_candidate_found,0.0,recordarán,,0,0,0,manual review needed
+sacarán,20513,v,Ellos sacarán el libro de la casa.,template_generated,v_b1_1,5.865016756553446,sacar,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,v_b1_1
+vacantes,20514,n,,no_candidate_found,no_candidate_found,0.0,vacante,,0,0,0,manual review needed
+vandalismo,20515,n,Ella dice el vandalismo en la casa.,template_generated,n_b1_1,6.376718662178128,vandalismo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+úlceras,20516,n,¿te molestan mucho esas úlceras de la boca?,retrieved_corpus,retrieved,10.835091714860742,úlcera,Gender=Fem|Number=Plur,1,1,1,
+demorar,20517,v,Se está demorando más de lo que pensé.,retrieved_corpus,retrieved,12.38159481378515,demorar,VerbForm=Ger,1,1,1,
+directivas,20518,adj,,no_candidate_found,no_candidate_found,0.0,directivas,,0,0,0,manual review needed
+espantapájaros,20519,n,Ella dice el espantapájaros en la casa.,template_generated,n_b1_1,6.376718662178128,espantapájaros,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+gastronomía,20520,n,La gastronomía de esta frase está bien hablar.,stochastic_decoder,stochastic,7.554071104373415,gastronomía,Gender=Fem|Number=Sing,1,0,1,stochastic
+importarme,20521,v,,no_candidate_found,no_candidate_found,0.0,importarme,,0,0,0,manual review needed
+incrustar,20522,v,Ella incrusta en los estados unidos tiene mayor.,stochastic_decoder,stochastic,6.766331047663542,incrustar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+pagarles,20523,v,,no_candidate_found,no_candidate_found,0.0,pagarles,,0,0,0,manual review needed
+redondos,20524,adj,Él es redondos.,emergency_starter,starter_emergency_adj,2.8436155066553894,redondo,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+tabú,20525,n,Parece como si no tuviese tabúes.,retrieved_corpus,retrieved,10.705159016393754,tabú,Gender=Masc|Number=Plur,1,1,1,
+alcántara,20526,prop,Alcántara es el nombre de su padre murió.,stochastic_decoder,stochastic,8.076873187918448,alcántara,,1,1,1,stochastic
+angola,20527,prop,Él nació en china pero vive en angola.,retrieved_corpus,retrieved,13.289944358552088,angola,,1,1,1,
+argumentación,20528,n,Su argumentación no estaba basada en los hechos.,retrieved_corpus,retrieved,12.004104502518578,argumentación,Gender=Fem|Number=Sing,1,1,1,
+constar,20529,v,El comité consta de ocho miembros.,retrieved_corpus,retrieved,12.032098385907128,constar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+contencioso,20530,adj,,no_candidate_found,no_candidate_found,0.0,contencioso,,0,0,0,manual review needed
+espartaco,20531,prop,Espartaco es un buen día para otro momento.,stochastic_decoder,stochastic,8.743787622241758,espartaco,,1,1,1,stochastic
+excremento,20532,n,Un excremento de oso en la vida es.,stochastic_decoder,stochastic,6.624058394053036,excremento,Gender=Masc|Number=Sing,1,0,0,stochastic
+gustabas,20533,v,Ella puede gustabas.,emergency_starter,starter_emergency_inf,1.931593206020656,gustabas,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,0,0,0,starter_emergency_inf
+libertador,20534,n,El libertador de otro modo se podría hacer.,stochastic_decoder,stochastic,7.227815034911681,libertador,Gender=Masc|Number=Sing,1,0,0,stochastic
+pliego,20535,n,El pliego de papel en el mundo está.,stochastic_decoder,stochastic,6.914967968697735,pliego,Gender=Masc|Number=Sing,1,0,0,stochastic
+retirando,20536,v,Ella retirando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,retirar,VerbForm=Ger,0,0,0,starter_emergency_verb
+suecos,20537,adj,Él es suecos.,emergency_starter,starter_emergency_adj,2.8436155066553894,sueco,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+alejaba,20538,v,Ella alejaba de la vida en la habitación.,stochastic_decoder,stochastic,7.589617812587055,alejar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,1,stochastic
+alimenticios,20539,adj,Creo que tendrías que cambiar tus hábitos alimenticios.,retrieved_corpus,retrieved,11.255970216051736,alimenticio,Gender=Masc|Number=Plur,1,1,1,
+apoyarse,20540,v,,no_candidate_found,no_candidate_found,0.0,apoyarse,,0,0,0,manual review needed
+emisario,20541,n,,no_candidate_found,no_candidate_found,0.0,emisario,,0,0,0,manual review needed
+panfletos,20542,n,¿de dónde sacó tanto dinero el candidato para hacer tantos panfletos?,retrieved_corpus,retrieved,10.699610041859325,panfleto,Gender=Masc|Number=Plur,1,1,1,
+pastelito,20543,n,Me gustan mucho los pastelitos de arroz y coco.,retrieved_corpus,retrieved,12.116540196309977,pastelito,Gender=Masc|Number=Plur,1,1,1,
+prada,20544,none,La forma prada es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,prada,,0,0,0,residual_metalinguistic_clause
+reeves,20545,none,La forma reeves es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,reeves,,0,0,0,residual_metalinguistic_clause
+repuestos,20546,n,No hay apenas repuestos para este coche.,retrieved_corpus,retrieved,12.587197450366386,repuesto,Gender=Masc|Number=Plur,1,1,1,
+tortillas,20547,n,"Todos aman algo, aunque solo sean las tortillas.",retrieved_corpus,retrieved,8.740485404284273,tortilla,Gender=Fem|Number=Plur,1,0,0,multi_clause_context
+trampolín,20548,n,¿qué hace mary ahí subida en el trampolín?,retrieved_corpus,retrieved,10.5987600885415,trampolín,Gender=Masc|Number=Sing,1,1,1,
+turba,20549,n,La turba furiosa le lanzaba objetos a la policía.,retrieved_corpus,retrieved,11.55063961636367,turba,Gender=Fem|Number=Sing,1,1,1,
+acantilados,20550,n,Ella va el acantilados en la casa.,template_generated,n_b1_1,6.367507697704233,acantilado,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+anís,20551,n,Tom pone un poco de anís en su café.,retrieved_corpus,retrieved,11.911818756784088,anís,Gender=Masc|Number=Sing,1,1,1,
+apagan,20552,v,Ellos apagan las luces antes de la noche.,stochastic_decoder,stochastic,6.900346249524167,apagar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+astrónomo,20553,n,El astrónomo estudia el universo y encuentra a dios.,retrieved_corpus,retrieved,11.250839796947574,astrónomo,Gender=Masc|Number=Sing,1,1,1,
+atreví,20554,v,,no_candidate_found,no_candidate_found,0.0,atreví,,0,0,0,manual review needed
+cavernas,20555,n,Me pregunto cuándo un hombre de las cavernas dijo algo como esto.,retrieved_corpus,retrieved,10.99492059927014,caverna,Gender=Fem|Number=Plur,1,1,1,
+condicionado,20556,adj,,no_candidate_found,no_candidate_found,0.0,condicionado,,0,0,0,manual review needed
+conectó,20557,v,Ella conectó la televisión antes de la casa.,stochastic_decoder,stochastic,6.894709189450327,conectar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+envenenó,20558,v,Es ella la que lo envenenó.,retrieved_corpus,retrieved,10.233509582017456,envenenar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+fieras,20559,n,La música tiene encantos que calman a las fieras.,retrieved_corpus,retrieved,11.619888566577767,fiera,Gender=Fem|Number=Plur,1,1,1,
+huiste,20560,v,,no_candidate_found,no_candidate_found,0.0,huiste,,0,0,0,manual review needed
+impedimento,20561,n,El mal tiempo no es impedimento.,retrieved_corpus,retrieved,10.84812982977529,impedimento,Gender=Masc|Number=Sing,1,1,1,
+menús,20562,n,Hay restaurantes que tienen menús en muchos idiomas.,retrieved_corpus,retrieved,11.83415887840541,menú,Gender=Masc|Number=Plur,1,1,1,
+reseña,20563,n,La reseña estaba hecha de papel para escribir.,stochastic_decoder,stochastic,7.152635780672205,reseña,Gender=Fem|Number=Sing,1,0,0,stochastic
+abandonadas,20564,adj,,no_candidate_found,no_candidate_found,0.0,abandonado,,0,0,0,manual review needed
+abandonas,20565,v,,no_candidate_found,no_candidate_found,0.0,abandonar,,0,0,0,manual review needed
+apoyarte,20566,v,Ella puede apoyarte.,emergency_starter,starter_emergency_inf,1.931593206020656,apoyarte,VerbForm=Inf,0,0,0,starter_emergency_inf
+atribuir,20567,v,A él no se le atribuye la culpa por el accidente.,retrieved_corpus,retrieved,12.022999521705618,atribuir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+burlan,20568,v,Ellos burlan de la casa de mi padre.,stochastic_decoder,stochastic,7.539783351192091,burlar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,1,stochastic
+cambiaremos,20569,v,Nosotros cambiaremos nuestros planes para el otro día.,stochastic_decoder,stochastic,6.3470092272010525,cambiar,Mood=Ind|Number=Plur|Person=1|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+entregaba,20570,v,Ella entregaba artículos a la casa de tom.,stochastic_decoder,stochastic,7.093469162686406,entregar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+espontaneidad,20571,n,,no_candidate_found,no_candidate_found,0.0,espontaneidad,,0,0,0,manual review needed
+fuero,20572,n,,no_candidate_found,no_candidate_found,0.0,fuero,,0,0,0,manual review needed
+gaviota,20573,n,Hay varias especies de gaviotas que varían en tamaño.,retrieved_corpus,retrieved,11.186828683881403,gaviota,Gender=Fem|Number=Plur,1,1,1,
+hepática,20574,adj,,no_candidate_found,no_candidate_found,0.0,hepática,,0,0,0,manual review needed
+localiza,20575,v,Ella localiza a tu madre en la habitación.,stochastic_decoder,stochastic,6.996272803899473,localizar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+mirarse,20576,v,,no_candidate_found,no_candidate_found,0.0,mirarse,,0,0,0,manual review needed
+motocicletas,20577,n,Muchos conductores de motocicletas en grecia no siempre usan casco.,retrieved_corpus,retrieved,10.484886750393727,motocicleta,Gender=Fem|Number=Plur,1,1,1,
+participará,20578,v,Ella participará en la vida en la casa.,stochastic_decoder,stochastic,7.650463107627736,participar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,0,1,stochastic
+presagio,20579,n,Ese viento es presagio de tormenta.,retrieved_corpus,retrieved,11.017436496315188,presagio,Gender=Masc|Number=Sing,1,1,1,
+quedaros,20580,v,,no_candidate_found,no_candidate_found,0.0,quedaros,,0,0,0,manual review needed
+reconocerá,20581,v,Ella reconocerá después de la vida de casado.,stochastic_decoder,stochastic,7.3055692235951195,reconocer,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+rizos,20582,n,Ella gusta el rizos en la casa.,template_generated,n_b1_1,6.326648771010714,rizo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+spot,20583,n,Ella va el spot en la casa.,template_generated,n_b1_1,7.704151095274225,spot,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+tiernos,20584,adj,Él es tiernos.,emergency_starter,starter_emergency_adj,2.8436155066553894,tierno,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+tramitación,20585,n,Ella quiere la tramitación en la casa.,template_generated,n_b1_1,6.37935460738064,tramitación,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+villar,20586,prop,Villar es una buena idea hablar con él.,stochastic_decoder,stochastic,7.657381571031021,villar,,1,0,1,stochastic
+amados,20587,adj,,no_candidate_found,no_candidate_found,0.0,amado,,0,0,0,manual review needed
+ares,20588,prop,Ares es el más alto de la casa.,stochastic_decoder,stochastic,8.093862384396697,ares,,1,1,1,stochastic
+arrebatado,20589,v,Ella arrebatado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,arrebatar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+asa,20590,n,Las ollas pequeñas tienen asas largas.,retrieved_corpus,retrieved,9.708533638617402,asa,Gender=Fem|Number=Plur,1,1,1,
+compartimiento,20591,n,Ella dice el compartimiento en la casa.,template_generated,n_b1_1,6.376718662178128,compartimiento,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+contrasta,20592,v,,no_candidate_found,no_candidate_found,0.0,contrasta,,0,0,0,manual review needed
+diminutos,20593,adj,Él es diminutos.,emergency_starter,starter_emergency_adj,2.8436155066553894,diminuto,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+dotada,20594,adj,,no_candidate_found,no_candidate_found,0.0,dotado,,0,0,0,manual review needed
+hubieron,20595,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+insinuaciones,20596,n,Ella dice la insinuaciones en la casa.,template_generated,n_b1_1,6.341439603717601,insinuación,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+manzanares,20597,n,,no_candidate_found,no_candidate_found,0.0,manzanares,,0,0,0,manual review needed
+marcianos,20598,n,Los marcianos ya no son como los de antes.,retrieved_corpus,retrieved,11.756267562096236,marciano,Gender=Masc|Number=Plur,1,1,1,
+nado,20599,n,Le vi cruzar el río a nado.,retrieved_corpus,retrieved,11.56584080314611,nado,Gender=Masc|Number=Sing,1,1,1,
+objetivamente,20600,adv,"Visto objetivamente, su argumento no era nada racional.",retrieved_corpus,retrieved,10.03916784774578,objetivamente,,1,0,0,multi_clause_context
+permanecían,20601,v,,no_candidate_found,no_candidate_found,0.0,permanecer,,0,0,0,manual review needed
+sensatez,20602,n,Ella quiere la sensatez en la casa.,template_generated,n_b1_1,6.37935460738064,sensatez,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+sien,20603,n,El sien mientras él estaba en la playa.,stochastic_decoder,stochastic,6.940736431826138,sien,Gender=Masc|Number=Sing,1,0,0,stochastic
+sácate,20604,v,Ella puede sácate.,emergency_starter,starter_emergency_inf,1.931593206020656,sácate,VerbForm=Inf,0,0,0,starter_emergency_inf
+accionar,20605,v,,no_candidate_found,no_candidate_found,0.0,accionar,,0,0,0,manual review needed
+ahogarse,20606,v,,no_candidate_found,no_candidate_found,0.0,ahogarse,,0,0,0,manual review needed
+amorío,20607,n,Un amorío con su hermana no tiene nada.,stochastic_decoder,stochastic,7.665616101238241,amorío,Gender=Masc|Number=Sing,1,0,1,stochastic
+aseguré,20608,v,Yo aseguré de ello con un viejo amigo.,stochastic_decoder,stochastic,6.3762629131346324,asegurar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+carnero,20609,n,Este carnero no es chico como los otros.,retrieved_corpus,retrieved,10.777329321495461,carnero,Gender=Masc|Number=Sing,1,1,1,
+cometemos,20610,v,Nosotros cometemos errores por accidente en el mundo.,stochastic_decoder,stochastic,7.272816533368725,cometer,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+comunal,20611,adj,,no_candidate_found,no_candidate_found,0.0,comunal,,0,0,0,manual review needed
+condominio,20612,n,Tom compró un condominio cerca del lago.,retrieved_corpus,retrieved,11.469225187183202,condominio,Gender=Masc|Number=Sing,1,1,1,
+consolidado,20613,v,Ella consolidado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,consolidar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+dócil,20614,adj,Las vacas parecían grandes y dóciles.,retrieved_corpus,retrieved,10.08554182856244,dócil,Number=Plur,1,1,1,
+erotismo,20615,n,El erotismo es un hombre de la casa.,stochastic_decoder,stochastic,8.680267210839443,erotismo,Gender=Masc|Number=Sing,1,1,1,stochastic
+expresaba,20616,v,Ella expresaba muy bien de su padre murió.,stochastic_decoder,stochastic,6.767129288034315,expresar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+financiado,20617,v,Ella quiere financiado.,emergency_starter,starter_emergency_inf,2.096591949331417,financiado,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+hurtado,20618,prop,Hurtado es un poco más de treinta años.,stochastic_decoder,stochastic,8.361453759301103,hurtado,,1,1,1,stochastic
+ignorarlo,20619,v,,no_candidate_found,no_candidate_found,0.0,ignorarlo,,0,0,0,manual review needed
+ingerir,20620,v,No puedes ingerir nada durante unos días.,retrieved_corpus,retrieved,12.62845715429382,ingerir,VerbForm=Inf,1,1,1,
+intencionalmente,20621,adv,¿quieres decir que ocultas intencionalmente tu belleza?,retrieved_corpus,retrieved,12.046990201218204,intencionalmente,,1,1,1,
+lineas,20622,v,,no_candidate_found,no_candidate_found,0.0,lineas,,0,0,0,manual review needed
+motiva,20623,v,La muerte me motiva a vivir.,retrieved_corpus,retrieved,10.507343314755328,motivar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+paliar,20624,v,No hay modo de paliar su profundo pesar.,retrieved_corpus,retrieved,12.098625923584327,paliar,VerbForm=Inf,1,1,1,
+permití,20625,v,¿cómo permití que pasara otra vez?,retrieved_corpus,retrieved,9.072950474785886,permití,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+pistoleros,20626,n,Los pistoleros de la ciudad se organizaron en pandillas.,retrieved_corpus,retrieved,11.692223419107435,pistolero,Gender=Masc|Number=Plur,1,1,1,
+placenta,20627,n,La placenta por el gobierno es una lengua.,stochastic_decoder,stochastic,7.682035549885115,placenta,Gender=Fem|Number=Sing,1,0,1,stochastic
+siervos,20628,n,Ella dice el siervos en la casa.,template_generated,n_b1_1,6.376718662178128,siervo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+trocitos,20629,n,La gente guardó trocitos del muro.,retrieved_corpus,retrieved,12.154227403342494,trocito,Gender=Masc|Number=Plur,1,1,1,
+bueyes,20630,n,No hay que poner el carro antes de los bueyes.,retrieved_corpus,retrieved,12.494210645644495,buey,Gender=Masc|Number=Plur,1,1,1,
+click,20631,n,,no_candidate_found,no_candidate_found,0.0,click,,0,0,0,manual review needed
+emocionantes,20632,adj,Él es emocionantes.,emergency_starter,starter_emergency_adj,2.8436155066553894,emocionante,Number=Plur,0,0,0,starter_emergency_adj
+hurto,20633,n,Ella va el hurto en la casa.,template_generated,n_b1_1,7.704151095274225,hurto,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+identificaron,20634,v,Ellos identificaron en el jardín de mi casa.,stochastic_decoder,stochastic,8.050833651015358,identificar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+largarse,20635,v,,no_candidate_found,no_candidate_found,0.0,largarse,,0,0,0,manual review needed
+lejanía,20636,n,Una manzana al día mantiene al médico en la lejanía.,retrieved_corpus,retrieved,11.223142013378208,lejanía,Gender=Fem|Number=Sing,1,1,1,
+mateos,20637,n,,no_candidate_found,no_candidate_found,0.0,mateos,,0,0,0,manual review needed
+pasividad,20638,n,La pasividad en la vida es demasiado difícil.,stochastic_decoder,stochastic,8.510215989245545,pasividad,Gender=Fem|Number=Sing,1,1,1,stochastic
+perfeccionamiento,20639,n,,no_candidate_found,no_candidate_found,0.0,perfeccionamiento,,0,0,0,manual review needed
+perfeccionar,20640,v,El hombre inteligente ha creado y está perfeccionando la inteligencia artificial.,retrieved_corpus,retrieved,11.204508522361563,perfeccionar,VerbForm=Ger,1,1,1,
+permitirte,20641,v,Ella quiere permitirte.,emergency_starter,starter_emergency_inf,2.096591949331417,permitirte,VerbForm=Inf,0,0,0,starter_emergency_inf
+pluralismo,20642,n,,no_candidate_found,no_candidate_found,0.0,pluralismo,,0,0,0,manual review needed
+presupuestaria,20643,adj,,no_candidate_found,no_candidate_found,0.0,presupuestaria,,0,0,0,manual review needed
+sentirán,20644,v,,no_candidate_found,no_candidate_found,0.0,sentir,,0,0,0,manual review needed
+stock,20645,n,Ella dice el stock en la casa.,template_generated,n_b1_1,6.376718662178128,stock,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+toto,20646,n,,no_candidate_found,no_candidate_found,0.0,toto,,0,0,0,manual review needed
+zeta,20647,n,,no_candidate_found,no_candidate_found,0.0,zeta,,0,0,0,manual review needed
+abstención,20648,n,No hubo ni una sola abstención.,retrieved_corpus,retrieved,11.113218839648685,abstención,Gender=Fem|Number=Sing,1,1,1,
+dividen,20649,v,Los océanos no dividen el mundo sino que lo unen.,retrieved_corpus,retrieved,10.868099952988127,dividir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+fastidia,20650,v,Me fastidia no llegar a tiempo.,retrieved_corpus,retrieved,12.283144773934511,fastidiar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+penitenciario,20651,adj,El hombre es penitenciario en la playa.,template_generated,adj_b1_1,6.8100037413440235,penitenciario,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+transporta,20652,v,Ella transporta a mi hermano mayor de mary.,stochastic_decoder,stochastic,7.035452245659306,transportar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+alteró,20653,v,Su llegada alteró completamente nuestra vida.,retrieved_corpus,retrieved,9.680039200521595,alterar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+comprendemos,20654,v,Nosotros comprendemos por qué tom está aquí hoy.,stochastic_decoder,stochastic,6.449835413935813,comprender,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+contratistas,20655,n,Ella quiere la contratistas en la casa.,template_generated,n_b1_1,6.37935460738064,contratista,Number=Plur,0,0,0,n_b1_1
+detectores,20656,n,Ella dice el detectores en la casa.,template_generated,n_b1_1,6.376718662178128,detector,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+dormías,20657,v,,no_candidate_found,no_candidate_found,0.0,dormías,,0,0,0,manual review needed
+fascina,20658,v,Ella fascina el agua de la escuela hoy.,stochastic_decoder,stochastic,7.081000747235964,fascinar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+beneficiarse,20659,v,,no_candidate_found,no_candidate_found,0.0,beneficiarse,,0,0,0,manual review needed
+blandos,20660,adj,,no_candidate_found,no_candidate_found,0.0,blandos,,0,0,0,manual review needed
+break,20661,n,,no_candidate_found,no_candidate_found,0.0,break,,0,0,0,manual review needed
+cruise,20662,none,La forma cruise es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,cruise,,0,0,0,residual_metalinguistic_clause
+expulsaron,20663,v,Expulsaron a uno de los jugadores.,retrieved_corpus,retrieved,9.934595053105495,expulsar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+graciosas,20664,adj,Él es graciosas.,emergency_starter,starter_emergency_adj,2.8436155066553894,gracioso,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+grato,20665,adj,Guardo un recuerdo muy grato de aquel encuentro.,retrieved_corpus,retrieved,9.949155780201753,grato,Gender=Masc|Number=Sing,1,1,1,
+leeds,20666,prop,Él es profesor de inglés en leeds.,retrieved_corpus,retrieved,14.106239138250444,leeds,,1,1,1,
+lentas,20667,adj,Él es lentas.,emergency_starter,starter_emergency_adj,2.8436155066553894,lento,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+pedófilo,20668,n,Ella dice el pedófilo en la casa.,template_generated,n_b1_1,6.376718662178128,pedófilo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+blasfemia,20669,n,La blasfemia es un crimen sin víctima.,retrieved_corpus,retrieved,10.953184279598304,blasfemia,Gender=Fem|Number=Sing,1,1,1,
+clip,20670,n,El clip no ha estado en la playa.,stochastic_decoder,stochastic,7.1091468225438605,clip,Gender=Masc|Number=Sing,1,0,0,stochastic
+criollo,20671,adj,A mi tía le gusta la música criolla.,retrieved_corpus,retrieved,12.253641450333454,criollo,Gender=Fem|Number=Sing,1,1,1,
+daña,20672,v,Ella daña a las cinco de la casa.,stochastic_decoder,stochastic,7.160975813634194,dañar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+desalojo,20673,n,Ella dice el desalojo en la casa.,template_generated,n_b1_1,6.376718662178128,desalojo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+deshonesto,20674,adj,¿por qué hay tanta gente deshonesta en el mundo?,retrieved_corpus,retrieved,12.991434984072782,deshonesto,Gender=Fem|Number=Sing,1,1,1,
+estelares,20675,adj,Él es estelares.,emergency_starter,starter_emergency_adj,2.8436155066553894,estelar,Number=Plur,0,0,0,starter_emergency_adj
+explotando,20676,v,"¿no ves, pobre desgraciado, que te están explotando?",retrieved_corpus,retrieved,9.864685801279855,explotar,VerbForm=Ger,1,0,0,multi_clause_context
+ladra,20677,v,Tu perro me ladra todo el tiempo.,retrieved_corpus,retrieved,12.413069364116835,ladrar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+michaels,20678,none,La forma michaels es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,michaels,,0,0,0,residual_metalinguistic_clause
+pactado,20679,v,Ella necesita pactado.,emergency_starter,starter_emergency_inf,1.7889569914037526,pactado,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+pere,20680,v,,no_candidate_found,no_candidate_found,0.0,pere,,0,0,0,manual review needed
+preguntarnos,20681,v,,no_candidate_found,no_candidate_found,0.0,preguntarnos,,0,0,0,manual review needed
+salirte,20682,v,¿por qué tienes que salirte siempre con la tuya?,retrieved_corpus,retrieved,11.82502908438135,salirte,VerbForm=Inf,1,1,1,
+vila,20683,none,La forma vila es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,vila,,0,0,0,residual_metalinguistic_clause
+confundidos,20684,adj,,no_candidate_found,no_candidate_found,0.0,confundido,,0,0,0,manual review needed
+cowboy,20685,n,,no_candidate_found,no_candidate_found,0.0,cowboy,,0,0,0,manual review needed
+célebres,20686,adj,Fue una de las causas célebres de su época.,retrieved_corpus,retrieved,12.091837375928932,célebre,Number=Plur,1,1,1,
+decepcionar,20687,v,Tom no quiere que le decepcionen.,retrieved_corpus,retrieved,12.455552581109647,decepcionar,Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+estadístico,20688,adj,Todos los países mienten cuando muestran datos estadísticos.,retrieved_corpus,retrieved,11.369876893199143,estadístico,Gender=Masc|Number=Plur,1,1,1,
+exóticos,20689,adj,A algunas personas les gustan los nombres exóticos.,retrieved_corpus,retrieved,11.863084489663201,exótico,Gender=Masc|Number=Plur,1,1,1,
+interlocutores,20690,n,Ella dice el interlocutores en la casa.,template_generated,n_b1_1,6.376718662178128,interlocutor,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+olimpo,20691,prop,Olimpo es un poco de dinero a mary.,stochastic_decoder,stochastic,8.252044158173174,olimpo,,1,1,1,stochastic
+ortodoxo,20692,adj,El perro es ortodoxo en la casa.,template_generated,adj_b1_1,6.685201417652075,ortodoxo,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+palillos,20693,n,El señor parker trató de comer con palillos.,retrieved_corpus,retrieved,11.441471205084603,palillo,Gender=Masc|Number=Plur,1,1,1,
+poblados,20694,n,Ella va el poblados en la casa.,template_generated,n_b1_1,6.367507697704233,poblado,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+profe,20695,n,,no_candidate_found,no_candidate_found,0.0,profe,,0,0,0,manual review needed
+rastrearlo,20696,v,,no_candidate_found,no_candidate_found,0.0,rastrearlo,,0,0,0,manual review needed
+terapias,20697,n,Ella dice la terapias en la casa.,template_generated,n_b1_1,6.341439603717601,terapia,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+angustiado,20698,adj,,no_candidate_found,no_candidate_found,0.0,angustiado,,0,0,0,manual review needed
+confidenciales,20699,adj,Él es confidenciales.,emergency_starter,starter_emergency_adj,2.8436155066553894,confidencial,Number=Plur,0,0,0,starter_emergency_adj
+dudarlo,20700,v,,no_candidate_found,no_candidate_found,0.0,dudarlo,,0,0,0,manual review needed
+empeorado,20701,v,"Parece que el tiempo ha empeorado, ¿verdad?",retrieved_corpus,retrieved,10.83492668874116,empeorar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,0,0,multi_clause_context
+gilberto,20702,prop,Gilberto es un buen hombre de la noche.,stochastic_decoder,stochastic,9.097062430797555,gilberto,,1,1,1,stochastic
+irrupción,20703,n,La irrupción de la vida es muy interesante.,stochastic_decoder,stochastic,8.520821815627002,irrupción,Gender=Fem|Number=Sing,1,1,1,stochastic
+má,20704,none,La forma má es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,má,,0,0,0,residual_metalinguistic_clause
+natalidad,20705,n,Muchos países tratan de regular la tasa de natalidad.,retrieved_corpus,retrieved,11.230814152422665,natalidad,Gender=Fem|Number=Sing,1,1,1,
+oponentes,20706,n,Ella dice el oponentes en la casa.,template_generated,n_b1_1,6.376718662178128,oponente,Number=Plur,0,0,0,n_b1_1
+pedestal,20707,n,Te puse en un pedestal y ni cuenta te diste.,retrieved_corpus,retrieved,10.688552376365873,pedestal,Gender=Masc|Number=Sing,1,1,1,
+pregúntaselo,20708,none,La forma pregúntaselo es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,pregúntaselo,,0,0,0,residual_metalinguistic_clause
+acertar,20709,v,La bala acertó al policía en la pierna.,retrieved_corpus,retrieved,11.245964844121753,acertar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+ecológicos,20710,adj,Él es ecológicos.,emergency_starter,starter_emergency_adj,2.8436155066553894,ecológico,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+fregar,20711,v,Ya es un poco tarde para fregar.,retrieved_corpus,retrieved,11.85821577404825,fregar,VerbForm=Inf,1,1,1,
+intrusión,20712,n,Ella quiere la intrusión en la casa.,template_generated,n_b1_1,7.715998004950633,intrusión,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+rectificar,20713,v,¡menudo panorama nos espera como no logremos rectificar a tiempo!,retrieved_corpus,retrieved,11.070048103201337,rectificar,VerbForm=Inf,1,1,1,
+renombre,20714,n,Ella pasa el renombre en la casa.,template_generated,n_b1_1,6.273286222407186,renombre,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+similitudes,20715,n,Ella quiere la similitudes en la casa.,template_generated,n_b1_1,6.37935460738064,similitud,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+sudadera,20716,n,Se le hizo un hueco en la sudadera.,retrieved_corpus,retrieved,11.706451860409695,sudadera,Gender=Fem|Number=Sing,1,1,1,
+automovilístico,20717,adj,El hombre murió en un accidente automovilístico.,retrieved_corpus,retrieved,12.430271934935925,automovilístico,Gender=Masc|Number=Sing,1,1,1,
+baterista,20718,n,La baterista tomó las llaves de mi casa.,stochastic_decoder,stochastic,6.6814902369604825,baterista,Number=Sing,1,0,0,stochastic
+bizcochos,20719,n,Creo que voy a comprar unos bizcochos.,retrieved_corpus,retrieved,12.511937614578558,bizcocho,Gender=Masc|Number=Plur,1,1,1,
+cabreada,20720,adj,,no_candidate_found,no_candidate_found,0.0,cabreado,,0,0,0,manual review needed
+cocidos,20721,adj,,no_candidate_found,no_candidate_found,0.0,cocido,,0,0,0,manual review needed
+defenderte,20722,v,Ella quiere defenderte.,emergency_starter,starter_emergency_inf,2.096591949331417,defenderte,VerbForm=Inf,0,0,0,starter_emergency_inf
+guantera,20723,n,Me he olvidado las llaves en la guantera del coche.,retrieved_corpus,retrieved,12.796992425583758,guantera,Gender=Fem|Number=Sing,1,1,1,
+metanfetamina,20724,n,Ella da la metanfetamina en la casa.,template_generated,n_b1_1,7.50730705096845,metanfetamina,Gender=Fem|Number=Sing,1,0,1,n_b1_1
+nadal,20725,n,,no_candidate_found,no_candidate_found,0.0,nadal,,0,0,0,manual review needed
+peculiaridades,20726,n,Cada lengua tiene sus propias peculiaridades.,retrieved_corpus,retrieved,9.834656090392215,peculiaridad,Gender=Fem|Number=Plur,1,1,1,
+pelayo,20727,prop,Pelayo es el más largo de la casa.,stochastic_decoder,stochastic,9.091391349965193,pelayo,,1,1,1,stochastic
+remar,20728,v,Él está remando en dulce de leche.,retrieved_corpus,retrieved,11.162200703321625,remar,VerbForm=Ger,1,1,1,
+trabajarás,20729,v,Ella trabajarás.,emergency_starter,starter_emergency_verb,-0.23408952413549056,trabajarás,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,0,0,0,starter_emergency_verb
+trip,20730,n,,no_candidate_found,no_candidate_found,0.0,trip,,0,0,0,manual review needed
+acogió,20731,v,Ella acogió con gran placer estar con tom.,stochastic_decoder,stochastic,6.09921071310052,acoger,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+barricada,20732,n,La barricada sin ningún tipo de persona es.,stochastic_decoder,stochastic,6.652775581843842,barricada,Gender=Fem|Number=Sing,1,0,0,stochastic
+búsquedas,20733,n,Hicimos búsquedas en el bosque para encontrar al niño perdido.,retrieved_corpus,retrieved,10.901666046203765,búsqueda,Gender=Fem|Number=Plur,1,1,1,
+dolorosas,20734,adj,Él es dolorosas.,emergency_starter,starter_emergency_adj,2.8436155066553894,doloroso,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+macetas,20735,n,Las macetas estaban todas llenas de tierra.,retrieved_corpus,retrieved,10.2059271928467,maceta,Gender=Fem|Number=Plur,1,1,1,
+tajada,20736,n,Una tajada de esta habitación es muy bonita.,stochastic_decoder,stochastic,7.524502168075206,tajada,Gender=Fem|Number=Sing,1,0,1,stochastic
+trópico,20737,n,Ella va el trópico en la casa.,template_generated,n_b1_1,7.754834233787747,trópico,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+alo,20738,none,La forma alo es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,alo,,0,0,0,residual_metalinguistic_clause
+antonieta,20739,prop,Dicen que maría antonieta fue responsable de la revolución francesa.,retrieved_corpus,retrieved,13.270822007743298,antonieta,,1,1,1,
+arriesgaré,20740,v,,no_candidate_found,no_candidate_found,0.0,arriesgaré,,0,0,0,manual review needed
+búscalo,20741,v,Ella necesita búscalo.,emergency_starter,starter_emergency_inf,1.7889569914037526,búscalo,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,0,0,0,starter_emergency_inf
+clímax,20742,n,Estamos en el clímax de nuestra juventud.,retrieved_corpus,retrieved,10.892232803527607,clímax,Gender=Masc,1,1,1,
+distensión,20743,n,La distensión de los estados unidos se habla.,stochastic_decoder,stochastic,8.039693097578999,distensión,Gender=Fem|Number=Sing,1,1,1,stochastic
+foley,20744,none,La forma foley es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,foley,,0,0,0,residual_metalinguistic_clause
+lanzamientos,20745,n,,no_candidate_found,no_candidate_found,0.0,lanzamientos,,0,0,0,manual review needed
+momentáneamente,20746,adv,Tom dejó solos a mary y john momentáneamente.,retrieved_corpus,retrieved,13.694559225350137,momentáneamente,,1,1,1,
+planetario,20747,adj,El aire es planetario en la casa.,template_generated,adj_b1_1,7.816362864630081,planetario,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+reojo,20748,adv,Ella habla reojo.,template_generated,adv_general_speak,3.78519567385702,reojo,,0,0,0,adv_general_speak
+retiramos,20749,v,,no_candidate_found,no_candidate_found,0.0,retiramos,,0,0,0,manual review needed
+sweeney,20750,none,La forma sweeney es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,sweeney,,0,0,0,residual_metalinguistic_clause
+vísceras,20751,n,Ella dice el vísceras en la casa.,template_generated,n_b1_1,6.376718662178128,víscera,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+amarlo,20752,v,,no_candidate_found,no_candidate_found,0.0,amarlo,,0,0,0,manual review needed
+avisarte,20753,v,,no_candidate_found,no_candidate_found,0.0,avisarte,,0,0,0,manual review needed
+cochera,20754,n,Tom no sabe qué hacer con toda la basura en su cochera.,retrieved_corpus,retrieved,11.97352530061894,cochera,Gender=Fem|Number=Sing,1,1,1,
+deteniendo,20755,v,Ella deteniendo.,emergency_starter,starter_emergency_verb,-0.23408952413549056,detener,VerbForm=Ger,0,0,0,starter_emergency_verb
+discordia,20756,n,La discordia arruina las cosas a la casa.,stochastic_decoder,stochastic,8.056790872900722,discordia,Gender=Fem|Number=Sing,1,1,1,stochastic
+implicada,20757,adj,,no_candidate_found,no_candidate_found,0.0,implicado,,0,0,0,manual review needed
+legumbres,20758,n,,no_candidate_found,no_candidate_found,0.0,legumbres,,0,0,0,manual review needed
+llanos,20759,n,,no_candidate_found,no_candidate_found,0.0,llanos,,0,0,0,manual review needed
+morelos,20760,prop,Morelos es un poco más de tres días.,stochastic_decoder,stochastic,8.279290286830639,morelos,,1,1,1,stochastic
+sintiéndose,20761,v,,no_candidate_found,no_candidate_found,0.0,sintiéndose,,0,0,0,manual review needed
+tranquilizantes,20762,n,Ella dice el tranquilizantes en la casa.,template_generated,n_b1_1,6.376718662178128,tranquilizante,Number=Plur,0,0,0,n_b1_1
+travesura,20763,n,Voy a hacer mi primera travesura.,retrieved_corpus,retrieved,11.1562384865799,travesura,Gender=Fem|Number=Sing,1,1,1,
+villas,20764,prop,Villas es de la vida en un día.,stochastic_decoder,stochastic,7.8303350963094225,villa,Gender=Fem|Number=Plur,1,0,1,stochastic
+abominable,20765,adj,El aborto me parece un acto abominable.,retrieved_corpus,retrieved,10.8299256372486,abominable,Number=Sing,1,1,1,
+basicamente,20766,adv,Ella habla basicamente.,template_generated,adv_general_speak,3.78519567385702,basicamente,,0,0,0,adv_general_speak
+beneficiado,20767,v,Ella beneficiado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,beneficiar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+letrado,20768,n,Ella va el letrado en la casa.,template_generated,n_b1_1,6.367507697704233,letrado,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+mudando,20769,v,Tom se está mudando a un sitio nuevo.,retrieved_corpus,retrieved,13.32512643669858,mudar,VerbForm=Ger,1,1,1,
+obsesiones,20770,n,Ella quiere la obsesiones en la casa.,template_generated,n_b1_1,6.37935460738064,obsesión,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+reptil,20771,n,¡un reptil gigante está destruyendo la ciudad!,retrieved_corpus,retrieved,10.241202130212992,reptil,Gender=Masc|Number=Sing,1,1,1,
+revelador,20772,adj,El hombre es revelador en el mundo.,template_generated,adj_b1_1,6.910857333308609,revelador,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+suela,20773,n,No le llegas a la suela del zapato.,retrieved_corpus,retrieved,11.670909323206468,suela,Gender=Fem|Number=Sing,1,1,1,
+tardo,20774,adj,,no_candidate_found,no_candidate_found,0.0,tardo,,0,0,0,manual review needed
+triunfa,20775,v,El bien siempre triunfa sobre el mal ... en los cuentos.,retrieved_corpus,retrieved,11.47993463016503,triunfar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+aceptarla,20776,v,,no_candidate_found,no_candidate_found,0.0,aceptarla,,0,0,0,manual review needed
+bicarbonato,20777,n,Se lavó los dientes con bicarbonato.,retrieved_corpus,retrieved,10.034645419431383,bicarbonato,Gender=Masc|Number=Sing,1,1,1,
+ceremonial,20778,adj,Todos estaban vestidos con hermosos vestuarios ceremoniales.,retrieved_corpus,retrieved,10.531622504001533,ceremonial,Number=Plur,1,1,1,
+complicar,20779,v,Los fallos del sistema le complicaban las cosas a mary.,retrieved_corpus,retrieved,12.012669695301383,complicar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+confundiendo,20780,v,Ella confundiendo.,emergency_starter,starter_emergency_verb,-0.23408952413549056,confundir,VerbForm=Ger,0,0,0,starter_emergency_verb
+duraría,20781,v,Inicialmente supuse que eso no duraría mucho.,retrieved_corpus,retrieved,9.656337922683788,durar,Mood=Cnd|Number=Sing|Person=3|VerbForm=Fin,1,1,1,
+estirado,20782,adj,,no_candidate_found,no_candidate_found,0.0,estirado,,0,0,0,manual review needed
+gnomo,20783,n,El gnomo todos los niños les gustaría creer.,stochastic_decoder,stochastic,7.78586722954982,gnomo,Gender=Masc|Number=Sing,1,0,1,stochastic
+llevarías,20784,v,,no_candidate_found,no_candidate_found,0.0,llevarías,,0,0,0,manual review needed
+originado,20785,v,Ella originado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,originar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+premisas,20786,n,Ella quiere la premisas en la casa.,template_generated,n_b1_1,6.37935460738064,premisa,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+rejilla,20787,n,La rejilla del techo es de mi madre.,stochastic_decoder,stochastic,7.774167067276857,rejilla,Gender=Fem|Number=Sing,1,0,1,stochastic
+saudí,20788,n,,no_candidate_found,no_candidate_found,0.0,saudí,,0,0,0,manual review needed
+trabajábamos,20789,v,,no_candidate_found,no_candidate_found,0.0,trabajábamos,,0,0,0,manual review needed
+victorioso,20790,adj,El hombre es victorioso en la casa.,template_generated,adj_b1_1,6.862411045124086,victorioso,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+apetecía,20791,v,Ella apetecía un poco más de la casa.,stochastic_decoder,stochastic,7.577325631660629,apetecer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,1,stochastic
+aplique,20792,v,"Aquel que propone soluciones, que las aplique con él mismo.",retrieved_corpus,retrieved,9.365943596060946,aplicar,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,multi_clause_context
+atrapadas,20793,adj,,no_candidate_found,no_candidate_found,0.0,atrapado,,0,0,0,manual review needed
+badajoz,20794,prop,Nos veremos por navidades en badajoz.,retrieved_corpus,retrieved,11.596139442787983,badajoz,,1,1,1,
+bajarse,20795,v,,no_candidate_found,no_candidate_found,0.0,bajarse,,0,0,0,manual review needed
+deslizó,20796,v,Una única lágrima se deslizó por su mejilla mostrando su tristeza.,retrieved_corpus,retrieved,10.314895113714178,deslizar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+implicar,20797,v,El dominio de una lengua extranjera implica mucha paciencia.,retrieved_corpus,retrieved,11.775322665107279,implicar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+jirafa,20798,n,No he visto nunca una jirafa.,retrieved_corpus,retrieved,11.633922777732222,jirafa,Gender=Fem|Number=Sing,1,1,1,
+protegía,20799,v,Ella protegía de la muerte de su padre.,stochastic_decoder,stochastic,7.411669596032396,proteger,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+vancouver,20800,prop,Voy a vancouver la semana que viene a ver a mi hermana.,retrieved_corpus,retrieved,14.507443825078752,vancouver,,1,1,1,
+agradaba,20801,v,A tom no le agradaba el marido de mary.,retrieved_corpus,retrieved,14.170229546299973,agradar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+agrupa,20802,v,Agrupa las palabras según su significado.,retrieved_corpus,retrieved,8.56555472619424,agrupar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+arriesgó,20803,v,Tom se arriesgó a meterse en problemas por mí.,retrieved_corpus,retrieved,12.141534752359284,arriesgar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+bondadoso,20804,adj,Aquel hombre no luce como hombre bondadoso.,retrieved_corpus,retrieved,10.213071994576692,bondadoso,Gender=Masc|Number=Sing,1,1,1,
+describiendo,20805,v,No conozco a la persona que estás describiendo.,retrieved_corpus,retrieved,12.549424604178698,describir,VerbForm=Ger,1,1,1,
+edimburgo,20806,prop,Edimburgo es la capital de escocia.,retrieved_corpus,retrieved,11.737978516396687,edimburgo,,1,1,1,
+escoceses,20807,adj,Él es escoceses.,emergency_starter,starter_emergency_adj,2.8436155066553894,escocés,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+estrenar,20808,v,Esa obra se estrenó en broadway la semana pasada.,retrieved_corpus,retrieved,11.224733387454467,estrenar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+insensato,20809,adj,Fue lo suficientemente insensata para creerla.,retrieved_corpus,retrieved,10.245086757795592,insensato,Gender=Fem|Number=Sing,1,1,1,
+invitaré,20810,v,Yo invitaré a todos los días en casa.,stochastic_decoder,stochastic,7.206755904131426,invitar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+jugarán,20811,v,Ellos jugarán al béisbol después de la casa.,stochastic_decoder,stochastic,6.858928351558572,jugar,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+jóven,20812,adj,,no_candidate_found,no_candidate_found,0.0,jóven,,0,0,0,manual review needed
+medido,20813,v,Me gustaría ser medido para un traje nuevo.,retrieved_corpus,retrieved,13.015340634610702,medir,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+mocosa,20814,n,Ella quiere la mocosa en la casa.,template_generated,n_b1_1,6.37935460738064,mocosa,Gender=Fem|Number=Sing,0,0,0,n_b1_1
+pulido,20815,adj,,no_candidate_found,no_candidate_found,0.0,pulido,,0,0,0,manual review needed
+representaban,20816,v,Ellos representaban una manzana a partir de ahora.,stochastic_decoder,stochastic,6.458721846688919,representar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+silicona,20817,n,Una silicona todas las cosas no se puede.,stochastic_decoder,stochastic,5.679768289821031,silicona,Gender=Fem|Number=Sing,1,0,0,stochastic
+tóxica,20818,adj,Él es tóxica.,emergency_starter,starter_emergency_adj,5.690189096935362,tóxico,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+vallejo,20819,prop,Vallejo es un buen trabajo en la habitación.,stochastic_decoder,stochastic,8.131129786410465,vallejo,,1,1,1,stochastic
+australianos,20820,adj,Él es australianos.,emergency_starter,starter_emergency_adj,2.8436155066553894,australiano,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+cristianas,20821,adj,Él es cristianas.,emergency_starter,starter_emergency_adj,2.8436155066553894,cristiano,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+desmayé,20822,v,Perdí tanta sangre que me desmayé.,retrieved_corpus,retrieved,9.18042116808055,desmayé,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+desprecia,20823,v,Ella desprecia a la casa de su madre.,stochastic_decoder,stochastic,8.93624933696101,despreciar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+haciendas,20824,n,Ella quiere la haciendas en la casa.,template_generated,n_b1_1,6.37935460738064,hacienda,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+implantar,20825,v,,no_candidate_found,no_candidate_found,0.0,implantar,,0,0,0,manual review needed
+jodidas,20826,adj,,no_candidate_found,no_candidate_found,0.0,jodidas,,0,0,0,manual review needed
+mediocridad,20827,n,Ser realista es el camino más común a la mediocridad.,retrieved_corpus,retrieved,10.633044180554993,mediocridad,Gender=Fem|Number=Sing,1,1,1,
+menstruación,20828,n,Se me ha retrasado la menstruación.,retrieved_corpus,retrieved,11.14742464315805,menstruación,Gender=Fem|Number=Sing,1,1,1,
+pollas,20829,n,Ella dice la pollas en la casa.,template_generated,n_b1_1,6.341439603717601,polla,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+residuales,20830,adj,Él es residuales.,emergency_starter,starter_emergency_adj,2.8436155066553894,residual,Number=Plur,0,0,0,starter_emergency_adj
+sobreviví,20831,v,Yo sobreviví el accidente de camino a casa.,stochastic_decoder,stochastic,6.798510997441169,sobrevivir,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+venderme,20832,v,Ella quiere venderme.,emergency_starter,starter_emergency_inf,2.096591949331417,venderme,VerbForm=Inf,0,0,0,starter_emergency_inf
+absorbido,20833,v,Ella absorbido.,emergency_starter,starter_emergency_verb,-0.23408952413549056,absorber,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+aceras,20834,n,Ella hace la aceras en la casa.,template_generated,n_b1_1,6.297242832935041,acera,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+acostumbrando,20835,v,Lentamente me voy acostumbrando al clima húmedo de aquí.,retrieved_corpus,retrieved,11.372323127482751,acostumbrar,VerbForm=Ger,1,1,1,
+anticonceptivos,20836,n,Ella dice el anticonceptivos en la casa.,template_generated,n_b1_1,6.376718662178128,anticonceptivo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+brevedad,20837,n,La brevedad siempre se ha vuelto a casa.,stochastic_decoder,stochastic,8.133369674600512,brevedad,Gender=Fem|Number=Sing,1,1,1,stochastic
+chupando,20838,v,Tom te está chupando la sangre.,retrieved_corpus,retrieved,12.185425643498322,chupar,VerbForm=Ger,1,1,1,
+clamor,20839,n,El clamor de su madre es una lengua.,stochastic_decoder,stochastic,8.27840976552103,clamor,Gender=Masc|Number=Sing,1,1,1,stochastic
+contrabandista,20840,n,Tom pensaba que quizá mary y john fueran contrabandistas de armas.,retrieved_corpus,retrieved,11.194636119505468,contrabandista,Number=Plur,1,1,1,
+creeré,20841,v,Nunca creeré que dios juega a los dados con el mundo.,retrieved_corpus,retrieved,11.727163012936549,creer,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,
+dudando,20842,v,Ella dudando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,dudar,VerbForm=Ger,0,0,0,starter_emergency_verb
+enfrentaron,20843,v,Ellos enfrentaron por un momento en el mundo.,stochastic_decoder,stochastic,6.706585385910016,enfrentar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+erc,20844,n,,no_candidate_found,no_candidate_found,0.0,erc,,0,0,0,manual review needed
+exterminar,20845,v,,no_candidate_found,no_candidate_found,0.0,exterminar,,0,0,0,manual review needed
+ladridos,20846,n,Los ladridos del perro del vecino dan miedo.,retrieved_corpus,retrieved,10.894498577133476,ladrido,Gender=Masc|Number=Plur,1,1,1,
+montenegro,20847,prop,Montenegro es un poco más de tres años.,stochastic_decoder,stochastic,10.05509992951568,montenegro,,1,1,1,stochastic
+oleaje,20848,n,Ella va el oleaje en la casa.,template_generated,n_b1_1,7.754834233787747,oleaje,Gender=Masc|Number=Sing,1,0,1,n_b1_1
+salvaré,20849,v,,no_candidate_found,no_candidate_found,0.0,salvaré,,0,0,0,manual review needed
+ahumado,20850,adj,,no_candidate_found,no_candidate_found,0.0,ahumado,,0,0,0,manual review needed
+derramado,20851,v,Ella derramado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,derramar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+desarrollará,20852,v,,no_candidate_found,no_candidate_found,0.0,desarrollará,,0,0,0,manual review needed
+desperdicios,20853,n,Ella dice el desperdicios en la casa.,template_generated,n_b1_1,6.376718662178128,desperdicio,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+localizador,20854,n,Ella va el localizador en la casa.,template_generated,n_b1_1,6.367507697704233,localizador,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+olivo,20855,n,Ella sabe el olivo en la casa.,template_generated,n_b1_1,8.824592803609585,olivo,Gender=Masc|Number=Sing,1,1,1,n_b1_1
+prolonga,20856,v,Un corazón alegre prolonga la vida.,retrieved_corpus,retrieved,9.873914815229437,prolongar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+speed,20857,none,La forma speed es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,speed,,0,0,0,residual_metalinguistic_clause
+trastornado,20858,adj,,no_candidate_found,no_candidate_found,0.0,trastornado,,0,0,0,manual review needed
+abandonará,20859,v,Ella abandonará pronto el fin de semana pasado.,stochastic_decoder,stochastic,6.932166222594119,abandonar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+arañazos,20860,n,Ella dice el arañazos en la casa.,template_generated,n_b1_1,7.713362059748121,arañazo,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+canalizar,20861,v,,no_candidate_found,no_candidate_found,0.0,canalizar,,0,0,0,manual review needed
+consagrado,20862,v,Ella consagrado.,emergency_starter,starter_emergency_verb,-0.23408952413549056,consagrar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,0,0,0,starter_emergency_verb
+deseaban,20863,v,Ellos deseaban tener más cuidado en el mundo.,stochastic_decoder,stochastic,6.462079567306806,desear,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+deshidratación,20864,n,El médico me dijo que bebiese más agua para prevenir la deshidratación.,retrieved_corpus,retrieved,11.209164033700771,deshidratación,Gender=Fem|Number=Sing,1,1,1,
+enérgico,20865,adj,Su declaración fue corta y enérgica.,retrieved_corpus,retrieved,9.817907899956392,enérgico,Gender=Fem|Number=Sing,1,1,1,
+ezln,20866,prop,Ezln es un poco de dinero a mary.,stochastic_decoder,stochastic,8.252044158173174,ezln,,1,1,1,stochastic
+firmaste,20867,v,,no_candidate_found,no_candidate_found,0.0,firmaste,,0,0,0,manual review needed
+omisión,20868,n,La mentira por omisión es la forma más común de mentira.,retrieved_corpus,retrieved,11.201569118501336,omisión,Gender=Fem|Number=Sing,1,1,1,
+pasase,20869,v,Ella pasase.,emergency_starter,starter_emergency_verb,-0.23408952413549056,pasar,Mood=Sub|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,0,0,0,starter_emergency_verb
+templado,20870,adj,,no_candidate_found,no_candidate_found,0.0,templado,,0,0,0,manual review needed
+terrorífico,20871,adj,Le tengo un miedo terrorífico a las serpientes.,retrieved_corpus,retrieved,11.203228226940318,terrorífico,Gender=Masc|Number=Sing,1,1,1,
+yuki,20872,n,,no_candidate_found,no_candidate_found,0.0,yuki,,0,0,0,manual review needed
+zarpar,20873,v,Ese barco zarpa al extranjero desde este puerto.,retrieved_corpus,retrieved,11.758900630589835,zarpar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+acoger,20874,v,Hay que acoger a más inmigrantes.,retrieved_corpus,retrieved,10.373639465415742,acoger,VerbForm=Inf,1,1,1,
+alega,20875,v,,no_candidate_found,no_candidate_found,0.0,alegar,,0,0,0,manual review needed
+chechenia,20876,prop,Chechenia es un poco de dinero a tom.,stochastic_decoder,stochastic,8.19528575553251,chechenia,,1,1,1,stochastic
+colchones,20877,n,,no_candidate_found,no_candidate_found,0.0,colchones,,0,0,0,manual review needed
+conseguirán,20878,v,Ellos conseguirán ponerse de acuerdo con el dinero.,stochastic_decoder,stochastic,6.640429529667506,conseguir,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+cubrirse,20879,v,,no_candidate_found,no_candidate_found,0.0,cubrirse,,0,0,0,manual review needed
+enredado,20880,v,Me he enredado en una red de mentiras.,retrieved_corpus,retrieved,12.580949537365145,enredar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+enérgica,20881,adj,Su declaración fue corta y enérgica.,retrieved_corpus,retrieved,9.817907899956392,enérgico,Gender=Fem|Number=Sing,1,1,1,
+escaparte,20882,v,,no_candidate_found,no_candidate_found,0.0,escaparte,,0,0,0,manual review needed
+esperarte,20883,v,,no_candidate_found,no_candidate_found,0.0,esperarte,,0,0,0,manual review needed
+ingrato,20884,adj,¿por qué tiene que ser esta vida tan ingrata?,retrieved_corpus,retrieved,11.782085654559234,ingrato,Gender=Fem|Number=Sing,1,1,1,
+interfaz,20885,n,Le prometí traducir la interfaz completa.,retrieved_corpus,retrieved,9.82195828733917,interfaz,Gender=Fem|Number=Sing,1,1,1,
+librerías,20886,n,Ella quiere la librerías en la casa.,template_generated,n_b1_1,6.37935460738064,librería,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+medicinales,20887,adj,Él es medicinales.,emergency_starter,starter_emergency_adj,2.8436155066553894,medicinal,Number=Plur,0,0,0,starter_emergency_adj
+niñeras,20888,n,,no_candidate_found,no_candidate_found,0.0,niñeras,,0,0,0,manual review needed
+recibiría,20889,v,,no_candidate_found,no_candidate_found,0.0,recibiría,,0,0,0,manual review needed
+secadora,20890,n,Puse mi ropa en la secadora.,retrieved_corpus,retrieved,9.39432084090782,secadora,Gender=Fem|Number=Sing,1,1,1,
+suministrar,20891,v,La planta eléctrica suministra electricidad hasta un distrito remoto.,retrieved_corpus,retrieved,11.320971079276985,suministrar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+transformando,20892,v,Ella transformando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,transformar,VerbForm=Ger,0,0,0,starter_emergency_verb
+abandonaré,20893,v,Yo abandonaré el hospital ayer por la noche.,stochastic_decoder,stochastic,6.712431078518013,abandonar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+abuelito,20894,n,Mi abuelito toma el desayuno normalmente a las seis.,retrieved_corpus,retrieved,11.362258425010014,abuelito,Gender=Masc|Number=Sing,1,1,1,
+ataúdes,20895,n,Ella gusta el ataúdes en la casa.,template_generated,n_b1_1,7.663292168580707,ataúd,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+bolero,20896,n,,no_candidate_found,no_candidate_found,0.0,bolero,,0,0,0,manual review needed
+cacharro,20897,n,¿estás pensando seriamente en comprar ese cacharro?,retrieved_corpus,retrieved,10.460266631088098,cacharro,Gender=Masc|Number=Sing,1,1,1,
+cascabel,20898,n,Ni le pusieron el cascabel al gato ni lo intentaron.,retrieved_corpus,retrieved,10.582453665955066,cascabel,Gender=Masc|Number=Sing,1,1,1,
+causarle,20899,v,,no_candidate_found,no_candidate_found,0.0,causarle,,0,0,0,manual review needed
+circulares,20900,n,Ella dice el circulares en la casa.,template_generated,n_b1_1,6.376718662178128,circular,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+comestible,20901,adj,¿estás seguro de que esto es comestible?,retrieved_corpus,retrieved,11.886159504250363,comestible,Number=Sing,1,1,1,
+convertirán,20902,v,Ellos convertirán en las manos antes de comer.,stochastic_decoder,stochastic,6.6882230958697955,convertir,Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+dejáis,20903,v,Yo dejáis.,emergency_starter,starter_emergency_verb,-0.4345406494325612,dejáis,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,0,0,0,starter_emergency_verb
+despertaron,20904,v,"Después de haber dormido un poco, lo despertaron fuertes voces.",retrieved_corpus,retrieved,10.686888637067474,despertar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,0,0,multi_clause_context
+ecuatoriano,20905,adj,El mundo es ecuatoriano en la casa.,template_generated,adj_b1_1,8.041589090265274,ecuatoriano,Gender=Masc|Number=Sing,0,0,0,adj_b1_1
+goliat,20906,prop,Goliat es el día de hoy en día.,stochastic_decoder,stochastic,8.12765137048876,goliat,,1,1,1,stochastic
+gritarle,20907,v,,no_candidate_found,no_candidate_found,0.0,gritarle,,0,0,0,manual review needed
+hablarse,20908,v,,no_candidate_found,no_candidate_found,0.0,hablarse,,0,0,0,manual review needed
+inaugurado,20909,v,Se ha inaugurado una nueva tienda en mi barrio.,retrieved_corpus,retrieved,11.679303410785367,inaugurar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+introduciendo,20910,v,Ella introduciendo.,emergency_starter,starter_emergency_verb,-0.23408952413549056,introducir,VerbForm=Ger,0,0,0,starter_emergency_verb
+multiplicado,20911,v,Dicen que en diez años los gastos podrán haberse multiplicado por dos.,retrieved_corpus,retrieved,10.20470235500359,multiplicar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+pasional,20912,adj,El hombre es pasional en el campo.,template_generated,adj_b1_1,6.897271295089796,pasional,Number=Sing,0,0,0,adj_b1_1
+perturbación,20913,n,Tales observaciones le presentaron ejemplos evidentes de perturbaciones químicas de la salud.,retrieved_corpus,retrieved,9.510098575071517,perturbación,Gender=Fem|Number=Plur,1,1,1,
+razonablemente,20914,adv,Esta estrategia nos ha salido razonablemente bien.,retrieved_corpus,retrieved,13.47673884604379,razonablemente,,1,1,1,
+relajar,20915,v,¿qué tal si nos relajamos un poco?,retrieved_corpus,retrieved,12.226829792338679,relajar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+semblante,20916,n,El semblante de la vida es un tipo.,stochastic_decoder,stochastic,7.660660816371874,semblante,Gender=Masc|Number=Sing,1,0,1,stochastic
+supremacía,20917,n,Mantiene siempre la supremacía en las discusiones.,retrieved_corpus,retrieved,9.307186921503472,supremacía,Gender=Fem|Number=Sing,1,1,1,
+torácica,20918,adj,Él es torácica.,emergency_starter,starter_emergency_adj,2.8436155066553894,torácico,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+traseras,20919,adj,Él es traseras.,emergency_starter,starter_emergency_adj,2.8436155066553894,trasero,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+acostumbro,20920,v,Acostumbro levantarme a las seis de la mañana.,retrieved_corpus,retrieved,11.782929987510041,acostumbrar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+administra,20921,v,El alcalde administra los asuntos de la ciudad.,retrieved_corpus,retrieved,11.834782533517842,administrar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+atascados,20922,adj,,no_candidate_found,no_candidate_found,0.0,atascado,,0,0,0,manual review needed
+cachorrito,20923,n,He estado buscando a mi cachorrito por semanas.,retrieved_corpus,retrieved,11.463172553403819,cachorrito,Gender=Masc|Number=Sing,1,1,1,
+morían,20924,v,Ellos morían de hambre a todo el mundo.,stochastic_decoder,stochastic,6.8027925380566305,morir,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,0,0,stochastic
+rodado,20925,v,Ella puede rodado.,emergency_starter,starter_emergency_inf,1.931593206020656,rodado,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+saqueo,20926,n,El saqueo de roma sucedió en la habitación.,stochastic_decoder,stochastic,7.666127571384029,saqueo,Gender=Masc|Number=Sing,1,0,1,stochastic
+satelital,20927,adj,El hombre es satelital en el mundo.,template_generated,adj_b1_1,6.910857333308609,satelital,Number=Sing,0,0,0,adj_b1_1
+subterráneas,20928,adj,Él es subterráneas.,emergency_starter,starter_emergency_adj,2.8436155066553894,subterráneo,Gender=Fem|Number=Plur,0,0,0,starter_emergency_adj
+atorado,20929,v,Ella quiere atorado.,emergency_starter,starter_emergency_inf,2.096591949331417,atorado,Gender=Masc|Number=Sing|VerbForm=Part,0,0,0,starter_emergency_inf
+bing,20930,none,La forma bing es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,bing,,0,0,0,residual_metalinguistic_clause
+detesta,20931,v,Ella detesta esperar mucho tiempo en el campo.,stochastic_decoder,stochastic,8.307259498638615,detestar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+drogadicta,20932,adj,Él es drogadicta.,emergency_starter,starter_emergency_adj,5.516902301795375,drogadicta,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+enamorando,20933,v,Ella enamorando.,emergency_starter,starter_emergency_verb,-0.23408952413549056,enamorar,VerbForm=Ger,0,0,0,starter_emergency_verb
+grupal,20934,adj,Había todo tipo de actividades grupales.,retrieved_corpus,retrieved,10.092104270732014,grupal,Number=Plur,1,1,1,
+logística,20935,adj,Él es logística.,emergency_starter,starter_emergency_adj,2.8436155066553894,logística,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+maligna,20936,adj,Aquella mujer tiene una mirada maligna.,retrieved_corpus,retrieved,9.455623504419737,maligno,Gender=Fem|Number=Sing,1,1,1,
+matinal,20937,adj,La oración matinal hoy tendrá lugar cuarto de hora más tarde.,retrieved_corpus,retrieved,11.878261656690105,matinal,Number=Sing,1,1,1,
+recaída,20938,n,Existe una pequeña posibilidad de recaída.,retrieved_corpus,retrieved,9.264176030225919,recaída,Gender=Fem|Number=Sing,1,1,1,
+alejarnos,20939,v,,no_candidate_found,no_candidate_found,0.0,alejarnos,,0,0,0,manual review needed
+antebrazo,20940,n,La fractura del antebrazo de carla tenía arreglo.,retrieved_corpus,retrieved,10.874404958808174,antebrazo,Gender=Masc|Number=Sing,1,1,1,
+escucharlos,20941,v,,no_candidate_found,no_candidate_found,0.0,escucharlos,,0,0,0,manual review needed
+espiritualidad,20942,n,Hay muchas religiones pero sólo una espiritualidad.,retrieved_corpus,retrieved,10.680344980741134,espiritualidad,Gender=Fem|Number=Sing,1,1,1,
+porra,20943,n,¿vas a echar porras por mí?,retrieved_corpus,retrieved,9.936665765846376,porra,Gender=Fem|Number=Plur,1,1,1,
+quítatelo,20944,v,,no_candidate_found,no_candidate_found,0.0,quítatelo,,0,0,0,manual review needed
+sic,20945,adv,Ella habla sic.,template_generated,adv_general_speak,3.78519567385702,sic,,0,0,0,adv_general_speak
+séquito,20946,n,Ella pasa el séquito en la casa.,template_generated,n_b1_1,6.273286222407186,séquito,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+versalles,20947,prop,Versalles es una de las personas no siempre.,stochastic_decoder,stochastic,7.92138041864058,versalles,,1,0,1,stochastic
+causará,20948,v,Ella causará daño considerable a usted no habla.,stochastic_decoder,stochastic,5.91496314903346,causar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,0,0,stochastic
+flexiones,20949,n,,no_candidate_found,no_candidate_found,0.0,flexiones,,0,0,0,manual review needed
+geología,20950,n,Tom hizo trampa en el examen de geología.,retrieved_corpus,retrieved,12.366576795534872,geología,Gender=Fem|Number=Sing,1,1,1,
+malignos,20951,adj,Él es malignos.,emergency_starter,starter_emergency_adj,2.8436155066553894,maligno,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+prefectura,20952,n,La prefectura está investigando el incidente a mary.,stochastic_decoder,stochastic,7.620191767416053,prefectura,Gender=Fem|Number=Sing,1,0,1,stochastic
+proclamó,20953,v,Ella proclamó jefe de tom no tiene nada.,stochastic_decoder,stochastic,7.188928309134652,proclamar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+secular,20954,adj,El hombre es secular en la casa.,template_generated,adj_b1_1,6.862411045124086,secular,Number=Sing,0,0,0,adj_b1_1
+telefonear,20955,v,Es peligroso telefonear y conducir a la vez.,retrieved_corpus,retrieved,11.501026934416524,telefonear,VerbForm=Inf,1,1,1,
+trastos,20956,n,Quita de aquí estos trastos viejos.,retrieved_corpus,retrieved,9.378945031737482,trasto,Gender=Masc|Number=Plur,1,1,1,
+bucle,20957,n,,no_candidate_found,no_candidate_found,0.0,bucle,,0,0,0,manual review needed
+centrarnos,20958,v,,no_candidate_found,no_candidate_found,0.0,centrarnos,,0,0,0,manual review needed
+confinamiento,20959,n,La gente no soportará el confinamiento.,retrieved_corpus,retrieved,11.182609277278306,confinamiento,Gender=Masc|Number=Sing,1,1,1,
+contemplan,20960,v,Ellos contemplan nuevos impuestos para lidiar con eso.,stochastic_decoder,stochastic,5.662216773803852,contemplar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,0,0,stochastic
+cubanas,20961,adj,,no_candidate_found,no_candidate_found,0.0,cubanas,,0,0,0,manual review needed
+marga,20962,n,,no_candidate_found,no_candidate_found,0.0,marga,,0,0,0,manual review needed
+n.,20963,adj,,no_candidate_found,no_candidate_found,0.0,n.,,0,0,0,manual review needed
+obsesiva,20964,adj,Él es obsesiva.,emergency_starter,starter_emergency_adj,2.8436155066553894,obsesivo,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+basílica,20965,n,"Las basílicas son patrimonio de la humanidad, y como tal deben cuidarse.",retrieved_corpus,retrieved,9.73364821870587,basílica,Gender=Fem|Number=Plur,1,0,0,multi_clause_context
+calabazas,20966,n,Ella da la calabazas en la casa.,template_generated,n_b1_1,7.55799018948197,calabaza,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+cementerios,20967,n,En la ciudad hay varios cementerios.,retrieved_corpus,retrieved,11.347714276393067,cementerio,Gender=Masc|Number=Plur,1,1,1,
+circulando,20968,v,Hay un rumor circulando sobre tom.,retrieved_corpus,retrieved,12.251693051657865,circular,VerbForm=Ger,1,1,1,
+collado,20969,prop,Collado es un hombre rico en el mundo.,stochastic_decoder,stochastic,7.755590866072493,collado,,1,0,1,stochastic
+credo,20970,n,Ella dice el credo en la casa.,template_generated,n_b1_1,6.376718662178128,credo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+fertilizantes,20971,n,,no_candidate_found,no_candidate_found,0.0,fertilizantes,,0,0,0,manual review needed
+oslo,20972,prop,Tengo un hijo que estudia en oslo.,retrieved_corpus,retrieved,13.21440339381456,oslo,,1,1,1,
+pontífice,20973,n,El pontífice es el nombre de mi madre.,stochastic_decoder,stochastic,7.275699431291332,pontífice,Gender=Masc|Number=Sing,1,0,0,stochastic
+prepararlo,20974,v,,no_candidate_found,no_candidate_found,0.0,prepararlo,,0,0,0,manual review needed
+proyector,20975,n,El proyector no funciona bien en el mundo.,stochastic_decoder,stochastic,8.166731899985274,proyector,Gender=Masc|Number=Sing,1,1,1,stochastic
+queres,20976,none,La forma queres es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,queres,,0,0,0,unlinked_finite_verbs
+antiguamente,20977,adv,Antiguamente duraba un viaje a américa muchas semanas.,retrieved_corpus,retrieved,12.205005042983618,antiguamente,,1,1,1,
+aparenta,20978,v,Su madre aparenta ser más joven de lo que es.,retrieved_corpus,retrieved,12.502425203367615,aparentar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+bayas,20979,n,Ella para el bayas en la casa.,template_generated,n_b1_1,7.911345542976964,baya,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+criollos,20980,adj,,no_candidate_found,no_candidate_found,0.0,criollos,,0,0,0,manual review needed
+democracias,20981,n,Ella hace la democracias en la casa.,template_generated,n_b1_1,6.297242832935041,democracia,Gender=Fem|Number=Plur,0,0,0,n_b1_1
+difuntos,20982,adj,Él es difuntos.,emergency_starter,starter_emergency_adj,2.8436155066553894,difunto,Gender=Masc|Number=Plur,0,0,0,starter_emergency_adj
+digame,20983,none,La forma digame es clara.,template_generated,residual_metalinguistic_clause,2.0341411417758968,digame,,0,0,0,residual_metalinguistic_clause
+empleó,20984,v,Ella empleó métodos injustos para eso es algo.,stochastic_decoder,stochastic,5.935990037882186,emplear,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+eusebio,20985,prop,Eusebio es un buen trabajo con un amigo.,stochastic_decoder,stochastic,7.630637717945292,eusebio,,1,0,1,stochastic
+hernia,20986,n,Ella gusta la hernia en la casa.,template_generated,n_b1_1,6.301179166321462,hernia,Gender=Fem|Number=Sing,1,0,0,n_b1_1
+milagrosamente,20987,adv,Ella habla milagrosamente.,template_generated,adv_general_speak,3.78519567385702,milagrosamente,,0,0,0,adv_general_speak
+hematoma,20988,n,La hematoma en la vida es un poco.,stochastic_decoder,stochastic,7.5770733077277885,hematoma,Gender=Fem|Number=Sing,1,0,1,stochastic
+irónica,20989,adj,¿no te parece irónica la expresión « guerra santa »?,retrieved_corpus,retrieved,10.723647422784381,irónico,Gender=Fem|Number=Sing,1,1,1,
+louvre,20990,none,La forma louvre es clara.,template_generated,residual_metalinguistic_clause,3.8839098565539154,louvre,,0,0,0,residual_metalinguistic_clause
+luminosidad,20991,n,No puedo leer aquí. el exceso de luminosidad me molesta.,retrieved_corpus,retrieved,12.31053864262049,luminosidad,Gender=Fem|Number=Sing,1,1,1,
+regocijo,20992,n,Ella dice el regocijo en la casa.,template_generated,n_b1_1,6.376718662178128,regocijo,Gender=Masc|Number=Sing,1,0,0,n_b1_1
+acostamos,20993,v,Todos nos acostamos a las cinco de la madrugada.,retrieved_corpus,retrieved,12.344756778033027,acostar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+anormales,20994,adj,Existen enfermedades que hacen que las gallinas pongan huevos anormales.,retrieved_corpus,retrieved,10.489222458896267,anormal,Number=Plur,1,1,1,
+augusta,20995,adj,,no_candidate_found,no_candidate_found,0.0,augusta,,0,0,0,manual review needed
+burócratas,20996,n,Ella dice el burócratas en la casa.,template_generated,n_b1_1,6.376718662178128,burócrata,Gender=Masc|Number=Plur,0,0,0,n_b1_1
+empujé,20997,v,Yo empujé a tom en realidad no habla.,stochastic_decoder,stochastic,6.699657591243413,empujar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,0,0,stochastic
+jacinta,20998,prop,Jacinta es el más alto de la casa.,stochastic_decoder,stochastic,9.281989848903358,jacinta,,1,1,1,stochastic
+mítica,20999,adj,Él es mítica.,emergency_starter,starter_emergency_adj,5.516902301795375,mítico,Gender=Fem|Number=Sing,0,0,0,starter_emergency_adj
+remolino,21000,n,Un remolino de colores en el jardín es.,stochastic_decoder,stochastic,6.300779745072412,remolino,Gender=Masc|Number=Sing,1,0,0,stochastic

@@ -1,0 +1,74 @@
+============================================
+Job ID:        2023287
+Node:          x3003c0s3b2n0
+Started:       Sun 29 Mar 2026 08:42:54 PM UTC
+Working dir:   /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator
+============================================
+Python path:   /home/b35cg/samtoughan.b35cg/ENTER/envs/sentgen/bin/python
+Python 3.11.15
+OK import pickle
+OK import csv
+OK import json
+OK import re
+OK import math
+OK import statistics
+OK import sklearn
+Script:        /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/hybrid_generator.py
+Lexicon:       /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/stg_words_spa.csv (39762 lines)
+Models dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/models
+Output dir:    /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid
+Loaded 76 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_overrides.csv
+Loaded 109 total lexicon overrides after /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/starter_exclusions.csv
+[progress] 100/1001 lemma=holograma source=template_generated tier=bad publishable=False
+[heartbeat] elapsed=0h1m0s out_rows=113/15000 (0.75%) review_rows=0 candidate_rows=0 eta=02:11:44
+[sstat] 2023287.bat+   1338432K   1338432K   1338624K   00:01:02 
+[progress] 200/1001 lemma=seguidamente source=template_generated tier=bad publishable=False
+[heartbeat] elapsed=0h2m0s out_rows=200/15000 (1.33%) review_rows=0 candidate_rows=0 eta=02:28:00
+[sstat] 2023287.bat+   1338496K   1338496K   1338688K   00:02:02 
+[heartbeat] elapsed=0h3m0s out_rows=269/15000 (1.79%) review_rows=0 candidate_rows=0 eta=02:44:17
+[sstat] 2023287.bat+   1338560K   1338560K   1338816K   00:03:02 
+[progress] 300/1001 lemma=detonación source=stochastic_decoder tier=acceptable publishable=True
+[progress] 400/1001 lemma=cubriré source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h4m0s out_rows=402/15000 (2.68%) review_rows=0 candidate_rows=0 eta=02:25:15
+[sstat] 2023287.bat+   1339328K   1339328K   1339584K   00:04:02 
+[progress] 500/1001 lemma=soltando source=retrieved_corpus tier=weak publishable=False
+[heartbeat] elapsed=0h5m0s out_rows=503/15000 (3.35%) review_rows=0 candidate_rows=0 eta=02:24:06
+[sstat] 2023287.bat+   1340032K   1340032K   1340352K   00:05:02 
+[progress] 600/1001 lemma=nado source=retrieved_corpus tier=strong publishable=True
+[heartbeat] elapsed=0h6m0s out_rows=618/15000 (4.12%) review_rows=0 candidate_rows=0 eta=02:19:37
+[sstat] 2023287.bat+   1340736K   1340736K   1341056K   00:06:02 
+[progress] 700/1001 lemma=confidenciales source=emergency_starter tier=bad publishable=False
+[heartbeat] elapsed=0h7m0s out_rows=758/15000 (5.05%) review_rows=0 candidate_rows=0 eta=02:11:31
+[sstat] 2023287.bat+      1310M      1310M   1341824K   00:07:02 
+[progress] 800/1001 lemma=protegía source=stochastic_decoder tier=weak publishable=False
+[heartbeat] elapsed=0h8m1s out_rows=866/15000 (5.77%) review_rows=0 candidate_rows=0 eta=02:10:50
+[sstat] 2023287.bat+   1342208K   1342208K   1342592K   00:08:02 
+[progress] 900/1001 lemma=causarle source=no_candidate_found tier=no_candidate_found publishable=False
+[heartbeat] elapsed=0h9m1s out_rows=985/15000 (6.57%) review_rows=0 candidate_rows=0 eta=02:08:17
+[sstat] 2023287.bat+   1342784K   1342784K   1343168K   00:09:03 
+[progress] 1000/1001 lemma=mítica source=emergency_starter tier=bad publishable=False
+[progress] 1001/1001 lemma=remolino source=stochastic_decoder tier=weak publishable=False
+Generated: 1,001
+  emergency_starter    108
+  no_candidate_found   217
+  retrieved_corpus     333
+  stochastic_decoder   179
+  template_generated   164
+Saved: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023287.csv
+Review: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023287.csv
+Candidates: /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023287.csv
+  candidate_rows_written: 7,180
+  avg_candidates_per_lemma: 9.16
+
+Preview:
+  oea             [stochastic_decoder  ] acceptable         Oea es un buen trabajo en la habitación.
+  pronta          [emergency_starter   ] bad                Él es pronta.
+  subirme         [emergency_starter   ] bad                Ella quiere subirme.
+  arrecife        [retrieved_corpus    ] strong             No es muy seguro navegar cerca de esta parte del arrecife.
+  convictos       [retrieved_corpus    ] strong             Los convictos iniciaron una falsa alarma.
+============================================
+Finished: Sun 29 Mar 2026 08:52:13 PM UTC
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 259K Mar 29 20:52 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_2023287.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 1.6M Mar 29 20:52 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_candidates_2023287.csv
+-rw-r--r-- 1 samtoughan.b35cg samtoughan.b35cg 142K Mar 29 20:52 /home/b35cg/samtoughan.b35cg/markov-chain-sentence-generator/outputs/hybrid/hybrid_batch_review_2023287.csv
+============================================

@@ -1,0 +1,976 @@
+lemma,rank,pos,sentence,source_method,template_id,score,canonical_lemma,target_morph,grammatical_ok,natural_ok,learner_clear_ok,notes
+de,1,prep,,no_candidate_found,no_candidate_found,0.0,de,,0,0,0,manual review needed
+que,2,pron,Hay que ir.,template_generated,pron_clause_que,11.033314823391642,que,,1,1,1,pron_clause_que
+la,3,pron,Yo la veo.,template_generated,pron_object_see,8.229370787471202,la,,1,1,1,pron_object_see
+no,4,,No voy hoy.,template_generated,adv_negation_go,8.29925199076537,no,Polarity=Neg,1,1,1,adv_negation_go
+a,5,none,Voy a casa.,template_generated,prep_to_home,8.750489064309708,a,,1,1,1,prep_to_home
+el,6,art,El amigo está bien.,template_generated,det_anchor_clear,10.64545475886879,el,Definite=Def|Gender=Masc|Number=Sing|PronType=Art,1,1,1,det_anchor_clear
+y,7,conj,Ella va y él va.,template_generated,conj_and_clauses,8.678383748643567,y,,1,1,1,conj_and_clauses
+en,8,prep,Ella está en casa.,template_generated,prep_in_home,9.50272063549803,en,,1,1,1,prep_in_home
+es,9,v,Ella es buena.,seeded_template,seeded_special_ser_adj,8.017620616764356,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ser_adj
+un,10,num,Tengo un libro.,template_generated,num_indefinite_object,10.131933851933612,uno,,1,1,1,num_indefinite_object
+lo,11,pron,No quiero saber lo que hiciste.,retrieved_corpus,retrieved,15.218714544346783,él,Case=Acc|Gender=Masc|Number=Sing|Person=3,1,1,1,
+por,12,prep,Es por eso.,template_generated,prep_because_of_that,8.368359423335852,por,,1,1,1,prep_because_of_that
+los,13,art,Los amigos están bien.,template_generated,det_anchor_clear,10.127755852992722,el,Definite=Def|Gender=Masc|Number=Plur|PronType=Art,1,1,1,det_anchor_clear
+una,14,determiner,Una casa está bien.,template_generated,det_anchor_clear,9.463510675613815,uno,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+se,15,pron,Ella se va.,template_generated,pron_clitic_leave,8.657449783720768,se,Gender=Masc|Number=Sing,1,1,1,pron_clitic_leave
+con,16,prep,Ella quiere salir con él.,retrieved_corpus,retrieved,12.977834453444611,con,,1,1,1,
+qué,17,pron,¿de qué hablaste?,retrieved_corpus,retrieved,11.502540317074313,qué,Number=Sing,1,1,1,
+me,18,pron,Ella me llama.,template_generated,pron_clitic_call,8.382977151835844,yo,,1,1,1,pron_clitic_call
+para,19,prep,No quiero a nadie para este trabajo.,retrieved_corpus,retrieved,10.977516700415595,para,,1,1,1,
+las,20,pron,,no_candidate_found,no_candidate_found,0.0,las,,0,0,0,manual review needed
+del,21,contraction,,no_candidate_found,no_candidate_found,0.0,del,,0,0,0,manual review needed
+te,22,pron,¿quieres que te diga por qué?,retrieved_corpus,retrieved,13.006683375553132,tú,,1,1,1,
+su,23,determiner,Me gusta su forma de ser.,retrieved_corpus,retrieved,13.63697639461043,su,Number=Sing,1,1,1,
+pero,24,conj,Quiero ir pero no puedo.,template_generated,conj_but_cant,8.937328782447278,pero,,1,1,1,conj_but_cant
+si,25,conj,No sé si quiero hacer esto.,retrieved_corpus,retrieved,13.57254858269452,si,PronType=Rel,1,1,1,
+está,26,v,Ella está en casa.,seeded_template,seeded_special_estar_place,8.702720635498029,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+mi,27,determiner,Mi casa está bien.,template_generated,det_anchor_clear,10.027951241365615,mi,Number=Sing,1,1,1,det_anchor_clear
+al,28,contraction,,no_candidate_found,no_candidate_found,0.0,al,,0,0,0,manual review needed
+sí,29,pron,Sí está aquí.,template_generated,pron_fallback_here,10.024449704233668,sí,,1,1,1,pron_fallback_here
+como,30,conj,,no_candidate_found,no_candidate_found,0.0,como,,0,0,0,manual review needed
+bien,31,adv,Todo saldrá bien hoy.,retrieved_corpus,retrieved,12.048933813248304,bien,,1,1,1,
+más,32,adv,¿a dónde más te gustaría ir?,retrieved_corpus,retrieved,11.921546269709903,más,,1,1,1,
+eso,33,pron,Me gusta eso.,template_generated,pron_neuter_like,11.463563746494,eso,,1,1,1,pron_neuter_like
+yo,34,pron,Yo estoy aquí.,template_generated,pron_subject_here,12.147000987188644,yo,Case=Nom|Number=Sing|Person=1,1,1,1,pron_subject_here
+le,35,pron,,no_candidate_found,no_candidate_found,0.0,él,,0,0,0,manual review needed
+aquí,36,adv,¿te esperamos aquí?,retrieved_corpus,retrieved,11.774352505252143,aquí,,1,1,1,
+tu,37,determiner,Tu casa está bien.,template_generated,det_anchor_clear,8.896096495284622,tu,,1,1,1,det_anchor_clear
+todo,38,determiner,Todo trabajo está bien.,template_generated,det_anchor_clear,8.754018697885734,todo,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+ha,39,v,Ha hecho eso.,seeded_template,verb_exact_ha_do_that,6.456870276508533,haber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,verb_exact_ha_do_that
+ya,40,adv,Ya estáis en problemas.,retrieved_corpus,retrieved,11.905370056254778,ya,,1,1,1,
+o,41,conj,Voy hoy o mañana.,template_generated,conj_or_time,6.461804407204605,o,,1,1,1,conj_or_time
+esto,42,pron,Esto es para ti.,template_generated,pron_neuter_for_you,13.944439012774696,esto,,1,1,1,pron_neuter_for_you
+muy,43,adv,,no_candidate_found,no_candidate_found,0.0,mucho,,0,0,0,manual review needed
+esta,44,determiner,Esta casa está bien.,template_generated,det_anchor_clear,9.649336901560238,este,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+ahora,45,adv,Ahora me tengo que ir a casa.,retrieved_corpus,retrieved,14.719361658549925,ahora,,1,1,1,
+así,46,adv,No quiero que sea así.,retrieved_corpus,retrieved,15.699992016429619,así,,1,1,1,
+cuando,47,conj,,no_candidate_found,no_candidate_found,0.0,cuando,,0,0,0,manual review needed
+hay,48,v,Hay un amigo.,seeded_template,seeded_special_haber_existential,8.34450937525722,haber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_haber_existential
+este,49,determiner,Este trabajo está bien.,template_generated,det_anchor_clear,9.24952230234908,este,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+algo,50,pron,Tienes algo que es mío.,retrieved_corpus,retrieved,15.00366882766971,algo,Number=Sing,1,1,1,
+estoy,51,v,¿hay alguien ahí? ¿dónde estoy?,retrieved_corpus,retrieved,9.330199946270723,estar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+vamos,52,v,Nosotros vamos a casa.,seeded_template,seeded_special_ir_place,8.31695630924364,ir,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+él,53,pron,Él está aquí.,template_generated,pron_subject_here,13.758960632024804,él,,1,1,1,pron_subject_here
+ser,54,v,Ella es buena.,seeded_template,seeded_special_ser_adj,9.517620616764356,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ser_adj
+bueno,55,adj,Has sido tan bueno conmigo.,retrieved_corpus,retrieved,11.351616308633709,bueno,Gender=Masc|Number=Sing,1,1,1,
+nos,56,pron,Ellos nos llaman.,template_generated,pron_clitic_call,7.230958619654023,nos,,1,1,1,pron_clitic_call
+sus,57,determiner,Sus amigos están bien.,template_generated,det_anchor_clear,9.325545819985312,sus,,1,1,1,det_anchor_clear
+fue,58,v,Ella fue buena.,seeded_template,seeded_special_ser_adj,9.825654750802414,ser,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,seeded_special_ser_adj
+tengo,59,v,Yo tengo una casa.,seeded_template,seeded_special_tener_obj,9.308761320758578,tener,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+era,60,v,Ella era buena.,seeded_template,seeded_special_ser_adj,9.462093495045314,ser,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_ser_adj
+nada,61,pron,A ella ustedes no le deben nada.,retrieved_corpus,retrieved,15.72584287511051,nada,Number=Sing,1,1,1,
+tiene,62,v,Ella tiene una casa.,seeded_template,seeded_special_tener_obj,10.088334094639581,tener,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+sé,63,v,Sé que no lo harás.,retrieved_corpus,retrieved,11.997757317435584,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+tú,64,pron,Tú estás aquí.,template_generated,pron_subject_here,12.156645738787041,tú,,1,1,1,pron_subject_here
+cómo,65,adv,Cómo está él.,template_generated,adv_how_be,8.081089740595328,cómo,,1,1,1,adv_how_be
+vez,66,n,Es mi vez.,seeded_template,noun_exact_turn,4.056925782835265,vez,Gender=Fem|Number=Sing,1,1,1,noun_exact_turn
+estás,67,v,Tú estás en casa.,seeded_template,seeded_special_estar_place,8.277479224949147,estar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+sólo,68,adv,Sólo voy a casa.,template_generated,adv_only_go_home,8.535689691784192,sólo,,1,1,1,adv_only_go_home
+ella,69,pron,Ella está aquí.,template_generated,pron_subject_here,13.569951575668682,ella,,1,1,1,pron_subject_here
+son,70,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+hacer,71,v,No ha hecho nada de nada.,retrieved_corpus,retrieved,14.190063391092814,hacer,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+he,72,v,Lo he dicho todo.,retrieved_corpus,retrieved,10.759072831939836,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+porque,73,conj,Me voy porque es tarde.,template_generated,conj_because_home,10.213674293053176,porque,,1,1,1,conj_because_home
+todos,74,determiner,Todos trabajo está bien.,template_generated,det_anchor_clear,8.1717316428668,todo,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+puedo,75,v,Yo puedo ir a casa.,seeded_template,seeded_special_poder_ir_place,9.679415507021211,poder,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+quiero,76,v,Quiero hablar con ellos ahora.,retrieved_corpus,retrieved,13.197817527582217,querer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+gracias,77,n,Ella dice gracias.,seeded_template,noun_exact_say_thanks,5.498018997453907,gracias,Gender=Masc|Number=Sing,1,1,1,noun_exact_say_thanks
+puede,78,v,Ella puede ir a casa.,seeded_template,seeded_special_poder_ir_place,9.788652273214792,poder,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+dos,79,num,Hace dos años que no la veo.,retrieved_corpus,retrieved,14.441823438558304,dos,,1,1,1,
+sin,80,prep,Voy sin él.,template_generated,prep_without_him,9.998456023340172,sin,,1,1,1,prep_without_him
+soy,81,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+sobre,82,prep,El libro está sobre la mesa.,template_generated,prep_on_table,7.061383977951525,sobre,,1,1,1,prep_on_table
+ese,83,determiner,Ese trabajo está bien.,template_generated,det_anchor_clear,10.152318869969003,ese,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+estaba,84,v,Ella estaba en casa.,seeded_template,seeded_special_estar_place,9.644050958439843,estar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_estar_place
+también,85,adv,Yo también estoy bien.,retrieved_corpus,retrieved,15.879233654816396,también,,1,1,1,
+tiempo,86,n,No tuve tiempo.,retrieved_corpus,retrieved,14.260089393263636,tiempo,Gender=Masc|Number=Sing,1,1,1,
+tan,87,adv,Es tan bueno.,template_generated,adv_so_good,8.035286045269537,tan,,1,1,1,adv_so_good
+entonces,88,adv,Entonces voy a casa.,template_generated,adv_then_go_home,8.368905744895986,entonces,,1,1,1,adv_then_go_home
+creo,89,v,Yo creo eso.,seeded_template,seeded_special_creer_object,9.934711924230657,creer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_creer_object
+tienes,90,v,Tú tienes una casa.,seeded_template,seeded_special_tener_obj,8.129859511264705,tener,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+casa,91,n,¿ella está en casa?,retrieved_corpus,retrieved,15.202720635498029,casa,Gender=Fem|Number=Sing,1,1,1,
+usted,92,pron,Usted no debería haberlo dicho.,retrieved_corpus,retrieved,16.901526777552323,usted,Case=Nom|Number=Sing|Person=2,1,1,1,
+esa,93,determiner,Esa casa está bien.,template_generated,det_anchor_clear,11.464330646765175,ese,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+voy,94,v,Voy a hacer esto yo misma.,retrieved_corpus,retrieved,11.188050363606202,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+sabes,95,v,Ella sabe que tú sabes.,retrieved_corpus,retrieved,12.011790840463044,saber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+eres,96,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+verdad,97,n,Mi madre ha dicho la verdad.,retrieved_corpus,retrieved,12.754808769314884,verdad,Gender=Fem|Number=Sing,1,1,1,
+hasta,98,prep,,no_candidate_found,no_candidate_found,0.0,hasta,,0,0,0,manual review needed
+solo,99,adj,¿puedes ir sola?,retrieved_corpus,retrieved,9.737430608768435,solo,Gender=Fem|Number=Sing,1,1,1,
+nunca,100,adv,Nunca he dicho esto a nadie.,retrieved_corpus,retrieved,12.188464840189543,nunca,,1,1,1,
+años,101,n,Debe de tener por lo menos 35 años.,retrieved_corpus,retrieved,10.991407070949112,año,Gender=Masc|Number=Plur,1,1,1,
+hace,102,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+va,103,v,Ella va a ser nada.,stochastic_decoder,stochastic,9.767014829945929,ir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+hola,104,interj,,no_candidate_found,no_candidate_found,0.0,hola,,0,0,0,manual review needed
+mucho,105,determiner,Él me debe mucho dinero.,retrieved_corpus,retrieved,16.403722537848836,mucho,Gender=Masc|Number=Sing,1,1,1,
+quién,106,pron,¿quién no está de acuerdo?,retrieved_corpus,retrieved,16.108680325484045,quién,Number=Sing,1,1,1,
+mejor,107,adj,Sabíamos que éramos mejores que eso.,retrieved_corpus,retrieved,11.746820922008494,mejor,Number=Plur,1,1,1,
+vida,108,n,,no_candidate_found,no_candidate_found,0.0,vida,,0,0,0,manual review needed
+decir,109,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+mí,110,pron,Mí está aquí.,template_generated,pron_fallback_here,8.729003816660647,mí,,1,1,1,pron_fallback_here
+dónde,111,adv,,no_candidate_found,no_candidate_found,0.0,dónde,,0,0,0,manual review needed
+ni,112,conj,No tiene ni idea de nada.,retrieved_corpus,retrieved,16.898456726167403,ni,Polarity=Neg,1,1,1,
+están,113,v,Ellos están en casa.,seeded_template,seeded_special_estar_place,10.183059505988604,estar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+favor,114,n,,no_candidate_found,no_candidate_found,0.0,favor,,0,0,0,manual review needed
+señor,115,n,El señor es nuevo.,template_generated,n_a1_1,8.512687696347763,señor,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+hombre,116,n,El hombre es serio.,template_generated,n_a1_1,9.03178067662526,hombre,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+oh,117,interj,,no_candidate_found,no_candidate_found,0.0,oh,,0,0,0,manual review needed
+siempre,118,adv,Voy a casa siempre.,template_generated,adv_time_home,10.836855562806555,siempre,,1,1,1,adv_time_home
+ver,119,v,¿la quieres ver ahora?,retrieved_corpus,retrieved,12.916947595897113,ver,VerbForm=Inf,1,1,1,
+uno,120,num,,no_candidate_found,no_candidate_found,0.0,uno,,0,0,0,manual review needed
+quieres,121,v,Tú quieres una casa.,seeded_template,seeded_special_querer_obj,9.552064630307736,querer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
+siento,122,v,,no_candidate_found,no_candidate_found,0.0,sentir,,0,0,0,manual review needed
+había,123,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+dios,124,prop,Dios sabe que estoy diciendo la verdad.,retrieved_corpus,retrieved,14.024706424463375,dios,Gender=Masc|Number=Sing,1,1,1,
+has,125,v,¿has visto a este hombre?,retrieved_corpus,retrieved,11.264084508467942,haber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+antes,126,adv,Él ha hecho esto antes.,retrieved_corpus,retrieved,14.007807483460333,antes,,1,1,1,
+día,127,n,,no_candidate_found,no_candidate_found,0.0,día,,0,0,0,manual review needed
+desde,128,prep,No me ha hablado desde entonces.,retrieved_corpus,retrieved,13.293597050431377,desde,,1,1,1,
+tenemos,129,v,Nosotros tenemos una casa.,seeded_template,seeded_special_tener_obj,9.070007416645101,tener,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+poco,130,adv,Ella habla poco.,template_generated,adv_general_speak,9.36084194710553,poco,,1,1,1,adv_general_speak
+cosas,131,n,Tenemos otras cosas que hacer.,retrieved_corpus,retrieved,12.183787825873843,cosa,Gender=Fem|Number=Plur,1,1,1,
+ti,132,pron,Ti está aquí.,template_generated,pron_fallback_here,8.454350744493619,tú,,1,1,1,pron_fallback_here
+otra,133,determiner,Él quiere vernos otra vez.,retrieved_corpus,retrieved,14.992597736503942,otro,Gender=Fem|Number=Sing,1,1,1,
+mismo,134,adj,,no_candidate_found,no_candidate_found,0.0,mismo,,0,0,0,manual review needed
+han,135,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+hecho,136,n,El hecho es nuevo.,template_generated,n_a1_1,8.166891083730986,hecho,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+alguien,137,pron,Alguien debería decir algo.,retrieved_corpus,retrieved,15.866690026448934,alguien,,1,1,1,
+puedes,138,v,Tú puedes ir a casa.,seeded_template,seeded_special_poder_ir_place,9.735980435714376,poder,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+ahí,139,adv,¿qué fue lo que hiciste ahí?,retrieved_corpus,retrieved,14.990728998737872,ahí,,1,1,1,
+dijo,140,v,Ella dijo algo antes de la casa.,stochastic_decoder,stochastic,8.297138488291047,decir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+estar,141,v,Ella está en casa.,seeded_template,seeded_special_estar_place,11.202720635498029,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+entre,142,prep,,no_candidate_found,no_candidate_found,0.0,entre,,0,0,0,manual review needed
+noche,143,n,,no_candidate_found,no_candidate_found,0.0,noche,,0,0,0,manual review needed
+trabajo,144,n,No había trabajo.,retrieved_corpus,retrieved,11.268408941268637,trabajo,Gender=Masc|Number=Sing,1,1,1,
+ir,145,v,Voy a hacer esto yo misma.,retrieved_corpus,retrieved,12.188050363606202,ir,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+después,146,adv,Después te diré.,retrieved_corpus,retrieved,11.027681895743623,después,,1,1,1,
+mis,147,n,,no_candidate_found,no_candidate_found,0.0,mi,,0,0,0,manual review needed
+sea,148,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+acuerdo,149,n,No estoy de acuerdo con usted.,retrieved_corpus,retrieved,15.102530877490814,acuerdo,Gender=Masc|Number=Sing,1,1,1,
+otro,150,determiner,Otro trabajo está bien.,template_generated,det_anchor_clear,10.799752187987744,otro,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+parece,151,v,Ella parece muy bien en la noche.,stochastic_decoder,stochastic,8.161345524662796,parecer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+donde,152,pron,Voy donde tú me digas.,retrieved_corpus,retrieved,15.150824106541124,donde,,1,1,1,
+ellos,153,pron,Ellos están aquí.,template_generated,pron_subject_here,12.852185282101026,él,Case=Nom|Gender=Masc|Number=Plur|Person=3,1,1,1,pron_subject_here
+estamos,154,v,Nosotros estamos en casa.,seeded_template,seeded_special_estar_place,8.857833024508048,estar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_estar_place
+mundo,155,n,El mundo es un poco de tiempo.,stochastic_decoder,stochastic,9.404526939825077,mundo,Gender=Masc|Number=Sing,1,1,1,stochastic
+gente,156,n,No le puedo hablar a la gente.,retrieved_corpus,retrieved,11.04699614870504,gente,Gender=Fem|Number=Sing,1,1,1,
+nosotros,157,pron,Nosotros estamos aquí.,template_generated,pron_subject_here,11.945278730359508,nosotros,,1,1,1,pron_subject_here
+padre,158,n,Ahora mis padres están en casa.,retrieved_corpus,retrieved,12.60937999879326,padre,Gender=Masc|Number=Plur,1,1,1,
+estado,159,prop,Estado es el día en el mundo.,stochastic_decoder,stochastic,8.03301748023442,estado,Gender=Masc|Number=Sing,1,1,1,stochastic
+nadie,160,pron,No quiero que nadie sepa sobre esto.,retrieved_corpus,retrieved,16.702382604556547,nadie,Number=Sing,1,1,1,
+tal,161,pron,¿qué tal está?,retrieved_corpus,retrieved,14.878922272963376,tal,,1,1,1,
+les,162,pron,,no_candidate_found,no_candidate_found,0.0,les,,0,0,0,manual review needed
+parte,163,n,,no_candidate_found,no_candidate_found,0.0,parte,,0,0,0,manual review needed
+sido,164,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+momento,165,n,Está contigo en este momento.,retrieved_corpus,retrieved,13.058171276006455,momento,Gender=Masc|Number=Sing,1,1,1,
+podría,166,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+menos,167,adv,,no_candidate_found,no_candidate_found,0.0,menos,,0,0,0,manual review needed
+mira,168,v,Ella mira la casa.,seeded_template,seeded_verb_obj,8.57406402996666,mirar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_verb_obj
+quiere,169,v,Ella quiere una casa.,seeded_template,seeded_special_querer_obj,10.72964163219668,querer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
+fuera,170,adv,,no_candidate_found,no_candidate_found,0.0,fuera,,0,0,0,manual review needed
+gran,171,adj,,no_candidate_found,no_candidate_found,0.0,gran,,0,0,0,manual review needed
+lugar,172,n,,no_candidate_found,no_candidate_found,0.0,lugar,,0,0,0,manual review needed
+hablar,173,v,Quiero hablar sobre ello.,retrieved_corpus,retrieved,13.322421660766516,hablar,VerbForm=Inf,1,1,1,
+tener,174,v,Tú tienes buenos amigos.,retrieved_corpus,retrieved,9.50715644942263,tener,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+tenía,175,v,Ella tenía una casa.,seeded_template,seeded_special_tener_obj,10.110156886442315,tener,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+tres,176,num,,no_candidate_found,no_candidate_found,0.0,tres,,0,0,0,manual review needed
+nuevo,177,adj,El trabajo es nuevo.,template_generated,adj_a1_1,9.514091210879492,nuevo,Gender=Masc|Number=Sing,1,1,1,adj_a1_1
+pasa,178,v,¿cómo lo pasa usted?,retrieved_corpus,retrieved,11.441315185344985,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+vas,179,v,Tú vas a casa.,seeded_template,seeded_special_ir_place,9.26772119211526,ir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+cada,180,determiner,Cada trabajo está bien.,template_generated,det_anchor_clear,11.132712156341098,cada,Number=Sing,1,1,1,det_anchor_clear
+claro,181,adj,,no_candidate_found,no_candidate_found,0.0,claro,,0,0,0,manual review needed
+dinero,182,n,Lo hicieron por dinero.,retrieved_corpus,retrieved,13.202498033359845,dinero,Gender=Masc|Number=Sing,1,1,1,
+madre,183,n,¿es usted su madre?,retrieved_corpus,retrieved,12.872512765834019,madre,Gender=Fem|Number=Sing,1,1,1,
+mañana,184,n,,no_candidate_found,no_candidate_found,0.0,mañana,,0,0,0,manual review needed
+tipo,186,n,El tipo es nuevo.,template_generated,n_a1_1,9.001101339387185,tipo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+hoy,187,adv,Hoy vi uno.,retrieved_corpus,retrieved,11.632276269075618,hoy,,1,1,1,
+días,188,n,,no_candidate_found,no_candidate_found,0.0,día,,0,0,0,manual review needed
+luego,189,adv,¿van a ir con ustedes luego?,retrieved_corpus,retrieved,13.226703680421231,luego,,1,1,1,
+allí,190,adv,Ahora mismo no puedo ir allí.,retrieved_corpus,retrieved,13.824640507972504,allí,,1,1,1,
+mujer,191,n,La mujer es una cosa así.,stochastic_decoder,stochastic,9.334266543902514,mujer,Gender=Fem|Number=Sing,1,1,1,stochastic
+nuestro,192,determiner,Nuestro amigo está bien.,template_generated,det_anchor_clear,11.190180217924475,nuestro,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+tanto,193,adv,,no_candidate_found,no_candidate_found,0.0,tanto,,0,0,0,manual review needed
+cosa,194,n,¿qué tal van las cosas?,retrieved_corpus,retrieved,11.300099290273582,cosa,Gender=Fem|Number=Plur,1,1,1,
+sabe,195,v,Ella sabe la verdad.,seeded_template,seeded_special_saber_truth,9.911983883802455,saber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_saber_truth
+todas,196,determiner,Todas amigo está bien.,template_generated,det_anchor_clear,8.852569026968903,todo,,1,1,1,det_anchor_clear
+haciendo,197,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+hijo,198,n,No tengo nada para mis hijos.,retrieved_corpus,retrieved,12.451404234826976,hijo,Gender=Masc|Number=Plur,1,1,1,
+dice,199,v,Ella dice una cosa así.,stochastic_decoder,stochastic,8.635412809255463,decir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+seguro,200,adj,Ya no estoy seguro de nada.,retrieved_corpus,retrieved,14.667833532568073,seguro,Gender=Masc|Number=Sing,1,1,1,
+podemos,201,v,Nosotros podemos ir a casa.,seeded_template,seeded_special_poder_ir_place,9.904182619449601,poder,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+debe,202,v,¿qué debe hacer?,retrieved_corpus,retrieved,11.884202633238473,deber,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+espera,203,v,Ella espera un poco de mi casa.,stochastic_decoder,stochastic,8.254037903312135,esperar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+vale,204,v,Más vale que nos vayamos.,retrieved_corpus,retrieved,11.359959528939681,valer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+será,205,v,Ella será una cosa así.,stochastic_decoder,stochastic,8.232018121147059,ser,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,stochastic
+estas,206,determiner,Estas casas están bien.,template_generated,det_anchor_clear,11.479963791698014,este,Gender=Fem|Number=Plur,1,1,1,det_anchor_clear
+toda,207,determiner,Toda trabajo está bien.,template_generated,det_anchor_clear,8.747279335094246,todo,,1,1,1,det_anchor_clear
+haber,208,v,Lo he dicho todo.,retrieved_corpus,retrieved,11.759072831939836,haber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+tus,209,determiner,Tus trabajos están bien.,template_generated,det_anchor_clear,11.09399483786331,tus,,1,1,1,det_anchor_clear
+amigo,210,n,¿quieres que seamos amigos?,retrieved_corpus,retrieved,9.618015367155218,amigo,Gender=Masc|Number=Plur,1,1,1,
+nuestra,211,determiner,Nuestra casa está bien.,template_generated,det_anchor_clear,11.347293470124763,nuestro,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+buena,212,adj,Es una mujer de buenas maneras.,retrieved_corpus,retrieved,11.4287567509914,buena,Gender=Fem|Number=Plur,1,1,1,
+aún,213,adv,Aún no veo nada.,retrieved_corpus,retrieved,15.489813775998048,aún,,1,1,1,
+quien,214,pron,No tengo un amigo con quien hablar.,retrieved_corpus,retrieved,18.301066382867184,quien,Number=Sing,1,1,1,
+estos,215,determiner,Estos trabajos están bien.,template_generated,det_anchor_clear,11.143719365186348,este,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+nombre,216,n,,no_candidate_found,no_candidate_found,0.0,nombre,,0,0,0,manual review needed
+tienen,217,v,Ellos tienen un amigo.,seeded_template,seeded_special_tener_obj,10.281039206423749,tener,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+veces,218,n,,no_candidate_found,no_candidate_found,0.0,vez,,0,0,0,manual review needed
+mamá,219,n,,no_candidate_found,no_candidate_found,0.0,mamá,,0,0,0,manual review needed
+mal,220,adv,Todos lo pasamos mal.,retrieved_corpus,retrieved,12.420542026507004,mal,,1,1,1,
+buen,221,adj,,no_candidate_found,no_candidate_found,0.0,buen,,0,0,0,manual review needed
+durante,222,prep,,no_candidate_found,no_candidate_found,0.0,durante,,0,0,0,manual review needed
+papá,223,n,El papá es nuevo.,template_generated,n_a1_1,8.982039303426319,papá,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+quería,224,v,Ella no quería estar en casa.,retrieved_corpus,retrieved,14.32612893485447,querer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+dije,225,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+unos,226,determiner,Unos amigos están bien.,template_generated,det_anchor_clear,11.523143362163525,uno,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+pasado,227,n,,no_candidate_found,no_candidate_found,0.0,pasado,,0,0,0,manual review needed
+forma,228,n,Estás en mejor forma que yo.,retrieved_corpus,retrieved,12.167605358739529,forma,Gender=Fem|Number=Sing,1,1,1,
+gusta,229,v,No me gusta lo que habéis hecho.,retrieved_corpus,retrieved,14.295989587288181,gustar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+hizo,230,v,Ella hizo el bien siempre.,stochastic_decoder,stochastic,8.44553225452229,hacer,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+caso,231,n,No hice caso a nadie.,retrieved_corpus,retrieved,11.500177888405469,caso,Gender=Masc|Number=Sing,1,1,1,
+contra,232,prep,,no_candidate_found,no_candidate_found,0.0,contra,,0,0,0,manual review needed
+tarde,233,adv,Aún no es tarde.,retrieved_corpus,retrieved,15.341426307052174,tarde,,1,1,1,
+necesito,234,v,No necesito ser más claro.,retrieved_corpus,retrieved,11.798804466610145,necesitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+oye,235,v,Oye mucho y habla poco.,retrieved_corpus,retrieved,11.810030842912028,oír,Mood=Imp|Number=Sing|Person=2|VerbForm=Fin,1,1,1,
+alguna,236,determiner,Alguna amigo está bien.,template_generated,det_anchor_clear,9.341362228208187,alguno,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+hemos,237,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+cuenta,238,n,¿vas a hacer eso por tu cuenta?,retrieved_corpus,retrieved,11.593148007460835,cuenta,Gender=Fem|Number=Sing,1,1,1,
+visto,239,v,¿has visto a mi padre?,retrieved_corpus,retrieved,13.57650597530137,ver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+conmigo,240,adv,Ella habla conmigo.,template_generated,adv_general_speak,10.534128742245517,conmigo,,1,1,1,adv_general_speak
+mientras,241,conj,,no_candidate_found,no_candidate_found,0.0,mientras,,0,0,0,manual review needed
+otros,242,determiner,Otros amigo está bien.,template_generated,det_anchor_clear,9.169321975163564,otro,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+realmente,243,adv,¿estás realmente seguro de eso?,retrieved_corpus,retrieved,14.4144099466926,realmente,,1,1,1,
+hora,244,n,,no_candidate_found,no_candidate_found,0.0,hora,,0,0,0,manual review needed
+problema,245,n,No tendrás ese problema.,retrieved_corpus,retrieved,11.049705714871607,problema,Gender=Masc|Number=Sing,1,1,1,
+crees,246,v,¿crees que estamos haciéndolo bien?,retrieved_corpus,retrieved,11.87291321476894,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+año,247,n,Debe de tener por lo menos 35 años.,retrieved_corpus,retrieved,11.991407070949112,año,Gender=Masc|Number=Plur,1,1,1,
+razón,248,n,Las mujeres siempre tienen razón.,retrieved_corpus,retrieved,11.448903672505008,razón,Gender=Fem|Number=Sing,1,1,1,
+primera,249,adj,,no_candidate_found,no_candidate_found,0.0,primero,,0,0,0,manual review needed
+cierto,250,adj,,no_candidate_found,no_candidate_found,0.0,cierto,,0,0,0,manual review needed
+saber,251,v,Sé que no lo harás.,retrieved_corpus,retrieved,12.997757317435584,saber,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+dicho,252,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+mierda,254,n,El amor es una mierda.,retrieved_corpus,retrieved,11.984826561120117,mierda,Gender=Fem|Number=Sing,1,1,1,
+pues,255,conj,,no_candidate_found,no_candidate_found,0.0,pues,,0,0,0,manual review needed
+idea,256,n,Ni tuve idea que estabas allí.,retrieved_corpus,retrieved,10.132122728340217,idea,Gender=Fem|Number=Sing,1,1,1,
+mío,257,determiner,,no_candidate_found,no_candidate_found,0.0,mío,,0,0,0,manual review needed
+e,258,conj,Son padre e hijo.,retrieved_corpus,retrieved,13.409470148696343,e,,1,1,1,
+aunque,259,conj,No puedo aunque quiero.,retrieved_corpus,retrieved,15.418906218496026,aunque,,1,1,1,
+familia,260,n,Mi amigo tiene una gran familia.,retrieved_corpus,retrieved,11.930462022970351,familia,Gender=Fem|Number=Sing,1,1,1,
+hacia,261,prep,¿hacia dónde va mi vida?,retrieved_corpus,retrieved,12.039258200395956,hacia,,1,1,1,
+amor,262,n,¿qué sabes del amor?,retrieved_corpus,retrieved,10.269249689077597,amor,Gender=Masc|Number=Sing,1,1,1,
+esos,263,determiner,Esos amigos están bien.,template_generated,det_anchor_clear,9.232624273975299,ese,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+pueden,264,v,Ellos pueden ir a casa.,seeded_template,seeded_special_poder_ir_place,9.748845375496233,poder,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_poder_ir_place
+importa,265,v,No me importa lo que decís.,retrieved_corpus,retrieved,13.615479902657285,importar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+todavía,266,adv,Sé que todavía me queréis.,retrieved_corpus,retrieved,13.614832508999783,todavía,,1,1,1,
+personas,267,n,,no_candidate_found,no_candidate_found,0.0,persona,,0,0,0,manual review needed
+policía,268,n,La policía está allí.,retrieved_corpus,retrieved,12.074020088226838,policía,Number=Sing,1,1,1,
+casi,269,adv,,no_candidate_found,no_candidate_found,0.0,casi,,0,0,0,manual review needed
+contigo,270,adv,,no_candidate_found,no_candidate_found,0.0,contigo,,0,0,0,manual review needed
+cualquier,271,determiner,Cualquier trabajo está bien.,template_generated,det_anchor_clear,10.739114936190195,cualquiera,Number=Sing,1,1,1,det_anchor_clear
+demasiado,272,adv,¿no será demasiado poco?,retrieved_corpus,retrieved,15.213121170314075,demasiado,,1,1,1,
+ven,273,v,,no_candidate_found,no_candidate_found,0.0,ver,,0,0,0,manual review needed
+serio,274,adj,No es nada serio.,retrieved_corpus,retrieved,14.919849216810658,serio,Gender=Masc|Number=Sing,1,1,1,
+algún,275,determiner,Algún trabajo está bien.,template_generated,det_anchor_clear,10.814573782418488,alguno,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+ve,276,v,,no_candidate_found,no_candidate_found,0.0,ve,,0,0,0,manual review needed
+nueva,277,adj,,no_candidate_found,no_candidate_found,0.0,nuevo,,0,0,0,manual review needed
+eh,278,,,no_candidate_found,no_candidate_found,0.0,eh,,0,0,0,manual review needed
+lado,279,n,Te voy a tener a mi lado.,retrieved_corpus,retrieved,13.456712792912784,lado,Gender=Masc|Number=Sing,1,1,1,
+manera,280,n,Lo hago de esa manera.,retrieved_corpus,retrieved,11.64333288012737,manera,Gender=Fem|Number=Sing,1,1,1,
+cabeza,281,n,La cabeza es buena.,template_generated,n_a1_1,9.030997812303449,cabeza,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+hombres,282,n,,no_candidate_found,no_candidate_found,0.0,hombre,,0,0,0,manual review needed
+historia,283,n,Me gustan mucho estas historias.,retrieved_corpus,retrieved,12.169488944530354,historia,Gender=Fem|Number=Plur,1,1,1,
+dentro,284,adv,Hay un dios dentro de nosotros.,retrieved_corpus,retrieved,14.757867403602283,dentro,,1,1,1,
+sería,285,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+salir,286,v,Parece que algo salió mal.,retrieved_corpus,retrieved,11.842459190721783,salir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+debería,287,v,,no_candidate_found,no_candidate_found,0.0,deber,,0,0,0,manual review needed
+van,288,v,Ellos van a casa.,seeded_template,seeded_special_ir_place,9.729005965975503,ir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_ir_place
+ciudad,289,n,La ciudad es buena.,template_generated,n_a1_1,9.835113494699948,ciudad,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+ustedes,290,pron,Ustedes están aquí.,template_generated,pron_subject_here,11.839997126876085,ustedes,,1,1,1,pron_subject_here
+muchas,291,determiner,Muchas amigo está bien.,template_generated,det_anchor_clear,9.804932741233154,mucho,Gender=Fem|Number=Plur,1,1,1,det_anchor_clear
+poder,292,n,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+algunos,293,determiner,Algunos amigo está bien.,template_generated,det_anchor_clear,9.875660749281868,alguno,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+amigos,294,n,Me gustan tus amigos.,retrieved_corpus,retrieved,12.022042477264824,amigo,Gender=Masc|Number=Plur,1,1,1,
+chica,295,n,Es realmente una buena chica.,retrieved_corpus,retrieved,11.963110705229086,chico,Gender=Fem|Number=Sing,1,1,1,
+mayor,296,adj,,no_candidate_found,no_candidate_found,0.0,mayor,,0,0,0,manual review needed
+sabía,297,v,Ella sabía la verdad.,seeded_template,seeded_special_saber_truth,9.752944596819631,saber,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_saber_truth
+chicos,298,n,,no_candidate_found,no_candidate_found,0.0,chico,,0,0,0,manual review needed
+hermano,299,n,No sabía que tuvieras un hermano.,retrieved_corpus,retrieved,13.935158837399122,hermano,Gender=Masc|Number=Sing,1,1,1,
+esas,300,determiner,Esas casas están bien.,template_generated,det_anchor_clear,11.296705645323181,ese,Gender=Fem|Number=Plur,1,1,1,det_anchor_clear
+primer,301,adj,No quería estar aquí en primer lugar.,retrieved_corpus,retrieved,12.783466031721492,primero,Gender=Masc|Number=Sing,1,1,1,
+país,302,n,Todos queremos lo mejor para este país.,retrieved_corpus,retrieved,10.63436216845619,país,Gender=Masc|Number=Sing,1,1,1,
+vaya,303,v,Esperemos que mañana todo vaya mejor.,retrieved_corpus,retrieved,10.301168015404139,ir,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+agua,304,n,,no_candidate_found,no_candidate_found,0.0,agua,,0,0,0,manual review needed
+misma,305,adj,,no_candidate_found,no_candidate_found,0.0,mismo,,0,0,0,manual review needed
+veo,306,v,Yo veo la hora de la casa.,stochastic_decoder,stochastic,8.221866983102041,ver,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+haces,307,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+camino,308,n,¿sabes el camino?,retrieved_corpus,retrieved,9.525136659965584,camino,Gender=Masc|Number=Sing,1,1,1,
+persona,309,n,La persona es buena.,template_generated,n_a1_1,9.20609155977423,persona,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+iba,310,v,Ella iba a casa.,seeded_template,seeded_special_ir_place,9.423763078376533,ir,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_ir_place
+realidad,311,n,La realidad es un poco de dinero.,stochastic_decoder,stochastic,8.958138344420664,realidad,Gender=Fem|Number=Sing,1,1,1,stochastic
+fin,312,n,,no_candidate_found,no_candidate_found,0.0,fin,,0,0,0,manual review needed
+importante,313,adj,No está pasando nada importante.,retrieved_corpus,retrieved,11.958056374114717,importante,Number=Sing,1,1,1,
+primero,314,adj,No quería estar aquí en primer lugar.,retrieved_corpus,retrieved,12.783466031721492,primero,Gender=Masc|Number=Sing,1,1,1,
+digo,315,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+horas,316,n,,no_candidate_found,no_candidate_found,0.0,hora,,0,0,0,manual review needed
+semana,317,n,¿estuviste aquí la semana pasada?,retrieved_corpus,retrieved,10.713490494164802,semana,Gender=Fem|Number=Sing,1,1,1,
+puerta,318,n,¿quién estaba a la puerta?,retrieved_corpus,retrieved,11.25525242011119,puerta,Gender=Fem|Number=Sing,1,1,1,
+somos,319,v,Nosotros somos el uno al otro lado.,stochastic_decoder,stochastic,8.105721895344612,ser,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+pensé,320,v,,no_candidate_found,no_candidate_found,0.0,pensar,,0,0,0,manual review needed
+bajo,321,prep,,no_candidate_found,no_candidate_found,0.0,bajo,,0,0,0,manual review needed
+muerte,322,n,Soy la muerte.,retrieved_corpus,retrieved,10.144006979611905,muerte,Gender=Fem|Number=Sing,1,1,1,
+problemas,323,n,De seguro tendremos problemas.,retrieved_corpus,retrieved,12.689549485604728,problema,Gender=Masc|Number=Plur,1,1,1,
+punto,324,n,El punto es nuevo.,template_generated,n_a1_1,8.97178064454881,punto,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+ah,325,,,no_candidate_found,no_candidate_found,0.0,ah,,0,0,0,manual review needed
+pasó,326,v,Dice que se lo pasó muy bien.,retrieved_corpus,retrieved,12.650574743508844,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+quizá,327,adv,Sí. no. quizá. no lo sé.,retrieved_corpus,retrieved,12.230986637270949,quizá,,1,1,1,
+buenas,328,adj,,no_candidate_found,no_candidate_found,0.0,buenas,,0,0,0,manual review needed
+supuesto,329,n,,no_candidate_found,no_candidate_found,0.0,supuesto,,0,0,0,manual review needed
+cuatro,330,num,Tengo cuatro años menos que él.,retrieved_corpus,retrieved,16.269395886947915,cuatro,,1,1,1,
+da,331,v,,no_candidate_found,no_candidate_found,0.0,dar,,0,0,0,manual review needed
+mano,332,n,,no_candidate_found,no_candidate_found,0.0,mano,,0,0,0,manual review needed
+niños,333,n,Todos los niños la esperaban cada año.,retrieved_corpus,retrieved,10.98922258239692,niño,Gender=Masc|Number=Plur,1,1,1,
+volver,334,v,Puede que vuelva.,retrieved_corpus,retrieved,13.232485415927153,volver,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+además,335,adv,,no_candidate_found,no_candidate_found,0.0,además,,0,0,0,manual review needed
+señora,336,n,,no_candidate_found,no_candidate_found,0.0,señora,,0,0,0,manual review needed
+cariño,337,n,Cada madre tiene cariño para su hijo.,retrieved_corpus,retrieved,10.061055244114781,cariño,Gender=Masc|Number=Sing,1,1,1,
+ayuda,338,n,Necesito un poco de ayuda tuya.,retrieved_corpus,retrieved,12.400006136652657,ayuda,Gender=Fem|Number=Sing,1,1,1,
+ojos,339,n,,no_candidate_found,no_candidate_found,0.0,ojo,,0,0,0,manual review needed
+cinco,340,num,Ella tiene cinco años.,retrieved_corpus,retrieved,17.814286358855213,cinco,,1,1,1,
+pasar,341,v,¿cómo lo pasa usted?,retrieved_corpus,retrieved,11.441315185344985,pasar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+general,342,adj,,no_candidate_found,no_candidate_found,0.0,general,,0,0,0,manual review needed
+pronto,343,adv,,no_candidate_found,no_candidate_found,0.0,pronto,,0,0,0,manual review needed
+debo,344,v,,no_candidate_found,no_candidate_found,0.0,deber,,0,0,0,manual review needed
+minutos,345,n,,no_candidate_found,no_candidate_found,0.0,minuto,,0,0,0,manual review needed
+sino,346,conj,,no_candidate_found,no_candidate_found,0.0,sino,,0,0,0,manual review needed
+gobierno,347,n,El gobierno está haciendo tarde.,stochastic_decoder,stochastic,9.028860136158505,gobierno,Gender=Masc|Number=Sing,1,1,1,stochastic
+manos,348,n,,no_candidate_found,no_candidate_found,0.0,mano,,0,0,0,manual review needed
+presidente,349,n,Estoy viendo al presidente.,retrieved_corpus,retrieved,10.973060044493357,presidente,Gender=Masc|Number=Sing,1,1,1,
+muerto,350,adj,Tendré más que decir cuando esté muerto.,retrieved_corpus,retrieved,11.195697431985108,muerto,Gender=Masc|Number=Sing,1,1,1,
+muchos,351,determiner,Muchos amigo está bien.,template_generated,det_anchor_clear,9.906642803218924,mucho,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
+chico,352,n,El chico es serio.,template_generated,n_a1_1,9.445336903058926,chico,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+guerra,353,n,¡no quiero una guerra!,retrieved_corpus,retrieved,14.365940203309204,guerra,Gender=Fem|Number=Sing,1,1,1,
+hice,354,v,Hice bien mi trabajo.,retrieved_corpus,retrieved,9.752604261803702,hacer,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+incluso,355,adv,,no_candidate_found,no_candidate_found,0.0,incluso,,0,0,0,manual review needed
+medio,356,n,El medio es nuevo.,template_generated,n_a1_1,8.588816732151752,medio,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+cuál,357,pron,Cuál está aquí.,template_generated,pron_fallback_here,11.458076499629186,cuál,,1,1,1,pron_fallback_here
+hablando,358,v,,no_candidate_found,no_candidate_found,0.0,hablar,,0,0,0,manual review needed
+adiós,359,n,Sólo pasé a decir adiós.,retrieved_corpus,retrieved,10.427488858285098,adiós,Gender=Masc|Number=Sing,1,1,1,
+siquiera,360,adv,,no_candidate_found,no_candidate_found,0.0,siquiera,,0,0,0,manual review needed
+genial,361,adj,Lo hiciste genial.,retrieved_corpus,retrieved,10.02519900872978,genial,Number=Sing,1,1,1,
+fueron,362,v,Ellos fueron a casa de su casa.,stochastic_decoder,stochastic,8.212432649308212,ser,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+ello,363,pron,Ello está aquí.,template_generated,pron_fallback_here,11.402290611800634,ello,,1,1,1,pron_fallback_here
+rápido,364,adj,El amigo es rápido.,seeded_template,seeded_adj_fallback,10.329646117400697,rápido,Gender=Masc|Number=Sing,1,1,1,seeded_adj_fallback
+equipo,365,n,Ellos eran un equipo.,retrieved_corpus,retrieved,10.582286618502177,equipo,Gender=Masc|Number=Sing,1,1,1,
+dejar,366,v,No te voy a dejar solo.,retrieved_corpus,retrieved,14.888236592382338,dejar,VerbForm=Inf,1,1,1,
+significa,367,v,¿qué significa eso?,retrieved_corpus,retrieved,13.054220506778776,significar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+jefe,368,n,Hablas como si fueras nuestro jefe.,retrieved_corpus,retrieved,10.439873948547756,jefe,Gender=Masc|Number=Sing,1,1,1,
+millones,369,n,,no_candidate_found,no_candidate_found,0.0,millón,,0,0,0,manual review needed
+suerte,370,n,Qué suerte que haga tan buen tiempo.,retrieved_corpus,retrieved,11.339854645953473,suerte,Gender=Fem|Number=Sing,1,1,1,
+otras,371,determiner,Otras amigo está bien.,template_generated,det_anchor_clear,9.169321975163564,otro,Gender=Fem|Number=Plur,1,1,1,det_anchor_clear
+ayer,372,adv,Voy a casa ayer.,template_generated,adv_time_home,11.006315134883994,ayer,,1,1,1,adv_time_home
+cuerpo,373,n,,no_candidate_found,no_candidate_found,0.0,cuerpo,,0,0,0,manual review needed
+llegar,374,v,Ellos todavía no llegaron.,retrieved_corpus,retrieved,10.602303310213575,llegar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+mujeres,375,n,,no_candidate_found,no_candidate_found,0.0,mujer,,0,0,0,manual review needed
+posible,376,adj,Hoy en día todo es posible.,retrieved_corpus,retrieved,11.852114763760317,posible,Number=Sing,1,1,1,
+según,377,prep,,no_candidate_found,no_candidate_found,0.0,según,,0,0,0,manual review needed
+nuestros,378,determiner,Nuestros hijos necesitan algo que hacer.,retrieved_corpus,retrieved,15.46578885938,nuestro,Gender=Masc|Number=Plur,1,1,1,
+quizás,379,adv,Quizás sea cierto.,retrieved_corpus,retrieved,10.980746489677799,quizás,,1,1,1,
+tierra,380,n,La tierra es buena.,template_generated,n_a1_1,10.104151474129978,tierra,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+único,381,adj,,no_candidate_found,no_candidate_found,0.0,único,,0,0,0,manual review needed
+hija,382,n,Hablé con mi hija.,retrieved_corpus,retrieved,10.737333992597355,hija,Gender=Fem|Number=Sing,1,1,1,
+ninguna,383,determiner,Ninguna amigo está bien.,template_generated,det_anchor_clear,9.550555939244724,ninguno,,1,1,1,det_anchor_clear
+final,384,n,,no_candidate_found,no_candidate_found,0.0,final,,0,0,0,manual review needed
+cara,385,n,,no_candidate_found,no_candidate_found,0.0,cara,,0,0,0,manual review needed
+niño,386,n,Todos los niños la esperaban cada año.,retrieved_corpus,retrieved,10.98922258239692,niño,Gender=Masc|Number=Plur,1,1,1,
+supongo,387,v,Supongo que ya no importa.,retrieved_corpus,retrieved,11.968706037811494,suponer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+juntos,388,adj,,no_candidate_found,no_candidate_found,0.0,junto,,0,0,0,manual review needed
+algunas,389,determiner,Algunas personas no hicieron nada.,retrieved_corpus,retrieved,16.86985012448632,alguno,Gender=Fem|Number=Plur,1,1,1,
+entiendo,390,v,Yo no entiendo esto.,retrieved_corpus,retrieved,11.929032392038756,entender,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+número,391,n,El número es serio.,template_generated,n_a1_1,9.028261647618997,número,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+ningún,392,determiner,No quiero estar en ningún otro lado.,retrieved_corpus,retrieved,16.556487300895817,ninguno,Gender=Masc|Number=Sing,1,1,1,
+deja,393,v,,no_candidate_found,no_candidate_found,0.0,dejar,,0,0,0,manual review needed
+ves,394,v,,no_candidate_found,no_candidate_found,0.0,ves,,0,0,0,manual review needed
+tío,395,n,Tengo que estar con mis tíos.,retrieved_corpus,retrieved,11.693271787072534,tío,Gender=Masc|Number=Plur,1,1,1,
+cerca,396,adv,Estamos demasiado cerca.,retrieved_corpus,retrieved,11.284334869772923,cerca,,1,1,1,
+corazón,397,n,Te quiero con todo mi corazón.,retrieved_corpus,retrieved,12.887377309408233,corazón,Gender=Masc|Number=Sing,1,1,1,
+miedo,398,n,No te tengo miedo.,retrieved_corpus,retrieved,12.48339798781102,miedo,Gender=Masc|Number=Sing,1,1,1,
+buenos,399,adj,,no_candidate_found,no_candidate_found,0.0,buenos,,0,0,0,manual review needed
+eran,400,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+haya,401,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+hubiera,402,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+feliz,403,adj,¿no ves que al fin estoy feliz?,retrieved_corpus,retrieved,12.117371232715332,feliz,Number=Sing,1,1,1,
+unas,404,determiner,,no_candidate_found,no_candidate_found,0.0,uno,,0,0,0,manual review needed
+espero,405,v,Espero que nadie me vea así.,retrieved_corpus,retrieved,13.406190235426731,esperar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+igual,406,adj,También pienso igual.,retrieved_corpus,retrieved,11.57165332828499,igual,Number=Sing,1,1,1,
+viene,407,v,Ella viene a casa.,template_generated,v_a1_4,8.254303506299092,venir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,v_a1_4
+meses,408,n,,no_candidate_found,no_candidate_found,0.0,mes,,0,0,0,manual review needed
+sigue,409,v,¡la noche sigue!,retrieved_corpus,retrieved,10.875992388839105,seguir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+dar,410,v,,no_candidate_found,no_candidate_found,0.0,dar,,0,0,0,manual review needed
+podía,411,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+última,412,adj,,no_candidate_found,no_candidate_found,0.0,último,,0,0,0,manual review needed
+difícil,413,adj,Fueron días muy difíciles.,retrieved_corpus,retrieved,9.73107812896523,difícil,Number=Plur,1,1,1,
+os,414,interj,"Os, ella está aquí!",template_generated,interj_here,8.198628225854021,os,,1,1,1,interj_here
+venir,415,v,Quería que ella viniera aquí esta noche.,retrieved_corpus,retrieved,11.889984091721054,venir,Mood=Sub|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+vi,416,v,Yo vi la casa de mi casa.,stochastic_decoder,stochastic,8.496426001942668,ver,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+viejo,417,n,El viejo está en el año pasado.,stochastic_decoder,stochastic,8.764848005202511,viejo,Gender=Masc|Number=Sing,1,1,1,stochastic
+bastante,418,adv,,no_candidate_found,no_candidate_found,0.0,bastante,,0,0,0,manual review needed
+tomar,419,v,,no_candidate_found,no_candidate_found,0.0,tomar,,0,0,0,manual review needed
+gustaría,420,v,,no_candidate_found,no_candidate_found,0.0,gustar,,0,0,0,manual review needed
+cuánto,421,determiner,Cuánto amigo está bien.,template_generated,det_anchor_clear,9.078924950414953,cuánto,,1,1,1,det_anchor_clear
+encontrar,422,v,No encuentran nada por hacer.,retrieved_corpus,retrieved,12.946551915075082,encontrar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+adelante,423,adv,De ahora en adelante lo haremos así.,retrieved_corpus,retrieved,14.112282607514846,adelante,,1,1,1,
+justo,424,adj,No creo que eso sea justo.,retrieved_corpus,retrieved,13.171204944768379,justo,Gender=Masc|Number=Sing,1,1,1,
+sentido,425,n,No tiene sentido esperar.,retrieved_corpus,retrieved,12.414245720768617,sentido,Gender=Masc|Number=Sing,1,1,1,
+esposa,426,n,La esposa es buena.,template_generated,n_a1_1,8.975357146604003,esposa,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+segundo,427,adj,Estará aquí en cualquier segundo.,retrieved_corpus,retrieved,10.546758864353766,segundo,Gender=Masc|Number=Sing,1,1,1,
+grande,428,adj,¿cómo de grande es su familia?,retrieved_corpus,retrieved,10.672725040357081,grande,Number=Sing,1,1,1,
+allá,429,adv,Me hizo muy bien estar allá.,retrieved_corpus,retrieved,14.734808617198809,allá,,1,1,1,
+clase,430,n,Tengo clase esta noche.,retrieved_corpus,retrieved,12.726362171695577,clase,Gender=Fem|Number=Sing,1,1,1,
+cual,431,pron,Cual está aquí.,template_generated,pron_fallback_here,11.356710222602144,cual,Number=Sing,1,1,1,pron_fallback_here
+ante,432,prep,,no_candidate_found,no_candidate_found,0.0,ante,,0,0,0,manual review needed
+juego,433,n,A ti te gustaba este juego.,retrieved_corpus,retrieved,11.333729641618634,juego,Gender=Masc|Number=Sing,1,1,1,
+tenido,434,v,,no_candidate_found,no_candidate_found,0.0,tener,,0,0,0,manual review needed
+pensar,435,v,Uno podría pensar un poco sobre eso.,retrieved_corpus,retrieved,11.363005591163859,pensar,VerbForm=Inf,1,1,1,
+pueda,436,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+hey,437,,,no_candidate_found,no_candidate_found,0.0,hey,,0,0,0,manual review needed
+doctor,438,n,Me dijo que su padre era doctor.,retrieved_corpus,retrieved,12.360030818951254,doctor,Gender=Masc|Number=Sing,1,1,1,
+grupo,439,n,Me gustaría ser parte de tu grupo.,retrieved_corpus,retrieved,11.699355655985677,grupo,Gender=Masc|Number=Sing,1,1,1,
+cuidado,440,n,El cuidado es nuevo.,template_generated,n_a1_1,8.557986596186302,cuidado,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+suficiente,441,adj,No tuve suficiente tiempo.,retrieved_corpus,retrieved,13.726844353896844,suficiente,Number=Sing,1,1,1,
+sangre,442,n,La sangre es buena.,template_generated,n_a1_1,9.42948384524149,sangre,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+pequeño,443,adj,Es bueno y es pequeño.,retrieved_corpus,retrieved,11.559716017120682,pequeño,Gender=Masc|Number=Sing,1,1,1,
+dijiste,444,v,¿le dijiste algo?,retrieved_corpus,retrieved,12.362780729595036,decir,Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin,1,1,1,
+trata,445,v,De eso se trata.,retrieved_corpus,retrieved,10.90573202791847,tratar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+haré,446,v,Yo haré un trabajo.,seeded_template,seeded_special_hacer_obj,8.009498453899315,hacer,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,seeded_special_hacer_obj
+último,447,adj,,no_candidate_found,no_candidate_found,0.0,último,,0,0,0,manual review needed
+frente,448,n,,no_candidate_found,no_candidate_found,0.0,frente,,0,0,0,manual review needed
+grandes,449,adj,,no_candidate_found,no_candidate_found,0.0,grande,,0,0,0,manual review needed
+venga,450,v,,no_candidate_found,no_candidate_found,0.0,venir,,0,0,0,manual review needed
+llama,451,v,Ella llama a la casa de él.,stochastic_decoder,stochastic,8.084698763543567,llamar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+noches,452,n,,no_candidate_found,no_candidate_found,0.0,noche,,0,0,0,manual review needed
+toma,453,v,,no_candidate_found,no_candidate_found,0.0,tomar,,0,0,0,manual review needed
+necesita,454,v,Nadie necesita pasar por esto.,retrieved_corpus,retrieved,10.657411788061268,necesitar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+debes,455,v,Tú debes ser un poco de dinero.,stochastic_decoder,stochastic,8.025977611669239,deber,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+arriba,456,adv,¿está su madre ahí arriba?,retrieved_corpus,retrieved,12.85384579988498,arriba,,1,1,1,
+vuelta,457,n,¿me lo pasan de vuelta ahora?,retrieved_corpus,retrieved,13.037714749108584,vuelta,Gender=Fem|Number=Sing,1,1,1,
+coche,458,n,¿quieres un coche?,retrieved_corpus,retrieved,11.142080248948444,coche,Gender=Masc|Number=Sing,1,1,1,
+tampoco,459,adv,Yo tampoco sé qué hacer.,retrieved_corpus,retrieved,15.487159976861058,tampoco,,1,1,1,
+trabajar,460,v,Ustedes trabajan de noche.,retrieved_corpus,retrieved,12.39169924074442,trabajar,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+cuándo,461,adv,,no_candidate_found,no_candidate_found,0.0,cuándo,,0,0,0,manual review needed
+fuerte,462,adj,,no_candidate_found,no_candidate_found,0.0,fuerte,,0,0,0,manual review needed
+seguridad,463,n,La seguridad es buena.,template_generated,n_a1_1,9.165132677245026,seguridad,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+mas,464,,,no_candidate_found,no_candidate_found,0.0,mas,,0,0,0,manual review needed
+entrar,465,v,¡no pueden entrar al mismo tiempo!,retrieved_corpus,retrieved,13.482621238866221,entrar,VerbForm=Inf,1,1,1,
+vivir,466,v,¿dónde vive ahora?,retrieved_corpus,retrieved,12.096233454104317,vivir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+escucha,467,v,,no_candidate_found,no_candidate_found,0.0,escuchar,,0,0,0,manual review needed
+pueblo,469,n,El pueblo se fue a la semana.,stochastic_decoder,stochastic,8.909077843397732,pueblo,Gender=Masc|Number=Sing,1,1,1,stochastic
+hijos,470,n,No tengo nada para mis hijos.,retrieved_corpus,retrieved,12.451404234826976,hijo,Gender=Masc|Number=Plur,1,1,1,
+joven,471,adj,¡qué joven eres!,retrieved_corpus,retrieved,8.834896488904418,joven,Number=Sing,1,1,1,
+cuanto,472,adv,,no_candidate_found,no_candidate_found,0.0,cuanto,,0,0,0,manual review needed
+hago,473,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+escuela,474,n,¿qué has hecho hoy en la escuela?,retrieved_corpus,retrieved,11.492037546603408,escuela,Gender=Fem|Number=Sing,1,1,1,
+tras,475,prep,,no_candidate_found,no_candidate_found,0.0,tras,,0,0,0,manual review needed
+cree,476,v,Ella cree eso.,seeded_template,seeded_special_creer_object,9.24322631070684,creer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_creer_object
+cambio,477,n,,no_candidate_found,no_candidate_found,0.0,cambio,,0,0,0,manual review needed
+luz,478,n,,no_candidate_found,no_candidate_found,0.0,luz,,0,0,0,manual review needed
+oportunidad,479,n,Quiero otra oportunidad.,retrieved_corpus,retrieved,9.927906984510042,oportunidad,Gender=Fem|Number=Sing,1,1,1,
+fui,480,v,,no_candidate_found,no_candidate_found,0.0,fui,,0,0,0,manual review needed
+sistema,481,n,Es un buen sistema.,retrieved_corpus,retrieved,12.651475294712544,sistema,Gender=Masc|Number=Sing,1,1,1,
+embargo,482,n,El embargo es nuevo.,template_generated,n_a1_1,8.669909753773386,embargo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+teléfono,483,n,Me gustan tus teléfonos.,retrieved_corpus,retrieved,11.94094945564319,teléfono,Gender=Masc|Number=Plur,1,1,1,
+dices,484,v,Estoy de acuerdo con lo que dices.,retrieved_corpus,retrieved,14.026354978864495,decir,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+seis,485,num,Somos seis personas.,retrieved_corpus,retrieved,12.505004091168534,seis,,1,1,1,
+alto,486,adj,Es más alta que su madre.,retrieved_corpus,retrieved,14.092986751568766,alto,Gender=Fem|Number=Sing,1,1,1,
+habla,487,v,Ella habla con nadie ahora.,stochastic_decoder,stochastic,8.633957195927337,hablar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+fiesta,488,n,¿para quién es la fiesta?,retrieved_corpus,retrieved,11.915191961738293,fiesta,Gender=Fem|Number=Sing,1,1,1,
+loco,489,n,El loco es nuevo.,template_generated,n_a1_1,8.798781157051488,loco,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+atrás,490,adv,No es para atrás.,retrieved_corpus,retrieved,16.516803080864847,atrás,,1,1,1,
+debemos,491,v,,no_candidate_found,no_candidate_found,0.0,deber,,0,0,0,manual review needed
+pregunta,492,n,¿de quién es la pregunta?,retrieved_corpus,retrieved,12.954426032249051,pregunta,Gender=Fem|Number=Sing,1,1,1,
+hacen,493,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+seguir,494,v,No podemos seguir siendo amigos.,retrieved_corpus,retrieved,12.090176667306505,seguir,VerbForm=Inf,1,1,1,
+quieren,495,v,Ellos quieren una casa.,seeded_template,seeded_special_querer_obj,10.216911898412942,querer,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
+dio,496,v,Ella dio la ayuda.,seeded_template,seeded_verb_obj,9.878849899162152,dar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,seeded_verb_obj
+paso,497,n,El paso a toda madre.,stochastic_decoder,stochastic,8.262726480105576,paso,Gender=Masc|Number=Sing,1,1,1,stochastic
+falta,498,n,,no_candidate_found,no_candidate_found,0.0,falta,,0,0,0,manual review needed
+fácil,499,adj,Sé que tu trabajo no es fácil.,retrieved_corpus,retrieved,11.675131492772215,fácil,Number=Sing,1,1,1,
+ido,500,v,,no_candidate_found,no_candidate_found,0.0,ir,,0,0,0,manual review needed
+padres,501,n,Ahora mis padres están en casa.,retrieved_corpus,retrieved,12.60937999879326,padre,Gender=Masc|Number=Plur,1,1,1,
+vino,502,n,¿de dónde vino?,retrieved_corpus,retrieved,11.007199513543496,vino,Gender=Masc|Number=Sing,1,1,1,
+hiciste,503,v,¿por qué hiciste eso?,retrieved_corpus,retrieved,13.533768848247993,hacer,Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin,1,1,1,
+estaban,504,v,Ellos estaban en casa.,seeded_template,seeded_special_estar_place,9.652083711610512,estar,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_estar_place
+situación,505,n,Creo que no entiendes la situación.,retrieved_corpus,retrieved,12.248573407345303,situación,Gender=Fem|Number=Sing,1,1,1,
+abajo,506,adv,Yo miré hacia abajo.,retrieved_corpus,retrieved,12.196256940298063,abajo,,1,1,1,
+única,507,adj,,no_candidate_found,no_candidate_found,0.0,único,,0,0,0,manual review needed
+siendo,508,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+modo,509,n,No iré de ningún modo.,retrieved_corpus,retrieved,11.774954326003366,modo,Gender=Masc|Number=Sing,1,1,1,
+información,510,n,No tengo más información.,retrieved_corpus,retrieved,12.447608213347959,información,Gender=Fem|Number=Sing,1,1,1,
+dólares,511,n,,no_candidate_found,no_candidate_found,0.0,dólar,,0,0,0,manual review needed
+esté,512,v,,no_candidate_found,no_candidate_found,0.0,estar,,0,0,0,manual review needed
+hermana,513,n,Yo no tengo hermanas.,retrieved_corpus,retrieved,12.339857138777866,hermana,Gender=Fem|Number=Plur,1,1,1,
+tuvo,514,v,Ella tuvo un hermano.,seeded_template,seeded_special_tener_obj,9.645970040109866,tener,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+dado,515,v,,no_candidate_found,no_candidate_found,0.0,dar,,0,0,0,manual review needed
+música,516,n,Me gusta su música.,retrieved_corpus,retrieved,12.31423551963161,música,Gender=Fem|Number=Sing,1,1,1,
+paz,517,n,Había paz por todo el mundo.,retrieved_corpus,retrieved,13.094981069766948,paz,Gender=Fem|Number=Sing,1,1,1,
+culpa,518,n,Parece que nadie tiene la culpa.,retrieved_corpus,retrieved,11.778641059697811,culpa,Gender=Fem|Number=Sing,1,1,1,
+queda,519,v,,no_candidate_found,no_candidate_found,0.0,quedar,,0,0,0,manual review needed
+real,520,adj,,no_candidate_found,no_candidate_found,0.0,real,,0,0,0,manual review needed
+auto,521,,,no_candidate_found,no_candidate_found,0.0,auto,,0,0,0,manual review needed
+palabra,522,n,La palabra es buena.,template_generated,n_a1_1,9.572607852523891,palabra,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+deberías,523,v,,no_candidate_found,no_candidate_found,0.0,deberías,,0,0,0,manual review needed
+sola,524,adj,¿puedes ir sola?,retrieved_corpus,retrieved,9.737430608768435,solo,Gender=Fem|Number=Sing,1,1,1,
+derecho,525,n,Tengo todo el derecho de estar aquí.,retrieved_corpus,retrieved,12.708751597156525,derecho,Gender=Masc|Number=Sing,1,1,1,
+lista,526,n,Haz una lista.,retrieved_corpus,retrieved,9.305170572758849,lista,Gender=Fem|Number=Sing,1,1,1,
+partido,527,n,Se los ha partido.,retrieved_corpus,retrieved,11.650685104512318,partido,Gender=Masc|Number=Sing,1,1,1,
+orden,528,n,,no_candidate_found,no_candidate_found,0.0,orden,,0,0,0,manual review needed
+exactamente,529,adv,Eres exactamente como tu padre.,retrieved_corpus,retrieved,14.275830346647556,exactamente,,1,1,1,
+nacional,530,adj,,no_candidate_found,no_candidate_found,0.0,nacional,,0,0,0,manual review needed
+listo,531,adj,Estoy listo para hablar.,retrieved_corpus,retrieved,13.42180896308758,listo,Gender=Masc|Number=Sing,1,1,1,
+comida,532,n,No hay comida.,retrieved_corpus,retrieved,11.93703360800138,comida,Gender=Fem|Number=Sing,1,1,1,
+necesitamos,533,v,Necesitamos hacer que se haga algo.,retrieved_corpus,retrieved,12.304687425560015,necesitar,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+habría,534,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+libro,535,n,Este libro es para usted.,retrieved_corpus,retrieved,14.440854548524468,libro,Gender=Masc|Number=Sing,1,1,1,
+capitán,536,n,Soy el capitán.,retrieved_corpus,retrieved,10.629342092953218,capitán,Gender=Masc|Number=Sing,1,1,1,
+diciendo,537,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+comer,538,v,,no_candidate_found,no_candidate_found,0.0,comer,,0,0,0,manual review needed
+sabemos,539,v,Nosotros sabemos la verdad.,seeded_template,seeded_special_saber_truth,8.61140428824952,saber,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_saber_truth
+lejos,540,adv,¿estáis cerca o lejos de ellos?,retrieved_corpus,retrieved,11.871503643709854,lejos,,1,1,1,
+pasando,541,v,,no_candidate_found,no_candidate_found,0.0,pasar,,0,0,0,manual review needed
+morir,542,v,¿es verdad que él murió?,retrieved_corpus,retrieved,14.218156442551969,morir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+haga,543,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+puesto,544,n,El puesto es nuevo.,template_generated,n_a1_1,8.419357160074313,puesto,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+calle,545,n,La calle es buena.,template_generated,n_a1_1,9.482422356086907,calle,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+dicen,546,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+estabas,547,v,Pensé que habías dicho que estabas sola.,retrieved_corpus,retrieved,11.707920124796498,estar,Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin,1,1,1,
+par,548,n,Estoy contigo en un par de minutos.,retrieved_corpus,retrieved,12.868506992427806,par,Gender=Masc|Number=Sing,1,1,1,
+política,549,n,No les gusta hablar de política.,retrieved_corpus,retrieved,12.402525733336962,política,Gender=Fem|Number=Sing,1,1,1,
+malo,550,n,El malo es nuevo.,template_generated,n_a1_1,8.615523010676657,malo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+habitación,551,n,Vamos a hablar en la otra habitación.,retrieved_corpus,retrieved,13.009418034209288,habitación,Gender=Fem|Number=Sing,1,1,1,
+probablemente,552,adv,,no_candidate_found,no_candidate_found,0.0,probablemente,,0,0,0,manual review needed
+estuvo,553,v,Ella estuvo en casa.,seeded_template,seeded_special_estar_place,9.749190576283233,estar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,seeded_special_estar_place
+éste,554,pron,Éste está aquí.,template_generated,pron_fallback_here,12.198534180098763,éste,,1,1,1,pron_fallback_here
+plan,555,n,El tuyo es un buen plan.,retrieved_corpus,retrieved,12.129796351026535,plan,Gender=Masc|Number=Sing,1,1,1,
+especial,556,adj,No es para nada especial.,retrieved_corpus,retrieved,12.963539996943409,especial,Number=Sing,1,1,1,
+palabras,557,n,,no_candidate_found,no_candidate_found,0.0,palabra,,0,0,0,manual review needed
+pequeña,558,adj,,no_candidate_found,no_candidate_found,0.0,pequeño,,0,0,0,manual review needed
+ok,559,adj,,no_candidate_found,no_candidate_found,0.0,ok,,0,0,0,manual review needed
+creer,560,v,¿qué crees que debería decir?,retrieved_corpus,retrieved,11.688450918004271,creer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+relación,561,n,¿cuál era su relación?,retrieved_corpus,retrieved,9.97497352713761,relación,Gender=Fem|Number=Sing,1,1,1,
+chicas,562,n,,no_candidate_found,no_candidate_found,0.0,chicas,,0,0,0,manual review needed
+ley,563,n,Así no es la ley.,retrieved_corpus,retrieved,12.055999967317703,ley,Gender=Fem|Number=Sing,1,1,1,
+bebé,564,n,Es un bebé.,retrieved_corpus,retrieved,11.437586791603168,bebé,Gender=Masc|Number=Sing,1,1,1,
+pensando,565,v,,no_candidate_found,no_candidate_found,0.0,pensar,,0,0,0,manual review needed
+conozco,566,v,Yo conozco una casa.,template_generated,v_a1_1,9.246473412957316,conocer,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,v_a1_1
+simplemente,567,adv,¿no podemos ser simplemente amigos?,retrieved_corpus,retrieved,13.837101045453416,simplemente,,1,1,1,
+acerca,568,v,La noche se acerca.,retrieved_corpus,retrieved,11.587512355372702,acercar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+diez,569,num,Ya te lo dije diez veces.,retrieved_corpus,retrieved,15.137766533042969,diez,,1,1,1,
+esperar,570,v,Espero que nadie me vea así.,retrieved_corpus,retrieved,13.406190235426731,esperar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+través,571,n,,no_candidate_found,no_candidate_found,0.0,través,,0,0,0,manual review needed
+tuve,572,v,Yo tuve una casa.,seeded_template,seeded_special_tener_obj,10.191222737631684,tener,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+centro,573,n,¿estamos yendo al centro de la ciudad?,retrieved_corpus,retrieved,11.454093902098831,centro,Gender=Masc|Number=Sing,1,1,1,
+largo,574,adj,El nombre es largo de la casa.,stochastic_decoder,stochastic,8.23887113194354,largo,Gender=Masc|Number=Sing,1,1,1,stochastic
+buscando,575,v,¿estabas buscando algo?,retrieved_corpus,retrieved,11.460571542984937,buscar,VerbForm=Ger,1,1,1,
+cama,576,n,¿realmente tengo que ir a la cama?,retrieved_corpus,retrieved,12.302674875002872,cama,Gender=Fem|Number=Sing,1,1,1,
+nuestras,577,determiner,Nuestras casas están bien.,template_generated,det_anchor_clear,11.059136960843972,nuestro,Gender=Fem|Number=Plur,1,1,1,det_anchor_clear
+recuerdo,578,n,El recuerdo es nuevo.,template_generated,n_a1_1,8.419357160074313,recuerdo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+rey,579,n,El rey no debería decir eso.,retrieved_corpus,retrieved,13.193392162250117,rey,Gender=Masc|Number=Sing,1,1,1,
+voz,581,n,Ella tiene una voz muy buena.,retrieved_corpus,retrieved,14.019739502873652,voz,Gender=Fem|Number=Sing,1,1,1,
+demás,582,pron,Demás está aquí.,template_generated,pron_fallback_here,11.229003816660647,demás,Number=Plur,1,1,1,pron_fallback_here
+saben,584,v,Hasta los niños saben esas cosas.,retrieved_corpus,retrieved,10.59792729439454,saber,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+mil,585,num,,no_candidate_found,no_candidate_found,0.0,mil,,0,0,0,manual review needed
+lleva,586,v,,no_candidate_found,no_candidate_found,0.0,llevar,,0,0,0,manual review needed
+tenga,587,v,,no_candidate_found,no_candidate_found,0.0,tener,,0,0,0,manual review needed
+necesitas,588,v,,no_candidate_found,no_candidate_found,0.0,necesitar,,0,0,0,manual review needed
+conseguir,589,v,Ella no lo conseguirá.,retrieved_corpus,retrieved,14.302123107676705,conseguir,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,
+amo,590,n,,no_candidate_found,no_candidate_found,0.0,amo,,0,0,0,manual review needed
+propia,591,adj,,no_candidate_found,no_candidate_found,0.0,propio,,0,0,0,manual review needed
+propio,592,adj,,no_candidate_found,no_candidate_found,0.0,propio,,0,0,0,manual review needed
+sitio,593,n,No es seguro en ningún sitio.,retrieved_corpus,retrieved,12.288388721737526,sitio,Gender=Masc|Number=Sing,1,1,1,
+resto,594,n,¿dónde está el resto del equipo?,retrieved_corpus,retrieved,10.850196048704536,resto,Gender=Masc|Number=Sing,1,1,1,
+oficina,595,n,¿voy a su oficina?,retrieved_corpus,retrieved,11.895741622694855,oficina,Gender=Fem|Number=Sing,1,1,1,
+libre,596,adj,No estaría libre hasta las cuatro.,retrieved_corpus,retrieved,11.226405346777318,libre,Number=Sing,1,1,1,
+segura,597,adj,Estoy segura de que ella tiene razón.,retrieved_corpus,retrieved,12.303966387055029,seguro,Gender=Fem|Number=Sing,1,1,1,
+peor,598,adj,Va de mal en peor.,retrieved_corpus,retrieved,10.901519254189564,peor,Number=Sing,1,1,1,
+estará,599,v,Ella estará en casa.,seeded_template,seeded_special_estar_place,9.920744408334134,estar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,seeded_special_estar_place
+poner,600,v,Usted no puso nada.,retrieved_corpus,retrieved,12.983757781483554,poner,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+fuerza,601,n,No quiero tu amor a la fuerza.,retrieved_corpus,retrieved,11.765429144418592,fuerza,Gender=Fem|Number=Sing,1,1,1,
+marido,602,n,Él va a ser un buen marido.,retrieved_corpus,retrieved,12.321285231180504,marido,Gender=Masc|Number=Sing,1,1,1,
+arma,603,n,¿quién tiene el arma?,retrieved_corpus,retrieved,9.170406052783923,arma,Gender=Fem|Number=Sing,1,1,1,
+puta,604,n,¡eres un hijo de puta!,retrieved_corpus,retrieved,11.734472271908766,puta,Gender=Fem|Number=Sing,1,1,1,
+oído,605,v,,no_candidate_found,no_candidate_found,0.0,oído,,0,0,0,manual review needed
+llevar,606,v,Ellas te los llevaron.,retrieved_corpus,retrieved,10.233385632122975,llevar,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+podrías,607,v,,no_candidate_found,no_candidate_found,0.0,podrías,,0,0,0,manual review needed
+ejemplo,608,n,El ejemplo es nuevo.,template_generated,n_a1_1,8.615523010676657,ejemplo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+mucha,609,determiner,Mucha amigo está bien.,template_generated,det_anchor_clear,9.686464244945558,mucho,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+control,610,n,,no_candidate_found,no_candidate_found,0.0,control,,0,0,0,manual review needed
+esperando,611,v,¿qué estamos esperando?,retrieved_corpus,retrieved,9.71648662005846,esperar,VerbForm=Ger,1,1,1,
+atención,612,n,Le gusta la atención.,retrieved_corpus,retrieved,12.050935455088885,atención,Gender=Fem|Number=Sing,1,1,1,
+don,613,n,Sólo soy un don nadie.,retrieved_corpus,retrieved,11.251095928719982,don,Gender=Masc|Number=Sing,1,1,1,
+fuego,614,n,El fuego se está haciendo tarde.,stochastic_decoder,stochastic,8.717486418871696,fuego,Gender=Masc|Number=Sing,1,1,1,stochastic
+llamado,615,adj,,no_candidate_found,no_candidate_found,0.0,llamado,,0,0,0,manual review needed
+viaje,617,n,El viaje es serio.,template_generated,n_a1_1,8.967525164859353,viaje,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+dormir,618,v,Solo quiero ir a dormir.,retrieved_corpus,retrieved,12.474894258180012,dormir,VerbForm=Inf,1,1,1,
+cuarto,619,n,Era un cuarto muy grande.,retrieved_corpus,retrieved,11.181493853236198,cuarto,Gender=Masc|Number=Sing,1,1,1,
+siguiente,621,adj,¿qué pasará la semana siguiente?,retrieved_corpus,retrieved,10.906352084511063,siguiente,Number=Sing,1,1,1,
+matar,622,v,¿quién la mató?,retrieved_corpus,retrieved,9.04443972705697,matar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+habían,623,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+hagas,624,v,No me importa nada lo que hagas.,retrieved_corpus,retrieved,12.330924507698985,hacer,Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+ambos,625,pron,Ambos está aquí.,template_generated,pron_fallback_here,9.499863280153921,ambos,,1,1,1,pron_fallback_here
+habrá,626,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+perdido,627,v,Él ha perdido muchas cosas.,retrieved_corpus,retrieved,11.804412795351928,perder,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+prueba,628,n,¿dónde está tu prueba?,retrieved_corpus,retrieved,9.78804555302914,prueba,Gender=Fem|Number=Sing,1,1,1,
+futuro,629,n,El futuro es serio.,template_generated,n_a1_1,9.229133597703381,futuro,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+campo,630,n,El campo es nuevo.,template_generated,n_a1_1,8.985999828885555,campo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+deben,631,v,,no_candidate_found,no_candidate_found,0.0,deber,,0,0,0,manual review needed
+hospital,632,n,Hoy iré al hospital.,retrieved_corpus,retrieved,10.232276059235431,hospital,Gender=Masc|Number=Sing,1,1,1,
+di,633,v,,no_candidate_found,no_candidate_found,0.0,di,,0,0,0,manual review needed
+ellas,634,pron,Ellas está aquí.,template_generated,pron_fallback_here,9.825549977866283,ella,,1,1,1,pron_fallback_here
+vivo,635,adj,Mis padres ya no están vivos.,retrieved_corpus,retrieved,11.328548619893763,vivo,Gender=Masc|Number=Plur,1,1,1,
+piensa,636,v,Ella piensa día.,stochastic_decoder,stochastic,8.0141536277383,pensar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+semanas,637,n,,no_candidate_found,no_candidate_found,0.0,semana,,0,0,0,manual review needed
+edad,638,n,Tiene la misma edad que yo.,retrieved_corpus,retrieved,13.64864344468336,edad,Gender=Fem|Number=Sing,1,1,1,
+ayudar,639,v,No te quiero ayudar.,retrieved_corpus,retrieved,14.822061867093982,ayudar,VerbForm=Inf,1,1,1,
+venido,640,v,,no_candidate_found,no_candidate_found,0.0,venir,,0,0,0,manual review needed
+murió,641,v,¿es verdad que él murió?,retrieved_corpus,retrieved,14.218156442551969,morir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+película,642,n,He visto todas sus películas.,retrieved_corpus,retrieved,11.333072430478149,película,Gender=Fem|Number=Plur,1,1,1,
+maldita,644,adj,La familia parecía estar maldita.,retrieved_corpus,retrieved,11.511607438212263,maldito,Gender=Fem|Number=Sing,1,1,1,
+estados,645,n,,no_candidate_found,no_candidate_found,0.0,estado,,0,0,0,manual review needed
+niña,646,n,,no_candidate_found,no_candidate_found,0.0,niña,,0,0,0,manual review needed
+vista,647,n,Tienen buena vista.,retrieved_corpus,retrieved,8.921377417508706,vista,Gender=Fem|Number=Sing,1,1,1,
+junto,648,adj,,no_candidate_found,no_candidate_found,0.0,junto,,0,0,0,manual review needed
+correcto,649,adj,Espero que todos estén correctos.,retrieved_corpus,retrieved,11.79560382347691,correcto,Gender=Masc|Number=Plur,1,1,1,
+llamar,650,v,¿ya le has llamado?,retrieved_corpus,retrieved,10.863196178788026,llamar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+basta,651,v,¡ya basta con eso!,retrieved_corpus,retrieved,12.86723672025153,bastar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+aire,653,n,El aire es una de las manos.,stochastic_decoder,stochastic,8.990112657035798,aire,Gender=Masc|Number=Sing,1,1,1,stochastic
+encima,654,adv,,no_candidate_found,no_candidate_found,0.0,encima,,0,0,0,manual review needed
+cielo,655,n,¿quién mira al cielo?,retrieved_corpus,retrieved,9.309035488895912,cielo,Gender=Masc|Number=Sing,1,1,1,
+iré,656,v,Iré a ver.,retrieved_corpus,retrieved,9.725420614621594,ir,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,
+buscar,657,v,¿estabas buscando algo?,retrieved_corpus,retrieved,11.460571542984937,buscar,VerbForm=Ger,1,1,1,
+programa,658,n,El programa es serio.,template_generated,n_a1_1,8.879874178673122,programa,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+personal,659,adj,,no_candidate_found,no_candidate_found,0.0,personal,,0,0,0,manual review needed
+café,660,n,¿quieres que haga café?,retrieved_corpus,retrieved,10.043661708325072,café,Gender=Masc|Number=Sing,1,1,1,
+detrás,661,adv,Están uno detrás del otro.,retrieved_corpus,retrieved,12.040985331568546,detrás,,1,1,1,
+público,662,adj,,no_candidate_found,no_candidate_found,0.0,público,,0,0,0,manual review needed
+minuto,663,n,En un minuto hay muchos días.,retrieved_corpus,retrieved,12.92956335443139,minuto,Gender=Masc|Number=Sing,1,1,1,
+director,664,n,El director quiere hablar contigo.,retrieved_corpus,retrieved,11.894686391643585,director,Gender=Masc|Number=Sing,1,1,1,
+llegó,665,v,Ella llegó a casa.,template_generated,v_a1_4,9.021655610484611,llegar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,v_a1_4
+demonios,666,n,En este mundo no hay demonios.,retrieved_corpus,retrieved,12.226671156914389,demonio,Gender=Masc|Number=Plur,1,1,1,
+pienso,667,v,Yo pienso en ti noche.,stochastic_decoder,stochastic,8.727681450810135,pensar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+verte,668,v,Quería verte esta noche.,retrieved_corpus,retrieved,12.246845822889671,verte,VerbForm=Inf,1,1,1,
+acaba,669,v,Ella acaba de llegar a la casa.,stochastic_decoder,stochastic,8.614267409922437,acabar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+boca,670,n,Ya se me hace la boca agua.,retrieved_corpus,retrieved,11.084235887786486,boca,Gender=Fem|Number=Sing,1,1,1,
+diga,671,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+anoche,672,adv,,no_candidate_found,no_candidate_found,0.0,anoche,,0,0,0,manual review needed
+vuelve,673,v,Ella vuelve a casa de mi casa.,stochastic_decoder,stochastic,8.180072251893838,volver,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+dirección,674,n,¿cómo voy a esta dirección?,retrieved_corpus,retrieved,10.654365041183981,dirección,Gender=Fem|Number=Sing,1,1,1,
+llamada,675,adj,,no_candidate_found,no_candidate_found,0.0,llamado,,0,0,0,manual review needed
+ud.,676,none,,no_candidate_found,no_candidate_found,0.0,ud.,,0,0,0,manual review needed
+servicio,677,n,Voy al servicio cada media hora.,retrieved_corpus,retrieved,10.931405050888129,servicio,Gender=Masc|Number=Sing,1,1,1,
+ésta,678,pron,Ésta está aquí.,template_generated,pron_fallback_here,12.184345975950652,ésta,,1,1,1,pron_fallback_here
+idiota,679,adj,,no_candidate_found,no_candidate_found,0.0,idiota,,0,0,0,manual review needed
+jugar,680,v,,no_candidate_found,no_candidate_found,0.0,jugar,,0,0,0,manual review needed
+mala,681,adj,Pasé una mala noche.,retrieved_corpus,retrieved,12.262429510308163,malo,Gender=Fem|Number=Sing,1,1,1,
+social,682,adj,El tuvo poca vida social.,retrieved_corpus,retrieved,11.021061889133644,social,Number=Sing,1,1,1,
+médico,683,n,Debes ir al médico.,retrieved_corpus,retrieved,10.767048229642212,médico,Gender=Masc|Number=Sing,1,1,1,
+mes,684,n,Nos vemos una vez por mes.,retrieved_corpus,retrieved,11.554044164285292,mes,Gender=Masc|Number=Sing,1,1,1,
+obra,685,n,Dimos fin a la obra.,retrieved_corpus,retrieved,10.420615031862758,obra,Gender=Fem|Number=Sing,1,1,1,
+asunto,686,n,No es asunto tuyo.,retrieved_corpus,retrieved,12.706544421987337,asunto,Gender=Masc|Number=Sing,1,1,1,
+perder,687,v,¿me perdí de algo?,retrieved_corpus,retrieved,13.116363051828388,perder,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+dejó,688,v,Ella dejó la casa en la casa.,stochastic_decoder,stochastic,8.425452854946608,dejar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+armas,689,n,,no_candidate_found,no_candidate_found,0.0,arma,,0,0,0,manual review needed
+duro,690,adj,Sé que puede ser duro.,retrieved_corpus,retrieved,11.704003125067576,duro,Gender=Masc|Number=Sing,1,1,1,
+querido,691,v,,no_candidate_found,no_candidate_found,0.0,querer,,0,0,0,manual review needed
+preguntas,692,n,,no_candidate_found,no_candidate_found,0.0,pregunta,,0,0,0,manual review needed
+queremos,693,v,Nosotros queremos una casa.,seeded_template,seeded_special_querer_obj,8.915369438998404,querer,Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,seeded_special_querer_obj
+perdón,694,n,El perdón es nuevo.,template_generated,n_a1_1,8.741244742561133,perdón,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+pie,695,n,¿para qué tienes los pies?,retrieved_corpus,retrieved,10.853419126194755,pie,Gender=Masc|Number=Plur,1,1,1,
+mayoría,696,n,La mayoría es buena.,template_generated,n_a1_1,9.713447255873197,mayoría,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+unidos,697,adj,,no_candidate_found,no_candidate_found,0.0,unido,,0,0,0,manual review needed
+segunda,698,adj,,no_candidate_found,no_candidate_found,0.0,segundo,,0,0,0,manual review needed
+empezar,699,v,No está mal para empezar.,retrieved_corpus,retrieved,12.256682952319393,empezar,VerbForm=Inf,1,1,1,
+mía,700,n,,no_candidate_found,no_candidate_found,0.0,mía,,0,0,0,manual review needed
+digas,701,v,Haré todo lo que me digas.,retrieved_corpus,retrieved,12.563357955619006,decir,Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+hacemos,702,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+perro,703,n,Me gusta ese perro.,retrieved_corpus,retrieved,12.252738579682019,perro,Gender=Masc|Number=Sing,1,1,1,
+señorita,704,n,La señorita es buena.,template_generated,n_a1_1,9.043905516530963,señorito,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+ropa,705,n,Ella nos dio ropa.,retrieved_corpus,retrieved,11.585949121619798,ropa,Gender=Fem|Number=Sing,1,1,1,
+hacía,706,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+papel,707,n,El papel es serio.,template_generated,n_a1_1,9.152069489300242,papel,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+sueño,708,n,Fue como un sueño hecho realidad.,retrieved_corpus,retrieved,10.96482801801004,sueño,Gender=Masc|Number=Sing,1,1,1,
+oficial,709,adj,,no_candidate_found,no_candidate_found,0.0,oficial,,0,0,0,manual review needed
+extraño,710,adj,El hombre es extraño a mi hermana.,stochastic_decoder,stochastic,8.72678816067227,extraño,Gender=Masc|Number=Sing,1,1,1,stochastic
+negro,711,adj,,no_candidate_found,no_candidate_found,0.0,negro,,0,0,0,manual review needed
+jamás,712,adv,Jamás he tenido miedo de nada.,retrieved_corpus,retrieved,14.131250302145148,jamás,,1,1,1,
+hará,713,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+afuera,714,v,,no_candidate_found,no_candidate_found,0.0,afuera,,0,0,0,manual review needed
+sol,715,n,El sol no ha salido aún.,retrieved_corpus,retrieved,11.988189067053325,sol,Gender=Masc|Number=Sing,1,1,1,
+media,716,adj,Llegué a las dos y media.,retrieved_corpus,retrieved,12.254481897616932,medio,Gender=Fem|Number=Sing,1,1,1,
+diablos,717,n,¿qué diablos están mirando?,retrieved_corpus,retrieved,10.20721870341683,diablo,Gender=Masc|Number=Plur,1,1,1,
+necesario,718,adj,No es necesario que dejes el trabajo.,retrieved_corpus,retrieved,12.016812711837959,necesario,Gender=Masc|Number=Sing,1,1,1,
+noticias,719,n,Tengo buenas noticias para usted.,retrieved_corpus,retrieved,13.208616240184146,noticia,Gender=Fem|Number=Plur,1,1,1,
+increíble,720,adj,Me parece increíble que hayas hecho eso.,retrieved_corpus,retrieved,12.397060238764173,increíble,Number=Sing,1,1,1,
+principio,722,n,Al principio no sabía qué hacer.,retrieved_corpus,retrieved,13.724794432699365,principio,Gender=Masc|Number=Sing,1,1,1,
+respuesta,723,n,Ella puede saber la respuesta.,retrieved_corpus,retrieved,13.325287419136295,respuesta,Gender=Fem|Number=Sing,1,1,1,
+llegado,724,v,,no_candidate_found,no_candidate_found,0.0,llegar,,0,0,0,manual review needed
+universidad,725,n,¿qué vas a hacer en la universidad?,retrieved_corpus,retrieved,11.919651515541274,universidad,Gender=Fem|Number=Sing,1,1,1,
+maldito,726,n,,no_candidate_found,no_candidate_found,0.0,maldito,,0,0,0,manual review needed
+vemos,728,v,,no_candidate_found,no_candidate_found,0.0,ver,,0,0,0,manual review needed
+haría,729,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+compañía,730,n,,no_candidate_found,no_candidate_found,0.0,compañía,,0,0,0,manual review needed
+cambiar,731,v,,no_candidate_found,no_candidate_found,0.0,cambiar,,0,0,0,manual review needed
+dolor,732,n,El dolor es nuevo.,template_generated,n_a1_1,9.152069489300242,dolor,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+mesa,733,n,¿qué hay sobre la mesa?,retrieved_corpus,retrieved,11.97933812538495,mesa,Gender=Fem|Number=Sing,1,1,1,
+mensaje,734,n,Este mensaje es para ella.,retrieved_corpus,retrieved,11.220082526017542,mensaje,Gender=Masc|Number=Sing,1,1,1,
+nivel,735,n,El nivel es serio.,template_generated,n_a1_1,8.688104109414532,nivel,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+pudo,736,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+decisión,738,n,La decisión es buena.,template_generated,n_a1_1,9.359012788682648,decisión,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+línea,739,n,Hacemos todo en línea ahora.,retrieved_corpus,retrieved,11.907078274203384,línea,Gender=Fem|Number=Sing,1,1,1,
+diferente,740,adj,Es algo diferente ahora.,retrieved_corpus,retrieved,13.259484828407764,diferente,Number=Sing,1,1,1,
+aquel,741,determiner,Aquel trabajo está bien.,template_generated,det_anchor_clear,10.428840113894328,aquel,Gender=Masc|Number=Sing,1,1,1,det_anchor_clear
+libertad,742,n,,no_candidate_found,no_candidate_found,0.0,libertad,,0,0,0,manual review needed
+alrededor,743,adv,,no_candidate_found,no_candidate_found,0.0,alrededor,,0,0,0,manual review needed
+vio,744,v,,no_candidate_found,no_candidate_found,0.0,ver,,0,0,0,manual review needed
+mitad,745,n,Estamos a la mitad del trabajo.,retrieved_corpus,retrieved,11.757945094286791,mitad,Gender=Fem|Number=Sing,1,1,1,
+espacio,747,n,El espacio es nuevo.,template_generated,n_a1_1,8.69661603229829,espacio,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+respecto,748,n,Ellos no hablan al respecto.,retrieved_corpus,retrieved,11.526905160740798,respecto,Gender=Masc|Number=Sing,1,1,1,
+pena,749,n,Vale la pena mirarlo más de cerca.,retrieved_corpus,retrieved,10.56220105000231,pena,Gender=Fem|Number=Sing,1,1,1,
+trabajando,750,v,,no_candidate_found,no_candidate_found,0.0,trabajar,,0,0,0,manual review needed
+agente,751,n,,no_candidate_found,no_candidate_found,0.0,agente,,0,0,0,manual review needed
+sexo,752,n,Quiero tener sexo con ella.,retrieved_corpus,retrieved,11.199173714007655,sexo,Gender=Masc|Number=Sing,1,1,1,
+sociedad,753,n,La sociedad es buena.,template_generated,n_a1_1,9.337172930289649,sociedad,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+salud,754,n,La salud lo es todo.,retrieved_corpus,retrieved,11.983809662221631,salud,Gender=Fem|Number=Sing,1,1,1,
+investigación,755,n,Estamos bajo investigación.,retrieved_corpus,retrieved,9.272510404676124,investigación,Gender=Fem|Number=Sing,1,1,1,
+suena,756,v,,no_candidate_found,no_candidate_found,0.0,sonar,,0,0,0,manual review needed
+proceso,757,n,El proceso es serio.,template_generated,n_a1_1,8.754152446788648,proceso,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+aqui,758,adv,,no_candidate_found,no_candidate_found,0.0,aqui,,0,0,0,manual review needed
+encontrado,759,v,Todavía no lo hemos encontrado.,retrieved_corpus,retrieved,12.224930512764447,encontrar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+tratando,760,v,,no_candidate_found,no_candidate_found,0.0,tratar,,0,0,0,manual review needed
+usar,761,v,Él te usa.,retrieved_corpus,retrieved,10.606193422892245,usar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+trato,762,n,Yo hice un trato.,retrieved_corpus,retrieved,13.143790863954736,trato,Gender=Masc|Number=Sing,1,1,1,
+querida,763,adj,,no_candidate_found,no_candidate_found,0.0,querido,,0,0,0,manual review needed
+siete,764,num,Tienes siete hijos.,retrieved_corpus,retrieved,12.834641184315409,siete,,1,1,1,
+blanco,765,adj,Hicieron blanco tres veces.,retrieved_corpus,retrieved,9.332592096027188,blanco,Gender=Masc|Number=Sing,1,1,1,
+supone,766,v,,no_candidate_found,no_candidate_found,0.0,suponer,,0,0,0,manual review needed
+raro,767,adj,¿ha pasado algo raro?,retrieved_corpus,retrieved,10.895613329884553,raro,Gender=Masc|Number=Sing,1,1,1,
+consejo,768,n,Me dio un consejo.,retrieved_corpus,retrieved,12.232346749315152,consejo,Gender=Masc|Number=Sing,1,1,1,
+diré,769,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+zona,770,n,La zona es buena.,template_generated,n_a1_1,8.811275354569826,zona,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+últimos,772,adj,,no_candidate_found,no_candidate_found,0.0,último,,0,0,0,manual review needed
+error,773,n,No queremos más errores.,retrieved_corpus,retrieved,11.362142720388318,error,Gender=Masc|Number=Plur,1,1,1,
+mejores,774,adj,Sabíamos que éramos mejores que eso.,retrieved_corpus,retrieved,11.746820922008494,mejor,Number=Plur,1,1,1,
+hubo,775,v,,no_candidate_found,no_candidate_found,0.0,haber,,0,0,0,manual review needed
+perfecto,776,adj,Quiero que todo esté perfecto.,retrieved_corpus,retrieved,12.048686227205478,perfecto,Gender=Masc|Number=Sing,1,1,1,
+tema,777,n,,no_candidate_found,no_candidate_found,0.0,tema,,0,0,0,manual review needed
+reunión,778,n,Estamos en una reunión.,retrieved_corpus,retrieved,13.757812712693106,reunión,Gender=Fem|Number=Sing,1,1,1,
+piensas,779,v,¡no es lo que piensas!,retrieved_corpus,retrieved,14.317129521953165,pensar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+sucede,781,v,Nadie sabe lo que te sucede.,retrieved_corpus,retrieved,12.404126714645539,suceder,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+podríamos,782,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+carta,783,n,La carta es buena.,template_generated,n_a1_1,9.23210218542387,carta,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+secreto,784,n,No tengo secretos.,retrieved_corpus,retrieved,11.914623733152405,secreto,Gender=Masc|Number=Plur,1,1,1,
+siente,785,v,,no_candidate_found,no_candidate_found,0.0,sentir,,0,0,0,manual review needed
+gusto,786,n,Todos se sienten a gusto con él.,retrieved_corpus,retrieved,12.033496887821299,gusto,Gender=Masc|Number=Sing,1,1,1,
+decía,787,v,,no_candidate_found,no_candidate_found,0.0,decir,,0,0,0,manual review needed
+ganar,788,v,Estoy seguro de que él ganará.,retrieved_corpus,retrieved,13.33969583830038,ganar,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,
+base,789,n,,no_candidate_found,no_candidate_found,0.0,base,,0,0,0,manual review needed
+odio,790,n,Ella le miró con odio.,retrieved_corpus,retrieved,12.137916245548798,odio,Gender=Masc|Number=Sing,1,1,1,
+ocurre,792,v,Toda muerte ocurre demasiado pronto.,retrieved_corpus,retrieved,10.178484348131303,ocurrir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+sean,793,v,,no_candidate_found,no_candidate_found,0.0,ser,,0,0,0,manual review needed
+suelo,795,n,El suelo es nuevo.,template_generated,n_a1_1,8.991797336260205,suelo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+hotel,796,n,Pasé dos noches en ese hotel.,retrieved_corpus,retrieved,11.915513834423505,hotel,Gender=Masc|Number=Sing,1,1,1,
+silencio,797,n,Aquí debemos estar en silencio.,retrieved_corpus,retrieved,10.701247778488199,silencio,Gender=Masc|Number=Sing,1,1,1,
+daño,798,n,No quiero hacerle daño.,retrieved_corpus,retrieved,12.293011580591624,daño,Gender=Masc|Number=Sing,1,1,1,
+amiga,799,n,Ya no es mi amiga.,retrieved_corpus,retrieved,15.11489080801488,amiga,Gender=Fem|Number=Sing,1,1,1,
+pobre,800,adj,Eres el hombre más pobre del mundo.,retrieved_corpus,retrieved,12.21135910072673,pobre,Number=Sing,1,1,1,
+partir,801,v,Tienes que partir.,retrieved_corpus,retrieved,13.28067840704978,partir,VerbForm=Inf,1,1,1,
+asesino,802,n,Eres un asesino.,retrieved_corpus,retrieved,10.504294722356544,asesino,Gender=Masc|Number=Sing,1,1,1,
+entiendes,803,v,¿entiendes lo que quise decir con eso?,retrieved_corpus,retrieved,11.83873471014796,entender,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+encuentra,804,v,Ella encuentra la casa.,seeded_template,seeded_verb_obj,10.400020202790214,encontrar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_verb_obj
+quieras,805,v,,no_candidate_found,no_candidate_found,0.0,querer,,0,0,0,manual review needed
+fondo,806,n,El fondo es nuevo.,template_generated,n_a1_1,8.741244742561133,fondo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+pensaba,807,v,Ella pensaba en el centro de la noche.,stochastic_decoder,stochastic,8.154517156736897,pensar,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,stochastic
+existe,808,v,,no_candidate_found,no_candidate_found,0.0,existir,,0,0,0,manual review needed
+dan,811,v,,no_candidate_found,no_candidate_found,0.0,dar,,0,0,0,manual review needed
+baño,812,n,¿puedo pasar al baño?,retrieved_corpus,retrieved,9.890722841954673,baño,Gender=Masc|Number=Sing,1,1,1,
+carrera,813,n,Mi familia es más importante que mi carrera.,retrieved_corpus,retrieved,12.404914944132702,carrera,Gender=Fem|Number=Sing,1,1,1,
+conoces,814,v,¿conoces la ciudad en donde él vive?,retrieved_corpus,retrieved,10.190281799977448,conocer,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+acción,815,n,Es un hombre de acción.,retrieved_corpus,retrieved,13.390422904271169,acción,Gender=Fem|Number=Sing,1,1,1,
+duda,816,n,Estoy seguro de que tendrás muchas dudas.,retrieved_corpus,retrieved,12.164642644632757,duda,Gender=Fem|Number=Plur,1,1,1,
+vuelto,817,v,Te has vuelto mejor.,retrieved_corpus,retrieved,11.259423019777698,volver,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+partes,818,n,,no_candidate_found,no_candidate_found,0.0,parte,,0,0,0,manual review needed
+interior,819,n,,no_candidate_found,no_candidate_found,0.0,interior,,0,0,0,manual review needed
+tendrá,820,v,Ella tendrá una casa.,seeded_template,seeded_special_tener_obj,10.234894962358705,tener,Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+imposible,821,adj,Me es imposible hacer ese trabajo.,retrieved_corpus,retrieved,11.4973749899246,imposible,Number=Sing,1,1,1,
+pagar,822,v,Ya te pagué.,retrieved_corpus,retrieved,10.317170758388235,pagar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+mente,823,n,Tiene algo en mente.,retrieved_corpus,retrieved,10.657957719714,mente,Gender=Fem|Number=Sing,1,1,1,
+divertido,824,adj,,no_candidate_found,no_candidate_found,0.0,divertido,,0,0,0,manual review needed
+sala,825,n,Había muchos niños en la sala.,retrieved_corpus,retrieved,11.592857810508931,sala,Gender=Fem|Number=Sing,1,1,1,
+acabo,826,v,¿no has oído que te acabo de llamar?,retrieved_corpus,retrieved,10.973864496534093,acabar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+negocio,827,n,Mi negocio está yendo bien.,retrieved_corpus,retrieved,13.112207502685976,negocio,Gender=Masc|Number=Sing,1,1,1,
+apenas,828,adv,Apenas hablo con él.,retrieved_corpus,retrieved,14.056603855723559,apenas,,1,1,1,
+ocho,829,num,No supe nada de ella por ocho días.,retrieved_corpus,retrieved,15.18865721713288,ocho,,1,1,1,
+próxima,830,adj,,no_candidate_found,no_candidate_found,0.0,próximo,,0,0,0,manual review needed
+ejército,831,n,Estoy en el ejército.,retrieved_corpus,retrieved,12.262113284848844,ejército,Gender=Masc|Number=Sing,1,1,1,
+mar,832,n,Mi casa tiene vista al mar.,retrieved_corpus,retrieved,12.988853310167384,mar,Number=Sing,1,1,1,
+estaré,833,v,Yo estaré en casa.,seeded_template,seeded_special_estar_place,9.303492403198291,estar,Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin,1,1,1,seeded_special_estar_place
+cita,834,n,Tengo una cita con el doctor.,retrieved_corpus,retrieved,12.459112234097605,cita,Gender=Fem|Number=Sing,1,1,1,
+pelo,835,n,¿me quieres tomar el pelo?,retrieved_corpus,retrieved,10.977836138508337,pelo,Gender=Masc|Number=Sing,1,1,1,
+abogado,836,n,Creo que no es abogado.,retrieved_corpus,retrieved,13.270257589202222,abogado,Gender=Masc|Number=Sing,1,1,1,
+diferentes,837,adj,,no_candidate_found,no_candidate_found,0.0,diferente,,0,0,0,manual review needed
+conoce,838,v,Ella conoce la casa.,seeded_template,seeded_verb_obj,10.29425137693648,conocer,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_verb_obj
+recuerda,839,v,¿recuerda usted la primera vez que vine aquí?,retrieved_corpus,retrieved,11.968371239117037,recordar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+asesinato,840,n,¿dónde estabas en el momento del asesinato?,retrieved_corpus,retrieved,10.640515309617987,asesinato,Gender=Masc|Number=Sing,1,1,1,
+recuerdas,841,v,Sé que no me recuerdas.,retrieved_corpus,retrieved,12.961587657787662,recordar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+vive,842,v,¿dónde vive ahora?,retrieved_corpus,retrieved,12.096233454104317,vivir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+ay,843,,,no_candidate_found,no_candidate_found,0.0,ay,,0,0,0,manual review needed
+energía,844,n,La energía es buena.,template_generated,n_a1_1,9.026503241133037,energía,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+banco,845,n,Quiero ir al banco.,retrieved_corpus,retrieved,11.921568115477314,banco,Gender=Masc|Number=Sing,1,1,1,
+arte,846,n,No sé nada sobre arte.,retrieved_corpus,retrieved,13.067345925209516,arte,Number=Sing,1,1,1,
+empresa,847,n,¿trabajas para tí o en una empresa?,retrieved_corpus,retrieved,9.733717823734565,empresa,Gender=Fem|Number=Sing,1,1,1,
+foto,848,n,Me gustaría tener una foto tuya.,retrieved_corpus,retrieved,12.354519454649807,foto,Gender=Fem|Number=Sing,1,1,1,
+normal,849,adj,Te ves más feliz de lo normal.,retrieved_corpus,retrieved,11.371843597689951,normal,Number=Sing,1,1,1,
+seas,850,v,Quiero que seas mejor.,retrieved_corpus,retrieved,11.739636727466944,ser,Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+casos,851,n,,no_candidate_found,no_candidate_found,0.0,caso,,0,0,0,manual review needed
+novia,852,n,¿por qué no tengo novia?,retrieved_corpus,retrieved,12.235028361787741,novia,Gender=Fem|Number=Sing,1,1,1,
+totalmente,853,adv,No estoy totalmente de acuerdo contigo.,retrieved_corpus,retrieved,14.473672179708945,totalmente,,1,1,1,
+países,854,n,Vengo de los países bajos.,retrieved_corpus,retrieved,11.354549477818184,país,Gender=Masc|Number=Plur,1,1,1,
+izquierda,855,n,Miró a izquierda y derecha.,retrieved_corpus,retrieved,10.47918134633574,izquierda,Gender=Fem|Number=Sing,1,1,1,
+conocer,856,v,Ella es conocida por todos.,retrieved_corpus,retrieved,14.105037662315235,conocer,Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+proyecto,857,n,Estoy en contra de este proyecto.,retrieved_corpus,retrieved,12.576539131850195,proyecto,Gender=Masc|Number=Sing,1,1,1,
+estaría,858,v,,no_candidate_found,no_candidate_found,0.0,estar,,0,0,0,manual review needed
+cámara,859,n,¿qué van a hacer con esta cámara?,retrieved_corpus,retrieved,11.243824011331577,cámara,Gender=Fem|Number=Sing,1,1,1,
+causa,860,n,La causa de la vida es muy difícil.,stochastic_decoder,stochastic,8.889786306946936,causa,Gender=Fem|Number=Sing,1,1,1,stochastic
+estábamos,861,v,Justo ahora estábamos hablando de eso.,retrieved_corpus,retrieved,12.06885113753847,estábamos,Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+cállate,862,v,,no_candidate_found,no_candidate_found,0.0,cállate,,0,0,0,manual review needed
+capaz,863,adj,Tampoco fue capaz de hacer esto.,retrieved_corpus,retrieved,11.100002446818705,capaz,Number=Sing,1,1,1,
+pesar,864,v,,no_candidate_found,no_candidate_found,0.0,pesar,,0,0,0,manual review needed
+iglesia,865,prop,La iglesia queda en medio del pueblo.,retrieved_corpus,retrieved,12.912670708693444,iglesia,Gender=Fem|Number=Sing,1,1,1,
+parecía,866,v,Ella parecía estar algo.,stochastic_decoder,stochastic,8.321597953623336,parecer,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,stochastic
+pruebas,867,n,,no_candidate_found,no_candidate_found,0.0,prueba,,0,0,0,manual review needed
+derecha,868,n,La puerta de salida está a la derecha.,retrieved_corpus,retrieved,11.698334702505887,derecha,Gender=Fem|Number=Sing,1,1,1,
+siglo,869,n,,no_candidate_found,no_candidate_found,0.0,siglo,,0,0,0,manual review needed
+mantener,870,v,Tengo una familia que mantener.,retrieved_corpus,retrieved,11.908153669740184,mantener,VerbForm=Inf,1,1,1,
+ministro,871,n,El ministro es nuevo.,template_generated,n_a1_1,8.788522498173979,ministro,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+uh,872,interj,,no_candidate_found,no_candidate_found,0.0,uh,,0,0,0,manual review needed
+sentir,873,v,A veces lo sienten.,retrieved_corpus,retrieved,11.622114224544948,sentir,Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+salvo,874,adj,Los niños están salvos.,retrieved_corpus,retrieved,12.10870461464005,salvo,Gender=Masc|Number=Plur,1,1,1,
+baja,875,adj,,no_candidate_found,no_candidate_found,0.0,bajo,,0,0,0,manual review needed
+quienes,876,pron,Quienes está aquí.,template_generated,pron_fallback_here,8.940828281757447,quien,Number=Plur,1,1,1,pron_fallback_here
+dejado,877,v,¿os lo ha dejado?,retrieved_corpus,retrieved,10.577297404813075,dejar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+hicieron,878,v,,no_candidate_found,no_candidate_found,0.0,hacer,,0,0,0,manual review needed
+caja,879,n,Él puso todo su dinero en la caja.,retrieved_corpus,retrieved,11.549807239422563,caja,Gender=Fem|Number=Sing,1,1,1,
+profesor,880,n,¿eres profesor aquí?,retrieved_corpus,retrieved,12.13168759350902,profesor,Gender=Masc|Number=Sing,1,1,1,
+estuve,881,v,Yo estuve en casa.,seeded_template,seeded_special_estar_place,9.272662267232839,estar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,seeded_special_estar_place
+cargo,882,n,Estoy a cargo de los libros.,retrieved_corpus,retrieved,11.99613501382289,cargo,Gender=Masc|Number=Sing,1,1,1,
+opinión,883,n,Yo tengo otra opinión.,retrieved_corpus,retrieved,11.190315323008488,opinión,Gender=Fem|Number=Sing,1,1,1,
+club,884,n,Me encuentro con él en el club.,retrieved_corpus,retrieved,12.033371641237299,club,Gender=Masc|Number=Sing,1,1,1,
+encontré,887,v,Pasé pero no los encontré en casa.,retrieved_corpus,retrieved,11.581939477987609,encontrar,Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin,1,1,1,
+desarrollo,888,n,El desarrollo es serio.,template_generated,n_a1_1,8.683708328070777,desarrollo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+haz,889,n,,no_candidate_found,no_candidate_found,0.0,haz,,0,0,0,manual review needed
+aquella,890,determiner,Aquella amigo está bien.,template_generated,det_anchor_clear,9.658580337895609,aquel,Gender=Fem|Number=Sing,1,1,1,det_anchor_clear
+accidente,891,n,Hubo diez accidentes en diez días.,retrieved_corpus,retrieved,11.665279623646558,accidente,Gender=Masc|Number=Plur,1,1,1,
+quiera,892,v,,no_candidate_found,no_candidate_found,0.0,querer,,0,0,0,manual review needed
+terminado,894,v,Todavía no ha terminado.,retrieved_corpus,retrieved,12.210618074890547,terminar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+mercado,895,n,Ellas llegarán al mercado.,retrieved_corpus,retrieved,12.071199588879708,mercado,Gender=Masc|Number=Sing,1,1,1,
+próximo,896,adj,,no_candidate_found,no_candidate_found,0.0,próximo,,0,0,0,manual review needed
+total,897,adj,,no_candidate_found,no_candidate_found,0.0,total,,0,0,0,manual review needed
+sal,898,n,,no_candidate_found,no_candidate_found,0.0,sal,,0,0,0,manual review needed
+varios,899,determiner,Tenían varios hijos.,retrieved_corpus,retrieved,11.80907047673787,varios,Gender=Masc|Number=Plur,1,1,1,
+pase,900,v,,no_candidate_found,no_candidate_found,0.0,pasar,,0,0,0,manual review needed
+cualquiera,901,pron,Cualquiera está aquí.,template_generated,pron_fallback_here,11.994071515333538,cualquiera,Number=Sing,1,1,1,pron_fallback_here
+oro,903,n,No hay oro.,retrieved_corpus,retrieved,14.381247720172828,oro,Gender=Masc|Number=Sing,1,1,1,
+encuentro,904,n,No lo encuentro. ¿seguro que está aquí?,retrieved_corpus,retrieved,12.229309519861165,encuentro,Gender=Masc|Number=Sing,1,1,1,
+valor,905,n,No tengo valor para hacer eso.,retrieved_corpus,retrieved,13.610256192017907,valor,Gender=Masc|Number=Sing,1,1,1,
+cena,906,n,La cena va por mi cuenta.,retrieved_corpus,retrieved,11.485675236119613,cena,Gender=Fem|Number=Sing,1,1,1,
+deseo,907,n,¿tiene algún otro deseo?,retrieved_corpus,retrieved,10.494807819183546,deseo,Gender=Masc|Number=Sing,1,1,1,
+funciona,908,v,¿por qué no funciona esto?,retrieved_corpus,retrieved,12.02623453370518,funcionar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+comprar,909,v,¿hay algo que quisieras que te comprara?,retrieved_corpus,retrieved,11.343114498598034,comprar,Mood=Sub|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,
+posición,910,n,,no_candidate_found,no_candidate_found,0.0,posición,,0,0,0,manual review needed
+estudio,911,n,¿por qué no hacemos un grupo de estudio?,retrieved_corpus,retrieved,11.094050230853103,estudio,Gender=Masc|Number=Sing,1,1,1,
+movimiento,912,n,El movimiento es nuevo.,template_generated,n_a1_1,8.639079617807933,movimiento,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+finalmente,913,adv,Finalmente puede empezar la fiesta.,retrieved_corpus,retrieved,12.045644677779645,finalmente,,1,1,1,
+nuevos,914,adj,,no_candidate_found,no_candidate_found,0.0,nuevo,,0,0,0,manual review needed
+salió,915,v,Parece que algo salió mal.,retrieved_corpus,retrieved,11.842459190721783,salir,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+hambre,916,n,No tengo hambre.,retrieved_corpus,retrieved,14.893854386197921,hambre,Gender=Fem|Number=Sing,1,1,1,
+completamente,917,adv,Está completamente loco.,retrieved_corpus,retrieved,11.67615918922434,completamente,,1,1,1,
+encanta,918,v,,no_candidate_found,no_candidate_found,0.0,encantar,,0,0,0,manual review needed
+formas,919,n,¿por qué quieres eso de todas formas?,retrieved_corpus,retrieved,11.32345712937485,forma,Gender=Fem|Number=Plur,1,1,1,
+norte,920,n,Ella viene del norte.,retrieved_corpus,retrieved,10.793786487700283,norte,Gender=Masc|Number=Sing,1,1,1,
+aun,921,adv,Ni aun eso fue de mucha ayuda.,retrieved_corpus,retrieved,13.442207173965269,aun,,1,1,1,
+adónde,922,adv,,no_candidate_found,no_candidate_found,0.0,adónde,,0,0,0,manual review needed
+lamento,923,n,Ya vale de tanto lamento.,retrieved_corpus,retrieved,10.787790948137259,lamento,Gender=Masc|Number=Sing,1,1,1,
+experiencia,924,n,Fue una experiencia muy buena para él.,retrieved_corpus,retrieved,12.41662249364837,experiencia,Gender=Fem|Number=Sing,1,1,1,
+debido,925,adj,,no_candidate_found,no_candidate_found,0.0,debido,,0,0,0,manual review needed
+loca,926,n,He salido con una loca.,retrieved_corpus,retrieved,12.768690036958168,loco,Gender=Fem|Number=Sing,1,1,1,
+tuyo,927,pron,Un día todo esto será tuyo.,retrieved_corpus,retrieved,15.506974360822705,tuyo,,1,1,1,
+llega,929,v,Ella llega a la casa de mi padre.,stochastic_decoder,stochastic,8.168915030477127,llegar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,stochastic
+vosotros,930,pron,Vosotros está aquí.,template_generated,pron_fallback_here,12.09543779236058,vosotros,Number=Sing|Person=1,1,1,1,pron_fallback_here
+alta,931,adj,Es más alta que su madre.,retrieved_corpus,retrieved,14.092986751568766,alto,Gender=Fem|Number=Sing,1,1,1,
+fuiste,932,v,,no_candidate_found,no_candidate_found,0.0,fuiste,,0,0,0,manual review needed
+tipos,933,n,,no_candidate_found,no_candidate_found,0.0,tipo,,0,0,0,manual review needed
+contacto,934,n,Estaré en contacto con ellos.,retrieved_corpus,retrieved,11.395091198889613,contacto,Gender=Masc|Number=Sing,1,1,1,
+alma,935,n,No había ni un alma.,retrieved_corpus,retrieved,12.57664073149584,alma,Gender=Fem|Number=Sing,1,1,1,
+tranquilo,936,adj,Esa noche fue muy tranquila.,retrieved_corpus,retrieved,10.907483425294073,tranquilo,Gender=Fem|Number=Sing,1,1,1,
+dijeron,937,v,Ellos dijeron a la escuela hoy.,stochastic_decoder,stochastic,8.261134501192897,decir,Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin,1,1,1,stochastic
+color,938,n,El color es nuevo.,template_generated,n_a1_1,8.82673354552652,color,Gender=Masc|Number=Sing,1,1,1,n_a1_1
+justicia,939,n,Quiero que se haga justicia.,retrieved_corpus,retrieved,12.2429781591231,justicia,Gender=Fem|Number=Sing,1,1,1,
+placer,940,n,Lo haré con placer.,retrieved_corpus,retrieved,11.075550749679138,placer,Gender=Masc|Number=Sing,1,1,1,
+disculpe,941,v,Quiero que usted se disculpe.,retrieved_corpus,retrieved,12.02643099510139,disculpar,Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+mató,942,v,¿quién la mató?,retrieved_corpus,retrieved,9.04443972705697,matar,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+radio,943,n,,no_candidate_found,no_candidate_found,0.0,radio,,0,0,0,manual review needed
+busca,944,v,Busca un libro.,retrieved_corpus,retrieved,11.337770083760851,buscar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+muertos,945,adj,Ambos de sus padres están muertos.,retrieved_corpus,retrieved,10.835740115537892,muerto,Gender=Masc|Number=Plur,1,1,1,
+pone,946,v,Ella pone el libro.,seeded_template,seeded_verb_obj,10.12970632486916,poner,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,seeded_verb_obj
+imagen,947,n,¿de quién es esta imagen?,retrieved_corpus,retrieved,12.561561161077568,imagen,Gender=Fem|Number=Sing,1,1,1,
+especie,948,n,La especie es buena.,template_generated,n_a1_1,8.905276080418975,especie,Gender=Fem|Number=Sing,1,1,1,n_a1_1
+pudiera,949,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+ex,950,,,no_candidate_found,no_candidate_found,0.0,ex,,0,0,0,manual review needed
+llamo,951,v,,no_candidate_found,no_candidate_found,0.0,llamar,,0,0,0,manual review needed
+puso,952,v,Usted no puso nada.,retrieved_corpus,retrieved,12.983757781483554,poner,Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin,1,1,1,
+entra,953,v,No me entra en la cabeza.,retrieved_corpus,retrieved,12.79791331715327,entrar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+montón,954,n,Tenemos un montón de tiempo.,retrieved_corpus,retrieved,14.239550096650843,montón,Gender=Masc|Number=Sing,1,1,1,
+cárcel,955,n,Realmente no quiero volver a la cárcel.,retrieved_corpus,retrieved,11.92895744096169,cárcel,Gender=Fem|Number=Sing,1,1,1,
+tienda,956,n,Quiero ir a la tienda.,retrieved_corpus,retrieved,13.488014021911662,tienda,Gender=Fem|Number=Sing,1,1,1,
+corte,957,n,,no_candidate_found,no_candidate_found,0.0,corte,,0,0,0,manual review needed
+carne,958,n,Ellos tienen carne.,retrieved_corpus,retrieved,10.283572485832734,carne,Gender=Fem|Number=Sing,1,1,1,
+éxito,959,n,El plan ha sido un éxito hasta ahora.,retrieved_corpus,retrieved,12.040673950817599,éxito,Gender=Masc|Number=Sing,1,1,1,
+conocido,960,adj,El aire es conocido también.,stochastic_decoder,stochastic,9.34595269723713,conocido,Gender=Masc|Number=Sing,1,1,1,stochastic
+muchacho,961,n,Ése es el muchacho que vi ayer.,retrieved_corpus,retrieved,12.109867178549765,muchacho,Gender=Masc|Number=Sing,1,1,1,
+viste,962,v,,no_candidate_found,no_candidate_found,0.0,ver,,0,0,0,manual review needed
+peligro,963,n,¿por qué está en peligro?,retrieved_corpus,retrieved,12.08727851028612,peligro,Gender=Masc|Number=Sing,1,1,1,
+principal,964,adj,Hay alguien en la puerta principal.,retrieved_corpus,retrieved,12.480306190123635,principal,Number=Sing,1,1,1,
+delante,965,adv,Ve por delante.,retrieved_corpus,retrieved,10.983449218703853,delante,,1,1,1,
+interesante,966,adj,Vas a encontrar interesantes los dos libros.,retrieved_corpus,retrieved,10.744049079309827,interesante,Number=Plur,1,1,1,
+sale,967,v,No siempre sale todo como uno quisiera.,retrieved_corpus,retrieved,10.86428305964472,salir,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,1,1,
+pude,968,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+común,969,adj,,no_candidate_found,no_candidate_found,0.0,común,,0,0,0,manual review needed
+hablas,970,v,¿por qué me hablas así?,retrieved_corpus,retrieved,13.620353718153861,hablar,Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin,1,1,1,
+creí,971,v,,no_candidate_found,no_candidate_found,0.0,creer,,0,0,0,manual review needed
+barco,972,n,El barco necesita un capitán.,retrieved_corpus,retrieved,11.895565901160392,barco,Gender=Masc|Number=Sing,1,1,1,
+sientes,973,v,,no_candidate_found,no_candidate_found,0.0,sentir,,0,0,0,manual review needed
+pies,974,n,Me miró de pies a cabeza.,retrieved_corpus,retrieved,11.41856818731228,pie,Gender=Masc|Number=Plur,1,1,1,
+tenías,975,v,Tú tenías una casa.,seeded_template,seeded_special_tener_obj,9.750714984909793,tener,Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_tener_obj
+bonito,976,adj,Ella es muy bonita.,retrieved_corpus,retrieved,14.979321603644298,bonito,Gender=Fem|Number=Sing,1,1,1,
+traje,977,n,¿qué pasa con el traje?,retrieved_corpus,retrieved,11.50858521753577,traje,Gender=Masc|Number=Sing,1,1,1,
+sur,978,n,Ve al sur.,retrieved_corpus,retrieved,9.327290254929745,sur,Gender=Masc|Number=Sing,1,1,1,
+ataque,979,n,Casi me dio un ataque al corazón.,retrieved_corpus,retrieved,12.803816715044618,ataque,Gender=Masc|Number=Sing,1,1,1,
+entendido,980,adj,,no_candidate_found,no_candidate_found,0.0,entendido,,0,0,0,manual review needed
+quisiera,981,v,,no_candidate_found,no_candidate_found,0.0,querer,,0,0,0,manual review needed
+podrían,983,v,,no_candidate_found,no_candidate_found,0.0,poder,,0,0,0,manual review needed
+maestro,984,n,Mi padre es maestro.,retrieved_corpus,retrieved,12.250926934687708,maestro,Gender=Masc|Number=Sing,1,1,1,
+jóvenes,985,adj,,no_candidate_found,no_candidate_found,0.0,joven,,0,0,0,manual review needed
+posibilidad,986,n,Sólo hay tres posibilidades.,retrieved_corpus,retrieved,10.413802109297372,posibilidad,Gender=Fem|Number=Plur,1,1,1,
+escuchar,987,v,Un hijo debe escuchar a su padre.,retrieved_corpus,retrieved,12.086473872062712,escuchar,VerbForm=Inf,1,1,1,
+terminar,988,v,Todavía no ha terminado.,retrieved_corpus,retrieved,12.210618074890547,terminar,Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part,1,1,1,
+diferencia,989,n,Dejamos nuestras diferencias en el pasado.,retrieved_corpus,retrieved,11.66398970840093,diferencia,Gender=Fem|Number=Plur,1,1,1,
+escena,990,n,La escena de su muerte es fuerte.,retrieved_corpus,retrieved,11.13101703025965,escena,Gender=Fem|Number=Sing,1,1,1,
+humano,991,adj,El hombre es humano.,seeded_template,seeded_adj_fallback,8.88795614323262,humano,Gender=Masc|Number=Sing,1,1,1,seeded_adj_fallback
+caballeros,992,n,Se sabía el nombre de todos los caballeros.,retrieved_corpus,retrieved,11.155250613346947,caballero,Gender=Masc|Number=Plur,1,1,1,
+departamento,993,n,Este departamento es muy grande para una persona.,retrieved_corpus,retrieved,10.700360178427129,departamento,Gender=Masc|Number=Sing,1,1,1,
+datos,994,n,,no_candidate_found,no_candidate_found,0.0,dato,,0,0,0,manual review needed
+defensa,995,n,,no_candidate_found,no_candidate_found,0.0,defensa,,0,0,0,manual review needed
+evitar,996,v,Evito hablar con ella.,retrieved_corpus,retrieved,9.721774125838252,evitar,Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin,1,1,1,
+negocios,997,n,Él es simplemente un conocido de negocios.,retrieved_corpus,retrieved,11.378994674831167,negocio,Gender=Masc|Number=Plur,1,1,1,
+simple,998,adj,No es tan simple.,retrieved_corpus,retrieved,13.334191711586321,simple,Number=Sing,1,1,1,
+eras,999,v,,no_candidate_found,no_candidate_found,0.0,eras,,0,0,0,manual review needed
+objetivo,1000,n,El objetivo es feliz.,template_generated,n_a1_1,9.166891083730986,objetivo,Gender=Masc|Number=Sing,1,1,1,n_a1_1
