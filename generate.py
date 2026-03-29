@@ -496,6 +496,7 @@ class SentenceGenerator:
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
         self.candidate_pool_cache: Dict[str, List[Candidate]] = {}
+        self.starter_candidate_pool_cache: Dict[Tuple[str, int], List[Candidate]] = {}
         self.last_candidate_export_stats: Optional[Dict[str, float]] = None
         self.last_starter_stats: Optional[Dict[str, Any]] = None
         self.reranker = load_reranker_model(os.path.join(models_dir, "reranker.pkl"))
@@ -575,6 +576,7 @@ class SentenceGenerator:
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
         self.candidate_pool_cache.clear()
+        self.starter_candidate_pool_cache.clear()
         self.last_candidate_export_stats = None
         self.last_starter_stats = None
 
@@ -2787,49 +2789,79 @@ class SentenceGenerator:
             "failure_reason": failure_reason,
         }
 
-    def collect_starter_candidates_for_lemma(self, lemma: str, max_candidates_per_lemma: Optional[int] = None) -> List[Candidate]:
+    def search_starter_candidates_for_lemma(
+        self,
+        lemma: str,
+        max_attempts: int = 300,
+        max_candidates_per_lemma: Optional[int] = None,
+        stop_on_first_publishable: bool = False,
+    ) -> List[Candidate]:
         lemma = lemma.strip().lower()
         if lemma not in self.lexicon:
             raise KeyError(f"Lemma not in lexicon: {lemma}")
+        max_attempts = max(0, max_attempts)
+        cache_key = (lemma, max_attempts)
+        if not stop_on_first_publishable and cache_key in self.starter_candidate_pool_cache:
+            pool = list(self.starter_candidate_pool_cache[cache_key])
+            if max_candidates_per_lemma is not None:
+                return pool[:max(0, max_candidates_per_lemma)]
+            return pool
+
         target = self.lexicon[lemma]
         candidates: List[Candidate] = []
         candidates.extend(self.retrieve_candidates(target))
 
-        if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
-            for _ in range(40):
-                cand = self.seeded_template_candidate(target)
-                if not cand:
-                    continue
-                ok, penalties = self.starter_validate(cand)
-                if not ok:
-                    continue
-                self.score(cand, penalties)
-                candidates.append(cand)
+        if stop_on_first_publishable:
+            publishable_retrieved = [cand for cand in candidates if self.candidate_is_starter_publishable(cand)]
+            if publishable_retrieved:
+                return [max(publishable_retrieved, key=lambda cand: self.starter_total_score(cand))]
 
-            for _ in range(80):
-                cand = self.pure_template_candidate(target, starter_mode=True)
-                if not cand:
-                    continue
-                ok, penalties = self.starter_validate(cand)
-                if not ok:
-                    continue
-                self.score(cand, penalties)
-                candidates.append(cand)
+        if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
+            attempts = 0
+            while attempts < max_attempts:
+                attempts += 1
+                if self.random.random() < 0.4:
+                    cand = self.seeded_template_candidate(target)
+                else:
+                    cand = self.pure_template_candidate(target, starter_mode=True)
+                if cand:
+                    ok, penalties = self.starter_validate(cand)
+                    if ok:
+                        self.score(cand, penalties)
+                        candidates.append(cand)
+                        if stop_on_first_publishable and self.candidate_is_starter_publishable(cand):
+                            return [cand]
+                if attempts % 25 == 0:
+                    candidates = self.dedupe_candidates(candidates)
 
         pool = self.dedupe_candidates(candidates)
+        if not stop_on_first_publishable:
+            self.starter_candidate_pool_cache[cache_key] = list(pool)
         if max_candidates_per_lemma is not None:
             return pool[:max(0, max_candidates_per_lemma)]
         return pool
 
+    def collect_starter_candidates_for_lemma(self, lemma: str, max_candidates_per_lemma: Optional[int] = None) -> List[Candidate]:
+        return self.search_starter_candidates_for_lemma(
+            lemma,
+            max_attempts=120,
+            max_candidates_per_lemma=max_candidates_per_lemma,
+            stop_on_first_publishable=False,
+        )
+
     def starter_total_score(self, candidate: Candidate) -> float:
         return candidate.score + self.starter_bonus(candidate)
 
-    def generate_starter_for_lemma(self, lemma: str) -> Candidate:
+    def generate_starter_for_lemma(self, lemma: str, starter_max_attempts: int = 300) -> Candidate:
         lemma = lemma.strip().lower()
         if lemma not in self.lexicon:
             raise KeyError(f"Lemma not in lexicon: {lemma}")
         target = self.lexicon[lemma]
-        pool = self.collect_starter_candidates_for_lemma(lemma)
+        pool = self.search_starter_candidates_for_lemma(
+            lemma,
+            max_attempts=starter_max_attempts,
+            stop_on_first_publishable=False,
+        )
         publishable = [cand for cand in pool if self.candidate_is_starter_publishable(cand)]
         if publishable:
             return max(publishable, key=lambda cand: self.starter_total_score(cand))
@@ -3370,6 +3402,7 @@ class SentenceGenerator:
         mvp_only: bool = False,
         candidates_out: Optional[str] = None,
         max_candidates_per_lemma: int = 10,
+        starter_max_attempts: int = 300,
     ) -> List[Candidate]:
         stats: Dict[str, Any] = {
             "total_lexicon": 0,
@@ -3439,11 +3472,16 @@ class SentenceGenerator:
 
         for lex in eligible:
             try:
-                best = self.generate_starter_for_lemma(lex.lemma)
                 if candidates_out:
-                    pool = self.collect_starter_candidates_for_lemma(lex.lemma, max_candidates_per_lemma=max_candidates_per_lemma)
+                    pool = self.search_starter_candidates_for_lemma(
+                        lex.lemma,
+                        max_attempts=starter_max_attempts,
+                        max_candidates_per_lemma=max_candidates_per_lemma,
+                        stop_on_first_publishable=False,
+                    )
                     if pool:
                         candidate_rows.extend(pool)
+                best = self.generate_starter_for_lemma(lex.lemma, starter_max_attempts=starter_max_attempts)
             except Exception as exc:
                 print(f"[warn] starter: failed for {lex.lemma}: {exc}", file=sys.stderr)
                 best = self.manual_review_candidate(lex)
@@ -3727,6 +3765,7 @@ def main() -> None:
     parser.add_argument("--starter-dataset", action="store_true", help="Generate a starter app-seeding dataset and matching review CSV.")
     parser.add_argument("--candidates-out", default=None, help="Optional multi-candidate CSV export path.")
     parser.add_argument("--max-candidates-per-lemma", type=int, default=10, help="Maximum candidate rows to keep per lemma in the candidate export.")
+    parser.add_argument("--starter-max-attempts", type=int, default=300, help="Maximum generation attempts per lemma for starter dataset search.")
     parser.add_argument("--lexicon-overrides", action="append", default=[], help="Path to a lexicon overrides CSV or JSON file. Can be repeated.")
     parser.add_argument("--quarantine-out", default=None, help="Optional quarantine CSV for near-miss starter rows.")
     parser.add_argument("--target-lemma", default=None, help="Generate one structured sentence result for this lemma.")
@@ -3768,6 +3807,7 @@ def main() -> None:
             mvp_only=args.mvp_only,
             candidates_out=args.candidates_out,
             max_candidates_per_lemma=args.max_candidates_per_lemma,
+            starter_max_attempts=args.starter_max_attempts,
         )
     else:
         rows = gen.generate_batch(
