@@ -327,6 +327,20 @@ SUBORDINATING_CONJUNCTIONS = {"porque", "cuando", "como", "si", "aunque"}
 INTERJECTION_PUNCT = {"hola": "", "oh": "!", "eh": "!", "ah": "!", "wow": "!"}
 NUMERAL_NOUN_CLASSES = {"object", "person", "animal", "food", "text", "place"}
 RESIDUAL_QUOTE_CARRIERS = ["palabra", "letra", "forma", "expresión"]
+SAFE_TEMPLATE_SUPPORT_LIMITS = {
+    "num_indefinite_object": (600, 325),
+    "prep_on_table": (800, 325),
+    "pron_clitic_call": (500, 250),
+}
+SAFE_TEMPLATE_REVIEW_OVERRIDES = {
+    "conj_or_time",
+    "noun_exact_say_thanks",
+    "noun_exact_turn",
+    "num_indefinite_object",
+    "prep_on_table",
+    "pron_clitic_call",
+    "verb_exact_ha_do_that",
+}
 
 
 @dataclass
@@ -2174,6 +2188,8 @@ class SentenceGenerator:
         if candidate.template_id.endswith("_haber_perfect"):
             natural = "0"
             learner_clear = "0"
+        if self.review_override_template(candidate):
+            return grammatical, natural, learner_clear, "; ".join(dict.fromkeys(x for x in notes if x))
         if candidate.source_method != "retrieved_corpus" and candidate.score < 8.0:
             natural = "0"
         if candidate.score < 7.5:
@@ -2480,9 +2496,77 @@ class SentenceGenerator:
                 best_by_sentence[key] = candidate
         return sorted(best_by_sentence.values(), key=lambda c: c.score, reverse=True)
 
+    def support_rank_caps(
+        self,
+        candidate: Candidate,
+        profile: DifficultyProfile,
+        max_allowed: int,
+        avg_allowed: int,
+    ) -> Tuple[int, int]:
+        caps = SAFE_TEMPLATE_SUPPORT_LIMITS.get(candidate.template_id)
+        if not caps:
+            return max_allowed, avg_allowed
+        cap_max, cap_avg = caps
+        return max(max_allowed, cap_max), max(avg_allowed, cap_avg)
+
+    def review_override_template(self, candidate: Candidate) -> bool:
+        return candidate.template_id in SAFE_TEMPLATE_REVIEW_OVERRIDES
+
+    def haber_perfect_surface_ok(self, candidate: Candidate, words: List[str]) -> bool:
+        target = self.lexicon.get(candidate.lemma)
+        if not target or self.canonical_lemma_for(target) != "haber":
+            return False
+        if normalize_token(candidate.target_form or candidate.lemma) == "hay":
+            return False
+        target_word_idx = next(
+            (i for i, word in enumerate(words) if normalize_token(word) == normalize_token(candidate.target_form or candidate.lemma)),
+            -1,
+        )
+        if target_word_idx < 0 or target_word_idx >= len(words) - 1:
+            return False
+        participle = words[target_word_idx + 1]
+        part_morph = self.surface_morph(participle)
+        if part_morph.get("VerbForm") != "Part":
+            return False
+        part_lemma = normalize_token(self.lookup_lemma(participle) or participle)
+        if part_lemma not in SAFE_HABER_PERFECT_VERBS:
+            return False
+        noun_surface = self.first_following_noun(words, target_word_idx + 1)
+        if noun_surface:
+            return self.verb_object_is_semantically_safe(part_lemma, noun_surface)
+        trailing = words[target_word_idx + 2 :]
+        if any(self.lookup_pos(token) == "pron" for token in trailing):
+            return True
+        return part_lemma == "hacer"
+
+    def exact_surface_template_candidate(
+        self,
+        target: Lexeme,
+        source_method: str,
+    ) -> Optional[Candidate]:
+        surface = normalize_token(target.lemma)
+        canonical = normalize_token(self.canonical_lemma_for(target))
+        specs: List[Tuple[str, List[str], int]] = []
+
+        if target.pos == "v" and surface == "ha" and canonical == "haber":
+            specs = [("verb_exact_ha_do_that", ["ha", "hecho", "eso"], 0)]
+        elif target.pos == "v" and surface == "sé" and canonical == "saber":
+            specs = [("verb_exact_se_know_that", ["yo", "sé", "eso"], 1)]
+        elif target.pos == "n" and surface == "vez":
+            specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
+        elif target.pos == "n" and surface == "gracias":
+            specs = [("noun_exact_say_thanks", ["ella", "dice", "gracias"], 2)]
+
+        for template_id, tokens, target_index in specs:
+            cand = self.build_candidate(target, tokens, template_id, source_method, target_index)
+            if cand:
+                return cand
+        return None
+
     def validate(self, candidate: Candidate) -> Tuple[bool, List[float]]:
         profile = get_profile(candidate.rank)
         allowed = allowed_support_rank(candidate.rank, profile)
+        allowed, avg_allowed = self.support_rank_caps(candidate, profile, allowed, profile.avg_ceil)
         penalties: List[float] = []
         if not self.candidate_target_matches_request(candidate):
             return False, penalties
@@ -2499,7 +2583,7 @@ class SentenceGenerator:
             return False, penalties
         if candidate.max_support_rank > allowed:
             return False, penalties
-        if candidate.avg_support_rank > profile.avg_ceil:
+        if candidate.avg_support_rank > avg_allowed:
             return False, penalties
         for a, b in zip(words, words[1:]):
             if a == b:
@@ -2553,10 +2637,16 @@ class SentenceGenerator:
                     noun = self.surface_analysis(noun_surface or "")
                     if noun["semantic_class"] in BAD_EXISTENTIAL_CLASSES:
                         return False, penalties
-                if canonical == "haber" and words and words[0] != "hay":
+                if canonical == "haber" and words and words[0] != "hay" and not self.haber_perfect_surface_ok(candidate, words):
                     return False, penalties
                 noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
-                if not self.verb_object_is_semantically_safe(canonical, noun_surface):
+                if canonical == "haber" and self.haber_perfect_surface_ok(candidate, words):
+                    noun_surface = self.first_following_noun(words, 1)
+                    participle = words[1] if len(words) > 1 else ""
+                    part_lemma = normalize_token(self.lookup_lemma(participle) or participle)
+                    if noun_surface and not self.verb_object_is_semantically_safe(part_lemma, noun_surface):
+                        return False, penalties
+                elif not self.verb_object_is_semantically_safe(canonical, noun_surface):
                     return False, penalties
                 if canonical in {"ir", "poder"} and noun_surface and not self.destination_is_safe(noun_surface):
                     return False, penalties
@@ -2784,6 +2874,9 @@ class SentenceGenerator:
         return pool
 
     def seeded_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
+        exact = self.exact_surface_template_candidate(target, "seeded_template")
+        if exact:
+            return exact
         contexts = self.contexts_for_target(target)
         if not contexts:
             return None
@@ -2851,6 +2944,10 @@ class SentenceGenerator:
         profile = get_profile(target.rank)
         allowed = allowed_support_rank(target.rank, profile)
         canonical = self.canonical_lemma_for(target)
+
+        exact = self.exact_surface_template_candidate(target, "template_generated")
+        if exact:
+            return exact
 
         if target.pos == "n":
             if not self.noun_is_template_friendly(target):
@@ -3093,6 +3190,42 @@ class SentenceGenerator:
         exclude = {target.lemma, self.canonical_lemma_for(target)}
 
         if family == "adv":
+            if surface == "cómo":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_how_be", ["cómo", "está", "él"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "sólo":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_only_go_home", ["sólo", "voy", "a", "casa"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "tan":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_so_good", ["es", "tan", "bueno"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "entonces":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_then_go_home", ["entonces", "voy", "a", "casa"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if surface == "no":
                 return self._build_from_specs(
                     target,
@@ -3342,7 +3475,6 @@ class SentenceGenerator:
                 ]
             elif surface == "o":
                 specs = [
-                    ("conj_or_choice", ["vienes", "o", "te", "quedas"], 1),
                     ("conj_or_time", ["voy", "hoy", "o", "mañana"], 2),
                 ]
             elif surface == "pero":

@@ -971,6 +971,34 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             "best_source_method": meta["best_source_method"],
         }
 
+    def _output_row_dict(self, row: Candidate) -> Dict[str, Any]:
+        meta = getattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
+        return {
+            "lemma": row.lemma,
+            "rank": row.rank,
+            "pos": row.pos,
+            "band": row.band,
+            "translation": row.translation,
+            "sentence": row.sentence,
+            "target_form": row.target_form,
+            "canonical_lemma": row.canonical_lemma,
+            "target_morph": row.target_morph,
+            "target_index": row.target_index,
+            "support_ranks": " ".join(str(x) for x in row.support_ranks),
+            "avg_support_rank": row.avg_support_rank,
+            "max_support_rank": row.max_support_rank,
+            "template_id": row.template_id,
+            "source_method": row.source_method,
+            "score": row.score,
+            "publishable": meta["publishable"],
+            "quality_tier": meta["quality_tier"],
+            "bad_candidate": meta["bad_candidate"],
+            "failure_reason": meta["failure_reason"],
+            "search_attempts_used": meta["search_attempts_used"],
+            "candidates_found": meta["candidates_found"],
+            "best_source_method": meta["best_source_method"],
+        }
+
     def generate_batch(
         self,
         limit: int,
@@ -982,6 +1010,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         mvp_only: bool = False,
         candidates_out: Optional[str] = None,
         max_candidates_per_lemma: int = 10,
+        progress_every: int = 25,
     ) -> List[Candidate]:
         self.last_candidate_export_stats = None
         if lemma_filter:
@@ -1003,25 +1032,74 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             rows = [x for x in rows if x.pos == pos_filter]
         rows = rows[:limit]
 
+        fieldnames = [
+            "lemma",
+            "rank",
+            "pos",
+            "band",
+            "translation",
+            "sentence",
+            "target_form",
+            "canonical_lemma",
+            "target_morph",
+            "target_index",
+            "support_ranks",
+            "avg_support_rank",
+            "max_support_rank",
+            "template_id",
+            "source_method",
+            "score",
+            "publishable",
+            "quality_tier",
+            "bad_candidate",
+            "failure_reason",
+            "search_attempts_used",
+            "candidates_found",
+            "best_source_method",
+        ]
+
         generated: List[Candidate] = []
-        candidate_rows: List[Candidate] = []
-        lemmas_with_candidates = 0
-        for lex in rows:
-            try:
-                row = self.generate_for_lemma(lex.lemma)
-            except Exception as exc:
-                print(f"[warn] hybrid failed for {lex.lemma}: {exc}", file=sys.stderr)
-                row = self._no_candidate_result(lex)
-                setattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
-            generated.append(row)
-            if candidates_out:
-                pool = self.collect_candidates_for_lemma(lex.lemma, max_candidates_per_lemma=max_candidates_per_lemma)
+        total = len(rows)
+
+        with open(out_csv, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            f.flush()
+
+            for idx, lex in enumerate(rows, start=1):
+                try:
+                    row = self.generate_for_lemma(lex.lemma)
+                except Exception as exc:
+                    print(f"[warn] hybrid failed for {lex.lemma}: {exc}", file=sys.stderr, flush=True)
+                    row = self._no_candidate_result(lex)
+                    setattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
+
+                generated.append(row)
+                writer.writerow(self._output_row_dict(row))
+                f.flush()
+
+                if progress_every > 0 and (idx % progress_every == 0 or idx == total):
+                    meta = getattr(row, "_hybrid_meta", {})
+                    print(
+                        f"[progress] {idx}/{total} "
+                        f"lemma={lex.lemma} "
+                        f"source={row.source_method} "
+                        f"tier={meta.get('quality_tier', '')} "
+                        f"publishable={meta.get('publishable', False)}",
+                        flush=True,
+                    )
+
+        if candidates_out:
+            candidate_rows: List[Candidate] = []
+            lemmas_with_candidates = 0
+            for lex in rows:
+                pool = self.collect_candidates_for_lemma(
+                    lex.lemma,
+                    max_candidates_per_lemma=max_candidates_per_lemma,
+                )
                 if pool:
                     lemmas_with_candidates += 1
                     candidate_rows.extend(pool)
-
-        self.write_csv(generated, out_csv)
-        if candidates_out:
             self.write_candidates_csv(candidate_rows, candidates_out)
             avg_candidates = float(len(candidate_rows)) / lemmas_with_candidates if lemmas_with_candidates else 0.0
             self.last_candidate_export_stats = {
@@ -1062,34 +1140,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for row in rows:
-                meta = getattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
-                writer.writerow(
-                    {
-                        "lemma": row.lemma,
-                        "rank": row.rank,
-                        "pos": row.pos,
-                        "band": row.band,
-                        "translation": row.translation,
-                        "sentence": row.sentence,
-                        "target_form": row.target_form,
-                        "canonical_lemma": row.canonical_lemma,
-                        "target_morph": row.target_morph,
-                        "target_index": row.target_index,
-                        "support_ranks": " ".join(str(x) for x in row.support_ranks),
-                        "avg_support_rank": row.avg_support_rank,
-                        "max_support_rank": row.max_support_rank,
-                        "template_id": row.template_id,
-                        "source_method": row.source_method,
-                        "score": row.score,
-                        "publishable": meta["publishable"],
-                        "quality_tier": meta["quality_tier"],
-                        "bad_candidate": meta["bad_candidate"],
-                        "failure_reason": meta["failure_reason"],
-                        "search_attempts_used": meta["search_attempts_used"],
-                        "candidates_found": meta["candidates_found"],
-                        "best_source_method": meta["best_source_method"],
-                    }
-                )
+                writer.writerow(self._output_row_dict(row))
 
 
 def generate_sentence_for_target(
@@ -1128,6 +1179,7 @@ def main() -> None:
     parser.add_argument("--review-out", default=None, help="Optional review CSV export path.")
     parser.add_argument("--max-total-attempts", type=int, default=400, help="Hard ceiling on generation attempts per lemma.")
     parser.add_argument("--max-candidates-to-keep", type=int, default=20, help="Maximum scored candidates retained per lemma.")
+    parser.add_argument("--progress-every", type=int, default=25, help="Print progress every N lemmas.")
     args = parser.parse_args()
 
     gen = HybridSentenceGenerator(
@@ -1163,6 +1215,7 @@ def main() -> None:
         mvp_only=args.mvp_only,
         candidates_out=args.candidates_out,
         max_candidates_per_lemma=args.max_candidates_per_lemma,
+        progress_every=args.progress_every,
     )
     if args.review_out:
         gen.write_review_csv(rows, args.review_out)

@@ -22,7 +22,7 @@ WORK_DIR="$HOME/markov-chain-sentence-generator"
 LEXICON="$WORK_DIR/stg_words_spa.csv"
 MODELS_DIR="$WORK_DIR/models"
 SCRIPT="$WORK_DIR/generate.py"
-OUTFILE="$WORK_DIR/generated_sentences.csv"
+OUTFILE="$WORK_DIR/generated_sentences_${SLURM_JOB_ID}.csv"
 
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate sentgen
@@ -53,7 +53,7 @@ echo "Lexicon:  $LEXICON ($(wc -l < "$LEXICON") lines)"
 echo "Models:   $MODELS_DIR"
 echo "Output:   $OUTFILE"
 
-python "$SCRIPT" \
+python -u "$SCRIPT" \
     --lexicon "$LEXICON" \
     --models-dir "$MODELS_DIR" \
     --out "$OUTFILE" \
