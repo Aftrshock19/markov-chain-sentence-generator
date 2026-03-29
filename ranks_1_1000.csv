@@ -1,0 +1,51 @@
+lemma,rank,pos,band,translation,sentence,english_sentence,target_form,canonical_lemma,target_morph,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,english_source_method,parallel_pair_id,score,english_score
+de,1,prep,A1,of; from,Ella habla de casa.,,de,de,,2,11 173 91,91.66666666666667,173,prep_governed_clause,template_generated,,,9.170543992727364,0.0
+que,2,pron,A1,that,,,que,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+la,3,pron,A1,the (fem.),Yo la veo.,,la,la,,1,18 119,68.5,119,pron_object_clause,template_generated,,,8.529370787471203,0.0
+no,4,,A1,no; not,Ella no habla.,,no,no,Polarity=Neg,1,11 173,92,173,adv_negation_clause,template_generated,,,9.033769794406277,0.0
+a,5,none,A1,to; at,Ella va a casa.,,a,a,,2,11 52 91,51.333333333333336,91,prep_governed_clause,template_generated,,,8.891384558524342,0.0
+el,6,art,A1,the (masc.),El trabajo es bueno.,,el,el,Definite=Def|Gender=Masc|Number=Sing|PronType=Art,0,144 9 55,69.33333333333333,144,art_anchor_np,template_generated,,,8.381378881653564,0.0
+y,7,conj,A1,and,Ella va y él va.,,y,y,,2,11 52 11 52,31.5,52,conj_linked_clause,template_generated,,,8.178383748643567,0.0
+en,8,prep,A1,in; at; on,Ella está en casa.,,en,en,,2,11 26 91,42.666666666666664,91,prep_governed_clause,template_generated,,,9.80272063549803,0.0
+es,9,v,A1,is (ser),Ella es buena.,,es,ser,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 55,33,55,seeded_special_ser_adj,seeded_template,,,8.317620616764355,0.0
+un,10,num,A1,a; an; one,Un es un.,,un,uno,,0,9 10,9.5,10,num_quantity_clause,template_generated,,,9.375674382165988,0.0
+lo,11,pron,A1,it; the (neuter),Yo lo veo.,,lo,él,Case=Acc|Gender=Masc|Number=Sing|Person=3,1,18 119,68.5,119,pron_object_clause,template_generated,,,8.440827834041048,0.0
+por,12,prep,A1,by,Ella está por casa.,,por,por,,2,11 26 91,42.666666666666664,91,prep_governed_clause,template_generated,,,8.988107202743066,0.0
+los,13,art,A1,the (masc. pl.),,,los,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+una,14,determiner,A1,a; an; one (fem.),Una casa es buena.,,una,uno,Gender=Fem|Number=Sing,0,91 9 55,51.666666666666664,91,det_anchor_np,template_generated,,,9.471207119142319,0.0
+se,15,pron,A1,oneself; himself; herself; itself; themselves,,,se,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+con,16,prep,A1,with,,,con,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+qué,17,pron,A1,what,¿qué puedes hacer por mi?,,qué,qué,Number=Sing,1,75 71 12 27,46.25,75,retrieved,retrieved_corpus,,,12.597550962500542,0.0
+me,18,pron,A1,me; myself,,,me,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+para,19,prep,A1,for; to,Ella está para casa.,,para,para,,2,11 26 91,42.666666666666664,91,prep_governed_clause,template_generated,,,9.010490785983862,0.0
+las,20,pron,A1,the (fem. pl.),,,las,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+del,21,contraction,A1,of the; from the,Ella habla del trabajo.,,del,del,Definite=Def|Gender=Masc|Number=Sing|PronType=Art,2,11 173 144,109.33333333333333,173,prep_contraction_clause,template_generated,,,8.355968005008668,0.0
+te,22,pron,A1,you; yourself,,,te,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+su,23,determiner,A1,his; her; its; their; your (formal),Su casa está aquí.,,su,su,Number=Sing,0,91 26 36,51,91,det_anchor_np,template_generated,,,9.857508718429791,0.0
+pero,24,conj,A1,but,,,pero,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+si,25,conj,A1,if; whether,,,si,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+está,26,v,A1,is (estar),Ella está en casa.,,está,estar,Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin,1,11 8 91,36.666666666666664,91,seeded_special_estar_place,seeded_template,,,9.00272063549803,0.0
+mi,27,determiner,A1,my,Mi casa está aquí.,,mi,mi,Number=Sing,0,91 26 36,51,91,det_anchor_np,template_generated,,,10.144693094990785,0.0
+al,28,contraction,A1,to the,Ella va al trabajo.,,al,al,,2,11 52 144,69,144,prep_contraction_clause,template_generated,,,8.840542256782378,0.0
+sí,29,pron,A1,yes; oneself,,,sí,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+como,30,conj,A1,as,,,como,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+bien,31,adv,A1,well-to-do,Él habla bien.,,bien,bien,,2,11 173,92,173,adv_general_clause,template_generated,,,8.616528050228478,0.0
+más,32,adv,A1,more; most,,,más,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+eso,33,pron,A1,that (neuter),,,eso,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+yo,34,pron,A1,I,Yo estoy aquí.,,yo,yo,Case=Nom|Number=Sing|Person=1,0,26 36,31,36,pron_subject_clause,template_generated,,,12.447000987188645,0.0
+le,35,pron,A1,him; her; you (formal),Yo le hablo.,,le,él,Case=Dat|Number=Sing|Person=3,1,18 173,95.5,173,pron_indirect_object_clause,template_generated,,,8.261211586904992,0.0
+aquí,36,adv,A1,here,¿no sientes nada aquí?,,aquí,aquí,,4,4 122 61,62.333333333333336,122,retrieved,retrieved_corpus,,,12.955584755823722,0.0
+tu,37,determiner,A1,your,Tu casa está aquí.,,tu,tu,,0,91 26 36,51,91,det_anchor_np,template_generated,,,9.012838348909792,0.0
+todo,38,determiner,A1,all; every; everything,Todo casa es buena.,,todo,todo,Gender=Masc|Number=Sing,0,91 9 55,51.666666666666664,91,det_anchor_np,template_generated,,,10.094150017924036,0.0
+ha,39,v,A1,has (haber),,,ha,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+ya,40,adv,A1,already; now,,,ya,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+o,41,conj,A1,or,Ella va o él va.,,o,o,,2,11 52 11 52,31.5,52,conj_linked_clause,template_generated,,,9.087420646898023,0.0
+esto,42,pron,A1,this (neuter),,,esto,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+muy,43,adv,A1,very,,,muy,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+esta,44,determiner,A1,this (fem.),Esta casa es buena.,,esta,este,Gender=Fem|Number=Sing,0,91 9 55,51.666666666666664,91,det_anchor_np,template_generated,,,10.704144354051087,0.0
+ahora,45,adv,A1,now...now; whether...or,Ahora quiero ir y hacerlo.,,ahora,ahora,,0,76 52 7 71,51.5,76,retrieved,retrieved_corpus,,,9.70118221329277,0.0
+así,46,adv,A1,like this,No quiero que sea así.,,así,así,,4,4 76 2 9,22.75,76,retrieved,retrieved_corpus,,,15.199992016429619,0.0
+cuando,47,conj,A1,when,,,cuando,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+hay,48,v,A1,there is; there are,,,hay,,,-1,,0.0,0,,manual_review_needed,,,0.0,0.0
+este,49,determiner,A1,this,Este hombre es nuevo.,,este,este,Gender=Masc|Number=Sing,0,116 9 177,100.66666666666667,177,det_anchor_np,template_generated,,,10.12779655399493,0.0
+algo,50,pron,A1,something; anything,Tienes algo que es mío.,,algo,algo,Number=Sing,1,59 2 9 27,24.25,59,retrieved,retrieved_corpus,,,14.50366882766971,0.0

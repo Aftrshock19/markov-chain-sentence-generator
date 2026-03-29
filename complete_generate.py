@@ -271,6 +271,63 @@ STARTER_UNNATURAL_COPULA_PREDICATES_BY_CLASS = {
     "place": {"natural"},
 }
 
+POS_FAMILY_MAP = {
+    "n": "n",
+    "prop": "prop",
+    "v": "v",
+    "aux": "v",
+    "adj": "adj",
+    "adv": "adv",
+    "determiner": "determiner",
+    "det": "determiner",
+    "art": "art",
+    "pron": "pron",
+    "pronoun": "pron",
+    "prep": "prep",
+    "adp": "prep",
+    "conj": "conj",
+    "cconj": "conj",
+    "sconj": "conj",
+    "interj": "interj",
+    "num": "num",
+    "contraction": "contraction",
+    "letter": "letter",
+    "prefix": "prefix",
+    "phrase": "phrase",
+    "particle": "particle",
+    "none": "residual",
+    "": "residual",
+}
+
+FUNCTION_WORD_FAMILIES = {
+    "adv",
+    "determiner",
+    "art",
+    "pron",
+    "prep",
+    "conj",
+    "interj",
+    "num",
+    "contraction",
+    "letter",
+    "prefix",
+    "phrase",
+    "particle",
+    "residual",
+}
+
+BEGINNER_SUBORDINATORS = {"y", "o", "pero"}
+ADV_TIME_LEMMAS = {"ahora", "ya", "siempre", "hoy", "mañana", "ayer"}
+ADV_PLACE_LEMMAS = {"aquí", "allí", "acá", "afuera", "dentro"}
+DETERMINER_POSSESSIVES = {"mi", "mis", "tu", "tus", "su", "sus", "nuestro", "nuestra", "nuestros", "nuestras"}
+DETERMINER_DEMONSTRATIVES = {"este", "esta", "estos", "estas", "ese", "esa", "esos", "esas"}
+SIMPLE_PREPOSITIONS = {"de", "en", "con", "para", "sin", "sobre", "hasta", "por"}
+COORDINATING_CONJUNCTIONS = {"y", "o", "ni", "pero"}
+SUBORDINATING_CONJUNCTIONS = {"porque", "cuando", "como", "si", "aunque"}
+INTERJECTION_PUNCT = {"hola": "", "oh": "!", "eh": "!", "ah": "!", "wow": "!"}
+NUMERAL_NOUN_CLASSES = {"object", "person", "animal", "food", "text", "place"}
+RESIDUAL_QUOTE_CARRIERS = ["palabra", "letra", "forma", "expresión"]
+
 
 @dataclass
 class Lexeme:
@@ -495,10 +552,12 @@ class SentenceGenerator:
         self.form_to_lemmas = self._build_form_index()
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
+        self.pos_strategies = self._build_pos_strategies()
         self.candidate_pool_cache: Dict[str, List[Candidate]] = {}
         self.starter_candidate_pool_cache: Dict[Tuple[str, int], List[Candidate]] = {}
         self.last_candidate_export_stats: Optional[Dict[str, float]] = None
         self.last_starter_stats: Optional[Dict[str, Any]] = None
+        self.last_coverage_report: Optional[Dict[str, Any]] = None
         self.reranker = load_reranker_model(os.path.join(models_dir, "reranker.pkl"))
         self.overrides: Dict[str, Dict[str, str]] = {}
 
@@ -575,10 +634,12 @@ class SentenceGenerator:
                 lex.canonical_lemma = ov["force_canonical_lemma"].strip().lower()
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
+        self.pos_strategies = self._build_pos_strategies()
         self.candidate_pool_cache.clear()
         self.starter_candidate_pool_cache.clear()
         self.last_candidate_export_stats = None
         self.last_starter_stats = None
+        self.last_coverage_report = None
 
     def is_starter_target_eligible(self, lex: Lexeme) -> bool:
         if lex.pos not in STARTER_ELIGIBLE_POS:
@@ -645,6 +706,56 @@ class SentenceGenerator:
         for values in buckets.values():
             values.sort(key=lambda x: x.rank)
         return buckets
+
+    def _build_pos_strategies(self) -> Dict[str, Dict[str, Any]]:
+        return {
+            "n": {"seeded": self.seeded_template_candidate, "pure": self.pure_template_candidate},
+            "v": {"seeded": self.seeded_template_candidate, "pure": self.pure_template_candidate},
+            "adj": {"seeded": self.seeded_template_candidate, "pure": self.pure_template_candidate},
+            "adv": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "determiner": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "art": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "pron": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "prep": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "conj": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "interj": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "num": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "prop": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "contraction": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "letter": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "prefix": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "phrase": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "particle": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+            "residual": {"seeded": self.seeded_pos_template_candidate, "pure": self.pure_pos_template_candidate},
+        }
+
+    def normalized_pos_family(self, lex: Optional[Lexeme]) -> str:
+        if not lex:
+            return "residual"
+        raw = (lex.pos or "").strip().lower()
+        lemma = normalize_token(lex.lemma)
+        if raw in {"", "none"}:
+            if lemma in SIMPLE_PREPOSITIONS or lemma in {"a"}:
+                return "prep"
+            if lemma == "no":
+                return "adv"
+        return POS_FAMILY_MAP.get(raw, raw or "residual")
+
+    def strategy_for_target(self, target: Lexeme) -> Dict[str, Any]:
+        return self.pos_strategies.get(self.normalized_pos_family(target), self.pos_strategies["residual"])
+
+    def band_template_attempts(self, profile: DifficultyProfile) -> Tuple[int, int]:
+        if profile.band == "A1":
+            return 8, 16
+        if profile.band == "A2":
+            return 10, 18
+        if profile.band == "B1":
+            return 12, 22
+        if profile.band == "B2":
+            return 12, 24
+        if profile.band == "C1":
+            return 10, 20
+        return 8, 16
 
     def lookup_lemma(self, surface: str) -> Optional[str]:
         s = normalize_token(surface)
@@ -746,6 +857,13 @@ class SentenceGenerator:
                 return lemma + "s"
             return lemma + "es"
         return lemma
+
+    def pluralize_noun(self, lemma: str) -> str:
+        if lemma.endswith(("a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú")):
+            return lemma + "s"
+        if lemma.endswith("z"):
+            return lemma[:-1] + "ces"
+        return lemma + "es"
 
     def conjugate_present(self, lemma: str, person: str = "3sg") -> str:
         if lemma in IRREGULAR_PRESENT and person in IRREGULAR_PRESENT[lemma]:
@@ -906,7 +1024,11 @@ class SentenceGenerator:
         return True
 
     def requested_lemma_allows_inflected_target(self, target: Lexeme) -> bool:
-        return normalize_token(target.lemma) == normalize_token(self.canonical_lemma_for(target)) and target.pos in {"v", "n", "adj"}
+        return (
+            normalize_token(target.lemma) == normalize_token(self.canonical_lemma_for(target))
+            and self.normalized_pos_family(target) in {"v", "n", "adj"}
+            and not self.exact_surface_target_only(target)
+        )
 
     def target_pos_hint_matches_request(self, requested_pos: str, target_pos_hint: str) -> bool:
         if not target_pos_hint:
@@ -916,14 +1038,24 @@ class SentenceGenerator:
             "AUX": "v",
             "NOUN": "n",
             "PROPN": "n",
+            "PROPER_NOUN": "prop",
             "ADJ": "adj",
             "ADV": "adv",
             "DET": "determiner",
             "PRON": "pron",
+            "ADP": "prep",
+            "CCONJ": "conj",
+            "SCONJ": "conj",
+            "INTJ": "interj",
+            "NUM": "num",
         }.get(target_pos_hint.upper(), target_pos_hint.lower())
+        requested_family = POS_FAMILY_MAP.get(requested_pos, requested_pos)
+        mapped_family = POS_FAMILY_MAP.get(mapped, mapped)
         if requested_pos in {"pron", "pronoun"}:
-            return mapped == "pron"
-        return mapped == requested_pos
+            return mapped_family == "pron"
+        if requested_family == "prop":
+            return mapped_family in {"prop", "n"}
+        return mapped_family == requested_family
 
     def verb_morph_is_complete(self, morph: Dict[str, str]) -> bool:
         if morph.get("VerbForm") == "Inf":
@@ -1517,9 +1649,27 @@ class SentenceGenerator:
         if band in ("A1", "A2") and ("," in candidate.sentence or ";" in candidate.sentence):
             reasons.append("punctuation_complexity_for_beginner")
 
+        if band == "B1" and len(words) > 9:
+            reasons.append("too_long_for_B1")
+        if band == "B2" and len(words) > 10:
+            reasons.append("too_long_for_B2")
+
+        finite_count = 0
+        for token in words:
+            if self.lookup_pos(token) != "v":
+                continue
+            morph = self.surface_morph(token)
+            if morph.get("VerbForm") == "Fin":
+                finite_count += 1
+
+        if band in ("B1", "B2") and finite_count > 2:
+            reasons.append("too_many_finite_verbs")
+        if band in ("C1", "C2") and finite_count > 3:
+            reasons.append("too_many_finite_verbs")
+
         if candidate.support_ranks:
             max_support = max(candidate.support_ranks)
-            support_ceiling = profile.filler_ceil * 2
+            support_ceiling = int(profile.filler_ceil * (2.0 if band in {"A1", "A2"} else 2.5 if band in {"B1", "B2"} else 3.0))
             if max_support > support_ceiling:
                 reasons.append("support_vocab_too_advanced")
 
@@ -1540,6 +1690,77 @@ class SentenceGenerator:
             return False
         grammatical_ok, natural_ok, learner_clear_ok, _ = self.review_flags(candidate)
         return grammatical_ok == "1" and natural_ok == "1" and learner_clear_ok == "1" and candidate.score >= 7.5
+
+    def exact_surface_required(self, candidate: Candidate) -> bool:
+        target = self.lexicon.get(candidate.lemma)
+        return bool(target and self.exact_surface_target_only(target))
+
+    def strategy_validation_reasons(self, candidate: Candidate, words: List[str], finite_verb_index: int) -> List[str]:
+        reasons: List[str] = []
+        family = self.normalized_pos_family(self.lexicon.get(candidate.lemma))
+        lowered = [normalize_token(w) for w in words]
+        target_form = normalize_token(candidate.target_form)
+
+        if self.exact_surface_required(candidate) and target_form != normalize_token(candidate.lemma):
+            reasons.append("exact_surface_required")
+
+        if family == "prep":
+            if candidate.target_index <= 0 or candidate.target_index >= len(words) - 1:
+                reasons.append("dangling_preposition")
+        elif family == "contraction":
+            if candidate.target_index > 0 and candidate.target_index >= len(words) - 1:
+                reasons.append("dangling_preposition")
+        elif family == "conj":
+            if candidate.target_index <= 0 or candidate.target_index >= len(words) - 1:
+                reasons.append("isolated_conjunction")
+            if target_form in SUBORDINATING_CONJUNCTIONS and finite_verb_index < 0:
+                reasons.append("subordinator_without_clause")
+        elif family == "interj":
+            if candidate.target_index != 0:
+                reasons.append("interjection_misplaced")
+        elif family == "pron":
+            if target_form in {"me", "te", "se", "nos", "lo", "la", "los", "las", "le", "les"} and candidate.target_index >= len(words) - 1:
+                reasons.append("dangling_clitic")
+        elif family == "num":
+            next_pos = self.lookup_pos(words[candidate.target_index + 1]) if candidate.target_index < len(words) - 1 else ""
+            if "número" in lowered:
+                pass
+            elif next_pos == "v":
+                pass
+            elif candidate.target_index >= len(words) - 1 or next_pos not in {"n", "prop"}:
+                reasons.append("numeral_without_noun")
+        elif family in {"letter", "prefix", "phrase", "particle"}:
+            if not any(token in {"palabra", "letra", "prefijo", "expresión", "partícula", "forma"} for token in lowered):
+                reasons.append("missing_metalinguistic_frame")
+
+        return reasons
+
+    def strategy_score_adjustment(self, candidate: Candidate) -> float:
+        family = self.normalized_pos_family(self.lexicon.get(candidate.lemma))
+        adjustment = 0.0
+        if self.exact_surface_required(candidate):
+            adjustment += 0.4
+        if candidate.source_method == "emergency_template":
+            adjustment -= 0.7
+        if family in {"letter", "prefix", "phrase", "particle", "residual"}:
+            adjustment -= 0.3
+        if family in {"adv", "prep", "conj", "interj", "num", "pron", "determiner", "art", "prop", "contraction"} and candidate.source_method != "manual_review_needed":
+            adjustment += 1.4
+        if family in {"interj", "num"}:
+            adjustment += 0.4
+        if family == "conj":
+            adjustment += 1.6
+        if family == "num":
+            adjustment += 1.4
+        if family in {"pron", "determiner", "art", "contraction"}:
+            adjustment += 1.6
+        if family == "pron":
+            adjustment += 1.2
+        if family == "art":
+            adjustment += 0.4
+        if family == "contraction":
+            adjustment += 0.8
+        return adjustment
 
     def pick_from_candidates(self, candidates: List[Lexeme]) -> Optional[Lexeme]:
         if not candidates:
@@ -1648,6 +1869,41 @@ class SentenceGenerator:
             and (x.lemma in VERB_OBJECT_PREFS or x.lemma in PLACE_PREP_VERBS)
         ]
         return self.pick_from_candidates(verbs)
+
+    def pick_safe_subject_noun(
+        self,
+        rank_ceiling: int,
+        semantic_classes: Optional[Iterable[str]] = None,
+        exclude: Optional[Iterable[str]] = None,
+    ) -> Optional[Lexeme]:
+        preferred_classes = list(semantic_classes or ["person", "animal", "object", "place"])
+        return self.pick_template_friendly_noun(rank_ceiling, semantic_classes=preferred_classes, exclude=exclude)
+
+    def pick_support_verb(
+        self,
+        rank_ceiling: int,
+        exclude: Optional[Iterable[str]] = None,
+        allow_special: bool = False,
+    ) -> Optional[Lexeme]:
+        exclude_set = {normalize_token(x) for x in (exclude or []) if x}
+        verbs = [
+            x
+            for x in self.pos_buckets.get("v", [])
+            if x.rank <= rank_ceiling
+            and normalize_token(x.lemma) not in exclude_set
+            and (allow_special or self.canonical_lemma_for(x) not in {"ser", "estar", "haber"})
+        ]
+        return self.pick_from_candidates(verbs)
+
+    def preferred_subject_pronouns(self, profile: DifficultyProfile) -> List[str]:
+        if profile.band in {"A1", "A2"}:
+            return ["ella", "él"]
+        if profile.band in {"B1", "B2"}:
+            return ["ella", "él", "ellos", "nosotros"]
+        return ["ella", "él", "ellos", "nosotros", "yo", "tú"]
+
+    def exact_surface_target_only(self, target: Lexeme) -> bool:
+        return self.normalized_pos_family(target) in FUNCTION_WORD_FAMILIES or target.pos in {"prop", "art", "contraction", "letter", "prefix", "phrase", "particle", "", "none"}
 
     def person_code_from_morph(self, morph: Dict[str, str]) -> Optional[str]:
         person = str(morph.get("Person", ""))
@@ -2100,7 +2356,7 @@ class SentenceGenerator:
         )
         setattr(candidate, "_target_pos_hint", target_pos_hint or "")
         setattr(candidate, "_target_form_hint", target_form_hint or target_form)
-        if target.pos in {"v", "n", "adj", "determiner", "pron", "pronoun"} and not candidate.target_morph:
+        if target.pos in {"v", "n", "adj"} and not candidate.target_morph:
             return None
         if not self.candidate_target_matches_request(candidate, tokens=clean_tokens):
             return None
@@ -2237,6 +2493,9 @@ class SentenceGenerator:
         if rejected_retrieval:
             return False, penalties
         penalties.extend(retrieval_penalties)
+        strategy_reasons = self.strategy_validation_reasons(candidate, words, finite_verb_index)
+        if strategy_reasons:
+            return False, penalties
         if self.bad_copula_output(words):
             return False, penalties
         if len(words) == profile.min_len:
@@ -2259,6 +2518,7 @@ class SentenceGenerator:
         value += self.score_sequence(candidate.sentence.split())
         value -= sum(penalties)
         value -= 0.3 * abs(len([t for t in candidate.sentence.split() if is_word_token(t)]) - profile.ideal_length)
+        value += self.strategy_score_adjustment(candidate)
         candidate.score = value
         return value
 
@@ -2424,31 +2684,7 @@ class SentenceGenerator:
             raise KeyError(f"Lemma not in lexicon: {lemma}")
         if lemma not in self.candidate_pool_cache:
             target = self.lexicon[lemma]
-            candidates: List[Candidate] = []
-            candidates.extend(self.retrieve_candidates(target))
-
-            if target.pos in {"n", "v", "adj"} and self.can_template_target(target):
-                for _ in range(12):
-                    cand = self.seeded_template_candidate(target)
-                    if not cand:
-                        continue
-                    ok, penalties = self.validate(cand)
-                    if not ok:
-                        continue
-                    self.score(cand, penalties)
-                    candidates.append(cand)
-
-                for _ in range(20):
-                    cand = self.pure_template_candidate(target)
-                    if not cand:
-                        continue
-                    ok, penalties = self.validate(cand)
-                    if not ok:
-                        continue
-                    self.score(cand, penalties)
-                    candidates.append(cand)
-
-            self.candidate_pool_cache[lemma] = self.dedupe_candidates(candidates)
+            self.candidate_pool_cache[lemma] = self.generate_strategy_candidates(target)
 
         pool = list(self.candidate_pool_cache[lemma])
         if max_candidates_per_lemma is not None:
@@ -2702,6 +2938,206 @@ class SentenceGenerator:
                 tokens = [article1, noun.lemma, "es", target.lemma, "en", article2, extra.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
         return None
+
+    def seeded_pos_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
+        return self.pos_specific_template_candidate(target, seeded=True, emergency=False)
+
+    def pure_pos_template_candidate(self, target: Lexeme, starter_mode: bool = False) -> Optional[Candidate]:
+        return self.pos_specific_template_candidate(target, seeded=False, emergency=False)
+
+    def emergency_pos_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
+        return self.pos_specific_template_candidate(target, seeded=False, emergency=True)
+
+    def pos_specific_template_candidate(self, target: Lexeme, seeded: bool = False, emergency: bool = False) -> Optional[Candidate]:
+        profile = get_profile(target.rank)
+        allowed = allowed_support_rank(target.rank, profile)
+        family = self.normalized_pos_family(target)
+        surface = target.lemma
+        exclude = {target.lemma, self.canonical_lemma_for(target)}
+        if family == "adv":
+            subject = self.random.choice(self.preferred_subject_pronouns(profile))
+            adv = surface
+            if surface == "no":
+                verb = self.conjugate_present("hablar", SUBJECT_FEATURES[subject]["person_code"])
+                return self.build_candidate(target, [subject, adv, verb], "adv_negation_clause", "template_generated", 1)
+            if surface in ADV_TIME_LEMMAS:
+                verb = self.conjugate_present("llegar", SUBJECT_FEATURES[subject]["person_code"])
+                return self.build_candidate(target, [subject, adv, verb], "adv_time_clause", "template_generated", 1)
+            if surface in ADV_PLACE_LEMMAS:
+                return self.build_candidate(target, ["ella", "está", adv], "adv_place_clause", "template_generated", 2)
+            verb = self.conjugate_present("hablar", SUBJECT_FEATURES[subject]["person_code"])
+            tokens = [subject, verb, adv] if profile.band in {"A1", "A2"} else [subject, adv, verb, "con", "calma"]
+            return self.build_candidate(target, tokens, "adv_general_clause", "template_generated", 2 if len(tokens) > 2 and tokens[2] == adv else len(tokens) - 1)
+
+        if family in {"determiner", "art"}:
+            if family == "art":
+                noun = self.pick_preferred_lemmas(["trabajo", "libro", "plan", "papel", "hotel"], allowed, exclude=exclude)
+                if not noun:
+                    noun = self.pick_safe_subject_noun(allowed, exclude=exclude) or self.pick_template_friendly_noun(allowed, exclude=exclude)
+                if not noun:
+                    return None
+                if surface in {"los", "las"}:
+                    noun_surface = self.pluralize_noun(noun.lemma)
+                    adj_surface = self.inflect_adj("bueno", "m", "pl")
+                    tokens = [surface, noun_surface, "son", adj_surface]
+                else:
+                    tokens = [surface, noun.lemma, "es", "bueno"]
+                return self.build_candidate(target, tokens, "art_anchor_np", "template_generated", 0)
+            noun = self.pick_safe_subject_noun(allowed, exclude=exclude)
+            if not noun:
+                noun = self.pick_template_friendly_noun(allowed, exclude=exclude)
+            if not noun:
+                return None
+            gender = self.safe_noun_gender(noun.lemma, noun.gender)
+            if family == "art":
+                article = surface
+            elif surface in DETERMINER_POSSESSIVES or surface in DETERMINER_DEMONSTRATIVES:
+                article = surface
+            else:
+                article = surface
+            if surface in DETERMINER_POSSESSIVES:
+                tokens = [article, noun.lemma, "está", "aquí"]
+            else:
+                adj = self.pick_compatible_adjective(allowed, noun.semantic_class, exclude=exclude)
+                if not adj:
+                    adj = self.pick_candidate("adj", allowed, exclude=exclude)
+                if not adj:
+                    return None
+                adj_surface = self.inflect_adj(adj.lemma, gender)
+                tokens = [article, noun.lemma, "es", adj_surface]
+            return self.build_candidate(target, tokens, "det_anchor_np", "template_generated", 0)
+
+        if family == "pron":
+            pron = surface
+            if pron in SUBJECT_FEATURES:
+                if profile.band in {"A1", "A2"}:
+                    tokens = [pron, self.conjugate_present("estar", SUBJECT_FEATURES[pron]["person_code"]), "aquí"]
+                else:
+                    tokens = [pron, self.conjugate_present("tener", SUBJECT_FEATURES[pron]["person_code"]), "una", "idea"]
+                return self.build_candidate(target, tokens, "pron_subject_clause", "template_generated", 0)
+            if pron in {"lo", "la", "los", "las"}:
+                subject = "yo" if pron in {"lo", "la"} else "nosotros"
+                person = SUBJECT_FEATURES[subject]["person_code"]
+                tokens = [subject, pron, self.conjugate_present("ver", person)]
+                return self.build_candidate(target, tokens, "pron_object_clause", "template_generated", 1)
+            if pron in {"le", "les"}:
+                subject = "yo" if pron == "le" else "nosotros"
+                person = SUBJECT_FEATURES[subject]["person_code"]
+                tokens = [subject, pron, self.conjugate_present("hablar", person)]
+                return self.build_candidate(target, tokens, "pron_indirect_object_clause", "template_generated", 1)
+            if pron in {"me", "te", "se", "nos"}:
+                subject = "ella" if pron != "nos" else "nosotros"
+                person = SUBJECT_FEATURES[subject]["person_code"]
+                tokens = [subject, pron, self.conjugate_present("llamar", person)] if profile.band in {"A1", "A2"} else [subject, pron, self.conjugate_present("llevar", person), "a", "casa"]
+                return self.build_candidate(target, tokens, "pron_clitic_clause", "template_generated", 1)
+            if pron in {"qué", "que"}:
+                return self.build_candidate(target, ["yo", "sé", pron, "va"], "pron_interrogative_clause", "template_generated", 2)
+            return self.build_candidate(target, [pron, "es", "importante"], "pron_fallback_clause", "template_generated", 0)
+
+        if family in {"prep", "contraction"}:
+            prep = surface
+            noun = self.pick_safe_location_noun(allowed, exclude=exclude) or self.pick_safe_subject_noun(allowed, exclude=exclude)
+            if not noun:
+                return None
+            if prep in {"al", "del"}:
+                if prep == "al":
+                    return self.build_candidate(target, ["ella", "va", prep, "trabajo"], "prep_contraction_clause", "template_generated", 2)
+                return self.build_candidate(target, ["ella", "habla", prep, "trabajo"], "prep_contraction_clause", "template_generated", 2)
+            if prep == "a":
+                tokens = ["ella", "va", prep, noun.lemma] if noun.lemma in ARTICLELESS_LOCATION_NOUNS else ["ella", "va", prep, self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=True), noun.lemma]
+            elif prep == "de":
+                tokens = ["ella", "habla", prep, noun.lemma]
+            else:
+                tokens = ["ella", "está", prep, noun.lemma] if profile.band in {"A1", "A2"} else ["ella", "habla", prep, noun.lemma, "con", "calma"]
+            prep_index = next((i for i, tok in enumerate(tokens) if normalize_token(tok) == normalize_token(prep)), -1)
+            return self.build_candidate(target, tokens, "prep_governed_clause", "template_generated", prep_index)
+
+        if family == "conj":
+            conj = surface
+            if conj in COORDINATING_CONJUNCTIONS:
+                if profile.band in {"A1", "A2"}:
+                    tokens = ["ella", "va", conj, "él", "va"]
+                else:
+                    tokens = ["ella", "va", conj, "él", "vuelve", "a", "casa"]
+            else:
+                if profile.band in {"A1", "A2"} and conj not in BEGINNER_SUBORDINATORS:
+                    return None
+                tokens = [conj, "ella", "llega", ",", "yo", "salgo"] if profile.band in {"C1", "C2"} else ["ella", "sale", conj, "llueve"]
+            conj_index = next((i for i, tok in enumerate(tokens) if normalize_token(tok) == normalize_token(conj)), -1)
+            return self.build_candidate(target, tokens, "conj_linked_clause", "template_generated", conj_index)
+
+        if family == "interj":
+            punct = INTERJECTION_PUNCT.get(surface, "!")
+            tokens = [surface, ",", "ella", "llega"] if profile.band not in {"A1", "A2"} else [surface, ",", "ella", "está", "aquí"]
+            candidate = self.build_candidate(target, tokens, "interj_discourse_clause", "template_generated", 0)
+            if candidate and punct and candidate.sentence and candidate.sentence[-1] == ".":
+                candidate.sentence = candidate.sentence[:-1] + punct
+            return candidate
+
+        if family == "num":
+            tokens = [surface, "es", surface] if profile.band in {"A1", "A2"} else [surface, "es", surface, "también"]
+            return self.build_candidate(target, tokens, "num_quantity_clause", "template_generated", 0)
+
+        if family == "prop":
+            if profile.band in {"A1", "A2"}:
+                tokens = [surface, "está", "aquí"]
+            elif profile.band in {"B1", "B2"}:
+                tokens = [surface, "visita", "la", "ciudad"]
+            else:
+                tokens = [surface, "dice", "que", "todo", "cambia"]
+            return self.build_candidate(target, tokens, "prop_named_clause", "template_generated", 0)
+
+        if family == "letter":
+            return self.build_candidate(target, ["la", "letra", surface, "es", "común"], "letter_metalinguistic_clause", "template_generated", 2)
+
+        if family == "prefix":
+            return self.build_candidate(target, ["el", "prefijo", surface, "es", "útil"], "prefix_metalinguistic_clause", "template_generated", 2)
+
+        if family == "phrase":
+            return self.build_candidate(target, ["la", "expresión", surface, "es", "clara"], "phrase_metalinguistic_clause", "template_generated", 2)
+
+        if family == "particle":
+            return self.build_candidate(target, ["la", "partícula", surface, "aparece", "aquí"], "particle_metalinguistic_clause", "template_generated", 2)
+
+        if family == "residual":
+            return self.build_candidate(target, [surface, "va", "aquí"], "residual_metalinguistic_clause", "template_generated", 0)
+
+        return None
+
+    def generate_strategy_candidates(self, target: Lexeme) -> List[Candidate]:
+        profile = get_profile(target.rank)
+        strategy = self.strategy_for_target(target)
+        candidates: List[Candidate] = []
+        candidates.extend(self.retrieve_candidates(target))
+
+        seeded_attempts, pure_attempts = self.band_template_attempts(profile)
+        seeded_builder = strategy.get("seeded")
+        pure_builder = strategy.get("pure")
+
+        if self.normalized_pos_family(target) in {"n", "v", "adj"}:
+            if not self.can_template_target(target):
+                seeded_attempts = 0
+                pure_attempts = 0
+
+        if seeded_builder:
+            for _ in range(seeded_attempts):
+                cand = seeded_builder(target)
+                cand = self.try_candidate(cand)
+                if cand:
+                    candidates.append(cand)
+
+        if pure_builder:
+            for _ in range(pure_attempts):
+                cand = pure_builder(target)
+                cand = self.try_candidate(cand)
+                if cand:
+                    candidates.append(cand)
+
+        emergency = self.try_candidate(self.emergency_pos_template_candidate(target))
+        if emergency:
+            emergency.source_method = "emergency_template"
+            candidates.append(emergency)
+        return self.dedupe_candidates(candidates)
 
     def generate_for_lemma(self, lemma: str) -> Candidate:
         lemma = lemma.strip().lower()
@@ -3476,6 +3912,126 @@ class SentenceGenerator:
             }
         return generated
 
+    def _rows_for_coverage(
+        self,
+        limit: int,
+        min_rank: int = 1,
+        max_rank: int = 10**9,
+        pos_filter: Optional[str] = None,
+        lemma_filter: Optional[List[str]] = None,
+    ) -> List[Lexeme]:
+        if lemma_filter:
+            rows = [self.lexicon[l.strip().lower()] for l in lemma_filter if l.strip().lower() in self.lexicon]
+        else:
+            rows = sorted(self.lexicon.values(), key=lambda x: x.rank)
+        rows = [x for x in rows if min_rank <= x.rank <= max_rank]
+        if pos_filter:
+            rows = [x for x in rows if x.pos == pos_filter]
+        if limit > 0:
+            rows = rows[:limit]
+        return rows
+
+    def build_coverage_report(
+        self,
+        limit: int = 200,
+        min_rank: int = 1,
+        max_rank: int = 10**9,
+        pos_filter: Optional[str] = None,
+        lemma_filter: Optional[List[str]] = None,
+        samples_per_bucket: int = 2,
+    ) -> Dict[str, Any]:
+        rows = self._rows_for_coverage(limit, min_rank=min_rank, max_rank=max_rank, pos_filter=pos_filter, lemma_filter=lemma_filter)
+        raw_pos_counts: Dict[str, int] = {}
+        family_counts: Dict[str, int] = {}
+        for lex in self.lexicon.values():
+            pos = lex.pos or "<empty>"
+            raw_pos_counts[pos] = raw_pos_counts.get(pos, 0) + 1
+            family = self.normalized_pos_family(lex)
+            family_counts[family] = family_counts.get(family, 0) + 1
+        by_pos: Dict[str, Dict[str, int]] = {}
+        by_band: Dict[str, Dict[str, int]] = {}
+        source_mix: Dict[str, Dict[str, int]] = {}
+        samples: Dict[str, List[str]] = {}
+
+        for lex in rows:
+            pos = lex.pos or "<empty>"
+            band = get_profile(lex.rank).band
+            by_pos.setdefault(pos, {"total": 0, "publishable": 0, "manual_review": 0})
+            by_band.setdefault(band, {"total": 0, "publishable": 0, "manual_review": 0})
+            source_mix.setdefault(pos, {})
+            by_pos[pos]["total"] += 1
+            by_band[band]["total"] += 1
+            try:
+                candidate = self.generate_for_lemma(lex.lemma)
+            except Exception:
+                candidate = self.manual_review_candidate(lex)
+            publishable = self.candidate_is_general_publishable(candidate)
+            if publishable:
+                by_pos[pos]["publishable"] += 1
+                by_band[band]["publishable"] += 1
+            if candidate.source_method == "manual_review_needed":
+                by_pos[pos]["manual_review"] += 1
+                by_band[band]["manual_review"] += 1
+            source_mix[pos][candidate.source_method] = source_mix[pos].get(candidate.source_method, 0) + 1
+            sample_key = f"{pos}|{band}"
+            samples.setdefault(sample_key, [])
+            if candidate.sentence and len(samples[sample_key]) < samples_per_bucket:
+                samples[sample_key].append(f"{lex.lemma}: {candidate.sentence}")
+
+        report = {
+            "rows_considered": len(rows),
+            "raw_pos_counts": dict(sorted(raw_pos_counts.items())),
+            "family_counts": dict(sorted(family_counts.items())),
+            "by_pos": by_pos,
+            "by_band": by_band,
+            "source_mix": source_mix,
+            "samples": samples,
+        }
+        self.last_coverage_report = report
+        return report
+
+    def smoke_coverage(
+        self,
+        limit: int = 60,
+        min_rank: int = 1,
+        max_rank: int = 10**9,
+        pos_filter: Optional[str] = None,
+        lemma_filter: Optional[List[str]] = None,
+    ) -> List[Dict[str, Any]]:
+        rows = self._rows_for_coverage(limit=0, min_rank=min_rank, max_rank=max_rank, pos_filter=pos_filter, lemma_filter=lemma_filter)
+        selected: List[Lexeme] = []
+        seen_buckets: set = set()
+        for lex in rows:
+            bucket = (lex.pos or "<empty>", get_profile(lex.rank).band)
+            if bucket in seen_buckets:
+                continue
+            seen_buckets.add(bucket)
+            selected.append(lex)
+            if len(selected) >= limit:
+                break
+        results: List[Dict[str, Any]] = []
+        for lex in selected:
+            result = self.generate_sentence_for_target(lex.lemma, lex.rank)
+            band_ok = result["band"] == get_profile(lex.rank).band
+            sentence_words = self.word_tokens(result.get("sentence", ""))
+            sentence_has_target = bool(sentence_words) and (
+                normalize_token(result.get("target_form", "")) in sentence_words
+                or normalize_token(lex.lemma) in sentence_words
+            )
+            results.append(
+                {
+                    "lemma": lex.lemma,
+                    "pos": lex.pos,
+                    "band": get_profile(lex.rank).band,
+                    "source_method": result.get("source_method", ""),
+                    "publishable": bool(result.get("publishable")),
+                    "band_ok": band_ok,
+                    "sentence_has_target": sentence_has_target,
+                    "sentence": result.get("sentence", ""),
+                }
+            )
+        return results
+
     def load_gold_set(self, path: str) -> List[str]:
         lemmas: List[str] = []
         seen = set()
@@ -3897,6 +4453,10 @@ def main() -> None:
     parser.add_argument("--quarantine-out", default=None, help="Optional quarantine CSV for near-miss starter rows.")
     parser.add_argument("--target-lemma", default=None, help="Generate one structured sentence result for this lemma.")
     parser.add_argument("--target-rank", type=int, default=None, help="Rank to use when deriving the output band for --target-lemma.")
+    parser.add_argument("--coverage-report", action="store_true", help="Print a POS/band coverage report over a bounded batch.")
+    parser.add_argument("--coverage-limit", type=int, default=200, help="Number of lemmas to sample for coverage reporting.")
+    parser.add_argument("--coverage-samples-per-bucket", type=int, default=2, help="Maximum sample sentences to print per POS/band bucket.")
+    parser.add_argument("--smoke-coverage", action="store_true", help="Run a bounded smoke check across POS/band buckets.")
     args = parser.parse_args()
 
     gen = SentenceGenerator(args.lexicon, args.models_dir, seed=args.seed)
@@ -3923,6 +4483,68 @@ def main() -> None:
     if args.starter_dataset and not quarantine_out:
         stem, ext = os.path.splitext(args.out)
         quarantine_out = f"{stem}_quarantine{ext or '.csv'}"
+    if args.coverage_report:
+        report = gen.build_coverage_report(
+            limit=args.coverage_limit,
+            min_rank=args.min_rank,
+            max_rank=args.max_rank,
+            pos_filter=args.pos,
+            lemma_filter=lemma_filter,
+            samples_per_bucket=args.coverage_samples_per_bucket,
+        )
+        print("=== Coverage Report ===")
+        print(f"Rows considered: {report['rows_considered']:,}")
+        print("\nRaw POS inventory:")
+        for pos, count in sorted(report["raw_pos_counts"].items(), key=lambda x: (-x[1], x[0])):
+            print(f"  {pos:<12} {count:,}")
+        print("\nNormalized strategy families:")
+        for family, count in sorted(report["family_counts"].items(), key=lambda x: (-x[1], x[0])):
+            print(f"  {family:<12} {count:,}")
+        print("\nBy POS:")
+        for pos, stats in sorted(report["by_pos"].items()):
+            total = stats["total"] or 1
+            print(
+                f"  {pos:<12} total={stats['total']:,} publishable={stats['publishable']:,} "
+                f"publishable_rate={stats['publishable'] / total * 100:.1f}% manual_review={stats['manual_review']:,}"
+            )
+        print("\nBy band:")
+        for band, stats in sorted(report["by_band"].items()):
+            total = stats["total"] or 1
+            print(
+                f"  {band:<3} total={stats['total']:,} publishable={stats['publishable']:,} "
+                f"publishable_rate={stats['publishable'] / total * 100:.1f}% manual_review={stats['manual_review']:,}"
+            )
+        print("\nSource mix by POS:")
+        for pos, mix in sorted(report["source_mix"].items()):
+            parts = ", ".join(f"{k}={v}" for k, v in sorted(mix.items()))
+            print(f"  {pos:<12} {parts}")
+        print("\nSamples:")
+        for bucket, items in sorted(report["samples"].items()):
+            print(f"  {bucket}")
+            for item in items:
+                print(f"    {item}")
+        return
+    if args.smoke_coverage:
+        results = gen.smoke_coverage(
+            limit=args.coverage_limit,
+            min_rank=args.min_rank,
+            max_rank=args.max_rank,
+            pos_filter=args.pos,
+            lemma_filter=lemma_filter,
+        )
+        print("=== Smoke Coverage ===")
+        failures = 0
+        for row in results:
+            ok = row["band_ok"] and row["sentence_has_target"]
+            if not ok:
+                failures += 1
+            print(
+                f"  {'PASS' if ok else 'FAIL'} {row['lemma']:<15} pos={row['pos']:<12} "
+                f"band={row['band']:<3} source={row['source_method']:<18} sentence={row['sentence']}"
+            )
+        print(f"\nBuckets checked: {len(results):,}")
+        print(f"Failures: {failures:,}")
+        return
     if args.starter_dataset:
         rows = gen.generate_starter_dataset(
             limit=args.limit,
