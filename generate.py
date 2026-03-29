@@ -2713,6 +2713,80 @@ class SentenceGenerator:
                 return chosen
         return self.manual_review_candidate(target)
 
+    def generate_sentence_for_target(self, target_lemma: str, target_rank: int) -> Dict[str, Any]:
+        """Generate one structured sentence result for a target lemma and rank.
+
+        The returned band is always derived from the existing BANDS thresholds via
+        get_profile(target_rank), so callers can treat this as the canonical
+        sentence-generation contract for app or CSV use.
+        """
+        lemma = (target_lemma or "").strip().lower()
+        band = get_profile(target_rank).band
+        if not lemma:
+            return {
+                "lemma": lemma,
+                "rank": target_rank,
+                "band": band,
+                "pos": "",
+                "sentence": "",
+                "target_form": "",
+                "canonical_lemma": "",
+                "source_method": "invalid_request",
+                "template_id": "",
+                "score": 0.0,
+                "publishable": False,
+                "failure_reason": "missing_target_lemma",
+            }
+        if lemma not in self.lexicon:
+            return {
+                "lemma": lemma,
+                "rank": target_rank,
+                "band": band,
+                "pos": "",
+                "sentence": "",
+                "target_form": "",
+                "canonical_lemma": "",
+                "source_method": "missing_lemma",
+                "template_id": "",
+                "score": 0.0,
+                "publishable": False,
+                "failure_reason": "lemma_not_in_lexicon",
+            }
+
+        candidate = self.generate_for_lemma(lemma)
+        target = self.lexicon[lemma]
+        publishable = self.candidate_is_publishable(candidate)
+        failure_reason = ""
+        if candidate.source_method == "manual_review_needed":
+            failure_reason = "manual_review_needed"
+        elif not publishable:
+            grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
+            reasons = []
+            if grammatical_ok != "1":
+                reasons.append("not_grammatical")
+            if natural_ok != "1":
+                reasons.append("not_natural")
+            if learner_clear_ok != "1":
+                reasons.append("not_learner_clear")
+            if notes:
+                reasons.append(notes)
+            failure_reason = "; ".join(reasons) if reasons else "not_publishable"
+
+        return {
+            "lemma": lemma,
+            "rank": target_rank,
+            "band": band,
+            "pos": target.pos,
+            "sentence": candidate.sentence,
+            "target_form": candidate.target_form,
+            "canonical_lemma": candidate.canonical_lemma or self.canonical_lemma_for(target),
+            "source_method": candidate.source_method,
+            "template_id": candidate.template_id,
+            "score": candidate.score,
+            "publishable": publishable,
+            "failure_reason": failure_reason,
+        }
+
     def collect_starter_candidates_for_lemma(self, lemma: str, max_candidates_per_lemma: Optional[int] = None) -> List[Candidate]:
         lemma = lemma.strip().lower()
         if lemma not in self.lexicon:
@@ -3622,8 +3696,22 @@ class SentenceGenerator:
                 )
 
 
+def generate_sentence_for_target(
+    generator: SentenceGenerator, target_lemma: str, target_rank: int
+) -> Dict[str, Any]:
+    """Canonical public sentence-generation API.
+
+    Example CLI usage:
+    python generate.py --lexicon stg_words_spa.csv --models-dir models --target-lemma casa --target-rank 500
+    """
+    return generator.generate_sentence_for_target(target_lemma, target_rank)
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Spanish sentence generator using monolingual corpus artifacts.")
+    parser = argparse.ArgumentParser(
+        description="Spanish sentence generator using monolingual corpus artifacts.",
+        epilog="Example: python generate.py --lexicon stg_words_spa.csv --models-dir models --target-lemma casa --target-rank 500",
+    )
     parser.add_argument("--lexicon", required=True, help="Path to stg_words_spa.csv")
     parser.add_argument("--models-dir", required=True, help="Directory containing .pkl artifacts")
     parser.add_argument("--out", default="generated_sentences.csv", help="Output CSV path")
@@ -3641,12 +3729,21 @@ def main() -> None:
     parser.add_argument("--max-candidates-per-lemma", type=int, default=10, help="Maximum candidate rows to keep per lemma in the candidate export.")
     parser.add_argument("--lexicon-overrides", action="append", default=[], help="Path to a lexicon overrides CSV or JSON file. Can be repeated.")
     parser.add_argument("--quarantine-out", default=None, help="Optional quarantine CSV for near-miss starter rows.")
+    parser.add_argument("--target-lemma", default=None, help="Generate one structured sentence result for this lemma.")
+    parser.add_argument("--target-rank", type=int, default=None, help="Rank to use when deriving the output band for --target-lemma.")
     args = parser.parse_args()
 
     gen = SentenceGenerator(args.lexicon, args.models_dir, seed=args.seed)
     for override_path in args.lexicon_overrides:
         gen.load_and_apply_overrides(override_path)
         print(f"Loaded {len(gen.overrides)} total lexicon overrides after {override_path}")
+    if args.target_lemma is not None:
+        import json
+
+        target_rank = args.target_rank if args.target_rank is not None else gen.lexicon.get(args.target_lemma.strip().lower(), Lexeme("", 99999, "")).rank
+        result = generate_sentence_for_target(gen, args.target_lemma, target_rank)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
     lemma_filter = list(args.lemma or [])
     if args.gold_set:
         lemma_filter.extend(gen.load_gold_set(args.gold_set))
