@@ -24,10 +24,10 @@ MODELS_DIR="$WORK_DIR/models"
 SCRIPT="$WORK_DIR/generate.py"
 
 OUT_DIR="$WORK_DIR/outputs"
-OUTFILE="$OUT_DIR/starter.csv"
-REVIEW_OUT="$OUT_DIR/app_seed_a1_a2_review.csv"
-QUARANTINE_OUT="$OUT_DIR/app_seed_a1_a2_quarantine.csv"
-CANDIDATES_OUT="$OUT_DIR/app_seed_a1_a2_candidates.csv"
+OUTFILE="$OUT_DIR/starter_${SLURM_JOB_ID}.csv"
+REVIEW_OUT="$OUT_DIR/app_seed_a1_a2_review_${SLURM_JOB_ID}.csv"
+QUARANTINE_OUT="$OUT_DIR/app_seed_a1_a2_quarantine_${SLURM_JOB_ID}.csv"
+CANDIDATES_OUT="$OUT_DIR/app_seed_a1_a2_candidates_${SLURM_JOB_ID}.csv"
 
 OVERRIDE_1="$WORK_DIR/starter_overrides.csv"
 OVERRIDE_2="$WORK_DIR/starter_exclusions.csv"
@@ -81,7 +81,7 @@ echo "Lexicon:       $LEXICON ($(wc -l < "$LEXICON") lines)"
 echo "Models dir:    $MODELS_DIR"
 echo "Output dir:    $OUT_DIR"
 
-python "$SCRIPT" \
+python -u "$SCRIPT" \
     --lexicon "$LEXICON" \
     --models-dir "$MODELS_DIR" \
     --starter-max-attempts 5000 \
