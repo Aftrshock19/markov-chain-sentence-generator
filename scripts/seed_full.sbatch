@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=00:50:00
+#SBATCH --time=00:15:00
 #SBATCH --output=spa-starter-seed-%j.out
 #SBATCH --error=spa-starter-seed-%j.err
 
@@ -24,7 +24,7 @@ MODELS_DIR="$WORK_DIR/models"
 SCRIPT="$WORK_DIR/generate.py"
 
 OUT_DIR="$WORK_DIR/outputs"
-OUTFILE="$OUT_DIR/app_seed_a1_a2.csv"
+OUTFILE="$OUT_DIR/starter.csv"
 REVIEW_OUT="$OUT_DIR/app_seed_a1_a2_review.csv"
 QUARANTINE_OUT="$OUT_DIR/app_seed_a1_a2_quarantine.csv"
 CANDIDATES_OUT="$OUT_DIR/app_seed_a1_a2_candidates.csv"
@@ -84,8 +84,8 @@ echo "Output dir:    $OUT_DIR"
 python "$SCRIPT" \
     --lexicon "$LEXICON" \
     --models-dir "$MODELS_DIR" \
-    --starter-dataset \
-    --limit 500000 \
+    --starter-max-attempts 5000 \
+    --limit 1000 \
     --out "$OUTFILE" \
     --review-out "$REVIEW_OUT" \
     --quarantine-out "$QUARANTINE_OUT" \
