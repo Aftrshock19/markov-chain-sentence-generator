@@ -26,9 +26,9 @@ SCRIPT="$WORK_DIR/hybrid_generator.py"
 OUT_DIR="$WORK_DIR/outputs/hybrid"
 mkdir -p "$OUT_DIR"
 
-OUTFILE="$OUT_DIR/hybrid_batch.csv"
-REVIEW_OUT="$OUT_DIR/hybrid_batch_review.csv"
-CANDIDATES_OUT="$OUT_DIR/hybrid_batch_candidates.csv"
+OUTFILE="$OUT_DIR/hybrid_batch_${SLURM_JOB_ID}.csv"
+REVIEW_OUT="$OUT_DIR/hybrid_batch_review_${SLURM_JOB_ID}.csv"
+CANDIDATES_OUT="$OUT_DIR/hybrid_batch_candidates_${SLURM_JOB_ID}.csv"
 
 OVERRIDE_1="$WORK_DIR/starter_overrides.csv"
 OVERRIDE_2="$WORK_DIR/starter_exclusions.csv"
@@ -81,7 +81,7 @@ echo "Lexicon:       $LEXICON ($(wc -l < "$LEXICON") lines)"
 echo "Models dir:    $MODELS_DIR"
 echo "Output dir:    $OUT_DIR"
 
-python "$SCRIPT" \
+python -u "$SCRIPT" \
     --lexicon "$LEXICON" \
     --models-dir "$MODELS_DIR" \
     --out "$OUTFILE" \
@@ -94,7 +94,8 @@ python "$SCRIPT" \
     --limit 500 \
     --max-total-attempts 300 \
     --max-candidates-to-keep 20 \
-    --max-candidates-per-lemma 10
+    --max-candidates-per-lemma 10 \
+    --progress-every 25
 
 echo "============================================"
 echo "Finished: $(date)"
