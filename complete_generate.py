@@ -8,6 +8,7 @@ import random
 import re
 import statistics
 import sys
+import unicodedata
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Tuple, Iterable, Any
 
@@ -73,9 +74,14 @@ SUBJECT_FEATURES = {
     "tú": {"person_code": "2sg", "gender": None, "number": "sg"},
     "él": {"person_code": "3sg", "gender": "m", "number": "sg"},
     "ella": {"person_code": "3sg", "gender": "f", "number": "sg"},
+    "usted": {"person_code": "3sg", "gender": None, "number": "sg"},
     "nosotros": {"person_code": "1pl", "gender": "m", "number": "pl"},
+    "nosotras": {"person_code": "1pl", "gender": "f", "number": "pl"},
+    "vosotros": {"person_code": "2pl", "gender": "m", "number": "pl"},
+    "vosotras": {"person_code": "2pl", "gender": "f", "number": "pl"},
     "ustedes": {"person_code": "3pl", "gender": None, "number": "pl"},
     "ellos": {"person_code": "3pl", "gender": "m", "number": "pl"},
+    "ellas": {"person_code": "3pl", "gender": "f", "number": "pl"},
 }
 PRONOUN_PERSON_NUMBER = {
     "yo": ("1", "Sing"),
@@ -91,6 +97,21 @@ PRONOUN_PERSON_NUMBER = {
     "ellos": ("3", "Plur"),
     "ellas": ("3", "Plur"),
 }
+PREPOSITIONAL_SUBJECT_PRONOUNS = {"mí", "ti", "sí"}
+PAST_TIME_ADVERBS = {"ayer", "anoche"}
+FUTURE_TIME_ADVERBS = {"mañana"}
+QUANTIFIER_DETERMINERS = {
+    "todo", "toda", "todos", "todas",
+    "mucho", "mucha", "muchos", "muchas",
+    "otro", "otra", "otros", "otras",
+}
+SHORT_SEMANTIC_NONSENSE_PATTERNS = (
+    "va a ser nada",
+    "voy a ser nada",
+    "vamos a ser nada",
+    "van a ser nada",
+    "es un poco de",
+)
 PUNCT_ATTACH_LEFT = {".", ",", ";", ":", "!", "?", "%", "…"}
 PUNCT_ATTACH_RIGHT = {"¿", "¡", "(", "[", "{"}
 SPECIAL_VERB_LEMMAS = {"ser", "estar", "haber", "ir", "poder", "saber", "creer", "querer", "hacer", "tener"}
@@ -547,6 +568,13 @@ def normalize_token(token: str) -> str:
     return token
 
 
+def strip_accents(token: str) -> str:
+    if not token:
+        return ""
+    normalized = unicodedata.normalize("NFKD", token)
+    return "".join(ch for ch in normalized if not unicodedata.combining(ch))
+
+
 def _truthy(value) -> bool:
     if isinstance(value, bool):
         return value
@@ -616,41 +644,56 @@ class SentenceGenerator:
         return lexicon
 
     def load_and_apply_overrides(self, path: str) -> None:
-        overrides: Dict[str, Dict[str, str]] = {}
+        raw_overrides: Dict[str, Dict[str, str]] = {}
         if path.endswith(".json"):
             import json as _json
             with open(path, encoding="utf-8") as f:
                 raw = _json.load(f)
             for entry in raw:
-                lemma = entry.get("lemma", "").strip().lower()
+                lemma = normalize_token(entry.get("lemma", ""))
                 if lemma:
-                    overrides[lemma] = entry
+                    raw_overrides[lemma] = entry
         else:
             with open(path, encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    lemma = (row.get("lemma") or "").strip().lower()
+                    lemma = normalize_token(row.get("lemma") or "")
                     if lemma:
-                        overrides[lemma] = {k: v.strip() for k, v in row.items() if v and v.strip()}
-        self.overrides.update(overrides)
-        for lemma, ov in overrides.items():
-            if _truthy(ov.get("exclude_from_generation")):
-                self.lexicon.pop(lemma, None)
-                continue
-            lex = self.lexicon.get(lemma)
-            if not lex:
-                continue
-            if ov.get("force_translation"):
-                lex.translation = ov["force_translation"]
-            if ov.get("force_pos"):
-                lex.pos = ov["force_pos"].strip().lower()
-            if ov.get("force_canonical_lemma"):
-                lex.canonical_lemma = ov["force_canonical_lemma"].strip().lower()
-            if _truthy(ov.get("force_template_friendly")):
-                if lex.semantic_class in ("time", "abstract", "activity", "body"):
+                        raw_overrides[lemma] = {
+                            k: v.strip() for k, v in row.items() if v and str(v).strip()
+                        }
+
+        expanded_overrides: Dict[str, Dict[str, str]] = {}
+        for lemma, ov in raw_overrides.items():
+            for key in self._override_lookup_keys(lemma, ov):
+                merged = dict(ov)
+                merged["lemma"] = lemma
+                expanded_overrides[key] = merged
+
+        self.overrides.update(expanded_overrides)
+
+        applied_seed_contexts: set = set()
+        for lemma, ov in raw_overrides.items():
+            for key in self._override_lookup_keys(lemma, ov):
+                if _truthy(ov.get("exclude_from_generation")):
+                    self.lexicon.pop(key, None)
+                    continue
+                lex = self.lexicon.get(key)
+                if not lex:
+                    continue
+                if ov.get("force_translation"):
+                    lex.translation = ov["force_translation"]
+                if ov.get("force_pos"):
+                    lex.pos = ov["force_pos"].strip().lower()
+                if ov.get("force_canonical_lemma"):
+                    lex.canonical_lemma = normalize_token(ov["force_canonical_lemma"])
+                if _truthy(ov.get("force_template_friendly")) and lex.semantic_class in ("time", "abstract", "activity", "body"):
                     lex.semantic_class = "object"
-            if ov.get("seed_sentence"):
-                self._inject_seed_context(lemma, ov["seed_sentence"])
+                seed_sentence = ov.get("seed_sentence")
+                if seed_sentence and (key, seed_sentence) not in applied_seed_contexts:
+                    self._inject_seed_context(key, seed_sentence)
+                    applied_seed_contexts.add((key, seed_sentence))
+
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
         self.pos_strategies = self._build_pos_strategies()
@@ -1284,9 +1327,12 @@ class SentenceGenerator:
         if not self.surface_matches_requested_target(target, anchored_token):
             return False
         if self.surface_has_multiple_candidate_lemmas(anchored_token):
+            hinted_ok = bool(target_pos_hint and self.target_pos_hint_matches_request(target.pos, target_pos_hint))
             if candidate.source_method == "retrieved_corpus":
-                if not target_pos_hint or not self.target_pos_hint_matches_request(target.pos, target_pos_hint):
+                if not hinted_ok:
                     return False
+            elif hinted_ok:
+                return True
             elif not self.requested_lemma_allows_inflected_target(target):
                 direct = self.lexicon.get(normalize_token(anchored_token))
                 if not (direct and direct.lemma == target.lemma and direct.pos == target.pos):
@@ -1978,6 +2024,152 @@ class SentenceGenerator:
             parts.append(token)
         return " ".join(parts)
 
+    def _override_lookup_keys(self, lemma: str, ov: Optional[Dict[str, str]] = None) -> List[str]:
+        candidates = [
+            normalize_token(lemma or ""),
+            strip_accents(normalize_token(lemma or "")),
+        ]
+        if ov:
+            canonical = normalize_token(ov.get("force_canonical_lemma", ""))
+            if canonical:
+                candidates.extend([canonical, strip_accents(canonical)])
+        out: List[str] = []
+        seen = set()
+        for key in candidates:
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            out.append(key)
+        return out
+
+    def determiner_surface_features(self, det_surface: str) -> Tuple[Optional[str], Optional[str]]:
+        det = normalize_token(det_surface)
+        explicit = {
+            "mi": (None, "sg"), "tu": (None, "sg"), "su": (None, "sg"),
+            "mis": (None, "pl"), "tus": (None, "pl"), "sus": (None, "pl"),
+            "nuestro": ("m", "sg"), "nuestra": ("f", "sg"),
+            "nuestros": ("m", "pl"), "nuestras": ("f", "pl"),
+            "otro": ("m", "sg"), "otra": ("f", "sg"),
+            "otros": ("m", "pl"), "otras": ("f", "pl"),
+            "todo": ("m", "sg"), "toda": ("f", "sg"),
+            "todos": ("m", "pl"), "todas": ("f", "pl"),
+            "mucho": ("m", "sg"), "mucha": ("f", "sg"),
+            "muchos": ("m", "pl"), "muchas": ("f", "pl"),
+        }
+        if det in ARTICLE_FEATURES:
+            article_gender, article_number = ARTICLE_FEATURES[det]
+            return article_gender, article_number
+        if det in explicit:
+            return explicit[det]
+        morph = self.surface_morph(det_surface)
+        gender = None
+        number = None
+        if morph.get("Gender") == "Fem":
+            gender = "f"
+        elif morph.get("Gender") == "Masc":
+            gender = "m"
+        if morph.get("Number") == "Plur":
+            number = "pl"
+        elif morph.get("Number") == "Sing":
+            number = "sg"
+        if number is None:
+            number = "pl" if det.endswith("s") and det not in {"más", "menos"} else "sg"
+        return gender, number
+
+    def determiner_matches_noun(self, det_surface: str, noun_surface: str) -> bool:
+        det_gender, det_number = self.determiner_surface_features(det_surface)
+        noun = self.surface_analysis(noun_surface)
+        if noun["pos"] != "n":
+            return True
+        noun_gender = noun["gender"] or self.infer_noun_gender(noun["lemma"] or noun_surface)
+        noun_number = noun["number"]
+        if det_number and noun_number and det_number != noun_number:
+            return False
+        if det_gender and noun_gender and det_gender != noun_gender:
+            if normalize_token(noun["lemma"] or noun_surface) in EL_ARTICLE_FEMININE_NOUNS and det_gender == "m" and noun_number == "sg":
+                return normalize_token(det_surface) in {"el", "un", "este", "ese"}
+            return False
+        return True
+
+    def determiner_phrase_ok(self, words: List[str]) -> bool:
+        det_like = set(ARTICLE_FEATURES) | DETERMINER_POSSESSIVES | DETERMINER_DEMONSTRATIVES | QUANTIFIER_DETERMINERS
+        for idx, token in enumerate(words[:-1]):
+            det = normalize_token(token)
+            if det not in det_like:
+                continue
+            noun_idx = -1
+            if idx + 2 < len(words) and self.lookup_pos(words[idx + 1]) == "adj" and self.lookup_pos(words[idx + 2]) == "n":
+                noun_idx = idx + 2
+                if not self.adjective_matches_noun(words[idx + 1], words[noun_idx]):
+                    return False
+            elif self.lookup_pos(words[idx + 1]) == "n":
+                noun_idx = idx + 1
+            elif det in {"todo", "todos", "toda", "todas"} and self.lookup_pos(words[idx + 1]) == "v":
+                continue
+            if noun_idx >= 0 and not self.determiner_matches_noun(token, words[noun_idx]):
+                return False
+        return True
+
+    def prepositional_pronoun_used_as_subject(self, words: List[str]) -> bool:
+        return bool(words and normalize_token(words[0]) in PREPOSITIONAL_SUBJECT_PRONOUNS)
+
+    def strict_subject_pronoun_agreement_ok(
+        self,
+        words: List[str],
+        verb_index: int,
+        target_word_idx: int = -1,
+        target_morph_override: Optional[Dict[str, str]] = None,
+    ) -> bool:
+        if verb_index < 0 or not words:
+            return False
+        subject_surface = normalize_token(words[0])
+        if subject_surface not in PRONOUN_PERSON_NUMBER:
+            return True
+        if subject_surface in PREPOSITIONAL_SUBJECT_PRONOUNS:
+            return False
+        if verb_index == target_word_idx and target_morph_override is not None:
+            verb_morph = target_morph_override
+        else:
+            verb_morph = self.surface_morph(words[verb_index])
+        expected = PERSON_NUMBER_TO_CODE.get(PRONOUN_PERSON_NUMBER[subject_surface])
+        actual = self.person_code_from_morph(verb_morph)
+        if not expected or not actual:
+            return False
+        return expected == actual
+
+    def temporal_verb_mismatch(
+        self,
+        words: List[str],
+        verb_index: int,
+        target_word_idx: int = -1,
+        target_morph_override: Optional[Dict[str, str]] = None,
+    ) -> bool:
+        if verb_index < 0:
+            return False
+        lowered = {normalize_token(word) for word in words}
+        if verb_index == target_word_idx and target_morph_override is not None:
+            morph = target_morph_override
+        else:
+            morph = self.surface_morph(words[verb_index])
+        tense = morph.get("Tense", "")
+        mood = morph.get("Mood", "")
+        if lowered & PAST_TIME_ADVERBS and tense == "Pres" and mood in {"", "Ind"}:
+            return True
+        if lowered & FUTURE_TIME_ADVERBS and tense in {"Past", "Imp"}:
+            return True
+        return False
+
+    def semantic_nonsense_reasons(self, candidate: Candidate, words: List[str]) -> List[str]:
+        lowered = [normalize_token(word) for word in words]
+        joined = " ".join(lowered)
+        reasons: List[str] = []
+        if any(pattern in joined for pattern in SHORT_SEMANTIC_NONSENSE_PATTERNS):
+            reasons.append("short_semantic_nonsense")
+        if candidate.source_method == "stochastic_decoder" and len(words) <= 5:
+            if any(phrase in joined for phrase in ("va a ser nada", "voy a ser nada", "vamos a ser nada", "van a ser nada")):
+                reasons.append("stochastic_semantic_nonsense")
+        return list(dict.fromkeys(reasons))
+
     def article_matches_noun(self, article: str, noun_surface: str) -> bool:
         features = ARTICLE_FEATURES.get(normalize_token(article))
         noun = self.surface_analysis(noun_surface)
@@ -2288,6 +2480,10 @@ class SentenceGenerator:
         canonical = self.canonical_lemma_for(target)
         subject, person_code = self.subject_for_target(target)
         verb = self.target_verb_form(target, person_code)
+        morph = self.target_form_metadata(target)
+        verb_form = morph.get("VerbForm", "")
+        mood = morph.get("Mood", "")
+        tense = morph.get("Tense", "")
 
         if canonical == "haber":
             if normalize_token(verb) == "hay":
@@ -2301,9 +2497,24 @@ class SentenceGenerator:
                     return None
                 article = self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=False)
                 return self.build_candidate(target, [verb, article, noun.lemma], f"{template_id}_haber_existential", source_method, 0)
-            return None
+            if tense == "Imp":
+                noun = self.pick_semantic_noun(
+                    allowed,
+                    preferred_classes=GOOD_EXISTENTIAL_CLASSES,
+                    banned_classes=BAD_EXISTENTIAL_CLASSES,
+                    exclude={target.lemma, canonical},
+                )
+                if not noun:
+                    return None
+                article = self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=False)
+                return self.build_candidate(target, [verb, article, noun.lemma], f"{template_id}_haber_existential", source_method, 0)
+            return self.build_candidate(target, [subject, verb, "hecho", "eso"], f"{template_id}_haber_perfect", source_method, 1)
 
         if canonical == "ser":
+            if verb_form == "Part":
+                return self.build_candidate(target, ["ha", verb, "difícil"], f"{template_id}_ser_part", source_method, 1)
+            if mood == "Sub":
+                return self.build_candidate(target, ["quiero", "que", verb, "claro"], f"{template_id}_ser_subj", source_method, 2)
             adj = self.pick_compatible_adjective(allowed, "person", exclude={target.lemma, canonical})
             if adj:
                 return self.build_candidate(
@@ -2316,6 +2527,8 @@ class SentenceGenerator:
             return None
 
         if canonical == "estar":
+            if verb_form == "Ger":
+                return self.build_candidate(target, ["ella", "está", verb], f"{template_id}_estar_gerund", source_method, 2)
             place = self.pick_safe_location_noun(allowed, exclude={target.lemma, canonical})
             if place:
                 loc = self.location_phrase(place)
@@ -2330,6 +2543,8 @@ class SentenceGenerator:
             return self.build_candidate(target, [subject, verb] + dest, f"{template_id}_ir_place", source_method, 1)
 
         if canonical == "poder":
+            if mood == "Cnd":
+                return self.build_candidate(target, [subject, verb, "ir"], f"{template_id}_poder_conditional", source_method, 1)
             place = self.pick_safe_destination_noun(allowed, exclude={target.lemma, canonical, "ir"})
             if not place:
                 return None
@@ -2344,6 +2559,8 @@ class SentenceGenerator:
             return None
 
         if canonical == "hacer":
+            if verb_form == "Ger":
+                return self.build_candidate(target, ["ella", "está", verb, "eso"], f"{template_id}_hacer_gerund", source_method, 2)
             noun = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
             if noun:
                 article = self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=False)
@@ -2499,7 +2716,7 @@ class SentenceGenerator:
             canonical_lemma=canonical_target,
             target_morph=self.target_morph_for_request(target, target_form, sentence_tokens=clean_tokens, target_idx=target_index),
         )
-        setattr(candidate, "_target_pos_hint", target_pos_hint or "")
+        setattr(candidate, "_target_pos_hint", target_pos_hint or target.pos or "")
         setattr(candidate, "_target_form_hint", target_form_hint or target_form)
         if target.pos in {"v", "n", "adj"} and not candidate.target_morph:
             return None
@@ -2591,14 +2808,58 @@ class SentenceGenerator:
         canonical = normalize_token(self.canonical_lemma_for(target))
         specs: List[Tuple[str, List[str], int]] = []
 
-        if target.pos == "v" and surface == "ha" and canonical == "haber":
-            specs = [("verb_exact_ha_do_that", ["ha", "hecho", "eso"], 0)]
-        elif target.pos == "v" and surface == "sé" and canonical == "saber":
-            specs = [("verb_exact_se_know_that", ["yo", "sé", "eso"], 1)]
-        elif target.pos == "n" and surface == "vez":
-            specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
-        elif target.pos == "n" and surface == "gracias":
-            specs = [("noun_exact_say_thanks", ["ella", "dice", "gracias"], 2)]
+        if target.pos == "v":
+            if surface == "ha" and canonical == "haber":
+                specs = [("verb_exact_ha_do_that", ["ha", "hecho", "eso"], 0)]
+            elif surface == "han" and canonical == "haber":
+                specs = [("verb_exact_han_done_that", ["han", "hecho", "eso"], 0)]
+            elif surface == "había" and canonical == "haber":
+                specs = [("verb_exact_habia_problem", ["había", "un", "problema"], 0)]
+            elif surface == "sé" and canonical == "saber":
+                specs = [("verb_exact_se_know_that", ["yo", "sé", "eso"], 1)]
+            elif surface == "soy" and canonical == "ser":
+                specs = [("verb_exact_soy_feliz", ["yo", "soy", "feliz"], 1)]
+            elif surface == "eres" and canonical == "ser":
+                specs = [("verb_exact_eres_bueno", ["tú", "eres", "bueno"], 1)]
+            elif surface == "son" and canonical == "ser":
+                specs = [("verb_exact_son_buenos", ["ellos", "son", "buenos"], 1)]
+            elif surface == "hace" and canonical == "hacer":
+                specs = [("verb_exact_hace_plan", ["ella", "hace", "un", "plan"], 1)]
+            elif surface == "decir" and canonical == "decir":
+                specs = [("verb_exact_decir_that", ["quiero", "decir", "eso"], 1)]
+            elif surface == "siento" and canonical == "sentir":
+                specs = [("verb_exact_lo_siento", ["lo", "siento"], 1)]
+            elif surface == "sea" and canonical == "ser":
+                specs = [("verb_exact_sea_claro", ["quiero", "que", "sea", "claro"], 2)]
+            elif surface == "sido" and canonical == "ser":
+                specs = [("verb_exact_sido_dificil", ["ha", "sido", "difícil"], 1)]
+            elif surface == "podría" and canonical == "poder":
+                specs = [("verb_exact_podria_ir", ["ella", "podría", "ir"], 1)]
+            elif surface == "haciendo" and canonical == "hacer":
+                specs = [("verb_exact_haciendo_eso", ["ella", "está", "haciendo", "eso"], 2)]
+            elif surface == "dije" and canonical == "decir":
+                specs = [("verb_exact_dije_eso", ["yo", "dije", "eso"], 1)]
+        elif target.pos == "n":
+            if surface == "vez":
+                specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
+            elif surface == "gracias":
+                specs = [("noun_exact_say_thanks", ["ella", "dice", "gracias"], 2)]
+            elif surface == "vida":
+                specs = [("noun_exact_life", ["la", "vida", "es", "buena"], 1)]
+            elif surface == "día":
+                specs = [("noun_exact_day", ["el", "día", "es", "largo"], 1)]
+            elif surface == "favor":
+                specs = [("noun_exact_favor", ["te", "hago", "un", "favor"], 3)]
+            elif surface == "lugar":
+                specs = [("noun_exact_place", ["es", "un", "lugar", "tranquilo"], 2)]
+            elif surface == "nombre":
+                specs = [("noun_exact_name", ["ese", "nombre", "es", "común"], 1)]
+            elif surface == "mañana":
+                specs = [("noun_exact_morning", ["la", "mañana", "es", "tranquila"], 1)]
+            elif surface == "mamá":
+                specs = [("noun_exact_mama", ["mi", "mamá", "está", "aquí"], 1)]
+            elif surface == "parte":
+                specs = [("noun_exact_part", ["es", "parte", "del", "plan"], 1)]
 
         for template_id, tokens, target_index in specs:
             cand = self.build_candidate(target, tokens, template_id, source_method, target_index)
@@ -2631,6 +2892,7 @@ class SentenceGenerator:
         for a, b in zip(words, words[1:]):
             if a == b:
                 return False, penalties
+
         target_morph_override = self._parse_morph_str(candidate.target_morph) if candidate.target_morph else None
         target_word_idx = -1
         if candidate.pos == "v" and target_morph_override and candidate.target_index >= 0:
@@ -2643,13 +2905,25 @@ class SentenceGenerator:
                     target_word_idx = wi
                     break
                 wi += 1
+
         finite_verb_index = self.first_finite_verb_index(words, target_word_idx, target_morph_override)
         if finite_verb_index < 0:
+            return False, penalties
+        if self.prepositional_pronoun_used_as_subject(words):
+            return False, penalties
+        if not self.strict_subject_pronoun_agreement_ok(words, finite_verb_index, target_word_idx, target_morph_override):
             return False, penalties
         if not self.subject_verb_agreement_ok(words, finite_verb_index, target_word_idx, target_morph_override):
             return False, penalties
         if not self.copula_predicate_agreement_ok(words, finite_verb_index):
             return False, penalties
+        if not self.determiner_phrase_ok(words):
+            return False, penalties
+        if self.temporal_verb_mismatch(words, finite_verb_index, target_word_idx, target_morph_override):
+            return False, penalties
+        if self.semantic_nonsense_reasons(candidate, words):
+            return False, penalties
+
         for i, word in enumerate(words[:-1]):
             if word in ARTICLE_FEATURES:
                 if i + 2 < len(words) and self.lookup_pos(words[i + 1]) == "adj" and self.lookup_pos(words[i + 2]) == "n":
@@ -2670,7 +2944,7 @@ class SentenceGenerator:
                     return False, penalties
                 person_code = self.person_code_from_morph(self.target_form_metadata(target))
                 if person_code and words:
-                    subject = words[0]
+                    subject = normalize_token(words[0])
                     expected = SUBJECT_FEATURES.get(subject, {}).get("person_code")
                     if expected and expected != person_code:
                         return False, penalties
@@ -2681,7 +2955,8 @@ class SentenceGenerator:
                     if noun["semantic_class"] in BAD_EXISTENTIAL_CLASSES:
                         return False, penalties
                 if canonical == "haber" and words and words[0] != "hay" and not self.haber_perfect_surface_ok(candidate, words):
-                    return False, penalties
+                    if not (target_morph_override and target_morph_override.get("Tense") == "Imp" and words and normalize_token(words[0]) == normalize_token(candidate.target_form)):
+                        return False, penalties
                 noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
                 if canonical == "haber" and self.haber_perfect_surface_ok(candidate, words):
                     noun_surface = self.first_following_noun(words, 1)
@@ -3195,25 +3470,30 @@ class SentenceGenerator:
         allowed: int,
         exclude: Optional[Iterable[str]] = None,
     ) -> Optional[Tuple[str, str]]:
-        exclude = exclude or []
-        feminine = {
-            "la", "una", "esta", "esa", "mi", "tu", "su",
-            "nuestra", "nuestras", "esta", "estas", "esa", "esas",
+        exclude_set = {normalize_token(x) for x in (exclude or []) if x}
+        det_gender, det_number = self.determiner_surface_features(surface)
+        preferred_by_gender = {
+            "f": ["casa", "idea", "mesa", "puerta"],
+            "m": ["libro", "trabajo", "amigo", "hotel"],
         }
-        plural = {
-            "los", "las", "unos", "unas", "estos", "estas", "esos", "esas",
-            "mis", "tus", "sus", "nuestros", "nuestras",
-        }
-        preferred = ["casa", "idea", "mesa"] if surface in feminine else ["libro", "trabajo", "amigo", "hotel"]
-        noun = self.pick_preferred_lemmas(preferred, allowed, exclude=exclude)
+        preferred = preferred_by_gender.get(det_gender or "m", preferred_by_gender["m"])
+        noun = self.pick_preferred_lemmas(preferred, allowed, exclude=exclude_set)
         if not noun:
-            noun = self.pick_safe_subject_noun(allowed, exclude=exclude)
+            candidates = [
+                x for x in self.pos_buckets.get("n", [])
+                if x.rank <= allowed
+                and self.noun_is_template_friendly(x)
+                and normalize_token(x.lemma) not in exclude_set
+                and normalize_token(self.canonical_lemma_for(x)) not in exclude_set
+                and (det_gender is None or self.safe_noun_gender(x.lemma, x.gender) == det_gender)
+            ]
+            noun = self.pick_from_candidates(candidates)
         if not noun:
-            noun = self.pick_template_friendly_noun(allowed, exclude=exclude)
+            noun = self.pick_template_friendly_noun(allowed, exclude=exclude_set)
         if not noun:
             return None
-        noun_surface = self.pluralize_noun(noun.lemma) if surface in plural else noun.lemma
-        verb = "están" if surface in plural else "está"
+        noun_surface = self.pluralize_noun(noun.lemma) if det_number == "pl" else noun.lemma
+        verb = "están" if det_number == "pl" else "está"
         return noun_surface, verb
 
     def seeded_pos_template_candidate(self, target: Lexeme) -> Optional[Candidate]:
@@ -3330,12 +3610,28 @@ class SentenceGenerator:
                     emergency=emergency,
                 )
             if surface in ADV_TIME_LEMMAS:
+                specs = {
+                    "ayer": [
+                        ("adv_time_yesterday_go", ["ayer", "fui", "a", "casa"], 0),
+                    ],
+                    "siempre": [
+                        ("adv_time_always_home", ["siempre", "voy", "a", "casa"], 0),
+                    ],
+                    "mañana": [
+                        ("adv_time_tomorrow_home", ["mañana", "voy", "a", "casa"], 0),
+                    ],
+                    "hoy": [
+                        ("adv_time_today_home", ["hoy", "voy", "a", "casa"], 0),
+                    ],
+                    "ahora": [
+                        ("adv_now_home", ["ahora", "me", "voy", "a", "casa"], 0),
+                    ],
+                }.get(surface, [
+                    ("adv_time_arrive", ["ella", "llega", surface], 2),
+                ])
                 return self._build_from_specs(
                     target,
-                    [
-                        ("adv_time_arrive", ["ella", "llega", surface], 2),
-                        ("adv_time_home", ["voy", "a", "casa", surface], 3),
-                    ],
+                    specs,
                     seeded=seeded,
                     emergency=emergency,
                 )
@@ -3393,6 +3689,45 @@ class SentenceGenerator:
             )
 
         if family in {"determiner", "art"}:
+            if surface == "todo":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("det_total_pronoun", ["todo", "está", "bien"], 0),
+                        ("det_total_work", ["todo", "el", "trabajo", "está", "bien"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in {"todos", "todas"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("det_total_plural", [surface, "están", "aquí"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in {"mucho", "mucha"}:
+                noun_surface = "trabajo" if surface == "mucho" else "comida"
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("det_quantity_mass", ["hay", surface, noun_surface], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in {"muchos", "muchas"}:
+                noun_surface = "amigos" if surface == "muchos" else "casas"
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("det_quantity_plural", [surface, noun_surface, "están", "aquí"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             support = self._safe_nominal_support(surface, allowed, exclude=exclude)
             if not support:
                 return None
@@ -3432,13 +3767,11 @@ class SentenceGenerator:
                     emergency=emergency,
                 )
             if pron in {"le", "les"}:
-                subject = "yo" if pron == "le" else "nosotros"
-                person = SUBJECT_FEATURES[subject]["person_code"]
                 return self._build_from_specs(
                     target,
                     [
-                        ("pron_io_speak", [subject, pron, self.conjugate_present("hablar", person)], 1),
-                        ("pron_io_write", [subject, pron, self.conjugate_present("escribir", person)], 1),
+                        ("pron_io_tell", [pron, "digo", "la", "verdad"], 0),
+                        ("pron_io_write", [pron, "escribo", "ahora"], 0),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3463,34 +3796,28 @@ class SentenceGenerator:
                     emergency=emergency,
                 )
             if pron in {"algo", "nada", "nadie", "alguien"}:
-                if pron == "algo":
-                    specs = [("pron_indef_something", ["quiero", "algo", "más"], 1)]
-                elif pron == "nada":
-                    specs = [("pron_indef_nothing", ["no", "quiero", "nada"], 2)]
-                elif pron == "nadie":
-                    specs = [("pron_indef_nobody", ["nadie", "está", "aquí"], 0)]
-                else:
-                    specs = [("pron_indef_someone", ["alguien", "está", "aquí"], 0)]
+                specs = [("pron_existential", ["hay", pron], 1)]
+                if pron in {"nada", "nadie"}:
+                    specs = [("pron_negated_existential", ["no", "hay", pron], 2)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
-            if pron in {"que", "qué", "quien", "quién", "como", "cómo"}:
-                if pron == "que":
-                    specs = [("pron_clause_que", ["hay", "que", "ir"], 1)]
-                elif pron == "qué":
-                    specs = [("pron_clause_que", ["qué", "es", "esto"], 0)]
-                elif pron in {"quien", "quién"}:
-                    specs = [("pron_clause_quien", ["no", "sé", pron, "viene"], 2)]
-                else:
-                    specs = [("pron_clause_como", ["no", "sé", pron, "vive"], 2)]
+            if pron in {"qué", "quién"}:
+                verb = "es" if pron != "quién" else "viene"
+                specs = [("pron_question", [pron, verb], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
-            return self._build_from_specs(
-                target,
-                [
-                    ("pron_fallback_here", [pron, "está", "aquí"], 0),
-                    ("pron_fallback_clear", [pron, "es", "para", "mí"], 0),
-                ],
-                seeded=seeded,
-                emergency=emergency,
-            )
+            if pron == "cuál":
+                specs = [("pron_which_name", ["cuál", "es", "tu", "nombre"], 0)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron == "ello":
+                specs = [("pron_ello_object", ["no", "hablo", "de", "ello"], 3)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron in {"mí", "ti"}:
+                specs = [("pron_prepositional_for", ["es", "para", pron], 2)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            if pron == "sí":
+                specs = [("pron_reflexive_for_self", ["lo", "hace", "por", "sí", "mismo"], 3)]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
+            return None
+
 
         if family in {"prep", "contraction"}:
             if surface == "con":

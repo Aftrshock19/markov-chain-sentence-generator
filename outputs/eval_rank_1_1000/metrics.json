@@ -1,0 +1,16 @@
+{
+  "rank_window": [
+    1,
+    1000
+  ],
+  "rows_in_scope": 1000,
+  "nonempty_rows": 720,
+  "good_rows": 720,
+  "bad_shipped_rows": 0,
+  "no_candidate_rows": 280,
+  "nonempty_rate": 0.72,
+  "good_rate": 0.72,
+  "bad_shipped_rate": 0.0,
+  "passes_locked_nonempty_rate": false,
+  "passes_locked_bad_shipped_rate": true
+}

@@ -1,0 +1,51 @@
+lemma,rank,pos,source_method,template_id,sentence
+comprar,909,v,retrieved_corpus,retrieved,¿lo compraste hoy o ayer?
+han,135,v,seeded_template,verb_exact_han_done_that,Han hecho eso.
+más,32,adv,retrieved_corpus,retrieved,¿a dónde más te gustaría ir?
+jefe,368,n,retrieved_corpus,retrieved,Hablas como si fueras nuestro jefe.
+primero,314,adj,retrieved_corpus,retrieved,No quería estar aquí en primer lugar.
+sería,285,v,seeded_template,seeded_special_ser_adj,Ella sería buena.
+mira,168,v,template_generated,v_a1_1,Ella mira una casa.
+quieres,121,v,seeded_template,seeded_special_querer_obj,Tú quieres una casa.
+conocido,960,adj,stochastic_decoder,stochastic,El rey es conocido en todo el mundo.
+york,780,prop,stochastic_decoder,stochastic,York es la casa de mi padre.
+hace,102,v,stochastic_decoder,stochastic,Ella hace eso solo.
+recuerdas,841,v,retrieved_corpus,retrieved,Me recuerdas a tu hermano.
+conseguir,589,v,retrieved_corpus,retrieved,Ella no lo conseguirá.
+ha,39,v,seeded_template,verb_exact_ha_do_that,Ha hecho eso.
+tu,37,determiner,template_generated,det_anchor_clear,Tu amigo está bien.
+decir,109,v,seeded_template,verb_exact_decir_that,Quiero decir eso.
+lado,279,n,retrieved_corpus,retrieved,Te voy a tener a mi lado.
+sabía,297,v,seeded_template,seeded_special_saber_truth,Ella sabía la verdad.
+media,716,adj,retrieved_corpus,retrieved,Llegué a las dos y media.
+izquierda,855,n,retrieved_corpus,retrieved,Miró a izquierda y derecha.
+yo,34,pron,template_generated,pron_subject_here,Yo estoy aquí.
+asesino,802,n,retrieved_corpus,retrieved,Eres un asesino.
+año,247,n,retrieved_corpus,retrieved,Ella tiene tres años más que yo.
+experiencia,924,n,retrieved_corpus,retrieved,No tengo ninguna experiencia.
+simple,998,adj,retrieved_corpus,retrieved,No es tan simple.
+voz,581,n,retrieved_corpus,retrieved,Ella tiene una voz muy buena.
+cabeza,281,n,template_generated,n_a1_1,La cabeza es buena.
+prueba,628,n,retrieved_corpus,retrieved,Yo también tengo prueba hoy.
+asesinato,840,n,retrieved_corpus,retrieved,¿dónde estabas en el momento del asesinato?
+llegar,374,v,retrieved_corpus,retrieved,Ellos todavía no llegaron.
+es,9,v,seeded_template,seeded_special_ser_adj,Ella es buena.
+hijo,198,n,retrieved_corpus,retrieved,No tengo nada para mis hijos.
+caballeros,992,n,retrieved_corpus,retrieved,Se sabía el nombre de todos los caballeros.
+vivir,466,v,retrieved_corpus,retrieved,Hace muchos años que vivo aquí.
+cosa,194,n,retrieved_corpus,retrieved,Tenemos otras cosas que hacer.
+demasiado,272,adv,retrieved_corpus,retrieved,¿no será demasiado poco?
+tampoco,459,adv,retrieved_corpus,retrieved,Yo tampoco sé qué hacer.
+vida,108,n,retrieved_corpus,retrieved,La vida es buena.
+lista,526,n,retrieved_corpus,retrieved,Hicieron una lista con los nombres.
+favor,114,n,retrieved_corpus,retrieved,Te hago un favor.
+quieren,495,v,seeded_template,seeded_special_querer_obj,Ellos quieren una casa.
+escuela,474,n,retrieved_corpus,retrieved,¿cómo te fue en la escuela hoy?
+proyecto,857,n,retrieved_corpus,retrieved,Estoy en contra de este proyecto.
+hice,354,v,retrieved_corpus,retrieved,Hice bien mi trabajo.
+él,53,pron,template_generated,pron_subject_here,Él está aquí.
+maldita,644,adj,retrieved_corpus,retrieved,La familia parecía estar maldita.
+blanco,765,adj,retrieved_corpus,retrieved,Hicieron blanco tres veces.
+parece,151,v,stochastic_decoder,stochastic,Ella parece estar en la misma casa.
+sola,524,adj,retrieved_corpus,retrieved,¿puedes ir sola?
+casa,91,n,retrieved_corpus,retrieved,¿ella está en casa?

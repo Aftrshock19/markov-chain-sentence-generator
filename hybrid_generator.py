@@ -66,6 +66,12 @@ HYBRID_BANDS = [
     (6001, 10**9, DifficultyProfile("C2", 6, 12, 9000, 5000, (2, 6), 6)),
 ]
 
+LOCKED_SUCCESS_METRICS = {
+    "rank_window": [1, 1000],
+    "min_nonempty_rate": 0.95,
+    "max_bad_candidate_rate": 0.01,
+}
+
 
 def hybrid_get_profile(rank: int) -> DifficultyProfile:
     for lo, hi, profile in HYBRID_BANDS:
