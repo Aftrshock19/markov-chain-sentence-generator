@@ -292,7 +292,7 @@ muchas,291,determiner,Muchas casas están aquí.,template_generated,det_quantity
 poder,292,n,Tiene mucho poder.,retrieved_corpus,retrieved,9.651220487195502,poder,Gender=Masc|Number=Sing,1,1,1,
 algunos,293,determiner,Algunos amigos están bien.,template_generated,det_anchor_clear,11.59311522564426,alguno,Gender=Masc|Number=Plur,1,1,1,det_anchor_clear
 amigos,294,n,Me gustan tus amigos.,retrieved_corpus,retrieved,12.022042477264824,amigo,Gender=Masc|Number=Plur,1,1,1,
-chica,295,n,Es realmente una buena chica.,retrieved_corpus,retrieved,11.963110705229086,chica,Gender=Fem|Number=Sing,1,1,1,
+chica,295,n,Es realmente una buena chica.,retrieved_corpus,retrieved,11.963110705229086,chico,Gender=Fem|Number=Sing,1,1,1,
 mayor,296,adj,,no_candidate_found,no_candidate_found,0.0,mayor,,0,0,0,manual review needed
 sabía,297,v,Ella sabía la verdad.,seeded_template,seeded_special_saber_truth,9.752944596819631,saber,Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin,1,1,1,seeded_special_saber_truth
 chicos,298,n,,no_candidate_found,no_candidate_found,0.0,chico,,0,0,0,manual review needed

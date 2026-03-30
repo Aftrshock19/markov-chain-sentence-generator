@@ -561,9 +561,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     def candidate_is_hybrid_publishable(self, candidate: Optional[Candidate]) -> bool:
         if not candidate or not candidate.sentence:
             return False
-        if not self.candidate_is_general_publishable(candidate):
-            return False
-        return not self._hybrid_policy_reasons(candidate)
+        if self.candidate_is_general_publishable(candidate):
+            return not self._hybrid_policy_reasons(candidate)
+        return self._safe_template_publishable_override(candidate)
 
     def _candidate_is_hybrid_strong(self, candidate: Optional[Candidate]) -> bool:
         if not candidate:
@@ -792,8 +792,33 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             if self.candidate_is_hybrid_publishable(candidate)
         ]
         if publishable_candidates:
-            return self._choose_best_in_bucket(publishable_candidates)
+            if self.has_exact_surface_template(target):
+                exact_template_candidates = [
+                    candidate for candidate in publishable_candidates
+                    if candidate.template_id.startswith(cg.SAFE_TEMPLATE_REVIEW_PREFIXES)
+                ]
+                if exact_template_candidates:
+                    return self._choose_best_in_bucket(exact_template_candidates)
+            family = self.normalized_pos_family(target)
+            best_bucket = min(self._candidate_bucket(candidate, family) for candidate in publishable_candidates)
+            bucket_candidates = [
+                candidate for candidate in publishable_candidates
+                if self._candidate_bucket(candidate, family) == best_bucket
+            ]
+            return self._choose_best_in_bucket(bucket_candidates)
         return self._no_candidate_result(target)
+
+    def _trim_candidate_pool(self, candidates: List[Candidate], target: Lexeme) -> List[Candidate]:
+        family = self.normalized_pos_family(target)
+        deduped = self.dedupe_candidates(candidates)
+        ranked = sorted(
+            deduped,
+            key=lambda candidate: (
+                self._candidate_bucket(candidate, family),
+                -candidate.score,
+            ),
+        )
+        return ranked[: self.max_candidates_to_keep]
 
     def collect_candidates_for_lemma(
         self,
@@ -845,7 +870,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                     )
                     valid_candidates_found += valid_inc
                 if self._should_early_exit(best_valid):
-                    deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
+                    deduped = self._trim_candidate_pool(raw_pool, target)
                     selected = self._choose_from_pool(deduped, best_valid, best_any, target)
                     self._hybrid_pool_cache[lemma] = deduped
                     self._hybrid_search_cache[lemma] = {
@@ -953,7 +978,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                                 )
                                 valid_candidates_found += valid_inc
 
-                    deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
+                    deduped = self._trim_candidate_pool(raw_pool, target)
                     selected = self._choose_from_pool(deduped, best_valid, best_any, target)
                     self._hybrid_pool_cache[lemma] = deduped
                     self._hybrid_search_cache[lemma] = {
