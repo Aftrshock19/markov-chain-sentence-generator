@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=000:05:00
+#SBATCH --time=04:00:00
 #SBATCH --output=spa-hybrid-batch-%j.out
 #SBATCH --error=spa-hybrid-batch-%j.err
 
@@ -29,9 +29,6 @@ mkdir -p "$OUT_DIR"
 OUTFILE="$OUT_DIR/hybrid_batch_${SLURM_JOB_ID}.csv"
 REVIEW_OUT="$OUT_DIR/hybrid_batch_review_${SLURM_JOB_ID}.csv"
 CANDIDATES_OUT="$OUT_DIR/hybrid_batch_candidates_${SLURM_JOB_ID}.csv"
-
-OVERRIDE_1="$WORK_DIR/lexicon_overrides_merged.csv"
-OVERRIDE_2="$WORK_DIR/starter_exclusions.csv"
 
 TARGET_LIMIT=15000
 HEARTBEAT_SECS=60
@@ -71,9 +68,7 @@ for f in \
     "$MODELS_DIR/bigrams.pkl" \
     "$MODELS_DIR/trigrams.pkl" \
     "$MODELS_DIR/pos_transitions.pkl" \
-    "$MODELS_DIR/enriched_lexicon.pkl" \
-    "$OVERRIDE_1" \
-    "$OVERRIDE_2"
+    "$MODELS_DIR/enriched_lexicon.pkl" 
 do
     if [ ! -f "$f" ]; then
         echo "ERROR: File not found: $f"
@@ -170,16 +165,17 @@ python -u "$SCRIPT" \
     --out "$OUTFILE" \
     --review-out "$REVIEW_OUT" \
     --candidates-out "$CANDIDATES_OUT" \
-    --lexicon-overrides "$OVERRIDE_1" \
     --min-rank 1 \
-    --max-rank 1000 \
-    --limit 1000 \
+    --max-rank 25000 \
+    --limit 25000 \
     --seed 42 \
-    --max-total-attempts 350 \
-    --max-candidates-to-keep 25 \
-    --max-candidates-per-lemma 20 \
+    --max-total-attempts 400 \
+    --max-candidates-to-keep 35 \
+    --max-candidates-per-lemma 25 \
     --progress-every 100
 cleanup
+
+
 
 echo "============================================"
 echo "Finished: $(date)"
