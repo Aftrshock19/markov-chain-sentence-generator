@@ -35,12 +35,18 @@ except ImportError:
     def predict_candidate_scores(*args, **kwargs):
         return []
 
+try:
+    from learned_frame_router import LearnedFrameRouter
+except ImportError:
+    LearnedFrameRouter = None
+
 _BANNED_CONTINUATIONS = CONTEXT_DEPENDENT_OPENERS | {
     "pues", "sino", "ni", "oh", "ay", "eh", "bueno",
 }
 _SAFE_TEMPLATE_SOURCES = {
     "seeded_template",
     "template_generated",
+    "learned_frame_generated",
     "emergency_template",
     "emergency_starter",
 }
@@ -406,10 +412,23 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         seed: int = 42,
         max_total_attempts: int = 400,
         max_candidates_to_keep: int = 20,
+        learned_frames_path: Optional[str] = None,
+        lemma_frame_preferences_path: Optional[str] = None,
     ):
         super().__init__(lexicon_path, models_dir, seed=seed)
         self.max_total_attempts = max(1, max_total_attempts)
         self.max_candidates_to_keep = max(1, max_candidates_to_keep)
+        self.learned_frame_router = None
+        if learned_frames_path and LearnedFrameRouter is not None:
+            try:
+                self.learned_frame_router = LearnedFrameRouter(
+                    self,
+                    learned_frames_path,
+                    lemma_pref_path=lemma_frame_preferences_path,
+                )
+            except Exception as exc:
+                print(f"[warn] failed to load learned frames from {learned_frames_path}: {exc}", file=sys.stderr, flush=True)
+                self.learned_frame_router = None
         self._hybrid_pool_cache: Dict[str, List[Candidate]] = {}
         self._hybrid_search_cache: Dict[str, Dict[str, Any]] = {}
 
@@ -598,22 +617,24 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 "retrieved_corpus": 0,
                 "seeded_template": 1,
                 "template_generated": 2,
-                "emergency_template": 3,
-                "emergency_starter": 4,
-                "stochastic_decoder": 5,
-                "manual_review_needed": 6,
-                "no_candidate_found": 7,
+                "learned_frame_generated": 3,
+                "emergency_template": 4,
+                "emergency_starter": 5,
+                "stochastic_decoder": 6,
+                "manual_review_needed": 7,
+                "no_candidate_found": 8,
             }
         else:
             order = {
                 "retrieved_corpus": 0,
-                "stochastic_decoder": 1,
-                "seeded_template": 2,
-                "template_generated": 3,
-                "emergency_template": 4,
-                "emergency_starter": 5,
-                "manual_review_needed": 6,
-                "no_candidate_found": 7,
+                "learned_frame_generated": 1,
+                "stochastic_decoder": 2,
+                "seeded_template": 3,
+                "template_generated": 4,
+                "emergency_template": 5,
+                "emergency_starter": 6,
+                "manual_review_needed": 7,
+                "no_candidate_found": 8,
             }
         return order.get(candidate.source_method, 8)
 
@@ -663,6 +684,15 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             if self._family_is_fragile(family) and self.candidate_is_hybrid_publishable(candidate):
                 return True
         return False
+
+    def _learned_frame_candidates(self, target: Lexeme, max_candidates: int = 10) -> List[Candidate]:
+        if self.learned_frame_router is None or not self.learned_frame_router.has_frames():
+            return []
+        try:
+            return self.learned_frame_router.generate_from_learned_frames(target, max_candidates=max_candidates)
+        except Exception as exc:
+            print(f"[warn] learned frame generation failed for {target.lemma}: {exc}", file=sys.stderr, flush=True)
+            return []
 
     def _absorb_prescored_candidate(
         self,
@@ -880,6 +910,20 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                             cand, best_valid, best_any
                         )
                         valid_candidates_found += valid_inc
+
+                learned_candidates = self._learned_frame_candidates(
+                    target,
+                    max_candidates=max(10, self.max_candidates_to_keep // 2),
+                )
+                if learned_candidates:
+                    attempts_used += 1
+                    for cand in learned_candidates:
+                        raw_pool.append(cand)
+                        _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                            cand, best_valid, best_any
+                        )
+                        valid_candidates_found += valid_inc
+
                 if self._should_early_exit(best_valid):
                     deduped = self._trim_candidate_pool(raw_pool, target)
                     selected = self._choose_from_pool(deduped, best_valid, best_any, target)
@@ -896,21 +940,6 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                         self.can_template_target(target) or self.has_exact_surface_template(target)
                     )
                     use_pos_templates = family not in {"n", "v", "adj"}
-
-                    if not fragile_family:
-                        stochastic_budget = min(
-                            self.max_total_attempts - attempts_used,
-                            max(80, int(self.max_total_attempts * 0.65)),
-                        )
-                        if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
-                            stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
-                            attempts_used += 1
-                            for cand in stochastic_candidates:
-                                raw_pool.append(cand)
-                                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
-                                    cand, best_valid, best_any
-                                )
-                                valid_candidates_found += valid_inc
 
                     if not self._should_early_exit(best_valid) and use_content_templates:
                         template_attempts = 0
@@ -948,6 +977,23 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                             if template_attempts % (40 if fragile_family else 25) == 0 and self._should_early_exit(best_valid):
                                 break
 
+                    if not self._should_early_exit(best_valid) and attempts_used < self.max_total_attempts:
+                        stochastic_budget = min(
+                            self.max_total_attempts - attempts_used,
+                            max(40, int(self.max_total_attempts * (0.25 if fragile_family else 0.65))),
+                        )
+                        if fragile_family and self._has_preferred_publishable_candidate(raw_pool, family):
+                            stochastic_budget = 0
+                        if stochastic_budget > 0:
+                            stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
+                            attempts_used += 1
+                            for cand in stochastic_candidates:
+                                raw_pool.append(cand)
+                                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                                    cand, best_valid, best_any
+                                )
+                                valid_candidates_found += valid_inc
+
                     if best_valid is None and attempts_used < self.max_total_attempts:
                         attempts_used += 1
                         cand = self.emergency_pos_template_candidate(target)
@@ -973,21 +1019,6 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                         if ranked:
                             raw_pool.append(ranked)
                         valid_candidates_found += valid_inc
-
-                    if fragile_family and attempts_used < self.max_total_attempts and not self._has_preferred_publishable_candidate(raw_pool, family):
-                        stochastic_budget = min(
-                            self.max_total_attempts - attempts_used,
-                            max(40, int(self.max_total_attempts * 0.25)),
-                        )
-                        if stochastic_budget > 0:
-                            stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
-                            attempts_used += 1
-                            for cand in stochastic_candidates:
-                                raw_pool.append(cand)
-                                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
-                                    cand, best_valid, best_any
-                                )
-                                valid_candidates_found += valid_inc
 
                     deduped = self._trim_candidate_pool(raw_pool, target)
                     selected = self._choose_from_pool(deduped, best_valid, best_any, target)
@@ -1299,6 +1330,8 @@ def main() -> None:
     parser.add_argument("--max-total-attempts", type=int, default=400, help="Hard ceiling on generation attempts per lemma.")
     parser.add_argument("--max-candidates-to-keep", type=int, default=20, help="Maximum scored candidates retained per lemma.")
     parser.add_argument("--progress-every", type=int, default=25, help="Print progress every N lemmas.")
+    parser.add_argument("--learned-frames", default=None, help="Optional learned_frames.json path.")
+    parser.add_argument("--lemma-frame-preferences", default=None, help="Optional lemma_frame_preferences.csv path.")
     parser.add_argument("--verb-router-smoke", action="store_true", help="Print a small Verb Router v2 smoke check and exit.")
     args = parser.parse_args()
 
@@ -1308,6 +1341,8 @@ def main() -> None:
         seed=args.seed,
         max_total_attempts=args.max_total_attempts,
         max_candidates_to_keep=args.max_candidates_to_keep,
+        learned_frames_path=args.learned_frames,
+        lemma_frame_preferences_path=args.lemma_frame_preferences,
     )
     for override_path in args.lexicon_overrides:
         gen.load_and_apply_overrides(override_path)

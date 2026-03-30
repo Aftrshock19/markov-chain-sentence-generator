@@ -1,0 +1,6 @@
+pos_family,frame_count,instance_count,avg_weight
+adjective,285,453,0.7605
+adverb,173,301,0.8463
+function,80,176,0.8107
+noun,416,594,0.6587
+verb,359,636,0.7624
