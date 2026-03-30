@@ -35,6 +35,12 @@ DEFAULT_LOC = ["aquí", "en casa"]
 COMMON_FUNCTION_FILLERS = {
     "{PREP_PHRASE}": ["de casa", "en casa", "con él"],
 }
+REJECTED_FRAME_IDS = {
+    "learned_adverb_target_va_mi_noun",
+    "learned_adverb_target_es_mi_noun",
+    "learned_adjective_es_target_prep_phrase",
+    "learned_verb_target_que_es_noun",
+}
 
 
 class LearnedFrameRouter:
@@ -57,6 +63,9 @@ class LearnedFrameRouter:
             valid_items = []
             for item in items or []:
                 if not isinstance(item, dict):
+                    continue
+                frame_id = (item.get("frame_id") or "").strip()
+                if frame_id in REJECTED_FRAME_IDS:
                     continue
                 pattern_tokens = item.get("pattern_tokens") or []
                 if "{TARGET}" not in pattern_tokens:

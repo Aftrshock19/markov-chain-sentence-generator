@@ -120,9 +120,9 @@ class StochasticSentenceGenerator(SentenceGenerator):
         if family == "n":
             if not self.noun_is_template_friendly(target):
                 return seeds
-            gender = self.safe_noun_gender(target.lemma, target.gender)
+            gender, number = self.requested_noun_features(target)
             for definite in (True, False):
-                art = self.choose_article(gender, definite=definite)
+                art = self.requested_noun_article(target, definite=definite)
                 seeds.append(([art, target.lemma], 1))
             return seeds
 
@@ -142,9 +142,10 @@ class StochasticSentenceGenerator(SentenceGenerator):
             return seeds
 
         if family == "adj":
+            _, target_number = self.infer_adjective_features(target.lemma)
             profile = get_profile(target.rank)
             allowed = allowed_support_rank(target.rank, profile)
-            allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(target.lemma))
+            allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(self.canonical_lemma_for(target)))
             tried_nouns: List[str] = []
             for _ in range(12):
                 noun = self.pick_template_friendly_noun(
@@ -156,10 +157,11 @@ class StochasticSentenceGenerator(SentenceGenerator):
                     break
                 tried_nouns.append(noun.lemma)
                 noun_gender = self.safe_noun_gender(noun.lemma, noun.gender)
-                if self.inflect_adj(target.lemma, noun_gender) != target.lemma:
+                if self.target_adjective_surface_for_noun(target, noun.lemma, noun_gender, target_number) != target.lemma:
                     continue
                 art = self.choose_article(noun_gender, definite=True)
-                seeds.append(([art, noun.lemma, "es", target.lemma], 3))
+                noun_surface = self.pluralize_noun(noun.lemma) if target_number == "pl" else noun.lemma
+                seeds.append(([art, noun_surface, "son" if target_number == "pl" else "es", target.lemma], 3))
                 if len(seeds) >= 3:
                     break
             return seeds

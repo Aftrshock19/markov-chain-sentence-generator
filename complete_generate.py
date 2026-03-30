@@ -1209,11 +1209,72 @@ class SentenceGenerator:
         return True
 
     def requested_lemma_allows_inflected_target(self, target: Lexeme) -> bool:
-        return (
-            normalize_token(target.lemma) == normalize_token(self.canonical_lemma_for(target))
-            and self.normalized_pos_family(target) in {"v", "n", "adj"}
-            and not self.exact_surface_target_only(target)
-        )
+        if not target or self.exact_surface_target_only(target):
+            return False
+        if self.normalized_pos_family(target) not in {"v", "n", "adj"}:
+            return False
+        canonical = self.canonical_lemma_for(target)
+        surface = normalize_token(target.lemma)
+        if not canonical or not surface:
+            return False
+        if normalize_token(canonical) == surface:
+            return True
+        morphs = self.form_entries_for_surface(target.lemma, target.lemma)
+        return any(self.morph_matches_pos(morph, target.pos) for morph in morphs)
+
+    def generation_target_for_request(self, target: Lexeme) -> Lexeme:
+        canonical = self.canonical_lemma_for(target)
+        if (
+            self.requested_lemma_allows_inflected_target(target)
+            and normalize_token(canonical) != normalize_token(target.lemma)
+        ):
+            generation_target = self.generation_lexicon.get(canonical)
+            if generation_target:
+                return generation_target
+        return target
+
+    def requested_noun_features(self, target: Lexeme) -> Tuple[Optional[str], str]:
+        morph = self.target_form_metadata(target)
+        gender = target.gender or self.infer_noun_gender(target.lemma)
+        if morph.get("Gender") == "Fem":
+            gender = "f"
+        elif morph.get("Gender") == "Masc":
+            gender = "m"
+        number = "pl" if morph.get("Number") == "Plur" else "sg"
+        if morph.get("Number") == "Sing":
+            number = "sg"
+        if not morph.get("Number"):
+            surface = normalize_token(target.lemma)
+            if surface.endswith("s") and surface not in {"lunes", "crisis", "tesis", "análisis"}:
+                number = "pl"
+        return gender, number
+
+    def requested_noun_article(self, target: Lexeme, definite: bool = True) -> str:
+        gender, number = self.requested_noun_features(target)
+        article = self.choose_article(gender, definite=definite)
+        if number == "pl":
+            plural_map = {
+                "el": "los",
+                "la": "las",
+                "un": "unos",
+                "una": "unas",
+                "este": "estos",
+                "esta": "estas",
+            }
+            return plural_map.get(article, article)
+        return article
+
+    def requested_noun_copula(self, target: Lexeme, base: str = "ser") -> str:
+        _, number = self.requested_noun_features(target)
+        if base == "estar":
+            return "están" if number == "pl" else "está"
+        return "son" if number == "pl" else "es"
+
+    def target_adjective_surface_for_noun(self, target: Lexeme, noun_lemma: str, noun_gender: Optional[str], noun_number: str = "sg") -> str:
+        canonical = self.canonical_lemma_for(target)
+        if self.requested_lemma_allows_inflected_target(target):
+            return self.inflect_adj(canonical, noun_gender, noun_number)
+        return target.lemma
 
     def target_pos_hint_matches_request(self, requested_pos: str, target_pos_hint: str) -> bool:
         if not target_pos_hint:
@@ -1613,13 +1674,18 @@ class SentenceGenerator:
         if target.pos != "adj":
             return True
         surface = normalize_token(target.lemma)
-        canonical = normalize_token(target.canonical_lemma or target.lemma)
+        canonical = normalize_token(self.canonical_lemma_for(target))
         if surface in APOCOPATED_ADJECTIVE_FEATURES:
             return False
-        if canonical != surface:
+        if canonical == surface:
+            morph = self.target_form_metadata(target)
+            if morph.get("Number") == "Plur":
+                return False
+            return True
+        if not self.requested_lemma_allows_inflected_target(target):
             return False
-        morph = self.target_form_metadata(target)
-        if morph.get("Number") == "Plur":
+        gender, number = self.infer_adjective_features(target.lemma)
+        if number == "pl" and not gender and surface.endswith("es"):
             return False
         return True
 
@@ -3482,6 +3548,8 @@ class SentenceGenerator:
                 "deja": [("verb_exact_deja_eso", ["deja", "eso", "aquí"], 0)],
                 "ves": [("verb_exact_ves_eso", ["tú", "ves", "eso"], 1)],
                 "eran": [("verb_exact_eran_amigos", ["ellos", "eran", "amigos"], 1)],
+                "dice": [("verb_exact_dice_eso", ["ella", "dice", "eso"], 1)],
+                "somos": [("verb_exact_somos_amigos", ["nosotros", "somos", "amigos"], 1)],
                 "haya": [("verb_exact_haya_agua", ["quiero", "que", "haya", "agua"], 2)],
                 "dar": [("verb_exact_dar_eso", ["quiero", "dar", "eso"], 1)],
                 "podía": [("verb_exact_podia_ir", ["ella", "podía", "ir"], 1)],
@@ -3504,6 +3572,7 @@ class SentenceGenerator:
                 "único": [("adj_exact_unico", ["es", "el", "único", "día"], 2)],
                 "juntos": [("adj_exact_juntos", ["hoy", "vamos", "juntos"], 2)],
                 "buenos": [("adj_exact_buenos", ["tengo", "buenos", "amigos"], 1)],
+                "grandes": [("adj_exact_grandes", ["las", "casas", "son", "grandes"], 3)],
             }.get(surface, [])
 
         if target.pos == "n":
@@ -3517,6 +3586,7 @@ class SentenceGenerator:
                 "veces": [("noun_exact_times", ["yo", "voy", "a", "veces"], 3)],
                 "mamá": [("noun_exact_mama", ["mi", "mamá", "va", "hoy"], 1)],
                 "agua": [("noun_exact_water", ["hay", "agua", "hoy"], 1)],
+                "hombres": [("noun_exact_hombres", ["ellos", "son", "hombres"], 2)],
                 "fin": [("noun_exact_end", ["es", "el", "fin"], 2)],
             }.get(surface, [])
 
@@ -3619,7 +3689,7 @@ class SentenceGenerator:
             elif surface == "personas":
                 specs = [("noun_exact_people", ["muchas", "personas", "llegan"], 1)]
             elif surface == "hombres":
-                specs = [("noun_exact_men", ["muchos", "hombres", "llegan"], 1)]
+                specs = [("noun_exact_hombres", ["ellos", "son", "hombres"], 2)]
             elif surface == "chicos":
                 specs = [("noun_exact_boys", ["muchos", "chicos", "llegan"], 1)]
             elif surface == "ojos":
@@ -4041,17 +4111,17 @@ class SentenceGenerator:
         if target.pos == "n":
             if not self.noun_is_template_friendly(target):
                 return None
-            tgt_gender = self.safe_noun_gender(target.lemma, target.gender)
-            article = left if left in ARTICLE_SET else self.choose_article(tgt_gender, definite=True)
+            tgt_gender, tgt_number = self.requested_noun_features(target)
+            article = left if left in ARTICLE_SET else self.requested_noun_article(target, definite=True)
             right_lemma = self.lookup_lemma(right)
             right_lex = self.get_known_lexeme(right_lemma)
             if self.noun_supports_ser_adjective_template(target) and right_lex and right_lex.pos == "adj" and right_lex.rank <= allowed:
-                adj = self.inflect_adj(right_lex.lemma, tgt_gender)
-                tokens = [article, target.lemma, "es", adj]
+                adj = self.inflect_adj(right_lex.lemma, tgt_gender, tgt_number)
+                tokens = [article, target.lemma, self.requested_noun_copula(target, "ser"), adj]
                 return self.build_candidate(target, tokens, "seeded_noun_adj", "seeded_template", 1)
             if not self.noun_supports_here_template(target):
                 return None
-            tokens = [article, target.lemma, "está", "aquí"]
+            tokens = [article, target.lemma, self.requested_noun_copula(target, "estar"), "aquí"]
             return self.build_candidate(target, tokens, "seeded_noun_here", "seeded_template", 1)
 
         if target.pos == "v":
@@ -4072,26 +4142,30 @@ class SentenceGenerator:
             return None
 
         if target.pos == "adj":
-            allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(target.lemma))
+            allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(self.canonical_lemma_for(target)))
             if not allowed_classes:
                 return None
+            target_gender, target_number = self.infer_adjective_features(target.lemma)
             left_lemma = self.lookup_lemma(left)
             left_lex = self.get_known_lexeme(left_lemma)
             if (left_lex and left_lex.pos == "n" and left_lex.rank <= allowed
                     and self.noun_is_template_friendly(left_lex)
                     and normalize_token(left_lex.lemma) in STARTER_SAFE_SUPPORT_NOUNS_FOR_ADJ
                     and left_lex.semantic_class in allowed_classes
-                    and self.inflect_adj(target.lemma, self.safe_noun_gender(left_lex.lemma, left_lex.gender)) == target.lemma):
+                    and self.target_adjective_surface_for_noun(target, left_lex.lemma, self.safe_noun_gender(left_lex.lemma, left_lex.gender), target_number) == target.lemma):
                 noun = left_lex
-                article = self.choose_article(self.safe_noun_gender(noun.lemma, noun.gender), definite=True)
-                tokens = [article, noun.lemma, "es", target.lemma]
+                noun_gender = self.safe_noun_gender(noun.lemma, noun.gender)
+                article = self.choose_article(noun_gender, definite=True)
+                noun_surface = self.pluralize_noun(noun.lemma) if target_number == "pl" else noun.lemma
+                tokens = [article, noun_surface, "son" if target_number == "pl" else "es", target.lemma]
                 return self.build_candidate(target, tokens, "seeded_adj_noun", "seeded_template", 3)
             noun = self.pick_starter_safe_adj_support_noun(allowed, exclude={target.lemma})
             if noun and noun.semantic_class in allowed_classes:
                 noun_gender = self.safe_noun_gender(noun.lemma, noun.gender)
-                if self.inflect_adj(target.lemma, noun_gender) == target.lemma:
+                if self.target_adjective_surface_for_noun(target, noun.lemma, noun_gender, target_number) == target.lemma:
                     article = self.choose_article(noun_gender, definite=True)
-                    tokens = [article, noun.lemma, "es", target.lemma]
+                    noun_surface = self.pluralize_noun(noun.lemma) if target_number == "pl" else noun.lemma
+                    tokens = [article, noun_surface, "son" if target_number == "pl" else "es", target.lemma]
                     return self.build_candidate(target, tokens, "seeded_adj_fallback", "seeded_template", 3)
         return None
 
@@ -4107,6 +4181,7 @@ class SentenceGenerator:
         if target.pos == "n":
             if not self.noun_is_template_friendly(target):
                 return None
+            tgt_gender, tgt_number = self.requested_noun_features(target)
             if starter_mode:
                 choices = ["n_a1_1", "n_a1_2", "n_a1_3"]
             else:
@@ -4115,28 +4190,27 @@ class SentenceGenerator:
             if template == "n_a1_1":
                 if not self.noun_is_template_friendly(target):
                     return None
-                tgt_gender = self.safe_noun_gender(target.lemma, target.gender)
                 if starter_mode:
                     adj = self.pick_starter_compatible_adjective(allowed, target.semantic_class, exclude={target.lemma})
                 else:
                     adj = self.pick_compatible_adjective(allowed, target.semantic_class, exclude={target.lemma})
                 if not adj:
                     return None
-                article = self.choose_article(tgt_gender, definite=True)
-                tokens = [article, target.lemma, "es", self.inflect_adj(adj.lemma, tgt_gender)]
+                article = self.requested_noun_article(target, definite=True)
+                tokens = [article, target.lemma, self.requested_noun_copula(target, "ser"), self.inflect_adj(adj.lemma, tgt_gender, tgt_number)]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "n_a1_2":
                 if not self.noun_supports_here_template(target):
                     return None
-                article = self.choose_article(self.safe_noun_gender(target.lemma, target.gender), definite=True)
-                tokens = [article, target.lemma, "está", "aquí"]
+                article = self.requested_noun_article(target, definite=True)
+                tokens = [article, target.lemma, self.requested_noun_copula(target, "estar"), "aquí"]
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
             if template == "n_a1_3":
                 if not self.noun_supports_possession_template(target):
                     return None
                 subject = self.random.choice(["yo", "él", "ella"])
                 verb = self.conjugate_present("tener", "1sg" if subject == "yo" else "3sg")
-                article = self.choose_article(self.safe_noun_gender(target.lemma, target.gender), definite=False)
+                article = self.requested_noun_article(target, definite=False)
                 tokens = [subject, verb, article, target.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "n_b1_1":
@@ -4144,20 +4218,19 @@ class SentenceGenerator:
                 place = self.pick_safe_location_noun(allowed, exclude={target.lemma})
                 if not verb or not place:
                     return None
-                article = self.choose_article(self.safe_noun_gender(target.lemma, target.gender), definite=True)
+                article = self.requested_noun_article(target, definite=True)
                 place_article = self.choose_article(self.safe_noun_gender(place.lemma, place.gender), definite=True)
                 tokens = ["ella", self.conjugate_present(verb.lemma, "3sg"), article, target.lemma, "en", place_article, place.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "n_b1_2":
                 if not self.noun_supports_ser_adjective_template(target):
                     return None
-                tgt_gender = self.safe_noun_gender(target.lemma, target.gender)
                 adj = self.pick_compatible_adjective(allowed, target.semantic_class, exclude={target.lemma})
                 verb = self.pick_candidate("v", allowed, exclude={target.lemma, "ser", "estar", "tener"})
                 if not adj or not verb:
                     return None
-                article = self.choose_article(tgt_gender, definite=True)
-                tokens = [article, self.inflect_adj(adj.lemma, tgt_gender), target.lemma, self.conjugate_present(verb.lemma, "3sg")]
+                article = self.requested_noun_article(target, definite=True)
+                tokens = [article, self.inflect_adj(adj.lemma, tgt_gender, tgt_number), target.lemma, self.conjugate_present(verb.lemma, "3sg")]
                 return self.build_candidate(target, tokens, template, "template_generated", 2)
 
         if target.pos == "v":
@@ -4231,13 +4304,14 @@ class SentenceGenerator:
                 return self.build_candidate(target, tokens, template, "template_generated", 1)
 
         if target.pos == "adj":
+            target_gender, target_number = self.infer_adjective_features(target.lemma)
             choices = ["adj_a1_1", "adj_a1_3"] if profile.band in {"A1", "A2"} else ["adj_b1_1"]
             template = self.random.choice(choices)
             if template == "adj_a1_1":
-                pref_classes = ADJ_SUBJECT_PREFS.get(target.lemma)
+                pref_classes = ADJ_SUBJECT_PREFS.get(self.canonical_lemma_for(target))
                 noun = None
                 if starter_mode:
-                    allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(target.lemma))
+                    allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(self.canonical_lemma_for(target)))
                     if not allowed_classes:
                         return None
                     candidates_for_adj = [
@@ -4258,32 +4332,35 @@ class SentenceGenerator:
                 if not noun:
                     return None
                 noun_gender = self.safe_noun_gender(noun.lemma, noun.gender)
-                if self.inflect_adj(target.lemma, noun_gender) != target.lemma:
+                if self.target_adjective_surface_for_noun(target, noun.lemma, noun_gender, target_number) != target.lemma:
                     return None
                 article = self.choose_article(noun_gender, definite=True)
-                tokens = [article, noun.lemma, "es", target.lemma]
+                noun_surface = self.pluralize_noun(noun.lemma) if target_number == "pl" else noun.lemma
+                tokens = [article, noun_surface, "son" if target_number == "pl" else "es", target.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
             if template == "adj_a1_3":
                 if starter_mode:
-                    allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(target.lemma))
+                    allowed_classes = STARTER_ADJ_ALLOWED_NOUN_CLASSES.get(normalize_token(self.canonical_lemma_for(target)))
                     if not allowed_classes or "person" not in allowed_classes:
                         return None
                 subject = self.random.choice(["él"])
-                adj_form = self.inflect_adj_for_subject(target.lemma, subject)
+                adj_form = self.target_adjective_surface_for_noun(target, subject, SUBJECT_FEATURES.get(subject, {}).get("gender"), SUBJECT_FEATURES.get(subject, {}).get("number", "sg"))
                 if adj_form != target.lemma:
                     return None
-                tokens = [subject, "es", target.lemma]
+                tokens = [subject, "son" if target_number == "pl" else "es", target.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 2)
             if template == "adj_b1_1":
                 noun = self.pick_template_friendly_noun(allowed, exclude={target.lemma})
                 extra = self.pick_template_friendly_noun(allowed, semantic_classes=["place"], exclude={target.lemma, noun.lemma if noun else ""})
                 if not noun or not extra:
                     return None
-                if self.inflect_adj(target.lemma, noun.gender) != target.lemma:
+                noun_gender = self.safe_noun_gender(noun.lemma, noun.gender)
+                if self.target_adjective_surface_for_noun(target, noun.lemma, noun_gender, target_number) != target.lemma:
                     return None
-                article1 = self.choose_article(noun.gender, definite=True)
-                article2 = self.choose_article(extra.gender, definite=True)
-                tokens = [article1, noun.lemma, "es", target.lemma, "en", article2, extra.lemma]
+                article1 = self.choose_article(noun_gender, definite=True)
+                article2 = self.choose_article(self.safe_noun_gender(extra.lemma, extra.gender), definite=True)
+                noun_surface = self.pluralize_noun(noun.lemma) if target_number == "pl" else noun.lemma
+                tokens = [article1, noun_surface, "son" if target_number == "pl" else "es", target.lemma, "en", article2, extra.lemma]
                 return self.build_candidate(target, tokens, template, "template_generated", 3)
         return None
 

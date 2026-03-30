@@ -206,3 +206,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+outputs/with_learned_frames_review.csv
+outputs/with_learned_frames.csv
