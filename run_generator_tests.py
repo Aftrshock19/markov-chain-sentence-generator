@@ -168,6 +168,43 @@ class HybridSelectorTests(unittest.TestCase):
         self.assertEqual(chosen.template_id, "prep_exact_segun_el")
 
 
+class CanonicalRoutingIntegrationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.gen = SentenceGenerator("stg_words_spa.csv", "models", seed=42)
+        cls.hybrid = HybridSentenceGenerator("stg_words_spa.csv", "models", seed=42)
+
+    def test_inflected_requests_are_allowed_for_content_words(self):
+        for lemma in ("dice", "somos", "buena", "grandes", "hombres", "millones"):
+            with self.subTest(lemma=lemma):
+                target = self.gen.lexicon[lemma]
+                self.assertTrue(self.gen.requested_lemma_allows_inflected_target(target))
+
+    def test_function_words_remain_exact_surface_only(self):
+        target = self.gen.lexicon["vosotros"]
+        self.assertFalse(self.gen.requested_lemma_allows_inflected_target(target))
+
+    def test_template_support_accepts_inflected_content_targets(self):
+        for lemma in ("dice", "somos", "buena", "grandes", "hombres", "millones"):
+            with self.subTest(lemma=lemma):
+                target = self.gen.lexicon[lemma]
+                self.assertTrue(self.gen.can_template_target(target) or self.gen.has_exact_surface_template(target))
+
+    def test_hybrid_generation_covers_representative_inflected_forms(self):
+        expected = {
+            "dice": "decir",
+            "somos": "ser",
+            "buena": "bueno",
+            "hombres": "hombre",
+        }
+        for lemma, canonical in expected.items():
+            with self.subTest(lemma=lemma):
+                row = self.hybrid.generate_sentence_for_target(lemma, self.hybrid.lexicon[lemma].rank)
+                self.assertTrue(row["sentence"])
+                self.assertEqual(row["target_form"].lower(), lemma)
+                self.assertEqual(row["canonical_lemma"], canonical)
+
+
 class EvaluatorTests(unittest.TestCase):
     def test_compare_summaries_reports_delta(self):
         base = {"rows_in_scope": 10, "nonempty_rows": 7, "good_rows": 7, "bad_shipped_rows": 1, "no_candidate_rows": 3, "nonempty_rate": 0.7, "good_rate": 0.7, "bad_shipped_rate": 0.142857}
