@@ -29,7 +29,7 @@ lugar,172,n,n,1_1000,place,lugar,no_candidate_found,no_candidate_found,no_candid
 tres,176,num,num,1_1000,three,tres,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 claro,181,adj,adj,1_1000,clear; easily understood,claro,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mañana,184,n,n,1_1000,tomorrow,mañana,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-sr.,185,none,residual,1_1000,abbreviation of Señor,sr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+sr.,185,none,residual,1_1000,abbreviation of Señor,sr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 días,188,n,n,1_1000,days,día,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tanto,193,adv,adv,1_1000,so much,tanto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 nombre,216,n,n,1_1000,name,nombre,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -147,7 +147,7 @@ chicas,562,n,n,1_1000,female equivalent of chico: girl,chicas,no_candidate_found
 pensando,565,v,v,1_1000,to think; ponder,pensar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 través,571,n,n,1_1000,bend; turn,través,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 demás,582,pron,pron,1_1000,others; other ones,demás,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-sra.,583,none,residual,1_1000,abbreviation of señora,sra.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+sra.,583,none,residual,1_1000,abbreviation of señora,sra.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mil,585,num,num,1_1000,thousand (1000 units of something),mil,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 lleva,586,v,v,1_1000,to take; to take out,llevar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 necesitas,588,v,v,1_1000,to need,necesitar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -159,7 +159,7 @@ podrías,607,v,v,1_1000,to be able to; can,podrías,no_candidate_found,no_candid
 mucha,609,determiner,determiner,1_1000,much; a lot of,mucho,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 control,610,n,n,1_1000,control; or running of a business,control,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 llamado,615,adj,adj,1_1000,called,llamado,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-dr.,620,none,residual,1_1000,abbreviation of doctor,dr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+dr.,620,none,residual,1_1000,abbreviation of doctor,dr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 habían,623,v,v,1_1000,have,haber,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ambos,625,pron,pron,1_1000,both,ambos,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 habrá,626,v,v,1_1000,have,haber,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -177,7 +177,7 @@ público,662,adj,adj,1_1000,public,público,no_candidate_found,no_candidate_foun
 diga,671,v,v,1_1000,way to say hello on the telephone,decir,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 anoche,672,adv,adv,1_1000,last night,anoche,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 llamada,675,adj,adj,1_1000,call,llamado,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-ud.,676,none,residual,1_1000,abbreviation of usted,ud.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+ud.,676,none,residual,1_1000,abbreviation of usted,ud.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ésta,678,pron,pron,1_1000,this one,ésta,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 idiota,679,adj,adj,1_1000,idiotic,idiota,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 jugar,680,v,v,1_1000,to play,jugar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -200,11 +200,11 @@ vemos,728,v,v,1_1000,to see; to spot,ver,no_candidate_found,no_candidate_found,n
 compañía,730,n,n,1_1000,company,compañía,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 cambiar,731,v,v,1_1000,to change; to shift; to switch; to alter,cambiar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 pudo,736,v,v,1_1000,to be able to; can,poder,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-s,737,letter,letter,1_1000,letter,s,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+s,737,letter,letter,1_1000,letter,s,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 libertad,742,n,n,1_1000,liberty; freedom,libertad,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 alrededor,743,adv,adv,1_1000,around,alrededor,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 vio,744,v,v,1_1000,to see; to spot,ver,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-i,746,n,n,1_1000,letter,i,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+i,746,n,n,1_1000,letter,i,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 trabajando,750,v,v,1_1000,to work,trabajar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 agente,751,n,n,1_1000,agent,agente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 suena,756,v,v,1_1000,sound,sonar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -256,7 +256,7 @@ nuevos,914,adj,adj,1_1000,new,nuevo,no_candidate_found,no_candidate_found,no_can
 encanta,918,v,v,1_1000,charm; captivation,encantar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 adónde,922,adv,adv,1_1000,to where; whither; whereto,adónde,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 debido,925,adj,adj,1_1000,owed,debido,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-m,928,letter,letter,1_1000,letter,m,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+m,928,letter,letter,1_1000,letter,m,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 vosotros,930,pron,pron,1_1000,you; you guys,vosotros,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 fuiste,932,v,v,1_1000,to be,fuiste,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tipos,933,n,n,1_1000,tip,tipo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,

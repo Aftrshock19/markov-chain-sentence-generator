@@ -1,0 +1,1187 @@
+{
+  "summary": {
+    "rank_window": [
+      1,
+      1000
+    ],
+    "rows_in_scope": 979,
+    "effective_rows_in_scope": 979,
+    "excluded_by_policy_rows": 0,
+    "nonempty_rows": 739,
+    "good_rows": 739,
+    "bad_shipped_rows": 0,
+    "no_candidate_rows": 240,
+    "nonempty_rate": 0.7548518896833504,
+    "good_rate": 0.7548518896833504,
+    "bad_shipped_rate": 0.0,
+    "passes_locked_nonempty_rate": false,
+    "passes_locked_bad_shipped_rate": true
+  },
+  "family_breakdown": [
+    {
+      "family": "adj",
+      "total": 110,
+      "nonempty": 62,
+      "good": 62,
+      "bad_shipped": 0,
+      "missing": 48,
+      "nonempty_rate": 0.5636,
+      "good_rate": 0.5636,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "adv",
+      "total": 70,
+      "nonempty": 51,
+      "good": 51,
+      "bad_shipped": 0,
+      "missing": 19,
+      "nonempty_rate": 0.7286,
+      "good_rate": 0.7286,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "art",
+      "total": 2,
+      "nonempty": 2,
+      "good": 2,
+      "bad_shipped": 0,
+      "missing": 0,
+      "nonempty_rate": 1.0,
+      "good_rate": 1.0,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "conj",
+      "total": 13,
+      "nonempty": 8,
+      "good": 8,
+      "bad_shipped": 0,
+      "missing": 5,
+      "nonempty_rate": 0.6154,
+      "good_rate": 0.6154,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "contraction",
+      "total": 2,
+      "nonempty": 0,
+      "good": 0,
+      "bad_shipped": 0,
+      "missing": 2,
+      "nonempty_rate": 0.0,
+      "good_rate": 0.0,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "determiner",
+      "total": 45,
+      "nonempty": 42,
+      "good": 42,
+      "bad_shipped": 0,
+      "missing": 3,
+      "nonempty_rate": 0.9333,
+      "good_rate": 0.9333,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "interj",
+      "total": 4,
+      "nonempty": 1,
+      "good": 1,
+      "bad_shipped": 0,
+      "missing": 3,
+      "nonempty_rate": 0.25,
+      "good_rate": 0.25,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "n",
+      "total": 348,
+      "nonempty": 285,
+      "good": 285,
+      "bad_shipped": 0,
+      "missing": 63,
+      "nonempty_rate": 0.819,
+      "good_rate": 0.819,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "num",
+      "total": 11,
+      "nonempty": 8,
+      "good": 8,
+      "bad_shipped": 0,
+      "missing": 3,
+      "nonempty_rate": 0.7273,
+      "good_rate": 0.7273,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "prep",
+      "total": 18,
+      "nonempty": 11,
+      "good": 11,
+      "bad_shipped": 0,
+      "missing": 7,
+      "nonempty_rate": 0.6111,
+      "good_rate": 0.6111,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "pron",
+      "total": 44,
+      "nonempty": 39,
+      "good": 39,
+      "bad_shipped": 0,
+      "missing": 5,
+      "nonempty_rate": 0.8864,
+      "good_rate": 0.8864,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "prop",
+      "total": 3,
+      "nonempty": 3,
+      "good": 3,
+      "bad_shipped": 0,
+      "missing": 0,
+      "nonempty_rate": 1.0,
+      "good_rate": 1.0,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "residual",
+      "total": 12,
+      "nonempty": 0,
+      "good": 0,
+      "bad_shipped": 0,
+      "missing": 12,
+      "nonempty_rate": 0.0,
+      "good_rate": 0.0,
+      "bad_shipped_rate": 0.0
+    },
+    {
+      "family": "v",
+      "total": 297,
+      "nonempty": 227,
+      "good": 227,
+      "bad_shipped": 0,
+      "missing": 70,
+      "nonempty_rate": 0.7643,
+      "good_rate": 0.7643,
+      "bad_shipped_rate": 0.0
+    }
+  ],
+  "accepted_by_source_method": [
+    {
+      "source_method": "retrieved_corpus",
+      "template_id": "retrieved",
+      "count": 473
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "n_a1_1",
+      "count": 54
+    },
+    {
+      "source_method": "stochastic_decoder",
+      "template_id": "stochastic",
+      "count": 46
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "det_anchor_clear",
+      "count": 31
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_estar_place",
+      "count": 12
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_tener_obj",
+      "count": 10
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_subject_here",
+      "count": 8
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_poder_ir_place",
+      "count": 5
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_ser_adj",
+      "count": 5
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_verb_obj",
+      "count": 5
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_ir_place",
+      "count": 4
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_querer_obj",
+      "count": 4
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_adj_fallback",
+      "count": 3
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_saber_truth",
+      "count": 3
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_accompaniment_be",
+      "count": 3
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_creer_object",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "det_anchor_here",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "det_total_plural_pron",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_clitic_call",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_io_tell",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_prepositional_for",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_which_name",
+      "count": 2
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "v_a1_4",
+      "count": 2
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "noun_exact_say_thanks",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "noun_exact_turn",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_haber_existential",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "seeded_special_hacer_obj",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_da_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_dado_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_debemos_ir",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_debes_ir",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_debo_ir",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_decir_that",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_dicho",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_digo_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_dije_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_ha_do_that",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_haces_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_han_done_that",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_hemos_hecho",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_pense_eso",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_podria_ir",
+      "count": 1
+    },
+    {
+      "source_method": "seeded_template",
+      "template_id": "verb_exact_queda_aqui",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adj_a1_3",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_always_here",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_even_know",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_how_be",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_negation_go",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_only_go_home",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_so_good",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_then_go_home",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "adv_very_good",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "conj_and_clauses",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "conj_because_home",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "conj_but_cant",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "conj_or_time",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "det_quantity_plural",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "det_total_work",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "interj_here",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "num_indefinite_object",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_against",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_because_of_that",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_before",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_in_home",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_on_table",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_to_home",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "prep_without_him",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_clitic_leave",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_ello_object",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_exact_cualquiera",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_exact_esta",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_exact_este",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_exact_vosotros",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_neuter_for_you",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_neuter_like",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_object_see",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "pron_reflexive_for_self",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "v_a1_1",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "verb_exact_gustaria_ir",
+      "count": 1
+    },
+    {
+      "source_method": "template_generated",
+      "template_id": "verb_exact_haciendo_eso",
+      "count": 1
+    }
+  ],
+  "suspicious_by_source_method": [],
+  "top_missing_lemmas_by_family": [
+    {
+      "family": "adj",
+      "lemma": "mismo",
+      "rank": "134",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "gran",
+      "rank": "171",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "claro",
+      "rank": "181",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "buen",
+      "rank": "221",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "primera",
+      "rank": "249",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "cierto",
+      "rank": "250",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "nueva",
+      "rank": "277",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "mayor",
+      "rank": "296",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "misma",
+      "rank": "305",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "buenas",
+      "rank": "328",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "general",
+      "rank": "342",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "único",
+      "rank": "381",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "juntos",
+      "rank": "388",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "buenos",
+      "rank": "399",
+      "pos": "adj"
+    },
+    {
+      "family": "adj",
+      "lemma": "última",
+      "rank": "412",
+      "pos": "adj"
+    },
+    {
+      "family": "adv",
+      "lemma": "dónde",
+      "rank": "111",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "poco",
+      "rank": "130",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "menos",
+      "rank": "167",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "fuera",
+      "rank": "170",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "tanto",
+      "rank": "193",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "casi",
+      "rank": "269",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "quizá",
+      "rank": "327",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "además",
+      "rank": "335",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "pronto",
+      "rank": "343",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "incluso",
+      "rank": "355",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "ayer",
+      "rank": "372",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "bastante",
+      "rank": "418",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "cuándo",
+      "rank": "461",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "cuanto",
+      "rank": "472",
+      "pos": "adv"
+    },
+    {
+      "family": "adv",
+      "lemma": "probablemente",
+      "rank": "552",
+      "pos": "adv"
+    },
+    {
+      "family": "conj",
+      "lemma": "como",
+      "rank": "30",
+      "pos": "conj"
+    },
+    {
+      "family": "conj",
+      "lemma": "cuando",
+      "rank": "47",
+      "pos": "conj"
+    },
+    {
+      "family": "conj",
+      "lemma": "mientras",
+      "rank": "241",
+      "pos": "conj"
+    },
+    {
+      "family": "conj",
+      "lemma": "pues",
+      "rank": "255",
+      "pos": "conj"
+    },
+    {
+      "family": "conj",
+      "lemma": "sino",
+      "rank": "346",
+      "pos": "conj"
+    },
+    {
+      "family": "contraction",
+      "lemma": "del",
+      "rank": "21",
+      "pos": "contraction"
+    },
+    {
+      "family": "contraction",
+      "lemma": "al",
+      "rank": "28",
+      "pos": "contraction"
+    },
+    {
+      "family": "determiner",
+      "lemma": "mío",
+      "rank": "257",
+      "pos": "determiner"
+    },
+    {
+      "family": "determiner",
+      "lemma": "muchos",
+      "rank": "351",
+      "pos": "determiner"
+    },
+    {
+      "family": "determiner",
+      "lemma": "mucha",
+      "rank": "609",
+      "pos": "determiner"
+    },
+    {
+      "family": "interj",
+      "lemma": "hola",
+      "rank": "104",
+      "pos": "interj"
+    },
+    {
+      "family": "interj",
+      "lemma": "oh",
+      "rank": "117",
+      "pos": "interj"
+    },
+    {
+      "family": "interj",
+      "lemma": "uh",
+      "rank": "872",
+      "pos": "interj"
+    },
+    {
+      "family": "n",
+      "lemma": "noche",
+      "rank": "143",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "mis",
+      "rank": "147",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "parte",
+      "rank": "163",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "lugar",
+      "rank": "172",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "mañana",
+      "rank": "184",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "días",
+      "rank": "188",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "nombre",
+      "rank": "216",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "veces",
+      "rank": "218",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "mamá",
+      "rank": "219",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "pasado",
+      "rank": "227",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "personas",
+      "rank": "267",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "hombres",
+      "rank": "282",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "chicos",
+      "rank": "298",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "agua",
+      "rank": "304",
+      "pos": "n"
+    },
+    {
+      "family": "n",
+      "lemma": "fin",
+      "rank": "312",
+      "pos": "n"
+    },
+    {
+      "family": "num",
+      "lemma": "uno",
+      "rank": "120",
+      "pos": "num"
+    },
+    {
+      "family": "num",
+      "lemma": "tres",
+      "rank": "176",
+      "pos": "num"
+    },
+    {
+      "family": "num",
+      "lemma": "mil",
+      "rank": "585",
+      "pos": "num"
+    },
+    {
+      "family": "prep",
+      "lemma": "de",
+      "rank": "1",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "hasta",
+      "rank": "98",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "entre",
+      "rank": "142",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "durante",
+      "rank": "222",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "bajo",
+      "rank": "321",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "según",
+      "rank": "377",
+      "pos": "prep"
+    },
+    {
+      "family": "prep",
+      "lemma": "tras",
+      "rank": "475",
+      "pos": "prep"
+    },
+    {
+      "family": "pron",
+      "lemma": "que",
+      "rank": "2",
+      "pos": "pron"
+    },
+    {
+      "family": "pron",
+      "lemma": "las",
+      "rank": "20",
+      "pos": "pron"
+    },
+    {
+      "family": "pron",
+      "lemma": "demás",
+      "rank": "582",
+      "pos": "pron"
+    },
+    {
+      "family": "pron",
+      "lemma": "ambos",
+      "rank": "625",
+      "pos": "pron"
+    },
+    {
+      "family": "pron",
+      "lemma": "quienes",
+      "rank": "876",
+      "pos": "pron"
+    },
+    {
+      "family": "residual",
+      "lemma": "sr.",
+      "rank": "185",
+      "pos": "none"
+    },
+    {
+      "family": "residual",
+      "lemma": "eh",
+      "rank": "278",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "ah",
+      "rank": "325",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "hey",
+      "rank": "437",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "mas",
+      "rank": "464",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "auto",
+      "rank": "521",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "sra.",
+      "rank": "583",
+      "pos": "none"
+    },
+    {
+      "family": "residual",
+      "lemma": "dr.",
+      "rank": "620",
+      "pos": "none"
+    },
+    {
+      "family": "residual",
+      "lemma": "ud.",
+      "rank": "676",
+      "pos": "none"
+    },
+    {
+      "family": "residual",
+      "lemma": "srta.",
+      "rank": "809",
+      "pos": "none"
+    },
+    {
+      "family": "residual",
+      "lemma": "ay",
+      "rank": "843",
+      "pos": ""
+    },
+    {
+      "family": "residual",
+      "lemma": "ex",
+      "rank": "950",
+      "pos": ""
+    },
+    {
+      "family": "v",
+      "lemma": "son",
+      "rank": "70",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "eres",
+      "rank": "96",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "siento",
+      "rank": "122",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "había",
+      "rank": "123",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "espera",
+      "rank": "203",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "ven",
+      "rank": "273",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "hablando",
+      "rank": "358",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "deja",
+      "rank": "393",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "ves",
+      "rank": "394",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "eran",
+      "rank": "400",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "dar",
+      "rank": "410",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "podía",
+      "rank": "411",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "tomar",
+      "rank": "419",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "venga",
+      "rank": "450",
+      "pos": "v"
+    },
+    {
+      "family": "v",
+      "lemma": "toma",
+      "rank": "453",
+      "pos": "v"
+    }
+  ],
+  "top_failure_clusters": [
+    {
+      "cluster": "no_candidate",
+      "count": 240
+    }
+  ]
+}

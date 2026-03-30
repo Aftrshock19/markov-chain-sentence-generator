@@ -56,7 +56,7 @@ def enrich(row: Dict[str, str]) -> Dict[str, object]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Turn an old hybrid batch into a reusable coverage backlog.")
     parser.add_argument("--batch", required=True, help="Path to the old hybrid batch CSV.")
-    parser.add_argument("--out-dir", default="coverage_backlog", help="Directory for backlog exports.")
+    parser.add_argument("--out-dir", default="backlog_out", help="Directory for backlog exports.")
     args = parser.parse_args()
 
     batch_path = Path(args.batch)
@@ -115,6 +115,18 @@ def main() -> None:
         "fragile_family_under_1000": sum(
             1 for row in no_candidate_rows if row["family"] in FUNCTION_WORD_FAMILIES and 1 <= row["rank"] <= 1000
         ),
+        "fragile_family_misses_under_1000": [
+            {"lemma": row["lemma"], "rank": row["rank"], "family": row["family"]}
+            for row in no_candidate_rows
+            if row["family"] in FUNCTION_WORD_FAMILIES and 1 <= row["rank"] <= 1000
+        ][:100],
+        "no_candidate_by_family_and_rank_block": {
+            f"{family}:{block}": count
+            for (family, block), count in sorted(
+                by_family_block.items(),
+                key=lambda item: (item[0][1], -item[1], item[0][0]),
+            )
+        },
         "top_missing_surfaces": [
             {"lemma": row["lemma"], "rank": row["rank"], "family": row["family"]}
             for row in no_candidate_rows[:100]

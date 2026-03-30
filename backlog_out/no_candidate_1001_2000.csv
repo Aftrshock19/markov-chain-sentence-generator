@@ -20,7 +20,7 @@ dulce,1046,n,n,1001_2000,sweet,dulce,no_candidate_found,no_candidate_found,no_ca
 vieja,1048,adj,adj,1001_2000,female equivalent of viejo,viejo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 luis,1058,,residual,1001_2000,louis,luis,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 acabó,1059,v,v,1001_2000,synonym of acabamiento,acabar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-c,1060,letter,letter,1001_2000,letter,c,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+c,1060,letter,letter,1001_2000,letter,c,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 primeros,1064,adj,adj,1001_2000,first; first up,primero,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tom,1065,none,residual,1001_2000,tom,tom,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 humanos,1066,adj,adj,1001_2000,tamale,humano,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -96,7 +96,7 @@ estrella,1304,n,n,1001_2000,star,estrella,no_candidate_found,no_candidate_found,
 órdenes,1310,n,n,1001_2000,order,órdenes,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 hablamos,1314,v,v,1001_2000,to talk,hablar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ése,1316,pron,pron,1001_2000,that one,ése,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-d,1317,letter,letter,1001_2000,letter,d,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+d,1317,letter,letter,1001_2000,letter,d,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 cartas,1318,n,n,1001_2000,letter,carta,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 grupos,1320,n,n,1001_2000,group,grupo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 asuntos,1323,n,n,1001_2000,matter; issue; business,asunto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -104,7 +104,7 @@ nombres,1324,n,n,1001_2000,name,nombre,no_candidate_found,no_candidate_found,no_
 teniendo,1329,v,v,1001_2000,to have,tener,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 james,1336,none,residual,1001_2000,james,james,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 pesetas,1340,n,n,1001_2000,peseta,pesetas,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-b,1342,letter,letter,1001_2000,letter: be,b,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+b,1342,letter,letter,1001_2000,letter: be,b,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 té,1344,n,n,1001_2000,tea,té,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 sabías,1358,v,v,1001_2000,to know; to understand,sabías,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 daré,1360,v,v,1001_2000,to give; to give out,dar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -185,7 +185,7 @@ hayas,1575,v,v,1001_2000,have,hayas,no_candidate_found,no_candidate_found,no_can
 existen,1577,v,v,1001_2000,to exist,existir,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 llevas,1579,v,v,1001_2000,to take; to take out,llevar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 propios,1586,adj,adj,1001_2000,tip,propio,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-t,1587,n,n,1001_2000,letter,t,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+t,1587,n,n,1001_2000,letter,t,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 animal,1592,n,n,1001_2000,animal,animal,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ambiente,1595,n,n,1001_2000,atmosphere,ambiente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tomando,1604,v,v,1001_2000,to take,tomar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -205,7 +205,7 @@ ia,1649,n,n,1001_2000,initialism of inteligencia artificial (AI (artificial inte
 haberlo,1653,v,v,1001_2000,have,haberlo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 puedan,1655,v,v,1001_2000,to be able to; can,poder,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 policías,1660,n,n,1001_2000,Civility; polity; public order; police; fineness; neatness; urbanity,policía,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-n,1664,letter,letter,1001_2000,letter,n,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+n,1664,letter,letter,1001_2000,letter,n,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 ambas,1665,adj,adj,1001_2000,acronym of Área Metropolitana de Buenos Aires,ambos,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 trabajadores,1666,n,n,1001_2000,hard-working,trabajador,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 despierta,1669,v,v,1001_2000,awake,despertar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -244,7 +244,7 @@ dura,1783,adj,adj,1001_2000,hard,duro,no_candidate_found,no_candidate_found,no_c
 muere,1791,v,v,1001_2000,to die,morir,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 conseguido,1794,v,v,1001_2000,achieved,conseguir,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 preocupado,1795,adj,adj,1001_2000,worried; concerned,preocupado,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-p,1799,letter,letter,1001_2000,letter,p,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+p,1799,letter,letter,1001_2000,letter,p,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 extraña,1804,adj,adj,1001_2000,female equivalent of extraño,extraño,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 últimas,1807,adj,adj,1001_2000,final,último,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 dispuesto,1813,adj,adj,1001_2000,willing; ready; game; down,dispuesto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,

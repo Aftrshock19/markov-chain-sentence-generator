@@ -370,26 +370,6 @@ SAFE_TEMPLATE_REVIEW_OVERRIDES = {
     "pron_clitic_call",
     "verb_exact_ha_do_that",
 }
-SAFE_TEMPLATE_REVIEW_PREFIXES = (
-    "prep_exact_",
-    "contraction_exact_",
-    "conj_exact_",
-    "pron_exact_",
-    "determiner_exact_",
-    "num_exact_",
-    "interj_exact_",
-    "residual_exact_",
-    "verb_exact_",
-    "noun_exact_",
-    "adj_exact_",
-)
-EXACT_COPULA_TEMPLATE_IDS = {
-    "adj_exact_claro",
-    "adj_exact_cierto",
-    "adj_exact_mayor",
-    "adj_exact_mismo",
-    "adj_exact_unico",
-}
 
 
 @dataclass
@@ -1054,38 +1034,14 @@ class SentenceGenerator:
             i += 1
         return out
 
-    def infer_surface_canonical_verb(self, lex: Lexeme) -> Optional[str]:
-        if lex.pos != "v":
-            return None
-        surface = normalize_token(lex.lemma)
-        if not surface:
-            return None
-        candidates: List[str] = []
-        for lemma in self.form_to_lemmas.get(surface, []):
-            known = self.get_known_lexeme(lemma)
-            if not known or known.pos != "v":
-                continue
-            if any(normalize_token(entry.get("form", "")) == surface for entry in self.lemma_forms.get(lemma, [])):
-                candidates.append(lemma)
-        if not candidates:
-            return None
-        preferred = normalize_token(lex.canonical_lemma or "")
-        if preferred:
-            for lemma in candidates:
-                if normalize_token(lemma) == preferred:
-                    return lemma
-        return min(candidates, key=lambda lemma: self.get_known_lexeme(lemma).rank if self.get_known_lexeme(lemma) else 99999)
-
     def canonical_lemma_for(self, lex: Lexeme) -> str:
         canonical = lex.canonical_lemma or lex.lemma
+        if normalize_token(canonical) == normalize_token(lex.lemma):
+            return canonical
         surface = normalize_token(lex.lemma)
-        if normalize_token(canonical) != surface:
-            if any(normalize_token(entry.get("form", "")) == surface for entry in self.lemma_forms.get(canonical, [])):
-                return canonical
-        inferred = self.infer_surface_canonical_verb(lex)
-        if inferred:
-            return inferred
-        return canonical
+        if any(normalize_token(entry.get("form", "")) == surface for entry in self.lemma_forms.get(canonical, [])):
+            return canonical
+        return lex.lemma
 
     def target_form_metadata(self, lex: Lexeme) -> Dict[str, str]:
         canonical = self.canonical_lemma_for(lex)
@@ -1356,29 +1312,6 @@ class SentenceGenerator:
             return morph
         return {k: v for k, v in morph.items() if k in allowed}
 
-    def fallback_nonverb_request_morph(self, target: Lexeme, surface: str) -> Dict[str, str]:
-        info = self.surface_analysis(surface)
-        inferred: Dict[str, str] = {}
-        if target.pos == "n":
-            gender = info.get("gender") or target.gender or self.infer_noun_gender(target.lemma)
-            number = info.get("number")
-            if not number:
-                normalized = normalize_token(surface)
-                number = "pl" if normalized.endswith("s") and normalized not in {"lunes", "crisis", "tesis", "análisis"} else "sg"
-            if gender:
-                inferred["Gender"] = "Fem" if gender == "f" else "Masc"
-            if number:
-                inferred["Number"] = "Plur" if number == "pl" else "Sing"
-            return inferred
-        if target.pos == "adj":
-            gender, number = self.infer_adjective_features(surface)
-            if gender:
-                inferred["Gender"] = "Fem" if gender == "f" else "Masc"
-            if number:
-                inferred["Number"] = "Plur" if number == "pl" else "Sing"
-            return inferred
-        return inferred
-
     def _parse_morph_str(self, morph_str: str) -> Dict[str, str]:
         if not morph_str:
             return {}
@@ -1413,12 +1346,6 @@ class SentenceGenerator:
                 if target.pos == "v" and not self.verb_morph_is_complete(morph):
                     return ""
                 matching.append(morph)
-        if target.pos != "v":
-            matching = [morph for morph in matching if self.safe_nonverb_morph(morph, target.pos)]
-        if not matching and target.pos != "v":
-            fallback = self.fallback_nonverb_request_morph(target, surface)
-            if fallback:
-                matching.append(fallback)
         if not matching:
             return ""
         if target.pos == "v":
@@ -1437,9 +1364,6 @@ class SentenceGenerator:
         safe_sigs = set(self.morph_signature(m) for m in safe)
         if len(safe_sigs) == 1:
             return self.morph_signature(safe[0])
-        fallback = self.fallback_nonverb_request_morph(target, surface)
-        if fallback:
-            return self.morph_signature(fallback)
         return ""
 
     def surface_matches_requested_target(self, target: Lexeme, surface: str) -> bool:
@@ -1649,11 +1573,11 @@ class SentenceGenerator:
         self, words: List[str], target_word_idx: int = -1, target_morph_override: Optional[Dict[str, str]] = None
     ) -> int:
         for idx, token in enumerate(words):
+            if self.lookup_pos(token) != "v":
+                continue
             if idx == target_word_idx and target_morph_override is not None:
                 morph = target_morph_override
             else:
-                if self.lookup_pos(token) != "v":
-                    continue
                 morph = self.surface_morph(token)
             if morph.get("VerbForm") == "Fin":
                 return idx
@@ -2476,7 +2400,7 @@ class SentenceGenerator:
         if len(finite_indices) < 2:
             return False
         lowered = [normalize_token(word) for word in words]
-        bridges = COORDINATING_CONJUNCTIONS | SUBORDINATING_CONJUNCTIONS | {"que", "pues"}
+        bridges = COORDINATING_CONJUNCTIONS | SUBORDINATING_CONJUNCTIONS | {"que"}
         soft_tokens = {
             "no", "ya", "también", "tambien",
             "me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les",
@@ -3001,10 +2925,7 @@ class SentenceGenerator:
         return max(max_allowed, cap_max), max(avg_allowed, cap_avg)
 
     def review_override_template(self, candidate: Candidate) -> bool:
-        return (
-            candidate.template_id in SAFE_TEMPLATE_REVIEW_OVERRIDES
-            or candidate.template_id.startswith(SAFE_TEMPLATE_REVIEW_PREFIXES)
-        )
+        return candidate.template_id in SAFE_TEMPLATE_REVIEW_OVERRIDES
 
     def haber_perfect_surface_ok(self, candidate: Candidate, words: List[str]) -> bool:
         target = self.lexicon.get(candidate.lemma)
@@ -3033,169 +2954,6 @@ class SentenceGenerator:
             return True
         return part_lemma == "hacer"
 
-    def haber_existential_surface_ok(
-        self,
-        candidate: Candidate,
-        words: List[str],
-        target_morph_override: Optional[Dict[str, str]],
-    ) -> bool:
-        if not words or not target_morph_override:
-            return False
-        if self.canonical_lemma_for(self.lexicon.get(candidate.lemma) or Lexeme("", 0, "")) != "haber":
-            return False
-        noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
-        if not noun_surface:
-            return False
-        noun = self.surface_analysis(noun_surface)
-        if noun["semantic_class"] in BAD_EXISTENTIAL_CLASSES:
-            return False
-        mood = target_morph_override.get("Mood")
-        tense = target_morph_override.get("Tense")
-        target_form = normalize_token(candidate.target_form or candidate.lemma)
-        return target_form == "hay" or tense == "Imp" or mood == "Sub"
-
-    def exact_copula_template_allowed(self, candidate: Candidate, words: List[str]) -> bool:
-        if candidate.template_id not in EXACT_COPULA_TEMPLATE_IDS:
-            return False
-        patterns = {
-            "adj_exact_claro": ["eso", "está", "claro"],
-            "adj_exact_cierto": ["eso", "es", "cierto"],
-            "adj_exact_mayor": ["ella", "es", "mayor"],
-            "adj_exact_mismo": ["es", "lo", "mismo"],
-            "adj_exact_unico": ["es", "el", "único", "día"],
-        }
-        lowered = [normalize_token(word) for word in words]
-        return lowered == patterns.get(candidate.template_id, [])
-
-    def exact_surface_template_specs(self, target: Lexeme) -> List[Tuple[str, List[str], int]]:
-        surface = normalize_token(target.lemma)
-        family = self.normalized_pos_family(target)
-
-        if family == "prep":
-            return {
-                "de": [("prep_exact_de_work", ["hablo", "de", "mi", "trabajo"], 1)],
-                "a": [("prep_exact_a_home", ["voy", "a", "casa"], 1)],
-                "hasta": [("prep_exact_hasta_home", ["voy", "hasta", "casa"], 1)],
-                "entre": [("prep_exact_entre_dos", ["está", "entre", "dos"], 1)],
-                "durante": [("prep_exact_durante_day", ["trabajo", "durante", "el", "día"], 1)],
-                "bajo": [("prep_exact_bajo_eso", ["está", "bajo", "eso"], 1)],
-                "según": [("prep_exact_segun_el", ["según", "él", "es", "verdad"], 0)],
-                "tras": [("prep_exact_tras_eso", ["va", "tras", "eso"], 1)],
-            }.get(surface, [])
-
-        if family == "contraction":
-            return {
-                "del": [("contraction_exact_del_day", ["es", "parte", "del", "día"], 2)],
-                "al": [("contraction_exact_al_work", ["voy", "al", "trabajo"], 1)],
-            }.get(surface, [])
-
-        if family == "conj":
-            return {
-                "y": [("conj_exact_y_go", ["yo", "voy", "y", "él", "va"], 2)],
-                "o": [("conj_exact_o_time", ["voy", "hoy", "o", "mañana"], 2)],
-                "como": [("conj_exact_como_tu", ["lo", "hago", "como", "tú"], 2)],
-                "cuando": [("conj_exact_cuando_puedo", ["voy", "cuando", "puedo"], 1)],
-                "mientras": [("conj_exact_mientras_here", ["yo", "voy", "mientras", "tú", "estás", "aquí"], 2)],
-                "pues": [("conj_exact_pues_tarde", ["no", "voy", "pues", "es", "tarde"], 2)],
-                "sino": [("conj_exact_sino_two", ["no", "es", "uno", "sino", "dos"], 3)],
-            }.get(surface, [])
-
-        if family == "pron":
-            return {
-                "que": [("pron_exact_que_clause", ["sé", "que", "es", "verdad"], 1)],
-                "las": [("pron_exact_las_have", ["yo", "las", "tengo"], 1)],
-            }.get(surface, [])
-
-        if family in {"determiner", "art"}:
-            return {
-                "mío": [("determiner_exact_mio", ["eso", "es", "mío"], 2)],
-                "muchos": [("determiner_exact_muchos", ["muchos", "van", "hoy"], 0)],
-                "mucha": [("determiner_exact_mucha", ["hay", "mucha", "agua"], 1)],
-            }.get(surface, [])
-
-        if family == "interj":
-            return {
-                "hola": [("interj_exact_hola", ["hola", ",", "ya", "voy"], 0)],
-                "oh": [("interj_exact_oh", ["oh", ",", "ya", "voy"], 0)],
-                "uh": [("interj_exact_uh", ["uh", ",", "ya", "voy"], 0)],
-            }.get(surface, [])
-
-        if family == "num":
-            return {
-                "uno": [("num_exact_uno", ["uno", "va", "hoy"], 0)],
-                "tres": [("num_exact_tres", ["son", "tres", "días"], 1)],
-                "mil": [("num_exact_mil", ["son", "mil", "días"], 1)],
-            }.get(surface, [])
-
-        if family == "residual":
-            return {
-                "sr": [("residual_exact_sr", [target.lemma, "va", "antes", "del", "nombre"], 0)],
-                "sra": [("residual_exact_sra", [target.lemma, "va", "antes", "del", "nombre"], 0)],
-                "dr": [("residual_exact_dr", [target.lemma, "va", "antes", "del", "nombre"], 0)],
-                "srta": [("residual_exact_srta", [target.lemma, "va", "antes", "del", "nombre"], 0)],
-                "ud": [("residual_exact_ud", [target.lemma, "va", "hoy"], 0)],
-                "eh": [("residual_exact_eh", ["eh", ",", "ya", "voy"], 0)],
-                "ah": [("residual_exact_ah", ["ah", ",", "ya", "voy"], 0)],
-                "hey": [("residual_exact_hey", ["hey", ",", "ya", "voy"], 0)],
-                "ay": [("residual_exact_ay", ["ay", ",", "ya", "voy"], 0)],
-                "mas": [("residual_exact_mas", ["quiero", "ir", "mas", "no", "puedo"], 2)],
-                "ex": [("residual_exact_ex", ["mi", "ex", "va", "hoy"], 1)],
-                "auto": [("residual_exact_auto", ["voy", "en", "auto"], 2)],
-            }.get(surface, [])
-
-        if target.pos == "v":
-            return {
-                "son": [("verb_exact_son_buenos", ["ellos", "son", "buenos"], 1)],
-                "soy": [("verb_exact_soy_de_aqui", ["yo", "soy", "de", "aquí"], 1)],
-                "eres": [("verb_exact_eres_bueno", ["tú", "eres", "bueno"], 1)],
-                "hace": [("verb_exact_hace_eso", ["ella", "hace", "eso"], 1)],
-                "siento": [("verb_exact_siento_mucho", ["lo", "siento", "mucho"], 1)],
-                "había": [("verb_exact_habia_casa", ["había", "una", "casa"], 0)],
-                "ven": [("verb_exact_ven_see", ["ellos", "ven", "eso"], 1)],
-                "hablando": [("verb_exact_hablando_aqui", ["estoy", "hablando", "aquí"], 1)],
-                "deja": [("verb_exact_deja_eso", ["deja", "eso", "aquí"], 0)],
-                "ves": [("verb_exact_ves_eso", ["tú", "ves", "eso"], 1)],
-                "eran": [("verb_exact_eran_amigos", ["ellos", "eran", "amigos"], 1)],
-                "haya": [("verb_exact_haya_agua", ["quiero", "que", "haya", "agua"], 2)],
-                "dar": [("verb_exact_dar_eso", ["quiero", "dar", "eso"], 1)],
-                "podía": [("verb_exact_podia_ir", ["ella", "podía", "ir"], 1)],
-                "tomar": [("verb_exact_tomar_agua", ["quiero", "tomar", "agua"], 1)],
-            }.get(surface, [])
-
-        if target.pos == "adj":
-            return {
-                "mismo": [("adj_exact_mismo", ["es", "lo", "mismo"], 2)],
-                "gran": [("adj_exact_gran", ["tengo", "un", "gran", "día"], 2)],
-                "claro": [("adj_exact_claro", ["eso", "está", "claro"], 2)],
-                "buen": [("adj_exact_buen", ["tengo", "un", "buen", "día"], 2)],
-                "primera": [("adj_exact_primera", ["quiero", "la", "primera", "casa"], 2)],
-                "cierto": [("adj_exact_cierto", ["eso", "es", "cierto"], 2)],
-                "nueva": [("adj_exact_nueva", ["tengo", "una", "casa", "nueva"], 3)],
-                "mayor": [("adj_exact_mayor", ["ella", "es", "mayor"], 2)],
-                "misma": [("adj_exact_misma", ["tengo", "la", "misma", "casa"], 2)],
-                "buenas": [("adj_exact_buenas", ["tengo", "buenas", "casas"], 1)],
-                "general": [("adj_exact_general", ["tengo", "una", "idea", "general"], 3)],
-                "único": [("adj_exact_unico", ["es", "el", "único", "día"], 2)],
-                "juntos": [("adj_exact_juntos", ["hoy", "vamos", "juntos"], 2)],
-                "buenos": [("adj_exact_buenos", ["tengo", "buenos", "amigos"], 1)],
-            }.get(surface, [])
-
-        if target.pos == "n":
-            return {
-                "noche": [("noun_exact_noche", ["es", "de", "noche"], 2)],
-                "parte": [("noun_exact_part", ["es", "parte", "de", "eso"], 1)],
-                "lugar": [("noun_exact_place", ["es", "un", "lugar", "seguro"], 2)],
-                "mañana": [("noun_exact_morning", ["es", "por", "la", "mañana"], 3)],
-                "días": [("noun_exact_days", ["son", "tres", "días"], 2)],
-                "nombre": [("noun_exact_name", ["ese", "nombre", "es", "mío"], 1)],
-                "veces": [("noun_exact_times", ["yo", "voy", "a", "veces"], 3)],
-                "mamá": [("noun_exact_mama", ["mi", "mamá", "va", "hoy"], 1)],
-                "agua": [("noun_exact_water", ["hay", "agua", "hoy"], 1)],
-                "fin": [("noun_exact_end", ["es", "el", "fin"], 2)],
-            }.get(surface, [])
-
-        return []
-
     def exact_surface_template_candidate(
         self,
         target: Lexeme,
@@ -3203,42 +2961,63 @@ class SentenceGenerator:
     ) -> Optional[Candidate]:
         surface = normalize_token(target.lemma)
         canonical = normalize_token(self.canonical_lemma_for(target))
-        specs: List[Tuple[str, List[str], int]] = self.exact_surface_template_specs(target)
-
-        for template_id, tokens, target_index in specs:
-            cand = self.build_candidate(target, tokens, template_id, source_method, target_index)
-            if cand:
-                return cand
-
-        specs = []
+        specs: List[Tuple[str, List[str], int]] = []
 
         if target.pos == "v":
             if surface == "ha" and canonical == "haber":
                 specs = [("verb_exact_ha_do_that", ["ha", "hecho", "eso"], 0)]
             elif surface == "han" and canonical == "haber":
                 specs = [("verb_exact_han_done_that", ["han", "hecho", "eso"], 0)]
+            elif surface == "había" and canonical == "haber":
+                specs = [("verb_exact_habia_problem", ["había", "un", "problema"], 0)]
+            elif surface == "haya" and canonical == "haber":
+                specs = [("verb_exact_haya_tiempo", ["ojalá", "haya", "tiempo"], 1)]
             elif surface == "será" and canonical == "ser":
                 specs = [("verb_exact_sera_dificil", ["será", "difícil"], 0)]
             elif surface == "sé" and canonical == "saber":
                 specs = [("verb_exact_se_know_that", ["yo", "sé", "eso"], 1)]
+            elif surface == "soy" and canonical == "ser":
+                specs = [("verb_exact_soy_feliz", ["yo", "soy", "feliz"], 1)]
+            elif surface == "eres" and canonical == "ser":
+                specs = [("verb_exact_eres_bueno", ["tú", "eres", "bueno"], 1)]
+            elif surface == "son" and canonical == "ser":
+                specs = [("verb_exact_son_buenos", ["ellos", "son", "buenos"], 1)]
+            elif surface == "eran" and canonical == "ser":
+                specs = [("verb_exact_eran_amigos", ["eran", "amigos"], 0)]
+            elif surface == "hace" and canonical == "hacer":
+                specs = [("verb_exact_hace_plan", ["ella", "hace", "un", "plan"], 1)]
             elif surface == "decir" and canonical == "decir":
                 specs = [("verb_exact_decir_that", ["quiero", "decir", "eso"], 1)]
+            elif surface == "siento" and canonical == "sentir":
+                specs = [("verb_exact_lo_siento", ["lo", "siento"], 1)]
             elif surface == "sea" and canonical == "ser":
                 specs = [("verb_exact_sea_claro", ["quiero", "que", "sea", "claro"], 2)]
             elif surface == "sido" and canonical == "ser":
                 specs = [("verb_exact_sido_dificil", ["ha", "sido", "difícil"], 1)]
+            elif surface == "podría" and canonical == "poder":
+                specs = [("verb_exact_podria_ir", ["ella", "podría", "ir"], 1)]
             elif surface == "haciendo" and canonical == "hacer":
                 specs = [("verb_exact_haciendo_eso", ["ella", "está", "haciendo", "eso"], 2)]
+            elif surface == "hablando" and canonical == "hablar":
+                specs = [("verb_exact_hablando", ["estoy", "hablando"], 1)]
             elif surface == "haces" and canonical == "hacer":
                 specs = [("verb_exact_haces_eso", ["tú", "haces", "eso"], 1)]
             elif surface == "hemos" and canonical == "haber":
                 specs = [("verb_exact_hemos_hecho", ["hemos", "hecho", "eso"], 0)]
             elif surface == "debo" and canonical == "deber":
                 specs = [("verb_exact_debo_ir", ["yo", "debo", "ir"], 1)]
+            elif surface == "ven" and canonical == "venir":
+                specs = [("verb_exact_ven_aqui", ["ven", "aquí"], 0)]
             elif surface == "ve" and canonical == "ver":
                 specs = [("verb_exact_ve_eso", ["ve", "eso"], 0)]
+            elif surface == "ves" and canonical == "ver":
+                specs = [("verb_exact_ves_eso", ["ves", "eso"], 0)]
             elif surface == "da" and canonical == "dar":
                 specs = [("verb_exact_da_eso", ["ella", "da", "eso"], 1)]
+            elif surface == "dar" and canonical == "dar":
+                specs = [("verb_exact_dar_eso", ["quiero", "dar", "eso"], 1)]
+            elif surface == "deja" and canonical == "dejar":
+                specs = [("verb_exact_deja_eso", ["deja", "eso"], 0)]
             elif surface == "digo" and canonical == "decir":
                 specs = [("verb_exact_digo_eso", ["yo", "digo", "eso"], 1)]
             elif surface == "pensé" and canonical == "pensar":
@@ -3247,6 +3026,36 @@ class SentenceGenerator:
                 specs = [("verb_exact_dije_eso", ["yo", "dije", "eso"], 1)]
             elif surface == "dicho" and canonical == "decir":
                 specs = [("verb_exact_dicho", ["lo", "he", "dicho"], 2)]
+            elif surface == "gustaría" and canonical == "gustar":
+                specs = [("verb_exact_gustaria_ir", ["me", "gustaría", "ir"], 1)]
+            elif surface == "venga" and canonical == "venir":
+                specs = [("verb_exact_venga", ["quiero", "que", "venga"], 2)]
+            elif surface == "toma" and canonical == "tomar":
+                specs = [("verb_exact_toma_agua", ["toma", "agua"], 0)]
+            elif surface == "debes" and canonical == "deber":
+                specs = [("verb_exact_debes_ir", ["tú", "debes", "ir"], 1)]
+            elif surface == "escucha" and canonical == "escuchar":
+                specs = [("verb_exact_escucha_eso", ["escucha", "eso", "ahora"], 0)]
+            elif surface == "hago" and canonical == "hacer":
+                specs = [("verb_exact_hago_comida", ["yo", "hago", "comida"], 1)]
+            elif surface == "debemos" and canonical == "deber":
+                specs = [("verb_exact_debemos_ir", ["nosotros", "debemos", "ir"], 1)]
+            elif surface == "hacen" and canonical == "hacer":
+                specs = [("verb_exact_hacen_comida", ["ellos", "hacen", "comida"], 1)]
+            elif surface == "esté" and canonical == "estar":
+                specs = [("verb_exact_este_aqui", ["quiero", "que", "esté", "aquí"], 2)]
+            elif surface == "dado" and canonical == "dar":
+                specs = [("verb_exact_dado_eso", ["he", "dado", "eso"], 1)]
+            elif surface == "queda" and canonical == "quedar":
+                specs = [("verb_exact_queda_aqui", ["queda", "aquí", "hoy"], 0)]
+            elif surface == "deberías" and canonical == "deber":
+                specs = [("verb_exact_deberias_ir", ["tú", "deberías", "ir"], 1)]
+            elif surface == "habría" and canonical == "haber":
+                specs = [("verb_exact_habria_hecho", ["habría", "hecho", "eso"], 0)]
+            elif surface == "diciendo" and canonical == "decir":
+                specs = [("verb_exact_diciendo_eso", ["estoy", "diciendo", "eso"], 1)]
+            elif surface == "comer" and canonical == "comer":
+                specs = [("verb_exact_comer_pan", ["quiero", "comer", "pan"], 1)]
         elif target.pos == "n":
             if surface == "vez":
                 specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
@@ -3304,6 +3113,20 @@ class SentenceGenerator:
                 specs = [("noun_exact_past", ["el", "pasado", "importa"], 1)]
             elif surface == "pronto":
                 specs = [("noun_exact_soon", ["hasta", "pronto"], 1)]
+            elif surface == "millones":
+                specs = [("noun_exact_millions", ["son", "millones"], 1)]
+            elif surface == "mujeres":
+                specs = [("noun_exact_women", ["muchas", "mujeres", "llegan"], 1)]
+            elif surface == "meses":
+                specs = [("noun_exact_months", ["pasan", "meses"], 1)]
+            elif surface == "esposa":
+                specs = [("noun_exact_wife", ["mi", "esposa", "está", "aquí"], 1)]
+            elif surface == "dólares":
+                specs = [("noun_exact_dollars", ["yo", "necesito", "dólares"], 2)]
+            elif surface == "palabras":
+                specs = [("noun_exact_words", ["esas", "son", "palabras"], 2)]
+            elif surface == "chicas":
+                specs = [("noun_exact_girls", ["muchas", "chicas", "llegan"], 1)]
         elif target.pos == "adj":
             if surface == "gran":
                 specs = [("adj_exact_gran", ["es", "un", "gran", "día"], 2)]
@@ -3335,6 +3158,85 @@ class SentenceGenerator:
                 specs = [("adj_exact_ultima", ["es", "la", "última"], 2)]
             elif surface == "general":
                 specs = [("adj_exact_general", ["es", "general"], 1)]
+            elif surface == "buena":
+                specs = [("adj_exact_buena", ["es", "buena"], 1)]
+            elif surface == "último":
+                specs = [("adj_exact_ultimo", ["es", "el", "último"], 2)]
+            elif surface == "grandes":
+                specs = [("adj_exact_grandes", ["son", "grandes"], 1)]
+            elif surface == "única":
+                specs = [("adj_exact_unica", ["es", "la", "única"], 2)]
+            elif surface == "nacional":
+                specs = [("adj_exact_nacional", ["es", "nacional"], 1)]
+            elif surface == "pequeña":
+                specs = [("adj_exact_pequena", ["es", "pequeña"], 1)]
+            elif surface == "ok":
+                specs = [("adj_exact_ok", ["está", "ok"], 1)]
+            elif surface == "propia":
+                specs = [("adj_exact_propia", ["es", "propia"], 1)]
+            elif surface == "propio":
+                specs = [("adj_exact_propio", ["es", "propio"], 1)]
+            elif surface == "llamado":
+                specs = [("adj_exact_llamado", ["es", "llamado", "Juan"], 1)]
+            elif surface == "junto":
+                specs = [("adj_exact_junto", ["está", "junto"], 1)]
+            elif surface == "público":
+                specs = [("adj_exact_publico", ["es", "público"], 1)]
+            elif surface == "llamada":
+                specs = [("adj_exact_llamada", ["es", "llamada", "Ana"], 1)]
+            elif surface == "unidos":
+                specs = [("adj_exact_unidos", ["están", "unidos"], 1)]
+        elif target.pos == "adv":
+            if surface in {"dónde", "donde"}:
+                specs = [("adv_exact_donde", ["¿", surface, "está", "ella", "?"], 1)]
+            elif surface == "poco":
+                specs = [("adv_exact_poco", ["trabajo", "poco", "hoy"], 1)]
+            elif surface == "menos":
+                specs = [("adv_exact_menos", ["trabajo", "menos", "hoy"], 1)]
+            elif surface == "fuera":
+                specs = [("adv_exact_fuera", ["vive", "fuera", "ahora"], 1)]
+            elif surface == "tanto":
+                specs = [("adv_exact_tanto", ["no", "trabajo", "tanto"], 2)]
+            elif surface in {"quizá", "quizas"}:
+                specs = [("adv_exact_quiza", [surface, "viene", "hoy"], 0)]
+            elif surface == "además":
+                specs = [("adv_exact_ademas", ["además", "viene", "hoy"], 0)]
+            elif surface == "pronto":
+                specs = [("adv_exact_pronto", ["yo", "vuelvo", "pronto"], 2)]
+            elif surface == "incluso":
+                specs = [("adv_exact_incluso", ["incluso", "él", "viene"], 0)]
+            elif surface == "ayer":
+                specs = [("adv_exact_ayer", ["ayer", "fui", "a", "casa"], 0)]
+            elif surface == "bastante":
+                specs = [("adv_exact_bastante", ["trabajo", "bastante", "hoy"], 1)]
+            elif surface in {"cuándo", "cuando"}:
+                specs = [("adv_exact_cuando", ["¿", surface, "vienes", "?"], 1)]
+            elif surface == "cuanto":
+                specs = [("adv_exact_cuanto", ["no", "sé", "cuanto", "vale"], 2)]
+            elif surface == "probablemente":
+                specs = [("adv_exact_probablemente", ["probablemente", "viene", "hoy"], 0)]
+            elif surface == "anoche":
+                specs = [("adv_exact_anoche", ["anoche", "llegué", "tarde"], 0)]
+        elif target.pos == "pron":
+            if surface in {"éste", "este"}:
+                specs = [("pron_exact_este", [target.lemma, "es", "bueno"], 0)]
+            elif surface in {"ésta", "esta"}:
+                specs = [("pron_exact_esta", [target.lemma, "es", "buena"], 0)]
+            elif surface == "demás":
+                specs = [("pron_exact_demas", ["los", "demás", "vienen"], 1)]
+            elif surface == "ambos":
+                specs = [("pron_exact_ambos", ["ambos", "vienen", "hoy"], 0)]
+            elif surface == "quienes":
+                specs = [("pron_exact_quienes", ["quienes", "vienen", "hoy"], 0)]
+            elif surface == "cualquiera":
+                specs = [("pron_exact_cualquiera", ["cualquiera", "viene", "hoy"], 0)]
+            elif surface == "vosotros":
+                specs = [("pron_exact_vosotros", ["es", "para", "vosotros"], 2)]
+        elif target.pos == "prep":
+            if surface == "durante":
+                specs = [("prep_exact_durante_dia", ["trabajo", "durante", "el", "día"], 1)]
+            elif surface == "según":
+                specs = [("prep_exact_segun_el", ["según", "él", "es", "verdad"], 0)]
         elif target.pos in {"interj", "none", ""} or self.normalized_pos_family(target) in {"interj", "residual"}:
             if surface == "hola":
                 specs = [("interj_exact_hola", ["hola", ",", "ella", "está", "aquí"], 0)]
@@ -3366,7 +3268,6 @@ class SentenceGenerator:
         allowed = allowed_support_rank(candidate.rank, profile)
         allowed, avg_allowed = self.support_rank_caps(candidate, profile, allowed, profile.avg_ceil)
         penalties: List[float] = []
-        exact_adj_template = candidate.template_id.startswith("adj_exact_")
         if not self.candidate_target_matches_request(candidate):
             return False, penalties
         words = self.word_tokens(candidate.sentence)
@@ -3449,9 +3350,8 @@ class SentenceGenerator:
                     noun = self.surface_analysis(noun_surface or "")
                     if noun["semantic_class"] in BAD_EXISTENTIAL_CLASSES:
                         return False, penalties
-                finite_haber_existential = self.haber_existential_surface_ok(candidate, words, target_morph_override)
                 if canonical == "haber" and words and words[0] != "hay" and not self.haber_perfect_surface_ok(candidate, words):
-                    if not finite_haber_existential:
+                    if not (target_morph_override and target_morph_override.get("Tense") == "Imp" and words and normalize_token(words[0]) == normalize_token(candidate.target_form)):
                         return False, penalties
                 noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
                 if canonical == "haber" and self.haber_perfect_surface_ok(candidate, words):
@@ -3460,8 +3360,6 @@ class SentenceGenerator:
                     part_lemma = normalize_token(self.lookup_lemma(participle) or participle)
                     if noun_surface and not self.verb_object_is_semantically_safe(part_lemma, noun_surface):
                         return False, penalties
-                elif canonical == "haber" and finite_haber_existential:
-                    noun_surface = self.first_following_noun(words, candidate.target_index if candidate.target_index >= 0 else 0)
                 elif not self.verb_object_is_semantically_safe(canonical, noun_surface):
                     return False, penalties
                 if canonical in {"ir", "poder"} and noun_surface and not self.destination_is_safe(noun_surface):
@@ -3473,19 +3371,9 @@ class SentenceGenerator:
                 return False, penalties
             if target and self.lookup_lemma(words[1] if len(words) > 1 else "") == target.lemma and " es " in candidate.sentence.lower() and not self.noun_is_template_friendly(target):
                 return False, penalties
-        if (
-            candidate.pos == "adj"
-            and candidate.source_method != "retrieved_corpus"
-            and normalize_token(candidate.lemma) in APOCOPATED_ADJECTIVE_FEATURES
-            and not exact_adj_template
-        ):
+        if candidate.pos == "adj" and candidate.source_method != "retrieved_corpus" and normalize_token(candidate.lemma) in APOCOPATED_ADJECTIVE_FEATURES:
             return False, penalties
-        if (
-            candidate.pos == "adj"
-            and candidate.source_method != "retrieved_corpus"
-            and not self.adjective_target_is_template_friendly(target or self.lexicon.get(candidate.lemma))
-            and not exact_adj_template
-        ):
+        if candidate.pos == "adj" and candidate.source_method != "retrieved_corpus" and not self.adjective_target_is_template_friendly(target or self.lexicon.get(candidate.lemma)):
             return False, penalties
         if self.standalone_subjunctive_without_trigger(words, finite_verb_index, target_word_idx, target_morph_override):
             return False, penalties
@@ -3498,7 +3386,7 @@ class SentenceGenerator:
         strategy_reasons = self.strategy_validation_reasons(candidate, words, finite_verb_index)
         if strategy_reasons:
             return False, penalties
-        if self.bad_copula_output(words) and not self.exact_copula_template_allowed(candidate, words):
+        if self.bad_copula_output(words):
             return False, penalties
         coherence_reasons = self.universal_coherence_reasons(words)
         if coherence_reasons:
@@ -4112,18 +4000,8 @@ class SentenceGenerator:
                 return self._build_from_specs(
                     target,
                     [
-                        ("adv_almost_time", ["ya", "es", "casi", "hora"], 2),
-                        ("adv_almost_two", ["ya", "casi", "son", "las", "dos"], 1),
-                    ],
-                    seeded=seeded,
-                    emergency=emergency,
-                )
-            if surface == "alrededor":
-                return self._build_from_specs(
-                    target,
-                    [
-                        ("adv_around_me", ["todo", "está", "a", "mi", "alrededor"], 4),
-                        ("adv_look_around", ["mira", "a", "tu", "alrededor"], 3),
+                        ("adv_almost_ready", ["ya", "casi", "está"], 1),
+                        ("adv_almost_home", ["ya", "casi", "llego"], 1),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -4584,8 +4462,8 @@ class SentenceGenerator:
                 ]
             elif surface == "hasta":
                 specs = [
-                    ("prep_until_home", ["voy", "hasta", "casa"], 1),
-                    ("prep_until_here", ["estoy", "aquí", "hasta", "mañana"], 2),
+                    ("prep_until_today", ["trabajo", "hasta", "hoy"], 1),
+                    ("prep_until_tomorrow", ["espero", "hasta", "mañana"], 1),
                 ]
             elif surface == "entre":
                 specs = [

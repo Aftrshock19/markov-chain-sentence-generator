@@ -27,6 +27,434 @@
     "outside_1_5000": 32
   },
   "fragile_family_under_1000": 73,
+  "fragile_family_misses_under_1000": [
+    {
+      "lemma": "de",
+      "rank": 1,
+      "family": "prep"
+    },
+    {
+      "lemma": "que",
+      "rank": 2,
+      "family": "pron"
+    },
+    {
+      "lemma": "las",
+      "rank": 20,
+      "family": "pron"
+    },
+    {
+      "lemma": "del",
+      "rank": 21,
+      "family": "contraction"
+    },
+    {
+      "lemma": "al",
+      "rank": 28,
+      "family": "contraction"
+    },
+    {
+      "lemma": "como",
+      "rank": 30,
+      "family": "conj"
+    },
+    {
+      "lemma": "cuando",
+      "rank": 47,
+      "family": "conj"
+    },
+    {
+      "lemma": "hasta",
+      "rank": 98,
+      "family": "prep"
+    },
+    {
+      "lemma": "hola",
+      "rank": 104,
+      "family": "interj"
+    },
+    {
+      "lemma": "dónde",
+      "rank": 111,
+      "family": "adv"
+    },
+    {
+      "lemma": "oh",
+      "rank": 117,
+      "family": "interj"
+    },
+    {
+      "lemma": "uno",
+      "rank": 120,
+      "family": "num"
+    },
+    {
+      "lemma": "poco",
+      "rank": 130,
+      "family": "adv"
+    },
+    {
+      "lemma": "entre",
+      "rank": 142,
+      "family": "prep"
+    },
+    {
+      "lemma": "menos",
+      "rank": 167,
+      "family": "adv"
+    },
+    {
+      "lemma": "fuera",
+      "rank": 170,
+      "family": "adv"
+    },
+    {
+      "lemma": "tres",
+      "rank": 176,
+      "family": "num"
+    },
+    {
+      "lemma": "sr.",
+      "rank": 185,
+      "family": "residual"
+    },
+    {
+      "lemma": "tanto",
+      "rank": 193,
+      "family": "adv"
+    },
+    {
+      "lemma": "durante",
+      "rank": 222,
+      "family": "prep"
+    },
+    {
+      "lemma": "mientras",
+      "rank": 241,
+      "family": "conj"
+    },
+    {
+      "lemma": "pues",
+      "rank": 255,
+      "family": "conj"
+    },
+    {
+      "lemma": "mío",
+      "rank": 257,
+      "family": "determiner"
+    },
+    {
+      "lemma": "casi",
+      "rank": 269,
+      "family": "adv"
+    },
+    {
+      "lemma": "eh",
+      "rank": 278,
+      "family": "residual"
+    },
+    {
+      "lemma": "bajo",
+      "rank": 321,
+      "family": "prep"
+    },
+    {
+      "lemma": "ah",
+      "rank": 325,
+      "family": "residual"
+    },
+    {
+      "lemma": "quizá",
+      "rank": 327,
+      "family": "adv"
+    },
+    {
+      "lemma": "además",
+      "rank": 335,
+      "family": "adv"
+    },
+    {
+      "lemma": "pronto",
+      "rank": 343,
+      "family": "adv"
+    },
+    {
+      "lemma": "sino",
+      "rank": 346,
+      "family": "conj"
+    },
+    {
+      "lemma": "muchos",
+      "rank": 351,
+      "family": "determiner"
+    },
+    {
+      "lemma": "incluso",
+      "rank": 355,
+      "family": "adv"
+    },
+    {
+      "lemma": "siquiera",
+      "rank": 360,
+      "family": "adv"
+    },
+    {
+      "lemma": "ayer",
+      "rank": 372,
+      "family": "adv"
+    },
+    {
+      "lemma": "según",
+      "rank": 377,
+      "family": "prep"
+    },
+    {
+      "lemma": "bastante",
+      "rank": 418,
+      "family": "adv"
+    },
+    {
+      "lemma": "cual",
+      "rank": 431,
+      "family": "pron"
+    },
+    {
+      "lemma": "hey",
+      "rank": 437,
+      "family": "residual"
+    },
+    {
+      "lemma": "cuándo",
+      "rank": 461,
+      "family": "adv"
+    },
+    {
+      "lemma": "mas",
+      "rank": 464,
+      "family": "residual"
+    },
+    {
+      "lemma": "cuanto",
+      "rank": 472,
+      "family": "adv"
+    },
+    {
+      "lemma": "tras",
+      "rank": 475,
+      "family": "prep"
+    },
+    {
+      "lemma": "auto",
+      "rank": 521,
+      "family": "residual"
+    },
+    {
+      "lemma": "probablemente",
+      "rank": 552,
+      "family": "adv"
+    },
+    {
+      "lemma": "éste",
+      "rank": 554,
+      "family": "pron"
+    },
+    {
+      "lemma": "demás",
+      "rank": 582,
+      "family": "pron"
+    },
+    {
+      "lemma": "sra.",
+      "rank": 583,
+      "family": "residual"
+    },
+    {
+      "lemma": "mil",
+      "rank": 585,
+      "family": "num"
+    },
+    {
+      "lemma": "mucha",
+      "rank": 609,
+      "family": "determiner"
+    },
+    {
+      "lemma": "dr.",
+      "rank": 620,
+      "family": "residual"
+    },
+    {
+      "lemma": "ambos",
+      "rank": 625,
+      "family": "pron"
+    },
+    {
+      "lemma": "san",
+      "rank": 643,
+      "family": "residual"
+    },
+    {
+      "lemma": "john",
+      "rank": 652,
+      "family": "residual"
+    },
+    {
+      "lemma": "anoche",
+      "rank": 672,
+      "family": "adv"
+    },
+    {
+      "lemma": "ud.",
+      "rank": 676,
+      "family": "residual"
+    },
+    {
+      "lemma": "ésta",
+      "rank": 678,
+      "family": "pron"
+    },
+    {
+      "lemma": "juan",
+      "rank": 727,
+      "family": "residual"
+    },
+    {
+      "lemma": "s",
+      "rank": 737,
+      "family": "letter"
+    },
+    {
+      "lemma": "alrededor",
+      "rank": 743,
+      "family": "adv"
+    },
+    {
+      "lemma": "aqui",
+      "rank": 758,
+      "family": "adv"
+    },
+    {
+      "lemma": "jack",
+      "rank": 771,
+      "family": "residual"
+    },
+    {
+      "lemma": "maría",
+      "rank": 794,
+      "family": "residual"
+    },
+    {
+      "lemma": "srta.",
+      "rank": 809,
+      "family": "residual"
+    },
+    {
+      "lemma": "ay",
+      "rank": 843,
+      "family": "residual"
+    },
+    {
+      "lemma": "uh",
+      "rank": 872,
+      "family": "interj"
+    },
+    {
+      "lemma": "quienes",
+      "rank": 876,
+      "family": "pron"
+    },
+    {
+      "lemma": "cualquiera",
+      "rank": 901,
+      "family": "pron"
+    },
+    {
+      "lemma": "adónde",
+      "rank": 922,
+      "family": "adv"
+    },
+    {
+      "lemma": "m",
+      "rank": 928,
+      "family": "letter"
+    },
+    {
+      "lemma": "vosotros",
+      "rank": 930,
+      "family": "pron"
+    },
+    {
+      "lemma": "ex",
+      "rank": 950,
+      "family": "residual"
+    },
+    {
+      "lemma": "michael",
+      "rank": 982,
+      "family": "residual"
+    }
+  ],
+  "no_candidate_by_family_and_rank_block": {
+    "v:1001_2000": 97,
+    "n:1001_2000": 96,
+    "adj:1001_2000": 69,
+    "residual:1001_2000": 22,
+    "pron:1001_2000": 7,
+    "letter:1001_2000": 5,
+    "adv:1001_2000": 4,
+    "determiner:1001_2000": 2,
+    "prep:1001_2000": 2,
+    "interj:1001_2000": 1,
+    "num:1001_2000": 1,
+    "v:1_1000": 86,
+    "n:1_1000": 70,
+    "adj:1_1000": 48,
+    "adv:1_1000": 20,
+    "residual:1_1000": 18,
+    "pron:1_1000": 10,
+    "prep:1_1000": 7,
+    "conj:1_1000": 5,
+    "determiner:1_1000": 3,
+    "interj:1_1000": 3,
+    "num:1_1000": 3,
+    "contraction:1_1000": 2,
+    "letter:1_1000": 2,
+    "prop:1_1000": 1,
+    "n:2001_3000": 114,
+    "v:2001_3000": 112,
+    "adj:2001_3000": 73,
+    "residual:2001_3000": 26,
+    "letter:2001_3000": 7,
+    "adv:2001_3000": 6,
+    "determiner:2001_3000": 3,
+    "pron:2001_3000": 2,
+    "prop:2001_3000": 2,
+    "interj:2001_3000": 1,
+    "num:2001_3000": 1,
+    "v:3001_4000": 120,
+    "n:3001_4000": 84,
+    "adj:3001_4000": 73,
+    "residual:3001_4000": 28,
+    "interj:3001_4000": 6,
+    "determiner:3001_4000": 4,
+    "adv:3001_4000": 3,
+    "prop:3001_4000": 3,
+    "pron:3001_4000": 1,
+    "v:4001_5000": 119,
+    "adj:4001_5000": 75,
+    "n:4001_5000": 74,
+    "residual:4001_5000": 33,
+    "adv:4001_5000": 2,
+    "interj:4001_5000": 2,
+    "conj:4001_5000": 1,
+    "determiner:4001_5000": 1,
+    "pron:4001_5000": 1,
+    "prop:4001_5000": 1,
+    "v:outside_1_5000": 13,
+    "n:outside_1_5000": 9,
+    "adj:outside_1_5000": 7,
+    "residual:outside_1_5000": 3
+  },
   "top_missing_surfaces": [
     {
       "lemma": "de",

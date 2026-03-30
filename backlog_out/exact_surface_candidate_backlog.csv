@@ -16,7 +16,7 @@ entre,142,prep,prep,1_1000,between,entre,no_candidate_found,no_candidate_found,n
 menos,167,adv,adv,1_1000,less; fewer,menos,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 fuera,170,adv,adv,1_1000,outside,fuera,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tres,176,num,num,1_1000,three,tres,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-sr.,185,none,residual,1_1000,abbreviation of Señor,sr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+sr.,185,none,residual,1_1000,abbreviation of Señor,sr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tanto,193,adv,adv,1_1000,so much,tanto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 durante,222,prep,prep,1_1000,during; in; over,durante,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mientras,241,conj,conj,1_1000,while; whilst; as,mientras,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -46,18 +46,18 @@ auto,521,,residual,1_1000,car; automobile,auto,no_candidate_found,no_candidate_f
 probablemente,552,adv,adv,1_1000,probably; likely,probablemente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 éste,554,pron,pron,1_1000,this one,éste,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 demás,582,pron,pron,1_1000,others; other ones,demás,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-sra.,583,none,residual,1_1000,abbreviation of señora,sra.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+sra.,583,none,residual,1_1000,abbreviation of señora,sra.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mil,585,num,num,1_1000,thousand (1000 units of something),mil,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mucha,609,determiner,determiner,1_1000,much; a lot of,mucho,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-dr.,620,none,residual,1_1000,abbreviation of doctor,dr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+dr.,620,none,residual,1_1000,abbreviation of doctor,dr.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ambos,625,pron,pron,1_1000,both,ambos,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 san,643,,residual,1_1000,Saint,san,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 john,652,none,residual,1_1000,john,john,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 anoche,672,adv,adv,1_1000,last night,anoche,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-ud.,676,none,residual,1_1000,abbreviation of usted,ud.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+ud.,676,none,residual,1_1000,abbreviation of usted,ud.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ésta,678,pron,pron,1_1000,this one,ésta,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 juan,727,,residual,1_1000,John,juan,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-s,737,letter,letter,1_1000,letter,s,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+s,737,letter,letter,1_1000,letter,s,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 alrededor,743,adv,adv,1_1000,around,alrededor,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 aqui,758,adv,adv,1_1000,here,aqui,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 jack,771,none,residual,1_1000,jack,jack,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -68,7 +68,7 @@ uh,872,interj,interj,1_1000,used to express disappointment or disdain,uh,no_cand
 quienes,876,pron,pron,1_1000,who,quien,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 cualquiera,901,pron,pron,1_1000,anyone; whoever; whomever,cualquiera,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 adónde,922,adv,adv,1_1000,to where; whither; whereto,adónde,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-m,928,letter,letter,1_1000,letter,m,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+m,928,letter,letter,1_1000,letter,m,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 vosotros,930,pron,pron,1_1000,you; you guys,vosotros,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ex,950,,residual,1_1000,former; ex-,ex,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 michael,982,none,residual,1_1000,michael,michael,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -78,7 +78,7 @@ especialmente,1025,adv,adv,1001_2000,specially,especialmente,no_candidate_found,
 george,1029,none,residual,1001_2000,george,george,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ninguno,1039,pron,pron,1001_2000,no,ninguno,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 luis,1058,,residual,1001_2000,louis,luis,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-c,1060,letter,letter,1001_2000,letter,c,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+c,1060,letter,letter,1001_2000,letter,c,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 tom,1065,none,residual,1001_2000,tom,tom,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 jesús,1098,interj,interj,1001_2000,Jesus,jesús,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ciento,1129,num,num,1001_2000,hundred,ciento,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -87,9 +87,9 @@ parís,1164,,residual,1001_2000,Paris,parís,no_candidate_found,no_candidate_fou
 debajo,1201,prep,prep,1001_2000,below; under,debajo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 peter,1245,none,residual,1001_2000,peter,peter,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ése,1316,pron,pron,1001_2000,that one,ése,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-d,1317,letter,letter,1001_2000,letter,d,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+d,1317,letter,letter,1001_2000,letter,d,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 james,1336,none,residual,1001_2000,james,james,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-b,1342,letter,letter,1001_2000,letter: be,b,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+b,1342,letter,letter,1001_2000,letter: be,b,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 alguno,1394,pron,pron,1001_2000,some; any,alguno,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 francisco,1453,,residual,1001_2000,given name,francisco,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mediante,1462,prep,prep,1001_2000,by means of; through; using,mediante,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -102,12 +102,12 @@ ojalá,1552,adv,adv,1001_2000,hopefully,ojalá,no_candidate_found,no_candidate_f
 bob,1614,,residual,1001_2000,bob; bob haircut,bob,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 alex,1634,none,residual,1001_2000,alex,alex,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 etc,1641,none,residual,1001_2000,etc,etc,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-n,1664,letter,letter,1001_2000,letter,n,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+n,1664,letter,letter,1001_2000,letter,n,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 cuyo,1694,determiner,determiner,1001_2000,whose,cuyo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 cuántas,1769,determiner,determiner,1001_2000,how many,cuántas,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 quiénes,1773,pron,pron,1001_2000,whom? (what person,quién,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ésa,1779,pron,pron,1001_2000,acronym of Educación Secundaria Obligatoria,ésa,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-p,1799,letter,letter,1001_2000,letter,p,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+p,1799,letter,letter,1001_2000,letter,p,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 gay,1816,,residual,1001_2000,gay; homosexual,gay,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 robert,1822,none,residual,1001_2000,robert,robert,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 roma,1830,,residual,1001_2000,Rome,roma,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -119,15 +119,15 @@ mark,1980,none,residual,1001_2000,mark,mark,no_candidate_found,no_candidate_foun
 show,2049,,residual,2001_3000,show; spectacle,show,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 martin,2128,none,residual,2001_3000,martin,martin,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 tv,2149,,residual,2001_3000,TV,tv,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-g,2193,letter,letter,2001_3000,letter,g,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
-uds.,2202,none,residual,2001_3000,oud [from late-19th c.],uds.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+g,2193,letter,letter,2001_3000,letter,g,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+uds.,2202,none,residual,2001_3000,oud [from late-19th c.],uds.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 cuba,2225,,residual,2001_3000,barrel,cuba,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 video,2226,,residual,2001_3000,video rental shop,video,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-l,2294,letter,letter,2001_3000,letter,l,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+l,2294,letter,letter,2001_3000,letter,l,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 éstos,2304,pron,pron,2001_3000,this one,éstos,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 dra.,2314,none,residual,2001_3000,abbreviation of doctora,dra.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 actualmente,2337,adv,adv,2001_3000,at present; currently; now; nowadays,actualmente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-r,2363,letter,letter,2001_3000,letter,r,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+r,2363,letter,letter,2001_3000,letter,r,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 thomas,2367,none,residual,2001_3000,thomas,thomas,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ahi,2368,adv,adv,2001_3000,there: used to designate a place near the listener,ahi,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 felipe,2388,,residual,2001_3000,Philip,felipe,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -136,7 +136,7 @@ cero,2412,num,num,2001_3000,zero,cero,no_candidate_found,no_candidate_found,no_c
 igualmente,2432,adv,adv,2001_3000,equally,igualmente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 rock,2437,,residual,2001_3000,rock,rock,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 anna,2447,none,residual,2001_3000,anna,anna,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-j,2451,letter,letter,2001_3000,letter,j,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+j,2451,letter,letter,2001_3000,letter,j,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 jorge,2463,,residual,2001_3000,cockchafer,jorge,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ciertas,2504,determiner,determiner,2001_3000,a certain; a specific,cierto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 santiago,2510,,residual,2001_3000,James,santiago,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -150,7 +150,7 @@ sheriff,2632,,residual,2001_3000,sheriff,sheriff,no_candidate_found,no_candidate
 sexy,2641,,residual,2001_3000,sexy,sexy,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ana,2694,,residual,2001_3000,Ana; given name,ana,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 wow,2735,interj,interj,2001_3000,wow,wow,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-v,2792,letter,letter,2001_3000,letter,v,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+v,2792,letter,letter,2001_3000,letter,v,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 poca,2844,determiner,determiner,2001_3000,tad,poco,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 alan,2892,none,residual,2001_3000,alan,alan,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 asimismo,2896,adv,adv,2001_3000,likewise,asimismo,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -158,8 +158,8 @@ autos,2902,,residual,2001_3000,authorisation for therapeutic use,autos,no_candid
 éstas,2908,pron,pron,2001_3000,this one,éstas,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 enrique,2909,,residual,2001_3000,given name,enrique,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 smith,2912,none,residual,2001_3000,smith,smith,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-x,2918,letter,letter,2001_3000,X,x,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
-h,2932,letter,letter,2001_3000,letter,h,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+x,2918,letter,letter,2001_3000,X,x,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+h,2932,letter,letter,2001_3000,letter,h,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 naturalmente,2944,adv,adv,2001_3000,naturally; of course,naturalmente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 diego,2982,,residual,2001_3000,given name,diego,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 grace,3001,none,residual,3001_4000,grace,grace,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -171,7 +171,7 @@ cuantas,3065,determiner,determiner,3001_4000,whatever quantity; as much; however
 ey,3067,,residual,3001_4000,hey!,ey,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 simon,3068,none,residual,3001_4000,simon,simon,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ramón,3106,,residual,3001_4000,breadnut,ramón,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-f,3139,interj,interj,3001_4000,bad luck,f,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+f,3139,interj,interj,3001_4000,bad luck,f,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 jean,3203,,residual,3001_4000,jeans,jean,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 jackson,3210,none,residual,3001_4000,jackson,jackson,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 carmen,3211,,residual,3001_4000,a type of house in Granada,carmen,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -210,7 +210,7 @@ valencia,4101,,residual,4001_5000,valency; valence,valencia,no_candidate_found,n
 tina,4105,,residual,4001_5000,vat,tina,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 oliver,4133,none,residual,4001_5000,oliver,oliver,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 mm,4163,,residual,4001_5000,abbreviation of milímetro,mm,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-ó,4172,conj,conj,4001_5000,{{es-sup sp|o|2010|between numerals}},ó,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
+ó,4172,conj,conj,4001_5000,{{es-sup sp|o|2010|between numerals}},ó,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 diana,4175,,residual,4001_5000,bullseye,diana,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 adios,4182,interj,interj,4001_5000,Anglicization of adiós,adios,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 lewis,4211,none,residual,4001_5000,lewis,lewis,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,

@@ -1,0 +1,21 @@
+rows_in_scope: 979
+nonempty_rows: 837
+good_rows: 837
+bad_shipped_rows: 0
+no_candidate_rows: 142
+nonempty_rate: 0.8550
+good_rate: 0.8550
+bad_shipped_rate: 0.0000
+passes_locked_nonempty_rate: False
+passes_locked_bad_shipped_rate: True
+comparison:
+  rows_in_scope: before=979 after=979 delta=0
+  effective_rows_in_scope: before=979 after=979 delta=0
+  excluded_by_policy_rows: before=0 after=0 delta=0
+  nonempty_rows: before=837 after=837 delta=0
+  good_rows: before=834 after=837 delta=3
+  bad_shipped_rows: before=3 after=0 delta=-3
+  no_candidate_rows: before=142 after=142 delta=0
+  nonempty_rate: before=0.8549540347293156 after=0.8549540347293156 delta=0.0
+  good_rate: before=0.8518896833503575 after=0.8549540347293156 delta=0.003064
+  bad_shipped_rate: before=0.0035842293906810036 after=0.0 delta=-0.003584

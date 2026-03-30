@@ -57,10 +57,10 @@ adn,2186,n,n,2001_3000,initialism of ácido desoxirribonucleico DNA,adn,no_candi
 corta,2189,adj,adj,2001_3000,cutting,corto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 distintos,2190,adj,adj,2001_3000,distinct,distinto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 septiembre,2192,n,n,2001_3000,September,septiembre,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-g,2193,letter,letter,2001_3000,letter,g,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+g,2193,letter,letter,2001_3000,letter,g,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 movimientos,2196,n,n,2001_3000,movement,movimiento,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 harán,2197,v,v,2001_3000,Haran,hacer,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-uds.,2202,none,residual,2001_3000,oud [from late-19th c.],uds.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_metalinguistic_surface
+uds.,2202,none,residual,2001_3000,oud [from late-19th c.],uds.,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 escuchado,2203,v,v,2001_3000,to listen to; to hear out,escuchar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 especiales,2208,adj,adj,2001_3000,spice,especial,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 martes,2211,n,n,2001_3000,tuesday,martes,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -87,7 +87,7 @@ podré,2281,v,v,2001_3000,to be able to; can,poder,no_candidate_found,no_candida
 intentado,2285,v,v,2001_3000,to try; to attempt,intentar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 distintas,2292,adj,adj,2001_3000,distinct,distinto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 perdiendo,2293,v,v,2001_3000,to lose,perder,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-l,2294,letter,letter,2001_3000,letter,l,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+l,2294,letter,letter,2001_3000,letter,l,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 hubieras,2295,v,v,2001_3000,have,hubieras,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 operaciones,2296,n,n,2001_3000,operation,operación,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ciudades,2297,n,n,2001_3000,city,ciudad,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -109,7 +109,7 @@ características,2354,n,n,2001_3000,characteristic; feature,característica,no_c
 pasan,2356,v,v,2001_3000,to pass; to hand; to slip,pasar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 podían,2357,v,v,2001_3000,to be able to; can,poder,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 reales,2360,adj,adj,2001_3000,initialism of responsable empresa anunciadora,real,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-r,2363,letter,letter,2001_3000,letter,r,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+r,2363,letter,letter,2001_3000,letter,r,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 seguido,2365,adj,adj,2001_3000,consecutive,seguido,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 thomas,2367,none,residual,2001_3000,thomas,thomas,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 ahi,2368,adv,adv,2001_3000,there: used to designate a place near the listener,ahi,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -144,7 +144,7 @@ ofrece,2444,v,v,2001_3000,to offer; to offer up; to provide,ofrecer,no_candidate
 extra,2445,adj,adj,2001_3000,additional; extra,extra,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 volviendo,2446,v,v,2001_3000,to return; to revert; to get back,volver,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 anna,2447,none,residual,2001_3000,anna,anna,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-j,2451,letter,letter,2001_3000,letter,j,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+j,2451,letter,letter,2001_3000,letter,j,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 preguntaba,2454,v,v,2001_3000,to ask,preguntar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 invitados,2458,v,v,2001_3000,invited,invitar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 habíamos,2460,v,v,2001_3000,have,haber,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -263,7 +263,7 @@ celular,2783,adj,adj,2001_3000,cellular,celular,no_candidate_found,no_candidate_
 llegará,2787,v,v,2001_3000,to arrive; get,llegar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 irás,2790,v,v,2001_3000,to go,irás,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 primavera,2791,n,n,2001_3000,spring,primavera,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-v,2792,letter,letter,2001_3000,letter,v,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+v,2792,letter,letter,2001_3000,letter,v,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 decirles,2793,v,v,2001_3000,to say; to tell,decirles,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 den,2797,v,v,2001_3000,to give; to give out,dar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 altos,2801,adj,adj,2001_3000,tall,alto,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
@@ -313,13 +313,13 @@ técnicas,2905,adj,adj,2001_3000,technique,técnico,no_candidate_found,no_candid
 enrique,2909,,residual,2001_3000,given name,enrique,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 smith,2912,none,residual,2001_3000,smith,smith,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 trabajado,2917,v,v,2001_3000,to work,trabajar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-x,2918,letter,letter,2001_3000,X,x,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+x,2918,letter,letter,2001_3000,X,x,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 golpes,2921,n,n,2001_3000,hit; blow; strike,golpe,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 musical,2923,adj,adj,2001_3000,musical,musical,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 deberá,2925,v,v,2001_3000,to owe,deber,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 robó,2929,v,v,2001_3000,robbery; theft,robar,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 montañas,2931,n,n,2001_3000,mountain,montaña,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
-h,2932,letter,letter,2001_3000,letter,h,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_letter
+h,2932,letter,letter,2001_3000,letter,h,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,policy_excluded_single_letter
 menores,2936,adj,adj,2001_3000,minor,menor,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 malditos,2943,n,n,2001_3000,cursed,maldito,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,
 naturalmente,2944,adv,adv,2001_3000,naturally; of course,naturalmente,no_candidate_found,no_candidate_found,no_candidate_found,no_publishable_candidate,

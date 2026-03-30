@@ -96,10 +96,10 @@ def rank_block(rank_value: object) -> str:
 def policy_exclusion_reason(lemma: Optional[str], raw_pos: Optional[str]) -> Optional[str]:
     surface = normalize_surface(lemma)
     family = pos_family_from_values(raw_pos, surface)
+    if family == "letter" and len(surface) == 1 and surface.isalpha():
+        return "policy_excluded_single_letter"
     if family in _POLICY_EXCLUDED_FAMILIES:
         return f"policy_excluded_{family}"
-    if len(surface) == 1 and surface.isalpha():
-        return "policy_excluded_single_letter"
-    if surface in _METALINGUISTIC_SURFACES and family in {"letter", "residual"}:
+    if surface in _METALINGUISTIC_SURFACES and family == "letter":
         return "policy_excluded_metalinguistic_surface"
     return None
