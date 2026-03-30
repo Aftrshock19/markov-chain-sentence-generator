@@ -172,10 +172,14 @@ python -u "$SCRIPT" \
     --max-total-attempts 400 \
     --max-candidates-to-keep 35 \
     --max-candidates-per-lemma 25 \
-    --progress-every 100
+    --progress-every 100 \
+    --lexicon-overrides $WORK_DIR/seed_overrides.csv \
+    --lexicon-overrides $WORK_DIR/exclusions.csv \
+    --lexicon-overrides $WORK_DIR/translation_pos_fixes.csv \
+    --lexicon-overrides $WORK_DIR/lexicon_overrides_merged.csv \
+    --learned-frames $WORK_DIR/learned_frames.json \
+    --lemma-frame-preferences $WORK_DIR/lemma_frame_preferences.csv
 cleanup
-
-
 
 echo "============================================"
 echo "Finished: $(date)"
