@@ -8,6 +8,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from coverage_utils import pos_family_from_values
+
 LOCKED_SUCCESS_METRICS = {
     "rank_window": (1, 1000),
     "min_nonempty_rate": 0.95,
@@ -78,46 +80,16 @@ def row_is_good(row: Dict[str, str]) -> bool:
     )
 
 
+def row_is_excluded_by_policy(row: Dict[str, str]) -> bool:
+    return (row.get("quality_tier") or "").strip().lower() == "excluded_by_policy" or (row.get("source_method") or "").strip().lower() == "excluded_by_policy"
+
+
 def row_is_bad_shipped(row: Dict[str, str]) -> bool:
-    return shipped_sentence(row) and not row_is_good(row)
+    return shipped_sentence(row) and not row_is_good(row) and not row_is_excluded_by_policy(row)
 
 
 def row_pos_family(row: Dict[str, str]) -> str:
-    raw = (row.get("pos") or "").strip().lower()
-    mapping = {
-        "n": "n",
-        "prop": "prop",
-        "v": "v",
-        "aux": "v",
-        "adj": "adj",
-        "adv": "adv",
-        "determiner": "determiner",
-        "det": "determiner",
-        "art": "art",
-        "pron": "pron",
-        "pronoun": "pron",
-        "prep": "prep",
-        "adp": "prep",
-        "conj": "conj",
-        "cconj": "conj",
-        "sconj": "conj",
-        "interj": "interj",
-        "num": "num",
-        "contraction": "contraction",
-        "letter": "letter",
-        "prefix": "prefix",
-        "phrase": "phrase",
-        "particle": "particle",
-        "none": "residual",
-        "": "residual",
-    }
-    lemma = (row.get("lemma") or "").strip().lower()
-    if raw in {"", "none"}:
-        if lemma in {"de", "a", "en", "con", "por", "para", "sin", "sobre", "hasta", "entre", "durante", "según", "tras", "ante", "del", "al"}:
-            return "prep" if lemma not in {"del", "al"} else "contraction"
-        if lemma == "no":
-            return "adv"
-    return mapping.get(raw, raw or "residual")
+    return pos_family_from_values(row.get("pos"), row.get("lemma"))
 
 
 def suspicious_reason(row: Dict[str, str]) -> str:
@@ -126,6 +98,8 @@ def suspicious_reason(row: Dict[str, str]) -> str:
     template_id = (row.get("template_id") or "").strip()
     notes = (row.get("notes") or row.get("failure_reason") or "").strip().lower()
 
+    if row_is_excluded_by_policy(row):
+        return "excluded_by_policy"
     if not sentence or source_method == "no_candidate_found":
         return "no_candidate"
     if template_id == "det_anchor_clear":
@@ -175,18 +149,23 @@ def scoped_rows(rows: List[Dict[str, str]]) -> List[Dict[str, str]]:
 def metrics_summary(rows: List[Dict[str, str]]) -> Dict[str, object]:
     scoped = scoped_rows(rows)
     total = len(scoped)
-    shipped = [row for row in scoped if shipped_sentence(row)]
-    good = [row for row in scoped if row_is_good(row)]
-    bad_shipped = [row for row in scoped if row_is_bad_shipped(row)]
-    no_candidate = [row for row in scoped if not shipped_sentence(row)]
+    excluded = [row for row in scoped if row_is_excluded_by_policy(row)]
+    effective_scope = [row for row in scoped if not row_is_excluded_by_policy(row)]
+    shipped = [row for row in effective_scope if shipped_sentence(row)]
+    good = [row for row in effective_scope if row_is_good(row)]
+    bad_shipped = [row for row in effective_scope if row_is_bad_shipped(row)]
+    no_candidate = [row for row in effective_scope if not shipped_sentence(row)]
 
-    nonempty_rate = (len(shipped) / total) if total else 0.0
+    effective_total = len(effective_scope)
+    nonempty_rate = (len(shipped) / effective_total) if effective_total else 0.0
     bad_shipped_rate = (len(bad_shipped) / len(shipped)) if shipped else 0.0
-    good_rate = (len(good) / total) if total else 0.0
+    good_rate = (len(good) / effective_total) if effective_total else 0.0
 
     return {
         "rank_window": list(LOCKED_SUCCESS_METRICS["rank_window"]),
         "rows_in_scope": total,
+        "effective_rows_in_scope": effective_total,
+        "excluded_by_policy_rows": len(excluded),
         "nonempty_rows": len(shipped),
         "good_rows": len(good),
         "bad_shipped_rows": len(bad_shipped),
@@ -255,7 +234,7 @@ def top_missing_lemmas_by_family(rows: List[Dict[str, str]], limit: int = 15) ->
 
 
 def compare_summaries(base: Dict[str, object], new: Dict[str, object]) -> Dict[str, object]:
-    keys = ["rows_in_scope", "nonempty_rows", "good_rows", "bad_shipped_rows", "no_candidate_rows", "nonempty_rate", "good_rate", "bad_shipped_rate"]
+    keys = ["rows_in_scope", "effective_rows_in_scope", "excluded_by_policy_rows", "nonempty_rows", "good_rows", "bad_shipped_rows", "no_candidate_rows", "nonempty_rate", "good_rate", "bad_shipped_rate"]
     out = {}
     for k in keys:
         bv = base.get(k, 0)
@@ -271,6 +250,7 @@ def main() -> None:
     parser.add_argument("--sample-size", type=int, default=50, help="How many accepted and failed rows to sample.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for sampling.")
     parser.add_argument("--compare-to", default=None, help="Optional previous CSV output to compare against.")
+    parser.add_argument("--fail-on-metric-miss", action="store_true", help="Exit non-zero if locked metrics are not met.")
     args = parser.parse_args()
 
     generated_path = Path(args.generated)
@@ -280,9 +260,9 @@ def main() -> None:
     rows = load_csv(generated_path)
     summary = metrics_summary(rows)
     scoped = scoped_rows(rows)
-    failed_rows = [row for row in scoped if row_is_bad_shipped(row) or not shipped_sentence(row)]
+    failed_rows = [row for row in scoped if row_is_bad_shipped(row) or (not shipped_sentence(row) and not row_is_excluded_by_policy(row))]
     bad_shipped = [row for row in scoped if row_is_bad_shipped(row)]
-    accepted_rows = [row for row in scoped if row_is_good(row)]
+    accepted_rows = [row for row in scoped if row_is_good(row) and not row_is_excluded_by_policy(row)]
 
     cluster_counts: Dict[str, int] = {}
     cluster_rows: List[Dict[str, object]] = []
@@ -379,6 +359,10 @@ def main() -> None:
     (out_dir / "summary.txt").write_text("\n".join(summary_lines), encoding="utf-8")
 
     print(json.dumps(report, ensure_ascii=False, indent=2))
+    if args.fail_on_metric_miss and not (
+        summary["passes_locked_nonempty_rate"] and summary["passes_locked_bad_shipped_rate"]
+    ):
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":

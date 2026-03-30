@@ -1,0 +1,51 @@
+family,lemma,rank,pos,source_method,template_id,sentence
+n,cargo,882,n,retrieved_corpus,retrieved,Estoy a cargo de los libros.
+pron,ti,132,pron,template_generated,pron_prepositional_for,Es para ti.
+adv,más,32,adv,retrieved_corpus,retrieved,¿a dónde más te gustaría ir?
+v,hice,354,v,retrieved_corpus,retrieved,Hice bien mi trabajo.
+v,veo,306,v,stochastic_decoder,stochastic,Yo veo la hora de la noche.
+n,lado,279,n,retrieved_corpus,retrieved,Te voy a tener a mi lado.
+n,momento,165,n,retrieved_corpus,retrieved,Está contigo en este momento.
+adv,siempre,118,adv,template_generated,adv_always_here,Siempre está aquí.
+n,color,938,n,template_generated,n_a1_1,El color es serio.
+n,pena,749,n,retrieved_corpus,retrieved,Vale la pena mirarlo más de cerca.
+adv,nunca,100,adv,retrieved_corpus,retrieved,Nunca he dicho esto a nadie.
+v,vuelto,817,v,retrieved_corpus,retrieved,Te has vuelto mejor.
+n,bebé,564,n,retrieved_corpus,retrieved,Es un bebé.
+v,ha,39,v,seeded_template,verb_exact_ha_do_that,Ha hecho eso.
+determiner,tu,37,determiner,template_generated,det_anchor_clear,Tu amigo está bien.
+adj,mejor,107,adj,retrieved_corpus,retrieved,Sabíamos que éramos mejores que eso.
+determiner,cualquier,271,determiner,template_generated,det_anchor_clear,Cualquier trabajo está bien.
+pron,ustedes,290,pron,template_generated,pron_subject_here,Ustedes están aquí.
+n,obra,685,n,retrieved_corpus,retrieved,Dimos fin a la obra.
+v,estaré,833,v,seeded_template,seeded_special_estar_place,Yo estaré en casa.
+pron,yo,34,pron,template_generated,pron_subject_here,Yo estoy aquí.
+adj,mejores,774,adj,retrieved_corpus,retrieved,Sabíamos que éramos mejores que eso.
+n,hora,244,n,retrieved_corpus,retrieved,¿Qué hora es?
+n,caballeros,992,n,retrieved_corpus,retrieved,Se sabía el nombre de todos los caballeros.
+pron,cualquiera,901,pron,template_generated,pron_exact_cualquiera,Cualquiera viene hoy.
+n,barco,972,n,retrieved_corpus,retrieved,El barco necesita un capitán.
+v,creer,560,v,retrieved_corpus,retrieved,¿qué crees que debería decir?
+adj,serio,274,adj,retrieved_corpus,retrieved,No es nada serio.
+n,marido,602,n,retrieved_corpus,retrieved,Él va a ser un buen marido.
+n,duda,816,n,retrieved_corpus,retrieved,Estoy seguro de que tendrás muchas dudas.
+n,adiós,359,n,retrieved_corpus,retrieved,Sólo pasé a decir adiós.
+v,es,9,v,seeded_template,seeded_special_ser_adj,Ella es buena.
+determiner,todas,196,determiner,template_generated,det_total_plural_pron,Todas están aquí.
+adv,delante,965,adv,retrieved_corpus,retrieved,Ve por delante.
+adj,pequeño,443,adj,retrieved_corpus,retrieved,Es bueno y es pequeño.
+n,mujer,191,n,template_generated,n_a1_1,La mujer es buena.
+adv,todavía,266,adv,retrieved_corpus,retrieved,Sé que todavía me queréis.
+n,grupo,439,n,retrieved_corpus,retrieved,Me gustaría ser parte de tu grupo.
+pron,quién,106,pron,retrieved_corpus,retrieved,¿quién no está de acuerdo?
+n,vino,502,n,retrieved_corpus,retrieved,¿de dónde vino?
+conj,ni,112,conj,retrieved_corpus,retrieved,No tiene ni idea de nada.
+n,escuela,474,n,retrieved_corpus,retrieved,¿qué has hecho hoy en la escuela?
+v,llama,451,v,stochastic_decoder,stochastic,Ella llama a la gente se casa.
+n,pelo,835,n,retrieved_corpus,retrieved,¿me quieres tomar el pelo?
+v,volver,334,v,retrieved_corpus,retrieved,Puede que vuelva.
+v,vamos,52,v,seeded_template,seeded_special_ir_place,Nosotros vamos a casa.
+n,cuarto,619,n,retrieved_corpus,retrieved,Era un cuarto muy grande.
+n,nivel,735,n,template_generated,n_a1_1,El nivel es serio.
+n,acuerdo,149,n,retrieved_corpus,retrieved,No estoy de acuerdo con usted.
+v,ido,500,v,stochastic_decoder,stochastic,Ella ha ido a ver una casa.

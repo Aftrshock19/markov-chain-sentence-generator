@@ -1,0 +1,10 @@
+rows_in_scope: 979
+nonempty_rows: 722
+good_rows: 722
+bad_shipped_rows: 0
+no_candidate_rows: 249
+nonempty_rate: 0.7436
+good_rate: 0.7436
+bad_shipped_rate: 0.0000
+passes_locked_nonempty_rate: False
+passes_locked_bad_shipped_rate: True

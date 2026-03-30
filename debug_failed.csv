@@ -1,0 +1,7 @@
+lemma,rank,pos,band,translation,sentence,target_form,canonical_lemma,target_morph,target_index,support_ranks,avg_support_rank,max_support_rank,template_id,source_method,score,publishable,quality_tier,bad_candidate,failure_reason,search_attempts_used,candidates_found,best_source_method
+esposa,426,n,A1,wife,,,esposo,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,0,no_candidate_found
+llama,451,v,A1,flame,,,llamar,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,0,no_candidate_found
+probablemente,552,adv,A1,probably; likely,,,probablemente,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,399,no_candidate_found
+hacía,706,v,A1,toward; towards,,,hacer,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,399,no_candidate_found
+tratando,760,v,A1,to treat,,,tratar,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,0,no_candidate_found
+decía,787,v,A1,to say; to tell,,,decir,,-1,,0.0,0,no_candidate_found,no_candidate_found,0.0,False,no_candidate_found,True,no_publishable_candidate,400,0,no_candidate_found

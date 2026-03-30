@@ -1,0 +1,231 @@
+lemma,rank,pos,sentence,rejection_reasons
+venga,450,v,"Venga, inténtalo otra vez.",build_candidate_failed
+venga,450,v,"Venga, no te rindas.",build_candidate_failed
+venga,450,v,"Venga, vamos a casa.",build_candidate_failed
+venga,450,v,"Venga, come algo.",build_candidate_failed
+venga,450,v,"Venga, cuéntame más.",build_candidate_failed
+venga,450,v,"Venga, date prisa.",build_candidate_failed
+venga,450,v,"Venga, sonríe.",build_candidate_failed
+venga,450,v,"Venga, ponte cómodo.",build_candidate_failed
+venga,450,v,"Venga, vamos a bailar.",build_candidate_failed
+venga,450,v,"Venga, cálmate.",build_candidate_failed
+venga,450,v,"Venga, vamos a jugar.",build_candidate_failed
+venga,450,v,"Venga, levántate.",build_candidate_failed
+venga,450,v,"Venga, vamos a correr.",build_candidate_failed
+venga,450,v,"Venga, sigue así.",build_candidate_failed
+venga,450,v,"Venga, vamos a estudiar.",build_candidate_failed
+venga,450,v,"Venga, toma un descanso.",build_candidate_failed
+venga,450,v,"Venga, vamos a cenar.",build_candidate_failed
+venga,450,v,"Venga, hazlo tú mismo.",build_candidate_failed
+venga,450,v,"Venga, vamos a pasear.",build_candidate_failed
+venga,450,v,"Venga, vamos a empezar.",build_candidate_failed
+toma,453,v,Toma el mando ahora.,build_candidate_failed
+escucha,467,v,Escucha la radio.,build_candidate_failed
+escucha,467,v,Escucha música clásica.,build_candidate_failed
+escucha,467,v,Escucha el teléfono.,build_candidate_failed
+escucha,467,v,Escucha con atención.,build_candidate_failed
+escucha,467,v,Escucha a tu madre.,build_candidate_failed
+escucha,467,v,Escucha la grabación.,build_candidate_failed
+escucha,467,v,Escucha la clase.,build_candidate_failed
+escucha,467,v,Escucha al profesor.,build_candidate_failed
+escucha,467,v,Escucha la canción.,build_candidate_failed
+escucha,467,v,Escucha el podcast.,build_candidate_failed
+escucha,467,v,Escucha el discurso.,build_candidate_failed
+escucha,467,v,Escucha la noticia.,build_candidate_failed
+escucha,467,v,Escucha el concierto.,build_candidate_failed
+escucha,467,v,Escucha la charla.,build_candidate_failed
+escucha,467,v,Escucha el informe.,build_candidate_failed
+escucha,467,v,Escucha la conferencia.,build_candidate_failed
+escucha,467,v,Escucha el mensaje.,build_candidate_failed
+escucha,467,v,Escucha la historia.,build_candidate_failed
+escucha,467,v,Escucha la canción nueva.,build_candidate_failed
+escucha,467,v,Escucha la descripción.,build_candidate_failed
+esté,512,v,Esté tranquilo.,build_candidate_failed
+esté,512,v,Esté sentado.,build_candidate_failed
+esté,512,v,Esté cómodo.,build_candidate_failed
+esté,512,v,Esté atento.,build_candidate_failed
+esté,512,v,Esté listo.,build_candidate_failed
+esté,512,v,Esté presente.,build_candidate_failed
+esté,512,v,Esté aquí.,build_candidate_failed
+esté,512,v,Esté allí.,build_candidate_failed
+esté,512,v,Esté cerca.,build_candidate_failed
+esté,512,v,Esté lejos.,build_candidate_failed
+esté,512,v,Esté limpio.,build_candidate_failed
+esté,512,v,Esté ordenado.,build_candidate_failed
+esté,512,v,Esté quieto.,build_candidate_failed
+esté,512,v,Esté en silencio.,build_candidate_failed
+esté,512,v,Esté de pie.,build_candidate_failed
+esté,512,v,Esté relajado.,build_candidate_failed
+esté,512,v,Esté despierto.,build_candidate_failed
+esté,512,v,Esté alerta.,build_candidate_failed
+esté,512,v,Esté preparado.,build_candidate_failed
+esté,512,v,Esté contento.,build_candidate_failed
+deberías,523,v,Deberías estudiar más.,build_candidate_failed
+deberías,523,v,Deberías leer un libro.,build_candidate_failed
+deberías,523,v,Deberías hacer ejercicio.,build_candidate_failed
+deberías,523,v,Deberías beber agua.,build_candidate_failed
+deberías,523,v,Deberías descansar.,build_candidate_failed
+deberías,523,v,Deberías ayudar a tu hermano.,build_candidate_failed
+deberías,523,v,Deberías lavar los platos.,build_candidate_failed
+deberías,523,v,Deberías ir a la escuela.,build_candidate_failed
+deberías,523,v,Deberías trabajar duro.,build_candidate_failed
+deberías,523,v,Deberías cuidar de tus padres.,build_candidate_failed
+deberías,523,v,Deberías hablar con él.,build_candidate_failed
+deberías,523,v,Deberías escribir una carta.,build_candidate_failed
+deberías,523,v,Deberías comer frutas.,build_candidate_failed
+deberías,523,v,Deberías ver al médico.,build_candidate_failed
+deberías,523,v,Deberías guardar dinero.,build_candidate_failed
+deberías,523,v,Deberías aprender español.,build_candidate_failed
+deberías,523,v,Deberías ser amable.,build_candidate_failed
+deberías,523,v,Deberías apagar la luz.,build_candidate_failed
+deberías,523,v,Deberías tomar café.,build_candidate_failed
+deberías,523,v,Deberías sonreír.,build_candidate_failed
+comer,538,v,Comer es importante.,build_candidate_failed
+comer,538,v,Voy a comer ahora.,build_candidate_failed
+comer,538,v,¿Qué hora es para comer?,build_candidate_failed
+comer,538,v,Ven a comer conmigo.,build_candidate_failed
+comer,538,v,Deberías comer más verduras.,build_candidate_failed
+podrías,607,v,podrías ayudarme.,build_candidate_failed
+podrías,607,v,podrías venir mañana.,build_candidate_failed
+podrías,607,v,podrías traer agua.,build_candidate_failed
+podrías,607,v,podrías abrir la ventana.,build_candidate_failed
+podrías,607,v,podrías prestarme un libro.,build_candidate_failed
+podrías,607,v,podrías callarte un momento.,build_candidate_failed
+podrías,607,v,podrías cocinar hoy.,build_candidate_failed
+podrías,607,v,podrías lavar los platos.,build_candidate_failed
+podrías,607,v,podrías darme tu opinión.,build_candidate_failed
+podrías,607,v,podrías escribir una carta.,build_candidate_failed
+podrías,607,v,podrías llevarme al trabajo.,build_candidate_failed
+podrías,607,v,podrías comprar pan.,build_candidate_failed
+podrías,607,v,podrías cerrar la puerta.,build_candidate_failed
+podrías,607,v,podrías leer en voz alta.,build_candidate_failed
+podrías,607,v,podrías sentarte aquí.,build_candidate_failed
+podrías,607,v,podrías apagar la luz.,build_candidate_failed
+podrías,607,v,podrías decirme la hora.,build_candidate_failed
+podrías,607,v,podrías darle un beso.,build_candidate_failed
+podrías,607,v,podrías enseñarme a dibujar.,build_candidate_failed
+podrías,607,v,podrías hacerme el favor.,build_candidate_failed
+estados,645,n,Hay muchos estados en EE.UU.,multiple_sentences
+afuera,714,v,Estoy afuera.,build_candidate_failed
+afuera,714,v,Veo nubes afuera.,build_candidate_failed
+afuera,714,v,Hace frío afuera.,build_candidate_failed
+afuera,714,v,Escuché ruidos afuera.,build_candidate_failed
+afuera,714,v,Salí afuera a jugar.,build_candidate_failed
+afuera,714,v,Corro afuera con mi perro.,build_candidate_failed
+afuera,714,v,Miro el sol afuera.,build_candidate_failed
+afuera,714,v,Hay niños afuera.,build_candidate_failed
+afuera,714,v,Llueve afuera hoy.,build_candidate_failed
+afuera,714,v,Me gusta estar afuera.,build_candidate_failed
+afuera,714,v,Tengo miedo de lo que hay afuera.,build_candidate_failed
+afuera,714,v,Juego fútbol afuera.,build_candidate_failed
+afuera,714,v,Espero el autobús afuera.,build_candidate_failed
+afuera,714,v,Compré flores afuera.,build_candidate_failed
+afuera,714,v,Paseo afuera por la tarde.,build_candidate_failed
+afuera,714,v,Niego con la cabeza afuera.,build_candidate_failed
+afuera,714,v,Sonríe afuera bajo el sol.,build_candidate_failed
+afuera,714,v,Escalamos una montaña afuera.,build_candidate_failed
+afuera,714,v,Nos encontramos afuera del cine.,build_candidate_failed
+afuera,714,v,Observo las estrellas afuera.,build_candidate_failed
+suena,756,v,Ese tema suena interesante.,build_candidate_failed
+suena,756,v,La música suena bien.,build_candidate_failed
+suena,756,v,Suena la alarma a las seis.,build_candidate_failed
+suena,756,v,El teléfono suena.,build_candidate_failed
+suena,756,v,Me suena familiar.,build_candidate_failed
+suena,756,v,Suena el timbre.,build_candidate_failed
+suena,756,v,La radio suena fuerte.,build_candidate_failed
+suena,756,v,Eso suena difícil.,build_candidate_failed
+suena,756,v,Suena una canción bonita.,build_candidate_failed
+suena,756,v,Suena un concierto hoy.,build_candidate_failed
+suena,756,v,Esa idea suena genial.,build_candidate_failed
+suena,756,v,La campana suena.,build_candidate_failed
+suena,756,v,Suena una melodía suave.,build_candidate_failed
+suena,756,v,Eso suena justo.,build_candidate_failed
+suena,756,v,Eso suena emocionante.,build_candidate_failed
+hubo,775,v,Hubo una explicación.,meta_text
+divertido,824,adj,Es un juego muy divertido.,build_candidate_failed
+divertido,824,adj,Estar con amigos es divertido.,build_candidate_failed
+divertido,824,adj,El parque de atracciones es divertido.,build_candidate_failed
+divertido,824,adj,El circo es siempre divertido.,build_candidate_failed
+divertido,824,adj,Hacer magia es muy divertido.,build_candidate_failed
+divertido,824,adj,Jugar al fútbol es divertido.,build_candidate_failed
+divertido,824,adj,Ir al cine es divertido.,build_candidate_failed
+divertido,824,adj,El concierto fue muy divertido.,build_candidate_failed
+divertido,824,adj,Ver comedia es muy divertido.,build_candidate_failed
+divertido,824,adj,El teatro es divertido.,build_candidate_failed
+divertido,824,adj,El día en la playa fue divertido.,build_candidate_failed
+divertido,824,adj,Escuchar música es divertido.,build_candidate_failed
+divertido,824,adj,El viaje fue muy divertido.,build_candidate_failed
+cállate,862,v,cállate ahora mismo.,build_candidate_failed
+cállate,862,v,"cállate, no grites.",build_candidate_failed
+cállate,862,v,cállate y escucha.,build_candidate_failed
+cállate,862,v,"cállate, por favor.",build_candidate_failed
+cállate,862,v,"cállate, estoy ocupado.",build_candidate_failed
+cállate,862,v,"cállate, no me molestes.",build_candidate_failed
+cállate,862,v,"cállate, ya lo sé.",build_candidate_failed
+cállate,862,v,"cállate, déjame en paz.",build_candidate_failed
+cállate,862,v,"cállate, no insistas.",build_candidate_failed
+cállate,862,v,"cállate, no te oigo.",build_candidate_failed
+cállate,862,v,"cállate, estoy enfadado.",build_candidate_failed
+cállate,862,v,"cállate, vamos a estudiar.",build_candidate_failed
+cállate,862,v,"cállate, quiero dormir.",build_candidate_failed
+cállate,862,v,"cállate, estamos trabajando.",build_candidate_failed
+cállate,862,v,"cállate, necesito pensar.",build_candidate_failed
+cállate,862,v,"cállate, hablamos luego.",build_candidate_failed
+cállate,862,v,"cállate, no me interesa.",build_candidate_failed
+cállate,862,v,"cállate, es una tontería.",build_candidate_failed
+cállate,862,v,"cállate, no me hables.",build_candidate_failed
+cállate,862,v,"cállate, ya es suficiente.",build_candidate_failed
+debido,925,adj,Estarás debido una explicación.,meta_text
+debido,925,adj,Ellos son debido una explicación.,meta_text
+debido,925,adj,Estará debido una explicación.,meta_text
+entendido,980,adj,Juan es un entendido en arte.,build_candidate_failed
+entendido,980,adj,Carlos es el entendido de la empresa.,build_candidate_failed
+entendido,980,adj,El profesor es un entendido en historia.,build_candidate_failed
+entendido,980,adj,Él es el entendido en matemáticas.,build_candidate_failed
+entendido,980,adj,Este hombre es un entendido en tecnología.,build_candidate_failed
+entendido,980,adj,Él es el entendido en economía.,build_candidate_failed
+entendido,980,adj,El señor es un entendido en literatura.,build_candidate_failed
+entendido,980,adj,Él es el entendido en lingüística.,build_candidate_failed
+entendido,980,adj,Marcelo es un entendido en música.,build_candidate_failed
+entendido,980,adj,Él es el entendido en astronomía.,build_candidate_failed
+entendido,980,adj,Este hombre es un entendido en ciencias.,build_candidate_failed
+quisiera,981,v,Quisiera un café.,build_candidate_failed
+quisiera,981,v,Quisiera ir a casa.,build_candidate_failed
+quisiera,981,v,Quisiera leer un libro.,build_candidate_failed
+quisiera,981,v,Quisiera ver una película.,build_candidate_failed
+quisiera,981,v,Quisiera tomar agua.,build_candidate_failed
+quisiera,981,v,Quisiera hablar contigo.,build_candidate_failed
+quisiera,981,v,Quisiera estudiar español.,build_candidate_failed
+quisiera,981,v,Quisiera comprar pan.,build_candidate_failed
+quisiera,981,v,Quisiera escuchar música.,build_candidate_failed
+quisiera,981,v,Quisiera dormir ahora.,build_candidate_failed
+quisiera,981,v,Quisiera ayudarte.,build_candidate_failed
+quisiera,981,v,Quisiera comer algo.,build_candidate_failed
+quisiera,981,v,Quisiera escribir una carta.,build_candidate_failed
+quisiera,981,v,Quisiera bailar.,build_candidate_failed
+quisiera,981,v,Quisiera visitar Madrid.,build_candidate_failed
+quisiera,981,v,Quisiera jugar al fútbol.,build_candidate_failed
+quisiera,981,v,Quisiera aprender inglés.,build_candidate_failed
+quisiera,981,v,Quisiera tomar un té.,build_candidate_failed
+quisiera,981,v,Quisiera ver a mi familia.,build_candidate_failed
+quisiera,981,v,Quisiera viajar.,build_candidate_failed
+eras,999,v,Eras una niña entonces.,build_candidate_failed
+eras,999,v,Eras muy amable.,build_candidate_failed
+eras,999,v,Eras mi mejor amigo.,build_candidate_failed
+eras,999,v,Eras muy alto.,build_candidate_failed
+eras,999,v,Eras la estrella del equipo.,build_candidate_failed
+eras,999,v,Eras muy estudioso.,build_candidate_failed
+eras,999,v,Eras un buen cocinero.,build_candidate_failed
+eras,999,v,Eras siempre puntual.,build_candidate_failed
+eras,999,v,Eras muy divertido.,build_candidate_failed
+eras,999,v,Eras el más rápido.,build_candidate_failed
+eras,999,v,Eras muy paciente.,build_candidate_failed
+eras,999,v,Eras muy inteligente.,build_candidate_failed
+eras,999,v,Eras muy talentoso.,build_candidate_failed
+eras,999,v,Eras muy guapo.,build_candidate_failed
+eras,999,v,Eras muy fuerte.,build_candidate_failed
+eras,999,v,Eras muy tranquilo.,build_candidate_failed
+eras,999,v,Eras muy simpático.,build_candidate_failed
+eras,999,v,Eras muy valiente.,build_candidate_failed
+eras,999,v,Eras muy creativo.,build_candidate_failed
+eras,999,v,Eras muy trabajador.,build_candidate_failed

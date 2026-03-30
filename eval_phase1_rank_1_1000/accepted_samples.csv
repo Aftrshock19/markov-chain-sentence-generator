@@ -1,0 +1,51 @@
+family,lemma,rank,pos,source_method,template_id,sentence
+n,consejo,768,n,retrieved_corpus,retrieved,Me dio un consejo.
+n,hombre,116,n,stochastic_decoder,stochastic,El hombre se me va a hacer.
+v,está,26,v,seeded_template,seeded_special_estar_place,Ella está en casa.
+n,encuentro,904,n,retrieved_corpus,retrieved,No lo encuentro. ¿seguro que está aquí?
+n,poder,292,n,retrieved_corpus,retrieved,Tiene mucho poder.
+conj,aunque,259,conj,retrieved_corpus,retrieved,No puedo aunque quiero.
+determiner,alguna,236,determiner,template_generated,det_anchor_here,Alguna casa está aquí.
+v,ir,145,v,retrieved_corpus,retrieved,Voy a hacer esto yo misma.
+v,terminado,894,v,retrieved_corpus,retrieved,Todavía no ha terminado.
+determiner,mucho,105,determiner,retrieved_corpus,retrieved,Él me debe mucho dinero.
+n,interior,819,n,stochastic_decoder,stochastic,El interior de la vida es demasiado difícil.
+n,oro,903,n,retrieved_corpus,retrieved,No hay oro.
+pron,ellas,634,pron,template_generated,pron_subject_here,Ellas están aquí.
+v,tienes,90,v,seeded_template,seeded_special_tener_obj,Tú tienes una casa.
+n,mayoría,696,n,stochastic_decoder,stochastic,La mayoría de la ciudad fue.
+n,hijos,470,n,retrieved_corpus,retrieved,No tengo nada para mis hijos.
+pron,eso,33,pron,template_generated,pron_neuter_like,Me gusta eso.
+adv,bien,31,adv,retrieved_corpus,retrieved,Todo saldrá bien hoy.
+v,eres,96,v,seeded_template,verb_exact_eres_bueno,Tú eres bueno.
+n,caso,231,n,retrieved_corpus,retrieved,No hice caso a nadie.
+v,crees,246,v,retrieved_corpus,retrieved,¿crees que estamos haciéndolo bien?
+n,rey,579,n,retrieved_corpus,retrieved,El rey no debería decir eso.
+adj,media,716,adj,retrieved_corpus,retrieved,Llegué a las dos y media.
+contraction,al,28,contraction,template_generated,contraction_exact_al_work,Voy al trabajo.
+v,buscar,657,v,retrieved_corpus,retrieved,¿estabas buscando algo?
+determiner,tus,209,determiner,template_generated,det_anchor_clear,Tus trabajos están bien.
+prop,iglesia,865,prop,retrieved_corpus,retrieved,La iglesia queda en medio del pueblo.
+n,carta,783,n,stochastic_decoder,stochastic,Una carta de mi casa está bien.
+n,foto,848,n,retrieved_corpus,retrieved,Me gustaría tener una foto tuya.
+v,entrar,465,v,retrieved_corpus,retrieved,¡no pueden entrar al mismo tiempo!
+adv,tarde,233,adv,retrieved_corpus,retrieved,Aún no es tarde.
+n,padres,501,n,retrieved_corpus,retrieved,Ahora mis padres están en casa.
+n,pie,695,n,retrieved_corpus,retrieved,Estamos en pie.
+n,chica,295,n,retrieved_corpus,retrieved,Es realmente una buena chica.
+n,escena,990,n,retrieved_corpus,retrieved,La escena de su muerte es fuerte.
+conj,y,7,conj,template_generated,conj_exact_y_go,Yo voy y él va.
+pron,tuyo,927,pron,retrieved_corpus,retrieved,Un día todo esto será tuyo.
+v,escuchar,987,v,retrieved_corpus,retrieved,Un hijo debe escuchar a su padre.
+v,podría,166,v,stochastic_decoder,stochastic,Ella podría estar él.
+n,energía,844,n,stochastic_decoder,stochastic,La energía de la vida es muy buena.
+n,suerte,370,n,retrieved_corpus,retrieved,Qué suerte que haga tan buen tiempo.
+pron,les,162,pron,template_generated,pron_io_tell,Les digo la verdad.
+n,forma,228,n,retrieved_corpus,retrieved,Estás en mejor forma que yo.
+n,contacto,934,n,retrieved_corpus,retrieved,Estaré en contacto con ellos.
+n,equipo,365,n,retrieved_corpus,retrieved,Ellos eran un equipo.
+v,sabes,95,v,retrieved_corpus,retrieved,Ella sabe que tú sabes.
+v,vi,416,v,stochastic_decoder,stochastic,Yo vi la casa de mi padre.
+adv,nunca,100,adv,retrieved_corpus,retrieved,Nunca he dicho esto a nadie.
+determiner,ningún,392,determiner,retrieved_corpus,retrieved,No quiero estar en ningún otro lado.
+adj,posible,376,adj,retrieved_corpus,retrieved,Hoy en día todo es posible.

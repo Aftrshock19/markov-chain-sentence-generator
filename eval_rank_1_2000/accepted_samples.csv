@@ -1,0 +1,51 @@
+family,lemma,rank,pos,source_method,template_id,sentence
+n,deseo,907,n,retrieved_corpus,retrieved,¿tiene algún otro deseo?
+v,puedes,138,v,seeded_template,seeded_special_poder_ir_place,Tú puedes ir a casa.
+pron,yo,34,pron,template_generated,pron_subject_here,Yo estoy aquí.
+v,fueron,362,v,stochastic_decoder,stochastic,Ellos fueron a la gente se casa.
+adj,importante,313,adj,retrieved_corpus,retrieved,No está pasando nada importante.
+v,salir,286,v,retrieved_corpus,retrieved,Parece que algo salió mal.
+v,tenía,175,v,seeded_template,seeded_special_tener_obj,Ella tenía una casa.
+adv,antes,126,adv,retrieved_corpus,retrieved,Él ha hecho esto antes.
+n,éxito,959,n,retrieved_corpus,retrieved,El plan ha sido un éxito hasta ahora.
+n,error,773,n,retrieved_corpus,retrieved,No queremos más errores.
+pron,quién,106,pron,retrieved_corpus,retrieved,¿quién no está de acuerdo?
+n,abogado,836,n,retrieved_corpus,retrieved,Creo que no es abogado.
+n,rey,579,n,retrieved_corpus,retrieved,El rey no debería decir eso.
+pron,esto,42,pron,template_generated,pron_neuter_for_you,Esto es para ti.
+v,ha,39,v,seeded_template,verb_exact_ha_do_that,Ha hecho eso.
+v,están,113,v,seeded_template,seeded_special_estar_place,Ellos están en casa.
+n,manera,280,n,retrieved_corpus,retrieved,Lo hago de esa manera.
+v,sabía,297,v,seeded_template,seeded_special_saber_truth,Ella sabía la verdad.
+n,papel,707,n,template_generated,n_a1_1,El papel es nuevo.
+v,seas,850,v,retrieved_corpus,retrieved,Quiero que seas mejor.
+adv,aquí,36,adv,retrieved_corpus,retrieved,¿te esperamos aquí?
+n,daño,798,n,retrieved_corpus,retrieved,No quiero hacerle daño.
+v,saber,251,v,retrieved_corpus,retrieved,Sé que no lo harás.
+adv,aun,921,adv,retrieved_corpus,retrieved,Ni aun eso fue de mucha ayuda.
+v,evitar,996,v,retrieved_corpus,retrieved,Evito hablar con ella.
+n,cama,576,n,retrieved_corpus,retrieved,¿realmente tengo que ir a la cama?
+n,historia,283,n,retrieved_corpus,retrieved,Me gustan mucho estas historias.
+v,matar,622,v,retrieved_corpus,retrieved,¿quién la mató?
+n,pelo,835,n,retrieved_corpus,retrieved,¿me quieres tomar el pelo?
+n,equipo,365,n,retrieved_corpus,retrieved,Ellos eran un equipo.
+pron,lo,11,pron,retrieved_corpus,retrieved,No quiero saber lo que hiciste.
+v,debe,202,v,retrieved_corpus,retrieved,¿qué debe hacer?
+n,escena,990,n,retrieved_corpus,retrieved,La escena de su muerte es fuerte.
+n,vuelta,457,n,retrieved_corpus,retrieved,¿me lo pasan de vuelta ahora?
+n,hijo,198,n,retrieved_corpus,retrieved,No tengo nada para mis hijos.
+determiner,algún,275,determiner,template_generated,det_anchor_clear,Algún trabajo está bien.
+n,noches,452,n,retrieved_corpus,retrieved,Pasé dos noches aquí.
+conj,ni,112,conj,retrieved_corpus,retrieved,No tiene ni idea de nada.
+n,paz,517,n,retrieved_corpus,retrieved,Había paz por todo el mundo.
+adv,siempre,118,adv,template_generated,adv_always_here,Siempre está aquí.
+v,habla,487,v,stochastic_decoder,stochastic,Ella habla con su deber.
+n,seguridad,463,n,template_generated,n_a1_1,La seguridad es buena.
+adv,totalmente,853,adv,retrieved_corpus,retrieved,No estoy totalmente de acuerdo contigo.
+n,gobierno,347,n,stochastic_decoder,stochastic,El gobierno está haciendo tarde.
+adj,bueno,55,adj,retrieved_corpus,retrieved,Has sido tan bueno conmigo.
+v,piensa,636,v,stochastic_decoder,stochastic,Ella piensa día.
+v,encontrado,759,v,retrieved_corpus,retrieved,Todavía no lo hemos encontrado.
+v,estamos,154,v,seeded_template,seeded_special_estar_place,Nosotros estamos en casa.
+v,tuvo,514,v,seeded_template,seeded_special_tener_obj,Ella tuvo un hermano.
+determiner,esa,93,determiner,template_generated,det_anchor_clear,Esa casa está bien.
