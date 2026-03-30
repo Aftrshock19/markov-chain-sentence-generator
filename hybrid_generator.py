@@ -29,7 +29,11 @@ from complete_generate import (
     is_word_token,
     normalize_token,
 )
-from reranker import predict_candidate_scores
+try:
+    from reranker import predict_candidate_scores
+except ImportError:
+    def predict_candidate_scores(*args, **kwargs):
+        return []
 
 _BANNED_CONTINUATIONS = CONTEXT_DEPENDENT_OPENERS | {
     "pues", "sino", "ni", "oh", "ay", "eh", "bueno",
@@ -713,6 +717,26 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             target_morph="",
         )
 
+    def _excluded_by_policy_result(self, target: Lexeme) -> Candidate:
+        reason = self.policy_exclusion_reason(target) or "policy_excluded"
+        return Candidate(
+            lemma=target.lemma,
+            rank=target.rank,
+            pos=target.pos,
+            band=get_profile(target.rank).band,
+            translation=target.translation,
+            sentence="",
+            target_form="",
+            target_index=-1,
+            support_ranks=[],
+            avg_support_rank=0.0,
+            max_support_rank=0,
+            template_id=reason,
+            source_method="excluded_by_policy",
+            canonical_lemma=self.canonical_lemma_for(target),
+            target_morph="",
+        )
+
     def hybrid_output_metadata(
         self,
         candidate: Candidate,
@@ -721,7 +745,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
     ) -> Dict[str, Any]:
         publishable = self.candidate_is_hybrid_publishable(candidate)
         valid = self._candidate_is_valid(candidate)
-        if candidate.source_method == "no_candidate_found":
+        if candidate.source_method == "excluded_by_policy":
+            quality_tier = "excluded_by_policy"
+        elif candidate.source_method == "no_candidate_found":
             quality_tier = "no_candidate_found"
         elif self._candidate_is_hybrid_strong(candidate):
             quality_tier = "strong"
@@ -736,7 +762,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
 
         bad_candidate = quality_tier in {"bad", "no_candidate_found"}
         failure_reason = ""
-        if candidate.source_method == "no_candidate_found":
+        if candidate.source_method == "excluded_by_policy":
+            failure_reason = candidate.template_id or "policy_excluded"
+        elif candidate.source_method == "no_candidate_found":
             failure_reason = "no_publishable_candidate"
         elif not publishable:
             failure_reason = "; ".join(self._hybrid_failure_reasons(candidate))
@@ -778,139 +806,163 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
 
         if lemma not in self._hybrid_pool_cache:
             target = self.lexicon[lemma]
-            family = self.normalized_pos_family(target)
-            fragile_family = self._family_is_fragile(family)
-            attempts_used = 0
-            raw_pool: List[Candidate] = []
-            best_valid: Optional[Candidate] = None
-            best_any: Optional[Candidate] = None
-            valid_candidates_found = 0
-
-            retrieved = self.retrieve_candidates(target)
-            attempts_used += 1
-            for cand in retrieved:
-                raw_pool.append(cand)
-                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
-                    cand, best_valid, best_any
-                )
-                valid_candidates_found += valid_inc
-            if self._should_early_exit(best_valid):
-                deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
-                selected = self._choose_from_pool(deduped, best_valid, best_any, target)
-                self._hybrid_pool_cache[lemma] = deduped
+            exclusion_reason = self.policy_exclusion_reason(target)
+            if exclusion_reason:
+                excluded = self._excluded_by_policy_result(target)
+                self._hybrid_pool_cache[lemma] = []
                 self._hybrid_search_cache[lemma] = {
-                    "attempts_used": attempts_used,
-                    "best_valid": best_valid,
-                    "best_any": best_any,
-                    "selected": selected,
-                    "valid_count": valid_candidates_found,
+                    "attempts_used": 0,
+                    "best_valid": None,
+                    "best_any": None,
+                    "selected": excluded,
+                    "valid_count": 0,
                 }
+                setattr(excluded, "_hybrid_meta", self.hybrid_output_metadata(excluded, 0, 0))
             else:
-                use_content_templates = family in {"n", "v", "adj"} and self.can_template_target(target)
-                use_pos_templates = family not in {"n", "v", "adj"}
+                family = self.normalized_pos_family(target)
+                fragile_family = self._family_is_fragile(family)
+                attempts_used = 0
+                raw_pool: List[Candidate] = []
+                best_valid: Optional[Candidate] = None
+                best_any: Optional[Candidate] = None
+                valid_candidates_found = 0
 
-                if not fragile_family:
-                    stochastic_budget = min(
-                        self.max_total_attempts - attempts_used,
-                        max(80, int(self.max_total_attempts * 0.65)),
+                exact = self.exact_surface_template_candidate(target, "template_generated")
+                if exact:
+                    ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                        exact, best_valid, best_any
                     )
-                    if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
-                        stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
-                        attempts_used += 1
-                        for cand in stochastic_candidates:
-                            raw_pool.append(cand)
-                            _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                    if ranked:
+                        raw_pool.append(ranked)
+                    valid_candidates_found += valid_inc
+
+                retrieved = self.retrieve_candidates(target)
+                attempts_used += 1
+                for cand in retrieved:
+                    raw_pool.append(cand)
+                    _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                        cand, best_valid, best_any
+                    )
+                    valid_candidates_found += valid_inc
+                if self._should_early_exit(best_valid):
+                    deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
+                    selected = self._choose_from_pool(deduped, best_valid, best_any, target)
+                    self._hybrid_pool_cache[lemma] = deduped
+                    self._hybrid_search_cache[lemma] = {
+                        "attempts_used": attempts_used,
+                        "best_valid": best_valid,
+                        "best_any": best_any,
+                        "selected": selected,
+                        "valid_count": valid_candidates_found,
+                    }
+                else:
+                    use_content_templates = family in {"n", "v", "adj"} and (
+                        self.can_template_target(target) or self.has_exact_surface_template(target)
+                    )
+                    use_pos_templates = family not in {"n", "v", "adj"}
+
+                    if not fragile_family:
+                        stochastic_budget = min(
+                            self.max_total_attempts - attempts_used,
+                            max(80, int(self.max_total_attempts * 0.65)),
+                        )
+                        if stochastic_budget > 0 and attempts_used < self.max_total_attempts:
+                            stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
+                            attempts_used += 1
+                            for cand in stochastic_candidates:
+                                raw_pool.append(cand)
+                                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                                    cand, best_valid, best_any
+                                )
+                                valid_candidates_found += valid_inc
+
+                    if not self._should_early_exit(best_valid) and use_content_templates:
+                        template_attempts = 0
+                        use_seeded = True
+                        while attempts_used < self.max_total_attempts:
+                            builder = self.seeded_template_candidate if use_seeded else self.pure_template_candidate
+                            use_seeded = not use_seeded
+                            attempts_used += 1
+                            template_attempts += 1
+                            cand = builder(target)
+                            ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
                                 cand, best_valid, best_any
                             )
+                            if ranked:
+                                raw_pool.append(ranked)
                             valid_candidates_found += valid_inc
+                            if template_attempts % 25 == 0 and self._should_early_exit(best_valid):
+                                break
 
-                if not self._should_early_exit(best_valid) and use_content_templates:
-                    template_attempts = 0
-                    use_seeded = True
-                    while attempts_used < self.max_total_attempts:
-                        builder = self.seeded_template_candidate if use_seeded else self.pure_template_candidate
-                        use_seeded = not use_seeded
+                    if not self._should_early_exit(best_valid) and use_pos_templates:
+                        template_attempts = 0
+                        use_seeded = True
+                        while attempts_used < self.max_total_attempts:
+                            builder = self.seeded_pos_template_candidate if use_seeded else self.pure_pos_template_candidate
+                            use_seeded = not use_seeded
+                            attempts_used += 1
+                            template_attempts += 1
+                            cand = builder(target)
+                            ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
+                                cand, best_valid, best_any
+                            )
+                            if ranked:
+                                raw_pool.append(ranked)
+                            valid_candidates_found += valid_inc
+                            if template_attempts % (40 if fragile_family else 25) == 0 and self._should_early_exit(best_valid):
+                                break
+
+                    if best_valid is None and attempts_used < self.max_total_attempts:
                         attempts_used += 1
-                        template_attempts += 1
-                        cand = builder(target)
+                        cand = self.emergency_pos_template_candidate(target)
+                        if cand:
+                            cand.source_method = "emergency_template"
+                            cand.template_id = cand.template_id or "emergency"
                         ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
                             cand, best_valid, best_any
                         )
                         if ranked:
                             raw_pool.append(ranked)
                         valid_candidates_found += valid_inc
-                        if template_attempts % 25 == 0 and self._should_early_exit(best_valid):
-                            break
 
-                if not self._should_early_exit(best_valid) and use_pos_templates:
-                    template_attempts = 0
-                    use_seeded = True
-                    while attempts_used < self.max_total_attempts:
-                        builder = self.seeded_pos_template_candidate if use_seeded else self.pure_pos_template_candidate
-                        use_seeded = not use_seeded
+                    if best_valid is None and attempts_used < self.max_total_attempts:
                         attempts_used += 1
-                        template_attempts += 1
-                        cand = builder(target)
+                        cand = self.emergency_starter_candidate(target)
+                        if cand:
+                            cand.source_method = "emergency_starter"
+                            cand.template_id = cand.template_id or "emergency"
                         ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
                             cand, best_valid, best_any
                         )
                         if ranked:
                             raw_pool.append(ranked)
                         valid_candidates_found += valid_inc
-                        if template_attempts % (40 if fragile_family else 25) == 0 and self._should_early_exit(best_valid):
-                            break
 
-                if best_valid is None and attempts_used < self.max_total_attempts:
-                    attempts_used += 1
-                    cand = self.emergency_pos_template_candidate(target)
-                    if cand:
-                        cand.source_method = "emergency_template"
-                        cand.template_id = cand.template_id or "emergency"
-                    ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
-                        cand, best_valid, best_any
-                    )
-                    if ranked:
-                        raw_pool.append(ranked)
-                    valid_candidates_found += valid_inc
+                    if fragile_family and attempts_used < self.max_total_attempts and not self._has_preferred_publishable_candidate(raw_pool, family):
+                        stochastic_budget = min(
+                            self.max_total_attempts - attempts_used,
+                            max(40, int(self.max_total_attempts * 0.25)),
+                        )
+                        if stochastic_budget > 0:
+                            stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
+                            attempts_used += 1
+                            for cand in stochastic_candidates:
+                                raw_pool.append(cand)
+                                _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
+                                    cand, best_valid, best_any
+                                )
+                                valid_candidates_found += valid_inc
 
-                if best_valid is None and attempts_used < self.max_total_attempts:
-                    attempts_used += 1
-                    cand = self.emergency_starter_candidate(target)
-                    if cand:
-                        cand.source_method = "emergency_starter"
-                        cand.template_id = cand.template_id or "emergency"
-                    ranked, best_valid, best_any, valid_inc = self._evaluate_raw_candidate(
-                        cand, best_valid, best_any
-                    )
-                    if ranked:
-                        raw_pool.append(ranked)
-                    valid_candidates_found += valid_inc
-
-                if fragile_family and attempts_used < self.max_total_attempts and not self._has_preferred_publishable_candidate(raw_pool, family):
-                    stochastic_budget = min(
-                        self.max_total_attempts - attempts_used,
-                        max(40, int(self.max_total_attempts * 0.25)),
-                    )
-                    if stochastic_budget > 0:
-                        stochastic_candidates = self.generate_stochastic_candidates(target, attempts=stochastic_budget)
-                        attempts_used += 1
-                        for cand in stochastic_candidates:
-                            raw_pool.append(cand)
-                            _, best_valid, best_any, valid_inc = self._absorb_prescored_candidate(
-                                cand, best_valid, best_any
-                            )
-                            valid_candidates_found += valid_inc
-
-                deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
-                selected = self._choose_from_pool(deduped, best_valid, best_any, target)
-                self._hybrid_pool_cache[lemma] = deduped
-                self._hybrid_search_cache[lemma] = {
-                    "attempts_used": attempts_used,
-                    "best_valid": best_valid,
-                    "best_any": best_any,
-                    "selected": selected,
-                    "valid_count": valid_candidates_found,
-                }
+                    deduped = self.dedupe_candidates(raw_pool)[: self.max_candidates_to_keep]
+                    selected = self._choose_from_pool(deduped, best_valid, best_any, target)
+                    self._hybrid_pool_cache[lemma] = deduped
+                    self._hybrid_search_cache[lemma] = {
+                        "attempts_used": attempts_used,
+                        "best_valid": best_valid,
+                        "best_any": best_any,
+                        "selected": selected,
+                        "valid_count": valid_candidates_found,
+                    }
 
         pool = list(self._hybrid_pool_cache[lemma])
         if max_candidates_per_lemma is not None:

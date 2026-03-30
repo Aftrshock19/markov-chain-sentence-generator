@@ -12,7 +12,15 @@ import unicodedata
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Tuple, Iterable, Any
 
-from reranker import load_reranker_model, predict_candidate_scores
+try:
+    from reranker import load_reranker_model, predict_candidate_scores
+except ImportError:
+    def load_reranker_model(*args, **kwargs):
+        return None
+    def predict_candidate_scores(*args, **kwargs):
+        return []
+
+from coverage_utils import pos_family_from_values, policy_exclusion_reason as shared_policy_exclusion_reason
 
 
 WORD_RE = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]")
@@ -602,6 +610,7 @@ class SentenceGenerator:
         self.last_coverage_report: Optional[Dict[str, Any]] = None
         self.reranker = load_reranker_model(os.path.join(models_dir, "reranker.pkl"))
         self.overrides: Dict[str, Dict[str, str]] = {}
+        self.override_audit: List[Dict[str, str]] = []
 
     def _active_lemma(self, lemma: Optional[str]) -> bool:
         if not lemma:
@@ -676,6 +685,12 @@ class SentenceGenerator:
         for lemma, ov in raw_overrides.items():
             for key in self._override_lookup_keys(lemma, ov):
                 if _truthy(ov.get("exclude_from_generation")):
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "exclude_from_generation",
+                        "lemma": lemma,
+                    })
                     self.lexicon.pop(key, None)
                     continue
                 lex = self.lexicon.get(key)
@@ -683,16 +698,46 @@ class SentenceGenerator:
                     continue
                 if ov.get("force_translation"):
                     lex.translation = ov["force_translation"]
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "force_translation",
+                        "lemma": lemma,
+                    })
                 if ov.get("force_pos"):
                     lex.pos = ov["force_pos"].strip().lower()
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "force_pos",
+                        "lemma": lemma,
+                    })
                 if ov.get("force_canonical_lemma"):
                     lex.canonical_lemma = normalize_token(ov["force_canonical_lemma"])
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "force_canonical_lemma",
+                        "lemma": lemma,
+                    })
                 if _truthy(ov.get("force_template_friendly")) and lex.semantic_class in ("time", "abstract", "activity", "body"):
                     lex.semantic_class = "object"
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "force_template_friendly",
+                        "lemma": lemma,
+                    })
                 seed_sentence = ov.get("seed_sentence")
                 if seed_sentence and (key, seed_sentence) not in applied_seed_contexts:
                     self._inject_seed_context(key, seed_sentence)
                     applied_seed_contexts.add((key, seed_sentence))
+                    self.override_audit.append({
+                        "source": os.path.basename(path),
+                        "lookup_key": key,
+                        "action": "seed_sentence",
+                        "lemma": lemma,
+                    })
 
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
@@ -702,6 +747,16 @@ class SentenceGenerator:
         self.last_candidate_export_stats = None
         self.last_starter_stats = None
         self.last_coverage_report = None
+
+    def load_override_bundle(
+        self,
+        seed_overrides: Optional[str] = None,
+        exclusions: Optional[str] = None,
+        translation_pos_fixes: Optional[str] = None,
+    ) -> None:
+        for path in (seed_overrides, exclusions, translation_pos_fixes):
+            if path:
+                self.load_and_apply_overrides(path)
 
     def is_starter_target_eligible(self, lex: Lexeme) -> bool:
         if lex.pos not in STARTER_ELIGIBLE_POS:
@@ -794,14 +849,35 @@ class SentenceGenerator:
     def normalized_pos_family(self, lex: Optional[Lexeme]) -> str:
         if not lex:
             return "residual"
-        raw = (lex.pos or "").strip().lower()
-        lemma = normalize_token(lex.lemma)
-        if raw in {"", "none"}:
-            if lemma in SIMPLE_PREPOSITIONS or lemma in {"a"}:
-                return "prep"
-            if lemma == "no":
-                return "adv"
-        return POS_FAMILY_MAP.get(raw, raw or "residual")
+        return pos_family_from_values(lex.pos, normalize_token(lex.lemma))
+
+    def policy_exclusion_reason(self, target: Optional[Lexeme]) -> Optional[str]:
+        if not target:
+            return "policy_excluded_missing_target"
+        reason = shared_policy_exclusion_reason(target.lemma, target.pos)
+        if reason:
+            return reason
+        return None
+
+    def policy_excluded_candidate(self, target: Lexeme, reason: Optional[str] = None) -> Candidate:
+        return Candidate(
+            lemma=target.lemma,
+            rank=target.rank,
+            pos=target.pos,
+            band=get_profile(target.rank).band,
+            translation=target.translation,
+            sentence="",
+            target_form="",
+            target_index=-1,
+            support_ranks=[],
+            avg_support_rank=0.0,
+            max_support_rank=0,
+            template_id="excluded_by_policy",
+            source_method="excluded_by_policy",
+            canonical_lemma=self.canonical_lemma_for(target),
+            target_morph="",
+            score=0.0,
+        )
 
     def strategy_for_target(self, target: Lexeme) -> Dict[str, Any]:
         return self.pos_strategies.get(self.normalized_pos_family(target), self.pos_strategies["residual"])
@@ -1976,6 +2052,85 @@ class SentenceGenerator:
     def exact_surface_target_only(self, target: Lexeme) -> bool:
         return self.normalized_pos_family(target) in FUNCTION_WORD_FAMILIES or target.pos in {"prop", "art", "contraction", "letter", "prefix", "phrase", "particle", "", "none"}
 
+    def target_generation_policy(self, target: Lexeme) -> Dict[str, Any]:
+        family = self.normalized_pos_family(target)
+        exact_surface_required = self.exact_surface_target_only(target)
+        exclusion_reason = self.policy_exclusion_reason(target)
+        return {
+            "lemma": target.lemma,
+            "canonical_lemma": self.canonical_lemma_for(target),
+            "pos": target.pos,
+            "family": family,
+            "exact_surface_required": exact_surface_required,
+            "allows_inflected_target": not exact_surface_required and self.requested_lemma_allows_inflected_target(target),
+            "structured_failure_only": family in {"letter", "prefix", "phrase", "particle"},
+            "excluded_by_policy": bool(exclusion_reason),
+            "policy_reason": exclusion_reason or "",
+        }
+
+    def has_exact_surface_template(self, target: Lexeme) -> bool:
+        try:
+            return self.exact_surface_template_candidate(target, "template_generated") is not None
+        except Exception:
+            return False
+
+    def _result_meta_for_candidate(self, candidate: Candidate) -> Dict[str, Any]:
+        publishable = self.candidate_is_publishable(candidate)
+        quality_tier = "no_candidate_found"
+        failure_reason = ""
+        if candidate.source_method == "manual_review_needed":
+            quality_tier = "no_candidate_found"
+            failure_reason = "manual_review_needed"
+        elif publishable:
+            quality_tier = "acceptable"
+        else:
+            grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
+            reasons = []
+            if grammatical_ok != "1":
+                reasons.append("not_grammatical")
+            if natural_ok != "1":
+                reasons.append("not_natural")
+            if learner_clear_ok != "1":
+                reasons.append("not_learner_clear")
+            if notes:
+                reasons.extend([part.strip() for part in notes.split(";") if part.strip()])
+            failure_reason = "; ".join(dict.fromkeys(reasons)) if reasons else "not_publishable"
+            quality_tier = "weak" if candidate.sentence else "no_candidate_found"
+        return {
+            "publishable": publishable,
+            "quality_tier": quality_tier,
+            "bad_candidate": quality_tier in {"weak", "bad", "no_candidate_found"} and not publishable,
+            "failure_reason": failure_reason,
+        }
+
+    def failure_result(
+        self,
+        lemma: str,
+        rank: int,
+        source_method: str,
+        failure_reason: str,
+    ) -> Dict[str, Any]:
+        band = get_profile(rank).band
+        return {
+            "lemma": lemma,
+            "rank": rank,
+            "band": band,
+            "pos": "",
+            "sentence": "",
+            "target_form": "",
+            "canonical_lemma": "",
+            "source_method": source_method,
+            "template_id": "",
+            "score": 0.0,
+            "publishable": False,
+            "quality_tier": "no_candidate_found",
+            "bad_candidate": True,
+            "failure_reason": failure_reason,
+            "search_attempts_used": 0,
+            "candidates_found": 0,
+            "best_source_method": source_method,
+        }
+
     def person_code_from_morph(self, morph: Dict[str, str]) -> Optional[str]:
         person = str(morph.get("Person", ""))
         number = morph.get("Number")
@@ -2815,6 +2970,10 @@ class SentenceGenerator:
                 specs = [("verb_exact_han_done_that", ["han", "hecho", "eso"], 0)]
             elif surface == "había" and canonical == "haber":
                 specs = [("verb_exact_habia_problem", ["había", "un", "problema"], 0)]
+            elif surface == "haya" and canonical == "haber":
+                specs = [("verb_exact_haya_tiempo", ["ojalá", "haya", "tiempo"], 1)]
+            elif surface == "será" and canonical == "ser":
+                specs = [("verb_exact_sera_dificil", ["será", "difícil"], 0)]
             elif surface == "sé" and canonical == "saber":
                 specs = [("verb_exact_se_know_that", ["yo", "sé", "eso"], 1)]
             elif surface == "soy" and canonical == "ser":
@@ -2823,6 +2982,8 @@ class SentenceGenerator:
                 specs = [("verb_exact_eres_bueno", ["tú", "eres", "bueno"], 1)]
             elif surface == "son" and canonical == "ser":
                 specs = [("verb_exact_son_buenos", ["ellos", "son", "buenos"], 1)]
+            elif surface == "eran" and canonical == "ser":
+                specs = [("verb_exact_eran_amigos", ["eran", "amigos"], 0)]
             elif surface == "hace" and canonical == "hacer":
                 specs = [("verb_exact_hace_plan", ["ella", "hace", "un", "plan"], 1)]
             elif surface == "decir" and canonical == "decir":
@@ -2837,6 +2998,8 @@ class SentenceGenerator:
                 specs = [("verb_exact_podria_ir", ["ella", "podría", "ir"], 1)]
             elif surface == "haciendo" and canonical == "hacer":
                 specs = [("verb_exact_haciendo_eso", ["ella", "está", "haciendo", "eso"], 2)]
+            elif surface == "hablando" and canonical == "hablar":
+                specs = [("verb_exact_hablando", ["estoy", "hablando"], 1)]
             elif surface == "haces" and canonical == "hacer":
                 specs = [("verb_exact_haces_eso", ["tú", "haces", "eso"], 1)]
             elif surface == "hemos" and canonical == "haber":
@@ -2847,14 +3010,22 @@ class SentenceGenerator:
                 specs = [("verb_exact_ven_aqui", ["ven", "aquí"], 0)]
             elif surface == "ve" and canonical == "ver":
                 specs = [("verb_exact_ve_eso", ["ve", "eso"], 0)]
+            elif surface == "ves" and canonical == "ver":
+                specs = [("verb_exact_ves_eso", ["ves", "eso"], 0)]
             elif surface == "da" and canonical == "dar":
                 specs = [("verb_exact_da_eso", ["ella", "da", "eso"], 1)]
+            elif surface == "dar" and canonical == "dar":
+                specs = [("verb_exact_dar_eso", ["quiero", "dar", "eso"], 1)]
+            elif surface == "deja" and canonical == "dejar":
+                specs = [("verb_exact_deja_eso", ["deja", "eso"], 0)]
             elif surface == "digo" and canonical == "decir":
                 specs = [("verb_exact_digo_eso", ["yo", "digo", "eso"], 1)]
             elif surface == "pensé" and canonical == "pensar":
                 specs = [("verb_exact_pense_eso", ["yo", "pensé", "eso"], 1)]
             elif surface == "dije" and canonical == "decir":
                 specs = [("verb_exact_dije_eso", ["yo", "dije", "eso"], 1)]
+            elif surface == "dicho" and canonical == "decir":
+                specs = [("verb_exact_dicho", ["lo", "he", "dicho"], 2)]
         elif target.pos == "n":
             if surface == "vez":
                 specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
@@ -2876,14 +3047,6 @@ class SentenceGenerator:
                 specs = [("noun_exact_mama", ["mi", "mamá", "está", "aquí"], 1)]
             elif surface == "parte":
                 specs = [("noun_exact_part", ["es", "parte", "del", "plan"], 1)]
-            elif surface == "nombre":
-                specs = [("noun_exact_name", ["mi", "nombre", "es", "claro"], 1)]
-            elif surface == "mamá":
-                specs = [("noun_exact_mama", ["mi", "mamá", "está", "aquí"], 1)]
-            elif surface == "lugar":
-                specs = [("noun_exact_place", ["es", "un", "lugar", "tranquilo"], 2)]
-            elif surface == "mañana":
-                specs = [("noun_exact_morning", ["la", "mañana", "es", "tranquila"], 1)]
             elif surface == "noche":
                 specs = [("noun_exact_night", ["la", "noche", "es", "larga"], 1)]
             elif surface == "hora":
@@ -2894,8 +3057,6 @@ class SentenceGenerator:
                 specs = [("noun_exact_water", ["el", "agua", "está", "aquí"], 1)]
             elif surface == "mano":
                 specs = [("noun_exact_hand", ["la", "mano", "está", "aquí"], 1)]
-            elif surface == "noche":
-                specs = [("noun_exact_night", ["la", "noche", "es", "larga"], 1)]
             elif surface == "supuesto":
                 specs = [("noun_exact_of_course", ["por", "supuesto"], 1)]
             elif surface == "general":
@@ -2916,24 +3077,62 @@ class SentenceGenerator:
                 specs = [("noun_exact_boys", ["muchos", "chicos", "llegan"], 1)]
             elif surface == "ojos":
                 specs = [("noun_exact_eyes", ["sus", "ojos", "están", "aquí"], 1)]
-            elif surface == "buenas":
-                specs = [("noun_exact_good_evening", ["buenas", "noches"], 0)]
             elif surface == "señora":
                 specs = [("noun_exact_lady", ["la", "señora", "está", "aquí"], 1)]
-            elif surface == "primera":
-                specs = [("noun_exact_first", ["la", "primera", "parte"], 1)]
             elif surface == "pasado":
                 specs = [("noun_exact_past", ["el", "pasado", "importa"], 1)]
-            elif surface == "cierto":
-                specs = [("noun_exact_true", ["es", "cierto"], 1)]
-            elif surface == "claro":
-                specs = [("noun_exact_clear", ["está", "claro"], 1)]
             elif surface == "pronto":
                 specs = [("noun_exact_soon", ["hasta", "pronto"], 1)]
-            elif surface == "ah":
-                specs = [("noun_exact_ah", ["ah"], 0)]
+        elif target.pos == "adj":
+            if surface == "gran":
+                specs = [("adj_exact_gran", ["es", "un", "gran", "día"], 2)]
+            elif surface == "buen":
+                specs = [("adj_exact_buen", ["es", "un", "buen", "libro"], 2)]
+            elif surface == "mismo":
+                specs = [("adj_exact_mismo", ["es", "lo", "mismo"], 2)]
+            elif surface == "misma":
+                specs = [("adj_exact_misma", ["es", "la", "misma"], 2)]
+            elif surface == "claro":
+                specs = [("adj_exact_claro", ["está", "claro"], 1)]
+            elif surface == "cierto":
+                specs = [("adj_exact_cierto", ["es", "cierto"], 1)]
+            elif surface == "mayor":
+                specs = [("adj_exact_mayor", ["es", "mayor"], 1)]
+            elif surface == "único":
+                specs = [("adj_exact_unico", ["es", "único"], 1)]
+            elif surface == "juntos":
+                specs = [("adj_exact_juntos", ["están", "juntos"], 1)]
+            elif surface == "primera":
+                specs = [("adj_exact_primera", ["es", "la", "primera"], 2)]
+            elif surface == "nueva":
+                specs = [("adj_exact_nueva", ["es", "nueva"], 1)]
+            elif surface == "buenas":
+                specs = [("adj_exact_buenas", ["son", "buenas"], 1)]
+            elif surface == "buenos":
+                specs = [("adj_exact_buenos", ["son", "buenos"], 1)]
+            elif surface == "última":
+                specs = [("adj_exact_ultima", ["es", "la", "última"], 2)]
+            elif surface == "general":
+                specs = [("adj_exact_general", ["es", "general"], 1)]
+        elif target.pos in {"interj", "none", ""} or self.normalized_pos_family(target) in {"interj", "residual"}:
+            if surface == "hola":
+                specs = [("interj_exact_hola", ["hola", ",", "ella", "está", "aquí"], 0)]
+            elif surface == "oh":
+                specs = [("interj_exact_oh", ["oh", ",", "ya", "viene"], 0)]
             elif surface == "eh":
-                specs = [("noun_exact_eh", ["eh"], 0)]
+                specs = [("interj_exact_eh", ["eh", ",", "ya", "voy"], 0)]
+            elif surface == "ah":
+                specs = [("interj_exact_ah", ["ah", ",", "ya", "sé"], 0)]
+            elif surface == "hey":
+                specs = [("interj_exact_hey", ["hey", ",", "ven", "aquí"], 0)]
+            elif surface in {"sr", "sr."}:
+                specs = [("residual_exact_sr", ["la", "forma", "sr", "es", "clara"], 2)]
+            elif surface in {"sra", "sra."}:
+                specs = [("residual_exact_sra", ["la", "forma", "sra", "es", "clara"], 2)]
+            elif surface in {"dr", "dr."}:
+                specs = [("residual_exact_dr", ["la", "forma", "dr", "es", "clara"], 2)]
+            elif surface == "mas":
+                specs = [("residual_exact_mas", ["quiero", "ir", "mas", "no", "puedo"], 2)]
 
         for template_id, tokens, target_index in specs:
             cand = self.build_candidate(target, tokens, template_id, source_method, target_index)
@@ -3597,6 +3796,26 @@ class SentenceGenerator:
                     seeded=seeded,
                     emergency=emergency,
                 )
+            if surface in {"dónde", "donde"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_where_be", [surface, "está", "ella"], 0),
+                        ("adv_where_go", [surface, "vas"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in {"cuándo", "cuando"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_when_arrive", [surface, "llega", "ella"], 0),
+                        ("adv_when_call", [surface, "te", "llamo"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if surface == "sólo":
                 return self._build_from_specs(
                     target,
@@ -3649,6 +3868,7 @@ class SentenceGenerator:
                     target,
                     [
                         ("adv_less_work", ["ahora", "trabajo", "menos"], 2),
+                        ("adv_less_sleep", ["duermo", "menos"], 1),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3668,6 +3888,7 @@ class SentenceGenerator:
                     target,
                     [
                         ("adv_besides_clear", ["además", "es", "claro"], 0),
+                        ("adv_besides_come", ["además", "viene", "ella"], 0),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3698,6 +3919,89 @@ class SentenceGenerator:
                     [
                         ("adv_today_go", ["voy", "hoy"], 1),
                         ("adv_today_arrive", ["llega", "hoy"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "poco":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_little_sleep", ["duermo", "poco"], 1),
+                        ("adv_little_work", ["trabajo", "poco"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "fuera":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_outside_live", ["vive", "fuera"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "tanto":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_so_much", ["no", "trabajo", "tanto"], 2),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface in {"quizá", "quizas"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_maybe_come", [surface, "viene"], 0),
+                        ("adv_maybe_go", [surface, "voy"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "pronto":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_soon_return", ["vuelvo", "pronto"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "incluso":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_even_he", ["incluso", "él", "viene"], 0),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "siquiera":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_even_know", ["ni", "siquiera", "lo", "sé"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "bastante":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_quite_much", ["trabajo", "bastante"], 1),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
+            if surface == "cuanto":
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("adv_how_much_cost", ["no", "sé", "cuanto", "vale"], 2),
                     ],
                     seeded=seeded,
                     emergency=emergency,
@@ -3832,6 +4136,15 @@ class SentenceGenerator:
             )
 
         if family in {"determiner", "art"}:
+            if surface in {"mío", "mio"}:
+                return self._build_from_specs(
+                    target,
+                    [
+                        ("det_possessive_mio", ["el", "libro", "es", surface], 3),
+                    ],
+                    seeded=seeded,
+                    emergency=emergency,
+                )
             if surface == "todo":
                 return self._build_from_specs(
                     target,
@@ -3950,10 +4263,13 @@ class SentenceGenerator:
                 specs = [("pron_question", [pron, verb], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             if pron == "que":
-                specs = [("pron_relative", ["la", "casa", "que", "veo"], 2)]
+                specs = [
+                    ("pron_relative", ["la", "casa", "que", "veo"], 2),
+                    ("pron_complement_clause", ["sé", "que", "viene"], 1),
+                ]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
-            if pron == "cuál":
-                specs = [("pron_which_name", ["cuál", "es", "tu", "nombre"], 0)]
+            if pron in {"cuál", "cual"}:
+                specs = [("pron_which_name", [pron, "es", "tu", "nombre"], 0)]
                 return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             if pron == "ello":
                 specs = [("pron_ello_object", ["no", "hablo", "de", "ello"], 3)]
@@ -4125,6 +4441,11 @@ class SentenceGenerator:
             return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
 
         if family == "interj":
+            if surface in {"hola", "oh"}:
+                specs = [
+                    (f"interj_{surface}_arrive", [surface, ",", "ella", "llega"], 0),
+                ]
+                return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
             punct = INTERJECTION_PUNCT.get(surface, "!")
             candidate = self._build_from_specs(
                 target,
@@ -4182,6 +4503,12 @@ class SentenceGenerator:
                 ]
             elif surface == "sí":
                 specs = [("residual_yes_want", ["sí", "lo", "quiero"], 0)]
+            elif surface in {"eh", "ah", "hey"}:
+                specs = [(f"residual_{surface}", [surface, ",", "ya", "voy"], 0)]
+            elif surface in {"sr", "sr."}:
+                specs = [("residual_sr", ["la", "forma", "sr", "es", "clara"], 2)]
+            elif surface == "mas":
+                specs = [("residual_mas", ["quiero", "ir", "mas", "no", "puedo"], 2)]
             else:
                 specs = [("residual_metalinguistic_clause", ["la", "forma", surface, "es", "clara"], 2)]
             return self._build_from_specs(target, specs, seeded=seeded, emergency=emergency)
@@ -4199,7 +4526,7 @@ class SentenceGenerator:
         pure_builder = strategy.get("pure")
 
         if self.normalized_pos_family(target) in {"n", "v", "adj"}:
-            if not self.can_template_target(target):
+            if not self.can_template_target(target) and not self.has_exact_surface_template(target):
                 seeded_attempts = 0
                 pure_attempts = 0
 
@@ -4228,6 +4555,9 @@ class SentenceGenerator:
         if lemma not in self.lexicon:
             raise KeyError(f"Lemma not in lexicon: {lemma}")
         target = self.lexicon[lemma]
+        exclusion_reason = self.policy_exclusion_reason(target)
+        if exclusion_reason:
+            return self.policy_excluded_candidate(target, exclusion_reason)
         candidates = self.collect_candidates_for_lemma(lemma)
         if candidates:
             chosen = self.select_best_candidate(candidates)
@@ -4245,54 +4575,39 @@ class SentenceGenerator:
         lemma = (target_lemma or "").strip().lower()
         band = get_profile(target_rank).band
         if not lemma:
-            return {
-                "lemma": lemma,
-                "rank": target_rank,
-                "band": band,
-                "pos": "",
-                "sentence": "",
-                "target_form": "",
-                "canonical_lemma": "",
-                "source_method": "invalid_request",
-                "template_id": "",
-                "score": 0.0,
-                "publishable": False,
-                "failure_reason": "missing_target_lemma",
-            }
+            return self.failure_result(lemma, target_rank, "invalid_request", "missing_target_lemma")
         if lemma not in self.lexicon:
+            return self.failure_result(lemma, target_rank, "missing_lemma", "lemma_not_in_lexicon")
+
+        target = self.lexicon[lemma]
+        policy = self.target_generation_policy(target)
+        if policy.get("excluded_by_policy"):
+            candidate = self.policy_excluded_candidate(target, policy.get("policy_reason"))
+            meta = self._result_meta_for_candidate(candidate)
             return {
                 "lemma": lemma,
                 "rank": target_rank,
                 "band": band,
-                "pos": "",
-                "sentence": "",
-                "target_form": "",
-                "canonical_lemma": "",
-                "source_method": "missing_lemma",
-                "template_id": "",
-                "score": 0.0,
-                "publishable": False,
-                "failure_reason": "lemma_not_in_lexicon",
+                "pos": target.pos,
+                "sentence": candidate.sentence,
+                "target_form": candidate.target_form,
+                "canonical_lemma": candidate.canonical_lemma or self.canonical_lemma_for(target),
+                "target_morph": candidate.target_morph,
+                "source_method": candidate.source_method,
+                "template_id": candidate.template_id,
+                "score": candidate.score,
+                "publishable": meta["publishable"],
+                "quality_tier": meta["quality_tier"],
+                "bad_candidate": meta["bad_candidate"],
+                "failure_reason": meta["failure_reason"],
+                "search_attempts_used": 0,
+                "candidates_found": 0,
+                "best_source_method": candidate.source_method,
+                "target_policy": policy,
             }
 
         candidate = self.generate_for_lemma(lemma)
-        target = self.lexicon[lemma]
-        publishable = self.candidate_is_publishable(candidate)
-        failure_reason = ""
-        if candidate.source_method == "manual_review_needed":
-            failure_reason = "manual_review_needed"
-        elif not publishable:
-            grammatical_ok, natural_ok, learner_clear_ok, notes = self.review_flags(candidate)
-            reasons = []
-            if grammatical_ok != "1":
-                reasons.append("not_grammatical")
-            if natural_ok != "1":
-                reasons.append("not_natural")
-            if learner_clear_ok != "1":
-                reasons.append("not_learner_clear")
-            if notes:
-                reasons.append(notes)
-            failure_reason = "; ".join(reasons) if reasons else "not_publishable"
+        meta = self._result_meta_for_candidate(candidate)
 
         return {
             "lemma": lemma,
@@ -4302,11 +4617,18 @@ class SentenceGenerator:
             "sentence": candidate.sentence,
             "target_form": candidate.target_form,
             "canonical_lemma": candidate.canonical_lemma or self.canonical_lemma_for(target),
+            "target_morph": candidate.target_morph,
             "source_method": candidate.source_method,
             "template_id": candidate.template_id,
             "score": candidate.score,
-            "publishable": publishable,
-            "failure_reason": failure_reason,
+            "publishable": meta["publishable"],
+            "quality_tier": meta["quality_tier"],
+            "bad_candidate": meta["bad_candidate"],
+            "failure_reason": meta["failure_reason"],
+            "search_attempts_used": 0,
+            "candidates_found": len(self.collect_candidates_for_lemma(lemma)),
+            "best_source_method": candidate.source_method,
+            "target_policy": policy,
         }
 
     def search_starter_candidates_for_lemma(
@@ -5287,6 +5609,10 @@ class SentenceGenerator:
             "parallel_pair_id",
             "score",
             "english_score",
+            "publishable",
+            "quality_tier",
+            "bad_candidate",
+            "failure_reason",
         ]
         with open(out_csv, "w", encoding="utf-8", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -5294,6 +5620,7 @@ class SentenceGenerator:
             for row in rows:
                 d = asdict(row)
                 d["support_ranks"] = " ".join(str(x) for x in row.support_ranks)
+                d.update(self._result_meta_for_candidate(row))
                 writer.writerow(d)
 
     def write_starter_main_csv(self, rows: List[Candidate], out_csv: str) -> None:
@@ -5534,6 +5861,9 @@ def main() -> None:
     parser.add_argument("--max-candidates-per-lemma", type=int, default=10, help="Maximum candidate rows to keep per lemma in the candidate export.")
     parser.add_argument("--starter-max-attempts", type=int, default=300, help="Maximum generation attempts per lemma for starter dataset search.")
     parser.add_argument("--lexicon-overrides", action="append", default=[], help="Path to a lexicon overrides CSV or JSON file. Can be repeated.")
+    parser.add_argument("--seed-overrides", default=None, help="Optional seed_overrides.csv path.")
+    parser.add_argument("--exclusions", default=None, help="Optional exclusions.csv path.")
+    parser.add_argument("--translation-pos-fixes", default=None, help="Optional translation_pos_fixes.csv path.")
     parser.add_argument("--quarantine-out", default=None, help="Optional quarantine CSV for near-miss starter rows.")
     parser.add_argument("--target-lemma", default=None, help="Generate one structured sentence result for this lemma.")
     parser.add_argument("--target-rank", type=int, default=None, help="Rank to use when deriving the output band for --target-lemma.")
@@ -5544,6 +5874,11 @@ def main() -> None:
     args = parser.parse_args()
 
     gen = SentenceGenerator(args.lexicon, args.models_dir, seed=args.seed)
+    gen.load_override_bundle(
+        seed_overrides=args.seed_overrides,
+        exclusions=args.exclusions,
+        translation_pos_fixes=args.translation_pos_fixes,
+    )
     for override_path in args.lexicon_overrides:
         gen.load_and_apply_overrides(override_path)
         print(f"Loaded {len(gen.overrides)} total lexicon overrides after {override_path}")

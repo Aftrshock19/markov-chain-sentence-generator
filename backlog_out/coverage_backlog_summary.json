@@ -1,0 +1,532 @@
+{
+  "input_file": "hybrid_batch_2023324.csv",
+  "total_rows": 5086,
+  "no_candidate_rows": 1594,
+  "no_candidate_by_family": {
+    "v": 547,
+    "n": 447,
+    "adj": 345,
+    "residual": 130,
+    "adv": 35,
+    "pron": 21,
+    "letter": 14,
+    "determiner": 13,
+    "interj": 13,
+    "prep": 9,
+    "prop": 7,
+    "conj": 6,
+    "num": 5,
+    "contraction": 2
+  },
+  "no_candidate_by_rank_block": {
+    "1_1000": 278,
+    "1001_2000": 306,
+    "2001_3000": 347,
+    "3001_4000": 322,
+    "4001_5000": 309,
+    "outside_1_5000": 32
+  },
+  "fragile_family_under_1000": 73,
+  "top_missing_surfaces": [
+    {
+      "lemma": "de",
+      "rank": 1,
+      "family": "prep"
+    },
+    {
+      "lemma": "que",
+      "rank": 2,
+      "family": "pron"
+    },
+    {
+      "lemma": "las",
+      "rank": 20,
+      "family": "pron"
+    },
+    {
+      "lemma": "del",
+      "rank": 21,
+      "family": "contraction"
+    },
+    {
+      "lemma": "al",
+      "rank": 28,
+      "family": "contraction"
+    },
+    {
+      "lemma": "como",
+      "rank": 30,
+      "family": "conj"
+    },
+    {
+      "lemma": "cuando",
+      "rank": 47,
+      "family": "conj"
+    },
+    {
+      "lemma": "eres",
+      "rank": 96,
+      "family": "v"
+    },
+    {
+      "lemma": "hasta",
+      "rank": 98,
+      "family": "prep"
+    },
+    {
+      "lemma": "hola",
+      "rank": 104,
+      "family": "interj"
+    },
+    {
+      "lemma": "vida",
+      "rank": 108,
+      "family": "n"
+    },
+    {
+      "lemma": "dónde",
+      "rank": 111,
+      "family": "adv"
+    },
+    {
+      "lemma": "oh",
+      "rank": 117,
+      "family": "interj"
+    },
+    {
+      "lemma": "uno",
+      "rank": 120,
+      "family": "num"
+    },
+    {
+      "lemma": "siento",
+      "rank": 122,
+      "family": "v"
+    },
+    {
+      "lemma": "había",
+      "rank": 123,
+      "family": "v"
+    },
+    {
+      "lemma": "día",
+      "rank": 127,
+      "family": "n"
+    },
+    {
+      "lemma": "poco",
+      "rank": 130,
+      "family": "adv"
+    },
+    {
+      "lemma": "mismo",
+      "rank": 134,
+      "family": "adj"
+    },
+    {
+      "lemma": "entre",
+      "rank": 142,
+      "family": "prep"
+    },
+    {
+      "lemma": "noche",
+      "rank": 143,
+      "family": "n"
+    },
+    {
+      "lemma": "mis",
+      "rank": 147,
+      "family": "n"
+    },
+    {
+      "lemma": "parte",
+      "rank": 163,
+      "family": "n"
+    },
+    {
+      "lemma": "menos",
+      "rank": 167,
+      "family": "adv"
+    },
+    {
+      "lemma": "fuera",
+      "rank": 170,
+      "family": "adv"
+    },
+    {
+      "lemma": "gran",
+      "rank": 171,
+      "family": "adj"
+    },
+    {
+      "lemma": "lugar",
+      "rank": 172,
+      "family": "n"
+    },
+    {
+      "lemma": "tres",
+      "rank": 176,
+      "family": "num"
+    },
+    {
+      "lemma": "claro",
+      "rank": 181,
+      "family": "adj"
+    },
+    {
+      "lemma": "mañana",
+      "rank": 184,
+      "family": "n"
+    },
+    {
+      "lemma": "sr.",
+      "rank": 185,
+      "family": "residual"
+    },
+    {
+      "lemma": "días",
+      "rank": 188,
+      "family": "n"
+    },
+    {
+      "lemma": "tanto",
+      "rank": 193,
+      "family": "adv"
+    },
+    {
+      "lemma": "nombre",
+      "rank": 216,
+      "family": "n"
+    },
+    {
+      "lemma": "veces",
+      "rank": 218,
+      "family": "n"
+    },
+    {
+      "lemma": "mamá",
+      "rank": 219,
+      "family": "n"
+    },
+    {
+      "lemma": "buen",
+      "rank": 221,
+      "family": "adj"
+    },
+    {
+      "lemma": "durante",
+      "rank": 222,
+      "family": "prep"
+    },
+    {
+      "lemma": "pasado",
+      "rank": 227,
+      "family": "n"
+    },
+    {
+      "lemma": "mientras",
+      "rank": 241,
+      "family": "conj"
+    },
+    {
+      "lemma": "hora",
+      "rank": 244,
+      "family": "n"
+    },
+    {
+      "lemma": "primera",
+      "rank": 249,
+      "family": "adj"
+    },
+    {
+      "lemma": "cierto",
+      "rank": 250,
+      "family": "adj"
+    },
+    {
+      "lemma": "dicho",
+      "rank": 252,
+      "family": "v"
+    },
+    {
+      "lemma": "hacerlo",
+      "rank": 253,
+      "family": "v"
+    },
+    {
+      "lemma": "pues",
+      "rank": 255,
+      "family": "conj"
+    },
+    {
+      "lemma": "mío",
+      "rank": 257,
+      "family": "determiner"
+    },
+    {
+      "lemma": "personas",
+      "rank": 267,
+      "family": "n"
+    },
+    {
+      "lemma": "casi",
+      "rank": 269,
+      "family": "adv"
+    },
+    {
+      "lemma": "ven",
+      "rank": 273,
+      "family": "v"
+    },
+    {
+      "lemma": "ve",
+      "rank": 276,
+      "family": "v"
+    },
+    {
+      "lemma": "nueva",
+      "rank": 277,
+      "family": "adj"
+    },
+    {
+      "lemma": "eh",
+      "rank": 278,
+      "family": "residual"
+    },
+    {
+      "lemma": "hombres",
+      "rank": 282,
+      "family": "n"
+    },
+    {
+      "lemma": "poder",
+      "rank": 292,
+      "family": "n"
+    },
+    {
+      "lemma": "mayor",
+      "rank": 296,
+      "family": "adj"
+    },
+    {
+      "lemma": "chicos",
+      "rank": 298,
+      "family": "n"
+    },
+    {
+      "lemma": "agua",
+      "rank": 304,
+      "family": "n"
+    },
+    {
+      "lemma": "misma",
+      "rank": 305,
+      "family": "adj"
+    },
+    {
+      "lemma": "fin",
+      "rank": 312,
+      "family": "n"
+    },
+    {
+      "lemma": "horas",
+      "rank": 316,
+      "family": "n"
+    },
+    {
+      "lemma": "bajo",
+      "rank": 321,
+      "family": "prep"
+    },
+    {
+      "lemma": "ah",
+      "rank": 325,
+      "family": "residual"
+    },
+    {
+      "lemma": "quizá",
+      "rank": 327,
+      "family": "adv"
+    },
+    {
+      "lemma": "buenas",
+      "rank": 328,
+      "family": "adj"
+    },
+    {
+      "lemma": "supuesto",
+      "rank": 329,
+      "family": "n"
+    },
+    {
+      "lemma": "mano",
+      "rank": 332,
+      "family": "n"
+    },
+    {
+      "lemma": "además",
+      "rank": 335,
+      "family": "adv"
+    },
+    {
+      "lemma": "señora",
+      "rank": 336,
+      "family": "n"
+    },
+    {
+      "lemma": "ojos",
+      "rank": 339,
+      "family": "n"
+    },
+    {
+      "lemma": "general",
+      "rank": 342,
+      "family": "adj"
+    },
+    {
+      "lemma": "pronto",
+      "rank": 343,
+      "family": "adv"
+    },
+    {
+      "lemma": "minutos",
+      "rank": 345,
+      "family": "n"
+    },
+    {
+      "lemma": "sino",
+      "rank": 346,
+      "family": "conj"
+    },
+    {
+      "lemma": "manos",
+      "rank": 348,
+      "family": "n"
+    },
+    {
+      "lemma": "muchos",
+      "rank": 351,
+      "family": "determiner"
+    },
+    {
+      "lemma": "incluso",
+      "rank": 355,
+      "family": "adv"
+    },
+    {
+      "lemma": "hablando",
+      "rank": 358,
+      "family": "v"
+    },
+    {
+      "lemma": "siquiera",
+      "rank": 360,
+      "family": "adv"
+    },
+    {
+      "lemma": "millones",
+      "rank": 369,
+      "family": "n"
+    },
+    {
+      "lemma": "ayer",
+      "rank": 372,
+      "family": "adv"
+    },
+    {
+      "lemma": "cuerpo",
+      "rank": 373,
+      "family": "n"
+    },
+    {
+      "lemma": "mujeres",
+      "rank": 375,
+      "family": "n"
+    },
+    {
+      "lemma": "según",
+      "rank": 377,
+      "family": "prep"
+    },
+    {
+      "lemma": "único",
+      "rank": 381,
+      "family": "adj"
+    },
+    {
+      "lemma": "final",
+      "rank": 384,
+      "family": "n"
+    },
+    {
+      "lemma": "cara",
+      "rank": 385,
+      "family": "n"
+    },
+    {
+      "lemma": "juntos",
+      "rank": 388,
+      "family": "adj"
+    },
+    {
+      "lemma": "deja",
+      "rank": 393,
+      "family": "v"
+    },
+    {
+      "lemma": "ves",
+      "rank": 394,
+      "family": "v"
+    },
+    {
+      "lemma": "buenos",
+      "rank": 399,
+      "family": "adj"
+    },
+    {
+      "lemma": "eran",
+      "rank": 400,
+      "family": "v"
+    },
+    {
+      "lemma": "haya",
+      "rank": 401,
+      "family": "v"
+    },
+    {
+      "lemma": "hubiera",
+      "rank": 402,
+      "family": "v"
+    },
+    {
+      "lemma": "meses",
+      "rank": 408,
+      "family": "n"
+    },
+    {
+      "lemma": "dar",
+      "rank": 410,
+      "family": "v"
+    },
+    {
+      "lemma": "podía",
+      "rank": 411,
+      "family": "v"
+    },
+    {
+      "lemma": "última",
+      "rank": 412,
+      "family": "adj"
+    },
+    {
+      "lemma": "bastante",
+      "rank": 418,
+      "family": "adv"
+    },
+    {
+      "lemma": "tomar",
+      "rank": 419,
+      "family": "v"
+    }
+  ]
+}
