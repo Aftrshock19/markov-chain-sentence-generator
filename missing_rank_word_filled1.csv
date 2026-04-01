@@ -1,0 +1,608 @@
+rank,word,sentence
+123,había,Antes había un bar aquí.
+141,estar,Lo mejor ahora es estar tranquilos.
+148,sea,Ojalá sea verdad.
+185,sr.,Mañana viene el sr. García.
+205,será,"Ya verás, todo será más fácil."
+237,hemos,Hoy hemos salido tarde.
+273,ven,"Ven un momento, por favor."
+285,sería,Sería mejor hablarlo mañana.
+354,hice,Al final hice lo correcto.
+362,fueron,Al final fueron todos juntos.
+400,eran,De pequeños eran inseparables.
+401,haya,Puede que no haya sitio.
+434,tenido,He tenido una mañana horrible.
+480,fui,Ayer fui andando al trabajo.
+500,ido,Ya se había ido cuando llegué.
+504,estaban,"Cuando llegué, ya estaban dentro."
+508,siendo,Sigue siendo igual de simpático.
+539,sabemos,Ya sabemos cómo va esto.
+553,estuvo,La comida estuvo buenísima.
+572,tuve,Tuve que irme antes.
+583,sra.,La sra. López ya ha llegado.
+599,estará,Mañana estará todo listo.
+607,podrías,¿Podrías cerrar la ventana?
+620,dr.,El dr. Martín me atendió ayer.
+623,habían,Ya habían salido cuando llamaste.
+624,hagas,No hagas ruido al entrar.
+626,habrá,Seguro que habrá más gente.
+702,hacemos,Luego hacemos la compra.
+706,hacía,Antes hacía mucho deporte.
+729,haría,Yo no haría eso.
+775,hubo,Al final hubo suerte.
+809,srta.,La srta. Pérez dejó una nota en recepción.
+850,seas,"No seas pesado, anda."
+858,estaría,Pensé que estaría en casa.
+861,estábamos,A esa hora estábamos cenando.
+892,quiera,Que venga quien quiera.
+968,pude,Al final sí pude ir.
+999,eras,De niño eras muy tranquilo.
+1018,tenían,Tenían razón desde el principio.
+1040,serán,Serán las ocho o así.
+1108,tengas,"Cuando tengas tiempo, me llamas."
+1117,estés,Espero que estés mejor.
+1130,tendría,Yo tendría más cuidado.
+1162,viendo,Te llevo viendo toda la tarde.
+1198,creía,Creía que llegabas hoy.
+1237,tendré,Mañana tendré más tiempo.
+1406,veré,Luego veré qué hago.
+1536,vayan,Que vayan pasando de uno en uno.
+1575,hayas,No creo que hayas sido tú.
+1580,irá,"Si llueve, no irá nadie."
+1605,estén,"Aunque estén cansados, vendrán."
+1708,quiso,No quiso decir nada.
+1721,serás,"Con esa cara, serás tú seguro."
+1747,iban,Iban hablando por la calle.
+1773,quiénes,No sé quiénes vienen al final.
+1833,fuese,Como si no fuese contigo.
+1850,veía,Desde allí se veía el mar.
+1899,estarán,A estas horas ya estarán cenando.
+1968,verá,Ya verá usted qué risa.
+1979,ibas,Pensé que ibas solo.
+1994,vengan,Que vengan cuando quieran.
+1998,tuvieron,Tuvieron que esperar fuera.
+2054,sabido,"Si lo hubiera sabido, no iba."
+2089,hablaba,Hablaba tan bajo que no le oía.
+2115,seres,Hay seres que dan miedo de verdad.
+2153,éramos,Antes éramos cinco en casa.
+2158,estan,SKIP
+2197,harán,Seguro que lo harán mañana.
+2281,podré,No sé si podré ir.
+2314,dra.,La dra. Ruiz pasa consulta por la tarde.
+2357,podían,No podían entrar todavía.
+2424,poderes,En esa historia salen poderes rarísimos.
+2466,pongo,"Si quieres, yo pongo la música."
+2468,podrán,Mañana podrán pasar sin cita.
+2536,fueras,Ojalá fueras más claro.
+2604,pones,"Si pones eso ahí, se cae."
+2716,des,"Aunque des tu opinión, no pasa nada."
+2790,irás,Mañana irás tú primero.
+2808,supo,Nunca supo la verdad.
+2865,daría,Yo no daría tantos detalles.
+2972,hacían,Antes hacían pan en casa.
+3017,estuvieron,Estuvieron aquí toda la tarde.
+3048,vean,Que lo vean con sus propios ojos.
+3071,esperas,"Si esperas fuera, salgo en un minuto."
+3116,serían,Serían las seis cuando llegué.
+3172,iría,Yo iría en metro.
+3228,pusieron,Lo pusieron todo patas arriba.
+3237,sabrá,Él sabrá lo que hace.
+3310,sabían,Ya sabían lo que venía.
+3331,pudieron,No pudieron abrir la puerta.
+3364,estando,"Aun estando cansado, salió."
+3428,quieran,Que entren cuando quieran.
+3500,seamos,Seamos sinceros un momento.
+3617,vd.,"Si vd. prefiere, lo hablamos luego."
+3674,habrían,"Sin avisar, no habrían venido."
+3702,digan,Que digan lo que quieran.
+3781,sienten,Se sienten mejor después de hablar.
+3846,decían,Decían lo mismo de siempre.
+4071,decimos,Luego decimos que no hay tiempo.
+4125,sabría,Yo no sabría qué decir.
+4194,encontrará,En la carpeta lo encontrará todo.
+4442,morirá,Ese tema morirá pronto.
+4520,ponía,Siempre ponía excusas.
+4591,ee.uu.,Mi tía se fue a ee.uu. hace años.
+4640,sepan,Que lo sepan de una vez.
+4836,volvía,Cada tarde volvía andando.
+5001,pongan,Que pongan otra canción.
+5056,estarían,Pensé que estarían dormidos.
+5061,ponemos,"Si quieres, ponemos una peli."
+5420,creído,Se lo ha creído de verdad.
+5502,mundos,Siempre imagina mundos imposibles.
+5530,harían,No harían eso ni de broma.
+5697,dato,Ese dato no me cuadra.
+5720,vería,Yo no lo vería tan claro.
+5796,tendrían,Tendrían que avisar antes.
+5814,venían,Venían corriendo desde la estación.
+6114,serios,Hoy están demasiado serios.
+6138,empezaba,La película empezaba tarde.
+6206,sacando,Va sacando cajas del trastero.
+6343,dirán,Luego dirán que exagero.
+6608,mañanas,Los lunes por las mañanas voy al gimnasio.
+6926,sabré,Mañana sabré algo seguro.
+7092,saldré,Hoy saldré un poco más tarde.
+7137,comisiones,Las comisiones del banco son absurdas.
+7672,a.m.,La reunión empieza a las 9 a.m.
+7735,entraba,No entraba nada de luz.
+7830,llamará,Te llamará cuando salga.
+7961,favores,No me pidas más favores hoy.
+8323,lees,Siempre lees antes de dormir.
+8576,pagamos,Nosotros pagamos esta ronda.
+8681,amores,Hay amores que duran toda la vida.
+9037,parecerá,Ahora parecerá una tontería.
+9057,vivirá,El año que viene vivirá solo.
+9306,quisieron,No quisieron quedarse más tiempo.
+9337,comenzaba,La reunión comenzaba a las nueve.
+9522,cambiamos,"Si quieres, cambiamos de sitio."
+9541,maridos,Sus maridos aún no han llegado.
+9650,p.m.,Quedamos a las 7 p.m. en la plaza.
+9670,miedos,Con el tiempo se te pasan los miedos.
+9753,disparan,Aquí los precios se disparan en verano.
+9754,acabando,Voy acabando y me voy.
+9786,e-mail,Mándamelo por e-mail y lo reviso.
+9921,olvidaba,Casi se me olvidaba decírtelo.
+9994,preguntamos,Luego preguntamos en recepción.
+10027,contará,Ya te contará qué pasó.
+10081,justos,Llegamos justos de tiempo.
+10336,presentaba,Cada noche presentaba sin decir nada.
+10422,logran,Pocos lo logran a la primera.
+10432,roban,En esa zona roban bicis.
+10499,morimos,Con este calor nos morimos.
+10529,decido,Esta vez decido yo.
+10540,creamos,Entre todos creamos algo chulo.
+10637,salvando,Fue salvando los muebles como pudo.
+10674,realidades,A veces vivimos en realidades distintas.
+10684,es-,SKIP
+10780,navidades,Estas navidades me quedo en casa.
+11030,controlan,Ellos controlan todo desde aquí.
+11086,partiendo,Lo encontré partiendo pan en la cocina.
+11295,d.c.,"La inscripción dice 200 d.C., no antes."
+11457,mandos,He dejado los mandos encima de la mesa.
+11652,terminaba,Cada noche terminaba sin decir nada.
+11724,encontrando,Fue encontrando trabajo poco a poco.
+11776,formaciones,Las formaciones rocosas de allí impresionan mucho.
+11833,observan,Desde arriba observan todo.
+11873,supieron,Al final supieron sin avisar.
+11938,aceptará,Seguro que aceptará mañana.
+12036,ocupará,Seguro que ocupará mañana.
+12070,dirían,"Sin ayuda, no dirían."
+12362,salvará,Seguro que salvará mañana.
+12420,ratos,Solo tengo ratos sueltos entre semana.
+12507,precisos,Necesito datos más precisos.
+12527,dormimos,Esta tarde dormimos juntos.
+12767,parecemos,Esta tarde parecemos juntos.
+12800,ayudamos,Esta tarde ayudamos juntos.
+12937,bolívares,Ya no me quedan bolívares en la cartera.
+12982,resultará,Seguro que resultará mañana.
+13014,actuaba,Cada noche actuaba sin decir nada.
+13053,vendrían,De pequeños vendrían por aquí.
+13069,levantaba,Cada noche levantaba sin decir nada.
+13278,arreglará,Seguro que arreglará mañana.
+13499,levantan,A las ocho levantan la persiana.
+13553,buscará,Seguro que buscará mañana.
+13560,barça,El barça juega en casa este domingo.
+13569,teatros,En Madrid hay teatros para todos los gustos.
+13759,esperará,Seguro que esperará mañana.
+13785,nº,"Apunta el nº de la puerta, por favor."
+13831,caminó,Ayer caminó sin pensarlo mucho.
+13841,casan,Se casan en septiembre.
+13844,logrará,Seguro que logrará mañana.
+13984,irían,"Sin ayuda, no irían."
+13994,caminamos,Esta tarde caminamos juntos.
+14018,cuidará,Seguro que cuidará mañana.
+14031,lunas,De niño dibujaba lunas por todas partes.
+14032,montó,Ayer montó sin pensarlo mucho.
+14083,marcando,Iba marcando los temas importantes.
+14469,de-,SKIP
+14486,querrían,De pequeños querrían por aquí.
+14568,richards,A Richards le vi salir el último.
+14613,cantado,Lo dejó todo cantado desde el principio.
+14675,tocará,Seguro que tocará mañana.
+14680,utilizaba,Cada noche utilizaba sin decir nada.
+14714,conocerá,Seguro que conocerá mañana.
+14804,encargar,Te lo puedo encargar mañana.
+14877,alcanzando,Fue alcanzando sus metas sin prisa.
+14920,manejaba,Cada noche manejaba sin decir nada.
+14931,segundas,Las segundas partes casi nunca salen bien.
+14977,utilizamos,Esta tarde utilizamos juntos.
+14996,necesitó,Ayer necesitó sin pensarlo mucho.
+15069,revisamos,Esta tarde revisamos juntos.
+15437,creaciones,Sus creaciones siempre llaman la atención.
+15443,partimos,Esta tarde partimos juntos.
+15553,evitó,Ayer evitó sin pensarlo mucho.
+15617,coca-cola,Pídeme una coca-cola bien fría.
+15750,enseñaba,Cada noche enseñaba sin decir nada.
+15791,cambiaba,Cada noche cambiaba sin decir nada.
+15816,comerá,Seguro que comerá mañana.
+15852,metemos,Esta tarde metemos juntos.
+15936,mandamos,Esta tarde mandamos juntos.
+15951,cerraba,Cada noche cerraba sin decir nada.
+16072,tiramos,Esta tarde tiramos juntos.
+16082,comercios,Muchos comercios cerraron temprano hoy.
+16171,pesan,Estas cajas pesan mucho.
+16204,invitan,Siempre invitan a todo el mundo.
+16237,bailaba,Cada noche bailaba sin decir nada.
+16350,apartó,Ayer apartó sin pensarlo mucho.
+16356,despertando,Me fui despertando poco a poco.
+16394,llorado,He llorado más de la cuenta.
+16514,jovenes,SKIP
+16551,contrarios,Tenemos horarios contrarios y por eso no coincidimos.
+16620,bienvenidas,Aquí todas sois bienvenidas.
+16735,mataba,Cada noche mataba sin decir nada.
+16839,eliminando,Pasó la tarde eliminando sin parar.
+17095,egoístas,No soporto a los egoístas.
+17177,cuestas,En esta ciudad hay muchas cuestas.
+17213,descubrirá,Seguro que descubrirá mañana.
+17276,secretarios,Los secretarios ya tienen el horario.
+17300,realizaba,Cada noche realizaba sin decir nada.
+17342,ejecuciones,Las ejecuciones de ese pianista son impecables.
+17364,explicará,Seguro que explicará mañana.
+17437,e-mails,Tengo demasiados e-mails sin leer.
+17485,identificaciones,Piden identificaciones a la entrada.
+17503,encargamos,Esta tarde encargamos juntos.
+17619,confiando,Sigue confiando en él.
+17670,subirá,Seguro que subirá mañana.
+17681,dormirá,Seguro que dormirá mañana.
+17685,aplicó,Ayer aplicó sin pensarlo mucho.
+18090,recogía,Cada tarde recogía a su hija.
+18093,verían,"Sin ayuda, no verían."
+18381,soportaba,Cada noche soportaba sin decir nada.
+18413,escapaba,Cada noche escapaba sin decir nada.
+18436,venderá,Seguro que venderá mañana.
+18448,mostramos,Esta tarde mostramos juntos.
+18515,sans,"El cartel está hecho en sans, se nota."
+18551,a-,SKIP
+18638,robaba,Cada noche robaba sin decir nada.
+18683,pertenecemos,Esta tarde pertenecemos juntos.
+18799,añadimos,Esta tarde añadimos juntos.
+18891,obligando,Nos están obligando a esperar.
+18905,viajará,Seguro que viajará mañana.
+19031,estudiamos,Esta tarde estudiamos juntos.
+19115,volaba,Cada noche volaba sin decir nada.
+19161,mejoran,"Con descanso, siempre mejoran."
+19234,desarrollos,Estos desarrollos van más lentos de lo previsto.
+19235,disparamos,Esta tarde disparamos juntos.
+19367,quitaba,Cada noche quitaba sin decir nada.
+19536,asambleas,Las asambleas se hacen los jueves.
+19750,evitan,Muchos evitan esa calle de noche.
+19809,unes,"Cuando unes las piezas, encaja todo."
+19913,amando,Sigue amando su trabajo.
+19963,contras,Ese plan también tiene sus contras.
+20065,dineros,No me meto en sus dineros.
+20077,lanzaba,Cada noche lanzaba sin decir nada.
+20704,má,SKIP
+20812,jóven,SKIP
+20948,causará,Seguro que causará mañana.
+20993,acostamos,Esta tarde acostamos juntos.
+21021,arrastran,Esas maletas arrastran fatal.
+21105,comprobamos,Esta tarde comprobamos juntos.
+21107,cortaba,Cada noche cortaba sin decir nada.
+21110,pintaba,Cada noche pintaba sin decir nada.
+21146,declarando,Acabó declarando ante el juez.
+21197,músicas,Escucha músicas rarísimas por la noche.
+21239,implicaba,Cada noche implicaba sin decir nada.
+21363,diverso,Buscamos un equipo diverso.
+21472,disfrutó,Ayer disfrutó sin pensarlo mucho.
+21496,peros,Siempre le sacas peros a todo.
+21513,arman,Arman mucho ruido al salir.
+21789,els,SKIP
+21850,grs,SKIP
+21861,cuidamos,Esta tarde cuidamos juntos.
+21906,celebraba,Cada noche celebraba sin decir nada.
+21918,sabrían,De pequeños sabrían por aquí.
+21972,lógicas,Tus dudas son lógicas.
+21977,utilizará,Seguro que utilizará mañana.
+21978,abuelas,Mis abuelas cocinan de maravilla.
+21980,analizó,Ayer analizó sin pensarlo mucho.
+22078,terceras,Las terceras veces salen mejor.
+22086,continuando,Siguió continuando aunque estaba cansado.
+22099,voilà,Le dio un toque final y voilà.
+22173,partirá,Seguro que partirá mañana.
+22192,abandonamos,Esta tarde abandonamos juntos.
+22201,escapará,Seguro que escapará mañana.
+22236,castigando,No se aprende castigando así.
+22299,provocaba,Cada noche provocaba sin decir nada.
+22345,preocupando,Me estás preocupando de verdad.
+22380,saltaba,Cada noche saltaba sin decir nada.
+22389,justificó,Ayer justificó sin pensarlo mucho.
+22464,mayorías,Las mayorías también se equivocan.
+22524,atendía,Siempre atendía con una sonrisa.
+22535,necesitando,Lleva días necesitando ayuda.
+22615,marcaba,Cada noche marcaba sin decir nada.
+22751,invitaba,Cada noche invitaba sin decir nada.
+22924,enamorar,No te vas a enamorar en un día.
+22925,lavan,Aquí lavan el coche a mano.
+22958,enfrentaba,Cada noche enfrentaba sin decir nada.
+23001,atravesaba,Cada noche atravesaba sin decir nada.
+23053,abordó,Ayer abordó sin pensarlo mucho.
+23159,detenía,Nunca se detenía a pensar.
+23214,repetimos,Esta tarde repetimos juntos.
+23284,inviernos,Aquí los inviernos son suaves.
+23341,decidiendo,Lleva horas decidiendo qué hacer.
+23680,traídos,Los papeles venían ya traídos de casa.
+23735,arrancando,El motor está arrancando ahora.
+23831,limpiamos,Esta tarde limpiamos juntos.
+23872,apostamos,Esta tarde apostamos juntos.
+23912,pondrían,De pequeños pondrían por aquí.
+24110,wi-fi,Aquí el wi-fi va fatal.
+24159,aumentaba,Cada noche aumentaba sin decir nada.
+24259,realizamos,Esta tarde realizamos juntos.
+24272,iniciaba,Cada noche iniciaba sin decir nada.
+24355,aburriendo,Me estoy aburriendo muchísimo.
+24432,soportando,Lleva meses soportando esa situación.
+24520,firmamos,Esta tarde firmamos juntos.
+24594,interesará,Seguro que interesará mañana.
+24598,acusaba,Cada noche acusaba sin decir nada.
+24630,sta.,SKIP
+24706,mitades,Partimos la tarta en dos mitades.
+24724,ejercía,Entonces ejercía de abogado.
+24738,abandonaba,Cada noche abandonaba sin decir nada.
+24789,montan,Montan la terraza en cinco minutos.
+24894,ubican,Nos ubican al fondo de la sala.
+24895,afectaba,Cada noche afectaba sin decir nada.
+24923,demostraba,Cada noche demostraba sin decir nada.
+24940,emperadores,Le apasionan los emperadores romanos.
+25034,salvos,Llegaron todos salvos a casa.
+25037,vds.,"Cuando vds. lleguen, empezamos."
+25064,creaba,Cada noche creaba sin decir nada.
+25265,informaba,Cada noche informaba sin decir nada.
+25518,mirará,Seguro que mirará mañana.
+25628,probará,Seguro que probará mañana.
+25782,soñamos,Esta tarde soñamos juntos.
+25849,co2,El informe habla del aumento de co2.
+25859,intercambiamos,Esta tarde intercambiamos juntos.
+25880,recuperan,Poco a poco recuperan la confianza.
+25895,iniciamos,Esta tarde iniciamos juntos.
+25952,arrancan,Las obras arrancan la semana que viene.
+25973,curan,Esas pastillas no curan nada.
+26021,apoyas,"Si me apoyas, lo hago."
+26037,al-qaeda,El documental trataba sobre al-qaeda.
+26064,espacio-tiempo,La charla iba sobre el espacio-tiempo.
+26079,cargaba,Cada noche cargaba sin decir nada.
+26132,inventan,Siempre inventan alguna excusa.
+26158,alzaba,Cada noche alzaba sin decir nada.
+26185,obtenía,Antes obtenía mejores resultados.
+26247,debidos,Faltan varios pagos debidos.
+26258,ping-pong,Después de cenar echamos un ping-pong.
+26300,publicaba,Cada noche publicaba sin decir nada.
+26328,asistimos,Esta tarde asistimos juntos.
+26354,destacaba,Cada noche destacaba sin decir nada.
+26362,mencionaba,Cada noche mencionaba sin decir nada.
+26459,cogerá,Seguro que cogerá mañana.
+26460,comunicaba,Cada noche comunicaba sin decir nada.
+26513,salvan,A veces unos minutos salvan el día.
+26706,golpeamos,Esta tarde golpeamos juntos.
+26778,arreglaba,Cada noche arreglaba sin decir nada.
+26812,hierros,"No toques esos hierros, queman."
+26868,publicamos,Esta tarde publicamos juntos.
+26904,encerraba,Cada noche encerraba sin decir nada.
+27040,leídos,Tenía ya los informes leídos.
+27166,informamos,Esta tarde informamos juntos.
+27179,cogidos,Llevaban los billetes cogidos desde enero.
+27329,gustamos,Esta tarde gustamos juntos.
+27364,significas,No sabes cuánto significas para mí.
+27372,animaba,Cada noche animaba sin decir nada.
+27431,lavaba,Cada noche lavaba sin decir nada.
+27533,construirá,Seguro que construirá mañana.
+27670,saldrían,De pequeños saldrían por aquí.
+27698,tardamos,Esta tarde tardamos juntos.
+27739,odios,Hay odios que duran años.
+27935,resolvemos,Esta tarde resolvemos juntos.
+27972,alimentó,Ayer alimentó sin pensarlo mucho.
+28071,prestamos,Esta tarde prestamos juntos.
+28420,nacía,Todo nacía de la misma idea.
+28424,rechazaba,Cada noche rechazaba sin decir nada.
+28438,en-,SKIP
+28474,manipulaciones,No tolero esas manipulaciones.
+28565,cocinan,Los domingos cocinan juntos.
+28632,imagenes,SKIP
+28639,votando,Pasó la mañana votando en varias mesas.
+28646,circulaba,Cada noche circulaba sin decir nada.
+28662,modifican,No modifican nada sin avisar.
+28792,observas,"Si observas bien, lo verás."
+28868,denunciando,Acabó denunciando lo ocurrido.
+28893,andará,Seguro que andará mañana.
+28925,historiales,Borré los historiales del navegador.
+28933,pasean,Por aquí pasean mucho al atardecer.
+28969,sis,SKIP
+29031,casando,Llevan años casando parejas en ese pueblo.
+29101,instalan,Mañana instalan la fibra.
+29179,cánceres,La charla hablaba de varios cánceres raros.
+29248,descansaba,Cada noche descansaba sin decir nada.
+29388,saludaba,Cada noche saludaba sin decir nada.
+29393,acordará,Seguro que acordará mañana.
+29396,arriesgan,Arriesgan demasiado por tan poco.
+29437,helando,Esta noche está helando fuera.
+29464,longitudes,Comparamos las longitudes con una regla.
+29539,agarraba,Cada noche agarraba sin decir nada.
+29724,córdobas,Me sobraron unos córdobas del viaje.
+29727,importamos,Esta tarde importamos juntos.
+29741,asís,Nos quedamos cerca de Asís dos días.
+29773,cansadas,Llegamos cansadas pero contentas.
+29811,explicamos,Esta tarde explicamos juntos.
+29866,coroneles,En la novela salen dos coroneles.
+29927,españas,Pintó varias Españas muy distintas.
+29971,mencionamos,Esta tarde mencionamos juntos.
+30059,declarará,Seguro que declarará mañana.
+30060,evitaba,Cada noche evitaba sin decir nada.
+30218,menudos,Menudos vecinos nos han tocado.
+30233,apartando,Fue apartando la ropa limpia.
+30265,atacaba,Cada noche atacaba sin decir nada.
+30278,operaba,Cada noche operaba sin decir nada.
+30324,majestades,Sus majestades salieron al balcón.
+30402,liberamos,Esta tarde liberamos juntos.
+30451,x-men,De pequeño veía siempre los x-men.
+30459,colaboraciones,Este año haremos más colaboraciones.
+30559,firmaba,Cada noche firmaba sin decir nada.
+30608,aprovechaba,Cada noche aprovechaba sin decir nada.
+30629,soltaba,Cada noche soltaba sin decir nada.
+30640,diarreas,El médico dijo que vigilaran las diarreas.
+30724,saberes,Me interesan mucho los saberes populares.
+30736,cariños,Se mandan cariños por audio cada día.
+30778,derivó,Ayer derivó sin pensarlo mucho.
+30822,hielos,Pon dos hielos en el vaso.
+30852,à,SKIP
+31093,solicitará,Seguro que solicitará mañana.
+31150,respiramos,Esta tarde respiramos juntos.
+31176,probaba,Cada noche probaba sin decir nada.
+31230,concluirá,Seguro que concluirá mañana.
+31426,pescó,Ayer pescó sin pensarlo mucho.
+31449,cocinó,Ayer cocinó sin pensarlo mucho.
+31561,concedía,Nunca concedía entrevistas.
+31601,detalló,Ayer detalló sin pensarlo mucho.
+31644,asistencias,Las asistencias han bajado este mes.
+31753,respiró,Ayer respiró sin pensarlo mucho.
+31758,vestimos,Esta tarde vestimos juntos.
+31844,rozar,Sin querer llegó a rozar la pared.
+31916,molestamos,Esta tarde molestamos juntos.
+31927,tic-tac,Se oía el tic-tac del reloj.
+31935,apreció,Ayer apreció sin pensarlo mucho.
+32074,certificar,Lo puede certificar cualquiera del equipo.
+32304,pisan,No pisan esa casa desde hace años.
+32356,callaba,Cada noche callaba sin decir nada.
+32482,para-,SKIP
+32565,humores,Hoy no estoy para tus humores.
+32572,petróleos,El informe compara varios petróleos pesados.
+32719,experimentamos,Esta tarde experimentamos juntos.
+32770,equivocando,Te estás equivocando otra vez.
+32826,ruegos,Al final escucharon sus ruegos.
+32845,comunicamos,Esta tarde comunicamos juntos.
+32868,revisaba,Cada noche revisaba sin decir nada.
+32882,descansará,Seguro que descansará mañana.
+32941,adivinaba,Cada noche adivinaba sin decir nada.
+32974,aprendía,Aprendía rápido desde pequeño.
+33007,aplicaba,Cada noche aplicaba sin decir nada.
+33114,gritamos,Esta tarde gritamos juntos.
+33138,condenando,Terminó condenando lo que pasó.
+33156,limpiará,Seguro que limpiará mañana.
+33206,recepciones,Los hoteles suelen tener recepciones pequeñas.
+33210,saltará,Seguro que saltará mañana.
+33254,aplicamos,Esta tarde aplicamos juntos.
+33294,desarrollamos,Esta tarde desarrollamos juntos.
+33325,con-,SKIP
+33554,apuestos,Esos chicos son muy apuestos.
+33560,complicando,Lo estás complicando tú solo.
+33729,equivocar,Te puedes equivocar y no pasa nada.
+33745,pesares,Se le notan los pesares en la cara.
+33843,graduar,Se quiere graduar este verano.
+33873,apartan,Siempre apartan lo mejor para ella.
+33885,encajado,Lo tenía bastante encajado ya.
+33892,identificaba,Cada noche identificaba sin decir nada.
+33893,incluimos,Esta tarde incluimos juntos.
+33951,asustamos,Esta tarde asustamos juntos.
+33991,conversado,Ya lo habíamos conversado antes.
+34006,involucrando,Te estás involucrando demasiado.
+34103,sobrinas,Mis sobrinas vienen a merendar.
+34131,latinas,Le encantan las músicas latinas.
+34242,rocks,En esa tienda venden vinilos de rocks clásicos.
+34267,jr.,Ayer llamó Robert Jr. para confirmar.
+34334,confesaba,Cada noche confesaba sin decir nada.
+34351,notando,Voy notando el cambio.
+34353,podar,Mañana toca podar el seto.
+34527,ochos,En el examen salieron dos ochos seguidos.
+34801,tituló,Ayer tituló sin pensarlo mucho.
+34884,entusiasmó,Ayer entusiasmó sin pensarlo mucho.
+34897,proyectaba,Cada noche proyectaba sin decir nada.
+34911,conformó,Ayer conformó sin pensarlo mucho.
+34919,determinando,Siguen determinando los detalles.
+34964,casualidades,No creo demasiado en las casualidades.
+34968,constituciones,Comparó varias constituciones europeas.
+35020,cenó,Ayer cenó sin pensarlo mucho.
+35094,peleará,Seguro que peleará mañana.
+35112,arruinamos,Esta tarde arruinamos juntos.
+35126,dels,SKIP
+35133,eliminará,Seguro que eliminará mañana.
+35160,admitimos,Esta tarde admitimos juntos.
+35170,certezas,A estas alturas tengo pocas certezas.
+35184,lisas,Prefiero las camisetas lisas.
+35337,tirará,Seguro que tirará mañana.
+35478,operamos,Esta tarde operamos juntos.
+35484,sudaba,Cada noche sudaba sin decir nada.
+35511,giramos,Esta tarde giramos juntos.
+35527,respondemos,Esta tarde respondemos juntos.
+35542,apartaba,Cada noche apartaba sin decir nada.
+35543,aprobaba,Cada noche aprobaba sin decir nada.
+35590,apostaba,Cada noche apostaba sin decir nada.
+35638,denunciaba,Cada noche denunciaba sin decir nada.
+35665,tàpies,En el museo había un cuadro de Tàpies.
+35754,planteamos,Esta tarde planteamos juntos.
+35841,s.a.,La empresa figura como Torres S.A. en el contrato.
+35869,exponía,En clase exponía muy bien.
+35874,irs,En el documento salen varios IRS distintos.
+35947,atardeceres,Aquí los atardeceres son preciosos.
+36006,compartirá,Seguro que compartirá mañana.
+36121,profesoras,Las profesoras ya corrigieron todo.
+36156,empeoran,"Sin descanso, empeoran enseguida."
+36192,abogó,Ayer abogó sin pensarlo mucho.
+36194,alejará,Seguro que alejará mañana.
+36287,concentraba,Cada noche concentraba sin decir nada.
+36386,comprobaba,Cada noche comprobaba sin decir nada.
+36461,tembló,Ayer tembló sin pensarlo mucho.
+36501,seleccionó,Ayer seleccionó sin pensarlo mucho.
+36601,conducimos,Esta tarde conducimos juntos.
+36631,señalamos,Esta tarde señalamos juntos.
+36695,conformando,Fue conformando el equipo ideal.
+36714,instalará,Seguro que instalará mañana.
+36791,cuatros,En el sorteo salieron tres cuatros.
+36801,garantizaba,Cada noche garantizaba sin decir nada.
+36861,participamos,Esta tarde participamos juntos.
+36880,calores,En agosto aquí hace unos calores terribles.
+36890,integrando,Estamos integrando los cambios.
+36940,fabricaba,Cada noche fabricaba sin decir nada.
+36985,cruzará,Seguro que cruzará mañana.
+36999,intimidades,No cuento mis intimidades a cualquiera.
+37020,algo-,SKIP
+37046,hacias,SKIP
+37083,ficciones,Le interesan más las ficciones que los ensayos.
+37093,o'higgins,La avenida O'Higgins siempre está llena.
+37119,consolidando,Va consolidando su posición.
+37198,respetó,Ayer respetó sin pensarlo mucho.
+37247,solucionó,Ayer solucionó sin pensarlo mucho.
+37282,garantizando,No puedes seguir garantizando eso.
+37313,robará,Seguro que robará mañana.
+37346,gödel,Este semestre estoy leyendo a Gödel.
+37360,precisado,No quedó precisado en el acta.
+37364,recomendaba,Cada noche recomendaba sin decir nada.
+37376,acceden,Solo acceden con cita previa.
+37423,whiskys,En la estantería tenía varios whiskys caros.
+37436,comidos,Dejaron los bocadillos comidos a medias.
+37453,nadas,"Aunque nadas bien, hoy descansa."
+37506,llorará,Seguro que llorará mañana.
+37552,aparecidos,En el pueblo hablan de los aparecidos.
+37705,acompañamos,Esta tarde acompañamos juntos.
+37716,beberá,Seguro que beberá mañana.
+37841,pescamos,Esta tarde pescamos juntos.
+37870,desempeñando,Sigue desempeñando su cargo.
+37900,violencias,El curso trata distintas violencias cotidianas.
+37919,colono,"Ese colono fundó el pueblo, según dicen."
+37971,criticaba,Cada noche criticaba sin decir nada.
+38079,aportaba,Cada noche aportaba sin decir nada.
+38109,insultan,En internet insultan por todo.
+38198,coaliciones,Las coaliciones duran lo que duran.
+38227,relacionaba,Cada noche relacionaba sin decir nada.
+38271,molière,Anoche vimos una obra de Molière.
+38320,llamarlas,No pude llamarlas anoche.
+38365,descansamos,Esta tarde descansamos juntos.
+38384,navegamos,Esta tarde navegamos juntos.
+38446,examenes,SKIP
+38504,nadaba,Cada noche nadaba sin decir nada.
+38778,pesó,Ayer pesó sin pensarlo mucho.
+38833,mencionando,Se pasó la tarde mencionando nombres.
+38921,almorzado,"Ya he almorzado, gracias."
+38962,salvaba,Cada noche salvaba sin decir nada.
+38998,implicando,Eso no está implicando lo mismo.
+39043,cesaba,Cada noche cesaba sin decir nada.
+39180,hondura,Su voz tenía una hondura extraña.
+39273,comprometía,Se comprometía con todo lo que hacía.
+39405,estropean,Las prisas siempre lo estropean.
+39432,navegó,Ayer navegó sin pensarlo mucho.
+39441,rodaba,Cada noche rodaba sin decir nada.
+39453,agradecía,Siempre agradecía cualquier detalle.
+39528,cometía,De joven cometía muchos errores.
+39551,manejará,Seguro que manejará mañana.
+39617,outs,En béisbol ya llevaban dos outs.
+39633,órden,SKIP
+39724,consensos,Cuesta llegar a consensos en ese grupo.
+39742,mp3,Aún guardo canciones en el mp3.
+39744,pescan,En ese puerto pescan al amanecer.
