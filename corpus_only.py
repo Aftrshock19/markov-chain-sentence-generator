@@ -417,6 +417,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         max_retrieval_contexts: int = 400,
         max_candidates_to_score: int = 80,
         max_retrieved_candidates: int = 20,
+        surface_rescue_cap: int = 96,
     ):
         super().__init__(lexicon_path, models_dir, seed=seed)
         self.max_total_attempts = 0
@@ -424,6 +425,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
         self.max_retrieval_contexts = max(20, max_retrieval_contexts)
         self.max_candidates_to_score = max(10, max_candidates_to_score)
         self.max_retrieved_candidates = max(1, max_retrieved_candidates)
+        self.surface_rescue_cap = max(8, surface_rescue_cap)
         self.learned_frame_router = None
         if learned_frames_path and LearnedFrameRouter is not None:
             try:
@@ -437,6 +439,42 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 self.learned_frame_router = None
         self._hybrid_pool_cache: Dict[str, List[Candidate]] = {}
         self._hybrid_search_cache: Dict[str, Dict[str, Any]] = {}
+        self._surface_rescue_index = self._build_surface_rescue_index(self.surface_rescue_cap)
+
+    def _build_surface_rescue_index(self, cap_per_surface: int) -> Dict[str, List[Dict[str, Any]]]:
+        index: Dict[str, List[Dict[str, Any]]] = {}
+        for contexts in self.lemma_contexts.values():
+            if not contexts:
+                continue
+            for ctx in contexts:
+                tokens = ctx.get("tokens") or []
+                idx = ctx.get("index", -1)
+                if not tokens or idx < 0 or idx >= len(tokens):
+                    continue
+                surface = normalize_token(tokens[idx])
+                if not surface:
+                    continue
+                bucket = index.setdefault(surface, [])
+                if len(bucket) < cap_per_surface:
+                    bucket.append(ctx)
+        return index
+
+    def _rescue_contexts_for_surface(self, target: Lexeme, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        surface = normalize_token(target.lemma)
+        contexts = list(self._surface_rescue_index.get(surface, []))
+        if not contexts:
+            return []
+        preferred: List[Dict[str, Any]] = []
+        fallback: List[Dict[str, Any]] = []
+        for ctx in contexts:
+            pos_hint = ctx.get("target_pos", "")
+            if pos_hint and self.target_pos_hint_matches_request(target.pos, pos_hint):
+                preferred.append(ctx)
+            else:
+                fallback.append(ctx)
+        ordered = preferred + fallback
+        cap = limit or self._corpus_context_cap_for_target(target)
+        return self._sample_contexts_deterministic(ordered, min(len(ordered), cap))
 
     def _corpus_context_cap_for_target(self, target: Lexeme) -> int:
         if target.rank <= 25:
@@ -517,6 +555,20 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 out.append(ctx)
                 if len(out) >= cap:
                     return out
+        if len(out) < cap:
+            rescue_contexts = self._rescue_contexts_for_surface(target, limit=cap * 2)
+            for ctx in rescue_contexts:
+                tokens = ctx.get("tokens") or []
+                idx = ctx.get("index", -1)
+                if not tokens or idx < 0 or idx >= len(tokens):
+                    continue
+                marker = (" ".join(tokens), idx)
+                if marker in seen:
+                    continue
+                seen.add(marker)
+                out.append(ctx)
+                if len(out) >= cap:
+                    break
         return out
 
     def _context_prefilter_pass(self, target: Lexeme, ctx: Dict[str, Any]) -> bool:
@@ -643,96 +695,20 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 fallback.append(cand)
         return self.dedupe_candidates(fallback)[: self.max_retrieved_candidates]
 
-    def _literal_fallback_sentence(self, target: Lexeme) -> str:
-        surface = target.lemma.strip() or (target.canonical_lemma or target.lemma or "X")
-        family = self.normalized_pos_family(target)
-        if " " in surface:
-            return f"La expresión {surface} aparece aquí."
-        if family in {"interj", "letter", "prefix", "phrase", "particle", "residual"} or any(ch in surface for ch in ".,;:!?¿¡"):
-            return f"La forma {surface} aparece aquí."
-        return f"La palabra {surface} aparece aquí."
-
-    def _forced_literal_candidate(self, target: Lexeme) -> Candidate:
-        sentence = self._literal_fallback_sentence(target)
-        tokens = self.sentence_tokens(sentence)
-        target_index = -1
-        target_norm = normalize_token(target.lemma)
-        for i, tok in enumerate(tokens):
-            if normalize_token(tok) == target_norm:
-                target_index = i
-                break
-        support_ranks: List[int] = []
-        for i, tok in enumerate(tokens):
-            if not is_word_token(tok) or i == target_index:
-                continue
-            support_ranks.append(self.lookup_rank(tok))
-        avg_support = sum(support_ranks) / len(support_ranks) if support_ranks else 0.0
-        max_support = max(support_ranks) if support_ranks else 0
-        cand = Candidate(
-            lemma=target.lemma,
-            rank=target.rank,
-            pos=target.pos,
-            band=get_profile(target.rank).band,
-            translation=target.translation,
-            sentence=sentence,
-            target_form=target.lemma,
-            target_index=max(target_index, 0),
-            support_ranks=support_ranks,
-            avg_support_rank=avg_support,
-            max_support_rank=max_support,
-            template_id="forced_literal_fallback",
-            source_method="forced_fallback",
-            canonical_lemma=self.canonical_lemma_for(target),
-            target_morph=target.lemma,
-        )
-        cand.score = -1.0
-        return cand
-
-    def _guaranteed_fallback_result(self, target: Lexeme) -> Candidate:
-        # 1) corpus
+    def _best_effort_retrieved_result(self, target: Lexeme) -> Candidate:
         fallback = self.retrieve_candidates(target)
         if fallback:
             return fallback[0]
-        # 2) exact-surface template if available
-        try:
-            cand = self.exact_surface_template_candidate(target, "forced_template")
-        except Exception:
-            cand = None
-        if cand:
-            tried = self.try_candidate(cand)
-            if tried:
-                return tried
-            return cand
-        # 3) normal template routes
-        try:
-            cand = self.seeded_template_candidate(target)
-        except Exception:
-            cand = None
-        if cand:
-            return cand
-        try:
-            cand = self.pure_template_candidate(target)
-        except Exception:
-            cand = None
-        if cand:
-            return cand
-        try:
-            cand = self.seeded_pos_template_candidate(target)
-        except Exception:
-            cand = None
-        if cand:
-            return cand
-        try:
-            cand = self.pure_pos_template_candidate(target)
-        except Exception:
-            cand = None
-        if cand:
-            return cand
-        # 4) absolute guarantee
-        return self._forced_literal_candidate(target)
-
-    def _best_effort_retrieved_result(self, target: Lexeme) -> Candidate:
-        return self._guaranteed_fallback_result(target)
+        rescue_contexts = self._rescue_contexts_for_surface(target, limit=max(12, self.max_retrieved_candidates * 2))
+        rescue_candidates: List[Candidate] = []
+        for ctx in rescue_contexts:
+            cand = self._raw_context_candidate(target, ctx)
+            if cand is not None:
+                rescue_candidates.append(cand)
+        rescue_candidates = self.dedupe_candidates(rescue_candidates)
+        if rescue_candidates:
+            return rescue_candidates[0]
+        return self._no_candidate_result(target)
 
     def load_and_apply_overrides(self, path: str) -> None:
         super().load_and_apply_overrides(path)
@@ -886,8 +862,6 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             if self._candidate_is_valid(candidate):
                 return True
             return self._retrieved_candidate_allowed(candidate)
-        if candidate.source_method in {"forced_template", "forced_fallback"}:
-            return True
         if self.candidate_is_general_publishable(candidate):
             return not self._hybrid_policy_reasons(candidate)
         return self._safe_template_publishable_override(candidate)
@@ -928,13 +902,9 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 "learned_frame_generated": 3,
                 "emergency_template": 4,
                 "emergency_starter": 5,
-                "forced_template": 6,
-                "forced_fallback": 7,
-                "stochastic_decoder": 8,
-                "forced_template": 6,
-                "forced_fallback": 7,
-                "manual_review_needed": 8,
-                "no_candidate_found": 9,
+                "stochastic_decoder": 6,
+                "manual_review_needed": 7,
+                "no_candidate_found": 8,
             }
         else:
             order = {
@@ -945,10 +915,8 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                 "template_generated": 4,
                 "emergency_template": 5,
                 "emergency_starter": 6,
-                "forced_template": 7,
-                "forced_fallback": 8,
-                "manual_review_needed": 9,
-                "no_candidate_found": 10,
+                "manual_review_needed": 7,
+                "no_candidate_found": 8,
             }
         return order.get(candidate.source_method, 8)
 
@@ -1191,9 +1159,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             deduped = self._trim_candidate_pool(raw_pool, target)
             selected = self._choose_from_pool(deduped, best_valid, best_any, target)
             if not selected.sentence:
-                selected = self._guaranteed_fallback_result(target)
-            if not selected.sentence:
-                selected = self._forced_literal_candidate(target)
+                selected = self._best_effort_retrieved_result(target)
             self._hybrid_pool_cache[lemma] = deduped
             self._hybrid_search_cache[lemma] = {
                 "attempts_used": attempts_used,
@@ -1222,9 +1188,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
             )
             setattr(selected, "_hybrid_meta", meta)
             return selected
-        candidate = self._guaranteed_fallback_result(self.lexicon[lemma])
-        if not candidate.sentence:
-            candidate = self._forced_literal_candidate(self.lexicon[lemma])
+        candidate = self._no_candidate_result(self.lexicon[lemma])
         setattr(candidate, "_hybrid_meta", self.hybrid_output_metadata(candidate, 0, 0))
         return candidate
 
@@ -1394,9 +1358,7 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
                     row = self.generate_for_lemma(lex.lemma)
                 except Exception as exc:
                     print(f"[warn] hybrid failed for {lex.lemma}: {exc}", file=sys.stderr, flush=True)
-                    row = self._guaranteed_fallback_result(lex)
-                    if not row.sentence:
-                        row = self._forced_literal_candidate(lex)
+                    row = self._no_candidate_result(lex)
                     setattr(row, "_hybrid_meta", self.hybrid_output_metadata(row, 0, 0))
 
                 generated.append(row)
@@ -1436,11 +1398,6 @@ class HybridSentenceGenerator(StochasticSentenceGenerator):
 
     def write_csv(self, rows: List[Candidate], out_csv: str) -> None:
         fieldnames = [
-            "lemma",
-            "rank",
-            "pos",
-            "band",
-            "translation",
             "sentence",
             "target_form",
             "canonical_lemma",
@@ -1507,6 +1464,7 @@ def main() -> None:
     parser.add_argument("--max-retrieval-contexts", type=int, default=400, help="Maximum raw corpus contexts scanned per lemma.")
     parser.add_argument("--max-candidates-to-score", type=int, default=80, help="Maximum retrieved contexts converted into scored candidates.")
     parser.add_argument("--max-retrieved-candidates", type=int, default=20, help="Maximum retrieved candidates kept per lemma.")
+    parser.add_argument("--surface-rescue-cap", type=int, default=96, help="Maximum rescue contexts cached per exact surface form.")
     parser.add_argument("--learned-frames", default=None, help="Optional learned_frames.json path.")
     parser.add_argument("--lemma-frame-preferences", default=None, help="Optional lemma_frame_preferences.csv path.")
     parser.add_argument("--verb-router-smoke", action="store_true", help="Print a small Verb Router v2 smoke check and exit.")
@@ -1523,6 +1481,7 @@ def main() -> None:
         max_retrieval_contexts=args.max_retrieval_contexts,
         max_candidates_to_score=args.max_candidates_to_score,
         max_retrieved_candidates=args.max_retrieved_candidates,
+        surface_rescue_cap=args.surface_rescue_cap,
     )
     for override_path in args.lexicon_overrides:
         gen.load_and_apply_overrides(override_path)

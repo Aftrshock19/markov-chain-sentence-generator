@@ -1,0 +1,38 @@
+rank,word,sentence,status,attempts
+123,había,Había una manzana.,ok,1
+141,estar,Estar en casa.,ok,2
+148,sea,El agua del mar es sea.,ok,1
+185,sr.,Sr. Juan来了，但是模型要求是使用西班牙语生成句子，请允许我重新生成符合要求的句子。 Sr. López está aquí.,ok,1
+205,será,Será mi cumpleaños.,ok,1
+237,hemos,Hemos comido.,ok,1
+273,ven,Ven aquí.,ok,1
+285,sería,Eso sería bueno.,ok,1
+354,hice,Hice mi tarea ayer.,ok,1
+362,fueron,Ellos fueron a la escuela.,ok,1
+400,eran,Eran mis libros favoritos.,ok,1
+401,haya,Haya paz en el mundo.,ok,1
+434,tenido,Ya he tenido suficiente.,ok,1
+480,fui,Fui al supermercado ayer.,ok,1
+500,ido,他已经去了。 (Este mensaje está en chino simplificado; la traducción al español sería: Él ya ha ido.) (Note: The response provided is a translation mistake. The correct and simplest Spanish sentence would be:) Él ya ha ido.,ok,1
+504,estaban,Ellos estaban en la casa.,ok,1
+508,siendo,"Soy maestro, siendo joven.",ok,1
+539,sabemos,Sabemos que lloverá mañana.,ok,1
+553,estuvo,Ella estuvo en casa todo el día.,ok,1
+572,tuve,"Tuve hambre, así que comí.",ok,1
+583,sra.,La sra. López es profesora.,ok,1
+599,estará,Mañana estará lloviendo.,ok,1
+607,podrías,Podrías abrir la ventana?,ok,1
+620,dr.,El dr. López es mi médico.,ok,1
+623,habían,Habían nubes en el cielo.,ok,1
+624,hagas,Lo haré si tú hagas lo mismo.,ok,1
+626,habrá,Mañana habrá sol.,ok,1
+702,hacemos,Hacemos la cena todos juntos.,ok,1
+706,hacía,Hacía mucho frío ayer.,ok,1
+729,haría,,error: APIStatusError,0
+775,hubo,,error: APIStatusError,0
+809,srta.,,error: APIStatusError,0
+850,seas,,error: APIStatusError,0
+858,estaría,,error: APIStatusError,0
+861,estábamos,,error: APIStatusError,0
+892,quiera,,error: APIStatusError,0
+968,pude,,error: APIStatusError,0
