@@ -18,9 +18,10 @@ echo "Started:       $(date)"
 echo "Working dir:   $(pwd)"
 echo "============================================"
 
+PROJECT_ROOT="/projects/b35cg/samtoughan/sentence_generator"
 WORK_DIR="$HOME/markov-chain-sentence-generator"
 LEXICON="$WORK_DIR/stg_words_spa.csv"
-MODELS_DIR="$WORK_DIR/models"
+MODELS_DIR="$PROJECT_ROOT/models"
 SCRIPT="$WORK_DIR/hybrid_generator.py"
 
 OUT_DIR="$WORK_DIR/outputs/hybrid"
@@ -166,12 +167,12 @@ python -u "$SCRIPT" \
     --review-out "$REVIEW_OUT" \
     --candidates-out "$CANDIDATES_OUT" \
     --min-rank 1 \
-    --max-rank 10000 \
-    --limit 10000 \
+    --max-rank 100 \
+    --limit 100 \
     --seed 42 \
-    --max-total-attempts 500 \
-    --max-candidates-to-keep 35 \
-    --max-candidates-per-lemma 30 \
+    --max-total-attempts 300 \
+    --max-candidates-to-keep 20 \
+    --max-candidates-per-lemma 15 \
     --progress-every 100 \
     --lexicon-overrides $WORK_DIR/seed_overrides.csv \
     --lexicon-overrides $WORK_DIR/exclusions.csv \
