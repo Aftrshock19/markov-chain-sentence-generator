@@ -166,12 +166,12 @@ python -u "$SCRIPT" \
     --review-out "$REVIEW_OUT" \
     --candidates-out "$CANDIDATES_OUT" \
     --min-rank 1 \
-    --max-rank 25000 \
-    --limit 25000 \
+    --max-rank 10000 \
+    --limit 10000 \
     --seed 42 \
-    --max-total-attempts 400 \
+    --max-total-attempts 500 \
     --max-candidates-to-keep 35 \
-    --max-candidates-per-lemma 25 \
+    --max-candidates-per-lemma 30 \
     --progress-every 100 \
     --lexicon-overrides $WORK_DIR/seed_overrides.csv \
     --lexicon-overrides $WORK_DIR/exclusions.csv \

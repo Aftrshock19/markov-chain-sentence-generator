@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=04:00:00
+#SBATCH --time=00:05:00
 #SBATCH --output=spa-eval-%j.out
 #SBATCH --error=spa-eval-%j.err
 
@@ -20,8 +20,8 @@ echo "============================================"
 
 WORK_DIR="$HOME/markov-chain-sentence-generator"
 SCRIPT="$WORK_DIR/evaluate_generator.py"
-GENERATED="$WORK_DIR/outputs/hybrid/hybrid_batch_2026462.csv"
-OUT_DIR="$WORK_DIR/eval_2026462_9000"
+GENERATED="$WORK_DIR/outputs/hybrid/hybrid_batch_2026465.csv"
+OUT_DIR="$WORK_DIR/eval_2026465_9000"
 
 mkdir -p "$OUT_DIR"
 
