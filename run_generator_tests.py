@@ -13,6 +13,11 @@ from complete_generate import Candidate, Lexeme, SentenceGenerator
 from coverage_utils import policy_exclusion_reason
 from evaluate_generator import compare_summaries, row_pos_family
 from hybrid_generator import HybridSentenceGenerator
+from learned_frame_router import (
+    ALLOWED_ELLOS_NO_ESTAN_AQUI_ADVERBS,
+    LearnedFrameRouter,
+    REJECTED_FRAME_IDS,
+)
 
 
 class SentenceGeneratorContractTests(unittest.TestCase):
@@ -119,6 +124,25 @@ class SentenceGeneratorContractTests(unittest.TestCase):
         specs = gen.exact_surface_template_specs(Lexeme("hasta", 98, "prep"))
         self.assertEqual(specs[0], ("prep_exact_hasta_home", ["voy", "hasta", "casa"], 1))
 
+    def test_backfill_canonical_lemmas_from_form_index_prefers_same_pos_headword(self):
+        gen = SentenceGenerator.__new__(SentenceGenerator)
+        gen.lexicon = {
+            "dijo": Lexeme("dijo", 100, "v", canonical_lemma="dijo"),
+            "decir": Lexeme("decir", 90, "v", canonical_lemma="decir"),
+        }
+        gen.lemma_forms = {"decir": [{"form": "dijo", "morph": {"Mood": "Ind"}}]}
+        gen.form_to_lemmas = {"dijo": ["decir"]}
+        gen._backfill_canonical_lemmas_from_form_index()
+        self.assertEqual(gen.lexicon["dijo"].canonical_lemma, "decir")
+
+    def test_requested_surface_form_prefers_inflected_request_over_canonical_conjugation(self):
+        gen = SentenceGenerator.__new__(SentenceGenerator)
+        gen.canonical_lemma_for = lambda target: target.canonical_lemma or target.lemma
+        gen.target_form_metadata = lambda target: {"Mood": "Ind", "Number": "Sing", "Person": "3", "Tense": "Past", "VerbForm": "Fin"}
+        gen.conjugate_present = lambda lemma, person: "dice"
+        target = Lexeme("dijo", 100, "v", canonical_lemma="decir")
+        self.assertEqual(gen.requested_surface_form(target, person_code="3sg"), "dijo")
+
 
 class HybridSelectorTests(unittest.TestCase):
     def test_choose_from_pool_prefers_exact_surface_candidate(self):
@@ -196,6 +220,9 @@ class CanonicalRoutingIntegrationTests(unittest.TestCase):
             "somos": "ser",
             "buena": "bueno",
             "hombres": "hombre",
+            "dijo": "decir",
+            "hizo": "hacer",
+            "hago": "hacer",
         }
         for lemma, canonical in expected.items():
             with self.subTest(lemma=lemma):
@@ -203,6 +230,25 @@ class CanonicalRoutingIntegrationTests(unittest.TestCase):
                 self.assertTrue(row["sentence"])
                 self.assertEqual(row["target_form"].lower(), lemma)
                 self.assertEqual(row["canonical_lemma"], canonical)
+
+    def test_hybrid_generation_covers_representative_exact_coverage_backfills(self):
+        lemmas = {
+            "durante": "prep_exact_durante_day",
+            "según": "prep_exact_segun_el",
+            "vosotros": "pron_exact_vosotros_here",
+            "parece": "verb_exact_parece_buena",
+            "tenido": "verb_exact_he_tenido_tiempo",
+            "escucha": "verb_exact_escucha_eso",
+            "ayer": "adv_exact_ayer",
+            "personas": "noun_exact_personas",
+            "última": "adj_exact_ultima",
+        }
+        for lemma, template_prefix in lemmas.items():
+            with self.subTest(lemma=lemma):
+                row = self.hybrid.generate_sentence_for_target(lemma, self.hybrid.lexicon[lemma].rank)
+                self.assertTrue(row["sentence"])
+                self.assertIn(row["source_method"], {"template_generated", "seeded_template"})
+                self.assertEqual(row["template_id"], template_prefix)
 
 
 class EvaluatorTests(unittest.TestCase):
@@ -223,6 +269,23 @@ class EvaluatorTests(unittest.TestCase):
     def test_row_pos_family_uses_shared_mapping_for_none_and_single_letters(self):
         self.assertEqual(row_pos_family({"lemma": "de", "pos": "none"}), "prep")
         self.assertEqual(row_pos_family({"lemma": "s", "pos": "letter"}), "letter")
+
+
+class LearnedFrameRouterTests(unittest.TestCase):
+    def test_rejected_frame_ids_include_known_learned_frame_leaks(self):
+        self.assertIn("learned_function_target_es_mi_noun", REJECTED_FRAME_IDS)
+        self.assertIn("learned_function_target_es_noun", REJECTED_FRAME_IDS)
+        self.assertIn("learned_verb_target_a_mi_noun", REJECTED_FRAME_IDS)
+
+    def test_ellos_no_estan_aqui_frame_only_allows_discourse_adverbs(self):
+        router = LearnedFrameRouter.__new__(LearnedFrameRouter)
+        frame = {"frame_id": "learned_adverb_target_ellos_no_est_n_aqu"}
+        for lemma in ALLOWED_ELLOS_NO_ESTAN_AQUI_ADVERBS:
+            with self.subTest(lemma=lemma):
+                self.assertTrue(router._frame_allowed_for_entry(Lexeme(lemma, 1, "adv"), frame))
+        for lemma in ("poco", "tanto", "cómo"):
+            with self.subTest(lemma=lemma):
+                self.assertFalse(router._frame_allowed_for_entry(Lexeme(lemma, 1, "adv"), frame))
 
 if __name__ == "__main__":
     unittest.main()

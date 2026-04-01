@@ -137,7 +137,7 @@ class StochasticSentenceGenerator(SentenceGenerator):
                 if subj in subjects_tried:
                     continue
                 subjects_tried.add(subj)
-                verb_form = self.target_verb_form(target, pc)
+                verb_form = self.requested_surface_form(target, person_code=pc)
                 seeds.append(([subj, verb_form], 1))
             return seeds
 
@@ -222,7 +222,7 @@ class StochasticSentenceGenerator(SentenceGenerator):
 
     def _verb_special_seeds(self, target: Lexeme, canonical: str) -> List[Tuple[List[str], int]]:
         subj, pc = self.subject_for_target(target)
-        verb = self.target_verb_form(target, pc)
+        verb = self.requested_surface_form(target, person_code=pc)
         morph = self.target_form_metadata(target)
         verb_form = morph.get("VerbForm", "")
         mood = morph.get("Mood", "")

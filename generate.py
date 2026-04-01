@@ -1990,18 +1990,32 @@ class SentenceGenerator:
         trimmed = candidates[:500]
         return self.random.choices(trimmed, weights=weights, k=1)[0]
 
+    def _bigram_count(self, w1: str, w2: str) -> int:
+        counts = self.bigrams.get("counts")
+        if counts is not None:
+            return counts.get((w1, w2), 0)
+        return self.bigrams.get("next", {}).get(w1, {}).get(w2, 0)
+
+    def _trigram_count(self, w1: str, w2: str, w3: str) -> int:
+        counts = self.trigrams.get("counts")
+        if counts is not None:
+            return counts.get((w1, w2, w3), 0)
+        return self.trigrams.get("next", {}).get((w1, w2), {}).get(w3, 0)
+
     def score_sequence(self, tokens: List[str]) -> float:
         words = ["<START>"] + [normalize_token(t) for t in tokens if is_word_token(t)] + ["<END>"]
         if len(words) <= 2:
             return -10.0
-        tri_counts = self.trigrams["counts"]
-        bi_counts = self.bigrams["counts"]
         total = 0.0
         for i in range(1, len(words)):
-            if i >= 2 and (words[i - 2], words[i - 1], words[i]) in tri_counts:
-                total += math.log(tri_counts[(words[i - 2], words[i - 1], words[i])] + 1)
-            elif (words[i - 1], words[i]) in bi_counts:
-                total += math.log(bi_counts[(words[i - 1], words[i])] + 1)
+            if i >= 2:
+                tri_count = self._trigram_count(words[i - 2], words[i - 1], words[i])
+                if tri_count:
+                    total += math.log(tri_count + 1)
+                    continue
+            bi_count = self._bigram_count(words[i - 1], words[i])
+            if bi_count:
+                total += math.log(bi_count + 1)
             else:
                 total -= 10.0
         return total / max(1, len(words) - 1)

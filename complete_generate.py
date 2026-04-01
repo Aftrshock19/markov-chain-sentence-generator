@@ -378,6 +378,7 @@ SAFE_TEMPLATE_REVIEW_PREFIXES = (
     "contraction_exact_",
     "conj_exact_",
     "pron_exact_",
+    "adv_exact_",
     "determiner_exact_",
     "num_exact_",
     "interj_exact_",
@@ -623,6 +624,7 @@ class SentenceGenerator:
         self.pos_transitions = self._load_pickle(models_dir, "pos_transitions.pkl")
         self.enriched = self._load_pickle(models_dir, "enriched_lexicon.pkl")
         self.form_to_lemmas = self._build_form_index()
+        self._backfill_canonical_lemmas_from_form_index()
         self.generation_lexicon = self._build_generation_lexicon()
         self.pos_buckets = self._build_pos_buckets()
         self.pos_strategies = self._build_pos_strategies()
@@ -838,6 +840,35 @@ class SentenceGenerator:
                 seen.add(form)
                 form_to_lemmas.setdefault(form, []).append(lemma)
         return form_to_lemmas
+
+    def _backfill_canonical_lemmas_from_form_index(self) -> None:
+        for lex in self.lexicon.values():
+            current = normalize_token(lex.canonical_lemma or "")
+            surface = normalize_token(lex.lemma)
+            if not surface:
+                continue
+            if current and current != surface:
+                continue
+            if surface in self.lemma_forms:
+                lex.canonical_lemma = surface
+                continue
+            candidates = self.form_to_lemmas.get(surface, [])
+            if not candidates:
+                lex.canonical_lemma = current or surface
+                continue
+            compatible: List[Lexeme] = []
+            for candidate_lemma in candidates:
+                candidate_lex = self.lexicon.get(candidate_lemma)
+                if not candidate_lex:
+                    continue
+                if candidate_lex.pos == lex.pos:
+                    compatible.append(candidate_lex)
+            pool = compatible or [self.lexicon[c] for c in candidates if c in self.lexicon]
+            if not pool:
+                lex.canonical_lemma = current or surface
+                continue
+            best = min(pool, key=lambda entry: entry.rank)
+            lex.canonical_lemma = normalize_token(best.lemma) or current or surface
 
     def _build_pos_buckets(self) -> Dict[str, List[Lexeme]]:
         buckets: Dict[str, List[Lexeme]] = {}
@@ -2303,14 +2334,19 @@ class SentenceGenerator:
         features = SUBJECT_FEATURES.get(subject, SUBJECT_FEATURES["ella"])
         return self.inflect_adj(lemma, features["gender"], features["number"])
 
-    def target_verb_form(self, target: Lexeme, person_code: str) -> str:
+    def requested_surface_form(self, target: Lexeme, person_code: Optional[str] = None) -> str:
         canonical = self.canonical_lemma_for(target)
         if normalize_token(target.lemma) != normalize_token(canonical):
             return target.lemma
-        morph = self.target_form_metadata(target)
-        if morph.get("VerbForm") and morph.get("VerbForm") != "Inf":
-            return target.lemma
-        return self.conjugate_present(canonical, person_code)
+        if target.pos == "v":
+            morph = self.target_form_metadata(target)
+            if morph.get("VerbForm") and morph.get("VerbForm") != "Inf":
+                return target.lemma
+            return self.conjugate_present(canonical, person_code or "3sg")
+        return target.lemma
+
+    def target_verb_form(self, target: Lexeme, person_code: str) -> str:
+        return self.requested_surface_form(target, person_code=person_code)
 
     def infer_surface_features(self, entry: Lexeme) -> Dict[str, Any]:
         if not entry or self.normalized_pos_family(entry) != "v":
@@ -3231,18 +3267,32 @@ class SentenceGenerator:
         trimmed = candidates[:500]
         return self.random.choices(trimmed, weights=weights, k=1)[0]
 
+    def _bigram_count(self, w1: str, w2: str) -> int:
+        counts = self.bigrams.get("counts")
+        if counts is not None:
+            return counts.get((w1, w2), 0)
+        return self.bigrams.get("next", {}).get(w1, {}).get(w2, 0)
+
+    def _trigram_count(self, w1: str, w2: str, w3: str) -> int:
+        counts = self.trigrams.get("counts")
+        if counts is not None:
+            return counts.get((w1, w2, w3), 0)
+        return self.trigrams.get("next", {}).get((w1, w2), {}).get(w3, 0)
+
     def score_sequence(self, tokens: List[str]) -> float:
         words = ["<START>"] + [normalize_token(t) for t in tokens if is_word_token(t)] + ["<END>"]
         if len(words) <= 2:
             return -10.0
-        tri_counts = self.trigrams["counts"]
-        bi_counts = self.bigrams["counts"]
         total = 0.0
         for i in range(1, len(words)):
-            if i >= 2 and (words[i - 2], words[i - 1], words[i]) in tri_counts:
-                total += math.log(tri_counts[(words[i - 2], words[i - 1], words[i])] + 1)
-            elif (words[i - 1], words[i]) in bi_counts:
-                total += math.log(bi_counts[(words[i - 1], words[i])] + 1)
+            if i >= 2:
+                tri_count = self._trigram_count(words[i - 2], words[i - 1], words[i])
+                if tri_count:
+                    total += math.log(tri_count + 1)
+                    continue
+            bi_count = self._bigram_count(words[i - 1], words[i])
+            if bi_count:
+                total += math.log(bi_count + 1)
             else:
                 total -= 10.0
         return total / max(1, len(words) - 1)
@@ -3469,9 +3519,9 @@ class SentenceGenerator:
                 "a": [("prep_exact_a_home", ["voy", "a", "casa"], 1)],
                 "hasta": [("prep_exact_hasta_home", ["voy", "hasta", "casa"], 1)],
                 "entre": [("prep_exact_entre_dos", ["está", "entre", "dos"], 1)],
-                "durante": [("prep_exact_durante_day", ["trabajo", "durante", "el", "día"], 1)],
+                "durante": [("prep_exact_durante_day", ["pasa", "durante", "el", "día"], 1)],
                 "bajo": [("prep_exact_bajo_eso", ["está", "bajo", "eso"], 1)],
-                "según": [("prep_exact_segun_el", ["según", "él", "es", "verdad"], 0)],
+                "según": [("prep_exact_segun_el", ["según", "ella", ",", "eso", "es", "verdad"], 0)],
                 "tras": [("prep_exact_tras_eso", ["va", "tras", "eso"], 1)],
             }.get(surface, [])
 
@@ -3496,6 +3546,21 @@ class SentenceGenerator:
             return {
                 "que": [("pron_exact_que_clause", ["sé", "que", "es", "verdad"], 1)],
                 "las": [("pron_exact_las_have", ["yo", "las", "tengo"], 1)],
+                "vosotros": [("pron_exact_vosotros_here", ["vosotros", "estáis", "aquí"], 0)],
+                "demás": [("pron_exact_demas_here", ["los", "demás", "están", "aquí"], 1)],
+                "ésta": [("pron_exact_esta_casa", ["ésta", "es", "mi", "casa"], 0)],
+                "quienes": [("pron_exact_quienes_saben", ["quienes", "están", "aquí", "saben", "eso"], 0)],
+                "cualquiera": [("pron_exact_cualquiera_ir", ["cualquiera", "puede", "ir"], 0)],
+            }.get(surface, [])
+
+        if family == "adv":
+            return {
+                "fuera": [("adv_exact_fuera", ["está", "fuera"], 1)],
+                "quizá": [("adv_exact_quiza", ["quizá", "venga", "hoy"], 0)],
+                "pronto": [("adv_exact_pronto", ["pronto", "vuelve"], 0)],
+                "ayer": [("adv_exact_ayer", ["ayer", "fui", "allí"], 0)],
+                "anoche": [("adv_exact_anoche", ["anoche", "fui", "allí"], 0)],
+                "aqui": [("adv_exact_aqui", ["estoy", "aqui"], 1)],
             }.get(surface, [])
 
         if family in {"determiner", "art"}:
@@ -3554,6 +3619,58 @@ class SentenceGenerator:
                 "dar": [("verb_exact_dar_eso", ["quiero", "dar", "eso"], 1)],
                 "podía": [("verb_exact_podia_ir", ["ella", "podía", "ir"], 1)],
                 "tomar": [("verb_exact_tomar_agua", ["quiero", "tomar", "agua"], 1)],
+                "sido": [("verb_exact_sido_dificil", ["ha", "sido", "difícil"], 1)],
+                "espera": [("verb_exact_espera_aqui", ["ella", "espera", "aquí"], 1)],
+                "será": [("verb_exact_sera_dificil", ["será", "difícil"], 0)],
+                "veo": [("verb_exact_veo_eso", ["yo", "veo", "eso"], 1)],
+                "fueron": [("verb_exact_fueron_buenos", ["ellos", "fueron", "buenos"], 1)],
+                "vi": [("verb_exact_vi_eso", ["yo", "vi", "eso"], 1)],
+                "tenido": [("verb_exact_he_tenido_tiempo", ["he", "tenido", "tiempo"], 1)],
+                "debes": [("verb_exact_debes_ir", ["tú", "debes", "ir"], 1)],
+                "escucha": [("verb_exact_escucha_eso", ["ella", "escucha", "eso"], 1)],
+                "habla": [("verb_exact_habla_mucho", ["ella", "habla", "mucho"], 1)],
+                "debemos": [("verb_exact_debemos_ir", ["nosotros", "debemos", "ir"], 1)],
+                "hacen": [("verb_exact_hacen_eso", ["ellos", "hacen", "eso"], 1)],
+                "ido": [("verb_exact_he_ido_alla", ["he", "ido", "allí"], 1)],
+                "esté": [("verb_exact_este_aqui", ["quiero", "que", "esté", "aquí"], 2)],
+                "queda": [("verb_exact_queda_tiempo", ["todavía", "queda", "tiempo"], 1)],
+                "deberías": [("verb_exact_deberias_ir", ["tú", "deberías", "ir"], 1)],
+                "habría": [("verb_exact_habria_problemas", ["habría", "problemas"], 0)],
+                "diciendo": [("verb_exact_diciendo_eso", ["estoy", "diciendo", "eso"], 1)],
+                "pasando": [("verb_exact_pasando_ahora", ["está", "pasando", "ahora"], 1)],
+                "pensando": [("verb_exact_pensando_en_eso", ["estoy", "pensando", "en", "eso"], 1)],
+                "lleva": [("verb_exact_lleva_libro", ["ella", "lleva", "un", "libro"], 1)],
+                "tenga": [("verb_exact_tenga_tiempo", ["quiero", "que", "tenga", "tiempo"], 2)],
+                "oído": [("verb_exact_oido", ["lo", "he", "oído"], 2)],
+                "podrías": [("verb_exact_podrias_ir", ["tú", "podrías", "ir"], 1)],
+                "deben": [("verb_exact_deben_ir", ["ellos", "deben", "ir"], 1)],
+                "piensa": [("verb_exact_piensa_en_eso", ["ella", "piensa", "en", "eso"], 1)],
+                "venido": [("verb_exact_venido_hoy", ["ha", "venido", "hoy"], 1)],
+                "pienso": [("verb_exact_pienso_en_eso", ["pienso", "en", "eso"], 0)],
+                "dejó": [("verb_exact_dejo_eso", ["ella", "dejó", "eso"], 1)],
+                "querido": [("verb_exact_querido", ["siempre", "te", "he", "querido"], 3)],
+                "hacía": [("verb_exact_hacia_eso", ["ella", "hacía", "eso"], 1)],
+                "hará": [("verb_exact_hara_eso", ["ella", "hará", "eso"], 1)],
+                "llegado": [("verb_exact_llegado_tarde", ["he", "llegado", "tarde"], 1)],
+                "haría": [("verb_exact_haria_eso", ["ella", "haría", "eso"], 1)],
+                "cambiar": [("verb_exact_cambiar_eso", ["quiero", "cambiar", "eso"], 1)],
+                "vio": [("verb_exact_vio_eso", ["ella", "vio", "eso"], 1)],
+                "suena": [("verb_exact_suena_bien", ["eso", "suena", "bien"], 1)],
+                "tratando": [("verb_exact_tratando_de_ayudar", ["estoy", "tratando", "de", "ayudar"], 1)],
+                "hubo": [("verb_exact_hubo_problema", ["hubo", "un", "problema"], 0)],
+                "siente": [("verb_exact_se_siente_bien", ["ella", "se", "siente", "bien"], 2)],
+                "pensaba": [("verb_exact_pensaba_eso", ["yo", "pensaba", "eso"], 1)],
+                "cállate": [("verb_exact_callate_ahora", ["cállate", "ahora"], 0)],
+                "hicieron": [("verb_exact_hicieron_eso", ["ellos", "hicieron", "eso"], 1)],
+                "pase": [("verb_exact_pase_hoy", ["quiero", "que", "pase", "hoy"], 2)],
+                "encanta": [("verb_exact_encanta_eso", ["me", "encanta", "eso"], 1)],
+                "dijeron": [("verb_exact_dijeron_eso", ["ellos", "dijeron", "eso"], 1)],
+                "llamo": [("verb_exact_llamo_hoy", ["yo", "llamo", "hoy"], 1)],
+                "viste": [("verb_exact_viste_eso", ["tú", "viste", "eso"], 1)],
+                "creí": [("verb_exact_crei_eso", ["yo", "creí", "eso"], 1)],
+                "quisiera": [("verb_exact_quisiera_hablar", ["quisiera", "hablar"], 0)],
+                "podrían": [("verb_exact_podrian_ir", ["ellos", "podrían", "ir"], 1)],
+                "eras": [("verb_exact_eras_bueno", ["tú", "eras", "bueno"], 1)],
             }.get(surface, [])
 
         if target.pos == "adj":
@@ -3573,6 +3690,27 @@ class SentenceGenerator:
                 "juntos": [("adj_exact_juntos", ["hoy", "vamos", "juntos"], 2)],
                 "buenos": [("adj_exact_buenos", ["tengo", "buenos", "amigos"], 1)],
                 "grandes": [("adj_exact_grandes", ["las", "casas", "son", "grandes"], 3)],
+                "última": [("adj_exact_ultima", ["es", "la", "última"], 2)],
+                "último": [("adj_exact_ultimo", ["es", "el", "último"], 2)],
+                "única": [("adj_exact_unica", ["es", "la", "única"], 2)],
+                "nacional": [("adj_exact_nacional", ["es", "un", "tema", "nacional"], 3)],
+                "propia": [("adj_exact_propia", ["es", "su", "propia", "casa"], 2)],
+                "propio": [("adj_exact_propio", ["es", "su", "propio", "estilo"], 2)],
+                "junto": [("adj_exact_junto", ["está", "junto", "a", "mí"], 1)],
+                "público": [("adj_exact_publico", ["es", "un", "lugar", "público"], 3)],
+                "unidos": [("adj_exact_unidos", ["estamos", "unidos"], 1)],
+                "segunda": [("adj_exact_segunda", ["es", "la", "segunda"], 2)],
+                "oficial": [("adj_exact_oficial", ["es", "un", "aviso", "oficial"], 3)],
+                "negro": [("adj_exact_negro", ["es", "negro"], 1)],
+                "querida": [("adj_exact_querida", ["es", "mi", "querida", "amiga"], 2)],
+                "últimos": [("adj_exact_ultimos", ["son", "los", "últimos"], 2)],
+                "divertido": [("adj_exact_divertido", ["es", "divertido"], 1)],
+                "próxima": [("adj_exact_proxima", ["es", "la", "próxima"], 2)],
+                "diferentes": [("adj_exact_diferentes", ["son", "diferentes"], 1)],
+                "próximo": [("adj_exact_proximo", ["es", "el", "próximo"], 2)],
+                "nuevos": [("adj_exact_nuevos", ["son", "nuevos"], 1)],
+                "entendido": [("adj_exact_entendido", ["está", "entendido"], 1)],
+                "jóvenes": [("adj_exact_jovenes", ["son", "jóvenes"], 1)],
             }.get(surface, [])
 
         if target.pos == "n":
@@ -3588,6 +3726,33 @@ class SentenceGenerator:
                 "agua": [("noun_exact_water", ["hay", "agua", "hoy"], 1)],
                 "hombres": [("noun_exact_hombres", ["ellos", "son", "hombres"], 2)],
                 "fin": [("noun_exact_end", ["es", "el", "fin"], 2)],
+                "personas": [("noun_exact_personas", ["las", "personas", "son", "buenas"], 1)],
+                "chicos": [("noun_exact_chicos", ["los", "chicos", "son", "buenos"], 1)],
+                "horas": [("noun_exact_horas", ["son", "tres", "horas"], 2)],
+                "señora": [("noun_exact_senora", ["la", "señora", "es", "amable"], 1)],
+                "ojos": [("noun_exact_ojos", ["tiene", "ojos", "azules"], 1)],
+                "minutos": [("noun_exact_minutos", ["son", "dos", "minutos"], 2)],
+                "millones": [("noun_exact_millones", ["son", "muchos", "millones"], 2)],
+                "mujeres": [("noun_exact_mujeres", ["las", "mujeres", "son", "fuertes"], 1)],
+                "meses": [("noun_exact_meses", ["son", "dos", "meses"], 2)],
+                "paso": [("noun_exact_paso", ["no", "doy", "un", "paso"], 3)],
+                "dólares": [("noun_exact_dolares", ["son", "dos", "dólares"], 2)],
+                "palabras": [("noun_exact_palabras", ["no", "tengo", "palabras"], 2)],
+                "chicas": [("noun_exact_chicas", ["las", "chicas", "son", "buenas"], 1)],
+                "amo": [("noun_exact_amo", ["es", "mi", "amo"], 2)],
+                "control": [("noun_exact_control", ["está", "bajo", "control"], 2)],
+                "semanas": [("noun_exact_semanas", ["son", "dos", "semanas"], 2)],
+                "estados": [("noun_exact_estados", ["son", "dos", "estados"], 2)],
+                "niña": [("noun_exact_nina", ["la", "niña", "es", "buena"], 1)],
+                "preguntas": [("noun_exact_preguntas", ["tengo", "muchas", "preguntas"], 2)],
+                "agente": [("noun_exact_agente", ["el", "agente", "es", "nuevo"], 1)],
+                "casos": [("noun_exact_casos", ["son", "casos", "raros"], 1)],
+                "causa": [("noun_exact_causa", ["no", "sé", "la", "causa"], 3)],
+                "pruebas": [("noun_exact_pruebas", ["tengo", "buenas", "pruebas"], 2)],
+                "siglo": [("noun_exact_siglo", ["es", "otro", "siglo"], 2)],
+                "posición": [("noun_exact_posicion", ["esa", "es", "mi", "posición"], 3)],
+                "tipos": [("noun_exact_tipos", ["son", "tipos", "raros"], 1)],
+                "datos": [("noun_exact_datos", ["tengo", "muchos", "datos"], 2)],
             }.get(surface, [])
 
         return []
@@ -3643,6 +3808,28 @@ class SentenceGenerator:
                 specs = [("verb_exact_dije_eso", ["yo", "dije", "eso"], 1)]
             elif surface == "dicho" and canonical == "decir":
                 specs = [("verb_exact_dicho", ["lo", "he", "dicho"], 2)]
+            elif surface == "dijo" and canonical == "decir":
+                specs = [("verb_exact_dijo_eso", ["ella", "dijo", "eso"], 1)]
+            elif surface == "parece" and canonical == "parecer":
+                specs = [("verb_exact_parece_buena", ["ella", "parece", "buena"], 1)]
+            elif surface == "hizo" and canonical == "hacer":
+                specs = [("verb_exact_hizo_eso", ["ella", "hizo", "eso"], 1)]
+            elif surface == "debería" and canonical == "deber":
+                specs = [("verb_exact_deberia_ir", ["ella", "debería", "ir"], 1)]
+            elif surface == "hubiera" and canonical == "haber":
+                specs = [("verb_exact_hubiera_agua", ["quería", "que", "hubiera", "agua"], 2)]
+            elif surface == "tenido" and canonical == "tener":
+                specs = [("verb_exact_he_tenido_tiempo", ["he", "tenido", "tiempo"], 1)]
+            elif surface == "venga" and canonical == "venir":
+                specs = [("verb_exact_quiero_que_venga", ["quiero", "que", "ella", "venga"], 3)]
+            elif surface == "llama" and canonical == "llamar":
+                specs = [("verb_exact_llama_hoy", ["ella", "llama", "hoy"], 1)]
+            elif surface == "toma" and canonical == "tomar":
+                specs = [("verb_exact_toma_agua", ["ella", "toma", "agua"], 1)]
+            elif surface == "escucha" and canonical == "escuchar":
+                specs = [("verb_exact_escucha_musica", ["ella", "escucha", "música"], 1)]
+            elif surface == "hago" and canonical == "hacer":
+                specs = [("verb_exact_hago_eso", ["yo", "hago", "eso"], 1)]
         elif target.pos == "n":
             if surface == "vez":
                 specs = [("noun_exact_turn", ["es", "mi", "vez"], 2)]
@@ -3783,6 +3970,14 @@ class SentenceGenerator:
         for a, b in zip(words, words[1:]):
             if a == b:
                 return False, penalties
+        if self.review_override_template(candidate):
+            if self.semantic_nonsense_reasons(candidate, words):
+                return False, penalties
+            if len(words) == profile.min_len:
+                penalties.append(0.2)
+            if len(words) == profile.max_len:
+                penalties.append(0.2)
+            return True, penalties
 
         target_morph_override = self._parse_morph_str(candidate.target_morph) if candidate.target_morph else None
         target_word_idx = -1
@@ -4133,7 +4328,7 @@ class SentenceGenerator:
                 if special:
                     return special
             subject, person = self.subject_for_target(target, fallback=left if left in SUBJECT_FEATURES else "ella")
-            verb = self.target_verb_form(target, person)
+            verb = self.requested_surface_form(target, person_code=person)
             obj = self.pick_safe_object_noun_for_verb(canonical, allowed, exclude={target.lemma, canonical})
             if obj:
                 article = self.choose_article(self.safe_noun_gender(obj.lemma, obj.gender), definite=True)
@@ -4252,7 +4447,7 @@ class SentenceGenerator:
                 choices = ["v_b1_1"]
             template = self.random.choice(choices)
             subject, person = self.subject_for_target(target)
-            verb = self.target_verb_form(target, person)
+            verb = self.requested_surface_form(target, person_code=person)
             if template == "v_a1_inf":
                 if canonical in STARTER_INFINITIVE_REJECT:
                     return None

@@ -38,8 +38,19 @@ COMMON_FUNCTION_FILLERS = {
 REJECTED_FRAME_IDS = {
     "learned_adverb_target_va_mi_noun",
     "learned_adverb_target_es_mi_noun",
+    "learned_adverb_es_target_noun",
+    "learned_adverb_target_vas_hoy",
     "learned_adjective_es_target_prep_phrase",
+    "learned_function_target_es_mi_noun",
+    "learned_function_target_es_noun",
     "learned_verb_target_que_es_noun",
+    "learned_verb_target_a_mi_noun",
+}
+
+ALLOWED_ELLOS_NO_ESTAN_AQUI_ADVERBS = {
+    "además",
+    "entonces",
+    "incluso",
 }
 
 
@@ -98,6 +109,8 @@ class LearnedFrameRouter:
         frame_candidates = self._select_frames(entry, family, limit=max_candidates * 2)
         out: List[Candidate] = []
         for frame in frame_candidates:
+            if not self._frame_allowed_for_entry(entry, frame):
+                continue
             tokens = self._render_frame(entry, frame)
             if not tokens:
                 continue
@@ -144,6 +157,13 @@ class LearnedFrameRouter:
             ),
         )
         return ranked[:limit]
+
+    def _frame_allowed_for_entry(self, entry: Lexeme, frame: Dict[str, Any]) -> bool:
+        frame_id = (frame.get("frame_id") or "").strip()
+        surface = normalize_token(entry.lemma)
+        if frame_id == "learned_adverb_target_ellos_no_est_n_aqu":
+            return surface in ALLOWED_ELLOS_NO_ESTAN_AQUI_ADVERBS
+        return True
 
     def _render_frame(self, entry: Lexeme, frame: Dict[str, Any]) -> Optional[List[str]]:
         tokens: List[str] = []
