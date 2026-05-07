@@ -1,0 +1,40 @@
+rank,word,sentence,warning
+2158,estan,SKIP,replacement_does_not_contain_target_word
+9786,e-mail,Mándamelo por e-mail y lo reviso.,replacement_does_not_contain_target_word
+10684,es-,SKIP,replacement_does_not_contain_target_word
+13560,barça,El barça juega en casa este domingo.,replacement_does_not_contain_target_word
+13785,nº,"Apunta el nº de la puerta, por favor.",replacement_does_not_contain_target_word
+14469,de-,SKIP,replacement_does_not_contain_target_word
+15617,coca-cola,Pídeme una coca-cola bien fría.,replacement_does_not_contain_target_word
+16514,jovenes,SKIP,replacement_does_not_contain_target_word
+17437,e-mails,Tengo demasiados e-mails sin leer.,replacement_does_not_contain_target_word
+18551,a-,SKIP,replacement_does_not_contain_target_word
+20704,má,SKIP,replacement_does_not_contain_target_word
+20812,jóven,SKIP,replacement_does_not_contain_target_word
+21789,els,SKIP,replacement_does_not_contain_target_word
+21850,grs,SKIP,replacement_does_not_contain_target_word
+22099,voilà,Le dio un toque final y voilà.,replacement_does_not_contain_target_word
+24110,wi-fi,Aquí el wi-fi va fatal.,replacement_does_not_contain_target_word
+24630,sta.,SKIP,replacement_does_not_contain_target_word
+25849,co2,El informe habla del aumento de co2.,replacement_does_not_contain_target_word
+26037,al-qaeda,El documental trataba sobre al-qaeda.,replacement_does_not_contain_target_word
+26064,espacio-tiempo,La charla iba sobre el espacio-tiempo.,replacement_does_not_contain_target_word
+26258,ping-pong,Después de cenar echamos un ping-pong.,replacement_does_not_contain_target_word
+28438,en-,SKIP,replacement_does_not_contain_target_word
+28632,imagenes,SKIP,replacement_does_not_contain_target_word
+28969,sis,SKIP,replacement_does_not_contain_target_word
+30451,x-men,De pequeño veía siempre los x-men.,replacement_does_not_contain_target_word
+30852,à,SKIP,replacement_does_not_contain_target_word
+31927,tic-tac,Se oía el tic-tac del reloj.,replacement_does_not_contain_target_word
+32482,para-,SKIP,replacement_does_not_contain_target_word
+33325,con-,SKIP,replacement_does_not_contain_target_word
+35126,dels,SKIP,replacement_does_not_contain_target_word
+35665,tàpies,En el museo había un cuadro de Tàpies.,replacement_does_not_contain_target_word
+37020,algo-,SKIP,replacement_does_not_contain_target_word
+37046,hacias,SKIP,replacement_does_not_contain_target_word
+37093,o'higgins,La avenida O'Higgins siempre está llena.,replacement_does_not_contain_target_word
+37346,gödel,Este semestre estoy leyendo a Gödel.,replacement_does_not_contain_target_word
+38271,molière,Anoche vimos una obra de Molière.,replacement_does_not_contain_target_word
+38446,examenes,SKIP,replacement_does_not_contain_target_word
+39633,órden,SKIP,replacement_does_not_contain_target_word
+39742,mp3,Aún guardo canciones en el mp3.,replacement_does_not_contain_target_word

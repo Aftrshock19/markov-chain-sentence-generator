@@ -1,0 +1,101 @@
+lemma,rank,pos,sentence,tokens,combined,reranker,lm_logp
+de,1,prep,Estoy de acuerdo contigo en ese momento.,estoy de acuerdo contigo en ese momento,1.0888,1.0888,-25.2776
+que,2,pron,Sé que puedes hacer esto por mí.,sé que puedes hacer esto por mí,-0.0095,-0.0095,-31.1983
+la,3,pron,La casa es muy importante para mí.,la casa es muy importante para mí,0.2663,0.2663,-28.6154
+no,4,,No me gusta ese tipo de cosas.,no me gusta ese tipo de cosas,0.9825,0.9825,-24.1437
+a,5,none,Voy a casa de mi padre.,voy a casa de mi padre,0.3285,0.3285,-27.4295
+el,6,art,El libro es muy importante para mí.,el libro es muy importante para mí,0.2536,0.2536,-28.6946
+y,7,conj,Tú y yo estamos aquí para ver.,tú y yo estamos aquí para ver,-0.3965,-0.3965,-31.3800
+en,8,prep,Estoy en contra de la ciudad.,estoy en contra de la ciudad,0.8472,0.8472,-24.3272
+es,9,v,No es tan importante como la gente.,no es tan importante como la gente,0.8509,0.8509,-25.8268
+un,10,num,Tengo un libro sobre la tierra.,tengo un libro sobre la tierra,0.4882,0.4882,-26.4741
+lo,11,pron,Ya lo tengo que ir a ver.,ya lo tengo que ir a ver,0.2030,0.2030,-29.8997
+por,12,prep,Voy por el bien del mal tiempo.,voy por el bien del mal tiempo,0.3601,0.3601,-29.8271
+los,13,art,Los libros son para los niños.,los libros son para los niños,-1.5764,-1.5764,-26.8648
+una,14,determiner,Tengo una casa de mi padre.,tengo una casa de mi padre,0.5408,0.5408,-26.1598
+se,15,pron,No se sabe nada de esto.,no se sabe nada de esto,0.5598,0.5598,-26.0458
+con,16,prep,Estoy con un poco más de tres.,estoy con un poco más de tres,-0.0417,-0.0417,-32.3352
+qué,17,pron,No sé qué hacer con los ojos.,no sé qué hacer con los ojos,1.0077,1.0077,-25.7840
+me,18,pron,Me gusta mucho el uno al otro.,me gusta mucho el uno al otro,1.0542,1.0542,-23.6965
+para,19,prep,Voy para que no me gusta mucho.,voy para que no me gusta mucho,-0.6913,-0.6913,-35.4548
+las,20,pron,Las casas son un poco de agua.,las casas son un poco de agua,-2.6140,-2.6140,-35.9128
+del,21,contraction,Es la casa del vecino.,es la casa del vecino,-4.3157,-4.3157,-31.8608
+te,22,pron,Te gusta mucho el uno al otro.,te gusta mucho el uno al otro,-0.5020,-0.5020,-33.4114
+su,23,determiner,Su libro es muy importante para mí.,su libro es muy importante para mí,-0.0967,-0.0967,-30.8813
+pero,24,conj,Quiero ir pero no puedo ver nada.,quiero ir pero no puedo ver nada,-1.0744,-1.0744,-37.8463
+si,25,conj,No sé si es verdad.,no sé si es verdad,-1.2485,-1.2485,-23.3544
+está,26,v,Ella está en contra de la ciudad.,ella está en contra de la ciudad,0.7879,0.7879,-27.5378
+mi,27,determiner,Mi libro es muy importante para mí.,mi libro es muy importante para mí,-0.7568,-0.7568,-35.0025
+al,28,contraction,Vamos al cine.,vamos al cine,-3.5430,-3.5430,-19.8793
+sí,29,pron,Claro que sí en el mundo.,claro que sí en el mundo,-1.7866,-1.7866,-35.1741
+como,30,conj,Es como tú no eres el único.,es como tú no eres el único,-0.0057,-0.0057,-30.5142
+bien,31,adv,Ella está bien de su padre.,ella está bien de su padre,-0.3433,-0.3433,-31.8128
+más,32,adv,Ella está más cerca de aquí.,ella está más cerca de aquí,0.3457,0.3457,-27.6919
+eso,33,pron,Ella es eso lo que pasó aquí.,ella es eso lo que pasó aquí,-0.0451,-0.0451,-31.8303
+yo,34,pron,Yo estoy aquí para hablar con él.,yo estoy aquí para hablar con él,0.1130,0.1130,-29.8045
+le,35,pron,Ya le tengo miedo a los niños.,ya le tengo miedo a los niños,-0.1702,-0.1702,-33.1379
+aquí,36,adv,Aquí no hay nada que ver contigo.,aquí no hay nada que ver contigo,0.6633,0.6633,-25.2287
+tu,37,determiner,Tu libro es demasiado tarde para eso.,tu libro es demasiado tarde para eso,-0.8506,-0.8506,-35.5880
+todo,38,determiner,Tengo todo libro por la mañana.,tengo todo libro por la mañana,-1.5529,-1.5529,-38.6819
+ha,39,v,Ha dicho que no me gusta mucho.,ha dicho que no me gusta mucho,0.2881,0.2881,-27.5429
+ya,40,adv,Ya es hora de volver a casa.,ya es hora de volver a casa,0.5432,0.5432,-26.8863
+o,41,conj,Quieres ir o no ser el mejor.,quieres ir o no ser el mejor,-1.4327,-1.4327,-41.0195
+esto,42,pron,Esto es importante para los niños.,esto es importante para los niños,0.2561,0.2561,-26.1403
+muy,43,adv,Ella está muy cerca de la ciudad.,ella está muy cerca de la ciudad,0.6351,0.6351,-28.4912
+esta,44,determiner,Esta casa es demasiado tarde para eso.,esta casa es demasiado tarde para eso,0.3284,0.3284,-28.2273
+ahora,45,adv,Ahora no tengo ni idea de quién.,ahora no tengo ni idea de quién,0.8530,0.8530,-24.9522
+así,46,adv,Así es como un padre para mí.,así es como un padre para mí,0.6504,0.6504,-25.2810
+cuando,47,conj,Ella está bien cuando tiene tiempo.,ella está bien cuando tiene tiempo,-3.1961,-3.1961,-47.9777
+hay,48,v,Hay algo que hacer las cosas.,hay algo que hacer las cosas,0.1779,0.1779,-25.7382
+este,49,determiner,Este libro es demasiado tarde para eso.,este libro es demasiado tarde para eso,0.4870,0.4870,-27.2376
+algo,50,pron,Ella es algo que no hay nada.,ella es algo que no hay nada,-0.1111,-0.1111,-32.2136
+estoy,51,v,Yo estoy en contra de la ciudad.,yo estoy en contra de la ciudad,0.7085,0.7085,-28.0335
+vamos,52,v,No vamos a tener que hacer algo.,no vamos a tener que hacer algo,0.6779,0.6779,-26.9354
+él,53,pron,Él está aquí para hablar con él.,él está aquí para hablar con él,-0.2458,-0.2458,-32.1967
+ser,54,v,Quiero ser un poco más de tres.,quiero ser un poco más de tres,0.9419,0.9419,-26.1947
+bueno,55,adj,Él es bueno para el otro día.,él es bueno para el otro día,0.9744,0.9744,-26.3734
+nos,56,pron,Nos gusta mucho el uno al otro.,nos gusta mucho el uno al otro,-0.2391,-0.2391,-31.7701
+sus,57,determiner,Sus libros son para los niños.,sus libros son para los niños,-2.3698,-2.3698,-31.6104
+fue,58,v,No fue el primero en llegar.,no fue el primero en llegar,0.8071,0.8071,-24.5668
+tengo,59,v,No tengo ni idea de por aquí.,no tengo ni idea de por aquí,1.3975,1.3975,-23.3507
+era,60,v,No era mi mejor amigo.,no era mi mejor amigo,-0.9156,-0.9156,-22.3208
+nada,61,pron,Ella es nada más que un hombre.,ella es nada más que un hombre,-0.3024,-0.3024,-32.4513
+tiene,62,v,No tiene nada que ver con esto.,no tiene nada que ver con esto,1.1467,1.1467,-24.0087
+sé,63,v,No sé nada de lo que pasó.,no sé nada de lo que pasó,1.1669,1.1669,-23.8822
+tú,64,pron,Tú estás aquí para hablar con él.,tú estás aquí para hablar con él,-0.8708,-0.8708,-35.9460
+cómo,65,adv,Cómo es que no me gusta mucho.,cómo es que no me gusta mucho,0.1149,0.1149,-28.6241
+vez,66,n,Una vez más gente de aquí.,una vez más gente de aquí,-0.4396,-0.4396,-27.9875
+estás,67,v,No estás de acuerdo con su hermano.,no estás de acuerdo con su hermano,0.5872,0.5872,-28.4091
+sólo,68,adv,Sólo tienes que ir a la gente.,sólo tienes que ir a la gente,0.3153,0.3153,-27.4015
+ella,69,pron,Ella está aquí para hablar con él.,ella está aquí para hablar con él,-0.5116,-0.5116,-33.7035
+son,70,v,Ellos son de una vez por todas.,ellos son de una vez por todas,0.7007,0.7007,-28.0819
+hacer,71,v,Voy a hacer las cosas que hacer.,voy a hacer las cosas que hacer,0.8258,0.8258,-26.1642
+he,72,v,He visto en algún lugar.,he visto en algún lugar,-1.1719,-1.1719,-22.1421
+porque,73,conj,Ella está bien porque tiene tiempo.,ella está bien porque tiene tiempo,-2.9792,-2.9792,-46.6804
+todos,74,determiner,Conozco a todos mis amigos.,conozco a todos mis amigos,-2.0787,-2.0787,-25.0796
+puedo,75,v,No puedo estar de acuerdo con él.,no puedo estar de acuerdo con él,1.1806,1.1806,-24.5560
+quiero,76,v,Yo quiero un poco más de tres.,yo quiero un poco más de tres,0.8464,0.8464,-27.1725
+gracias,77,n,Muchas gracias por todo el mundo.,muchas gracias por todo el mundo,0.4459,0.4459,-22.6916
+puede,78,v,Ella puede hablar un poco de agua.,ella puede hablar un poco de agua,0.7989,0.7989,-27.4689
+dos,79,num,Tengo dos libros en mi vida.,tengo dos libros en mi vida,-2.5071,-2.5071,-34.1534
+sin,80,prep,Estoy sin la ayuda de un hombre.,estoy sin la ayuda de un hombre,0.0661,0.0661,-31.6626
+soy,81,v,Yo soy el que más te vale.,yo soy el que más te vale,1.0603,1.0603,-24.9291
+sobre,82,prep,Estoy sobre la muerte de su padre.,estoy sobre la muerte de su padre,-0.3230,-0.3230,-34.0917
+ese,83,determiner,Ese libro es de mi padre.,ese libro es de mi padre,-0.0809,-0.0809,-28.1560
+estaba,84,v,Ella estaba a punto de salir.,ella estaba a punto de salir,1.0373,1.0373,-23.5557
+también,85,adv,También me gusta la forma de hablar.,también me gusta la forma de hablar,0.3277,0.3277,-28.2318
+tiempo,86,n,No tengo tiempo para hacer las cosas.,no tengo tiempo para hacer las cosas,1.1942,1.1942,-24.6200
+tan,87,adv,Ella está tan pronto como sea posible.,ella está tan pronto como sea posible,0.4027,0.4027,-29.0059
+entonces,88,adv,Entonces me di cuenta de eso.,entonces me di cuenta de eso,0.2481,0.2481,-26.1884
+creo,89,v,Yo creo que es hora de hacer.,yo creo que es hora de hacer,0.8347,0.8347,-26.3092
+tienes,90,v,No tienes ni idea de por aquí.,no tienes ni idea de por aquí,1.1494,1.1494,-24.8998
+casa,91,n,La casa está a punto de salir.,la casa está a punto de salir,0.9206,0.9206,-26.3279
+usted,92,pron,Usted está aquí para hablar con él.,usted está aquí para hablar con él,-0.8839,-0.8839,-36.0279
+esa,93,determiner,Esa casa es la primera vez.,esa casa es la primera vez,-0.0718,-0.0718,-28.1017
+voy,94,v,No voy a tener que hacer eso.,no voy a tener que hacer eso,0.7428,0.7428,-26.5304
+sabes,95,v,No sabes lo que pasó aquí.,no sabes lo que pasó aquí,0.6603,0.6603,-24.5755
+eres,96,v,Tú eres el único que puede hablar.,tú eres el único que puede hablar,1.0968,1.0968,-24.6731
+verdad,97,n,Es verdad que no me gusta mucho.,es verdad que no me gusta mucho,0.4000,0.4000,-28.6417
+hasta,98,prep,Estoy hasta el fin de semana pasado.,estoy hasta el fin de semana pasado,0.8198,0.8198,-26.9571
+solo,99,adj,Él es solo un poco de agua.,él es solo un poco de agua,0.8457,0.8457,-27.1770
+nunca,100,adv,Nunca antes había visto a un hombre.,nunca antes había visto a un hombre,0.6419,0.6419,-26.2702

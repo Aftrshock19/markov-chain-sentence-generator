@@ -1,0 +1,101 @@
+lemma,rank,pos,translation,sentence,source_method,score,tokens
+de,1,prep,of; from,Estoy de acuerdo contigo en ese momento.,markov_ml,1.0888,estoy de acuerdo contigo en ese momento
+que,2,pron,that,Sé que puedes hacer esto por mí.,markov_ml,-0.0095,sé que puedes hacer esto por mí
+la,3,pron,the (fem.),La casa es muy importante para mí.,markov_ml,0.2663,la casa es muy importante para mí
+no,4,,no; not,No me gusta ese tipo de cosas.,markov_ml,0.9825,no me gusta ese tipo de cosas
+a,5,none,to; at,Voy a casa de mi padre.,markov_ml,0.3285,voy a casa de mi padre
+el,6,art,the (masc.),El libro es muy importante para mí.,markov_ml,0.2536,el libro es muy importante para mí
+y,7,conj,and,Tú y yo estamos aquí para ver.,markov_ml,-0.3965,tú y yo estamos aquí para ver
+en,8,prep,in; at; on,Estoy en contra de la ciudad.,markov_ml,0.8472,estoy en contra de la ciudad
+es,9,v,is (ser),No es tan importante como la gente.,markov_ml,0.8509,no es tan importante como la gente
+un,10,num,a; an; one,Tengo un libro sobre la tierra.,markov_ml,0.4882,tengo un libro sobre la tierra
+lo,11,pron,it; the (neuter),Ya lo tengo que ir a ver.,markov_ml,0.2030,ya lo tengo que ir a ver
+por,12,prep,by,Voy por el bien del mal tiempo.,markov_ml,0.3601,voy por el bien del mal tiempo
+los,13,art,the (masc. pl.),Los libros son para los niños.,markov_ml,-1.5764,los libros son para los niños
+una,14,determiner,a; an; one (fem.),Tengo una casa de mi padre.,markov_ml,0.5408,tengo una casa de mi padre
+se,15,pron,oneself; himself; herself; itself; themselves,No se sabe nada de esto.,markov_ml,0.5598,no se sabe nada de esto
+con,16,prep,with,Estoy con un poco más de tres.,markov_ml,-0.0417,estoy con un poco más de tres
+qué,17,pron,what,No sé qué hacer con los ojos.,markov_ml,1.0077,no sé qué hacer con los ojos
+me,18,pron,me; myself,Me gusta mucho el uno al otro.,markov_ml,1.0542,me gusta mucho el uno al otro
+para,19,prep,for; to,Voy para que no me gusta mucho.,markov_ml,-0.6913,voy para que no me gusta mucho
+las,20,pron,the (fem. pl.),Las casas son un poco de agua.,markov_ml,-2.6140,las casas son un poco de agua
+del,21,contraction,of the; from the,Es la casa del vecino.,markov_ml,-4.3157,es la casa del vecino
+te,22,pron,you; yourself,Te gusta mucho el uno al otro.,markov_ml,-0.5020,te gusta mucho el uno al otro
+su,23,determiner,his; her; its; their; your (formal),Su libro es muy importante para mí.,markov_ml,-0.0967,su libro es muy importante para mí
+pero,24,conj,but,Quiero ir pero no puedo ver nada.,markov_ml,-1.0744,quiero ir pero no puedo ver nada
+si,25,conj,if; whether,No sé si es verdad.,markov_ml,-1.2485,no sé si es verdad
+está,26,v,is (estar),Ella está en contra de la ciudad.,markov_ml,0.7879,ella está en contra de la ciudad
+mi,27,determiner,my,Mi libro es muy importante para mí.,markov_ml,-0.7568,mi libro es muy importante para mí
+al,28,contraction,to the,Vamos al cine.,markov_ml,-3.5430,vamos al cine
+sí,29,pron,yes; oneself,Claro que sí en el mundo.,markov_ml,-1.7866,claro que sí en el mundo
+como,30,conj,as,Es como tú no eres el único.,markov_ml,-0.0057,es como tú no eres el único
+bien,31,adv,well-to-do,Ella está bien de su padre.,markov_ml,-0.3433,ella está bien de su padre
+más,32,adv,more; most,Ella está más cerca de aquí.,markov_ml,0.3457,ella está más cerca de aquí
+eso,33,pron,that (neuter),Ella es eso lo que pasó aquí.,markov_ml,-0.0451,ella es eso lo que pasó aquí
+yo,34,pron,I,Yo estoy aquí para hablar con él.,markov_ml,0.1130,yo estoy aquí para hablar con él
+le,35,pron,him; her; you (formal),Ya le tengo miedo a los niños.,markov_ml,-0.1702,ya le tengo miedo a los niños
+aquí,36,adv,here,Aquí no hay nada que ver contigo.,markov_ml,0.6633,aquí no hay nada que ver contigo
+tu,37,determiner,your,Tu libro es demasiado tarde para eso.,markov_ml,-0.8506,tu libro es demasiado tarde para eso
+todo,38,determiner,all; every; everything,Tengo todo libro por la mañana.,markov_ml,-1.5529,tengo todo libro por la mañana
+ha,39,v,has (haber),Ha dicho que no me gusta mucho.,markov_ml,0.2881,ha dicho que no me gusta mucho
+ya,40,adv,already; now,Ya es hora de volver a casa.,markov_ml,0.5432,ya es hora de volver a casa
+o,41,conj,or,Quieres ir o no ser el mejor.,markov_ml,-1.4327,quieres ir o no ser el mejor
+esto,42,pron,this (neuter),Esto es importante para los niños.,markov_ml,0.2561,esto es importante para los niños
+muy,43,adv,very,Ella está muy cerca de la ciudad.,markov_ml,0.6351,ella está muy cerca de la ciudad
+esta,44,determiner,this (fem.),Esta casa es demasiado tarde para eso.,markov_ml,0.3284,esta casa es demasiado tarde para eso
+ahora,45,adv,now...now; whether...or,Ahora no tengo ni idea de quién.,markov_ml,0.8530,ahora no tengo ni idea de quién
+así,46,adv,like this,Así es como un padre para mí.,markov_ml,0.6504,así es como un padre para mí
+cuando,47,conj,when,Ella está bien cuando tiene tiempo.,markov_ml,-3.1961,ella está bien cuando tiene tiempo
+hay,48,v,there is; there are,Hay algo que hacer las cosas.,markov_ml,0.1779,hay algo que hacer las cosas
+este,49,determiner,this,Este libro es demasiado tarde para eso.,markov_ml,0.4870,este libro es demasiado tarde para eso
+algo,50,pron,something; anything,Ella es algo que no hay nada.,markov_ml,-0.1111,ella es algo que no hay nada
+estoy,51,v,to be,Yo estoy en contra de la ciudad.,markov_ml,0.7085,yo estoy en contra de la ciudad
+vamos,52,v,we go; let's go (ir),No vamos a tener que hacer algo.,markov_ml,0.6779,no vamos a tener que hacer algo
+él,53,pron,he; him; masculine personal third person subject and disjunctive pronoun,Él está aquí para hablar con él.,markov_ml,-0.2458,él está aquí para hablar con él
+ser,54,v,to be,Quiero ser un poco más de tres.,markov_ml,0.9419,quiero ser un poco más de tres
+bueno,55,adj,good,Él es bueno para el otro día.,markov_ml,0.9744,él es bueno para el otro día
+nos,56,pron,us; ourselves,Nos gusta mucho el uno al otro.,markov_ml,-0.2391,nos gusta mucho el uno al otro
+sus,57,determiner,his; her; its; their; your (formal) (pl.),Sus libros son para los niños.,markov_ml,-2.3698,sus libros son para los niños
+fue,58,v,was (ser/ir),No fue el primero en llegar.,markov_ml,0.8071,no fue el primero en llegar
+tengo,59,v,I have (tener),No tengo ni idea de por aquí.,markov_ml,1.3975,no tengo ni idea de por aquí
+era,60,v,was (ser); era,No era mi mejor amigo.,markov_ml,-0.9156,no era mi mejor amigo
+nada,61,pron,nothing; zero; zilch; not...anything,Ella es nada más que un hombre.,markov_ml,-0.3024,ella es nada más que un hombre
+tiene,62,v,has (tener),No tiene nada que ver con esto.,markov_ml,1.1467,no tiene nada que ver con esto
+sé,63,v,I know (saber),No sé nada de lo que pasó.,markov_ml,1.1669,no sé nada de lo que pasó
+tú,64,pron,you,Tú estás aquí para hablar con él.,markov_ml,-0.8708,tú estás aquí para hablar con él
+cómo,65,adv,how?,Cómo es que no me gusta mucho.,markov_ml,0.1149,cómo es que no me gusta mucho
+vez,66,n,time; instance,Una vez más gente de aquí.,markov_ml,-0.4396,una vez más gente de aquí
+estás,67,v,you are (estar),No estás de acuerdo con su hermano.,markov_ml,0.5872,no estás de acuerdo con su hermano
+sólo,68,adv,sole,Sólo tienes que ir a la gente.,markov_ml,0.3153,sólo tienes que ir a la gente
+ella,69,pron,she; her,Ella está aquí para hablar con él.,markov_ml,-0.5116,ella está aquí para hablar con él
+son,70,v,are (ser),Ellos son de una vez por todas.,markov_ml,0.7007,ellos son de una vez por todas
+hacer,71,v,to do,Voy a hacer las cosas que hacer.,markov_ml,0.8258,voy a hacer las cosas que hacer
+he,72,v,I have (haber),He visto en algún lugar.,markov_ml,-1.1719,he visto en algún lugar
+porque,73,conj,because,Ella está bien porque tiene tiempo.,markov_ml,-2.9792,ella está bien porque tiene tiempo
+todos,74,determiner,all; everyone,Conozco a todos mis amigos.,markov_ml,-2.0787,conozco a todos mis amigos
+puedo,75,v,I can (poder),No puedo estar de acuerdo con él.,markov_ml,1.1806,no puedo estar de acuerdo con él
+quiero,76,v,I want (querer),Yo quiero un poco más de tres.,markov_ml,0.8464,yo quiero un poco más de tres
+gracias,77,n,thanks,Muchas gracias por todo el mundo.,markov_ml,0.4459,muchas gracias por todo el mundo
+puede,78,v,can; may (poder),Ella puede hablar un poco de agua.,markov_ml,0.7989,ella puede hablar un poco de agua
+dos,79,num,dung; excrement,Tengo dos libros en mi vida.,markov_ml,-2.5071,tengo dos libros en mi vida
+sin,80,prep,without,Estoy sin la ayuda de un hombre.,markov_ml,0.0661,estoy sin la ayuda de un hombre
+soy,81,v,I am (ser),Yo soy el que más te vale.,markov_ml,1.0603,yo soy el que más te vale
+sobre,82,prep,over; above; on; upon; atop,Estoy sobre la muerte de su padre.,markov_ml,-0.3230,estoy sobre la muerte de su padre
+ese,83,determiner,that,Ese libro es de mi padre.,markov_ml,-0.0809,ese libro es de mi padre
+estaba,84,v,was (estar),Ella estaba a punto de salir.,markov_ml,1.0373,ella estaba a punto de salir
+también,85,adv,also; too; as well,También me gusta la forma de hablar.,markov_ml,0.3277,también me gusta la forma de hablar
+tiempo,86,n,time,No tengo tiempo para hacer las cosas.,markov_ml,1.1942,no tengo tiempo para hacer las cosas
+tan,87,adv,so; as,Ella está tan pronto como sea posible.,markov_ml,0.4027,ella está tan pronto como sea posible
+entonces,88,adv,then; next; thereupon; at that time; at that point,Entonces me di cuenta de eso.,markov_ml,0.2481,entonces me di cuenta de eso
+creo,89,v,I believe; I think (creer),Yo creo que es hora de hacer.,markov_ml,0.8347,yo creo que es hora de hacer
+tienes,90,v,you have (tener),No tienes ni idea de por aquí.,markov_ml,1.1494,no tienes ni idea de por aquí
+casa,91,n,house,La casa está a punto de salir.,markov_ml,0.9206,la casa está a punto de salir
+usted,92,pron,second person formal,Usted está aquí para hablar con él.,markov_ml,-0.8839,usted está aquí para hablar con él
+esa,93,determiner,that (fem.),Esa casa es la primera vez.,markov_ml,-0.0718,esa casa es la primera vez
+voy,94,v,I go (ir),No voy a tener que hacer eso.,markov_ml,0.7428,no voy a tener que hacer eso
+sabes,95,v,you know?,No sabes lo que pasó aquí.,markov_ml,0.6603,no sabes lo que pasó aquí
+eres,96,v,to be,Tú eres el único que puede hablar.,markov_ml,1.0968,tú eres el único que puede hablar
+verdad,97,n,truth,Es verdad que no me gusta mucho.,markov_ml,0.4000,es verdad que no me gusta mucho
+hasta,98,prep,until,Estoy hasta el fin de semana pasado.,markov_ml,0.8198,estoy hasta el fin de semana pasado
+solo,99,adj,sole,Él es solo un poco de agua.,markov_ml,0.8457,él es solo un poco de agua
+nunca,100,adv,never,Nunca antes había visto a un hombre.,markov_ml,0.6419,nunca antes había visto a un hombre

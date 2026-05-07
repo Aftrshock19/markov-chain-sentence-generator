@@ -267,3 +267,15 @@ corpus_only_review/summary.txt
 corpus_only_review/suspicious_by_source_method.csv
 corpus_only_review/top_missing_lemmas_by_family.csv
 corpushalved.txt
+es-en.data
+.gitignore
+es-extract.jsonl
+raw-wiktextract-data.es.jsonl
+raw-wiktextract-data.jsonl.gz
+raw-wiktextract-data.jsonl
+data_clean/good_corpus.txt
+outputs/markov_eval_diff.tsv
+data_clean/kn_lm.pkl
+data_clean/reranker.pkl
+apertium-eng-spa.eng-spa.dix
+.DS_Store
