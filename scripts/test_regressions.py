@@ -39,6 +39,19 @@ BAD_EXAMPLES = [
     ("Una vez más personas que no puedo", "bare_modal_final"),
     ("Todos libros son para los niños", "quantifier_without_article"),
     ("No creo que es hora de hacer", "no_creo_que_indicative"),
+    # Third wave: clause-completion (QW1), filler/shoehorn collocations (QW2).
+    ("Ya es hora de que la gente", "incomplete_de_que"),
+    ("El hecho de que la gente", "incomplete_de_que"),
+    ("A pesar de que la lluvia", "incomplete_de_que"),
+    ("Creo que la gente", "incomplete_que_complement"),
+    ("No creo que la gente", "incomplete_que_complement"),
+    ("Espero que la gente", "incomplete_que_complement"),
+    ("Tengo que ir a la gente", "motion_a_la_gente_filler"),
+    ("Debo ir a la gente", "motion_a_la_gente_filler"),
+    ("Voy a llegar tarde a la gente", "motion_a_la_gente_filler"),
+    ("Tengo otro hombre con quien hablar", "possessive_unsafe_noun"),
+    ("Cierta persona está aquí", "possessive_unsafe_noun"),
+    ("Estoy haciendo", "gerund_final"),  # transitive gerund still wants an object
 ]
 
 GOOD_EXAMPLES = [
@@ -66,6 +79,33 @@ GOOD_EXAMPLES = [
     "No creo que sea verdad",
     "Creo que es verdad",
     "No sé si puede venir",
+    # Guards against the gender/number heuristic false positives (QW0). These are
+    # all correct Spanish and MUST pass even without the UD morph table. Before
+    # QW0 the heuristic silently rejected most of them (the -os exclusion, -e/-as
+    # nouns, -a masculines), which was the single biggest yield bug.
+    "La gente está aquí",
+    "Las casas son bonitas",
+    "Los libros están en la mesa",
+    "Los amigos están aquí",
+    "Mis amigos son buenos",
+    "Las flores son hermosas",
+    "La noche es larga",
+    "El día es largo",
+    "El agua está fría",
+    "La ciudad es grande",
+    "El problema es difícil",
+    "La canción es bonita",
+    # Guards for QW1/QW2/QW3/QW5 (must stay valid).
+    "Creo que sí",
+    "Espero que tengas razón",
+    "Ayudo a la gente",
+    "Veo a la gente",
+    "Quiero ayudar a la gente",
+    "Es para ti",
+    "Estoy hablando",
+    "Está lloviendo",
+    "He visto algo",
+    "Ha sido un buen día",
 ]
 
 

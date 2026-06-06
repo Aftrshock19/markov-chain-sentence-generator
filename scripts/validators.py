@@ -34,7 +34,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from features import (  # noqa: E402
     ARTICLES, BAD_FINAL, FEMININE_ART, FINITE_VERBS, MASCULINE_ART,
     OBJECT_CLITICS, PLURAL_ART, PREPOSITIONS, SINGULAR_ART,
-    SUBJECT_PRONOUNS, VERB_PERSON,
+    SUBJECT_PRONOUNS, VERB_PERSON, guess_gender_fem, guess_number_plural,
 )
 
 PAST_PARTICIPLES = {
@@ -101,9 +101,24 @@ POSSESSIVES = {
     "vuestro", "vuestra", "vuestros", "vuestras",
 }
 
-# Human-ish nouns that make bare possessive templates awkward for beginners
-# ("mi hombre" = *my man*, weird; "mi persona" almost never used like that).
+# Human-ish nouns that make bare possessive/"otro" templates awkward for beginners
+# ("mi hombre" = *my man*, weird; "otro hombre con quien hablar" reads as filler).
 UNSAFE_POSSESSIVE_HEAD_NOUNS = {"hombre", "mujer", "persona", "gente", "tipo"}
+# Determiners that share the awkwardness ("otro hombre", "cierta persona"). Plain
+# articles are excluded on purpose — "un hombre"/"la mujer" are perfectly fine.
+UNSAFE_DET_BEFORE_HUMAN = {"otro", "otra", "otros", "otras", "cierto", "cierta"}
+
+# Motion verbs (finite + infinitive). "ir/llegar a la gente" is the filler-ending
+# nonsense from the census; "ayudar/ver/conocer a la gente" is fine, so we only
+# fire when the verb governing "a la gente" is one of these.
+MOTION_VERBS = {
+    "ir", "voy", "vas", "va", "vamos", "van", "iba", "fui", "fue", "iré", "iremos",
+    "llegar", "llego", "llegas", "llega", "llegamos", "llegan", "llegué", "llegó",
+    "venir", "vengo", "vienes", "viene", "venimos", "vienen",
+    "salir", "salgo", "sales", "sale", "salimos", "salen",
+    "volver", "vuelvo", "vuelves", "vuelve", "volvemos", "vuelven", "regresar",
+    "entrar", "subir", "bajar", "correr", "caminar", "viajar", "marchar",
+}
 
 # Plural quantifiers that, in standard Spanish, almost always need a determiner between
 # them and the noun ("todos los libros", "todas mis cosas").
@@ -151,52 +166,166 @@ ARTICLE_LIKE_SG = (SINGULAR_ART | DEM_POSS_FEM_SG | DEM_POSS_MASC_SG)
 ARTICLE_LIKE_ALL = ARTICLE_LIKE_FEM | ARTICLE_LIKE_MASC
 
 
+# Verbs that open a complement clause ("creo que ...", "sé que ...") and therefore
+# need a finite verb (or a standalone sí/no) in the tail after "que".
+COMPLEMENT_CLAUSE_TRIGGERS = {
+    "creo", "crees", "cree", "creemos", "creen",
+    "pienso", "piensas", "piensa", "pensamos", "piensan",
+    "sé", "sabes", "sabe", "sabemos", "saben",
+    "digo", "dices", "dice", "decimos", "dicen", "dije", "dijo", "dijeron",
+    "espero", "esperas", "espera", "esperamos", "esperan",
+    "veo", "ves", "ve", "vemos", "ven",
+    "quiero", "quieres", "quiere", "queremos", "quieren",
+    "parece", "parecen", "supongo", "imagino", "dudo", "temo", "siento",
+}
+# Tails that complete a complement clause on their own ("creo que sí/no").
+STANDALONE_COMPLEMENTS = {"sí", "no", "también", "tampoco"}
+
+# Common present-subjunctive forms. These ARE finite verbs but live outside the
+# indicative-focused FINITE_VERBS list, so a complement clause closed with one
+# ("creo que sea verdad", "espero que tengas razón") must not look "verb-less".
+SUBJUNCTIVE_FINITE = {
+    "sea", "seas", "seamos", "seáis", "sean",
+    "esté", "estés", "estemos", "estéis", "estén",
+    "tenga", "tengas", "tengamos", "tengan",
+    "haga", "hagas", "hagamos", "hagan",
+    "vaya", "vayas", "vayamos", "vayan",
+    "pueda", "puedas", "podamos", "puedan",
+    "quiera", "quieras", "queramos", "quieran",
+    "diga", "digas", "digamos", "digan",
+    "venga", "vengas", "vengamos", "vengan",
+    "sepa", "sepas", "sepamos", "sepan",
+    "dé", "des", "demos", "den",
+    "vea", "veas", "veamos", "vean",
+    "ponga", "pongas", "pongan", "salga", "salgas", "salgan",
+    "haya", "hayas", "hayamos", "hayan",
+    "hable", "hables", "hablen", "llegue", "llegues", "lleguen",
+    "pase", "pases", "pasen", "quede", "quedes", "queden",
+    "guste", "gusten", "parezca", "parezcan",
+}
+
+
+# Auxiliaries that license a clause-final gerund (the Spanish progressive and its
+# motion-aux cousins): "estoy hablando", "sigue lloviendo", "anda diciendo".
+PROGRESSIVE_AUX = {
+    "estoy", "estás", "está", "estamos", "estáis", "están",
+    "estaba", "estabas", "estábamos", "estaban",
+    "estuve", "estuviste", "estuvo", "estuvimos", "estuvieron",
+    "sigo", "sigues", "sigue", "seguimos", "siguen", "seguía", "seguían",
+    "ando", "andas", "anda", "andamos", "andan",
+    "llevo", "llevas", "lleva", "llevamos", "llevan",
+    "vengo", "vienes", "viene", "venimos", "vienen",
+    "voy", "vas", "va", "vamos", "van",
+    "continúo", "continúa", "continúan",
+}
+
+# Gerunds that form a COMPLETE clause with just a progressive aux ("estoy hablando").
+# Transitive gerunds (haciendo, diciendo, viendo, dando) still want an object, so
+# they stay rejected when clause-final.
+INTRANSITIVE_COMPLETE_GERUNDS = {
+    "hablando", "lloviendo", "nevando", "durmiendo", "corriendo", "trabajando",
+    "jugando", "llorando", "riendo", "cantando", "viviendo", "esperando",
+    "descansando", "sonriendo", "caminando", "nadando", "volando", "temblando",
+    "gritando", "bailando", "soñando", "pensando", "comiendo", "bebiendo",
+    "estudiando", "escuchando", "mirando", "llegando", "saliendo", "entrando",
+    "subiendo", "bajando", "viajando",
+}
+
+
 def _is_gerund(w: str) -> bool:
     return len(w) >= 5 and (w.endswith("ando") or w.endswith("iendo") or w.endswith("yendo"))
 
 
+def _tail_has_verbal(tail: Sequence[str]) -> bool:
+    """True if the tail contains a finite verb or a (non-modal) infinitive — i.e.
+    enough of a verb for an opened clause to be considered closed."""
+    for t in tail:
+        if t in FINITE_VERBS or t in SUBJUNCTIVE_FINITE:
+            return True
+        if len(t) >= 3 and t.endswith(("ar", "er", "ir")) and t not in MODAL_FINITE:
+            return True
+    return False
+
+
+def dangling_subordinator_reason(tokens: Sequence[str]) -> Optional[str]:
+    """Return a reason name if the sentence opens a subordinate clause it never
+    closes (no finite verb / infinitive in the tail).
+
+    Generalizes the old literal "de que" check to (a) any "... de que <NP>"
+    (el hecho de que, a pesar de que, antes de que) and (b) a bare complementizer
+    "que" right after a complement-taking verb ("creo que la gente."). Both are
+    the "Ya es hora de que la gente." truncation family.
+    """
+    toks = [t.lower() for t in tokens if t]
+    n = len(toks)
+    # (a) "de que" with a verb-less tail.
+    for i in range(n - 1):
+        if toks[i] == "de" and toks[i + 1] == "que":
+            tail = toks[i + 2:]
+            if tail and not _tail_has_verbal(tail):
+                return "incomplete_de_que"
+    # (b) complement-taking verb + "que" with a verb-less, non-standalone tail.
+    for i in range(1, n - 1):
+        if toks[i] != "que":
+            continue
+        trigger = toks[i - 1]
+        if trigger in ({"no"} | OBJECT_CLITICS) and i >= 2:
+            trigger = toks[i - 2]          # skip one negation/clitic ("no sé que ...")
+        if trigger in COMPLEMENT_CLAUSE_TRIGGERS:
+            tail = toks[i + 1:]
+            if tail and not (set(tail) <= STANDALONE_COMPLEMENTS) and not _tail_has_verbal(tail):
+                return "incomplete_que_complement"
+    return None
+
+
+# Backward-compatible names (now confident-only; None -> False).
 def _heuristic_fem_noun(w: str) -> bool:
-    return (
-        (w.endswith("a") and not w.endswith(("ma", "pa", "ta")))
-        or w.endswith(("dad", "tad", "tud", "ción", "sión", "umbre", "ez"))
-    )
+    return guess_gender_fem(w) is True
 
 
 def _heuristic_plural_noun(w: str) -> bool:
-    return w.endswith("s") and len(w) > 3 and not w.endswith(("és", "ís", "ús", "ás", "os"))
+    return guess_number_plural(w) is True
 
 
 def _agreement_mismatch(prev: str, nxt: str, morph: Optional[Dict[str, Dict[str, str]]]) -> Optional[str]:
-    """Return a reason name if (prev, nxt) is a hard article/demonstrative/noun agreement violation."""
+    """Return a reason name only for a CONFIDENT article/noun agreement violation.
+
+    Confidence matters: when gender/number can't be determined (the guessers
+    return None, e.g. nouns ending in -e/-or), we must NOT flag a mismatch.
+    Over-eager flagging here silently rejects good sentences ("la gente", "las
+    flores") and was the single biggest yield bug once the UD morph table went
+    missing from the repo.
+    """
     if prev not in ARTICLE_LIKE_ALL:
         return None
     # Skip when nxt is itself a function word (another det, prep, verb, ...) — those are not nouns.
     if nxt in ARTICLE_LIKE_ALL or nxt in PREPOSITIONS or nxt in FINITE_VERBS or nxt in VERB_PERSON:
         return None
-    # Resolve gender and number.
+    # Resolve gender and number: prefer UD morph, fall back to confident heuristic.
+    fem = plur = None
     if morph is not None and nxt in morph:
         g = morph[nxt].get("Gender")
         n = morph[nxt].get("Number")
         fem = (g == "Fem") if g else None
         plur = (n == "Plur") if n else None
-    else:
-        fem = None
-        plur = None
     if fem is None:
-        fem = _heuristic_fem_noun(nxt)
+        fem = guess_gender_fem(nxt)          # True / False / None
     if plur is None:
-        plur = _heuristic_plural_noun(nxt)
+        plur = guess_number_plural(nxt)      # True / False / None
     prev_fem = prev in ARTICLE_LIKE_FEM
     prev_masc = prev in ARTICLE_LIKE_MASC
     prev_plur = prev in ARTICLE_LIKE_PL
     prev_sing = prev in ARTICLE_LIKE_SG
-    if fem and prev_masc:
+    # Stressed-initial-a feminine nouns legitimately take "el"/"un" (el agua, un
+    # área, el hacha). Don't flag those as gender mismatches.
+    stressed_a = nxt[:1] in ("a", "á") or nxt[:2] in ("ha", "há")
+    if fem is True and prev_masc and not (stressed_a and prev in {"el", "un"}):
         return "gender_mismatch"
-    if (fem is False) and prev_fem:
+    if fem is False and prev_fem:
         return "gender_mismatch"
-    if plur and prev_sing:
+    if plur is True and prev_sing:
         return "number_mismatch"
-    if (plur is False) and prev_plur:
+    if plur is False and prev_plur:
         return "number_mismatch"
     return None
 
@@ -225,8 +354,13 @@ def validate(
         reasons.append("gerund_start")
 
     # --- R2: gerund at end (needs complement/auxiliary) ---
+    # A bare gerund-final is usually incomplete ("creo que estás haciendo"), BUT a
+    # progressive ("estoy hablando", "sigue lloviendo") is complete and natural.
+    # Only reject when no progressive auxiliary precedes the final gerund.
     if _is_gerund(last):
-        reasons.append("gerund_final")
+        progressive = any(t in PROGRESSIVE_AUX for t in toks[:-1])
+        if not (progressive and last in INTRANSITIVE_COMPLETE_GERUNDS):
+            reasons.append("gerund_final")
 
     # --- R3: relative/interrogative pronoun at end ---
     if last in RELATIVE_INTERROGATIVE:
@@ -374,9 +508,9 @@ def validate(
                 reasons.append("si_misma_without_preposition")
                 break
 
-    # --- R15: possessive determiner + semantically-unsafe human noun ---
+    # --- R15: possessive/"otro" determiner + semantically-unsafe human noun ---
     for i in range(n - 1):
-        if toks[i] in POSSESSIVES and toks[i + 1] in UNSAFE_POSSESSIVE_HEAD_NOUNS:
+        if toks[i] in (POSSESSIVES | UNSAFE_DET_BEFORE_HUMAN) and toks[i + 1] in UNSAFE_POSSESSIVE_HEAD_NOUNS:
             reasons.append("possessive_unsafe_noun")
             break
 
@@ -390,13 +524,10 @@ def validate(
     # there is something between subject and ser. Check directly for the 4-gram.
     # (The above loop already covers it; no extra work.)
 
-    # --- R17a: "de que" followed by an NP without any finite verb in the tail ---
-    for i in range(n - 2):
-        if toks[i] == "de" and toks[i + 1] == "que":
-            tail = toks[i + 2:]
-            if tail and not any(t in FINITE_VERBS for t in tail):
-                reasons.append("incomplete_de_que")
-                break
+    # --- R17a: dangling subordinate clause ("de que <NP>" / "creo que <NP>") ---
+    dangling = dangling_subordinator_reason(toks)
+    if dangling:
+        reasons.append(dangling)
 
     # --- R17b: bare modal at end ("...que no puedo") inside an embedded clause ---
     # The whole sentence may legitimately end in a modal when preceded only by a negation
@@ -451,6 +582,22 @@ def validate(
             if nxt in INDICATIVE_AFTER_SUBJUNCTIVE_TRIGGER:
                 reasons.append("no_creo_que_indicative")
                 break
+
+    # --- R20: motion verb + "a la gente" filler ending ---
+    # "Tengo que ir a la gente.", "Voy a llegar tarde a la gente." pad to length
+    # with a destination that doesn't make sense. We only fire when the verb that
+    # governs the trailing "a la gente" is a motion verb — "Ayudo a la gente."
+    # and "Veo a la gente." stay valid.
+    if n >= 3 and toks[-3:] == ["a", "la", "gente"]:
+        governing_verb = ""
+        for t in reversed(toks[:-3]):
+            if t in FINITE_VERBS or t in MOTION_VERBS or (
+                len(t) >= 3 and t.endswith(("ar", "er", "ir"))
+            ):
+                governing_verb = t
+                break
+        if governing_verb in MOTION_VERBS:
+            reasons.append("motion_a_la_gente_filler")
 
     # --- R11: starts with a bare object clitic (non-imperative) ---
     # Clitics should attach to a verb; a sentence cannot start with "me/te/se/nos/os ..."

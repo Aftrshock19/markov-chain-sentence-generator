@@ -14,7 +14,7 @@ from typing import Dict, List, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from features import VERB_PERSON  # noqa: E402
+from features import VERB_PERSON, guess_gender_fem, guess_number_plural  # noqa: E402
 
 
 def _noun_templates(lemma: str, fem: bool, plural: bool) -> List[List[str]]:
@@ -396,8 +396,14 @@ def grammar_safe_templates(
     """
     pos = (pos or "").lower()
     morph = morph_for_lemma or {}
-    fem = morph.get("Gender") == "Fem"
-    plural = morph.get("Number") == "Plur"
+    # Prefer UD morph; fall back to the confident heuristic when it's absent
+    # (the morph .pkl is usually too big to ship in the repo, so without this
+    # fallback every feminine/plural noun would get a masculine-singular frame,
+    # e.g. "un casa", "el problema" templates for "casa").
+    g = morph.get("Gender")
+    nnum = morph.get("Number")
+    fem = (g == "Fem") if g else (guess_gender_fem(target_lemma) is True)
+    plural = (nnum == "Plur") if nnum else (guess_number_plural(target_lemma) is True)
 
     special = _special_noun_templates(target_lemma)
     if special is not None:

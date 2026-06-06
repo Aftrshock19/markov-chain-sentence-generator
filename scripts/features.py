@@ -113,15 +113,89 @@ def tokenize(sentence: str) -> List[str]:
     return [t.lower() for t in WORD_RE.findall(sentence)]
 
 
+# --- Gender / number guessing -------------------------------------------------
+# These return True / False ONLY when reasonably confident, and None when the
+# ending is genuinely ambiguous. Callers must treat None as "don't flag a
+# mismatch" — guessing wrong here silently rejects perfectly good sentences,
+# which is exactly the failure mode that crippled the validator when the UD
+# morph table is unavailable (the common case: the .pkl is too big for the repo).
+
+# Feminine-marking suffixes (checked on the singular stem).
+_FEM_SUFFIXES = (
+    "ción", "sión", "dad", "tad", "tud", "umbre", "ez", "eza",
+    "cia", "encia", "ancia", "triz", "itis", "sis",
+)
+# -a words that are actually masculine (Greek-origin neuters + a few common ones).
+_MASC_A_EXCEPTIONS = {
+    "día", "mapa", "planeta", "tema", "problema", "sistema", "programa",
+    "idioma", "clima", "esquema", "drama", "poema", "diploma", "dilema",
+    "síntoma", "aroma", "fantasma", "sofá", "tranvía", "yoga",
+}
+# -o words that are actually feminine (clippings + a few lexical exceptions).
+_FEM_O_EXCEPTIONS = {"mano", "foto", "moto", "radio", "libido"}
+# Words that end in -s but are singular or invariable (so NOT plural).
+_SING_OR_INVARIABLE_S = {
+    "lunes", "martes", "miércoles", "jueves", "viernes",
+    "crisis", "análisis", "síntesis", "tesis", "dosis",
+    "virus", "autobús", "atlas", "tos", "gas", "mes", "dios",
+    "país", "interés", "través", "además", "vals", "compás",
+    "francés", "inglés", "portugués", "japonés", "irlandés", "cortés",
+    "más", "menos", "tres", "dos", "seis", "adiós", "después",
+    "jamás", "detrás", "atrás", "quizás",
+}
+
+
+def guess_number_plural(w: str):
+    """True if confidently plural, False if confidently singular, None if unsure."""
+    w = w.lower()
+    if not w.endswith("s"):
+        return False
+    if w in _SING_OR_INVARIABLE_S:
+        return False
+    # vowel + s (las casas, los libros, las flores, los días) -> plural.
+    if len(w) >= 3 and w[-2] in "aeiouáéíóúü":
+        return True
+    # consonant + s (rare, e.g. some loanwords) -> unsure.
+    return None
+
+
+def _strip_plural(w: str) -> str:
+    """Best-effort singular stem for gender guessing."""
+    if guess_number_plural(w) is True:
+        if w.endswith("ces") and len(w) > 3:   # luces -> luz, voces -> voz
+            return w[:-3] + "z"
+        if w.endswith("es") and len(w) > 3:     # flores -> flor, meses -> mes
+            return w[:-2]
+        if w.endswith("s"):                      # casas -> casa, libros -> libro
+            return w[:-1]
+    return w
+
+
+def guess_gender_fem(w: str):
+    """True if confidently feminine, False if confidently masculine, None if unsure."""
+    base = _strip_plural(w.lower())
+    if base in _MASC_A_EXCEPTIONS:
+        return False
+    if base in _FEM_O_EXCEPTIONS:
+        return True
+    if base.endswith(_FEM_SUFFIXES):
+        return True
+    if base.endswith("a"):
+        return True
+    if base.endswith("o"):
+        return False
+    # -e, -or, -i, -u, -l, -n, -r, -d (non-suffix) ... genuinely ambiguous.
+    return None
+
+
 def _feminine_noun_heuristic(w: str) -> bool:
-    return (
-        w.endswith(("a",))
-        and not w.endswith(("ma", "pa", "ta"))
-    ) or w.endswith(("dad", "tad", "tud", "ción", "sión", "umbre", "ez"))
+    """Confident-feminine only (None -> False). Kept for backward-compat callers."""
+    return guess_gender_fem(w) is True
 
 
 def _plural_noun_heuristic(w: str) -> bool:
-    return w.endswith("s") and len(w) > 3 and not w.endswith(("és", "ís", "ús", "ás", "os"))
+    """Confident-plural only (None -> False). Kept for backward-compat callers."""
+    return guess_number_plural(w) is True
 
 
 def featurize(

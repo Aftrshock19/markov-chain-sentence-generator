@@ -43,9 +43,9 @@ from kn_lm import KNLanguageModel  # noqa: E402
 from features import (  # noqa: E402
     ARTICLES, BAD_FINAL, CONTEXT_OPENERS, FEMININE_ART, FINITE_VERBS, MASCULINE_ART,
     PLURAL_ART, PREPOSITIONS, PRONOUN_PERSON, SINGULAR_ART, SUBJECT_PRONOUNS,
-    VERB_PERSON, featurize, tokenize,
+    VERB_PERSON, featurize, guess_gender_fem, guess_number_plural, tokenize,
 )
-from validators import validate  # noqa: E402
+from validators import validate, dangling_subordinator_reason  # noqa: E402
 from templates import grammar_safe_templates  # noqa: E402
 from template_signature import template_signature  # noqa: E402
 
@@ -61,14 +61,13 @@ GRAMMATICAL_FRAMES = {
 
 
 def _fem_noun(w: str) -> bool:
-    return (
-        (w.endswith("a") and not w.endswith(("ma", "pa", "ta")))
-        or w.endswith(("dad", "tad", "tud", "ción", "sión", "umbre", "ez"))
-    )
+    # Confident-feminine only (None -> False); shared with the validator so the
+    # beam path and the final gate agree. See features.guess_gender_fem.
+    return guess_gender_fem(w) is True
 
 
 def _plural_noun(w: str) -> bool:
-    return w.endswith("s") and len(w) > 3 and not w.endswith(("és", "ís", "ús", "ás", "os"))
+    return guess_number_plural(w) is True
 
 
 _MORPH_CACHE = {}
@@ -338,6 +337,11 @@ def final_ok(tokens: List[str]) -> bool:
         if len(tokens) >= 2 and tokens[-2] == "no" and last in {"puedo", "quiero", "sé"}:
             return True
         return False
+    # Don't let a beam end on an unclosed subordinate clause ("... de que la gente",
+    # "creo que la gente"). This keeps the generative side from producing the
+    # truncations that the validator would only reject after the fact.
+    if dangling_subordinator_reason(tokens):
+        return False
     return True
 
 
@@ -526,6 +530,27 @@ class Generator:
             seeds.append(["claro", "que", "sí"])
             return seeds
 
+        # Past participles / gerunds fall through every POS branch to a bare
+        # [lemma] seed that beam search can't grow, producing EMPTY output
+        # (estado, sido, visto, dicho, hablando, haciendo all came back blank).
+        # Seed them inside an auxiliary frame so there's valid ground to extend.
+        PARTICIPLE_SEEDS = {
+            "ido", "sido", "estado", "hecho", "dicho", "visto", "puesto", "dado",
+            "muerto", "roto", "abierto", "escrito", "vuelto", "cubierto", "resuelto",
+            "tenido", "hablado", "comido", "vivido", "venido", "salido", "llegado",
+        }
+        is_gerund = len(lemma) >= 5 and lemma.endswith(("ando", "iendo", "yendo"))
+        if lemma in PARTICIPLE_SEEDS:
+            seeds.append(["he", lemma])
+            seeds.append(["ha", lemma])
+            seeds.append(["había", lemma])
+            return seeds
+        if is_gerund:
+            seeds.append(["estoy", lemma])
+            seeds.append(["está", lemma])
+            seeds.append(["estamos", lemma])
+            return seeds
+
         if pos == "n":
             # Hand-pick a few notoriously-hard lemmas so their seed is always grammatical.
             SPECIAL_NOUNS = {
@@ -657,6 +682,25 @@ class Generator:
             elif lemma in {"qué", "cuál", "quién", "cómo", "dónde", "cuándo", "cuánto"}:
                 seeds.append(["no", "sé", lemma, "hacer"])
                 seeds.append([lemma, "es", "eso"])
+            elif lemma in {"mí", "ti", "sí", "conmigo", "contigo", "consigo"}:
+                # Disjunctive pronouns can NEVER be a subject ("Mí es importante."
+                # is impossible) — they only appear after a preposition. Seed them
+                # in prepositional frames so beam search starts from valid ground.
+                if lemma == "conmigo":
+                    seeds.append(["ven", "conmigo"])
+                    seeds.append(["está", "conmigo"])
+                elif lemma == "contigo":
+                    seeds.append(["voy", "contigo"])
+                    seeds.append(["estoy", "contigo"])
+                elif lemma == "consigo":
+                    seeds.append(["lo", "trae", "consigo"])
+                elif lemma == "sí":
+                    seeds.append(["lo", "hace", "por", "sí", "mismo"])
+                    seeds.append(["piensa", "en", "sí", "mismo"])
+                else:  # mí, ti — use "para"/"a ... me/te gusta" (never "con mí"/"con ti")
+                    clitic = "me" if lemma == "mí" else "te"
+                    seeds.append(["es", "para", lemma])
+                    seeds.append(["a", lemma, clitic, "gusta"])
             else:
                 seeds.append([lemma, "es", "importante"])
                 seeds.append(["ella", "es", lemma])
@@ -772,9 +816,20 @@ class Generator:
         return detokenize(best[1]), best[0], best[1]
 
 
+# Tokens that aren't teachable open-class items and never yield a usable example
+# sentence (abbreviations, bare discourse markers). They came back empty before.
+NON_TARGET_LEMMAS = {"sr.", "sra.", "srta.", "dr.", "dra.", "ud.", "uds.", "etc.", "pues"}
+
+
 def select_targets(rows: List[LexiconRow], min_rank: int, max_rank: int, limit: int, pos: Optional[str], lemmas: Optional[List[str]]):
     wanted = {l.lower() for l in (lemmas or []) if l}
-    out = [r for r in rows if min_rank <= r.rank <= max_rank and (not pos or r.pos == pos) and (not wanted or r.lemma in wanted)]
+    out = [
+        r for r in rows
+        if min_rank <= r.rank <= max_rank
+        and (not pos or r.pos == pos)
+        and (not wanted or r.lemma in wanted)
+        and (r.lemma in wanted or r.lemma not in NON_TARGET_LEMMAS)
+    ]
     return out[:limit] if limit > 0 else out
 
 
