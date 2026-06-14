@@ -204,6 +204,7 @@ def featurize(
     target_rank: int,
     lm_score: float,
     rank_by_word: Dict[str, int],
+    colloc=None,
 ) -> Dict[str, float]:
     feats: Dict[str, float] = {}
     n = max(1, len(tokens))
@@ -321,5 +322,13 @@ def featurize(
 
     # double negation: "nada" without "no"/"nunca"
     feats["neg_without_no"] = float("nada" in tokens and "no" not in tokens and "nunca" not in tokens)
+
+    # Corpus-derived coherence (selectional-preference) features. Only added when
+    # a collocation model is supplied — these let a retrained reranker learn to
+    # down-weight fluent nonsense (the hard-negative-mining path, DC1). The
+    # currently-shipped reranker simply ignores feature names it wasn't trained on.
+    if colloc is not None:
+        feats.update(colloc.sentence_coherence(tokens))
+        feats["colloc_incoherent"] = float(colloc.incoherent_reason(tokens) is not None)
 
     return feats

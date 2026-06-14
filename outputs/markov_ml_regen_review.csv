@@ -1,0 +1,501 @@
+lemma,rank,pos,sentence,tokens,combined,reranker,lm_logp
+de,1,prep,Estoy de acuerdo contigo en ese momento.,estoy de acuerdo contigo en ese momento,1.6397,1.6397,-25.2776
+que,2,pron,Sé que puedes hacer eso por mí.,sé que puedes hacer eso por mí,0.9368,0.9368,-31.4910
+la,3,pron,La casa es demasiado tarde para eso.,la casa es demasiado tarde para eso,0.6062,0.6062,-29.3062
+no,4,,No me gusta ese tipo de cosas.,no me gusta ese tipo de cosas,1.9185,1.9185,-24.1437
+a,5,none,Voy a casa antes de salir.,voy a casa antes de salir,1.0371,1.0371,-27.6369
+el,6,art,El libro es demasiado tarde para eso.,el libro es demasiado tarde para eso,0.6048,0.6048,-29.2565
+y,7,conj,Tú y yo estamos aquí para ver.,tú y yo estamos aquí para ver,0.0627,0.0627,-31.3800
+en,8,prep,Estoy en contra de la ciudad.,estoy en contra de la ciudad,0.8199,0.8199,-24.3272
+es,9,v,Ella es la mejor forma de hablar.,ella es la mejor forma de hablar,1.9514,1.9514,-24.3692
+un,10,num,Tengo un libro sobre la historia.,tengo un libro sobre la historia,0.9814,0.9814,-26.9601
+lo,11,pron,Ya lo tengo que volver a ver.,ya lo tengo que volver a ver,0.8200,0.8200,-30.2065
+por,12,prep,Voy por el bien del mal tiempo.,voy por el bien del mal tiempo,0.8402,0.8402,-29.8271
+los,13,art,Los libros son para los niños.,los libros son para los niños,-1.5956,-1.5956,-26.8648
+una,14,determiner,Tengo una casa de mi tío.,tengo una casa de mi tío,1.0740,1.0740,-27.0659
+se,15,pron,No se sabe nada de esto.,no se sabe nada de esto,1.0218,1.0218,-26.0458
+con,16,prep,Estoy con las manos antes de ir.,estoy con las manos antes de ir,0.6180,0.6180,-33.1941
+qué,17,pron,No sé qué hacer con él.,no sé qué hacer con él,1.4989,1.4989,-24.3574
+me,18,pron,Me gusta mucho el uno al otro.,me gusta mucho el uno al otro,1.2584,1.2584,-23.6965
+para,19,prep,Voy para el fin de semana pasado.,voy para el fin de semana pasado,0.6537,0.6537,-33.3499
+las,20,pron,Tengo las casas de por aquí cerca.,tengo las casas de por aquí cerca,-2.2935,-2.2935,-40.1799
+del,21,contraction,Es la casa del vecino.,es la casa del vecino,-3.5268,-3.5268,-31.8608
+te,22,pron,Te gusta mucho el uno al otro.,te gusta mucho el uno al otro,-0.2513,-0.2513,-33.4114
+su,23,determiner,Su libro es demasiado tarde para eso.,su libro es demasiado tarde para eso,0.2650,0.2650,-31.4431
+pero,24,conj,Quiero ir pero no puedo ver nada.,quiero ir pero no puedo ver nada,-0.0877,-0.0877,-37.8463
+si,25,conj,No sé si es verdad eso.,no sé si es verdad eso,0.6640,0.6640,-28.7514
+está,26,v,Ella está en casa de mi padre.,ella está en casa de mi padre,1.2175,1.2175,-27.8135
+mi,27,determiner,Mi libro es demasiado tarde para eso.,mi libro es demasiado tarde para eso,-0.3755,-0.3755,-35.5644
+al,28,contraction,Vamos al cine.,vamos al cine,-3.4411,-3.4411,-19.8793
+sí,29,pron,Claro que sí en el mundo.,claro que sí en el mundo,-2.5553,-2.5553,-35.1741
+como,30,conj,Es como tú no eres el único.,es como tú no eres el único,0.2571,0.2571,-30.5142
+bien,31,adv,Ella está bien de su padre.,ella está bien de su padre,-0.1099,-0.1099,-31.8128
+más,32,adv,Ella está más cerca de aquí.,ella está más cerca de aquí,1.2529,1.2529,-27.6919
+eso,33,pron,Ella es eso lo que has hecho.,ella es eso lo que has hecho,0.7222,0.7222,-31.6661
+yo,34,pron,Yo estoy aquí por un tiempo.,yo estoy aquí por un tiempo,0.5679,0.5679,-28.1060
+le,35,pron,Ya le tengo miedo a los niños.,ya le tengo miedo a los niños,0.2479,0.2479,-33.1379
+aquí,36,adv,Aquí no hay nada que ver.,aquí no hay nada que ver,1.1775,1.1775,-22.2357
+tu,37,determiner,Tu libro es una buena idea.,tu libro es una buena idea,-0.5971,-0.5971,-33.9423
+todo,38,determiner,Tengo todo libro por la mañana.,tengo todo libro por la mañana,-1.4238,-1.4238,-38.6819
+ha,39,v,Ha de ser un poco de agua.,ha de ser un poco de agua,0.6444,0.6444,-28.6901
+ya,40,adv,Ya no hay nada que ver.,ya no hay nada que ver,1.4687,1.4687,-22.5419
+o,41,conj,Quieres ir o no ser el mejor.,quieres ir o no ser el mejor,-0.9679,-0.9679,-41.0195
+esto,42,pron,Esto es importante para los niños.,esto es importante para los niños,0.8413,0.8413,-26.1403
+muy,43,adv,Ella está muy cerca de la ciudad.,ella está muy cerca de la ciudad,1.2074,1.2074,-28.4912
+esta,44,determiner,Esta casa es la primera vez.,esta casa es la primera vez,0.4024,0.4024,-26.3054
+ahora,45,adv,Ahora no tengo ni idea de quién.,ahora no tengo ni idea de quién,1.2472,1.2472,-24.9522
+así,46,adv,Así que no se puede hacer nada.,así que no se puede hacer nada,1.4425,1.4425,-26.8276
+cuando,47,conj,Estoy cuando no hay nada que ver.,estoy cuando no hay nada que ver,0.1934,0.1934,-33.9118
+hay,48,v,Hay algo que hacer algo así.,hay algo que hacer algo así,0.8012,0.8012,-26.2081
+este,49,determiner,Este libro es una buena idea.,este libro es una buena idea,0.7603,0.7603,-25.5918
+algo,50,pron,Ella es algo que hacer eso.,ella es algo que hacer eso,0.2359,0.2359,-30.7435
+estoy,51,v,No estoy de acuerdo con él.,no estoy de acuerdo con él,1.0126,1.0126,-22.8439
+vamos,52,v,No vamos a hacer eso por mí.,no vamos a hacer eso por mí,1.4489,1.4489,-28.2855
+él,53,pron,Él está aquí para hablar de eso.,él está aquí para hablar de eso,0.0854,0.0854,-32.5730
+ser,54,v,Quiero ser el primero en llegar.,quiero ser el primero en llegar,1.6481,1.6481,-23.7690
+bueno,55,adj,Él es bueno para el otro día.,él es bueno para el otro día,1.4459,1.4459,-26.3734
+nos,56,pron,Nos gusta mucho el uno al otro.,nos gusta mucho el uno al otro,0.0037,0.0037,-31.7701
+sus,57,determiner,Sus libros son para los niños.,sus libros son para los niños,-2.3670,-2.3670,-31.6104
+fue,58,v,No fue el primero en llegar.,no fue el primero en llegar,1.6809,1.6809,-24.5668
+tengo,59,v,No tengo nada que ver con esto.,no tengo nada que ver con esto,1.6823,1.6823,-22.8650
+era,60,v,No era el único que tienes razón.,no era el único que tienes razón,1.0300,1.0300,-28.0110
+nada,61,pron,Nada es importante para los niños.,nada es importante para los niños,-0.2655,-0.2655,-31.9779
+tiene,62,v,No tiene nada que ver con esto.,no tiene nada que ver con esto,1.5046,1.5046,-24.0087
+sé,63,v,Yo sé que es hora de volver.,yo sé que es hora de volver,1.4687,1.4687,-27.5423
+tú,64,pron,Tú estás aquí desde hace mucho tiempo.,tú estás aquí desde hace mucho tiempo,-0.2048,-0.2048,-36.2160
+cómo,65,adv,Ella está cómo llegar a ser.,ella está cómo llegar a ser,0.4486,0.4486,-31.4489
+vez,66,n,Una vez más personas que no sé.,una vez más personas que no sé,0.5486,0.5486,-30.2656
+estás,67,v,No estás de acuerdo con la cabeza.,no estás de acuerdo con la cabeza,0.9967,0.9967,-29.0716
+sólo,68,adv,Sólo tienes que ir a la policía.,sólo tienes que ir a la policía,0.1689,0.1689,-27.4844
+ella,69,pron,Ella está aquí para hablar con él.,ella está aquí para hablar con él,-0.1203,-0.1203,-33.7035
+son,70,v,Ellos son de una vez por semana.,ellos son de una vez por semana,1.3336,1.3336,-28.6092
+hacer,71,v,Voy a hacer las cosas que hacer.,voy a hacer las cosas que hacer,1.4087,1.4087,-26.1642
+he,72,v,He visto en algún lugar.,he visto en algún lugar,-0.3426,-0.3426,-22.1421
+porque,73,conj,No puedo porque estoy ocupado ahora.,no puedo porque estoy ocupado ahora,-2.4618,-2.4618,-39.4035
+todos,74,determiner,Todos los libros son buenos amigos.,todos los libros son buenos amigos,-1.3009,-1.3009,-30.3310
+puedo,75,v,No puedo estar de acuerdo con él.,no puedo estar de acuerdo con él,1.9801,1.9801,-24.5560
+quiero,76,v,Yo quiero un poco más de tiempo.,yo quiero un poco más de tiempo,1.3346,1.3346,-28.5898
+gracias,77,n,Muchas gracias por todo el día.,muchas gracias por todo el día,0.3050,0.3050,-23.1440
+puede,78,v,Ella puede hablar un poco de tiempo.,ella puede hablar un poco de tiempo,1.2651,1.2651,-27.5951
+dos,79,num,Tengo dos libros de mi padre.,tengo dos libros de mi padre,-2.2045,-2.2045,-35.0638
+sin,80,prep,Estoy sin la ayuda de un amigo.,estoy sin la ayuda de un amigo,0.5071,0.5071,-32.0687
+soy,81,v,Yo soy el único que puede ser.,yo soy el único que puede ser,1.6959,1.6959,-25.1205
+sobre,82,prep,Estoy sobre la muerte de su padre.,estoy sobre la muerte de su padre,0.5062,0.5062,-34.0917
+ese,83,determiner,Ese libro es muy importante para mí.,ese libro es muy importante para mí,-0.0388,-0.0388,-29.4227
+estaba,84,v,Ella estaba a punto de salir.,ella estaba a punto de salir,1.9252,1.9252,-23.5557
+también,85,adv,También me gusta la forma de hablar.,también me gusta la forma de hablar,1.2593,1.2593,-28.2318
+tiempo,86,n,No tengo tiempo para hacer las cosas.,no tengo tiempo para hacer las cosas,1.6984,1.6984,-24.6200
+tan,87,adv,Ella está tan pronto como sea posible.,ella está tan pronto como sea posible,1.3964,1.3964,-29.0059
+entonces,88,adv,Entonces me di cuenta de eso.,entonces me di cuenta de eso,0.8554,0.8554,-26.1884
+creo,89,v,Yo creo que voy a hacer eso.,yo creo que voy a hacer eso,1.6064,1.6064,-27.6967
+tienes,90,v,No tienes nada que ver con esto.,no tienes nada que ver con esto,1.3777,1.3777,-24.8253
+casa,91,n,La casa de mi casa está cerca.,la casa de mi casa está cerca,1.3400,1.3400,-27.3996
+usted,92,pron,Usted está aquí para hablar con él.,usted está aquí para hablar con él,-0.4815,-0.4815,-36.0279
+esa,93,determiner,Tengo esa casa es demasiado tarde.,tengo esa casa es demasiado tarde,-1.1505,-1.1505,-39.1291
+voy,94,v,No voy a llegar tarde a casa.,no voy a llegar tarde a casa,1.2372,1.2372,-28.8538
+sabes,95,v,Tú sabes que es hora de volver.,tú sabes que es hora de volver,1.2339,1.2339,-29.0532
+eres,96,v,Tú eres el único que puede ser.,tú eres el único que puede ser,1.7355,1.7355,-24.8657
+verdad,97,n,Es verdad que no hay nada.,es verdad que no hay nada,0.6265,0.6265,-27.5586
+hasta,98,prep,Estoy hasta el fin de semana pasado.,estoy hasta el fin de semana pasado,1.6472,1.6472,-26.9571
+solo,99,adj,Él es solo un poco de agua.,él es solo un poco de agua,1.3509,1.3509,-27.1770
+nunca,100,adv,Nunca he visto en algún lugar.,nunca he visto en algún lugar,1.4873,1.4873,-23.0389
+años,101,n,Los años y todavía no he visto.,los años y todavía no he visto,0.3212,0.3212,-33.3806
+hace,102,v,No hace falta que te he dicho.,no hace falta que te he dicho,0.9650,0.9650,-25.4445
+va,103,v,Ella va a estar de acuerdo contigo.,ella va a estar de acuerdo contigo,1.6629,1.6629,-27.4229
+hola,104,interj,Hola a la casa de mi padre.,hola a la casa de mi padre,-1.6897,-1.6897,-35.5731
+mucho,105,determiner,Tengo mucho libro por la mañana.,tengo mucho libro por la mañana,-1.2013,-1.2013,-37.8624
+quién,106,pron,No sé quién hacer eso por mí.,no sé quién hacer eso por mí,-0.2239,-0.2239,-35.9671
+mejor,107,adj,Él es mejor no decir nada.,él es mejor no decir nada,1.3361,1.3361,-25.4762
+vida,108,n,La vida es un tipo de cosas.,la vida es un tipo de cosas,0.9416,0.9416,-25.9682
+decir,109,v,Tengo que decir la verdad puede ser.,tengo que decir la verdad puede ser,0.9055,0.9055,-28.8541
+mí,110,pron,A mí me gusta hacer eso.,a mí me gusta hacer eso,1.4176,1.4176,-26.1864
+dónde,111,adv,Dónde está la madre de mi padre.,dónde está la madre de mi padre,0.4238,0.4238,-30.8347
+ni,112,conj,No tengo ni idea de quién.,no tengo ni idea de quién,2.0100,2.0100,-20.9854
+están,113,v,No están de acuerdo con la cabeza.,no están de acuerdo con la cabeza,1.0277,1.0277,-28.8721
+favor,114,n,Es un favor y el otro día.,es un favor y el otro día,-0.1375,-0.1375,-34.6320
+señor,115,n,Es un señor y la señora.,es un señor y la señora,0.1207,0.1207,-34.1649
+hombre,116,n,Es un hombre con quien hablar.,es un hombre con quien hablar,1.3686,1.3686,-24.1127
+oh,117,interj,Oh no es un poco de agua.,oh no es un poco de agua,0.1088,0.1088,-34.7165
+siempre,118,adv,Ella siempre está de acuerdo contigo.,ella siempre está de acuerdo contigo,0.9943,0.9943,-26.3780
+ver,119,v,Quiero ver a un lado para otro.,quiero ver a un lado para otro,1.1977,1.1977,-27.1654
+uno,120,num,Uno de ellos.,uno de ellos,-3.1554,-3.1554,-19.5372
+quieres,121,v,No quieres que te vas a hacer.,no quieres que te vas a hacer,0.5815,0.5815,-27.9857
+siento,122,v,Siento como si no fuera por mí.,siento como si no fuera por mí,0.6712,0.6712,-28.8582
+había,123,v,Había una vez cada dos días después.,había una vez cada dos días después,1.0067,1.0067,-27.1129
+dios,124,prop,Dios es el único que tienes razón.,dios es el único que tienes razón,0.2702,0.2702,-29.5550
+has,125,v,Has hecho por mí y mi madre.,has hecho por mí y mi madre,0.1978,0.1978,-29.4244
+antes,126,adv,Ella está antes de llegar a tiempo.,ella está antes de llegar a tiempo,0.5823,0.5823,-33.0474
+día,127,n,Es un día o dos días después.,es un día o dos días después,1.1831,1.1831,-27.4930
+desde,128,prep,Estoy desde hace mucho que hacer eso.,estoy desde hace mucho que hacer eso,-0.3103,-0.3103,-35.0240
+tenemos,129,v,No tenemos nada que ver con esto.,no tenemos nada que ver con esto,1.3198,1.3198,-25.1977
+poco,130,adv,Poco a mi padre me ha dicho.,poco a mi padre me ha dicho,-0.0243,-0.0243,-32.8758
+cosas,131,n,Las cosas no se puede hacer nada.,las cosas no se puede hacer nada,1.3579,1.3579,-28.6812
+ti,132,pron,A ti te gusta hacer eso.,a ti te gusta hacer eso,1.0472,1.0472,-28.4652
+otra,133,determiner,Tengo otra casa por la tarde.,tengo otra casa por la tarde,-1.4818,-1.4818,-40.8796
+mismo,134,adj,Él es mismo lo que ha hecho.,él es mismo lo que ha hecho,-0.1652,-0.1652,-36.8954
+han,135,v,Han pasado cinco años.,han pasado cinco años,-0.4425,-0.4425,-20.5302
+hecho,136,n,He hecho todo lo que has hecho.,he hecho todo lo que has hecho,1.1523,1.1523,-27.2901
+alguien,137,pron,Ella es alguien que no hay nada.,ella es alguien que no hay nada,-0.2414,-0.2414,-34.1416
+puedes,138,v,No puedes estar tan seguro.,no puedes estar tan seguro,-0.1552,-0.1552,-23.0528
+ahí,139,adv,Ahí hay un poco más de tiempo.,ahí hay un poco más de tiempo,0.5734,0.5734,-29.8243
+dijo,140,v,Ella dijo que iba a hacer eso.,ella dijo que iba a hacer eso,1.4967,1.4967,-28.4026
+estar,141,v,Voy a estar de acuerdo contigo.,voy a estar de acuerdo contigo,1.6669,1.6669,-24.6532
+entre,142,prep,Estoy entre el bien del mal tiempo.,estoy entre el bien del mal tiempo,0.5750,0.5750,-31.5334
+noche,143,n,Es un noche en un día.,es un noche en un día,-0.1841,-0.1841,-35.4180
+trabajo,144,n,Tengo un trabajo de medio tiempo.,tengo un trabajo de medio tiempo,1.2922,1.2922,-25.1786
+ir,145,v,Tengo que ir a ninguna parte.,tengo que ir a ninguna parte,1.4524,1.4524,-23.9398
+después,146,adv,Ella está después de todo el día.,ella está después de todo el día,0.6932,0.6932,-32.0680
+mis,147,n,Tengo mis libros a la semana.,tengo mis libros a la semana,-2.2597,-2.2597,-35.4940
+sea,148,v,Sea lo que quieres decir con eso.,sea lo que quieres decir con eso,0.7102,0.7102,-29.8413
+acuerdo,149,n,El acuerdo está a punto de salir.,el acuerdo está a punto de salir,0.0511,0.0511,-36.0116
+otro,150,determiner,Tengo otro libro es muy bueno.,tengo otro libro es muy bueno,-1.7101,-1.7101,-42.0764
+parece,151,v,No parece que va a estar aquí.,no parece que va a estar aquí,1.4372,1.4372,-28.0406
+donde,152,pron,Ella es donde no hay ninguna razón.,ella es donde no hay ninguna razón,0.2156,0.2156,-36.6463
+ellos,153,pron,Ellos están aquí desde hace mucho tiempo.,ellos están aquí desde hace mucho tiempo,-0.0039,-0.0039,-34.9231
+estamos,154,v,Nosotros estamos a punto de salir.,nosotros estamos a punto de salir,1.2451,1.2451,-27.7397
+mundo,155,n,El mundo está de acuerdo contigo.,el mundo está de acuerdo contigo,1.1838,1.1838,-25.4755
+gente,156,n,Es un gente en el mundo.,es un gente en el mundo,-0.3094,-0.3094,-34.5305
+nosotros,157,pron,Nosotros estamos aquí para hablar contigo.,nosotros estamos aquí para hablar contigo,-0.0932,-0.0932,-32.7975
+padre,158,n,El padre de mi casa está cerca.,el padre de mi casa está cerca,1.3404,1.3404,-27.1007
+estado,159,prop,He estado aquí desde hace mucho tiempo.,he estado aquí desde hace mucho tiempo,1.2714,1.2714,-27.2966
+nadie,160,pron,Nadie es importante para los niños.,nadie es importante para los niños,-0.4482,-0.4482,-32.5716
+tal,161,pron,Ella es tal vez sea mejor.,ella es tal vez sea mejor,-0.2647,-0.2647,-35.6098
+les,162,pron,Ella les dice una cosa así.,ella les dice una cosa así,-0.2310,-0.2310,-36.0497
+parte,163,n,Es un parte de la ciudad.,es un parte de la ciudad,0.2207,0.2207,-32.4842
+sido,164,v,Ha sido un día o dos días.,ha sido un día o dos días,0.9857,0.9857,-28.0498
+momento,165,n,Es un momento de la vida.,es un momento de la vida,0.3458,0.3458,-29.6940
+podría,166,v,No podría haber sido por tu ayuda.,no podría haber sido por tu ayuda,1.0260,1.0260,-29.9290
+menos,167,adv,Menos mal que no hay nada.,menos mal que no hay nada,0.6227,0.6227,-27.0153
+mira,168,v,No mira a ver si me siento.,no mira a ver si me siento,-0.7767,-0.7767,-37.4165
+quiere,169,v,Ella quiere un poco de agua.,ella quiere un poco de agua,1.1940,1.1940,-27.0290
+fuera,170,adv,Ella está fuera de la ciudad.,ella está fuera de la ciudad,1.1896,1.1896,-27.0510
+gran,171,adj,Él es gran parte de la ciudad.,él es gran parte de la ciudad,0.2090,0.2090,-36.2207
+lugar,172,n,Es un lugar de ir a ver.,es un lugar de ir a ver,0.3056,0.3056,-30.5582
+hablar,173,v,Puedo hablar contigo en ese momento.,puedo hablar contigo en ese momento,0.9746,0.9746,-27.6935
+tener,174,v,Voy a tener un poco de tiempo.,voy a tener un poco de tiempo,1.4979,1.4979,-26.0989
+tenía,175,v,No tenía ni idea de quién.,no tenía ni idea de quién,1.7613,1.7613,-22.5152
+tres,176,num,Tengo tres libros de mi padre.,tengo tres libros de mi padre,-2.2294,-2.2294,-35.5383
+nuevo,177,adj,No es nuevo a mi amigo.,no es nuevo a mi amigo,-0.2423,-0.2423,-34.0474
+pasa,178,v,Ella pasa el día de hoy.,ella pasa el día de hoy,0.8670,0.8670,-30.0656
+vas,179,v,No vas a hacer las cosas.,no vas a hacer las cosas,1.6219,1.6219,-24.9297
+cada,180,determiner,Tengo cada casa por la mañana.,tengo cada casa por la mañana,-1.5168,-1.5168,-41.4457
+claro,181,adj,No es claro que no hay nada.,no es claro que no hay nada,-0.1800,-0.1800,-33.9698
+dinero,182,n,El dinero no puede haber dicho algo.,el dinero no puede haber dicho algo,1.2761,1.2761,-27.3226
+madre,183,n,Es un madre de mi padre.,es un madre de mi padre,-0.1585,-0.1585,-35.8132
+mañana,184,n,La mañana me voy a hacer eso.,la mañana me voy a hacer eso,0.4368,0.4368,-33.3273
+tipo,186,n,Es un tipo de cosas que hacer.,es un tipo de cosas que hacer,1.3730,1.3730,-24.8275
+hoy,187,adv,Hoy no tengo tiempo para hacer eso.,hoy no tengo tiempo para hacer eso,1.1716,1.1716,-26.2264
+días,188,n,Tengo unos días antes de salir.,tengo unos días antes de salir,0.0845,0.0845,-31.8016
+luego,189,adv,Ella está luego de una forma.,ella está luego de una forma,-0.3096,-0.3096,-35.5207
+allí,190,adv,Allí no hay nada que ver.,allí no hay nada que ver,0.8096,0.8096,-24.4872
+mujer,191,n,Es un mujer tiene dos años.,es un mujer tiene dos años,-0.3179,-0.3179,-34.4026
+nuestro,192,determiner,Nuestro libro es muy importante para mí.,nuestro libro es muy importante para mí,-3.1430,-3.1430,-39.9187
+tanto,193,adv,Tanto que me voy a hacer eso.,tanto que me voy a hacer eso,0.3922,0.3922,-33.9649
+cosa,194,n,Es una cosa que quiero hacer esto.,es una cosa que quiero hacer esto,1.0123,1.0123,-29.4476
+sabe,195,v,No sabe cuál es el mejor.,no sabe cuál es el mejor,1.3466,1.3466,-25.7082
+todas,196,determiner,Todas las personas son buenas.,todas las personas son buenas,-1.3841,-1.3841,-28.4580
+haciendo,197,v,Estoy haciendo todo lo que has hecho.,estoy haciendo todo lo que has hecho,1.1137,1.1137,-27.9569
+hijo,198,n,Tengo un hijo de mi padre.,tengo un hijo de mi padre,1.2836,1.2836,-26.4895
+dice,199,v,Ella dice que es hora de volver.,ella dice que es hora de volver,1.2512,1.2512,-28.9421
+seguro,200,adj,No es seguro que no hay nada.,no es seguro que no hay nada,0.6326,0.6326,-29.0583
+podemos,201,v,No podemos tener un poco de dinero.,no podemos tener un poco de dinero,0.9437,0.9437,-29.8682
+debe,202,v,Debe de ser un poco de agua.,debe de ser un poco de agua,-0.3424,-0.3424,-27.2927
+espera,203,v,Espera un poco más de un año.,espera un poco más de un año,-0.3672,-0.3672,-28.3512
+vale,204,v,Vale más que un poco de agua.,vale más que un poco de agua,-1.0369,-1.0369,-29.9411
+será,205,v,No será el primero en llegar.,no será el primero en llegar,1.1032,1.1032,-28.1210
+estas,206,determiner,Tengo estas casas.,tengo estas casas,-5.8658,-5.8658,-31.2830
+toda,207,determiner,Tengo toda casa en la vida.,tengo toda casa en la vida,-1.8640,-1.8640,-42.8300
+haber,208,v,Quiero haber hecho lo que ha hecho.,quiero haber hecho lo que ha hecho,0.1813,0.1813,-36.3523
+tus,209,determiner,Tus libros son para los niños.,tus libros son para los niños,-3.3767,-3.3767,-37.8214
+amigo,210,n,Es un amigo de mi padre.,es un amigo de mi padre,1.1299,1.1299,-26.2364
+nuestra,211,determiner,Tengo nuestra casa está cerca de aquí.,tengo nuestra casa está cerca de aquí,-0.1235,-0.1235,-36.6704
+buena,212,adj,Ella es buena para la gente.,ella es buena para la gente,1.0614,1.0614,-27.9097
+aún,213,adv,Aún no he visto en algún lugar.,aún no he visto en algún lugar,1.4658,1.4658,-25.7574
+quien,214,pron,Ella es quien no tiene ningún amigo.,ella es quien no tiene ningún amigo,0.3776,0.3776,-34.1146
+estos,215,determiner,Estos libros son para los niños.,estos libros son para los niños,-1.5481,-1.5481,-26.5721
+nombre,216,n,Es un nombre de todos los días.,es un nombre de todos los días,1.2693,1.2693,-27.1143
+tienen,217,v,No tienen ni idea de quién.,no tienen ni idea de quién,1.4228,1.4228,-24.5976
+veces,218,n,Tengo unas veces me siento muy bien.,tengo unas veces me siento muy bien,-0.4582,-0.4582,-38.0633
+mamá,219,n,Es un mamá es la primera vez.,es un mamá es la primera vez,-0.0992,-0.0992,-35.4135
+mal,220,adv,Ella está mal de los otros.,ella está mal de los otros,0.2907,0.2907,-32.2563
+buen,221,adj,No es buen fin de semana pasado.,no es buen fin de semana pasado,0.4070,0.4070,-34.1916
+durante,222,prep,Estoy durante el fin de semana pasado.,estoy durante el fin de semana pasado,0.6149,0.6149,-33.2656
+papá,223,n,Tengo un papá en la casa.,tengo un papá en la casa,-0.6593,-0.6593,-37.2066
+quería,224,v,Ella quería que él había estado.,ella quería que él había estado,1.5062,1.5062,-26.0477
+dije,225,v,No dije que no me gusta mucho.,no dije que no me gusta mucho,0.6793,0.6793,-27.3566
+unos,226,determiner,Tengo unos libros en mi vida.,tengo unos libros en mi vida,-2.9534,-2.9534,-37.1787
+pasado,227,n,El pasado fin de semana pasado.,el pasado fin de semana pasado,0.1282,0.1282,-25.9324
+forma,228,n,Es una forma de hablar con él.,es una forma de hablar con él,1.5863,1.5863,-26.9367
+gusta,229,v,No gusta a todo el mundo.,no gusta a todo el mundo,0.2439,0.2439,-33.4068
+hizo,230,v,Ella hizo todo lo que ha hecho.,ella hizo todo lo que ha hecho,1.4208,1.4208,-26.3305
+caso,231,n,Es un caso de tener que ir.,es un caso de tener que ir,0.6998,0.6998,-30.6812
+contra,232,prep,Estoy contra el presidente de la mano.,estoy contra el presidente de la mano,-0.3641,-0.3641,-37.7970
+tarde,233,adv,Ella está tarde por la mañana.,ella está tarde por la mañana,0.3167,0.3167,-32.9031
+necesito,234,v,No necesito un poco de agua.,no necesito un poco de agua,1.4529,1.4529,-24.9450
+oye,235,v,Oye de la vida es una buena.,oye de la vida es una buena,-0.8488,-0.8488,-37.3458
+alguna,236,determiner,Tengo alguna casa está cerca de aquí.,tengo alguna casa está cerca de aquí,-1.3739,-1.3739,-43.5904
+hemos,237,v,Hemos estado aquí desde hace mucho tiempo.,hemos estado aquí desde hace mucho tiempo,0.9795,0.9795,-28.0547
+cuenta,238,n,Tengo una cuenta de lo que pasó.,tengo una cuenta de lo que pasó,0.7274,0.7274,-27.4045
+visto,239,v,He visto en mi casa está cerca.,he visto en mi casa está cerca,0.8527,0.8527,-28.5664
+conmigo,240,adv,Ella conmigo está a punto de salir.,ella conmigo está a punto de salir,-0.5154,-0.5154,-37.0001
+mientras,241,conj,Ella está bien mientras tiene tiempo.,ella está bien mientras tiene tiempo,-2.6025,-2.6025,-46.1494
+otros,242,determiner,Tengo otros libros en mi vida.,tengo otros libros en mi vida,-3.3065,-3.3065,-41.9620
+realmente,243,adv,Realmente no tengo ni idea de quién.,realmente no tengo ni idea de quién,1.1353,1.1353,-26.6729
+hora,244,n,Es una hora antes de salir.,es una hora antes de salir,0.4427,0.4427,-30.6435
+problema,245,n,El problema es que no sé.,el problema es que no sé,0.6259,0.6259,-25.4343
+crees,246,v,Tú crees que es una buena idea.,tú crees que es una buena idea,0.1480,0.1480,-37.0817
+año,247,n,El año que viene de una vez.,el año que viene de una vez,0.5798,0.5798,-28.0865
+razón,248,n,El razón está a punto de salir.,el razón está a punto de salir,-0.6911,-0.6911,-37.4871
+primera,249,adj,Él es primera vez que he visto.,él es primera vez que he visto,-0.1598,-0.1598,-37.3906
+cierto,250,adj,No es cierto que los hombres.,no es cierto que los hombres,0.7156,0.7156,-26.2137
+saber,251,v,Quiero saber qué ha pasado mucho tiempo.,quiero saber qué ha pasado mucho tiempo,1.3528,1.3528,-25.6938
+dicho,252,v,Ha dicho que no hay nada.,ha dicho que no hay nada,1.0891,1.0891,-26.4598
+hacerlo,253,v,Hacerlo por mí y mi hermano mayor.,hacerlo por mí y mi hermano mayor,-1.3100,-1.3100,-36.6717
+mierda,254,n,Es una mierda y el otro día.,es una mierda y el otro día,-0.1563,-0.1563,-34.4503
+idea,256,n,La idea de lo que ha hecho.,la idea de lo que ha hecho,0.8666,0.8666,-26.2411
+mío,257,determiner,Tengo mío libro es de mi padre.,tengo mío libro es de mi padre,-2.1334,-2.1334,-46.9541
+e,258,conj,Es bueno e es difícil hablar.,es bueno e es difícil hablar,-1.7166,-1.7166,-40.6415
+aunque,259,conj,Ella está bien aunque tiene tiempo.,ella está bien aunque tiene tiempo,-2.7785,-2.7785,-47.2320
+familia,260,n,Tengo una familia de la misma.,tengo una familia de la misma,0.5075,0.5075,-29.9743
+hacia,261,prep,Estoy hacia la puerta antes de salir.,estoy hacia la puerta antes de salir,-0.0721,-0.0721,-36.6701
+amor,262,n,El amor es solo un niño.,el amor es solo un niño,1.0360,1.0360,-25.4077
+esos,263,determiner,Esos libros son de la historia.,esos libros son de la historia,-2.2352,-2.2352,-31.1203
+pueden,264,v,No pueden ser una buena idea.,no pueden ser una buena idea,1.0643,1.0643,-26.6561
+importa,265,v,No importa lo que ha pasado mucho.,no importa lo que ha pasado mucho,1.2572,1.2572,-27.3652
+todavía,266,adv,Todavía no he visto en algún lugar.,todavía no he visto en algún lugar,1.5347,1.5347,-25.1824
+personas,267,n,Las personas que no me gusta mucho.,las personas que no me gusta mucho,0.8193,0.8193,-26.5455
+policía,268,n,La policía está en la ciudad.,la policía está en la ciudad,-0.2939,-0.2939,-30.0906
+casi,269,adv,Casi no hay nada que ver contigo.,casi no hay nada que ver contigo,0.9010,0.9010,-26.8249
+contigo,270,adv,Ella contigo está a punto de salir.,ella contigo está a punto de salir,-0.4734,-0.4734,-37.3157
+cualquier,271,determiner,Tengo cualquier libro que quería ir.,tengo cualquier libro que quería ir,-0.6869,-0.6869,-37.4007
+demasiado,272,adv,Ella está demasiado tarde para eso.,ella está demasiado tarde para eso,-0.0261,-0.0261,-32.9782
+ven,273,v,Ellos ven a mi casa está cerca.,ellos ven a mi casa está cerca,-0.3484,-0.3484,-38.6893
+serio,274,adj,No es serio de su padre.,no es serio de su padre,-0.6460,-0.6460,-35.5760
+algún,275,determiner,Tengo algún libro es muy bueno.,tengo algún libro es muy bueno,-1.3810,-1.3810,-40.8004
+ve,276,v,No ve un poco de agua.,no ve un poco de agua,0.4615,0.4615,-31.0438
+nueva,277,adj,Ella es nueva de la ciudad.,ella es nueva de la ciudad,-0.6347,-0.6347,-38.3270
+eh,278,,Eh no tiene nada que ver.,eh no tiene nada que ver,-0.7008,-0.7008,-35.8882
+lado,279,n,Es un lado para otro lado.,es un lado para otro lado,0.7921,0.7921,-29.7917
+manera,280,n,Es una manera de hablar con él.,es una manera de hablar con él,1.1378,1.1378,-28.5901
+cabeza,281,n,La cabeza con un poco de agua.,la cabeza con un poco de agua,-0.7155,-0.7155,-31.9868
+hombres,282,n,Los hombres son más que los niños.,los hombres son más que los niños,0.4088,0.4088,-28.6436
+historia,283,n,La historia no tiene nada que ver.,la historia no tiene nada que ver,1.0265,1.0265,-26.6813
+dentro,284,adv,Ella está dentro de una semana.,ella está dentro de una semana,0.6973,0.6973,-31.1097
+sería,285,v,No sería el mundo está de acuerdo.,no sería el mundo está de acuerdo,0.5107,0.5107,-31.3567
+salir,286,v,Voy a salir con este tiempo.,voy a salir con este tiempo,1.0294,1.0294,-25.6658
+debería,287,v,Debería haber hecho lo que ha hecho.,debería haber hecho lo que ha hecho,1.4380,1.4380,-27.1902
+van,288,v,Ellos van a hacer eso por mí.,ellos van a hacer eso por mí,1.3556,1.3556,-29.4006
+ciudad,289,n,La ciudad se encuentra en el mundo.,la ciudad se encuentra en el mundo,0.5970,0.5970,-27.9759
+ustedes,290,pron,Ustedes están aquí desde hace mucho tiempo.,ustedes están aquí desde hace mucho tiempo,-0.2991,-0.2991,-36.8225
+muchas,291,determiner,Tengo muchas casas de la ciudad.,tengo muchas casas de la ciudad,-2.6459,-2.6459,-39.1900
+poder,292,n,Es un poder hablar con él.,es un poder hablar con él,-0.1257,-0.1257,-35.3066
+algunos,293,determiner,Tengo algunos libros de los niños.,tengo algunos libros de los niños,-0.8260,-0.8260,-28.6596
+amigos,294,n,Los amigos son un poco de agua.,los amigos son un poco de agua,-0.3388,-0.3388,-34.2313
+chica,295,n,La chica que está hablando con él.,la chica que está hablando con él,1.2524,1.2524,-27.6922
+mayor,296,adj,Ella es mayor que mi hijo.,ella es mayor que mi hijo,1.0558,1.0558,-26.8718
+sabía,297,v,No sabía qué hacer con los ojos.,no sabía qué hacer con los ojos,1.1586,1.1586,-26.1761
+chicos,298,n,Los chicos son un poco de agua.,los chicos son un poco de agua,-0.0354,-0.0354,-32.7961
+hermano,299,n,Tengo un hermano que vive al lado.,tengo un hermano que vive al lado,1.0024,1.0024,-26.9559
+esas,300,determiner,Tengo esas casas a la gente.,tengo esas casas a la gente,-2.9832,-2.9832,-42.0115
+primer,301,adj,Él es primer día del año pasado.,él es primer día del año pasado,-0.0157,-0.0157,-36.9177
+país,302,n,Es un país no es un país.,es un país no es un país,0.4355,0.4355,-28.6718
+vaya,303,v,Vaya a la casa de mi padre.,vaya a la casa de mi padre,-1.3089,-1.3089,-34.2306
+agua,304,n,Tengo una agua y el otro día.,tengo una agua y el otro día,-0.0238,-0.0238,-34.9738
+misma,305,adj,Él es misma que la tierra.,él es misma que la tierra,-0.6819,-0.6819,-35.7734
+veo,306,v,No veo por qué la gente.,no veo por qué la gente,1.0207,1.0207,-24.8980
+haces,307,v,No haces nada que ver con esto.,no haces nada que ver con esto,0.2609,0.2609,-32.0112
+camino,308,n,Es un camino a la policía.,es un camino a la policía,0.2461,0.2461,-30.7400
+persona,309,n,Es una persona que más te vale.,es una persona que más te vale,0.7024,0.7024,-27.8356
+iba,310,v,Ella iba a ser una buena idea.,ella iba a ser una buena idea,0.8251,0.8251,-31.0320
+realidad,311,n,La realidad es un tipo de cosas.,la realidad es un tipo de cosas,0.5753,0.5753,-29.3710
+fin,312,n,El fin de semana en la misma.,el fin de semana en la misma,-0.2085,-0.2085,-29.0523
+importante,313,adj,Esto es importante para los niños.,esto es importante para los niños,1.0154,1.0154,-26.1403
+primero,314,adj,Él es primero en llegar a ser.,él es primero en llegar a ser,0.5136,0.5136,-33.7728
+digo,315,v,Yo digo que no me gusta mucho.,yo digo que no me gusta mucho,0.5325,0.5325,-28.8154
+horas,316,n,Las horas de trabajo que hacer eso.,las horas de trabajo que hacer eso,-0.0234,-0.0234,-33.6168
+semana,317,n,La semana que viene a ver.,la semana que viene a ver,0.6019,0.6019,-27.5818
+puerta,318,n,La puerta no se puede hacer nada.,la puerta no se puede hacer nada,0.8219,0.8219,-28.6000
+somos,319,v,No somos tan pronto como sea posible.,no somos tan pronto como sea posible,1.2527,1.2527,-29.4160
+pensé,320,v,Pensé que habías dicho que no sé.,pensé que habías dicho que no sé,-0.0376,-0.0376,-25.5927
+bajo,321,prep,Estoy bajo el nombre de su hijo.,estoy bajo el nombre de su hijo,-0.1855,-0.1855,-37.3569
+muerte,322,n,El muerte está más cerca de aquí.,el muerte está más cerca de aquí,-1.0799,-1.0799,-40.2426
+problemas,323,n,Tengo unos problemas con la familia.,tengo unos problemas con la familia,-0.6261,-0.6261,-37.4055
+punto,324,n,Es un punto de llegar a ser.,es un punto de llegar a ser,1.0511,1.0511,-29.1588
+ah,325,,Ah es la mejor forma de hablar.,ah es la mejor forma de hablar,-0.3417,-0.3417,-37.4905
+pasó,326,v,Pasó por la noche en un día.,pasó por la noche en un día,-0.3286,-0.3286,-29.9500
+quizá,327,adv,Quizá no es un poco de agua.,quizá no es un poco de agua,-0.2876,-0.2876,-33.6909
+buenas,328,adj,Él es buenas en el mundo.,él es buenas en el mundo,-0.4484,-0.4484,-37.5786
+supuesto,329,n,El supuesto que te vas a hacer.,el supuesto que te vas a hacer,-0.9420,-0.9420,-37.8790
+cuatro,330,num,Tengo cuatro libros en mi vida.,tengo cuatro libros en mi vida,-2.8543,-2.8543,-37.6283
+da,331,v,No da lo mismo una y otra.,no da lo mismo una y otra,0.0500,0.0500,-35.3339
+mano,332,n,Es una mano con los ojos.,es una mano con los ojos,0.2489,0.2489,-29.6585
+niños,333,n,Los niños les gusta hablar de ello.,los niños les gusta hablar de ello,1.1150,1.1150,-27.6774
+volver,334,v,Quiero volver a casa de mi padre.,quiero volver a casa de mi padre,1.1263,1.1263,-29.1238
+además,335,adv,Ella está además de ser una buena.,ella está además de ser una buena,0.1201,0.1201,-36.4487
+señora,336,n,La señora es al mismo tiempo.,la señora es al mismo tiempo,-0.5233,-0.5233,-30.3803
+cariño,337,n,El cariño es al mismo tiempo.,el cariño es al mismo tiempo,-0.1468,-0.1468,-35.2775
+ayuda,338,n,Es una ayuda a tu madre.,es una ayuda a tu madre,-0.3735,-0.3735,-35.4278
+ojos,339,n,Los ojos de ella es una persona.,los ojos de ella es una persona,-0.5020,-0.5020,-30.7362
+cinco,340,num,Tengo cinco libros en mi vida.,tengo cinco libros en mi vida,-2.8363,-2.8363,-37.6580
+pasar,341,v,Voy a pasar el fin de semana.,voy a pasar el fin de semana,1.6571,1.6571,-26.3176
+general,342,adj,Él es general a los niños.,él es general a los niños,0.1224,0.1224,-33.4578
+pronto,343,adv,Pronto será un buen día para otro.,pronto será un buen día para otro,0.1709,0.1709,-31.4147
+debo,344,v,Debo ir a la hora.,debo ir a la hora,-2.5040,-2.5040,-26.0763
+minutos,345,n,Tengo unos minutos más de tres.,tengo unos minutos más de tres,0.1002,0.1002,-34.2911
+sino,346,conj,Es bueno sino es difícil hablar.,es bueno sino es difícil hablar,-3.5865,-3.5865,-41.3184
+gobierno,347,n,El gobierno está de acuerdo con él.,el gobierno está de acuerdo con él,-0.2084,-0.2084,-32.4435
+manos,348,n,Las manos antes de ir a casa.,las manos antes de ir a casa,-0.6285,-0.6285,-31.9265
+presidente,349,n,El presidente es una de las personas.,el presidente es una de las personas,-1.2607,-1.2607,-35.1039
+muerto,350,adj,Ha muerto en un día de hoy.,ha muerto en un día de hoy,-0.2350,-0.2350,-36.7208
+muchos,351,determiner,Tengo muchos libros en la vida.,tengo muchos libros en la vida,0.7798,0.7798,-27.0630
+chico,352,n,El chico que está hablando con él.,el chico que está hablando con él,1.5053,1.5053,-27.5453
+guerra,353,n,Es una guerra es la primera vez.,es una guerra es la primera vez,-0.0928,-0.0928,-34.2339
+hice,354,v,Yo hice todo lo que has hecho.,yo hice todo lo que has hecho,0.8082,0.8082,-30.2725
+incluso,355,adv,Incluso un niño que está hablando.,incluso un niño que está hablando,0.6270,0.6270,-27.6399
+medio,356,n,El medio está más cerca de aquí.,el medio está más cerca de aquí,-0.8607,-0.8607,-39.2194
+cuál,357,pron,No sé cuál hacer algo así.,no sé cuál hacer algo así,-2.3481,-2.3481,-35.5248
+hablando,358,v,Estamos hablando de una vez al año.,estamos hablando de una vez al año,0.4843,0.4843,-31.3713
+adiós,359,n,Tengo un adiós y el otro día.,tengo un adiós y el otro día,-0.1737,-0.1737,-38.7269
+siquiera,360,adv,Ella está siquiera con la cabeza.,ella está siquiera con la cabeza,-0.9497,-0.9497,-39.0305
+genial,361,adj,Él es genial en el mundo.,él es genial en el mundo,-1.5361,-1.5361,-39.3124
+fueron,362,v,Ellos fueron a la gente de aquí.,ellos fueron a la gente de aquí,1.0217,1.0217,-28.8535
+ello,363,pron,Ella es ello por el momento.,ella es ello por el momento,-0.8079,-0.8079,-39.0594
+rápido,364,adj,Él es rápido de lo que pasó.,él es rápido de lo que pasó,-0.2659,-0.2659,-36.9152
+equipo,365,n,El equipo de lo que es hora.,el equipo de lo que es hora,-1.1578,-1.1578,-34.4417
+dejar,366,v,Voy a dejar de hacer eso.,voy a dejar de hacer eso,1.2074,1.2074,-25.7784
+significa,367,v,Significa que no se puede hacer nada.,significa que no se puede hacer nada,0.5159,0.5159,-32.7898
+jefe,368,n,El jefe es una de las personas.,el jefe es una de las personas,-1.2616,-1.2616,-35.1097
+millones,369,n,Los millones de personas en el mundo.,los millones de personas en el mundo,-0.7737,-0.7737,-33.8441
+suerte,370,n,Es un suerte de tener un poco.,es un suerte de tener un poco,0.0918,0.0918,-34.9747
+otras,371,determiner,Tengo otras casas a la gente.,tengo otras casas a la gente,-5.7168,-5.7168,-45.5491
+ayer,372,adv,Ella está ayer por la tarde.,ella está ayer por la tarde,0.5798,0.5798,-31.2261
+cuerpo,373,n,El cuerpo está un poco de agua.,el cuerpo está un poco de agua,-0.5011,-0.5011,-35.5408
+llegar,374,v,Voy a llegar tarde a la policía.,voy a llegar tarde a la policía,1.3803,1.3803,-26.5250
+mujeres,375,n,Los mujeres no se puede hacer eso.,los mujeres no se puede hacer eso,-0.4718,-0.4718,-38.1409
+posible,376,adj,No es posible que haya hecho.,no es posible que haya hecho,1.5076,1.5076,-24.6468
+según,377,prep,Estoy según lo que está en casa.,estoy según lo que está en casa,-2.4877,-2.4877,-42.9097
+nuestros,378,determiner,Nuestros libros son de una vez.,nuestros libros son de una vez,-1.7159,-1.7159,-39.6793
+quizás,379,adv,Quizás sea una buena razón para estar.,quizás sea una buena razón para estar,-0.7460,-0.7460,-31.6334
+tierra,380,n,La tierra no es un hombre.,la tierra no es un hombre,0.4075,0.4075,-25.7599
+único,381,adj,Él es único que puede hacer eso.,él es único que puede hacer eso,-0.6201,-0.6201,-41.2502
+hija,382,n,Tengo una hija de mi hermano mayor.,tengo una hija de mi hermano mayor,1.2496,1.2496,-28.8391
+ninguna,383,determiner,Tengo ninguna casa a las personas.,tengo ninguna casa a las personas,-2.0415,-2.0415,-42.5947
+final,384,n,El final está de acuerdo con él.,el final está de acuerdo con él,-1.2068,-1.2068,-38.3220
+cara,385,n,La cara con un poco de agua.,la cara con un poco de agua,-0.8368,-0.8368,-31.9134
+niño,386,n,El niño se parece a su madre.,el niño se parece a su madre,1.2462,1.2462,-23.7987
+supongo,387,v,Supongo que es hora de volver.,supongo que es hora de volver,0.9756,0.9756,-26.0382
+juntos,388,adj,Él es juntos a la vez.,él es juntos a la vez,-0.0629,-0.0629,-34.7543
+algunas,389,determiner,Tengo algunas casas de la ciudad.,tengo algunas casas de la ciudad,-2.8247,-2.8247,-40.3806
+entiendo,390,v,Estoy entiendo nada de lo que pasó.,estoy entiendo nada de lo que pasó,-0.5276,-0.5276,-37.1164
+número,391,n,Es un número de personas.,es un número de personas,-0.2923,-0.2923,-23.6594
+ningún,392,determiner,Ningún libro es de mi padre.,ningún libro es de mi padre,-1.1925,-1.1925,-36.5605
+deja,393,v,Deja que te vas a hacer eso.,deja que te vas a hacer eso,1.4090,1.4090,-27.4222
+ves,394,v,No ves que estoy de acuerdo contigo.,no ves que estoy de acuerdo contigo,1.4687,1.4687,-28.0684
+tío,395,n,El tío se fue a la policía.,el tío se fue a la policía,-0.7304,-0.7304,-31.6915
+cerca,396,adv,Ella está cerca de mi padre.,ella está cerca de mi padre,0.3077,0.3077,-29.7644
+corazón,397,n,Me gusta el corazón.,me gusta el corazón,-1.9421,-1.9421,-24.7899
+miedo,398,n,Es un miedo a los niños.,es un miedo a los niños,-0.2590,-0.2590,-33.7513
+buenos,399,adj,Ella es buenos a los niños.,ella es buenos a los niños,-0.4273,-0.4273,-36.2242
+eran,400,v,Ellos eran en el mundo.,ellos eran en el mundo,-2.2378,-2.2378,-30.6276
+haya,401,v,Haya dicho algo así en mi vida.,haya dicho algo así en mi vida,-0.4191,-0.4191,-37.5080
+hubiera,402,v,Hubiera dicho la verdad es que ya.,hubiera dicho la verdad es que ya,0.1096,0.1096,-33.1834
+feliz,403,adj,No es feliz o no ser.,no es feliz o no ser,1.2017,1.2017,-27.5148
+unas,404,determiner,Tengo unas casas cerca.,tengo unas casas cerca,-4.7659,-4.7659,-35.2129
+espero,405,v,No espero que no me gusta mucho.,no espero que no me gusta mucho,0.6100,0.6100,-27.8027
+igual,406,adj,No es igual que su hermano.,no es igual que su hermano,0.6102,0.6102,-28.9251
+viene,407,v,Ella viene de una forma de hablar.,ella viene de una forma de hablar,1.1547,1.1547,-30.5395
+meses,408,n,Los meses que no me gusta mucho.,los meses que no me gusta mucho,-0.4104,-0.4104,-34.4585
+sigue,409,v,Sigue en el mundo está de acuerdo.,sigue en el mundo está de acuerdo,0.1387,0.1387,-32.5442
+dar,410,v,Voy a dar las gracias a ti.,voy a dar las gracias a ti,1.3845,1.3845,-28.4579
+podía,411,v,No podía dejar de hablar con él.,no podía dejar de hablar con él,0.9649,0.9649,-29.2825
+última,412,adj,Él es última vez que he visto.,él es última vez que he visto,-0.1367,-0.1367,-37.9072
+difícil,413,adj,No es difícil de hacer eso.,no es difícil de hacer eso,0.8059,0.8059,-27.9562
+os,414,interj,Os he dicho que no hay nada.,os he dicho que no hay nada,0.9768,0.9768,-28.3749
+venir,415,v,Voy a venir mañana por la mañana.,voy a venir mañana por la mañana,0.5573,0.5573,-34.0229
+vi,416,v,No vi a un lado para otro.,no vi a un lado para otro,1.6130,1.6130,-27.2292
+viejo,417,n,Es un viejo amigo de mi padre.,es un viejo amigo de mi padre,0.9956,0.9956,-30.3948
+bastante,418,adv,Ella está bastante seguro de eso.,ella está bastante seguro de eso,-0.1895,-0.1895,-34.8988
+tomar,419,v,Voy a tomar el primer día.,voy a tomar el primer día,1.3130,1.3130,-25.6148
+gustaría,420,v,Gustaría tener un poco más de tres.,gustaría tener un poco más de tres,-2.2288,-2.2288,-40.1440
+cuánto,421,determiner,Cuánto libro es demasiado tarde para eso.,cuánto libro es demasiado tarde para eso,-3.4544,-3.4544,-43.8266
+encontrar,422,v,Tengo que encontrar un buen amigo.,tengo que encontrar un buen amigo,0.9464,0.9464,-26.1400
+adelante,423,adv,Adelante voy a tener que hacer algo.,adelante voy a tener que hacer algo,-1.1828,-1.1828,-37.4804
+justo,424,adj,No es justo lo que ha pasado.,no es justo lo que ha pasado,1.0589,1.0589,-27.8420
+sentido,425,n,El sentido está de acuerdo contigo.,el sentido está de acuerdo contigo,-0.4384,-0.4384,-35.8972
+esposa,426,n,Es una esposa de mi hermano mayor.,es una esposa de mi hermano mayor,0.2775,0.2775,-34.7227
+segundo,427,adj,Él es segundo a su hijo.,él es segundo a su hijo,-0.6076,-0.6076,-37.7722
+grande,428,adj,Él es grande y dos veces.,él es grande y dos veces,0.0999,0.0999,-33.4530
+allá,429,adv,Allá donde se me ha dicho.,allá donde se me ha dicho,-0.3011,-0.3011,-30.1524
+clase,430,n,Tengo un clase de cosas que hacer.,tengo un clase de cosas que hacer,-0.3190,-0.3190,-35.5469
+cual,431,pron,Ella es cual en la ciudad.,ella es cual en la ciudad,-0.5892,-0.5892,-38.8705
+ante,432,prep,Estoy ante todo lo que ha hecho.,estoy ante todo lo que ha hecho,-0.3707,-0.3707,-38.2483
+juego,433,n,Es un juego de hoy en día.,es un juego de hoy en día,1.7051,1.7051,-26.5471
+tenido,434,v,He tenido un poco más de tiempo.,he tenido un poco más de tiempo,1.1745,1.1745,-28.5390
+pensar,435,v,Voy a pensar en otra cosa.,voy a pensar en otra cosa,1.0263,1.0263,-28.3839
+pueda,436,v,Pueda hacer para que pueda hacer.,pueda hacer para que pueda hacer,-1.5674,-1.5674,-33.5624
+hey,437,,Hey es la mejor forma de hablar.,hey es la mejor forma de hablar,-0.2973,-0.2973,-37.2051
+doctor,438,n,El doctor le dijo a sí mismo.,el doctor le dijo a sí mismo,0.9832,0.9832,-25.4907
+grupo,439,n,El grupo de gente con la gente.,el grupo de gente con la gente,-0.3770,-0.3770,-30.8415
+cuidado,440,n,Es un cuidado de no dejar.,es un cuidado de no dejar,0.3507,0.3507,-31.9776
+suficiente,441,adj,No es suficiente para todos los días.,no es suficiente para todos los días,1.3355,1.3355,-27.0199
+sangre,442,n,El sangre está un poco de agua.,el sangre está un poco de agua,-0.9490,-0.9490,-38.4755
+pequeño,443,adj,Ella es pequeño en el mundo.,ella es pequeño en el mundo,-0.4307,-0.4307,-38.0486
+dijiste,444,v,Tú dijiste que no me gusta mucho.,tú dijiste que no me gusta mucho,0.3342,0.3342,-30.0921
+trata,445,v,Trata de una forma de hacer eso.,trata de una forma de hacer eso,-0.4612,-0.4612,-29.0185
+haré,446,v,Yo haré todo lo que has hecho.,yo haré todo lo que has hecho,0.7364,0.7364,-30.7345
+último,447,adj,Él es último en llegar a tiempo.,él es último en llegar a tiempo,0.0400,0.0400,-36.7976
+frente,448,n,Es un frente a mi casa.,es un frente a mi casa,0.2301,0.2301,-33.4919
+grandes,449,adj,Él es grandes que las mujeres.,él es grandes que las mujeres,0.1005,0.1005,-32.4143
+venga,450,v,Venga a mi padre me ha dicho.,venga a mi padre me ha dicho,0.2318,0.2318,-31.5131
+llama,451,v,Llama a la policía.,llama a la policía,-2.1200,-2.1200,-22.9865
+noches,452,n,Es unos noches por la mañana.,es unos noches por la mañana,-1.9403,-1.9403,-44.2231
+toma,453,v,Toma el que más me gusta mucho.,toma el que más me gusta mucho,-0.0891,-0.0891,-31.2707
+necesita,454,v,Necesita un poco más de un año.,necesita un poco más de un año,-1.0567,-1.0567,-32.3416
+debes,455,v,Debes tener en cuenta el hecho.,debes tener en cuenta el hecho,-0.0832,-0.0832,-24.6927
+arriba,456,adv,Ella arriba está un poco de agua.,ella arriba está un poco de agua,-0.9929,-0.9929,-39.8992
+vuelta,457,n,Es una vuelta en mi casa.,es una vuelta en mi casa,0.0942,0.0942,-33.1982
+coche,458,n,Tengo un coche para ir a ver.,tengo un coche para ir a ver,0.3339,0.3339,-31.0960
+tampoco,459,adv,Tampoco se nos va a estar aquí.,tampoco se nos va a estar aquí,1.3201,1.3201,-27.7637
+trabajar,460,v,Voy a trabajar en un día.,voy a trabajar en un día,1.0209,1.0209,-26.9970
+cuándo,461,adv,Ella está cuándo vas a estar.,ella está cuándo vas a estar,0.1724,0.1724,-33.5013
+fuerte,462,adj,Él es fuerte y claro.,él es fuerte y claro,-1.1168,-1.1168,-29.3471
+seguridad,463,n,La seguridad es una de mis amigos.,la seguridad es una de mis amigos,-0.9793,-0.9793,-33.2929
+mas,464,,Mas que a mí me gusta mucho.,mas que a mí me gusta mucho,-1.7645,-1.7645,-42.0521
+entrar,465,v,Tengo que entrar en el mismo.,tengo que entrar en el mismo,-0.4247,-0.4247,-33.0594
+vivir,466,v,Quiero vivir en un lugar para vivir.,quiero vivir en un lugar para vivir,1.3955,1.3955,-28.3754
+escucha,467,v,Ella escucha lo que ha pasado mucho.,ella escucha lo que ha pasado mucho,-0.3249,-0.3249,-38.0609
+déjame,468,v,Déjame hablar con uno de mis amigos.,déjame hablar con uno de mis amigos,-0.4019,-0.4019,-30.4313
+pueblo,469,n,Es un pueblo de a poco.,es un pueblo de a poco,0.0230,0.0230,-30.5982
+hijos,470,n,Tengo unos hijos y una hija.,tengo unos hijos y una hija,-0.4604,-0.4604,-37.5093
+joven,471,adj,Él es joven y una hija.,él es joven y una hija,0.7704,0.7704,-29.9920
+cuanto,472,adv,Ella está cuanto se me ha hecho.,ella está cuanto se me ha hecho,-0.2013,-0.2013,-34.5935
+hago,473,v,No hago más de tres años.,no hago más de tres años,0.7613,0.7613,-30.2239
+escuela,474,n,La escuela está en la misma.,la escuela está en la misma,0.1460,0.1460,-28.9338
+tras,475,prep,Hablo tras la muerte de su padre.,hablo tras la muerte de su padre,-0.2687,-0.2687,-39.2083
+cree,476,v,Ella cree que es una buena idea.,ella cree que es una buena idea,1.0913,1.0913,-31.0111
+cambio,477,n,El cambio de un lado para otro.,el cambio de un lado para otro,-0.1047,-0.1047,-29.4156
+luz,478,n,Es un luz al salir de aquí.,es un luz al salir de aquí,0.1052,0.1052,-34.8003
+oportunidad,479,n,Es una oportunidad de hablar con ella.,es una oportunidad de hablar con ella,0.6841,0.6841,-31.2847
+fui,480,v,Yo fui el primero en llegar.,yo fui el primero en llegar,1.7989,1.7989,-24.3328
+sistema,481,n,El sistema de lo que es hora.,el sistema de lo que es hora,-1.1033,-1.1033,-34.0913
+embargo,482,n,Es un embargo esta en el mundo.,es un embargo esta en el mundo,-2.4761,-2.4761,-42.9247
+teléfono,483,n,El teléfono estaba a punto de salir.,el teléfono estaba a punto de salir,0.9484,0.9484,-30.3807
+dices,484,v,No dices nada en todo el mundo.,no dices nada en todo el mundo,0.3984,0.3984,-32.8163
+seis,485,num,Tengo seis libros en la vida.,tengo seis libros en la vida,-3.8268,-3.8268,-42.4082
+alto,486,adj,Él es alto y un poco.,él es alto y un poco,0.8230,0.8230,-30.0547
+habla,487,v,Ella habla como si fuera un niño.,ella habla como si fuera un niño,1.2373,1.2373,-28.2314
+fiesta,488,n,La fiesta fue un día para otro.,la fiesta fue un día para otro,0.5649,0.5649,-29.3378
+loco,489,n,Es un loco para hacer algo.,es un loco para hacer algo,-0.3327,-0.3327,-35.2244
+atrás,490,adv,Ella está atrás en el momento.,ella está atrás en el momento,-0.2804,-0.2804,-36.0120
+debemos,491,v,Debemos salir de aquí a las personas.,debemos salir de aquí a las personas,-0.5732,-0.5732,-29.8859
+pregunta,492,n,Tengo una pregunta a su madre.,tengo una pregunta a su madre,0.3837,0.3837,-29.3904
+hacen,493,v,No hacen más que cualquier otro.,no hacen más que cualquier otro,0.6436,0.6436,-28.9153
+seguir,494,v,Voy a seguir haciendo esto por mí.,voy a seguir haciendo esto por mí,0.5232,0.5232,-33.1591
+quieren,495,v,No quieren hablar con la gente.,no quieren hablar con la gente,0.7407,0.7407,-27.8513
+dio,496,v,Ella dio a su casa está cerca.,ella dio a su casa está cerca,0.7910,0.7910,-31.3569
+paso,497,n,Es un paso la mayor parte.,es un paso la mayor parte,0.6207,0.6207,-30.8335
+falta,498,n,La falta de agua en la ciudad.,la falta de agua en la ciudad,0.7292,0.7292,-30.2703
+fácil,499,adj,No es fácil de hacer nada.,no es fácil de hacer nada,1.4986,1.4986,-24.4535
+ido,500,v,He ido a la vez.,he ido a la vez,-0.7087,-0.7087,-25.5526
+padres,501,n,Los padres son de mi padre.,los padres son de mi padre,-0.2638,-0.2638,-29.1393
+vino,502,n,El vino es al mismo tiempo.,el vino es al mismo tiempo,0.8151,0.8151,-29.2747

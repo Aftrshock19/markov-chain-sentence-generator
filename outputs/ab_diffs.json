@@ -1,0 +1,836 @@
+[
+ {
+  "lemma": "la",
+  "rank": "3",
+  "off": "La casa es demasiado tarde para eso.",
+  "on": "La casa es la primera vez."
+ },
+ {
+  "lemma": "no",
+  "rank": "4",
+  "off": "No me gusta ese tipo de cosas.",
+  "on": "No me gusta ese tipo de persona."
+ },
+ {
+  "lemma": "a",
+  "rank": "5",
+  "off": "Voy a casa antes de salir.",
+  "on": "Voy a casa por la mañana."
+ },
+ {
+  "lemma": "el",
+  "rank": "6",
+  "off": "El libro es demasiado tarde para eso.",
+  "on": "El libro es una buena idea."
+ },
+ {
+  "lemma": "y",
+  "rank": "7",
+  "off": "Tú y yo estamos aquí para ver.",
+  "on": "Ella y yo somos amigos de verdad."
+ },
+ {
+  "lemma": "es",
+  "rank": "9",
+  "off": "Ella es la mejor forma de hablar.",
+  "on": "No es tan importante como la gente."
+ },
+ {
+  "lemma": "lo",
+  "rank": "11",
+  "off": "Ya lo tengo que volver a ver.",
+  "on": "No lo veo por qué la gente."
+ },
+ {
+  "lemma": "por",
+  "rank": "12",
+  "off": "Voy por el bien del mal tiempo.",
+  "on": "Voy por el momento de la vida."
+ },
+ {
+  "lemma": "una",
+  "rank": "14",
+  "off": "Tengo una casa de mi tío.",
+  "on": "Tengo una casa de mi padre."
+ },
+ {
+  "lemma": "se",
+  "rank": "15",
+  "off": "No se sabe nada de esto.",
+  "on": "Se puede hacer de todo el mundo."
+ },
+ {
+  "lemma": "con",
+  "rank": "16",
+  "off": "Estoy con las manos antes de ir.",
+  "on": "Estoy con un amigo de mi padre."
+ },
+ {
+  "lemma": "para",
+  "rank": "19",
+  "off": "Voy para el fin de semana pasado.",
+  "on": "Estoy para el fin de semana pasado."
+ },
+ {
+  "lemma": "las",
+  "rank": "20",
+  "off": "Tengo las casas de por aquí cerca.",
+  "on": "Tengo las casas de la ciudad."
+ },
+ {
+  "lemma": "su",
+  "rank": "23",
+  "off": "Su libro es demasiado tarde para eso.",
+  "on": "Su libro es una buena idea."
+ },
+ {
+  "lemma": "pero",
+  "rank": "24",
+  "off": "Quiero ir pero no puedo ver nada.",
+  "on": "Quiero ir pero no puedo hacer nada."
+ },
+ {
+  "lemma": "mi",
+  "rank": "27",
+  "off": "Mi libro es demasiado tarde para eso.",
+  "on": "Mi libro es una buena idea."
+ },
+ {
+  "lemma": "como",
+  "rank": "30",
+  "off": "Es como tú no eres el único.",
+  "on": "Es como tú no eres un hombre."
+ },
+ {
+  "lemma": "bien",
+  "rank": "31",
+  "off": "Ella está bien de su padre.",
+  "on": "Ella está bien de su madre."
+ },
+ {
+  "lemma": "más",
+  "rank": "32",
+  "off": "Ella está más cerca de aquí.",
+  "on": "Ella está más cerca de la casa."
+ },
+ {
+  "lemma": "eso",
+  "rank": "33",
+  "off": "Ella es eso lo que has hecho.",
+  "on": "Ella es eso lo que ha hecho."
+ },
+ {
+  "lemma": "yo",
+  "rank": "34",
+  "off": "Yo estoy aquí por un tiempo.",
+  "on": "Yo estoy aquí por un momento."
+ },
+ {
+  "lemma": "le",
+  "rank": "35",
+  "off": "Ya le tengo miedo a los niños.",
+  "on": "No le veo por qué la gente."
+ },
+ {
+  "lemma": "aquí",
+  "rank": "36",
+  "off": "Aquí no hay nada que ver.",
+  "on": "Aquí no hay nada que hacer eso."
+ },
+ {
+  "lemma": "tu",
+  "rank": "37",
+  "off": "Tu libro es una buena idea.",
+  "on": "Tu libro es muy importante para mí."
+ },
+ {
+  "lemma": "todo",
+  "rank": "38",
+  "off": "Tengo todo libro por la mañana.",
+  "on": "Todo libro es muy importante para mí."
+ },
+ {
+  "lemma": "ha",
+  "rank": "39",
+  "off": "Ha de ser un poco de agua.",
+  "on": "Ha dicho que no lo he visto."
+ },
+ {
+  "lemma": "o",
+  "rank": "41",
+  "off": "Quieres ir o no ser el mejor.",
+  "on": "Quieres ir o no es una persona."
+ },
+ {
+  "lemma": "esto",
+  "rank": "42",
+  "off": "Esto es importante para los niños.",
+  "on": "Esto es importante para todos los días."
+ },
+ {
+  "lemma": "muy",
+  "rank": "43",
+  "off": "Ella está muy cerca de la ciudad.",
+  "on": "Ella está muy cerca de la casa."
+ },
+ {
+  "lemma": "esta",
+  "rank": "44",
+  "off": "Esta casa es la primera vez.",
+  "on": "Esta casa es demasiado tarde para hacer."
+ },
+ {
+  "lemma": "ahora",
+  "rank": "45",
+  "off": "Ahora no tengo ni idea de quién.",
+  "on": "Ahora no tengo tiempo para hacer eso."
+ },
+ {
+  "lemma": "cuando",
+  "rank": "47",
+  "off": "Estoy cuando no hay nada que ver.",
+  "on": "Estoy cuando no hay nada que hacer."
+ },
+ {
+  "lemma": "este",
+  "rank": "49",
+  "off": "Este libro es una buena idea.",
+  "on": "Este libro es muy importante para mí."
+ },
+ {
+  "lemma": "algo",
+  "rank": "50",
+  "off": "Ella es algo que hacer eso.",
+  "on": "Ella es algo que no hay nada."
+ },
+ {
+  "lemma": "él",
+  "rank": "53",
+  "off": "Él está aquí para hablar de eso.",
+  "on": "Él está bien de su madre."
+ },
+ {
+  "lemma": "ser",
+  "rank": "54",
+  "off": "Quiero ser el primero en llegar.",
+  "on": "Voy a ser una buena idea."
+ },
+ {
+  "lemma": "tengo",
+  "rank": "59",
+  "off": "No tengo nada que ver con esto.",
+  "on": "No tengo nada que ver con eso."
+ },
+ {
+  "lemma": "era",
+  "rank": "60",
+  "off": "No era el único que tienes razón.",
+  "on": "Ella era una mujer de mi padre."
+ },
+ {
+  "lemma": "nada",
+  "rank": "61",
+  "off": "Nada es importante para los niños.",
+  "on": "Ella es nada más que una persona."
+ },
+ {
+  "lemma": "tiene",
+  "rank": "62",
+  "off": "No tiene nada que ver con esto.",
+  "on": "No tiene nada que ver con eso."
+ },
+ {
+  "lemma": "sé",
+  "rank": "63",
+  "off": "Yo sé que es hora de volver.",
+  "on": "No sé nada de lo que pasó."
+ },
+ {
+  "lemma": "tú",
+  "rank": "64",
+  "off": "Tú estás aquí desde hace mucho tiempo.",
+  "on": "Tú estás bien con todos los días."
+ },
+ {
+  "lemma": "sólo",
+  "rank": "68",
+  "off": "Sólo tienes que ir a la policía.",
+  "on": "Sólo tienes que ir a la puerta."
+ },
+ {
+  "lemma": "son",
+  "rank": "70",
+  "off": "Ellos son de una vez por semana.",
+  "on": "Ellos son de lo que ha hecho."
+ },
+ {
+  "lemma": "hacer",
+  "rank": "71",
+  "off": "Voy a hacer las cosas que hacer.",
+  "on": "Voy a hacer un poco de tiempo."
+ },
+ {
+  "lemma": "he",
+  "rank": "72",
+  "off": "He visto en algún lugar.",
+  "on": "He visto a un hombre."
+ },
+ {
+  "lemma": "porque",
+  "rank": "73",
+  "off": "No puedo porque estoy ocupado ahora.",
+  "on": "Ella está bien porque tiene tiempo."
+ },
+ {
+  "lemma": "gracias",
+  "rank": "77",
+  "off": "Muchas gracias por todo el día.",
+  "on": "Gracias por todo el día de hoy."
+ },
+ {
+  "lemma": "puede",
+  "rank": "78",
+  "off": "Ella puede hablar un poco de tiempo.",
+  "on": "No puede ser un poco de agua."
+ },
+ {
+  "lemma": "dos",
+  "rank": "79",
+  "off": "Tengo dos libros de mi padre.",
+  "on": "Tengo dos libros en la vida."
+ },
+ {
+  "lemma": "ese",
+  "rank": "83",
+  "off": "Ese libro es muy importante para mí.",
+  "on": "Ese libro es de mi padre."
+ },
+ {
+  "lemma": "entonces",
+  "rank": "88",
+  "off": "Entonces me di cuenta de eso.",
+  "on": "Entonces no hay nada que hacer."
+ },
+ {
+  "lemma": "tienes",
+  "rank": "90",
+  "off": "No tienes nada que ver con esto.",
+  "on": "No tienes nada que ver con eso."
+ },
+ {
+  "lemma": "casa",
+  "rank": "91",
+  "off": "La casa de mi casa está cerca.",
+  "on": "La casa está cerca de la ciudad."
+ },
+ {
+  "lemma": "esa",
+  "rank": "93",
+  "off": "Tengo esa casa es demasiado tarde.",
+  "on": "Esa casa es demasiado tarde para hacer."
+ },
+ {
+  "lemma": "voy",
+  "rank": "94",
+  "off": "No voy a llegar tarde a casa.",
+  "on": "No voy a tener que hacer eso."
+ },
+ {
+  "lemma": "sabes",
+  "rank": "95",
+  "off": "Tú sabes que es hora de volver.",
+  "on": "No sabes lo que es un hombre."
+ },
+ {
+  "lemma": "verdad",
+  "rank": "97",
+  "off": "Es verdad que no hay nada.",
+  "on": "Es verdad que él es un hombre."
+ },
+ {
+  "lemma": "hasta",
+  "rank": "98",
+  "off": "Estoy hasta el fin de semana pasado.",
+  "on": "Estoy hasta la muerte de su padre."
+ },
+ {
+  "lemma": "años",
+  "rank": "101",
+  "off": "Los años y todavía no he visto.",
+  "on": "Los años y todavía no ha sido."
+ },
+ {
+  "lemma": "hace",
+  "rank": "102",
+  "off": "No hace falta que te he dicho.",
+  "on": "No hace falta que te he visto."
+ },
+ {
+  "lemma": "va",
+  "rank": "103",
+  "off": "Ella va a estar de acuerdo contigo.",
+  "on": "No va a ser una buena idea."
+ },
+ {
+  "lemma": "mucho",
+  "rank": "105",
+  "off": "Tengo mucho libro por la mañana.",
+  "on": "Tengo mucho libro en la vida."
+ },
+ {
+  "lemma": "quién",
+  "rank": "106",
+  "off": "No sé quién hacer eso por mí.",
+  "on": "No sé quién hacer algo así."
+ },
+ {
+  "lemma": "mejor",
+  "rank": "107",
+  "off": "Él es mejor no decir nada.",
+  "on": "Él es mejor que cualquier otro."
+ },
+ {
+  "lemma": "vida",
+  "rank": "108",
+  "off": "La vida es un tipo de cosas.",
+  "on": "La vida es un tipo de persona."
+ },
+ {
+  "lemma": "decir",
+  "rank": "109",
+  "off": "Tengo que decir la verdad puede ser.",
+  "on": "Quiero decir que no lo he visto."
+ },
+ {
+  "lemma": "dónde",
+  "rank": "111",
+  "off": "Dónde está la madre de mi padre.",
+  "on": "Dónde está la casa de mi padre."
+ },
+ {
+  "lemma": "están",
+  "rank": "113",
+  "off": "No están de acuerdo con la cabeza.",
+  "on": "Ellos están en contra de la ciudad."
+ },
+ {
+  "lemma": "señor",
+  "rank": "115",
+  "off": "Es un señor y la señora.",
+  "on": "El señor es uno de los niños."
+ },
+ {
+  "lemma": "hombre",
+  "rank": "116",
+  "off": "Es un hombre con quien hablar.",
+  "on": "El hombre es un poco de agua."
+ },
+ {
+  "lemma": "siempre",
+  "rank": "118",
+  "off": "Ella siempre está de acuerdo contigo.",
+  "on": "Ella siempre está de acuerdo con él."
+ },
+ {
+  "lemma": "ver",
+  "rank": "119",
+  "off": "Quiero ver a un lado para otro.",
+  "on": "Voy a ver las cosas que hacer."
+ },
+ {
+  "lemma": "había",
+  "rank": "123",
+  "off": "Había una vez cada dos días después.",
+  "on": "Había muchas cosas que hacer algo así."
+ },
+ {
+  "lemma": "antes",
+  "rank": "126",
+  "off": "Ella está antes de llegar a tiempo.",
+  "on": "Antes de que no me gusta mucho."
+ },
+ {
+  "lemma": "día",
+  "rank": "127",
+  "off": "Es un día o dos días después.",
+  "on": "El día de hoy es el mejor."
+ },
+ {
+  "lemma": "tenemos",
+  "rank": "129",
+  "off": "No tenemos nada que ver con esto.",
+  "on": "No tenemos nada que ver con eso."
+ },
+ {
+  "lemma": "poco",
+  "rank": "130",
+  "off": "Poco a mi padre me ha dicho.",
+  "on": "Poco a mi padre es un hombre."
+ },
+ {
+  "lemma": "otra",
+  "rank": "133",
+  "off": "Tengo otra casa por la tarde.",
+  "on": "Tengo otra casa por la noche."
+ },
+ {
+  "lemma": "mismo",
+  "rank": "134",
+  "off": "Él es mismo lo que ha hecho.",
+  "on": "No es mismo lo que ha hecho."
+ },
+ {
+  "lemma": "han",
+  "rank": "135",
+  "off": "Han pasado cinco años.",
+  "on": "Han pasado tres años."
+ },
+ {
+  "lemma": "hecho",
+  "rank": "136",
+  "off": "He hecho todo lo que has hecho.",
+  "on": "He hecho todo lo que ha hecho."
+ },
+ {
+  "lemma": "puedes",
+  "rank": "138",
+  "off": "No puedes estar tan seguro.",
+  "on": "No puedes hacer nada."
+ },
+ {
+  "lemma": "estar",
+  "rank": "141",
+  "off": "Voy a estar de acuerdo contigo.",
+  "on": "Voy a estar de acuerdo con él."
+ },
+ {
+  "lemma": "noche",
+  "rank": "143",
+  "off": "Es un noche en un día.",
+  "on": "El noche no tengo nada que hacer."
+ },
+ {
+  "lemma": "trabajo",
+  "rank": "144",
+  "off": "Tengo un trabajo de medio tiempo.",
+  "on": "Tengo un trabajo que hacer las cosas."
+ },
+ {
+  "lemma": "ir",
+  "rank": "145",
+  "off": "Tengo que ir a ninguna parte.",
+  "on": "Tengo que ir a la puerta."
+ },
+ {
+  "lemma": "después",
+  "rank": "146",
+  "off": "Ella está después de todo el día.",
+  "on": "Ella está después de haber sido."
+ },
+ {
+  "lemma": "acuerdo",
+  "rank": "149",
+  "off": "El acuerdo está a punto de salir.",
+  "on": "El acuerdo de lo que ha hecho."
+ },
+ {
+  "lemma": "otro",
+  "rank": "150",
+  "off": "Tengo otro libro es muy bueno.",
+  "on": "Tengo otro libro en la vida."
+ },
+ {
+  "lemma": "parece",
+  "rank": "151",
+  "off": "No parece que va a estar aquí.",
+  "on": "No parece que va a hacer eso."
+ },
+ {
+  "lemma": "ellos",
+  "rank": "153",
+  "off": "Ellos están aquí desde hace mucho tiempo.",
+  "on": "Ellos están bien con todos los días."
+ },
+ {
+  "lemma": "estamos",
+  "rank": "154",
+  "off": "Nosotros estamos a punto de salir.",
+  "on": "No estamos en medio de la ciudad."
+ },
+ {
+  "lemma": "mundo",
+  "rank": "155",
+  "off": "El mundo está de acuerdo contigo.",
+  "on": "El mundo está de acuerdo con él."
+ },
+ {
+  "lemma": "nosotros",
+  "rank": "157",
+  "off": "Nosotros estamos aquí para hablar contigo.",
+  "on": "Nosotros estamos aquí para hablar con él."
+ },
+ {
+  "lemma": "padre",
+  "rank": "158",
+  "off": "El padre de mi casa está cerca.",
+  "on": "El padre es un buen amigo mío."
+ },
+ {
+  "lemma": "nadie",
+  "rank": "160",
+  "off": "Nadie es importante para los niños.",
+  "on": "Nadie es importante para todos los días."
+ },
+ {
+  "lemma": "les",
+  "rank": "162",
+  "off": "Ella les dice una cosa así.",
+  "on": "No les veo por qué la gente."
+ },
+ {
+  "lemma": "sido",
+  "rank": "164",
+  "off": "Ha sido un día o dos días.",
+  "on": "Ha sido un buen día para otro."
+ },
+ {
+  "lemma": "podría",
+  "rank": "166",
+  "off": "No podría haber sido por tu ayuda.",
+  "on": "No podría ser un poco de agua."
+ },
+ {
+  "lemma": "menos",
+  "rank": "167",
+  "off": "Menos mal que no hay nada.",
+  "on": "Menos mal que no lo he hecho."
+ },
+ {
+  "lemma": "mira",
+  "rank": "168",
+  "off": "No mira a ver si me siento.",
+  "on": "No mira lo que ha hecho."
+ },
+ {
+  "lemma": "quiere",
+  "rank": "169",
+  "off": "Ella quiere un poco de agua.",
+  "on": "Ella quiere ser un poco de agua."
+ },
+ {
+  "lemma": "lugar",
+  "rank": "172",
+  "off": "Es un lugar de ir a ver.",
+  "on": "Es un lugar en el mundo."
+ },
+ {
+  "lemma": "hablar",
+  "rank": "173",
+  "off": "Puedo hablar contigo en ese momento.",
+  "on": "Voy a hablar con la gente."
+ },
+ {
+  "lemma": "tres",
+  "rank": "176",
+  "off": "Tengo tres libros de mi padre.",
+  "on": "Tengo tres libros en mi casa."
+ },
+ {
+  "lemma": "nuevo",
+  "rank": "177",
+  "off": "No es nuevo a mi amigo.",
+  "on": "No es nuevo en el mundo."
+ },
+ {
+  "lemma": "pasa",
+  "rank": "178",
+  "off": "Ella pasa el día de hoy.",
+  "on": "No pasa nada de lo que pasó."
+ },
+ {
+  "lemma": "dinero",
+  "rank": "182",
+  "off": "El dinero no puede haber dicho algo.",
+  "on": "El dinero no puede haber hecho."
+ },
+ {
+  "lemma": "días",
+  "rank": "188",
+  "off": "Tengo unos días antes de salir.",
+  "on": "Los días son un poco de agua."
+ },
+ {
+  "lemma": "allí",
+  "rank": "190",
+  "off": "Allí no hay nada que ver.",
+  "on": "Allí no hay nada que hacer eso."
+ },
+ {
+  "lemma": "mujer",
+  "rank": "191",
+  "off": "Es un mujer tiene dos años.",
+  "on": "Tengo un mujer en el mundo."
+ },
+ {
+  "lemma": "nuestro",
+  "rank": "192",
+  "off": "Nuestro libro es muy importante para mí.",
+  "on": "Nuestro libro es muy importante para ti."
+ },
+ {
+  "lemma": "cosa",
+  "rank": "194",
+  "off": "Es una cosa que quiero hacer esto.",
+  "on": "Es una cosa que quiero ser."
+ },
+ {
+  "lemma": "sabe",
+  "rank": "195",
+  "off": "No sabe cuál es el mejor.",
+  "on": "Ella sabe hablar un poco de tiempo."
+ },
+ {
+  "lemma": "haciendo",
+  "rank": "197",
+  "off": "Estoy haciendo todo lo que has hecho.",
+  "on": "Estoy haciendo todo lo que ha hecho."
+ },
+ {
+  "lemma": "hijo",
+  "rank": "198",
+  "off": "Tengo un hijo de mi padre.",
+  "on": "Tengo un hijo de mi hermano mayor."
+ },
+ {
+  "lemma": "espera",
+  "rank": "203",
+  "off": "Espera un poco más de un año.",
+  "on": "Espera un poco más de tres años."
+ },
+ {
+  "lemma": "será",
+  "rank": "205",
+  "off": "No será el primero en llegar.",
+  "on": "No será la primera vez que alguien."
+ },
+ {
+  "lemma": "toda",
+  "rank": "207",
+  "off": "Tengo toda casa en la vida.",
+  "on": "Tengo toda casa por la noche."
+ },
+ {
+  "lemma": "tus",
+  "rank": "209",
+  "off": "Tus libros son para los niños.",
+  "on": "Tengo tus libros en mi casa."
+ },
+ {
+  "lemma": "nuestra",
+  "rank": "211",
+  "off": "Tengo nuestra casa está cerca de aquí.",
+  "on": "Tengo nuestra casa está en la casa."
+ },
+ {
+  "lemma": "aún",
+  "rank": "213",
+  "off": "Aún no he visto en algún lugar.",
+  "on": "Aún no se puede hacer nada."
+ },
+ {
+  "lemma": "tienen",
+  "rank": "217",
+  "off": "No tienen ni idea de quién.",
+  "on": "No tienen nada en todo el mundo."
+ },
+ {
+  "lemma": "veces",
+  "rank": "218",
+  "off": "Tengo unas veces me siento muy bien.",
+  "on": "Las veces que no me gusta mucho."
+ },
+ {
+  "lemma": "buen",
+  "rank": "221",
+  "off": "No es buen fin de semana pasado.",
+  "on": "No es buen tiempo para hacer algo."
+ },
+ {
+  "lemma": "papá",
+  "rank": "223",
+  "off": "Tengo un papá en la casa.",
+  "on": "Es un papá es un hombre."
+ },
+ {
+  "lemma": "dije",
+  "rank": "225",
+  "off": "No dije que no me gusta mucho.",
+  "on": "No dije que no lo he hecho."
+ },
+ {
+  "lemma": "unos",
+  "rank": "226",
+  "off": "Tengo unos libros en mi vida.",
+  "on": "Tengo unos libros en mi casa."
+ },
+ {
+  "lemma": "pasado",
+  "rank": "227",
+  "off": "El pasado fin de semana pasado.",
+  "on": "El pasado está un poco de agua."
+ },
+ {
+  "lemma": "caso",
+  "rank": "231",
+  "off": "Es un caso de tener que ir.",
+  "on": "Es un caso de tener que hacer."
+ },
+ {
+  "lemma": "alguna",
+  "rank": "236",
+  "off": "Tengo alguna casa está cerca de aquí.",
+  "on": "Tengo alguna casa de mi madre."
+ },
+ {
+  "lemma": "cuenta",
+  "rank": "238",
+  "off": "Tengo una cuenta de lo que pasó.",
+  "on": "La cuenta de lo que ha hecho."
+ },
+ {
+  "lemma": "visto",
+  "rank": "239",
+  "off": "He visto en mi casa está cerca.",
+  "on": "Ha visto a un lado para otro."
+ },
+ {
+  "lemma": "conmigo",
+  "rank": "240",
+  "off": "Ella conmigo está a punto de salir.",
+  "on": "Ella conmigo está un poco de agua."
+ },
+ {
+  "lemma": "hora",
+  "rank": "244",
+  "off": "Es una hora antes de salir.",
+  "on": "Tengo una hora antes de salir."
+ },
+ {
+  "lemma": "problema",
+  "rank": "245",
+  "off": "El problema es que no sé.",
+  "on": "El problema es que no hay nada."
+ },
+ {
+  "lemma": "año",
+  "rank": "247",
+  "off": "El año que viene de una vez.",
+  "on": "El año que viene de la ciudad."
+ },
+ {
+  "lemma": "razón",
+  "rank": "248",
+  "off": "El razón está a punto de salir.",
+  "on": "El razón está a punto de ser."
+ }
+]

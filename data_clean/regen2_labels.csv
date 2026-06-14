@@ -1,0 +1,500 @@
+lemma,sentence,label
+de,Estoy de acuerdo contigo en ese momento.,good
+que,Sé que puedes hacer eso por mí.,good
+la,La casa es demasiado tarde para eso.,nonsense
+no,No me gusta ese tipo de cosas.,good
+a,Voy a casa antes de salir.,good
+el,El libro es demasiado tarde para eso.,nonsense
+y,Tú y yo estamos aquí para ver.,good
+en,Estoy en contra de la ciudad.,nonsense
+es,Ella es la mejor forma de hablar.,nonsense
+un,Tengo un libro sobre la historia.,good
+lo,Ya lo tengo que volver a ver.,good
+por,Voy por el bien del mal tiempo.,nonsense
+los,Los libros son para los niños.,good
+una,Tengo una casa de mi tío.,good
+se,No se sabe nada de esto.,good
+con,Estoy con las manos antes de ir.,nonsense
+qué,No sé qué hacer con él.,good
+me,Me gusta mucho el uno al otro.,nonsense
+para,Voy para el fin de semana pasado.,nonsense
+las,Tengo las casas de por aquí cerca.,nonsense
+del,Es la casa del vecino.,good
+te,Te gusta mucho el uno al otro.,nonsense
+su,Su libro es demasiado tarde para eso.,nonsense
+pero,Quiero ir pero no puedo ver nada.,good
+si,No sé si es verdad eso.,good
+está,Ella está en casa de mi padre.,good
+mi,Mi libro es demasiado tarde para eso.,nonsense
+al,Vamos al cine.,good
+sí,Claro que sí en el mundo.,nonsense
+como,Es como tú no eres el único.,nonsense
+bien,Ella está bien de su padre.,nonsense
+más,Ella está más cerca de aquí.,good
+eso,Ella es eso lo que has hecho.,nonsense
+yo,Yo estoy aquí por un tiempo.,good
+le,Ya le tengo miedo a los niños.,good
+aquí,Aquí no hay nada que ver.,good
+tu,Tu libro es una buena idea.,good
+todo,Tengo todo libro por la mañana.,nonsense
+ha,Ha de ser un poco de agua.,nonsense
+ya,Ya no hay nada que ver.,good
+o,Quieres ir o no ser el mejor.,nonsense
+esto,Esto es importante para los niños.,good
+muy,Ella está muy cerca de la ciudad.,good
+esta,Esta casa es la primera vez.,nonsense
+ahora,Ahora no tengo ni idea de quién.,good
+así,Así que no se puede hacer nada.,good
+cuando,Estoy cuando no hay nada que ver.,nonsense
+hay,Hay algo que hacer algo así.,nonsense
+este,Este libro es una buena idea.,good
+algo,Ella es algo que hacer eso.,nonsense
+estoy,No estoy de acuerdo con él.,good
+vamos,No vamos a hacer eso por mí.,good
+él,Él está aquí para hablar de eso.,good
+ser,Quiero ser el primero en llegar.,good
+bueno,Él es bueno para el otro día.,nonsense
+nos,Nos gusta mucho el uno al otro.,good
+sus,Sus libros son para los niños.,good
+fue,No fue el primero en llegar.,good
+tengo,No tengo nada que ver con esto.,good
+era,No era el único que tienes razón.,nonsense
+nada,Nada es importante para los niños.,good
+tiene,No tiene nada que ver con esto.,good
+sé,Yo sé que es hora de volver.,good
+tú,Tú estás aquí desde hace mucho tiempo.,good
+cómo,Ella está cómo llegar a ser.,nonsense
+vez,Una vez más personas que no sé.,nonsense
+estás,No estás de acuerdo con la cabeza.,nonsense
+sólo,Sólo tienes que ir a la policía.,good
+ella,Ella está aquí para hablar con él.,good
+son,Ellos son de una vez por semana.,nonsense
+hacer,Voy a hacer las cosas que hacer.,nonsense
+he,He visto en algún lugar.,nonsense
+porque,No puedo porque estoy ocupado ahora.,good
+todos,Todos los libros son buenos amigos.,good
+puedo,No puedo estar de acuerdo con él.,good
+quiero,Yo quiero un poco más de tiempo.,good
+gracias,Muchas gracias por todo el día.,good
+puede,Ella puede hablar un poco de tiempo.,nonsense
+dos,Tengo dos libros de mi padre.,good
+sin,Estoy sin la ayuda de un amigo.,good
+soy,Yo soy el único que puede ser.,nonsense
+sobre,Estoy sobre la muerte de su padre.,nonsense
+ese,Ese libro es muy importante para mí.,good
+estaba,Ella estaba a punto de salir.,good
+también,También me gusta la forma de hablar.,good
+tiempo,No tengo tiempo para hacer las cosas.,good
+tan,Ella está tan pronto como sea posible.,nonsense
+entonces,Entonces me di cuenta de eso.,good
+creo,Yo creo que voy a hacer eso.,good
+tienes,No tienes nada que ver con esto.,good
+casa,La casa de mi casa está cerca.,nonsense
+usted,Usted está aquí para hablar con él.,good
+esa,Tengo esa casa es demasiado tarde.,nonsense
+voy,No voy a llegar tarde a casa.,good
+sabes,Tú sabes que es hora de volver.,good
+eres,Tú eres el único que puede ser.,nonsense
+verdad,Es verdad que no hay nada.,good
+hasta,Estoy hasta el fin de semana pasado.,nonsense
+solo,Él es solo un poco de agua.,nonsense
+nunca,Nunca he visto en algún lugar.,nonsense
+años,Los años y todavía no he visto.,truncation
+hace,No hace falta que te he dicho.,good
+va,Ella va a estar de acuerdo contigo.,good
+hola,Hola a la casa de mi padre.,nonsense
+mucho,Tengo mucho libro por la mañana.,agreement
+quién,No sé quién hacer eso por mí.,shoehorn
+mejor,Él es mejor no decir nada.,nonsense
+vida,La vida es un tipo de cosas.,nonsense
+decir,Tengo que decir la verdad puede ser.,nonsense
+mí,A mí me gusta hacer eso.,good
+dónde,Dónde está la madre de mi padre.,good
+ni,No tengo ni idea de quién.,good
+están,No están de acuerdo con la cabeza.,nonsense
+favor,Es un favor y el otro día.,nonsense
+señor,Es un señor y la señora.,nonsense
+hombre,Es un hombre con quien hablar.,good
+oh,Oh no es un poco de agua.,nonsense
+siempre,Ella siempre está de acuerdo contigo.,good
+ver,Quiero ver a un lado para otro.,nonsense
+uno,Uno de ellos.,truncation
+quieres,No quieres que te vas a hacer.,nonsense
+siento,Siento como si no fuera por mí.,good
+había,Había una vez cada dos días después.,nonsense
+dios,Dios es el único que tienes razón.,nonsense
+has,Has hecho por mí y mi madre.,nonsense
+antes,Ella está antes de llegar a tiempo.,nonsense
+día,Es un día o dos días después.,nonsense
+desde,Estoy desde hace mucho que hacer eso.,nonsense
+tenemos,No tenemos nada que ver con esto.,good
+poco,Poco a mi padre me ha dicho.,nonsense
+cosas,Las cosas no se puede hacer nada.,agreement
+ti,A ti te gusta hacer eso.,good
+otra,Tengo otra casa por la tarde.,good
+mismo,Él es mismo lo que ha hecho.,shoehorn
+han,Han pasado cinco años.,good
+hecho,He hecho todo lo que has hecho.,good
+alguien,Ella es alguien que no hay nada.,nonsense
+puedes,No puedes estar tan seguro.,good
+ahí,Ahí hay un poco más de tiempo.,nonsense
+dijo,Ella dijo que iba a hacer eso.,good
+estar,Voy a estar de acuerdo contigo.,good
+entre,Estoy entre el bien del mal tiempo.,nonsense
+noche,La noche en su casa está cerca.,nonsense
+trabajo,Tengo un trabajo de medio tiempo.,good
+ir,Tengo que ir a ninguna parte.,nonsense
+después,Ella está después de todo el día.,nonsense
+mis,Tengo mis libros a la semana.,nonsense
+sea,Sea lo que quieres decir con eso.,shoehorn
+acuerdo,El acuerdo está a punto de salir.,nonsense
+otro,Tengo otro libro es muy bueno.,shoehorn
+parece,No parece que va a estar aquí.,good
+donde,Ella es donde no hay ninguna razón.,nonsense
+ellos,Ellos están aquí desde hace mucho tiempo.,good
+estamos,Nosotros estamos a punto de salir.,good
+mundo,El mundo está de acuerdo contigo.,nonsense
+gente,La gente no sabe qué hacer.,good
+nosotros,Nosotros estamos aquí para hablar contigo.,good
+padre,El padre de mi casa está cerca.,nonsense
+estado,He estado aquí desde hace mucho tiempo.,good
+nadie,Nadie es importante para los niños.,nonsense
+tal,Ella es tal vez sea mejor.,shoehorn
+les,Ella les dice una cosa así.,good
+parte,Es una parte de la ciudad.,good
+sido,Ha sido un día o dos días.,nonsense
+momento,Es un momento de la vida.,good
+podría,No podría haber sido por tu ayuda.,good
+menos,Menos mal que no hay nada.,good
+mira,No mira a ver si me siento.,nonsense
+quiere,Ella quiere un poco de agua.,good
+fuera,Ella está fuera de la ciudad.,good
+gran,Él es gran parte de la ciudad.,nonsense
+lugar,Es un lugar en el mundo.,good
+hablar,Puedo hablar contigo en ese momento.,good
+tener,Voy a tener un poco de tiempo.,good
+tenía,No tenía ni idea de quién.,good
+tres,Tengo tres libros de mi padre.,good
+nuevo,No es nuevo a mi amigo.,nonsense
+pasa,Ella pasa el día de hoy.,good
+vas,No vas a hacer las cosas.,good
+cada,Tengo cada casa por la mañana.,shoehorn
+claro,No es claro que no hay nada.,nonsense
+dinero,El dinero no puede haber dicho algo.,nonsense
+madre,Es una madre de mi padre.,nonsense
+mañana,La mañana me voy a hacer eso.,nonsense
+tipo,Es un tipo de cosas que hacer.,nonsense
+hoy,Hoy no tengo tiempo para hacer eso.,good
+días,Tengo unos días antes de salir.,good
+luego,Ella está luego de una forma.,nonsense
+allí,Allí no hay nada que ver.,good
+mujer,Es una mujer de mi hermano mayor.,nonsense
+nuestro,Nuestro libro es muy importante para mí.,good
+tanto,Tanto que me voy a hacer eso.,truncation
+cosa,Es una cosa que quiero hacer esto.,nonsense
+sabe,No sabe cuál es el mejor.,good
+todas,Todas las personas son buenas.,good
+haciendo,Estoy haciendo todo lo que has hecho.,good
+hijo,Tengo un hijo de mi padre.,good
+dice,Ella dice que es hora de volver.,good
+seguro,No es seguro que no hay nada.,nonsense
+podemos,No podemos tener un poco de dinero.,good
+debe,Debe de ser un poco de agua.,nonsense
+espera,Espera un poco más de un año.,nonsense
+vale,Vale más que un poco de agua.,nonsense
+será,No será el primero en llegar.,good
+estas,Tengo estas casas.,good
+toda,Tengo toda casa a las dos.,shoehorn
+haber,Quiero haber hecho lo que ha hecho.,nonsense
+tus,Tus libros son para los niños.,good
+amigo,Es un amigo de mi padre.,good
+nuestra,Tengo nuestra casa está cerca de aquí.,shoehorn
+buena,Ella es buena para la gente.,good
+aún,Aún no he visto en algún lugar.,nonsense
+quien,Ella es quien no tiene ningún amigo.,good
+estos,Estos libros son para los niños.,good
+nombre,Es un nombre de todos los días.,nonsense
+tienen,No tienen ni idea de quién.,truncation
+veces,Tengo unas veces me siento muy bien.,shoehorn
+mamá,Es una mamá es la primera vez.,shoehorn
+mal,Ella está mal de los otros.,nonsense
+buen,No es buen fin de semana pasado.,nonsense
+durante,Estoy durante el fin de semana pasado.,shoehorn
+papá,Es un papá en la casa.,nonsense
+quería,Ella quería que él había estado.,truncation
+dije,No dije que no me gusta mucho.,good
+unos,Tengo unos libros en mi vida.,good
+pasado,El pasado fin de semana pasado.,nonsense
+forma,Es una forma de hablar con él.,good
+gusta,No gusta a todo el mundo.,shoehorn
+hizo,Ella hizo todo lo que ha hecho.,good
+caso,Es un caso de tener que ir.,nonsense
+contra,Estoy contra el presidente de la mano.,nonsense
+tarde,Ella está tarde por la mañana.,nonsense
+necesito,No necesito un poco de agua.,good
+oye,Oye de la vida es una buena.,nonsense
+alguna,Tengo alguna casa está cerca de aquí.,shoehorn
+hemos,Hemos estado aquí desde hace mucho tiempo.,good
+cuenta,Tengo una cuenta de lo que pasó.,nonsense
+visto,He visto en mi casa está cerca.,shoehorn
+conmigo,Ella conmigo está a punto de salir.,shoehorn
+mientras,Ella está bien mientras tiene tiempo.,nonsense
+otros,Tengo otros libros en mi vida.,good
+realmente,Realmente no tengo ni idea de quién.,truncation
+hora,Es una hora antes de salir.,nonsense
+problema,El problema es que no sé.,good
+crees,Tú crees que es una buena idea.,good
+año,El año que viene de una vez.,nonsense
+razón,Es una razón para no ser.,truncation
+primera,Él es primera vez que he visto.,agreement
+cierto,No es cierto que los hombres.,truncation
+saber,Quiero saber qué ha pasado mucho tiempo.,nonsense
+dicho,Ha dicho que no hay nada.,good
+hacerlo,Hacerlo por mí y mi hermano mayor.,truncation
+mierda,Es una mierda y el otro día.,nonsense
+idea,La idea de lo que ha hecho.,truncation
+mío,Tengo mío libro es de mi padre.,shoehorn
+e,Es bueno e es difícil hablar.,shoehorn
+aunque,Ella está bien aunque tiene tiempo.,nonsense
+familia,Tengo una familia de la misma.,nonsense
+hacia,Estoy hacia la puerta antes de salir.,nonsense
+amor,El amor es solo un niño.,nonsense
+esos,Esos libros son de una vez.,nonsense
+pueden,No pueden ser una buena idea.,good
+importa,No importa lo que ha pasado mucho.,good
+todavía,Todavía no he visto en algún lugar.,nonsense
+personas,Las personas que no me gusta mucho.,nonsense
+policía,La policía está en la ciudad.,good
+casi,Casi no hay nada que ver contigo.,good
+contigo,Ella contigo está a punto de salir.,shoehorn
+cualquier,Tengo cualquier libro que quería ir.,nonsense
+demasiado,Ella está demasiado tarde para eso.,good
+ven,Ellos ven a mi casa está cerca.,shoehorn
+serio,No es serio de su padre.,nonsense
+algún,Tengo algún libro en la vida.,nonsense
+ve,No ve un poco de agua.,nonsense
+nueva,Ella es nueva de la ciudad.,nonsense
+eh,Eh no tiene nada que ver.,good
+lado,Es un lado para otro lado.,nonsense
+manera,Es una manera de hablar con él.,good
+cabeza,La cabeza con un poco de agua.,nonsense
+hombres,Los hombres son más que los niños.,nonsense
+historia,La historia no tiene nada que ver.,good
+dentro,Ella está dentro de una semana.,nonsense
+sería,No sería el mundo está de acuerdo.,nonsense
+salir,Voy a salir con este tiempo.,good
+debería,Debería haber hecho lo que ha hecho.,good
+van,Ellos van a hacer eso por mí.,good
+ciudad,La ciudad está a punto de salir.,nonsense
+ustedes,Ustedes están aquí desde hace mucho tiempo.,good
+muchas,Tengo muchas casas de la ciudad.,nonsense
+poder,Es un poder hablar con él.,shoehorn
+algunos,Tengo algunos libros de los niños.,good
+amigos,Los amigos son un poco de agua.,nonsense
+chica,La chica que está hablando con él.,truncation
+mayor,Ella es mayor que mi hijo.,good
+sabía,No sabía qué hacer con los ojos.,good
+chicos,Los chicos son un poco de agua.,nonsense
+hermano,Tengo un hermano que vive al lado.,good
+esas,Tengo esas casas a la gente.,filler
+país,Es un país no es un país.,nonsense
+país,Es un país no es un país.,nonsense
+vaya,Vaya a la casa de mi padre.,good
+agua,Tengo una agua y el otro día.,nonsense
+misma,Él es misma que la tierra.,agreement
+veo,No veo por qué la gente.,truncation
+haces,No haces nada que ver con esto.,good
+camino,Es un camino a la policía.,nonsense
+persona,Es una persona que más te vale.,nonsense
+iba,Ella iba a ser una buena idea.,nonsense
+realidad,La realidad es un tipo de cosas.,nonsense
+fin,El fin de semana en la misma.,truncation
+importante,Esto es importante para los niños.,good
+primero,Él es primero en llegar a ser.,nonsense
+digo,Yo digo que no me gusta mucho.,good
+horas,Las horas de trabajo que hacer eso.,truncation
+semana,La semana que viene a ver.,nonsense
+puerta,La puerta no se puede hacer nada.,nonsense
+somos,No somos tan pronto como sea posible.,nonsense
+pensé,Pensé que habías dicho que no sé.,good
+bajo,Estoy bajo el nombre de su hijo.,nonsense
+muerte,La muerte es una de las dos.,nonsense
+problemas,Tengo unos problemas con la familia.,good
+punto,Es un punto de llegar a ser.,nonsense
+ah,Ah es la mejor forma de hablar.,nonsense
+pasó,Pasó por la noche en un día.,nonsense
+quizá,Quizá no es un poco de agua.,nonsense
+buenas,Él es buenas en el mundo.,agreement
+supuesto,El supuesto que te vas a hacer.,truncation
+cuatro,Tengo cuatro libros en mi vida.,good
+da,No da lo mismo una y otra.,good
+mano,Es una mano con los ojos.,nonsense
+niños,Los niños les gusta hablar de ello.,good
+volver,Quiero volver a casa de mi padre.,good
+además,Ella está además de ser una buena.,nonsense
+señora,La señora es al mismo tiempo.,nonsense
+cariño,El cariño es al mismo tiempo.,nonsense
+ayuda,Es una ayuda a tu madre.,nonsense
+ojos,Los ojos de ella es una persona.,nonsense
+cinco,Tengo cinco libros en mi vida.,good
+pasar,Voy a pasar el fin de semana.,good
+general,Él es general a los niños.,nonsense
+pronto,Pronto será un buen día para otro.,nonsense
+debo,Debo ir a la hora.,good
+minutos,Tengo unos minutos más de tres.,nonsense
+sino,Es bueno sino es difícil hablar.,shoehorn
+gobierno,El gobierno está de acuerdo con él.,good
+manos,Tengo unas manos en la cara.,nonsense
+presidente,El presidente es una de las personas.,nonsense
+muerto,Ha muerto en un día de hoy.,nonsense
+muchos,Tengo muchos libros en la vida.,good
+chico,El chico que está hablando con él.,good
+guerra,Es una guerra es la primera vez.,nonsense
+hice,Yo hice todo lo que has hecho.,good
+incluso,Incluso un niño que está hablando.,good
+medio,El medio está más cerca de aquí.,nonsense
+cuál,No sé cuál hacer algo así.,shoehorn
+hablando,Estamos hablando de una vez al año.,nonsense
+adiós,Tengo un adiós y el otro día.,nonsense
+siquiera,Ella está siquiera con la cabeza.,shoehorn
+genial,Él es genial en el mundo.,nonsense
+fueron,Ellos fueron a la gente de aquí.,nonsense
+ello,Ella es ello por el momento.,nonsense
+rápido,Él es rápido de lo que pasó.,nonsense
+equipo,El equipo de lo que es hora.,nonsense
+dejar,Voy a dejar de hacer eso.,good
+significa,Significa que no se puede hacer nada.,good
+jefe,Es un jefe es al mismo.,nonsense
+millones,Los millones de personas en el mundo.,truncation
+suerte,Es una suerte de tener un poco.,nonsense
+otras,Tengo otras casas a la gente.,filler
+ayer,Ella está ayer por la tarde.,shoehorn
+cuerpo,El cuerpo está un poco de agua.,nonsense
+llegar,Voy a llegar tarde a la policía.,nonsense
+mujeres,Las mujeres no se puede hacer eso.,agreement
+posible,No es posible que haya hecho.,good
+según,Estoy según lo que está en casa.,shoehorn
+nuestros,Nuestros libros son de una vez.,nonsense
+quizás,Quizás sea una buena razón para estar.,truncation
+tierra,La tierra no es un hombre.,nonsense
+único,Él es único que puede hacer eso.,good
+hija,Tengo una hija de mi hermano mayor.,good
+ninguna,Ninguna casa es la mejor.,good
+final,El final está más cerca de aquí.,nonsense
+cara,La cara con un poco de agua.,nonsense
+niño,El niño se parece a su madre.,good
+supongo,Supongo que es hora de volver.,good
+juntos,Él es juntos a la vez.,shoehorn
+algunas,Tengo algunas casas de la ciudad.,good
+entiendo,Estoy entiendo nada de lo que pasó.,shoehorn
+número,Es un número de personas.,good
+ningún,Ningún libro es de mi padre.,good
+deja,Deja que te vas a hacer eso.,shoehorn
+ves,No ves que estoy de acuerdo contigo.,good
+tío,El tío se fue a la policía.,good
+cerca,Ella está cerca de mi padre.,good
+corazón,Me gusta el corazón.,good
+miedo,Es un miedo a los niños.,nonsense
+buenos,Ella es buenos a los niños.,agreement
+eran,Ellos eran en el mundo.,shoehorn
+haya,Haya dicho algo así en mi vida.,shoehorn
+feliz,No es feliz o no ser.,nonsense
+unas,Tengo unas casas cerca.,good
+espero,No espero que no me gusta mucho.,nonsense
+igual,No es igual que su hermano.,good
+viene,Ella viene de una forma de hablar.,nonsense
+meses,Los meses que no me gusta mucho.,nonsense
+sigue,Sigue en el mundo está de acuerdo.,nonsense
+dar,Voy a dar las gracias a ti.,good
+podía,No podía dejar de hablar con él.,good
+última,Él es última vez que he visto.,nonsense
+difícil,No es difícil de hacer eso.,good
+os,Os he dicho que no hay nada.,good
+venir,Voy a venir mañana por la mañana.,good
+vi,No vi a un lado para otro.,nonsense
+viejo,Es un viejo amigo de mi padre.,good
+bastante,Ella está bastante seguro de eso.,agreement
+tomar,Voy a tomar el primer día.,nonsense
+gustaría,Gustaría tener un poco más de tres.,nonsense
+cuánto,Cuánto libro es demasiado tarde para eso.,nonsense
+encontrar,Tengo que encontrar un buen amigo.,good
+adelante,Adelante voy a tener que hacer algo.,nonsense
+justo,No es justo lo que ha pasado.,good
+sentido,El sentido está de acuerdo contigo.,nonsense
+esposa,Es una esposa de mi hermano mayor.,nonsense
+segundo,Él es segundo a su hijo.,nonsense
+grande,Él es grande y dos veces.,nonsense
+allá,Allá donde se me ha dicho.,nonsense
+clase,La clase de persona es un tipo.,nonsense
+cual,Ella es cual en la ciudad.,nonsense
+ante,Estoy ante todo lo que ha hecho.,nonsense
+juego,Es un juego de hoy en día.,nonsense
+tenido,He tenido un poco más de tiempo.,good
+pensar,Voy a pensar en otra cosa.,good
+pueda,Pueda hacer para que pueda hacer.,nonsense
+hey,Hey es la mejor forma de hablar.,nonsense
+doctor,El doctor le dijo a sí mismo.,nonsense
+grupo,El grupo de gente con la gente.,nonsense
+cuidado,Es un cuidado de no dejar.,nonsense
+suficiente,No es suficiente para todos los días.,good
+sangre,La sangre está un poco de agua.,nonsense
+pequeño,Ella es pequeño en el mundo.,agreement
+dijiste,Tú dijiste que no me gusta mucho.,nonsense
+trata,Trata de una forma de hacer eso.,nonsense
+haré,Yo haré todo lo que has hecho.,good
+último,Él es último en llegar a tiempo.,good
+frente,Es un frente a mi casa.,nonsense
+grandes,Él es grandes que las mujeres.,agreement
+venga,Venga a mi padre me ha dicho.,nonsense
+llama,Llama a la policía.,good
+noches,Las noches me voy a decir.,nonsense
+toma,Toma el que más me gusta mucho.,nonsense
+necesita,Necesita un poco más de un año.,good
+debes,Debes tener en cuenta el hecho.,good
+arriba,Ella arriba está un poco de agua.,nonsense
+vuelta,Es una vuelta en mi casa.,nonsense
+coche,Tengo un coche para ir a ver.,nonsense
+tampoco,Tampoco se nos va a estar aquí.,nonsense
+trabajar,Voy a trabajar en un día.,nonsense
+cuándo,Ella está cuándo vas a estar.,nonsense
+fuerte,Él es fuerte y claro.,good
+seguridad,La seguridad es una de mis amigos.,nonsense
+mas,Mas que a mí me gusta mucho.,nonsense
+entrar,Tengo que entrar en el mismo.,nonsense
+vivir,Quiero vivir en un lugar para vivir.,nonsense
+escucha,Ella escucha lo que ha pasado mucho.,nonsense
+déjame,Déjame hablar con uno de los dos.,good
+pueblo,Es un pueblo de a poco.,nonsense
+hijos,Tengo unos hijos y una hija.,good
+joven,Él es joven y una hija.,nonsense
+cuanto,Ella está cuanto se me ha hecho.,nonsense
+hago,No hago más de tres años.,nonsense
+escuela,La escuela está en la misma.,nonsense
+tras,Hablo tras la muerte de su padre.,nonsense
+cree,Ella cree que es una buena idea.,good
+cambio,El cambio de un lado para otro.,nonsense
+luz,Es una luz al salir de aquí.,nonsense
+oportunidad,Es una oportunidad de hablar con ella.,good
+fui,Yo fui el primero en llegar.,good
+sistema,El sistema de lo que es hora.,nonsense
+embargo,El embargo está de acuerdo con él.,nonsense
+teléfono,El teléfono estaba a punto de salir.,nonsense
+dices,No dices nada en todo el mundo.,nonsense
+seis,Tengo seis casas.,good
+alto,Él es alto y un poco.,nonsense
+habla,Ella habla como si fuera un niño.,good
+fiesta,La fiesta fue un día para otro.,nonsense
+loco,Es un loco para hacer algo.,nonsense
+atrás,Ella está atrás en el momento.,nonsense
+debemos,Debemos salir de aquí a las dos.,good
+pregunta,Tengo una pregunta a su madre.,nonsense
+hacen,No hacen más que cualquier otro.,nonsense
+seguir,Voy a seguir haciendo esto por mí.,good
+quieren,No quieren hablar con la gente.,good
+dio,Ella dio a su casa está cerca.,nonsense
+paso,Es un paso la mayor parte.,nonsense
+falta,La falta de agua en la ciudad.,truncation
+fácil,No es fácil de hacer nada.,good
+ido,He ido a la vez.,nonsense
+padres,Los padres son de mi padre.,nonsense
+vino,El vino es al mismo tiempo.,nonsense

@@ -48,6 +48,29 @@ from features import (  # noqa: E402
 from validators import validate, dangling_subordinator_reason  # noqa: E402
 from templates import grammar_safe_templates  # noqa: E402
 from template_signature import template_signature  # noqa: E402
+from collocations import load_collocations  # noqa: E402
+try:
+    from neural_lm import load_neural_lm  # noqa: E402
+except Exception:  # torch optional — generator still runs without the neural LM
+    load_neural_lm = None
+
+# Weight on the neural-LM per-token log-prob in final selection. NOTE: an A/B on
+# 250 targets showed the neural *rescorer* is ~net-neutral (+1pp, within noise)
+# and actually raises frequent-phrase nonsense ("un poco de agua") because the LM,
+# trained on Tatoeba, scores those common phrases highly. 62% of changed picks
+# were ties — selection is not the bottleneck, the candidate POOL is. So the
+# rescorer is OFF by default; enable with --neural-lm <path> --neural-weight <w>
+# for experiments. The neural LM's real value is as a DECODER (candidate
+# proposer), not a rescorer. 0.0 = neural signal off.
+NEURAL_WEIGHT = 0.0
+
+# How strongly the corpus-derived coherence signal influences final selection.
+# COH_WEIGHT scales the (robust) mean-PMI re-ranking term; COH_GATE_PENALTY is a
+# flat penalty subtracted when a confident selectional violation is detected.
+# The gate is a penalty, not a hard reject, so it can never empty the candidate
+# pool — the least-incoherent option still surfaces for a hard target.
+COH_WEIGHT = 0.3
+COH_GATE_PENALTY = 1.5
 
 WORD_RE = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+")
 
@@ -432,6 +455,10 @@ class Generator:
         beam_size: int = 24,
         max_extensions: int = 40,
         morph_path: Optional[Path] = None,
+        colloc_path: Optional[Path] = None,
+        neural_lm_path: Optional[Path] = None,
+        neural_weight: float = NEURAL_WEIGHT,
+        gender_table_path: Optional[Path] = None,
     ):
         print(f"[gen] loading LM {lm_path}", file=sys.stderr)
         self.lm = KNLanguageModel(lm_path)
@@ -441,6 +468,37 @@ class Generator:
         if morph_path is not None and morph_path.exists():
             print(f"[gen] loading morph table {morph_path}", file=sys.stderr)
             self.morph = load_morph_table(morph_path)
+        # Fallback when the UD morph pkl is absent: a corpus-derived gender/number
+        # table (build_gender_table.py), same flat {form: {Gender, Number}} shape.
+        # Fixes -e/-es/-re nouns the spelling heuristic mis-genders ("El sangre").
+        if not self.morph and gender_table_path is not None and gender_table_path.exists():
+            with gender_table_path.open("rb") as gf:
+                self.morph = pickle.load(gf)
+            print(f"[gen] loaded gender table {gender_table_path} "
+                  f"({len(self.morph)} forms)", file=sys.stderr)
+        # Corpus-derived coherence signal (optional; disabled gracefully if the
+        # table is absent). Attacks the "fluent nonsense" failure category.
+        self.colloc = None
+        if colloc_path is not None:
+            self.colloc = load_collocations(colloc_path)
+            if self.colloc is not None:
+                print(f"[gen] loaded collocations {colloc_path} "
+                      f"({len(self.colloc.unigram)} words)", file=sys.stderr)
+            else:
+                print(f"[gen] collocations table {colloc_path} not found — "
+                      f"coherence signal disabled", file=sys.stderr)
+        # Neural LSTM language model (optional; full-left-context coherence
+        # rescorer). Loaded on CPU for portable per-candidate scoring.
+        self.neural_lm = None
+        self.neural_weight = neural_weight
+        if neural_lm_path is not None and load_neural_lm is not None:
+            self.neural_lm = load_neural_lm(neural_lm_path, device="cpu")
+            if self.neural_lm is not None:
+                print(f"[gen] loaded neural LM {neural_lm_path} "
+                      f"(weight={neural_weight})", file=sys.stderr)
+            else:
+                print(f"[gen] neural LM {neural_lm_path} not found — "
+                      f"neural rescorer disabled", file=sys.stderr)
         self.lexicon = lexicon
         self.rank_by_word = {r.lemma: r.rank for r in lexicon}
         self.searcher = BeamSearcher(self.lm, beam_size=beam_size, max_extensions=max_extensions, morph=self.morph)
@@ -713,13 +771,32 @@ class Generator:
         return seeds
 
     def feature_score(self, tokens: List[str], target: LexiconRow, lm_logp: float) -> float:
-        feats = featurize(tokens, target.lemma, target.rank, lm_logp, self.rank_by_word)
+        feats = featurize(tokens, target.lemma, target.rank, lm_logp, self.rank_by_word, colloc=self.colloc)
         return self.reranker.score(feats)
+
+    def _coherence_adjustment(self, toks: List[str]) -> float:
+        """Corpus-derived coherence term: a robust mean-PMI bonus/penalty plus a
+        flat penalty for a confident selectional violation. 0.0 when the signal
+        is unavailable so behavior is unchanged without the table."""
+        if self.colloc is None:
+            return 0.0
+        adj = COH_WEIGHT * self.colloc.coherence_score(toks)
+        if self.colloc.incoherent_reason(toks):
+            adj -= COH_GATE_PENALTY
+        return adj
+
+    def _neural_adjustment(self, toks: List[str]) -> float:
+        """Full-context neural-LM per-token log-prob, weighted. 0.0 when the
+        neural LM is unavailable so behavior is unchanged without it."""
+        if self.neural_lm is None or self.neural_weight == 0.0:
+            return 0.0
+        return self.neural_weight * self.neural_lm.logp_per_token(toks)
 
     def _score_candidate(self, toks: List[str], target: LexiconRow) -> Tuple[float, float]:
         lm_lp = self.lm.sentence_logprob(toks)
         rscore = self.feature_score(toks, target, lm_lp)
-        combined = rscore + 0.08 * lm_lp
+        combined = (rscore + 0.08 * lm_lp + self._coherence_adjustment(toks)
+                    + self._neural_adjustment(toks))
         return combined, lm_lp
 
     def _template_candidates(self, target: LexiconRow) -> List[Tuple[float, List[str], float]]:
@@ -849,6 +926,18 @@ def main():
     ap.add_argument("--max-extensions", type=int, default=40)
     ap.add_argument("--morph", default="models_rebuild2/lemma_forms.pkl",
                     help="Path to UD morph table (lemma_forms.pkl). Disable with empty string.")
+    ap.add_argument("--gender-table", default="data_clean/gender_table.pkl",
+                    help="Corpus-derived gender/number table (build_gender_table.py), used "
+                         "as the morph fallback when --morph is absent. Disable with empty string.")
+    ap.add_argument("--collocations", default="data_clean/collocations.pkl",
+                    help="Path to corpus collocation table (build_collocations.py). "
+                         "Disable the coherence signal with an empty string.")
+    ap.add_argument("--neural-lm", default="",
+                    help="Path to the trained LSTM LM (train_neural_lm.py), e.g. "
+                         "data_clean/neural_lm.pt. Empty = neural rescorer off (default; "
+                         "A/B showed it ~net-neutral as a rescorer).")
+    ap.add_argument("--neural-weight", type=float, default=NEURAL_WEIGHT,
+                    help="Weight on the neural-LM per-token log-prob in selection.")
     ap.add_argument("--max-template-reuses", type=int, default=2,
                     help="Cap on how many rows in the CSV may share the same template skeleton.")
     args = ap.parse_args()
@@ -859,10 +948,15 @@ def main():
         raise SystemExit("no targets")
 
     morph_path = Path(args.morph) if args.morph else None
+    colloc_path = Path(args.collocations) if args.collocations else None
+    neural_lm_path = Path(args.neural_lm) if args.neural_lm else None
+    gender_table_path = Path(args.gender_table) if args.gender_table else None
     gen = Generator(
         Path(args.lm), Path(args.reranker), rows,
         beam_size=args.beam_size, max_extensions=args.max_extensions,
-        morph_path=morph_path,
+        morph_path=morph_path, colloc_path=colloc_path,
+        neural_lm_path=neural_lm_path, neural_weight=args.neural_weight,
+        gender_table_path=gender_table_path,
     )
 
     print(f"[gen] generating for {len(targets)} targets", file=sys.stderr)
