@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=04:00:00
+#SBATCH --time=02:00:00
 #SBATCH --output=spa-translate-%j.out
 #SBATCH --error=spa-translate-%j.err
 
@@ -19,15 +19,20 @@ echo "Working dir:   $(pwd)"
 echo "============================================"
 
 WORK_DIR="$HOME/markov-chain-sentence-generator"
-SCRIPT="/mnt/data/translate.py"
+SCRIPT="$WORK_DIR/translate.py"
 
-INPUT_CSV="$WORK_DIR/outputs/sentances.csv"
+INPUT_CSV="$WORK_DIR/outputs/sentences_filled.csv"
 OUT_DIR="$WORK_DIR/outputs/translated"
 mkdir -p "$OUT_DIR"
 OUTPUT_CSV="$OUT_DIR/final_sentences_en_${SLURM_JOB_ID}.csv"
 
 BATCH_SIZE=16
 HEARTBEAT_SECS=60
+
+export HF_HOME="$HOME/.cache/huggingface"
+export TRANSFORMERS_CACHE="$HF_HOME"
+
+mkdir -p "$HF_HOME"
 
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate sentgen
@@ -36,6 +41,7 @@ export PYTHONUNBUFFERED=1
 
 echo "Python path:   $(which python)"
 python --version
+echo "HF_HOME:       $HF_HOME"
 
 python - <<'PY'
 mods = [
@@ -44,14 +50,19 @@ mods = [
     "torch",
     "tqdm",
     "transformers",
+    "sentencepiece",
+    "sacremoses",
 ]
+failed = False
 for m in mods:
     try:
         __import__(m)
         print(f"OK import {m}", flush=True)
     except Exception as e:
         print(f"FAIL import {m}: {e}", flush=True)
-        raise
+        failed = True
+if failed:
+    raise SystemExit(1)
 PY
 
 for f in \
